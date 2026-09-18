@@ -51,13 +51,15 @@
 - **มินิเกมคำศัพท์ (Phase 2):** A1, A2 ไม่จำกัด / B1, B2 จำกัดจำนวนคำ (เช่น B2 = 10 คำ) / C1 ล็อก
 - **ด่าน (stage path):** เห็นเฉพาะด่านที่ tag `isPreview: true`
 - **แบบฝึกหัดอิสระ:** เห็นเฉพาะข้อที่ tag `isPreview: true`
+- **สรุปไวยากรณ์ (grammar notes):** เห็นเฉพาะหัวข้อที่ tag `isPreview: true`
 - **การบ้านรายบุคคล/กลุ่ม:** ไม่ผ่าน free-tier gate — assign แล้วเห็น/ทำได้เสมอไม่ว่า tier ไหน
 
 **`config/freeTierLimits`**
 ```
 vocabGame: { A1: "unlimited", A2: "unlimited", B1: 20, B2: 10, C1: "locked" },
 stages: { previewOnly: true },
-freePractice: { previewOnly: true }
+freePractice: { previewOnly: true },
+grammarNotes: { previewOnly: true }
 ```
 
 ## 6. ระบบดาว (Star system)
