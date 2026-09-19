@@ -164,3 +164,19 @@ commit `5829ea6` ในประวัติ git ชื่อ "Add visual style 
 ## 11. Out of scope (เจตนา ไม่ทำใน Foundation)
 
 โจทย์/ด่าน/การบ้าน/มินิเกม, หน้า admin ที่ใช้งานได้จริง (มีแค่ placeholder), visual style/mood (ดูข้อ 10), automated rules tests, LINE notification, `groupTags` UI
+
+## 12. Known follow-ups (พบระหว่าง final whole-branch review — จงใจ defer ไม่ใช่หลุดหาย)
+
+**ต้องตัดสินใจก่อนเปิดสมัครสาธารณะจริง:**
+- **Privacy/consent notice** — `PLAN.md` ข้อ 12 เตือนไว้แล้วว่าเก็บเบอร์โทร/LINE ID/โรงเรียนของผู้เยาว์ผ่านฟอร์มสมัครสาธารณะควรมี consent notice สั้นๆ — Foundation สร้างฟอร์มนี้จริงแล้วแต่ยังไม่ได้ใส่ ยังไม่บล็อก Foundation (ใช้ทดสอบภายในก่อน) แต่**ต้องใส่ก่อนเปิดให้นักเรียนจริงสมัคร** ข้อความ/wording เป็นเรื่องที่ปิ๊กต้องตัดสินใจเอง (ไม่ใช่โค้ด)
+
+**ควรทำในรอบ Firestore rules ถัดไป (ตอนเพิ่ม `exercises`/`stages`, มี emulator loop อยู่แล้ว):**
+- **`allow create`/`allow update` เป็น denylist ไม่ใช่ allowlist** — เช็คเฉพาะ field ที่ห้าม ไม่ได้จำกัดว่า field ที่อนุญาตมีอะไรบ้าง user เขียน field แปลกปลอมหรือ overwrite `email`/`createdAt` เองได้ (ไม่ใช่ privilege escalation แต่เป็นการเปิดให้เขียนข้อมูลเกินสคีมาโดยไม่ตั้งใจ) แนะนำเปลี่ยนเป็น `request.resource.data.keys().hasOnly([...])` — ใช้ `List.hasOnly(List)` ไม่ใช่ `Set.hasAny()` เพื่อเลี่ยงปัญหาแบบที่เจอใน `lockedFieldsUnchanged()` มาก่อน วิธีนี้จะปิดช่อง `updateDoc({totalStars: null})` (ช่องโหว่เล็กๆ ที่ยอมรับไว้ในข้อ 6) ไปในตัวด้วย
+- **`allow create` ไม่ได้ล็อก `onboardingComplete`** — user เรียก `setDoc` ตรงๆ ตั้งเป็น `true` เองได้ ข้ามฟอร์ม (ผลกระทบแค่ตัวเอง ไม่ใช่ escalation) แก้พร้อมกับ allowlist ด้านบนได้เลย
+
+**ควรทำเป็น follow-up commit เร็วๆ นี้ (ไม่บล็อก merge):**
+- Error handling หายไปทั้งระบบ — ทุก async call (sign-in, สร้าง/อัปเดต doc) ไม่มี try/catch เลย ปิดป๊อปอัพเองหรือ network พังแล้วหน้าเว็บจะค้างเงียบๆ ไม่บอกอะไร user เลย
+- ไม่มี `<meta name="viewport">` ในทุกหน้า — มือถือ (กลุ่มผู้ใช้หลัก) จะ render ผิดขนาดทันที
+- GitHub Actions ไม่ได้รัน `npm test` เลยก่อน deploy — 16 test ที่มีอยู่ไม่ได้ช่วยกัน regression ตอน deploy จริง
+
+**Minor เก็บไว้พิจารณาทีหลัง (ไม่เร่งด่วน):** dashboard/admin ไม่เช็ค `onboardingComplete` ซ้ำ (เข้าได้ทั้งที่ยังกรอกฟอร์มไม่จบถ้า bookmark ตรง), root/login ไม่เด้ง user ที่ล็อกอินอยู่แล้วไปหน้า dashboard ให้อัตโนมัติ, หน้า protected กระพริบเนื้อหาสั้นๆ ก่อน redirect, ตัวเลือก grade ซ้ำกันระหว่าง HTML กับ `SCHOOL_GRADES` (ไม่มีจุดเชื่อมกัน), `completeOnboarding` ใช้ `updateDoc` (fail ถ้า doc หาย แทนที่จะ `setDoc merge`), sign-out ทำงานผ่าน side-effect ของ listener อีกไฟล์ (ไม่ชัดเจนในตัวเอง), `.gitignore` ยังไม่ครอบ `.env.*.local`, `cancel-in-progress: true` ใน deploy workflow (GitHub แนะนำ `false` สำหรับ Pages), ฟอร์ม onboarding ยังไม่มี aria-live/aria-describedby/inputmode/autocomplete
