@@ -2,6 +2,7 @@ import { requireLogin } from './lib/auth-guard.js';
 import { db } from './lib/firebase.js';
 import { completeOnboarding } from './lib/user-profile-io.js';
 import { validateOnboardingForm } from './lib/onboarding-validation.js';
+import { showPageError } from './lib/page-error.js';
 
 let currentUid = null;
 
@@ -25,6 +26,15 @@ document.getElementById('onboarding-form').addEventListener('submit', async (eve
   const { valid, errors } = validateOnboardingForm(formData);
   renderErrors(errors);
   if (!valid) return;
-  await completeOnboarding(db, currentUid, formData);
-  window.location.href = './dashboard.html';
+  if (!currentUid) {
+    showPageError('กำลังโหลดข้อมูล กรุณารอสักครู่แล้วลองใหม่');
+    return;
+  }
+  try {
+    await completeOnboarding(db, currentUid, formData);
+    window.location.href = './dashboard.html';
+  } catch (error) {
+    showPageError('บันทึกข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+    console.error(error);
+  }
 });

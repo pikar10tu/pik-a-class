@@ -12,7 +12,14 @@ export function requireLogin(onReady) {
       window.location.href = `${import.meta.env.BASE_URL}login.html`;
       return;
     }
-    const userDoc = await fetchUserDoc(db, firebaseUser.uid);
+    let userDoc;
+    try {
+      userDoc = await fetchUserDoc(db, firebaseUser.uid);
+    } catch (error) {
+      console.error(error);
+      window.location.href = `${import.meta.env.BASE_URL}login.html`;
+      return;
+    }
     onReady(firebaseUser, userDoc);
   });
 }
