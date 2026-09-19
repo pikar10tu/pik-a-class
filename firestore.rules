@@ -9,7 +9,7 @@ service cloud.firestore {
 
     function lockedFieldsUnchanged() {
       let locked = ['role', 'tier', 'totalStars', 'stageProgress'];
-      return !locked.hasAny(request.resource.data.diff(resource.data).affectedKeys());
+      return !request.resource.data.diff(resource.data).affectedKeys().hasAny(locked);
     }
 
     match /users/{uid} {
