@@ -103,7 +103,9 @@ service cloud.firestore {
 
       allow create: if request.auth != null && request.auth.uid == uid &&
         request.resource.data.role == "student" &&
-        request.resource.data.tier == "free";
+        request.resource.data.tier == "free" &&
+        !('totalStars' in request.resource.data) &&
+        !('stageProgress' in request.resource.data);
 
       allow update: if request.auth != null &&
         ((request.auth.uid == uid && lockedFieldsUnchanged()) || isAdmin());
@@ -118,6 +120,8 @@ service cloud.firestore {
 ```
 
 ตรงตามข้อ 12: user แก้ `role`/`tier`/`totalStars`/`stageProgress` ตัวเองไม่ได้ (ต้อง admin เท่านั้น), field อื่นแก้ได้ปกติ, ต้อง login เสมอถึงจะอ่าน/เขียน
+
+**แก้ไข (พบระหว่าง code review ของ Task 12):** เดิม `allow create` เช็คแค่ `role`/`tier` แต่ไม่ได้ห้ามใส่ `totalStars`/`stageProgress` ตอนสร้างเอกสารใหม่ — ผู้ใช้เรียก `setDoc` ตรงๆ ได้และปลอมค่า 2 field นี้ตั้งแต่ตอนสมัครได้เลย ทั้งที่ตั้งใจให้แก้ได้เฉพาะ admin เพิ่มเงื่อนไข `!('totalStars' in request.resource.data) && !('stageProgress' in request.resource.data)` เข้าไปใน `allow create` เพื่อปิดช่องนี้ (เอกสาร stub ตอนสมัครจริงตาม `buildNewUserDoc` ก็ไม่มี 2 field นี้อยู่แล้ว จึงไม่กระทบ flow ปกติ)
 
 ## 7. Data model (เฉพาะที่ Foundation แตะ)
 

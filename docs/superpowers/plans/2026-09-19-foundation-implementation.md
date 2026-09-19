@@ -1110,7 +1110,9 @@ service cloud.firestore {
 
       allow create: if request.auth != null && request.auth.uid == uid &&
         request.resource.data.role == "student" &&
-        request.resource.data.tier == "free";
+        request.resource.data.tier == "free" &&
+        !('totalStars' in request.resource.data) &&
+        !('stageProgress' in request.resource.data);
 
       allow update: if request.auth != null &&
         ((request.auth.uid == uid && lockedFieldsUnchanged()) || isAdmin());
