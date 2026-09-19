@@ -799,7 +799,7 @@ export function isAdmin(userDocData) {
 export function requireLogin(onReady) {
   return onAuthStateChanged(auth, async (firebaseUser) => {
     if (!firebaseUser) {
-      window.location.href = '/login.html';
+      window.location.href = `${import.meta.env.BASE_URL}login.html`;
       return;
     }
     const userDoc = await fetchUserDoc(db, firebaseUser.uid);
@@ -810,13 +810,15 @@ export function requireLogin(onReady) {
 export function requireAdmin(onReady) {
   return requireLogin((firebaseUser, userDoc) => {
     if (!isAdmin(userDoc)) {
-      window.location.href = '/dashboard.html';
+      window.location.href = `${import.meta.env.BASE_URL}dashboard.html`;
       return;
     }
     onReady(firebaseUser, userDoc);
   });
 }
 ```
+
+**Correction (found during Task 14 live manual QA):** the redirect targets were originally hardcoded as absolute paths (`/login.html`, `/dashboard.html`), which resolve to the domain root — fine on `localhost` but broken once deployed under GitHub Pages' subpath (`https://<user>.github.io/pik-a-class/`), where signing out 404'd. Fixed to build the path from `import.meta.env.BASE_URL` (Vite's own configured `base`, `/pik-a-class/`), so the redirect works regardless of where the site is actually hosted.
 
 - [ ] **Step 4: Run test to verify it passes**
 
