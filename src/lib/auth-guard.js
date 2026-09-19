@@ -9,7 +9,7 @@ export function isAdmin(userDocData) {
 export function requireLogin(onReady) {
   return onAuthStateChanged(auth, async (firebaseUser) => {
     if (!firebaseUser) {
-      window.location.href = '/login.html';
+      window.location.href = `${import.meta.env.BASE_URL}login.html`;
       return;
     }
     const userDoc = await fetchUserDoc(db, firebaseUser.uid);
@@ -20,7 +20,7 @@ export function requireLogin(onReady) {
 export function requireAdmin(onReady) {
   return requireLogin((firebaseUser, userDoc) => {
     if (!isAdmin(userDoc)) {
-      window.location.href = '/dashboard.html';
+      window.location.href = `${import.meta.env.BASE_URL}dashboard.html`;
       return;
     }
     onReady(firebaseUser, userDoc);
