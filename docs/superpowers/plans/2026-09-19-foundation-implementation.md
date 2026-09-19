@@ -1101,8 +1101,10 @@ service cloud.firestore {
     }
 
     function lockedFieldsUnchanged() {
-      let locked = ['role', 'tier', 'totalStars', 'stageProgress'];
-      return !locked.hasAny(request.resource.data.diff(resource.data).affectedKeys());
+      return request.resource.data.get('role', null) == resource.data.get('role', null) &&
+        request.resource.data.get('tier', null) == resource.data.get('tier', null) &&
+        request.resource.data.get('totalStars', null) == resource.data.get('totalStars', null) &&
+        request.resource.data.get('stageProgress', null) == resource.data.get('stageProgress', null);
     }
 
     match /users/{uid} {

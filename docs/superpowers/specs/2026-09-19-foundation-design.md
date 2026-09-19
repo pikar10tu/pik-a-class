@@ -94,8 +94,10 @@ service cloud.firestore {
     }
 
     function lockedFieldsUnchanged() {
-      let locked = ['role', 'tier', 'totalStars', 'stageProgress'];
-      return !locked.hasAny(request.resource.data.diff(resource.data).affectedKeys());
+      return request.resource.data.get('role', null) == resource.data.get('role', null) &&
+        request.resource.data.get('tier', null) == resource.data.get('tier', null) &&
+        request.resource.data.get('totalStars', null) == resource.data.get('totalStars', null) &&
+        request.resource.data.get('stageProgress', null) == resource.data.get('stageProgress', null);
     }
 
     match /users/{uid} {
@@ -122,6 +124,12 @@ service cloud.firestore {
 ตรงตามข้อ 12: user แก้ `role`/`tier`/`totalStars`/`stageProgress` ตัวเองไม่ได้ (ต้อง admin เท่านั้น), field อื่นแก้ได้ปกติ, ต้อง login เสมอถึงจะอ่าน/เขียน
 
 **แก้ไข (พบระหว่าง code review ของ Task 12):** เดิม `allow create` เช็คแค่ `role`/`tier` แต่ไม่ได้ห้ามใส่ `totalStars`/`stageProgress` ตอนสร้างเอกสารใหม่ — ผู้ใช้เรียก `setDoc` ตรงๆ ได้และปลอมค่า 2 field นี้ตั้งแต่ตอนสมัครได้เลย ทั้งที่ตั้งใจให้แก้ได้เฉพาะ admin เพิ่มเงื่อนไข `!('totalStars' in request.resource.data) && !('stageProgress' in request.resource.data)` เข้าไปใน `allow create` เพื่อปิดช่องนี้ (เอกสาร stub ตอนสมัครจริงตาม `buildNewUserDoc` ก็ไม่มี 2 field นี้อยู่แล้ว จึงไม่กระทบ flow ปกติ)
+
+**แก้ไข (พบระหว่างทดสอบจริงด้วย Firebase emulator, Task 12):** `lockedFieldsUnchanged()` เดิมเขียน `locked.hasAny(request.resource.data.diff(resource.data).affectedKeys())` ซึ่งเป็น type error ในภาษา Firestore rules จริง — ยืนยันจาก error ตรงๆ ตอนรัน emulator: `Unsupported operation error. Received: list.hasAny(set). Expected: list.hasAny(list)` เมื่อ rule function evaluate error จะถูกตีเป็น `false` (deny) เสมอ ผลคือ **`allow update` ปฏิเสธการแก้ไขทุกกรณีของเจ้าของเอกสารเอง แม้แต่ field ธรรมดาอย่าง `nickname`** — กระทบ flow onboarding จริงทั้งหมด (เพราะ `completeOnboarding()` เรียก `updateDoc` แล้วจะโดนบล็อกเสมอ)
+
+ลองสลับด้านเป็น `affectedKeys().hasAny(locked)` แล้วก็ยัง error เดิมทุกประการ (ยืนยันด้วย emulator ว่า `.hasAny()` บน `set` ที่ได้จาก `affectedKeys()` ใช้ไม่ได้เลยไม่ว่าจะส่ง list ตัวแปรหรือ literal เข้าไปก็ตาม ในเอ็นจิ้น rules เวอร์ชันนี้) จึงเปลี่ยนวิธีทั้งหมดเป็นเทียบค่าทีละ field ตรงๆ ด้วย `.get(field, null)` (รูปแบบนี้ไม่พึ่ง `affectedKeys()/hasAny()` เลย จึงชัวร์กว่า) ทดสอบผ่านครบทั้ง 5 เคสบน emulator แล้ว: บล็อก `create` ที่แอบใส่ `totalStars`, อนุญาต `create` เอกสาร stub ปกติ, บล็อก `read` ข้ามคน, บล็อก `update` ที่แก้ `tier`, และอนุญาต `update` ที่แก้ `nickname`
+
+**บันทึกเพิ่มเติม:** ระหว่างดีบัก เจอด้วยว่า local emulator มี bug เรื่อง hot-reload — log ขึ้นว่า "Rules updated" แต่บางครั้งยังรันไฟล์เก่าอยู่จริง ต้อง restart emulator process ใหม่ทั้งตัวถึงจะ compile rules ที่แก้ล่าสุดจริงๆ (ไม่ใช่บั๊กของโค้ดเรา แต่เป็นพฤติกรรมของ Firebase CLI/emulator เวอร์ชันที่ใช้ตอนนี้ — ควรจำไว้เวลาแก้ rules แล้วเทสไม่ผ่านทั้งที่โค้ดถูกแล้ว)
 
 ## 7. Data model (เฉพาะที่ Foundation แตะ)
 
