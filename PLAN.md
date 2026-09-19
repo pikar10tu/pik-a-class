@@ -110,6 +110,32 @@ title, itemIds: string[], passThreshold: number, isPreview?: bool
 
 ด่าน / แบบฝึกหัดอิสระ / การบ้าน — สามระบบแยกกันอยู่คู่กัน (confirmed)
 
+## 8.1 สรุปไวยากรณ์ (Grammar reference notes)
+
+กลับมาเพิ่มเนื้อหาให้อ่านแยกอีกครั้ง — แต่ทำแบบสั้นกระชับ (สรุป/cheat sheet ไม่ใช่บทความยาว) และ**ไม่เพิ่มเมนูใหม่**เพื่อรักษาหลักการ nav เรียบง่าย: โผล่เป็นปุ่ม "ℹ️ ดูสรุป" แบบ contextual ในหน้าเลือกเลเวล+สกิล (ก่อนเข้าโจทย์) และในหน้าเล่นด่าน/ทำโจทย์ (เปิดเป็น modal สั้นๆ อ่านจบกดปิดกลับไปทำต่อได้เลย ไม่ตัดจังหวะเกม)
+
+**`grammarNotes`**
+```
+id, level: A1|A2|B1|B2|C1,
+topic: string,             // เช่น "Present Perfect"
+tags: string[],             // ผูกกับ tag เดียวกับ exercises/stages เพื่อลิงก์ถึงกัน
+summary: string,            // สั้น: รูปประโยค + การใช้ + ตัวอย่าง 2-3 ประโยค
+isPreview?: bool,
+reviewStatus: draft|reviewed|published   // ใช้ audit pipeline เดียวกับ exercises (ข้อ 2)
+```
+
+เฉพาะ**สกิลไวยากรณ์**ก่อน (vocab/dialogue ยังเน้นทำโจทย์อย่างเดียวตามเดิม ไม่ต้องมีสรุปแยก เพราะเป็นคำ/บทสนทนาไม่ใช่กฎที่ต้องอธิบาย)
+
+### Taxonomy ร่าง: หัวข้อไวยากรณ์/tense ต่อเลเวล (ปรับตามที่ปิ๊กสอนจริงได้)
+
+- **A1:** Present Simple (be/do), there is/are, Present Continuous (พื้นฐาน), can/can't, imperatives, plural nouns, possessive 's, Past Simple (be, verbs regular พื้นฐาน)
+- **A2:** Past Simple (regular+irregular ครบ), Past Continuous, Present Perfect (experience พื้นฐาน), Future (going to / will), comparatives/superlatives, must/have to/should, some/any + countable-uncountable
+- **B1:** Present Perfect Continuous, Past Perfect, Future Continuous, First & Second Conditional, Passive Voice (พื้นฐาน), Reported Speech (statements), modals of deduction (must/might/could), relative clauses (defining)
+- **B2:** Past Perfect Continuous, Future Perfect, Third Conditional, Mixed Conditionals, Passive (ครบ tense), Reported Speech (questions/commands), relative clauses (non-defining), causative (have/get something done)
+- **C1:** Advanced conditionals/inversion, subjunctive, advanced passive/reporting, cleft sentences, discourse markers ขั้นสูง, nuanced modal usage
+
+> รายการนี้เป็น draft อิงมาตรฐาน CEFR ทั่วไป ไม่ใช่คำแนะนำทางวิชาการตายตัว — ปิ๊กในฐานะคนสอนจริงปรับลำดับ/เพิ่มลดหัวข้อตามที่เจอกับนักเรียนจริงได้เลย ก่อน generate เนื้อหาแนะนำ finalize รายการนี้ก่อน เพราะ `tags` ในทุก exercise/stage/grammarNotes จะอิงตามชื่อหัวข้อในนี้ (เพื่อให้ "จุดอ่อนที่ควรทบทวน" ทำงานถูกต้องด้วย)
+
 ## 9. Data model (Firestore, สรุปรวม)
 
 **`users`**
@@ -155,8 +181,8 @@ feedback?, gradedBy?, gradedAt?, submittedAt
 
 **C. โซนนักเรียน**
 - Dashboard หลัก — progress, streak, ดาวรวม, tier badge
-- เส้นทางด่าน + หน้าเล่นด่าน
-- หน้าเลือกเลเวล+สกิล → หน้าทำโจทย์ (แบบฝึกหัดอิสระ)
+- เส้นทางด่าน + หน้าเล่นด่าน (มีปุ่ม "ℹ️ ดูสรุป" เปิด grammar notes แบบ modal ระหว่างเล่นได้)
+- หน้าเลือกเลเวล+สกิล → หน้าทำโจทย์ (แบบฝึกหัดอิสระ, มีปุ่ม "ℹ️ ดูสรุป" ก่อนเข้าโจทย์เช่นกัน)
 - การบ้านของฉัน — รายการที่ถูก assign, สถานะ, due date
 - หน้าผลลัพธ์ทันที + ดาวที่ได้
 - ประวัติ/สถิติ
@@ -208,6 +234,7 @@ feedback?, gradedBy?, gradedAt?, submittedAt
 6. due date ของการบ้าน แค่โชว์ในรายการพอ หรืออยากมี reminder/แจ้งเตือนด้วย
 7. pass threshold ของด่าน (ร่างไว้ 70%) และเกณฑ์ดาว (100/70/40%) โอเคไหม
 8. มี worksheet/placement test เดิมที่อยากแปลงเป็น seed content ไหม
+9. Taxonomy หัวข้อไวยากรณ์/tense ต่อเลเวลในข้อ 8.1 ตรงกับที่ปิ๊กสอนจริงไหม อยากปรับ/เพิ่ม/ตัดหัวข้อไหนก่อน finalize
 
 ## 15. แนะนำโฟลว์การพัฒนา (Build workflow)
 
