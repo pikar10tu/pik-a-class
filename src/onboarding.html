@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <title>กรอกโปรไฟล์ — Pik a Class</title>
+  <link rel="stylesheet" href="./styles/tokens.css" />
+  <link rel="stylesheet" href="./styles/base.css" />
+</head>
+<body>
+  <main>
+    <h1>กรอกโปรไฟล์ครั้งแรก</h1>
+    <form id="onboarding-form">
+      <div class="form-group">
+        <label for="fullName">ชื่อจริง</label>
+        <input type="text" id="fullName" name="fullName" />
+        <span class="field-error" data-error-for="fullName"></span>
+      </div>
+      <div class="form-group">
+        <label for="nickname">ชื่อเล่น</label>
+        <input type="text" id="nickname" name="nickname" />
+        <span class="field-error" data-error-for="nickname"></span>
+      </div>
+      <div class="form-group">
+        <label for="grade">ช่วงชั้น/กลุ่มผู้เรียน</label>
+        <select id="grade" name="grade">
+          <option value="">-- เลือก --</option>
+          <option value="ม.1">ม.1</option>
+          <option value="ม.2">ม.2</option>
+          <option value="ม.3">ม.3</option>
+          <option value="ม.4">ม.4</option>
+          <option value="ม.5">ม.5</option>
+          <option value="ม.6">ม.6</option>
+          <option value="วัยทำงาน/บุคคลทั่วไป">วัยทำงาน/บุคคลทั่วไป</option>
+        </select>
+        <span class="field-error" data-error-for="grade"></span>
+      </div>
+      <div class="form-group">
+        <label for="school">โรงเรียน/หน่วยงาน</label>
+        <input type="text" id="school" name="school" />
+        <span class="field-error" data-error-for="school"></span>
+      </div>
+      <div class="form-group">
+        <label for="phone">เบอร์โทร</label>
+        <input type="text" id="phone" name="phone" />
+        <span class="field-error" data-error-for="phone"></span>
+      </div>
+      <div class="form-group">
+        <label for="lineId">LINE ID</label>
+        <input type="text" id="lineId" name="lineId" />
+      </div>
+      <button type="submit" class="btn-primary">บันทึกและเริ่มใช้งาน</button>
+    </form>
+  </main>
+</body>
+</html>
