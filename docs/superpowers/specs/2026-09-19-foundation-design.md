@@ -174,9 +174,10 @@ commit `5829ea6` ในประวัติ git ชื่อ "Add visual style 
 - **`allow create`/`allow update` เป็น denylist ไม่ใช่ allowlist** — เช็คเฉพาะ field ที่ห้าม ไม่ได้จำกัดว่า field ที่อนุญาตมีอะไรบ้าง user เขียน field แปลกปลอมหรือ overwrite `email`/`createdAt` เองได้ (ไม่ใช่ privilege escalation แต่เป็นการเปิดให้เขียนข้อมูลเกินสคีมาโดยไม่ตั้งใจ) แนะนำเปลี่ยนเป็น `request.resource.data.keys().hasOnly([...])` — ใช้ `List.hasOnly(List)` ไม่ใช่ `Set.hasAny()` เพื่อเลี่ยงปัญหาแบบที่เจอใน `lockedFieldsUnchanged()` มาก่อน วิธีนี้จะปิดช่อง `updateDoc({totalStars: null})` (ช่องโหว่เล็กๆ ที่ยอมรับไว้ในข้อ 6) ไปในตัวด้วย
 - **`allow create` ไม่ได้ล็อก `onboardingComplete`** — user เรียก `setDoc` ตรงๆ ตั้งเป็น `true` เองได้ ข้ามฟอร์ม (ผลกระทบแค่ตัวเอง ไม่ใช่ escalation) แก้พร้อมกับ allowlist ด้านบนได้เลย
 
-**ควรทำเป็น follow-up commit เร็วๆ นี้ (ไม่บล็อก merge):**
-- Error handling หายไปทั้งระบบ — ทุก async call (sign-in, สร้าง/อัปเดต doc) ไม่มี try/catch เลย ปิดป๊อปอัพเองหรือ network พังแล้วหน้าเว็บจะค้างเงียบๆ ไม่บอกอะไร user เลย
-- ไม่มี `<meta name="viewport">` ในทุกหน้า — มือถือ (กลุ่มผู้ใช้หลัก) จะ render ผิดขนาดทันที
-- GitHub Actions ไม่ได้รัน `npm test` เลยก่อน deploy — 16 test ที่มีอยู่ไม่ได้ช่วยกัน regression ตอน deploy จริง
+**ทำแล้ว (commit `9667f7f`, re-review ผ่าน 3/4 เต็ม):**
+- ✅ `<meta name="viewport">` ครบทั้ง 5 หน้า
+- ✅ GitHub Actions รัน `npm test` ก่อน `npm run build` แล้ว
+- ✅ `login.js`/`onboarding.js` มี try/catch + `showPageError()` แล้ว, `onboarding.js` กัน submit ก่อน auth resolve เสร็จ (`currentUid` guard)
+- ⚠️ **ยังไม่สมบูรณ์:** `auth-guard.js`'s `requireLogin` catch แล้วแค่ `console.error` + redirect ไป login เงียบๆ ไม่เรียก `showPageError()` ตามที่ตั้งใจ (เพราะหน้าเปลี่ยนไปแล้วเรียกไม่มีผล) — ผลข้างเคียง: ถ้า Firestore ล่มชั่วคราวตอน user login อยู่แล้ว จะเจอ bounce กลับ login วนๆ แล้วพอ retry จะขึ้น error "เข้าสู่ระบบไม่สำเร็จ" ซึ่งข้อความผิด (จริงๆ sign-in สำเร็จ แต่ query Firestore fail) — severity ต่ำ (edge case, ไม่ใช่ happy path, ไม่ regression จากก่อนแก้) แนะนำ fix ทีหลังด้วยการส่ง error flag ผ่าน query param/sessionStorage ให้ login.html แสดงข้อความที่ถูกต้องแทน
 
 **Minor เก็บไว้พิจารณาทีหลัง (ไม่เร่งด่วน):** dashboard/admin ไม่เช็ค `onboardingComplete` ซ้ำ (เข้าได้ทั้งที่ยังกรอกฟอร์มไม่จบถ้า bookmark ตรง), root/login ไม่เด้ง user ที่ล็อกอินอยู่แล้วไปหน้า dashboard ให้อัตโนมัติ, หน้า protected กระพริบเนื้อหาสั้นๆ ก่อน redirect, ตัวเลือก grade ซ้ำกันระหว่าง HTML กับ `SCHOOL_GRADES` (ไม่มีจุดเชื่อมกัน), `completeOnboarding` ใช้ `updateDoc` (fail ถ้า doc หาย แทนที่จะ `setDoc merge`), sign-out ทำงานผ่าน side-effect ของ listener อีกไฟล์ (ไม่ชัดเจนในตัวเอง), `.gitignore` ยังไม่ครอบ `.env.*.local`, `cancel-in-progress: true` ใน deploy workflow (GitHub แนะนำ `false` สำหรับ Pages), ฟอร์ม onboarding ยังไม่มี aria-live/aria-describedby/inputmode/autocomplete
