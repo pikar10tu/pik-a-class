@@ -1,4 +1,17 @@
-import { collection, doc, getDocs, updateDoc, writeBatch } from 'firebase/firestore';
+import {
+  collection,
+  deleteDoc,
+  deleteField,
+  doc,
+  getDoc,
+  getDocs,
+  orderBy,
+  query,
+  setDoc,
+  updateDoc,
+  where,
+  writeBatch,
+} from 'firebase/firestore';
 import { buildQuery } from './queries.js';
 import { chunk } from './schema/import-prep.js';
 
@@ -42,4 +55,48 @@ export async function publishItems(db, collectionName, ids) {
     }
     await batch.commit();
   }
+}
+
+export async function fetchExercise(db, id) {
+  const snap = await getDoc(doc(db, 'exercises', id));
+  return snap.exists() ? { id: snap.id, ...snap.data() } : null;
+}
+
+export async function createExercise(db, item) {
+  const ref = doc(collection(db, 'exercises'));
+  await setDoc(ref, item);
+  return ref.id;
+}
+
+export async function saveExercise(db, id, item) {
+  await setDoc(doc(db, 'exercises', id), item);
+}
+
+// ทิ้งลงถัง: ต้องบังคับ reviewStatus กลับเป็น draft ด้วย ไม่งั้นข้อที่ published อยู่
+// จะยังโผล่ให้นักเรียนเห็น เพราะ security rules ตัดสินจาก reviewStatus อย่างเดียว
+export async function trashExercise(db, id) {
+  const now = new Date().toISOString();
+  await updateDoc(doc(db, 'exercises', id), {
+    deletedAt: now,
+    reviewStatus: 'draft',
+    updatedAt: now,
+  });
+}
+
+export async function restoreExercise(db, id) {
+  await updateDoc(doc(db, 'exercises', id), {
+    deletedAt: deleteField(),
+    updatedAt: new Date().toISOString(),
+  });
+}
+
+export async function deleteExercise(db, id) {
+  await deleteDoc(doc(db, 'exercises', id));
+}
+
+export async function fetchTrashedExercises(db) {
+  const snapshot = await getDocs(
+    query(collection(db, 'exercises'), where('deletedAt', '!=', null), orderBy('deletedAt', 'desc')),
+  );
+  return snapshot.docs.map((snap) => ({ id: snap.id, ...snap.data() }));
 }
