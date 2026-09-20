@@ -104,7 +104,8 @@ exercises/{id}
   type: mcq|fill_blank|matching|short_answer|paragraph|shadowing
   prompt: string
   choices?: string[]           บังคับสำหรับ mcq, matching — type อื่นห้ามมี
-  answerKey?: string|string[]  บังคับสำหรับ mcq, fill_blank, matching — short_answer/paragraph/shadowing ห้ามมี
+  answerKey?: string[]         บังคับสำหรับ mcq, fill_blank, matching — short_answer/paragraph/shadowing ห้ามมี
+                               เป็น array เสมอ เพื่อรองรับคำตอบที่รับได้หลายแบบใน fill_blank
   rubric?: string              บังคับสำหรับ short_answer, paragraph — type อื่นห้ามมี
   tags: string[]               ต้องอยู่ใน taxonomy ทุกตัว และเลเวลของ tag ต้องไม่สูงกว่าเลเวลของข้อ
   visibility: bank|assignmentOnly
