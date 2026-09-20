@@ -48,19 +48,14 @@
 
 ## 5. Free-tier access rules
 
-- **มินิเกมคำศัพท์ (Phase 2):** A1, A2 ไม่จำกัด / B1, B2 จำกัดจำนวนคำ (เช่น B2 = 10 คำ) / C1 ล็อก
-- **ด่าน (stage path):** เห็นเฉพาะด่านที่ tag `isPreview: true`
-- **แบบฝึกหัดอิสระ:** เห็นเฉพาะข้อที่ tag `isPreview: true`
-- **สรุปไวยากรณ์ (grammar notes):** เห็นเฉพาะหัวข้อที่ tag `isPreview: true`
-- **การบ้านรายบุคคล/กลุ่ม:** ไม่ผ่าน free-tier gate — assign แล้วเห็น/ทำได้เสมอไม่ว่า tier ไหน
+> **ปรับแล้วตาม `docs/superpowers/specs/2026-09-20-data-layer-design.md`** — เดิมร่างไว้เป็นลิมิตรายเลเวล + `config/freeTierLimits` ซึ่งเป็นกลไกสำหรับผู้ใช้สาธารณะ แต่ผู้ใช้จริงคือนักเรียนที่ปิ๊กสอนอยู่ (ได้ `full` ตั้งแต่แรก) จึงเหลือสวิตช์เดียว **`config/freeTierLimits` ถูกยกเลิก ไม่ต้องสร้าง collection นี้**
 
-**`config/freeTierLimits`**
-```
-vocabGame: { A1: "unlimited", A2: "unlimited", B1: 20, B2: 10, C1: "locked" },
-stages: { previewOnly: true },
-freePractice: { previewOnly: true },
-grammarNotes: { previewOnly: true }
-```
+**กฎเดียวใช้กับเนื้อหาทุกชนิด (`exercises` / `stages` / `grammarNotes`):** นักเรียนเห็นข้อที่ `reviewStatus == "published"` และ (`isPreview == true` **หรือ** `tier == "full"`) — บังคับที่ Firestore security rules
+
+- `tier: full` — เห็นเนื้อหาทั้งหมดที่อนุมัติแล้ว (ค่าที่ปิ๊กกดให้นักเรียนในคลาสเอง)
+- `tier: free` — เห็นเฉพาะข้อที่ติด `isPreview: true` (ไว้ให้คนนอกที่มาลอง)
+- **การบ้านรายบุคคล/กลุ่ม:** ไม่ผ่าน free-tier gate — คนที่อยู่ใน `assignedUids` ของข้อนั้นอ่านได้เสมอไม่ว่า tier ไหน และข้อที่ `visibility: assignmentOnly` อ่านได้เฉพาะคนที่ถูก assign เท่านั้น (คนอื่นแม้ tier `full` ก็ไม่เห็น)
+- **มินิเกมคำศัพท์ (Phase 2):** ลิมิตรายเลเวลยังไม่ตัดสิน — ค่อยออกแบบตอนทำ Phase 2 จริง
 
 ## 6. ระบบดาว (Star system)
 
@@ -103,10 +98,12 @@ dueDate?, createdAt
 **`stages`**
 ```
 id, skill: grammar|vocab|dialogue, level: A1|A2|B1|B2|C1, order,
-title, itemIds: string[], passThreshold: number, isPreview?: bool
+title, itemIds: string[], passThreshold: number, isPreview: bool,
+reviewStatus: draft|reviewed|published,   // เพิ่มตาม spec 2026-09-20 — กันด่านที่สร้างค้างครึ่งทางโผล่ให้นักเรียนเห็น
+createdAt, updatedAt, createdBy
 ```
 
-**users เพิ่ม field:** `stageProgress: { "grammar_A1": 3, ... }`
+**ความคืบหน้าด่าน:** เก็บเป็นเอกสารใน `stageClears` (ดูข้อ 9) ไม่ใช่ฟิลด์ `stageProgress` ใน `users` อย่างที่ร่างไว้เดิม
 
 ด่าน / แบบฝึกหัดอิสระ / การบ้าน — สามระบบแยกกันอยู่คู่กัน (confirmed)
 
@@ -145,30 +142,45 @@ grade: "ม.1"|"ม.2"|"ม.3"|"ม.4"|"ม.5"|"ม.6"|"วัยทำงาน
 school?, phone, lineId,
 role: student|admin, tier: free|full, tierNote?,
 groupTags?: string[],          // เผื่อ filter/assign แบบยืดหยุ่นกว่า grade
-stageProgress: { [skillLevelKey]: number },
 streak: { current, longest, lastActiveDate },
-totalStars: number, createdAt
+onboardingComplete: bool, createdAt, updatedAt?
 ```
+> **ปรับแล้ว:** ตัด `totalStars` และ `stageProgress` ออกจาก `users` — เป็น **ค่าที่คำนวณ** จาก `submissions` (`sum(bestStars)` ผ่าน aggregation query) และ `stageClears` แทน เหตุผลเต็มอยู่ใน spec 2026-09-20 ข้อ 4 (PLAN เดิมห้ามนักเรียนเขียนสองฟิลด์นี้ แต่ก็ไม่ใช้ Cloud Functions จึงไม่มีใครเขียนได้เลย)
 
 **`exercises`**
 ```
 id, skill: grammar|vocab|writing|dialogue,
-level: A1|A2|B1|B2|C1, gradeTag?,
+level: A1|A2|B1|B2|C1,
 type: mcq|fill_blank|matching|short_answer|paragraph|shadowing,
-prompt, choices?, answerKey?, rubric?,
-visibility: bank|assignmentOnly, isPreview?, tags?,
-reviewStatus: draft|reviewed|published   // นักเรียนเห็นเฉพาะ published เท่านั้น
+prompt, choices?, answerKey?: string[], rubric?,
+tags: string[],                          // ต้องมาจาก src/lib/schema/taxonomy.js
+visibility: bank|assignmentOnly, isPreview: bool,
+reviewStatus: draft|reviewed|published,  // นักเรียนเห็นเฉพาะ published เท่านั้น
+assignedUids: string[],                  // ให้ผู้ถูก assign อ่านได้แม้ tier=free
+source?, sourceUrl?, reviewNotes?,       // สายตรวจคุณภาพเนื้อหา (ดู docs/content-pipeline.md)
+contentHash, importBatchId?,             // ระบบเติมให้ตอนนำเข้า ใช้กันเนื้อหาซ้ำ
+createdAt, updatedAt, createdBy
 ```
+> **ปรับแล้ว:** ตัด `gradeTag` (ซ้ำซ้อนกับ `level`), `answerKey` เป็น `string[]` เสมอเพื่อรองรับคำตอบที่รับได้หลายแบบใน `fill_blank`
 
-**`stages`** — ดูข้อ 8
+**`stages`** — ดูข้อ 8 (เพิ่ม `reviewStatus` ให้เหมือน `exercises`/`grammarNotes`)
 **`assignments`** — ดูข้อ 7
 
-**`submissions`**
+**`submissions`** — doc id คงที่ `{uid}__{assignmentId|"bank"}__{exerciseId}` (1 เอกสารต่อนักเรียน×โจทย์×บริบท ทำให้กติกา "เก็บดาวสูงสุด ไม่บวกซ้ำ" เป็นจริงโดยโครงสร้าง)
 ```
-id, uid, exerciseId, assignmentId?,
-answer?, autoGraded: bool, score?, starsAwarded?: 0|1|2|3,
+uid, exerciseId, assignmentId?,
+skill, level, type, tags: string[],      // คัดลอกจากโจทย์ตอนส่ง เพื่อทำสถิติ/จุดอ่อนได้โดยไม่ต้อง join
+answer?, autoGraded: bool, score?,
+bestStars: 0|1|2|3,                      // เดิมชื่อ starsAwarded — ห้ามลดลง บังคับที่ rules
+attemptCount, wrongCount, lastAnsweredAt,
 status: pending|graded|completed,
-feedback?, gradedBy?, gradedAt?, submittedAt
+feedback?, gradedBy?, gradedAt?,         // เฉพาะ admin เขียนได้
+createdAt
+```
+
+**`stageClears`** (ใหม่) — doc id `{uid}__{stageId}`
+```
+uid, stageId, skill, level, order, score, clearedAt
 ```
 
 ## 10. หน้าจอทั้งหมด (screen inventory)
@@ -204,6 +216,7 @@ feedback?, gradedBy?, gradedAt?, submittedAt
 ## 12. Security & Data Integrity (จาก architecture review)
 
 **Must-fix ก่อน launch (ถูก ไม่ต้องเพิ่ม cost):**
+- ✅ **ทำแล้ว** (rules แบบ allowlist + rules test บน emulator, 2026-09-20) — หมายเหตุ: `totalStars`/`stageProgress` ไม่มีอยู่ใน `users` แล้ว (เป็นค่าคำนวณ ดูข้อ 9) ที่เหลือบล็อกจริงคือ `role`, `tier`, `tierNote`, `groupTags`
 - Firestore Security Rules ต้องบล็อกไม่ให้ user ทั่วไปเขียน field `tier`, `role`, `totalStars`, `stageProgress` ใน `users/{uid}` เอง (แก้ได้เฉพาะ admin/backend) — ไม่งั้นนักเรียนแก้ `tier` เป็น `full` เองผ่าน devtools ได้ ข้ามระบบปลดล็อกทั้งหมด ส่วน field โปรไฟล์อื่น (ชื่อ, streak ฯลฯ) ยังให้เจ้าของ doc แก้ได้ตามปกติ
 - ต้อง design security rules ให้ครบก่อนเริ่มโค้ด ไม่ใช่แค่ gate ฝั่ง client (mock free-tier limit ด้วย JS อย่างเดียวไม่พอ ต้องกันที่ rules ด้วยไม่งั้น query ตรง Firestore ข้ามการ gate ได้)
 - **ป้องกันเนื้อหาไม่ให้ถูกดูดง่ายๆ:** (1) ห้าม anonymous/ยังไม่ login อ่าน `exercises`/`stages` ได้เลย ต้อง login ก่อนเสมอ (2) rules เช็ก tier ของผู้ขอ (lookup `users/{uid}.tier` ผ่าน `get()`) ก่อนคืนข้อมูลข้อ `full`-only — free user จะ query ไม่เจอเนื้อหา full ตั้งแต่ระดับ database เลย ไม่ใช่แค่ซ่อนที่หน้าเว็บ (3) ฝั่ง frontend ให้โหลดเนื้อหาทีละด่าน/ทีละหน้าตามที่ใช้จริง (ไม่ query ทั้งคลังมาเก็บไว้ในเครื่องครั้งเดียว) ช่วยทั้งเรื่อง performance และลดโอกาสโดนสคริปต์ดูดรวดเดียวทั้งชุด — ข้อควรรู้ไว้ตรงๆ: ป้องกัน 100% จากคนที่จ่ายเงิน/ล็อกอินถูกต้องแล้วจงใจเขียนสคริปต์ดูดเป็นไปไม่ได้ในสถาปัตยกรรมแบบนี้ (client-rendered), 3 ข้อนี้กันได้แค่การดูดแบบสุ่ม/ไม่ล็อกอิน/ข้าม tier ซึ่งเป็นเคสที่พบจริงส่วนใหญ่
@@ -241,7 +254,7 @@ feedback?, gradedBy?, gradedAt?, submittedAt
 เรียงตามลำดับที่ทำแล้วเห็นผลเร็ว ลดความเสี่ยงเรื่อง schema เปลี่ยนทีหลัง แนะนำให้ทำเป็น session/task แยกทีละอย่างใน Claude Code ไม่ยัดทุกอย่างในครั้งเดียว (ยิ่งขอบเขตแคบ AI ยิ่งทำได้แม่นและ review ง่าย):
 
 1. **Foundation** — ตั้ง Firebase project ใหม่, GitHub repo + Pages, Google Sign-In + ฟอร์ม onboarding, วาง Firestore Security Rules โครงหลัก (บล็อก tier/role) ตั้งแต่ต้น — ให้ครบ login → onboarding → dashboard เปล่าๆ ทำงานได้ก่อนแตะเนื้อหา
-2. **Data layer + admin bootstrap** — สร้าง schema จริงใน Firestore, ตั้งบัญชีปิ๊กเป็น admin เอง (แก้ตรงใน Firebase console ครั้งเดียวพอ ไม่ต้องมี UI สมัคร admin), ทำหน้า admin เปล่าๆ ให้เข้าถึงได้ตาม role
+2. ~~**Data layer + admin bootstrap**~~ — ✅ **เสร็จแล้ว 2026-09-20** (spec: `docs/superpowers/specs/2026-09-20-data-layer-design.md`, plan: `docs/superpowers/plans/2026-09-20-data-layer-implementation.md`) — schema ครบทุก collection ของ Phase 1 + security rules แบบ allowlist พร้อม automated rules test บน emulator + หน้า admin: จัดการผู้ใช้ (สลับ tier/โน้ต/groupTags), นำเข้า JSON, คลังเนื้อหา (ตรวจ/แก้/อนุมัติ) + สคริปต์ `npm run check:content` และโฟลวตรวจเนื้อหาใน `docs/content-pipeline.md`
 3. **Core loop 1 — แบบฝึกหัดอิสระ (auto-grade):** MCQ/เติมคำ/จับคู่ ครบวงจร ถาม→ตอบ→ตรวจ→ให้ดาว→บันทึก ทำ type เดียวให้สมบูรณ์ก่อนค่อยเพิ่ม type อื่น
 4. **นำร่องเนื้อหา (ขนาดเล็ก):** generate 1 เลเวล x 1 สกิล x ~20 ข้อ ด้วย AI ผ่าน pipeline (ข้อ 2) ก่อน เพื่อเช็คว่า schema เข้ากับ UI จริงไหม ก่อนจะ generate เนื้อหาจำนวนมาก — เจอปัญหาตอนนี้แก้ถูกกว่าเจอตอนมีเนื้อหาเป็นพันข้อแล้ว
 5. **Core loop 2 — เขียนตอบ + คิวตรวจงาน:** ฝั่งนักเรียนส่งคำตอบ, ฝั่งแอดมินตรวจให้คะแนน/ดาว/คอมเมนต์
