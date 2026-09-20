@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>โจทย์ — Admin Pik a Class</title>
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+</head>
+<body>
+  <div id="admin-nav"></div>
+  <main>
+    <p><a id="back-link" href="#">← กลับไปคลังเนื้อหา</a></p>
+    <h1 id="page-title">สร้างโจทย์ใหม่</h1>
+
+    <form id="exercise-form" class="exercise-form">
+      <fieldset>
+        <legend>โจทย์นี้เกี่ยวกับอะไร</legend>
+        <label>สกิล
+          <select name="skill"></select>
+        </label>
+        <label>เลเวล
+          <select name="level"></select>
+        </label>
+        <label>ชนิดโจทย์
+          <select name="type"></select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>เนื้อโจทย์</legend>
+        <label>คำถาม / ประโยค
+          <textarea name="prompt" rows="3"></textarea>
+        </label>
+        <p data-error-for="prompt" class="field-error"></p>
+        <p id="blank-tools" hidden>
+          <button type="button" id="insert-blank">แทรกช่องว่าง ___ ตรงตำแหน่งเคอร์เซอร์</button>
+        </p>
+        <div id="type-fields"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>หัวข้อ (tag)</legend>
+        <p class="hint">แสดงเฉพาะหัวข้อที่ใช้กับเลเวลนี้ได้</p>
+        <div id="tag-picker" class="tag-picker"></div>
+        <p data-error-for="tags" class="field-error"></p>
+      </fieldset>
+
+      <fieldset>
+        <legend>การมองเห็น</legend>
+        <label><input type="checkbox" name="isPreview" /> ให้คนที่ยังไม่จ่าย (tier free) เห็นเป็นตัวอย่าง</label>
+        <label>ใช้ที่ไหน
+          <select name="visibility">
+            <option value="bank">คลังแบบฝึกหัดทั่วไป</option>
+            <option value="assignmentOnly">เฉพาะการบ้านที่มอบหมาย</option>
+          </select>
+        </label>
+        <label>สถานะ
+          <select name="reviewStatus">
+            <option value="draft">draft — ยังไม่ตรวจ</option>
+            <option value="reviewed">reviewed — ตรวจแล้ว รออนุมัติ</option>
+            <option value="published">published — นักเรียนเห็นแล้ว</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <section class="preview-box">
+        <h2>สิ่งที่นักเรียนจะเห็น</h2>
+        <div id="preview"></div>
+      </section>
+
+      <p id="form-error" class="field-error" aria-live="polite"></p>
+      <p id="form-status" aria-live="polite"></p>
+      <p class="content-actions">
+        <button type="submit" class="btn-primary">บันทึก</button>
+        <button type="button" id="trash-btn" hidden>ทิ้งลงถังขยะ</button>
+      </p>
+    </form>
+
+    <dialog id="confirm-dialog">
+      <h2 id="confirm-title"></h2>
+      <p id="confirm-body"></p>
+      <p class="content-actions">
+        <button type="button" id="confirm-cancel">ยกเลิก</button>
+        <button type="button" id="confirm-ok"></button>
+      </p>
+    </dialog>
+  </main>
+  <script type="module" src="./exercise.js"></script>
+</body>
+</html>
