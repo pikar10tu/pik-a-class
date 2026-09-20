@@ -85,6 +85,7 @@ export const exercisesSchema = {
     reviewNotes: str({ required: false, maxLength: 4000 }),
     contentHash: str(),
     importBatchId: str({ required: false }),
+    deletedAt: isoDate({ required: false }),
     createdAt: isoDate(),
     updatedAt: isoDate(),
     createdBy: str(),

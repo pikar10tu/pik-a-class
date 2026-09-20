@@ -102,6 +102,34 @@ describe('exercises rules', () => {
     });
   });
 
+  it('lets an admin move an exercise to the trash but keeps students out of it', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, {
+        ...baseWorld,
+        'exercises/trashed1': exercise({
+          reviewStatus: 'draft',
+          deletedAt: '2026-09-21T10:00:00.000Z',
+          contentHash: 'h-trashed',
+        }),
+      });
+
+      await assertSucceeds(
+        authedDb(env, 'admin1')
+          .collection('exercises')
+          .doc('preview1')
+          .update({ deletedAt: '2026-09-21T10:00:00.000Z', reviewStatus: 'draft' }),
+      );
+      await assertSucceeds(authedDb(env, 'admin1').collection('exercises').doc('trashed1').get());
+      await assertFails(authedDb(env, 'paid1').collection('exercises').doc('trashed1').get());
+      await assertFails(
+        authedDb(env, 'student1')
+          .collection('exercises')
+          .doc('preview1')
+          .update({ deletedAt: '2026-09-21T10:00:00.000Z' }),
+      );
+    });
+  });
+
   it('blocks anonymous reads', async () => {
     await withTestEnv(async (env) => {
       await seed(env, baseWorld);

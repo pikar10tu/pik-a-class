@@ -88,6 +88,17 @@ describe('exercises schema', () => {
     });
   });
 
+  it('accepts an optional deletedAt timestamp', () => {
+    expect(validate('exercises', mcq({ deletedAt: '2026-09-21T10:00:00.000Z' }))).toEqual({
+      ok: true,
+      errors: [],
+    });
+    expect(validate('exercises', mcq({ deletedAt: 'เมื่อวาน' })).errors).toContainEqual({
+      field: 'deletedAt',
+      message: 'ต้องเป็นวันที่รูปแบบ ISO (เช่น 2026-09-20T10:00:00.000Z)',
+    });
+  });
+
   it('requires at least one tag', () => {
     const result = validate('exercises', mcq({ tags: [] }));
     expect(result.errors).toContainEqual({ field: 'tags', message: 'ต้องมีอย่างน้อย 1 รายการ' });

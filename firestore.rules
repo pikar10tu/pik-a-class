@@ -59,7 +59,8 @@ service cloud.firestore {
       function exerciseFields() {
         return ['skill', 'level', 'type', 'prompt', 'choices', 'answerKey', 'rubric', 'tags',
                 'visibility', 'isPreview', 'reviewStatus', 'assignedUids', 'source', 'sourceUrl',
-                'reviewNotes', 'contentHash', 'importBatchId', 'createdAt', 'updatedAt', 'createdBy'];
+                'reviewNotes', 'contentHash', 'importBatchId', 'deletedAt',
+                'createdAt', 'updatedAt', 'createdBy'];
       }
 
       // โจทย์ในคลัง (bank) ใช้เกณฑ์ preview/tier ตามปกติ
