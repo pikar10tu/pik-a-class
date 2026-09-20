@@ -20,7 +20,8 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # jsdom 30 (ใช้ในเทส DOM ของหน้า admin) ต้องการ Node ^22.22 หรือ ^24.15 ขึ้นไป — Node 20 โหลดไม่ขึ้น
+          node-version: 24
       - run: npm ci
       - run: npm test
       - uses: actions/setup-java@v4
