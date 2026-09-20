@@ -3,6 +3,7 @@ export const ADMIN_PAGES = [
   { href: 'admin/users.html', label: 'จัดการผู้ใช้' },
   { href: 'admin/content.html', label: 'คลังเนื้อหา' },
   { href: 'admin/import.html', label: 'นำเข้า JSON' },
+  { href: 'dashboard.html', label: '← กลับหน้านักเรียน' },
 ];
 
 export function renderAdminNav(container, currentHref, baseUrl) {
