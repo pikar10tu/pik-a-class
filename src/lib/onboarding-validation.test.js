@@ -9,6 +9,7 @@ const validSchoolStudent = {
   school: 'Bangkok School',
   phone: '0812345678',
   lineId: 'somchai',
+  consent: 'on',
 };
 
 describe('validateOnboardingForm', () => {
@@ -41,6 +42,28 @@ describe('validateOnboardingForm', () => {
     const form = { ...validSchoolStudent, fullName: '   ' };
     const result = validateOnboardingForm(form);
     expect(result.errors.fullName).toBe('กรุณากรอกชื่อจริง');
+  });
+});
+
+describe('consent', () => {
+  const filled = {
+    fullName: 'สมชาย ใจดี',
+    nickname: 'ชาย',
+    grade: 'ม.3',
+    school: 'โรงเรียนตัวอย่าง',
+    phone: '0812345678',
+  };
+
+  it('rejects the form when the consent box is not ticked', () => {
+    const { valid, errors } = validateOnboardingForm(filled);
+    expect(valid).toBe(false);
+    expect(errors.consent).toBe('กรุณาติ๊กยอมรับก่อนกดบันทึก');
+  });
+
+  it('accepts the form when the consent box is ticked', () => {
+    const { valid, errors } = validateOnboardingForm({ ...filled, consent: 'on' });
+    expect(valid).toBe(true);
+    expect(errors.consent).toBeUndefined();
   });
 });
 

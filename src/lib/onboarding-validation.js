@@ -20,6 +20,9 @@ export function validateOnboardingForm(formData) {
   if (!formData.phone || !formData.phone.trim()) {
     errors.phone = 'กรุณากรอกเบอร์โทร';
   }
+  if (!formData.consent) {
+    errors.consent = 'กรุณาติ๊กยอมรับก่อนกดบันทึก';
+  }
 
   return { valid: Object.keys(errors).length === 0, errors };
 }

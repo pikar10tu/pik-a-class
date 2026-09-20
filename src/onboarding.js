@@ -3,6 +3,7 @@ import { db } from './lib/firebase.js';
 import { completeOnboarding } from './lib/user-profile-io.js';
 import { validateOnboardingForm, GRADES } from './lib/onboarding-validation.js';
 import { showPageError } from './lib/page-error.js';
+import { CONSENT_TITLE, CONSENT_SECTIONS, CONSENT_CHECKBOX_LABEL } from './lib/consent.js';
 
 const gradeSelect = document.getElementById('grade');
 for (const grade of GRADES) {
@@ -11,6 +12,22 @@ for (const grade of GRADES) {
   option.textContent = grade;
   gradeSelect.appendChild(option);
 }
+
+const consentBox = document.getElementById('consent-box');
+const heading = document.createElement('h2');
+heading.textContent = CONSENT_TITLE;
+consentBox.appendChild(heading);
+for (const section of CONSENT_SECTIONS) {
+  const p = document.createElement('p');
+  if (section.heading) {
+    const strong = document.createElement('strong');
+    strong.textContent = `${section.heading}: `;
+    p.appendChild(strong);
+  }
+  p.appendChild(document.createTextNode(section.body));
+  consentBox.appendChild(p);
+}
+document.getElementById('consent-label').textContent = CONSENT_CHECKBOX_LABEL;
 
 let currentUid = null;
 
