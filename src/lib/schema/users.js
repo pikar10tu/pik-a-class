@@ -41,6 +41,8 @@ export const usersSchema = {
       { required: false },
     ),
     onboardingComplete: bool(),
+    consentAcceptedAt: isoDate({ required: false }),
+    consentVersion: int({ required: false, min: 1 }),
     createdAt: isoDate(),
     updatedAt: isoDate({ required: false }),
   },

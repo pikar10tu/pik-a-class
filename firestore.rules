@@ -22,7 +22,8 @@ service cloud.firestore {
       function userFields() {
         return ['uid', 'email', 'fullName', 'nickname', 'grade', 'school', 'phone',
                 'lineId', 'role', 'tier', 'tierNote', 'groupTags', 'streak',
-                'onboardingComplete', 'createdAt', 'updatedAt'];
+                'onboardingComplete', 'consentAcceptedAt', 'consentVersion',
+                'createdAt', 'updatedAt'];
       }
 
       allow get: if signedIn() && (request.auth.uid == uid || isAdmin());

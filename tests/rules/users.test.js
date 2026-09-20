@@ -100,4 +100,32 @@ describe('users rules', () => {
       await assertFails(authedDb(env, 'admin1').collection('users').doc('student1').delete());
     });
   });
+
+  it('lets the owner record their consent', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc({ onboardingComplete: false }) });
+      const db = authedDb(env, 'student1');
+      await assertSucceeds(
+        db.collection('users').doc('student1').update({
+          onboardingComplete: true,
+          consentAcceptedAt: '2026-09-21T03:00:00.000Z',
+          consentVersion: 1,
+        }),
+      );
+    });
+  });
+
+  it('still blocks unknown fields sneaking in with consent', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc({ onboardingComplete: false }) });
+      const db = authedDb(env, 'student1');
+      await assertFails(
+        db.collection('users').doc('student1').update({
+          consentAcceptedAt: '2026-09-21T03:00:00.000Z',
+          consentVersion: 1,
+          consent: 'on',
+        }),
+      );
+    });
+  });
 });
