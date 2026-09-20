@@ -1,4 +1,6 @@
-export const SCHOOL_GRADES = ['ม.1', 'ม.2', 'ม.3', 'ม.4', 'ม.5', 'ม.6'];
+import { GRADES, SCHOOL_GRADES } from './schema/users.js';
+
+export { GRADES, SCHOOL_GRADES };
 
 export function validateOnboardingForm(formData) {
   const errors = {};

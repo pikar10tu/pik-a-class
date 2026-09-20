@@ -1,5 +1,6 @@
+import { GRADES as schemaGrades, SCHOOL_GRADES as schemaSchoolGrades } from './schema/users.js';
 import { describe, it, expect } from 'vitest';
-import { validateOnboardingForm } from './onboarding-validation.js';
+import { validateOnboardingForm, SCHOOL_GRADES, GRADES } from './onboarding-validation.js';
 
 const validSchoolStudent = {
   fullName: 'Somchai Dee',
@@ -40,5 +41,13 @@ describe('validateOnboardingForm', () => {
     const form = { ...validSchoolStudent, fullName: '   ' };
     const result = validateOnboardingForm(form);
     expect(result.errors.fullName).toBe('กรุณากรอกชื่อจริง');
+  });
+});
+
+describe('grade list wiring', () => {
+  it('re-exports the schema grade lists instead of keeping a second copy', () => {
+    expect(GRADES).toEqual(schemaGrades);
+    expect(SCHOOL_GRADES).toEqual(schemaSchoolGrades);
+    expect(GRADES).toHaveLength(7);
   });
 });

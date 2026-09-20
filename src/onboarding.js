@@ -1,8 +1,16 @@
 import { requireLogin } from './lib/auth-guard.js';
 import { db } from './lib/firebase.js';
 import { completeOnboarding } from './lib/user-profile-io.js';
-import { validateOnboardingForm } from './lib/onboarding-validation.js';
+import { validateOnboardingForm, GRADES } from './lib/onboarding-validation.js';
 import { showPageError } from './lib/page-error.js';
+
+const gradeSelect = document.getElementById('grade');
+for (const grade of GRADES) {
+  const option = document.createElement('option');
+  option.value = grade;
+  option.textContent = grade;
+  gradeSelect.appendChild(option);
+}
 
 let currentUid = null;
 
