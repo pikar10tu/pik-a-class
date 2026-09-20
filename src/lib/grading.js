@@ -1,6 +1,6 @@
 export function normalizeAnswer(value) {
   return String(value ?? '')
-    .replace(/['']/g, "'")
+    .replace(/['’']/g, "'")
     .trim()
     .replace(/\s+/g, ' ')
     .toLowerCase();

@@ -10,8 +10,15 @@ describe('normalizeAnswer', () => {
   });
 
   it('treats both apostrophe shapes as the same character', () => {
-    // U+2019 (curly) and U+0027 (straight) should both normalize to the same value
-    expect(normalizeAnswer("doesn't")).toBe(normalizeAnswer("doesn't"));
+    const curly = 'doesn’t';
+    const straight = "doesn't";
+    expect(normalizeAnswer(curly)).toBe(normalizeAnswer(straight));
+  });
+
+  it('confirms U+2019 is folded to U+0027 in output', () => {
+    const result = normalizeAnswer('doesn’t');
+    const codepoints = [...result].map(c => c.codePointAt(0));
+    expect(codepoints).not.toContain(0x2019);
   });
 
   it('keeps punctuation that carries meaning', () => {
@@ -32,6 +39,10 @@ describe('gradeAnswer', () => {
     expect(gradeAnswer(blank, 'does not').correct).toBe(true);
     expect(gradeAnswer(blank, "DOESN'T").correct).toBe(true);
     expect(gradeAnswer(blank, 'did not').correct).toBe(false);
+  });
+
+  it('accepts curly apostrophe in student answer against straight apostrophe in key', () => {
+    expect(gradeAnswer({ type: 'fill_blank', answerKey: ["doesn't"] }, 'doesn’t')).toEqual({ correct: true, score: 1 });
   });
 
   it('treats a missing answer as wrong instead of throwing', () => {
