@@ -3,20 +3,37 @@ import { renderAdminNav } from '../lib/admin-nav.js';
 import { db } from '../lib/firebase.js';
 import { showPageError } from '../lib/page-error.js';
 import { contentLibraryConstraints } from '../lib/queries.js';
-import { fetchContent, updateContentItem, publishItems } from '../lib/admin-content-io.js';
-import { buildContentUpdate, previewLines } from '../lib/admin-content.js';
+import {
+  fetchContent,
+  publishItems,
+  trashExercise,
+  restoreExercise,
+  deleteExercise,
+  fetchTrashedExercises,
+} from '../lib/admin-content-io.js';
+import { previewLines, TYPE_LABELS } from '../lib/exercise-form.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
 
 renderAdminNav(document.getElementById('admin-nav'), 'admin/content.html', import.meta.env.BASE_URL);
 
+const base = import.meta.env.BASE_URL;
+const params = new URLSearchParams(window.location.search);
+let showingTrash = params.get('trash') === '1';
+let visibleIds = [];
+
 const list = document.getElementById('content-list');
 const status = document.getElementById('content-status');
+const heading = document.getElementById('content-heading');
+const banner = document.getElementById('banner');
+const filters = document.getElementById('content-filters');
 const skillFilter = document.getElementById('filter-skill');
 const levelFilter = document.getElementById('filter-level');
 const statusFilter = document.getElementById('filter-status');
 const publishAllButton = document.getElementById('publish-all');
+const toggleTrashButton = document.getElementById('toggle-trash');
+const dialog = document.getElementById('confirm-dialog');
 
-let items = [];
+document.getElementById('new-link').href = `${base}admin/exercise.html`;
 
 for (const skill of ['grammar', 'vocab', 'writing', 'dialogue']) {
   skillFilter.appendChild(new Option(skill, skill));
@@ -25,125 +42,157 @@ for (const level of LEVELS) {
   levelFilter.appendChild(new Option(level, level));
 }
 
-function headingText(item) {
-  return `${item.skill} ${item.level} · ${item.type} — ${item.reviewStatus}`;
+function showBanner(message) {
+  banner.textContent = message;
+  banner.hidden = false;
+}
+
+if (params.get('saved') === '1') showBanner('บันทึกโจทย์ใหม่แล้ว (สถานะ draft)');
+if (params.get('trashed') === '1') showBanner('ทิ้งข้อนั้นลงถังขยะแล้ว');
+
+function confirmAction({ title, body, okLabel }) {
+  return new Promise((resolve) => {
+    document.getElementById('confirm-title').textContent = title;
+    document.getElementById('confirm-body').textContent = body;
+    const okButton = document.getElementById('confirm-ok');
+    const cancelButton = document.getElementById('confirm-cancel');
+    okButton.textContent = okLabel;
+
+    function close(result) {
+      okButton.removeEventListener('click', onOk);
+      cancelButton.removeEventListener('click', onCancel);
+      dialog.close();
+      resolve(result);
+    }
+    function onOk() {
+      close(true);
+    }
+    function onCancel() {
+      close(false);
+    }
+
+    okButton.addEventListener('click', onOk);
+    cancelButton.addEventListener('click', onCancel);
+    dialog.showModal();
+  });
+}
+
+async function run(action, successMessage) {
+  try {
+    await action();
+    showBanner(successMessage);
+    await load();
+  } catch (error) {
+    console.error(error);
+    showBanner('ทำรายการไม่สำเร็จ ลองใหม่อีกครั้ง');
+  }
 }
 
 function renderItem(item) {
   const li = document.createElement('li');
   li.className = 'content-item';
 
-  const heading = document.createElement('p');
-  const strong = document.createElement('strong');
-  strong.textContent = headingText(item);
-  heading.appendChild(strong);
-  li.appendChild(heading);
+  const meta = document.createElement('p');
+  meta.className = 'content-meta';
+  meta.textContent = `${item.reviewStatus} · ${item.skill} ${item.level} · ${TYPE_LABELS[item.type] ?? item.type}`;
+  li.appendChild(meta);
 
-  const preview = document.createElement('div');
-  preview.className = 'content-preview';
-  for (const line of previewLines(item)) {
-    const p = document.createElement('p');
-    p.textContent = line;
-    preview.appendChild(p);
-  }
-  li.appendChild(preview);
+  const promptLine = document.createElement('p');
+  promptLine.className = 'content-prompt';
+  const text = item.prompt ?? '';
+  promptLine.textContent = text.length > 120 ? `${text.slice(0, 120)}…` : text;
+  li.appendChild(promptLine);
 
-  const form = document.createElement('form');
-  form.innerHTML = `
-    <label>โจทย์ <textarea name="prompt" rows="2"></textarea></label>
-    <label>ตัวเลือก (คั่นด้วยจุลภาค) <input name="choices" type="text" /></label>
-    <label>เฉลย (คั่นด้วยจุลภาค) <input name="answerKey" type="text" /></label>
-    <label>เกณฑ์ให้คะแนน <input name="rubric" type="text" /></label>
-    <label>tags (คั่นด้วยจุลภาค) <input name="tags" type="text" /></label>
-    <label><input name="isPreview" type="checkbox" /> ให้คนที่ยังไม่จ่ายเห็นเป็นตัวอย่าง</label>
-    <p>
-      <button type="submit">บันทึกการแก้ไข</button>
-      <button type="button" data-action="publish">อนุมัติ (published)</button>
-      <button type="button" data-action="unpublish">ตีกลับเป็น draft</button>
-    </p>
-    <p class="field-error" data-role="error" aria-live="polite"></p>
-  `;
+  const answerLine = document.createElement('p');
+  answerLine.className = 'hint';
+  answerLine.textContent = previewLines(item).slice(1).join(' · ');
+  li.appendChild(answerLine);
 
-  form.elements.prompt.value = item.prompt ?? '';
-  form.elements.choices.value = (item.choices ?? []).join(', ');
-  form.elements.answerKey.value = (item.answerKey ?? []).join(', ');
-  form.elements.rubric.value = item.rubric ?? '';
-  form.elements.tags.value = (item.tags ?? []).join(', ');
-  form.elements.isPreview.checked = Boolean(item.isPreview);
+  const tagLine = document.createElement('p');
+  tagLine.className = 'hint';
+  tagLine.textContent = (item.tags ?? []).join(', ');
+  li.appendChild(tagLine);
 
-  const errorBox = form.querySelector('[data-role="error"]');
+  const actions = document.createElement('p');
+  actions.className = 'content-actions';
 
-  function refreshPreview() {
-    preview.replaceChildren();
-    for (const line of previewLines(item)) {
-      const p = document.createElement('p');
-      p.textContent = line;
-      preview.appendChild(p);
-    }
-    strong.textContent = headingText(item);
-  }
+  if (showingTrash) {
+    const restore = document.createElement('button');
+    restore.type = 'button';
+    restore.textContent = 'กู้คืน';
+    restore.addEventListener('click', () =>
+      run(() => restoreExercise(db, item.id), 'กู้คืนแล้ว ข้อนี้กลับไปอยู่ในคลังสถานะ draft'),
+    );
 
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    const result = buildContentUpdate(item, {
-      prompt: form.elements.prompt.value,
-      choices: form.elements.choices.value,
-      answerKey: form.elements.answerKey.value,
-      rubric: form.elements.rubric.value,
-      tags: form.elements.tags.value,
-      isPreview: form.elements.isPreview.checked,
+    const purge = document.createElement('button');
+    purge.type = 'button';
+    purge.textContent = 'ลบถาวร';
+    purge.addEventListener('click', async () => {
+      const ok = await confirmAction({
+        title: 'ลบถาวร',
+        body: `"${item.prompt}" — ลบแล้วกู้คืนไม่ได้อีก`,
+        okLabel: 'ลบถาวร',
+      });
+      if (!ok) return;
+      await run(() => deleteExercise(db, item.id), 'ลบถาวรแล้ว');
     });
 
-    if (!result.ok) {
-      errorBox.textContent = result.errors.map((error) => `${error.field}: ${error.message}`).join(' • ');
-      return;
-    }
+    actions.append(restore, purge);
+    li.appendChild(actions);
+    return li;
+  }
 
-    try {
-      await updateContentItem(db, 'exercises', item.id, result.update);
-      Object.assign(item, result.update);
-      refreshPreview();
-      errorBox.textContent = 'บันทึกแล้ว';
-    } catch (error) {
-      console.error(error);
-      errorBox.textContent = 'บันทึกไม่สำเร็จ ลองใหม่อีกครั้ง';
-    }
+  const edit = document.createElement('a');
+  edit.href = `${base}admin/exercise.html?id=${item.id}`;
+  edit.textContent = 'แก้ไข';
+
+  const publish = document.createElement('button');
+  publish.type = 'button';
+  publish.textContent = 'อนุมัติ';
+  publish.disabled = item.reviewStatus === 'published';
+  publish.addEventListener('click', () => run(() => publishItems(db, 'exercises', [item.id]), 'อนุมัติแล้ว'));
+
+  const trash = document.createElement('button');
+  trash.type = 'button';
+  trash.textContent = 'ทิ้ง';
+  trash.addEventListener('click', async () => {
+    const ok = await confirmAction({
+      title: 'ทิ้งข้อนี้ลงถังขยะ',
+      body: `"${item.prompt}" — จะหายจากคลังและนักเรียนจะไม่เห็น กู้คืนได้จากถังขยะ`,
+      okLabel: 'ทิ้งลงถังขยะ',
+    });
+    if (!ok) return;
+    await run(() => trashExercise(db, item.id), 'ทิ้งลงถังขยะแล้ว');
   });
 
-  form.addEventListener('click', async (event) => {
-    const action = event.target.dataset?.action;
-    if (!action) return;
-    const reviewStatus = action === 'publish' ? 'published' : 'draft';
-    try {
-      await updateContentItem(db, 'exercises', item.id, { reviewStatus });
-      item.reviewStatus = reviewStatus;
-      refreshPreview();
-      errorBox.textContent = `เปลี่ยนสถานะเป็น ${reviewStatus} แล้ว`;
-    } catch (error) {
-      console.error(error);
-      errorBox.textContent = 'เปลี่ยนสถานะไม่สำเร็จ';
-    }
-  });
-
-  li.appendChild(form);
+  actions.append(edit, publish, trash);
+  li.appendChild(actions);
   return li;
 }
 
 async function load() {
   status.textContent = 'กำลังโหลด…';
   list.replaceChildren();
+
   try {
-    items = await fetchContent(
-      db,
-      'exercises',
-      contentLibraryConstraints({
-        reviewStatus: statusFilter.value,
-        skill: skillFilter.value,
-        level: levelFilter.value,
-      }),
-    );
-    status.textContent = `พบ ${items.length} ข้อ`;
-    publishAllButton.disabled = items.length === 0 || statusFilter.value === 'published';
+    const items = showingTrash
+      ? await fetchTrashedExercises(db)
+      : (
+          await fetchContent(
+            db,
+            'exercises',
+            contentLibraryConstraints({
+              reviewStatus: statusFilter.value,
+              skill: skillFilter.value,
+              level: levelFilter.value,
+            }),
+          )
+        ).filter((item) => !item.deletedAt);
+
+    visibleIds = items.map((item) => item.id);
+    status.textContent = showingTrash ? `ในถังขยะ ${items.length} ข้อ` : `พบ ${items.length} ข้อ`;
+    publishAllButton.disabled = showingTrash || items.length === 0 || statusFilter.value === 'published';
+
     for (const item of items) list.appendChild(renderItem(item));
   } catch (error) {
     console.error(error);
@@ -151,25 +200,31 @@ async function load() {
   }
 }
 
-publishAllButton.addEventListener('click', async () => {
-  publishAllButton.disabled = true;
-  try {
-    await publishItems(
-      db,
-      'exercises',
-      items.map((item) => item.id),
-    );
-    status.textContent = `อนุมัติแล้ว ${items.length} ข้อ`;
-    await load();
-  } catch (error) {
-    console.error(error);
-    status.textContent = 'อนุมัติไม่สำเร็จ ลองใหม่อีกครั้ง';
-    publishAllButton.disabled = false;
-  }
+function applyView() {
+  heading.textContent = showingTrash ? 'ถังขยะ' : 'คลังเนื้อหา';
+  toggleTrashButton.textContent = showingTrash ? '← กลับไปคลังเนื้อหา' : 'ดูถังขยะ';
+  filters.hidden = showingTrash;
+  publishAllButton.hidden = showingTrash;
+}
+
+toggleTrashButton.addEventListener('click', () => {
+  showingTrash = !showingTrash;
+  applyView();
+  load();
 });
 
-document.getElementById('filter-apply').addEventListener('click', load);
+for (const input of [statusFilter, skillFilter, levelFilter]) {
+  input.addEventListener('change', load);
+}
+
+publishAllButton.addEventListener('click', async () => {
+  if (visibleIds.length === 0) return;
+  publishAllButton.disabled = true;
+  const count = visibleIds.length;
+  await run(() => publishItems(db, 'exercises', visibleIds), `อนุมัติแล้ว ${count} ข้อ`);
+});
 
 requireAdmin(() => {
+  applyView();
   load();
 });

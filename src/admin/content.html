@@ -10,7 +10,14 @@
 <body>
   <div id="admin-nav"></div>
   <main>
-    <h1>คลังเนื้อหา</h1>
+    <h1 id="content-heading">คลังเนื้อหา</h1>
+    <p id="banner" class="banner" hidden></p>
+
+    <p class="content-actions">
+      <a id="new-link" class="btn-primary" href="#">+ สร้างโจทย์ใหม่</a>
+      <button id="toggle-trash" type="button">ดูถังขยะ</button>
+    </p>
+
     <form id="content-filters" class="admin-filters">
       <label>สถานะ
         <select id="filter-status">
@@ -25,11 +32,20 @@
       <label>เลเวล
         <select id="filter-level"><option value="">ทั้งหมด</option></select>
       </label>
-      <button id="filter-apply" type="button">โหลด</button>
     </form>
+
     <p id="content-status" aria-live="polite"></p>
     <p><button id="publish-all" type="button" disabled>อนุมัติทั้งหมดที่แสดงอยู่</button></p>
     <ul id="content-list" class="content-list"></ul>
+
+    <dialog id="confirm-dialog">
+      <h2 id="confirm-title"></h2>
+      <p id="confirm-body"></p>
+      <p class="content-actions">
+        <button type="button" id="confirm-cancel">ยกเลิก</button>
+        <button type="button" id="confirm-ok"></button>
+      </p>
+    </dialog>
   </main>
   <script type="module" src="./content.js"></script>
 </body>
