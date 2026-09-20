@@ -11,7 +11,26 @@
   <div id="admin-nav"></div>
   <main>
     <h1>นำเข้า JSON</h1>
-    <p>กำลังพัฒนา</p>
+    <p>วางไฟล์ JSON ที่เป็น array ของข้อ ระบบจะตรวจทุกข้อก่อน แล้วนำเข้าเฉพาะข้อที่ผ่านเป็นสถานะ draft</p>
+    <label>ชนิดเนื้อหา
+      <select id="import-collection">
+        <option value="exercises">แบบฝึกหัด (exercises)</option>
+        <option value="grammarNotes">สรุปไวยากรณ์ (grammarNotes)</option>
+        <option value="stages">ด่าน (stages)</option>
+      </select>
+    </label>
+    <label>ไฟล์ JSON
+      <input id="import-file" type="file" accept="application/json" />
+    </label>
+    <label>หรือวางข้อความ JSON
+      <textarea id="import-text" rows="10" spellcheck="false"></textarea>
+    </label>
+    <p>
+      <button id="import-check" type="button">ตรวจไฟล์</button>
+      <button id="import-run" type="button" disabled>นำเข้าเฉพาะข้อที่ผ่าน</button>
+    </p>
+    <p id="import-status" aria-live="polite"></p>
+    <ul id="import-errors" class="import-errors"></ul>
   </main>
   <script type="module" src="./import.js"></script>
 </body>
