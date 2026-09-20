@@ -3,17 +3,19 @@
 import { mkdir } from 'node:fs/promises';
 import sharp from 'sharp';
 
-const SOURCE = 'docs/design/mascot-poses-sheet.jpg';
+const SHEET_1 = 'docs/design/mascot-poses-sheet.jpg';
+const SHEET_2 = 'docs/design/mascot-poses-sheet-2.jpg';
 const OUT_DIR = 'src/public/mascot';
 const COLS = 6;
 const ROWS = 3;
 
-// [แถว, คอลัมน์] นับจาก 0 — เลือกจากชีต 18 ท่า ข้ามท่าที่มีตัวหนังสืออังกฤษบนภาพ
+// แต่ละอารมณ์ระบุ [ไฟล์ชีต, แถว, คอลัมน์] นับจาก 0
+// ชีตที่สองมีท่าอารมณ์ลบที่ชีตแรกไม่มีเลย จึงดึงท่าเสียใจจากชีตนั้น
 const CELLS = {
-  normal: [0, 0], // ยืนโบกมือทักทาย
-  correct: [0, 1], // ชูสองมือดีใจ
-  clear: [1, 5], // ตาเป็นดาว ดีใจมาก
-  wrong: [2, 3], // ยืนมือประสาน ท่าเสียดาย
+  normal: [SHEET_1, 0, 0], // ยืนโบกมือทักทาย
+  correct: [SHEET_1, 0, 1], // ชูสองมือดีใจ
+  clear: [SHEET_1, 1, 5], // ตาเป็นดาว ดีใจมาก
+  wrong: [SHEET_2, 0, 2], // หูตก หน้าเสียใจ
 };
 
 const WHITE = 240; // ค่าที่ถือว่าเป็นพื้นขาว (ต้นฉบับเป็น JPEG จึงมีขอบฟุ้ง ต้องเผื่อ)
@@ -55,23 +57,69 @@ function clearOutsideBackground(data, width, height) {
   }
 }
 
+// หลัง flood fill แล้ว อาจยังเหลือชิ้นส่วนของท่าข้างเคียงที่ล้ำเข้ามาในกรอบ
+// มันลอยอยู่เดี่ยวๆ ไม่ติดกับตัวละคร จึงลบได้ด้วยการเก็บเฉพาะก้อนที่ต่อกันใหญ่ที่สุด
+function keepLargestComponent(data, width, height) {
+  const label = new Int32Array(width * height).fill(-1);
+  const sizes = [];
+
+  for (let start = 0; start < width * height; start += 1) {
+    if (label[start] !== -1 || data[start * 4 + 3] === 0) continue;
+    const id = sizes.length;
+    let size = 0;
+    const stack = [start];
+    label[start] = id;
+
+    while (stack.length > 0) {
+      const i = stack.pop();
+      size += 1;
+      const x = i % width;
+      const y = (i - x) / width;
+      const neighbours = [
+        x + 1 < width ? i + 1 : -1,
+        x - 1 >= 0 ? i - 1 : -1,
+        y + 1 < height ? i + width : -1,
+        y - 1 >= 0 ? i - width : -1,
+      ];
+      for (const n of neighbours) {
+        if (n < 0 || label[n] !== -1 || data[n * 4 + 3] === 0) continue;
+        label[n] = id;
+        stack.push(n);
+      }
+    }
+    sizes.push(size);
+  }
+
+  if (sizes.length <= 1) return sizes.length;
+
+  let biggest = 0;
+  for (let id = 1; id < sizes.length; id += 1) {
+    if (sizes[id] > sizes[biggest]) biggest = id;
+  }
+  for (let i = 0; i < label.length; i += 1) {
+    if (label[i] !== -1 && label[i] !== biggest) data[i * 4 + 3] = 0;
+  }
+  return sizes.length;
+}
+
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
-  const meta = await sharp(SOURCE).metadata();
 
-  for (const [name, [row, col]] of Object.entries(CELLS)) {
+  for (const [name, [source, row, col]] of Object.entries(CELLS)) {
+    const meta = await sharp(source).metadata();
     const left = Math.round((col * meta.width) / COLS);
     const right = Math.round(((col + 1) * meta.width) / COLS);
     const top = Math.round((row * meta.height) / ROWS);
     const bottom = Math.round(((row + 1) * meta.height) / ROWS);
 
-    const { data, info } = await sharp(SOURCE)
+    const { data, info } = await sharp(source)
       .extract({ left, top, width: right - left, height: bottom - top })
       .ensureAlpha()
       .raw()
       .toBuffer({ resolveWithObject: true });
 
     clearOutsideBackground(data, info.width, info.height);
+    const blobs = keepLargestComponent(data, info.width, info.height);
 
     const out = `${OUT_DIR}/${name}.png`;
     await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
@@ -79,7 +127,7 @@ async function main() {
       .resize({ height: 512, fit: 'inside', withoutEnlargement: true })
       .png({ compressionLevel: 9 })
       .toFile(out);
-    console.log(`เขียน ${out}`);
+    console.log(`เขียน ${out} (พบ ${blobs} ก้อน เก็บก้อนใหญ่สุด)`);
   }
 }
 
