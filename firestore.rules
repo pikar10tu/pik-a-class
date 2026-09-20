@@ -48,6 +48,59 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    function publishedAndAllowed(assignedUids) {
+      return resource.data.reviewStatus == "published"
+        && (resource.data.get('isPreview', false) == true
+            || myUserDoc().tier == "full"
+            || request.auth.uid in assignedUids);
+    }
+
+    match /exercises/{id} {
+      function exerciseFields() {
+        return ['skill', 'level', 'type', 'prompt', 'choices', 'answerKey', 'rubric', 'tags',
+                'visibility', 'isPreview', 'reviewStatus', 'assignedUids', 'source', 'sourceUrl',
+                'reviewNotes', 'contentHash', 'importBatchId', 'createdAt', 'updatedAt', 'createdBy'];
+      }
+
+      // โจทย์ในคลัง (bank) ใช้เกณฑ์ preview/tier ตามปกติ
+      // ส่วนโจทย์การบ้าน (assignmentOnly) อ่านได้เฉพาะคนที่ถูก assign เท่านั้น ไม่ว่า tier ไหน
+      function canReadExercise() {
+        return resource.data.reviewStatus == "published"
+          && (
+            (resource.data.visibility == "bank"
+              && (resource.data.get('isPreview', false) == true || myUserDoc().tier == "full"))
+            || request.auth.uid in resource.data.get('assignedUids', [])
+          );
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || canReadExercise());
+      allow create, update: if isAdmin() && request.resource.data.keys().hasOnly(exerciseFields());
+      allow delete: if isAdmin();
+    }
+
+    match /stages/{id} {
+      function stageFields() {
+        return ['skill', 'level', 'order', 'title', 'itemIds', 'passThreshold', 'isPreview',
+                'reviewStatus', 'createdAt', 'updatedAt', 'createdBy'];
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || publishedAndAllowed([]));
+      allow create, update: if isAdmin() && request.resource.data.keys().hasOnly(stageFields());
+      allow delete: if isAdmin();
+    }
+
+    match /grammarNotes/{id} {
+      function noteFields() {
+        return ['level', 'topic', 'tags', 'summary', 'isPreview', 'reviewStatus', 'source',
+                'sourceUrl', 'reviewNotes', 'contentHash', 'importBatchId',
+                'createdAt', 'updatedAt', 'createdBy'];
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || publishedAndAllowed([]));
+      allow create, update: if isAdmin() && request.resource.data.keys().hasOnly(noteFields());
+      allow delete: if isAdmin();
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
