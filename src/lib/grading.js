@@ -1,10 +1,6 @@
-// ค่าเผื่อสำหรับเทียบทศนิยม — 7/10 ในจาวาสคริปต์คือ 0.6999999999999999
-// ถ้าเทียบตรงๆ เด็กที่ตอบถูก 7 จาก 10 จะได้ 1 ดาวแทนที่จะได้ 2
-const EPSILON = 1e-9;
-
 export function normalizeAnswer(value) {
   return String(value ?? '')
-    .replace(/'/g, "'")
+    .replace(/['']/g, "'")
     .trim()
     .replace(/\s+/g, ' ')
     .toLowerCase();
@@ -18,9 +14,9 @@ export function gradeAnswer(exercise, answer) {
 }
 
 export function starsFor(score) {
-  if (score >= 1 - EPSILON) return 3;
-  if (score >= 0.7 - EPSILON) return 2;
-  if (score >= 0.4 - EPSILON) return 1;
+  if (score === 1.0) return 3;
+  if (score >= 0.7) return 2;
+  if (score >= 0.4) return 1;
   return 0;
 }
 

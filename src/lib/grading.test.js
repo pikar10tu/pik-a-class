@@ -10,7 +10,8 @@ describe('normalizeAnswer', () => {
   });
 
   it('treats both apostrophe shapes as the same character', () => {
-    expect(normalizeAnswer("doesn't")).toBe(normalizeAnswer('doesn\'t'));
+    // U+2019 (curly) and U+0027 (straight) should both normalize to the same value
+    expect(normalizeAnswer("doesn't")).toBe(normalizeAnswer("doesn't"));
   });
 
   it('keeps punctuation that carries meaning', () => {
@@ -39,20 +40,32 @@ describe('gradeAnswer', () => {
 });
 
 describe('starsFor', () => {
-  it('gives three stars only for a perfect score', () => {
-    expect(starsFor(1)).toBe(3);
+  it('gives three stars only for a perfect score of exactly 1.0', () => {
+    expect(starsFor(1.0)).toBe(3);
+  });
+
+  it('gives two stars just below perfect', () => {
     expect(starsFor(0.99)).toBe(2);
+    expect(starsFor(0.999999999)).toBe(2);
   });
 
   it('gives two stars from seventy percent', () => {
     expect(starsFor(0.7)).toBe(2);
     expect(starsFor(7 / 10)).toBe(2);
+  });
+
+  it('gives one star just below seventy percent', () => {
     expect(starsFor(0.69)).toBe(1);
+    expect(starsFor(0.6999999999)).toBe(1);
   });
 
   it('gives one star from forty percent', () => {
     expect(starsFor(0.4)).toBe(1);
+  });
+
+  it('gives no stars just below forty percent', () => {
     expect(starsFor(0.39)).toBe(0);
+    expect(starsFor(0.3999999999)).toBe(0);
   });
 
   it('gives no stars for zero', () => {
