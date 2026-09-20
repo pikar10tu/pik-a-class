@@ -2,29 +2,50 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    function isAdmin() {
-      return request.auth != null &&
-        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    function signedIn() {
+      return request.auth != null;
     }
 
-    function lockedFieldsUnchanged() {
-      return request.resource.data.get('role', null) == resource.data.get('role', null) &&
-        request.resource.data.get('tier', null) == resource.data.get('tier', null) &&
-        request.resource.data.get('totalStars', null) == resource.data.get('totalStars', null) &&
-        request.resource.data.get('stageProgress', null) == resource.data.get('stageProgress', null);
+    function myUserDoc() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function isAdmin() {
+      return signedIn() && myUserDoc().role == "admin";
+    }
+
+    function unchanged(field) {
+      return request.resource.data.get(field, null) == resource.data.get(field, null);
     }
 
     match /users/{uid} {
-      allow read: if request.auth != null && (request.auth.uid == uid || isAdmin());
+      function userFields() {
+        return ['uid', 'email', 'fullName', 'nickname', 'grade', 'school', 'phone',
+                'lineId', 'role', 'tier', 'tierNote', 'groupTags', 'streak',
+                'onboardingComplete', 'createdAt', 'updatedAt'];
+      }
 
-      allow create: if request.auth != null && request.auth.uid == uid &&
-        request.resource.data.role == "student" &&
-        request.resource.data.tier == "free" &&
-        !('totalStars' in request.resource.data) &&
-        !('stageProgress' in request.resource.data);
+      allow get: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow list: if isAdmin();
 
-      allow update: if request.auth != null &&
-        ((request.auth.uid == uid && lockedFieldsUnchanged()) || isAdmin());
+      allow create: if signedIn() && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(userFields())
+        && request.resource.data.keys().hasAll(['uid', 'email', 'role', 'tier', 'onboardingComplete', 'createdAt'])
+        && request.resource.data.uid == uid
+        && request.resource.data.role == "student"
+        && request.resource.data.tier == "free"
+        && request.resource.data.onboardingComplete == false;
+
+      allow update: if signedIn()
+        && request.resource.data.keys().hasOnly(userFields())
+        && (
+          (request.auth.uid == uid
+            && unchanged('uid') && unchanged('email') && unchanged('createdAt')
+            && unchanged('role') && unchanged('tier') && unchanged('tierNote') && unchanged('groupTags'))
+          || isAdmin()
+        );
+
+      allow delete: if false;
     }
 
     match /{document=**} {
