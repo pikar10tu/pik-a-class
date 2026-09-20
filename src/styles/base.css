@@ -99,3 +99,22 @@ textarea {
   width: 100%;
   font-family: ui-monospace, monospace;
 }
+
+.content-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-4);
+}
+
+.content-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.content-item form {
+  display: grid;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}

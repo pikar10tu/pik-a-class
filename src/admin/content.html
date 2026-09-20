@@ -11,7 +11,25 @@
   <div id="admin-nav"></div>
   <main>
     <h1>คลังเนื้อหา</h1>
-    <p>กำลังพัฒนา</p>
+    <form id="content-filters" class="admin-filters">
+      <label>สถานะ
+        <select id="filter-status">
+          <option value="draft">draft — ยังไม่ตรวจ</option>
+          <option value="reviewed">reviewed — ตรวจแล้ว รออนุมัติ</option>
+          <option value="published">published — นักเรียนเห็นแล้ว</option>
+        </select>
+      </label>
+      <label>สกิล
+        <select id="filter-skill"><option value="">ทั้งหมด</option></select>
+      </label>
+      <label>เลเวล
+        <select id="filter-level"><option value="">ทั้งหมด</option></select>
+      </label>
+      <button id="filter-apply" type="button">โหลด</button>
+    </form>
+    <p id="content-status" aria-live="polite"></p>
+    <p><button id="publish-all" type="button" disabled>อนุมัติทั้งหมดที่แสดงอยู่</button></p>
+    <ul id="content-list" class="content-list"></ul>
   </main>
   <script type="module" src="./content.js"></script>
 </body>
