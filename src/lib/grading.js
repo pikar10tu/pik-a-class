@@ -1,6 +1,6 @@
 export function normalizeAnswer(value) {
   return String(value ?? '')
-    .replace(/['’']/g, "'")
+    .replace(/['\u2019']/g, "'")
     .trim()
     .replace(/\s+/g, ' ')
     .toLowerCase();
@@ -25,3 +25,4 @@ export function scoreOf(results) {
   const correct = results.filter((result) => result.correct).length;
   return correct / results.length;
 }
+
