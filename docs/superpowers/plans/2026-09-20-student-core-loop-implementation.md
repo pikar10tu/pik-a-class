@@ -3358,3 +3358,174 @@ Expected: **ต้องบันทึกสำเร็จ ไม่ขึ้�
 **สิ่งที่ตรวจแล้วว่าชื่อตรงกันข้ามงาน:** `starsFor` / `scoreOf` (Task 5) ถูกใช้ชื่อเดิมใน Task 7, 8, 9 · `distractorPool` / `WORD_BANK_SIZE` (Task 6) ถูกใช้ชื่อเดิมใน Task 10 · `buildStageWrites` (Task 9) ถูกเรียกด้วย argument ชุดเดียวกันใน Task 11 · `submissionId` / `stageClearId` ใช้ของเดิมใน `schema/doc-ids.js` ไม่ได้สร้างใหม่
 
 **ของที่ spec เขียนไว้แต่จงใจไม่มีในแผน:** ท่ามาสคอต "เสียใจ" ตัวจริง (Task 4 ใช้ท่าขออภัยจากชีตเดิมแทนตามที่ spec §13 ระบุ)
+
+---
+
+## Task 20: ตัดภาพมาสคอตใหม่ — ท่าเสียใจของจริง และลบเศษภาพที่ติดมา
+
+> แทรกหลัง Task 4 (ไม่เรียงตามเลข) — เกิดจากสองเรื่องที่รู้ทีหลัง: ปิ๊กส่งชีตท่าเพิ่มที่มีท่าเสียใจจริงๆ และรีวิว Task 4 พบว่า `clear.png` กับ `wrong.png` มีเศษภาพของท่าข้างเคียงติดมา
+
+**Files:**
+- Modify: `scripts/prepare-mascot.mjs`
+- Modify: `src/public/mascot/*.png` (ผลลัพธ์จากการรันสคริปต์ใหม่)
+- Modify: `docs/superpowers/specs/2026-09-20-student-core-loop-design.md` (§13)
+- Source (มีอยู่แล้วใน repo ไม่ต้องสร้าง): `docs/design/mascot-poses-sheet-2.jpg`
+
+**Interfaces:**
+- Consumes: `MASCOT_MOODS`, `mascotSrc` จาก Task 4 — **ไม่เปลี่ยนสัญญาของโมดูล** ชื่ออารมณ์ยังเป็น 4 ตัวเดิม `['normal', 'correct', 'wrong', 'clear']` เปลี่ยนแค่รูปที่อยู่เบื้องหลัง
+- Produces: ไฟล์ PNG ชุดเดิม 4 ไฟล์ที่สะอาดขึ้น
+
+**พื้นหลังของปัญหา (อ่านก่อนแก้):** รีวิว Task 4 สรุปสาเหตุไว้ชัดแล้วว่า **ไม่ใช่บั๊กของสูตรคำนวณช่องตาราง และไม่ใช่บั๊กของ flood fill** — ตัวละครบางตัวในชีตวาดล้ำออกนอกช่องของตัวเองลงมาในช่องข้างล่าง พอครอบตามตารางจึงมีชิ้นส่วนแปลกปลอมติดมาด้วย และ flood fill ที่เริ่มจากขอบภาพลบมันไม่ได้เพราะมันไม่ได้เชื่อมกับขอบ (ซึ่งเป็นคุณสมบัติเดียวกับที่ทำให้แสงวาวสีขาวข้างในรอด) ทางแก้ที่ถูกจึงไม่ใช่การไปยุ่งกับ flood fill แต่คือ **เก็บเฉพาะก้อนที่ต่อกันใหญ่ที่สุด** หลัง flood fill เสร็จ
+
+- [ ] **Step 1: ให้แต่ละอารมณ์ระบุชีตของตัวเองได้**
+
+ใน `scripts/prepare-mascot.mjs` แทนที่ค่าคงที่ `SOURCE` และ `CELLS` ด้วย:
+
+```js
+const SHEET_1 = 'docs/design/mascot-poses-sheet.jpg';
+const SHEET_2 = 'docs/design/mascot-poses-sheet-2.jpg';
+const OUT_DIR = 'src/public/mascot';
+const COLS = 6;
+const ROWS = 3;
+
+// แต่ละอารมณ์ระบุ [ไฟล์ชีต, แถว, คอลัมน์] นับจาก 0
+// ชีตที่สองมีท่าอารมณ์ลบที่ชีตแรกไม่มีเลย จึงดึงท่าเสียใจจากชีตนั้น
+const CELLS = {
+  normal: [SHEET_1, 0, 0], // ยืนโบกมือทักทาย
+  correct: [SHEET_1, 0, 1], // ชูสองมือดีใจ
+  clear: [SHEET_1, 1, 5], // ตาเป็นดาว ดีใจมาก
+  wrong: [SHEET_2, 0, 2], // หูตก หน้าเสียใจ
+};
+```
+
+- [ ] **Step 2: เพิ่มขั้นตอนเก็บเฉพาะก้อนใหญ่ที่สุด**
+
+เพิ่มฟังก์ชันนี้ใน `scripts/prepare-mascot.mjs` ต่อจาก `clearOutsideBackground`:
+
+```js
+// หลัง flood fill แล้ว อาจยังเหลือชิ้นส่วนของท่าข้างเคียงที่ล้ำเข้ามาในกรอบ
+// มันลอยอยู่เดี่ยวๆ ไม่ติดกับตัวละคร จึงลบได้ด้วยการเก็บเฉพาะก้อนที่ต่อกันใหญ่ที่สุด
+function keepLargestComponent(data, width, height) {
+  const label = new Int32Array(width * height).fill(-1);
+  const sizes = [];
+
+  for (let start = 0; start < width * height; start += 1) {
+    if (label[start] !== -1 || data[start * 4 + 3] === 0) continue;
+    const id = sizes.length;
+    let size = 0;
+    const stack = [start];
+    label[start] = id;
+
+    while (stack.length > 0) {
+      const i = stack.pop();
+      size += 1;
+      const x = i % width;
+      const y = (i - x) / width;
+      const neighbours = [
+        x + 1 < width ? i + 1 : -1,
+        x - 1 >= 0 ? i - 1 : -1,
+        y + 1 < height ? i + width : -1,
+        y - 1 >= 0 ? i - width : -1,
+      ];
+      for (const n of neighbours) {
+        if (n < 0 || label[n] !== -1 || data[n * 4 + 3] === 0) continue;
+        label[n] = id;
+        stack.push(n);
+      }
+    }
+    sizes.push(size);
+  }
+
+  if (sizes.length <= 1) return sizes.length;
+
+  let biggest = 0;
+  for (let id = 1; id < sizes.length; id += 1) {
+    if (sizes[id] > sizes[biggest]) biggest = id;
+  }
+  for (let i = 0; i < label.length; i += 1) {
+    if (label[i] !== -1 && label[i] !== biggest) data[i * 4 + 3] = 0;
+  }
+  return sizes.length;
+}
+```
+
+- [ ] **Step 3: เรียกใช้ในลูปหลักและรายงานผล**
+
+ใน `main()` แก้ลูปให้ใช้ชีตต่ออารมณ์และเรียกฟังก์ชันใหม่ — แทนที่เนื้อในของลูปด้วย:
+
+```js
+  for (const [name, [source, row, col]] of Object.entries(CELLS)) {
+    const meta = await sharp(source).metadata();
+    const left = Math.round((col * meta.width) / COLS);
+    const right = Math.round(((col + 1) * meta.width) / COLS);
+    const top = Math.round((row * meta.height) / ROWS);
+    const bottom = Math.round(((row + 1) * meta.height) / ROWS);
+
+    const { data, info } = await sharp(source)
+      .extract({ left, top, width: right - left, height: bottom - top })
+      .ensureAlpha()
+      .raw()
+      .toBuffer({ resolveWithObject: true });
+
+    clearOutsideBackground(data, info.width, info.height);
+    const blobs = keepLargestComponent(data, info.width, info.height);
+
+    const out = `${OUT_DIR}/${name}.png`;
+    await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
+      .trim({ threshold: 1 })
+      .resize({ height: 512, fit: 'inside', withoutEnlargement: true })
+      .png({ compressionLevel: 9 })
+      .toFile(out);
+    console.log(`เขียน ${out} (พบ ${blobs} ก้อน เก็บก้อนใหญ่สุด)`);
+  }
+```
+
+อย่าลืมย้าย `await mkdir(OUT_DIR, { recursive: true });` ให้ยังอยู่ก่อนลูป และลบบรรทัด `const meta = await sharp(SOURCE).metadata();` เดิมที่อยู่นอกลูปทิ้ง
+
+- [ ] **Step 4: รันสคริปต์**
+
+Run: `npm run prepare:mascot`
+Expected: เขียนครบ 4 ไฟล์ และบรรทัด log บอกจำนวนก้อนที่พบ — ไฟล์ที่เคยมีเศษติดจะรายงานมากกว่า 1 ก้อน
+
+- [ ] **Step 5: ตรวจผลด้วยการวัดค่า ไม่ใช่ด้วยสายตาอย่างเดียว**
+
+เขียนสคริปต์ชั่วคราว (ห้าม commit) อ่าน RGBA ของแต่ละไฟล์แล้วยืนยัน 4 ข้อ:
+1. มุมภาพทั้งสี่มี alpha เป็น 0
+2. มีพิกเซลที่ alpha เป็น 255 และทุกช่องสี >= 240 อยู่อย่างน้อยหนึ่งจุด (แสงวาวสีขาวข้างในยังอยู่ ไม่ทะลุเป็นรู)
+3. สัดส่วนพิกเซลทึบอยู่ระหว่าง 15%-70%
+4. **นับก้อนที่ต่อกันแล้วต้องได้ 1 ก้อนพอดี** — ข้อนี้คือข้อที่พิสูจน์ว่าเศษภาพหายไปจริง
+
+รายงานตัวเลขจริงของทั้ง 4 ไฟล์
+
+- [ ] **Step 6: ดูภาพด้วยตาอีกชั้น**
+
+เปิดไฟล์ทั้งสี่ด้วยเครื่องมืออ่านไฟล์ภาพ แล้วยืนยันว่าตรงกับอารมณ์ที่ตั้งใจ: `normal` ยืนโบกมือ · `correct` ชูสองมือดีใจ · `wrong` **หูตก หน้าเสียใจ** · `clear` ตาเป็นดาว
+Expected: ไม่มีชิ้นส่วนแปลกปลอมลอยอยู่ และ `wrong` ต้องเป็นท่าเสียใจจริงๆ ไม่ใช่ท่ายืนเฉยๆ — ถ้าช่องที่ระบุไว้ไม่ใช่ท่านั้น ให้รายงานว่าช่องไหนคือท่าที่ถูก อย่าเดาแล้วเปลี่ยนเอง
+
+- [ ] **Step 7: ลบข้อจำกัดที่ไม่จริงแล้วออกจาก spec**
+
+ใน `docs/superpowers/specs/2026-09-20-student-core-loop-design.md` §13 ลบบรรทัดนี้ทิ้ง:
+
+```
+- **ยังไม่มีท่ามาสคอต "เสียใจ"** — ชีต 18 ท่าที่มีเป็นท่าบวกทั้งหมด ต้องเจนเพิ่มหรือใช้ท่าขี้อายแทนไปก่อน
+```
+
+แล้วใส่แทนที่ด้วย:
+
+```
+- ~~ยังไม่มีท่ามาสคอต "เสียใจ"~~ — แก้แล้ว 2026-09-21 ปิ๊กส่งชีตท่าเพิ่มที่มีท่าเสียใจ ตกใจ โกรธ และร้องไห้ เก็บไว้ที่ `docs/design/mascot-poses-sheet-2.jpg` ตอนนี้ `wrong` ใช้ท่าหูตกหน้าเสียใจจากชีตนั้น
+```
+
+และใน §4 หัวข้อมาสคอต เพิ่มชื่อไฟล์ชีตที่สองต่อท้ายบรรทัดที่ระบุไฟล์ต้นแบบ
+
+- [ ] **Step 8: รันเทส**
+
+Run: `npm test`
+Expected: PASS ทั้งหมด — `mascot.test.js` ไม่ควรต้องแก้เลย เพราะสัญญาของโมดูลไม่เปลี่ยน ถ้าต้องแก้เทสแปลว่าทำเกินขอบเขต
+
+- [ ] **Step 9: Commit**
+
+```bash
+git add scripts/prepare-mascot.mjs src/public/mascot/ docs/design/mascot-poses-sheet-2.jpg docs/superpowers/specs/2026-09-20-student-core-loop-design.md
+git commit -m "feat: give the mascot a real sad pose and drop stray sheet fragments"
+```
