@@ -1,0 +1,119 @@
+.learn-main {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-3);
+}
+
+.btn-chunky {
+  display: block;
+  width: 100%;
+  padding: var(--space-3);
+  border: none;
+  border-radius: var(--radius-lg);
+  border-bottom: 5px solid var(--color-primary-shadow);
+  background: var(--color-primary);
+  color: var(--color-primary-text);
+  font-family: var(--font-base);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-chunky:disabled {
+  background: var(--color-border);
+  border-bottom-color: var(--color-muted);
+  color: var(--color-muted);
+  cursor: default;
+}
+
+.btn-ghost {
+  display: block;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--color-border);
+  border-bottom-width: 4px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: 0.9375rem;
+  cursor: pointer;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 12px;
+  border-radius: 99px;
+  background: var(--color-border);
+  overflow: hidden;
+}
+
+.progress-bar > span {
+  display: block;
+  height: 100%;
+  background: var(--color-primary);
+  border-radius: 99px;
+  transition: width 0.25s ease;
+}
+
+.answer-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3);
+  margin-bottom: var(--space-2);
+  border: 2px solid var(--color-border);
+  border-bottom-width: 5px;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: 1.0625rem;
+  cursor: pointer;
+}
+
+.answer-card[data-state='correct'] {
+  background: var(--color-correct-bg);
+  border-color: var(--color-primary);
+  color: var(--color-correct-text);
+}
+
+.answer-card[data-state='wrong'] {
+  background: var(--color-wrong-bg);
+  border-color: var(--color-error);
+  color: var(--color-wrong-text);
+}
+
+.answer-card:disabled {
+  cursor: default;
+}
+
+.stars {
+  color: var(--color-star);
+  letter-spacing: 2px;
+}
+
+.stars .off {
+  color: var(--color-border);
+}
+
+.sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 28, 24, 0.45);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sheet-backdrop[hidden] {
+  display: none;
+}
+
+.sheet {
+  width: 100%;
+  max-width: 480px;
+  background: var(--color-bg);
+  border-radius: 22px 22px 0 0;
+  padding: var(--space-4) var(--space-3) var(--space-3);
+}
