@@ -11,7 +11,49 @@
   <div id="admin-nav"></div>
   <main>
     <h1>จัดการผู้ใช้</h1>
-    <p>กำลังพัฒนา</p>
+    <form id="filters" class="admin-filters">
+      <label>ช่วงชั้น
+        <select id="filter-grade"><option value="">ทั้งหมด</option></select>
+      </label>
+      <label>กลุ่ม
+        <select id="filter-group"><option value="">ทั้งหมด</option></select>
+      </label>
+      <label>ค้นหา
+        <input id="filter-search" type="search" placeholder="ชื่อเล่น / ชื่อจริง / เบอร์" />
+      </label>
+    </form>
+    <p id="student-count" aria-live="polite"></p>
+    <div class="admin-table-wrapper">
+      <table class="admin-table">
+        <thead>
+          <tr><th>ชื่อเล่น</th><th>ชื่อจริง</th><th>ช่วงชั้น</th><th>tier</th><th>ติดต่อ</th><th>กลุ่ม</th><th></th></tr>
+        </thead>
+        <tbody id="student-rows"></tbody>
+      </table>
+    </div>
+
+    <dialog id="edit-dialog">
+      <form method="dialog" id="edit-form">
+        <h2 id="edit-title"></h2>
+        <label>สิทธิ์การใช้งาน
+          <select id="edit-tier">
+            <option value="free">free — เห็นเฉพาะเนื้อหาตัวอย่าง</option>
+            <option value="full">full — เห็นเนื้อหาทั้งหมด</option>
+          </select>
+        </label>
+        <label>โน้ต (เห็นเฉพาะแอดมิน)
+          <input id="edit-tier-note" type="text" maxlength="500" />
+        </label>
+        <label>กลุ่ม (คั่นด้วยจุลภาค)
+          <input id="edit-group-tags" type="text" />
+        </label>
+        <p id="edit-error" class="field-error" aria-live="polite"></p>
+        <menu>
+          <button value="cancel">ยกเลิก</button>
+          <button id="edit-save" value="save" type="submit">บันทึก</button>
+        </menu>
+      </form>
+    </dialog>
   </main>
   <script type="module" src="./users.js"></script>
 </body>
