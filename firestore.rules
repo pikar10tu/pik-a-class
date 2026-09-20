@@ -101,6 +101,64 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    match /assignments/{id} {
+      function assignmentFields() {
+        return ['createdBy', 'title', 'note', 'exerciseIds', 'assignedTo', 'dueDate', 'createdAt', 'updatedAt'];
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || request.auth.uid in resource.data.assignedTo);
+      allow create, update: if isAdmin() && request.resource.data.keys().hasOnly(assignmentFields());
+      allow delete: if isAdmin();
+    }
+
+    match /submissions/{id} {
+      function studentFields() {
+        return ['uid', 'exerciseId', 'assignmentId', 'skill', 'level', 'type', 'tags', 'answer',
+                'autoGraded', 'score', 'bestStars', 'attemptCount', 'wrongCount',
+                'lastAnsweredAt', 'status', 'createdAt'];
+      }
+
+      function allFields() {
+        return studentFields().concat(['feedback', 'gradedBy', 'gradedAt']);
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || resource.data.uid == request.auth.uid);
+
+      allow create: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(studentFields())
+        && request.resource.data.status != "graded"
+        && request.resource.data.bestStars >= 0 && request.resource.data.bestStars <= 3;
+
+      allow update: if signedIn() && (
+        (resource.data.uid == request.auth.uid
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.keys().hasOnly(studentFields())
+          && unchanged('uid') && unchanged('exerciseId') && unchanged('createdAt')
+          && request.resource.data.status != "graded"
+          && request.resource.data.bestStars >= resource.data.bestStars
+          && request.resource.data.bestStars <= 3)
+        || (isAdmin()
+          && request.resource.data.keys().hasOnly(allFields())
+          && (request.resource.data.status != "graded"
+              || request.resource.data.gradedBy == request.auth.uid))
+      );
+
+      allow delete: if isAdmin();
+    }
+
+    match /stageClears/{id} {
+      function stageClearFields() {
+        return ['uid', 'stageId', 'skill', 'level', 'order', 'score', 'clearedAt'];
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || resource.data.uid == request.auth.uid);
+      allow create, update: if signedIn()
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.keys().hasOnly(stageClearFields());
+      allow delete: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }
