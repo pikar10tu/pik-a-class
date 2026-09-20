@@ -45,3 +45,23 @@ body {
   font-size: 0.875rem;
   margin-top: var(--space-1);
 }
+
+.admin-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.admin-nav a[aria-current='page'] {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.admin-summary {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-2);
+}

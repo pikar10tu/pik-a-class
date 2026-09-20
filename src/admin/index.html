@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Admin — Pik a Class</title>
+  <title>ภาพรวม — Admin Pik a Class</title>
   <link rel="stylesheet" href="../styles/tokens.css" />
   <link rel="stylesheet" href="../styles/base.css" />
 </head>
 <body>
+  <div id="admin-nav"></div>
   <main>
-    <h1>Admin</h1>
+    <h1>ภาพรวม</h1>
     <p id="admin-welcome"></p>
+    <ul class="admin-summary">
+      <li>นักเรียนทั้งหมด: <strong id="summary-students">—</strong> คน</li>
+      <li>เนื้อหารออนุมัติ: <strong id="summary-pending-content">—</strong> ข้อ</li>
+    </ul>
   </main>
   <script type="module" src="./index.js"></script>
 </body>
