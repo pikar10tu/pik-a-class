@@ -62,6 +62,22 @@ export function stageConstraints({ skill, level, publishedOnly = true, tier } = 
   return constraints;
 }
 
+// คลังของด่าน: นิยามด้วยแท็ก ไม่ใช่รายชื่อข้อ
+// เงื่อนไขชุดนี้ตั้งใจให้ตรงกับ bankExerciseConstraints ด้านบน บวกเงื่อนไขแท็ก เพื่อให้สองที่ไม่เพี้ยนกัน
+// ข้อดีที่สำคัญกว่าความสะดวก: การกรองสิทธิ์อยู่ใน query เอง เด็กจึงได้เฉพาะข้อที่ตัวเองอ่านได้
+// ต่างจากการอ่านด้วย documentId() in [...] ที่ถ้าอ่านข้อใดข้อหนึ่งไม่ได้จะโดนปฏิเสธทั้งชุด
+export function stagePoolConstraints({ skill, level, tags, tier }) {
+  const constraints = [
+    ['reviewStatus', '==', 'published'],
+    ['visibility', '==', 'bank'],
+    ['skill', '==', skill],
+    ['level', '==', level],
+    ['tags', 'array-contains-any', tags],
+  ];
+  if (tier !== 'full') constraints.push(['isPreview', '==', true]);
+  return constraints;
+}
+
 export function myClearConstraints(uid) {
   return [['uid', '==', uid]];
 }

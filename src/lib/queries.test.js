@@ -8,6 +8,7 @@ import {
   studentListConstraints,
   contentLibraryConstraints,
   stageConstraints,
+  stagePoolConstraints,
   myClearConstraints,
   readTier,
 } from './queries.js';
@@ -99,6 +100,39 @@ describe('stageConstraints', () => {
     expect(stageConstraints({ publishedOnly: false })).toEqual([]);
     expect(stageConstraints({ publishedOnly: false, skill: 'vocab' })).toEqual([
       ['skill', '==', 'vocab'],
+    ]);
+  });
+});
+
+describe('stagePoolConstraints', () => {
+  const base = { skill: 'grammar', level: 'A2', tags: ['grammar:past-simple'] };
+
+  it('กรองตามสถานะ คลัง สกิล ระดับ และแท็ก', () => {
+    expect(stagePoolConstraints({ ...base, tier: 'full' })).toEqual([
+      ['reviewStatus', '==', 'published'],
+      ['visibility', '==', 'bank'],
+      ['skill', '==', 'grammar'],
+      ['level', '==', 'A2'],
+      ['tags', 'array-contains-any', ['grammar:past-simple']],
+    ]);
+  });
+
+  it('เด็ก tier free ต้องถูกจำกัดเฉพาะข้อ preview', () => {
+    const constraints = stagePoolConstraints({ ...base, tier: 'free' });
+    expect(constraints).toContainEqual(['isPreview', '==', true]);
+  });
+
+  it('tier full ไม่ต้องมีเงื่อนไข isPreview', () => {
+    const constraints = stagePoolConstraints({ ...base, tier: 'full' });
+    expect(constraints.some(([field]) => field === 'isPreview')).toBe(false);
+  });
+
+  it('รับหลายแท็กสำหรับด่านทบทวนรวม', () => {
+    const tags = ['grammar:past-simple', 'grammar:present-perfect'];
+    expect(stagePoolConstraints({ ...base, tags, tier: 'full' })).toContainEqual([
+      'tags',
+      'array-contains-any',
+      tags,
     ]);
   });
 });
