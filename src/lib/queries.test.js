@@ -7,6 +7,8 @@ import {
   gradingQueueConstraints,
   studentListConstraints,
   contentLibraryConstraints,
+  stageConstraints,
+  myClearConstraints,
 } from './queries.js';
 
 describe('query constraints', () => {
@@ -43,5 +45,25 @@ describe('query constraints', () => {
       ['level', '==', 'B1'],
     ]);
     expect(contentLibraryConstraints({})).toEqual([]);
+  });
+});
+
+describe('stageConstraints', () => {
+  it('asks only for published stages of one skill and level', () => {
+    expect(stageConstraints({ skill: 'grammar', level: 'A2' })).toEqual([
+      ['reviewStatus', '==', 'published'],
+      ['skill', '==', 'grammar'],
+      ['level', '==', 'A2'],
+    ]);
+  });
+
+  it('lets an admin ask for drafts too', () => {
+    expect(stageConstraints({ publishedOnly: false })).toEqual([]);
+  });
+});
+
+describe('myClearConstraints', () => {
+  it('filters clears down to one student', () => {
+    expect(myClearConstraints('student1')).toEqual([['uid', '==', 'student1']]);
   });
 });

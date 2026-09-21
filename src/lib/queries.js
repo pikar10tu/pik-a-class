@@ -39,6 +39,18 @@ export function contentLibraryConstraints({ reviewStatus, skill, level } = {}) {
   return constraints;
 }
 
+export function stageConstraints({ skill, level, publishedOnly = true } = {}) {
+  const constraints = [];
+  if (publishedOnly) constraints.push(['reviewStatus', '==', 'published']);
+  if (skill) constraints.push(['skill', '==', skill]);
+  if (level) constraints.push(['level', '==', level]);
+  return constraints;
+}
+
+export function myClearConstraints(uid) {
+  return [['uid', '==', uid]];
+}
+
 export function buildQuery(db, collectionName, constraints, orderBySpec = null) {
   const parts = constraints.map(([field, op, value]) => where(field, op, value));
   if (orderBySpec) parts.push(orderBy(orderBySpec.field, orderBySpec.direction ?? 'asc'));
