@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เส้นทางด่าน — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/learn.css" />
+</head>
+<body>
+  <main class="learn-main">
+    <header class="path-header">
+      <a id="back-link" class="learn-back" href="#">← กลับ</a>
+      <span id="total-stars" class="stars path-total-stars"></span>
+    </header>
+    <h1 id="path-title" class="learn-title"></h1>
+    <p id="path-summary" class="hint path-summary"></p>
+
+    <p id="loading-note" class="hint">กำลังโหลด…</p>
+
+    <div id="empty-state" class="path-empty" hidden>
+      <img id="empty-mascot" class="learn-mascot" width="96" height="96" alt="น้องหยกยิ้ม" />
+      <p id="empty-message" class="hint"></p>
+      <a id="empty-back" class="btn-chunky path-empty-link" href="#">กลับไปเลือกบทเรียน</a>
+    </div>
+
+    <div id="path-canvas" class="path-canvas" hidden></div>
+  </main>
+
+  <div class="sheet-backdrop" id="sheet-backdrop" hidden>
+    <section class="sheet">
+      <p id="sheet-badge" class="hint"></p>
+      <h2 id="sheet-title"></h2>
+      <p id="sheet-meta" class="hint"></p>
+      <p id="sheet-best"></p>
+      <button type="button" id="sheet-start" class="btn-chunky">เริ่มเล่น</button>
+      <button type="button" id="sheet-close" class="btn-ghost" style="margin-top: var(--space-2);">ปิด</button>
+    </section>
+  </div>
+  <script type="module" src="./path.js"></script>
+</body>
+</html>
