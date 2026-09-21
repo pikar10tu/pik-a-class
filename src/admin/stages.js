@@ -2,6 +2,7 @@ import { requireAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { renderAdminNav } from '../lib/admin-nav.js';
 import { fetchStages } from '../lib/stage-io.js';
+import { publishItems } from '../lib/admin-content-io.js';
 import { showPageError } from '../lib/page-error.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
 
@@ -25,6 +26,25 @@ fillSelect('filter-status', [['', 'ทั้งหมด'], ['published', 'อ�
 
 const list = document.getElementById('stage-list');
 const count = document.getElementById('stage-count');
+const banner = document.getElementById('banner');
+
+function showBanner(message) {
+  banner.textContent = message;
+  banner.hidden = false;
+}
+
+// อนุมัติด่านเดียว — ทำตามรูปแบบเดียวกับปุ่ม "อนุมัติ" ในคลังเนื้อหา (content.js):
+// ป้ายเดียวกัน, disable เมื่ออนุมัติแล้ว, แสดง banner แล้วโหลดรายการใหม่ทั้งชุดให้เห็นสถานะล่าสุดทันที
+async function publishStage(stageId) {
+  try {
+    await publishItems(db, 'stages', [stageId]);
+    showBanner('อนุมัติแล้ว');
+    await reload();
+  } catch (error) {
+    console.error(error);
+    showBanner('ทำรายการไม่สำเร็จ ลองใหม่อีกครั้ง');
+  }
+}
 
 // fetchStages เรียง order ให้แล้วผ่าน buildQuery (orderBy: 'order' asc) — ไม่ต้องเรียงซ้ำที่นี่
 function render(stages, status, anyFilterActive) {
@@ -54,6 +74,17 @@ function render(stages, status, anyFilterActive) {
     const meta = document.createElement('span');
     meta.textContent = ` — ${stage.skill} ${stage.level} · ${stage.itemIds.length} ข้อ · ${stage.reviewStatus}`;
     item.appendChild(meta);
+
+    const actions = document.createElement('p');
+    actions.className = 'content-actions';
+    const publish = document.createElement('button');
+    publish.type = 'button';
+    publish.textContent = 'อนุมัติ';
+    publish.disabled = stage.reviewStatus === 'published';
+    publish.addEventListener('click', () => publishStage(stage.id));
+    actions.appendChild(publish);
+    item.appendChild(actions);
+
     list.appendChild(item);
   }
 }
