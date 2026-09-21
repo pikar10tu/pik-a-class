@@ -111,7 +111,8 @@ describe('stages schema', () => {
     level: 'A1',
     order: 1,
     title: 'ด่านที่ 1 — Present Simple',
-    itemIds: ['ex1', 'ex2'],
+    tags: ['grammar:present-simple'],
+    drawCount: 7,
     passThreshold: 0.7,
     isPreview: true,
     reviewStatus: 'published',
@@ -124,9 +125,9 @@ describe('stages schema', () => {
     expect(validate('stages', stage)).toEqual({ ok: true, errors: [] });
   });
 
-  it('rejects an empty item list and an out-of-range threshold', () => {
-    expect(validate('stages', { ...stage, itemIds: [] }).errors).toContainEqual({
-      field: 'itemIds',
+  it('rejects an empty tag list and an out-of-range threshold', () => {
+    expect(validate('stages', { ...stage, tags: [] }).errors).toContainEqual({
+      field: 'tags',
       message: 'ต้องมีอย่างน้อย 1 รายการ',
     });
     expect(validate('stages', { ...stage, passThreshold: 1.5 }).errors).toContainEqual({
