@@ -150,7 +150,7 @@
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
-    "prompt": "The students ___ their books quietly when the teacher walked into the classroom.",
+    "prompt": "While the students ___ their books quietly, the teacher suddenly walked into the classroom.",
     "answerKey": ["were reading"],
     "tags": ["grammar:past-continuous"],
     "visibility": "bank",
