@@ -2,6 +2,8 @@ import { signOut } from 'firebase/auth';
 import { requireLogin, isAdmin } from './lib/auth-guard.js';
 import { auth } from './lib/firebase.js';
 
+document.getElementById('learn-link').href = `${import.meta.env.BASE_URL}learn/index.html`;
+
 requireLogin((firebaseUser, userDoc) => {
   const name = userDoc?.nickname || firebaseUser.displayName || firebaseUser.email;
   document.getElementById('welcome-message').textContent = `สวัสดี ${name}`;
