@@ -5,6 +5,8 @@ import { saveStageResult } from '../lib/stage-result-io.js';
 import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
 import { buildWordBank } from '../lib/word-bank.js';
 import { mascotSrc } from '../lib/mascot.js';
+import { playAnswerSound } from '../lib/answer-audio.js';
+import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 
 const base = import.meta.env.BASE_URL;
 const stageId = new URLSearchParams(window.location.search).get('stage');
@@ -21,6 +23,36 @@ let midStage = false;
 let saveInFlight = false;
 
 const TYPE_LABELS = { mcq: 'เลือกคำตอบที่ถูก', fill_blank: 'เติมคำให้ถูก' };
+
+// เข้าถึง localStorage แบบกันพัง — บาง browser mode (private mode บางยี่ห้อ) throw ตอนแตะ window.localStorage เลย
+function safeLocalStorage() {
+  try {
+    return window.localStorage;
+  } catch {
+    return null;
+  }
+}
+
+// สถานะปิดเสียงตอบคำถาม (ปุ่ม mute-toggle) — อ่านค่าที่เคยตั้งไว้จาก localStorage ตอนเปิดหน้า
+// นี่เป็นการตั้งค่าที่นักเรียนต้องกดปิดเองได้ เพราะเสียงที่ปิดไม่ได้ไม่เหมาะกับห้องเรียน
+let soundMuted = loadMuted(safeLocalStorage());
+
+const muteButton = document.getElementById('mute-toggle');
+
+function renderMuteButton() {
+  muteButton.textContent = soundMuted ? 'เปิดเสียง' : 'ปิดเสียง';
+  muteButton.setAttribute('aria-pressed', String(soundMuted));
+  muteButton.setAttribute('aria-label', soundMuted ? 'เปิดเสียงตอบคำถาม' : 'ปิดเสียงตอบคำถาม');
+  muteButton.classList.toggle('is-muted', soundMuted);
+}
+
+muteButton.addEventListener('click', () => {
+  soundMuted = !soundMuted;
+  saveMuted(safeLocalStorage(), soundMuted);
+  renderMuteButton();
+});
+
+renderMuteButton();
 
 function pathHref() {
   return `${base}learn/path.html?skill=${stage.skill}&level=${stage.level}`;
@@ -90,6 +122,10 @@ function pick(card, option) {
     ? 'เก่งมาก! ถูกต้อง'
     : `ยังไม่ถูก — คำตอบคือ "${accepted[0]}"`;
   document.getElementById('verdict').hidden = false;
+
+  // เล่นเสียงหลังอัปเดตหน้าจอเสร็จแล้วเท่านั้น (visual feedback ต้องมาก่อนเสมอ ไม่รอเสียง)
+  // และสร้าง/ปลุก AudioContext จาก gesture การแตะคำตอบตรงนี้เอง — ห้ามมีที่ไหนเรียกก่อนหน้านี้
+  if (!soundMuted) playAnswerSound(result.correct ? 'correct' : 'wrong');
 }
 
 async function finish() {

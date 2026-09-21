@@ -104,6 +104,22 @@
   line-height: 1;
 }
 
+/* ปุ่มปิด/เปิดเสียงตอบคำถาม — กะทัดรัดแบบเดียวกับ .btn-quit แต่กว้างพอใส่ข้อความไทยสั้นๆ */
+.btn-mute {
+  width: auto;
+  flex: none;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+/* สถานะปิดเสียง ต้องดูออกทันทีแม้ไม่อ่านข้อความ */
+.btn-mute.is-muted {
+  background: var(--color-border);
+  color: var(--color-muted);
+}
+
 .progress-bar {
   flex: 1;
   height: 12px;
