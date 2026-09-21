@@ -13,8 +13,9 @@ export function buildStagePath(stages, clearsMap) {
   let previous = null;
 
   return ordered.map((stage) => {
+    const attempted = clearsMap[stage.id] !== undefined;
     const score = clearsMap[stage.id]?.score ?? 0;
-    const cleared = clearsMap[stage.id] !== undefined && score >= stage.passThreshold;
+    const cleared = attempted && score >= stage.passThreshold;
     const unlocked = previous === null ? true : previous.cleared;
     const entry = {
       id: stage.id,
@@ -23,8 +24,9 @@ export function buildStagePath(stages, clearsMap) {
       itemCount: (stage.itemIds ?? []).length,
       passThreshold: stage.passThreshold,
       score,
-      stars: clearsMap[stage.id] === undefined ? 0 : starsFor(score),
+      stars: attempted ? starsFor(score) : 0,
       cleared,
+      attempted,
       unlocked,
       lockedReason: unlocked
         ? null

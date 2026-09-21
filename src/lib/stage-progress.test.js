@@ -61,6 +61,22 @@ describe('buildStagePath', () => {
     expect(path[2].lockedReason).toBe('ผ่านด่าน 2 ที่ 70% ก่อน');
   });
 
+  it('marks a stage unattempted when no clear document exists for it', () => {
+    const path = buildStagePath(stages, {});
+    expect(path[0].attempted).toBe(false);
+  });
+
+  it('marks a stage attempted even when the clear document scored zero', () => {
+    // เล่นแล้วแต่ตอบผิดหมด (score 0) ก็ยังนับว่า "เคยเล่น" ต่างจากไม่เคยเล่นเลย
+    const path = buildStagePath(stages, { s1: { score: 0 } });
+    expect(path[0]).toMatchObject({ attempted: true, cleared: false, stars: 0 });
+  });
+
+  it('marks a cleared stage as attempted too, so attempted never tracks cleared', () => {
+    const path = buildStagePath(stages, { s1: { score: 0.7 } });
+    expect(path[0]).toMatchObject({ attempted: true, cleared: true });
+  });
+
   it('sorts by order even when the input is shuffled', () => {
     const path = buildStagePath([stages[2], stages[0], stages[1]], {});
     expect(path.map((stage) => stage.id)).toEqual(['s1', 's2', 's3']);

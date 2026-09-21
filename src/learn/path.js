@@ -65,6 +65,7 @@ function nodeAriaLabel(stage, state) {
   if (state === 'locked') return `${prefix} — ยังล็อกอยู่`;
   if (state === 'cleared') return `${prefix} — ผ่านแล้ว ได้ ${stage.stars} จาก 3 ดาว`;
   if (state === 'attempted') return `${prefix} — เล่นได้ เคยได้ ${stage.stars} จาก 3 ดาว ยังไม่ผ่าน`;
+  if (stage.attempted) return `${prefix} — เล่นได้ เคยเล่นแล้วแต่ยังไม่ได้ดาว`;
   return `${prefix} — เล่นได้ ยังไม่เคยเล่น`;
 }
 
@@ -138,6 +139,9 @@ function openSheet(stage, state) {
         : 'ผ่านด่านนี้แล้ว';
   } else if (state === 'attempted') {
     bestEl.innerHTML = `ดาวที่เคยได้ <span class="stars">${starMarkup(stage.stars)}</span> — ยังไม่ผ่าน ลองอีกครั้งได้เลย`;
+  } else if (stage.attempted) {
+    // เล่นแล้วแต่ยังไม่ได้ดาวเลย (คะแนนต่ำกว่าเกณฑ์ 1 ดาว) — ต่างจาก "ไม่เคยเล่น" ต้องแยกให้ชัด
+    bestEl.textContent = 'เล่นด่านนี้แล้วแต่ยังไม่ได้ดาวเลย ลองอีกครั้งได้เลย';
   } else {
     bestEl.textContent = 'ยังไม่เคยเล่นด่านนี้ — ตอบถูกหมดได้ 3 ดาว';
   }
