@@ -72,7 +72,7 @@ function render(stages, status, anyFilterActive) {
     link.textContent = `ด่าน ${stage.order} · ${stage.title}`;
     item.appendChild(link);
     const meta = document.createElement('span');
-    meta.textContent = ` — ${stage.skill} ${stage.level} · ${stage.itemIds.length} ข้อ · ${stage.reviewStatus}`;
+    meta.textContent = ` — ${stage.skill} ${stage.level} · ${stage.drawCount ?? 0} ข้อต่อรอบ · ${stage.reviewStatus}`;
     item.appendChild(meta);
 
     const actions = document.createElement('p');

@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { buildStagePath, totalStars, clearsByStageId } from './stage-progress.js';
 
 const stages = [
-  { id: 's1', order: 1, title: 'Past Simple', itemIds: ['a', 'b'], passThreshold: 0.7 },
-  { id: 's2', order: 2, title: 'Past Continuous', itemIds: ['c'], passThreshold: 0.7 },
-  { id: 's3', order: 3, title: 'Present Perfect', itemIds: ['d'], passThreshold: 0.7 },
+  { id: 's1', order: 1, title: 'Past Simple', drawCount: 2, passThreshold: 0.7 },
+  { id: 's2', order: 2, title: 'Past Continuous', drawCount: 1, passThreshold: 0.7 },
+  { id: 's3', order: 3, title: 'Present Perfect', drawCount: 1, passThreshold: 0.7 },
 ];
 
 describe('clearsByStageId', () => {
