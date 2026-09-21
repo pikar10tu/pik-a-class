@@ -57,17 +57,14 @@ export const MAX_STAGE_TAGS = 30;
 
 เพดาน 30 ของ `tags` มาจากข้อจำกัดของ Firestore `array-contains-any`
 
-- [ ] **Step 2: รันเทสทั้งชุด**
+- [ ] **Step 2: อย่า commit ที่นี่ — ไปทำ Task 4 ต่อทันที**
 
 Run: `npm test`
-Expected: เทสที่อ้าง `itemIds` ของ stages จะล้ม — เป็นเรื่องปกติ ให้จดไว้ว่าล้มกี่ไฟล์แล้วไปต่อ Task 2 อย่าเพิ่งแก้เทสพวกนั้นที่นี่ เพราะมันจะถูกเขียนใหม่ใน Task 4
+Expected: เทสที่อ้าง `itemIds` ของ stages จะล้ม ซึ่งถูกต้องตามที่คาด
 
-- [ ] **Step 3: Commit**
+**Task 1 กับ Task 4 ต้องถูกส่งไปทำเป็นงานเดียวกัน** การแก้ schema เพียงลำพังทำให้ชุดเทสแดง และ Global Constraint ของแผนนี้ห้าม commit ตอนเทสแดง — ดังนั้น Task 1 ไม่มีขั้นตอน commit ของตัวเอง ให้ทำ Task 4 ต่อในงานเดียวกันแล้ว commit พร้อมกันที่ท้าย Task 4 (บรรทัด `git add` ของ Task 4 รวมไฟล์ schema ไว้ให้แล้ว)
 
-```bash
-git add src/lib/schema/stages.js
-git commit -m "feat: let a stage define its pool with tags and a draw count"
-```
+ลำดับที่ถูกต้องคือ: **Task 2 → Task 3 → (Task 1 + Task 4 รวมกัน) → Task 5 → …** เพราะ Task 2 และ 3 ไม่พึ่ง schema ใหม่ จึงทำก่อนได้โดยชุดเทสยังเขียว
 
 ---
 
@@ -535,9 +532,11 @@ Expected: PASS ทั้งหมด ถ้ายังมีไฟล์อื�
 - [ ] **Step 6: Commit**
 
 ```bash
-git add src/lib/stage-form.js src/lib/stage-form.test.js
-git commit -m "feat: build stage forms around tags instead of hand-picked items"
+git add src/lib/schema/stages.js src/lib/stage-form.js src/lib/stage-form.test.js
+git commit -m "feat: build stage pools from tags instead of hand-picked items"
 ```
+
+commit นี้รวมไฟล์ schema จาก Task 1 ไว้ด้วย เพราะสองงานนี้ถูกทำเป็นงานเดียวกัน (ดู Task 1 Step 2)
 
 ---
 
