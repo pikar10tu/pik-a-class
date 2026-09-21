@@ -196,6 +196,55 @@ describe('assignments and stageClears rules', () => {
       );
     });
   });
+
+  it('blocks another student from overwriting somebody else’s stage clear even with a higher score', async () => {
+    await withTestEnv(async (env) => {
+      const clear = (overrides = {}) => ({
+        uid: 'student1',
+        stageId: 'st1',
+        skill: 'grammar',
+        level: 'A1',
+        order: 1,
+        score: 0.5,
+        clearedAt: '2026-09-20T10:00:00.000Z',
+        ...overrides,
+      });
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'users/student2': studentDoc({ uid: 'student2' }),
+        'stageClears/student1__st1': clear({ score: 0.5 }),
+      });
+      const db = authedDb(env, 'student2');
+      // คะแนนสูงกว่าของเดิมก็ตาม แต่เอกสารไม่ใช่ของ student2 ต้องถูกปฏิเสธ
+      // (ถ้าเทสนี้ผ่านเพราะเงื่อนไขคะแนน ไม่ใช่เพราะเงื่อนไขความเป็นเจ้าของ จะไม่พิสูจน์อะไรเลย)
+      await assertFails(
+        db.collection('stageClears').doc('student1__st1').set(clear({ uid: 'student2', score: 0.9 })),
+      );
+    });
+  });
+
+  it('blocks a student from reassigning uid on their own stage clear', async () => {
+    await withTestEnv(async (env) => {
+      const clear = (overrides = {}) => ({
+        uid: 'student1',
+        stageId: 'st1',
+        skill: 'grammar',
+        level: 'A1',
+        order: 1,
+        score: 0.5,
+        clearedAt: '2026-09-20T10:00:00.000Z',
+        ...overrides,
+      });
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'stageClears/student1__st1': clear({ score: 0.5 }),
+      });
+      const db = authedDb(env, 'student1');
+      await assertFails(
+        db.collection('stageClears').doc('student1__st1').set(clear({ uid: 'student2', score: 0.9 })),
+      );
+    });
+  });
 });
 
 describe('finishing a stage', () => {
