@@ -27,15 +27,17 @@ const list = document.getElementById('stage-list');
 const count = document.getElementById('stage-count');
 
 // fetchStages เรียง order ให้แล้วผ่าน buildQuery (orderBy: 'order' asc) — ไม่ต้องเรียงซ้ำที่นี่
-function render(stages, status) {
+function render(stages, status, anyFilterActive) {
   const shown = status ? stages.filter((stage) => stage.reviewStatus === status) : stages;
   list.replaceChildren();
 
   if (shown.length === 0) {
-    count.textContent = 'ยังไม่มีด่าน';
+    // skill/level กรองที่ fetchStages (server-side) ส่วน status กรองด้านบนนี้ — ต้องเช็กทั้งสามอย่าง
+    // ไม่ใช่แค่ status ไม่งั้นเคส "มีด่านอยู่แต่กรองแล้วไม่ตรงสักด่าน" จะโชว์ข้อความ first-run ผิด ๆ
+    count.textContent = anyFilterActive ? 'ไม่พบด่านที่ตรงกับตัวกรอง' : 'ยังไม่มีด่าน';
     const empty = document.createElement('li');
     empty.className = 'hint';
-    empty.textContent = status
+    empty.textContent = anyFilterActive
       ? 'ไม่มีด่านที่ตรงกับตัวกรองนี้ ลองเปลี่ยนตัวกรอง'
       : 'ยังไม่มีด่านเลย กด "+ สร้างด่านใหม่" เพื่อเริ่มสร้างด่านแรก';
     list.appendChild(empty);
@@ -59,13 +61,16 @@ function render(stages, status) {
 async function reload() {
   count.textContent = 'กำลังโหลด…';
   list.replaceChildren();
+  const skill = document.getElementById('filter-skill').value;
+  const level = document.getElementById('filter-level').value;
+  const status = document.getElementById('filter-status').value;
   try {
     const stages = await fetchStages(db, {
-      skill: document.getElementById('filter-skill').value || undefined,
-      level: document.getElementById('filter-level').value || undefined,
+      skill: skill || undefined,
+      level: level || undefined,
       publishedOnly: false,
     });
-    render(stages, document.getElementById('filter-status').value);
+    render(stages, status, Boolean(skill || level || status));
   } catch (error) {
     count.textContent = '';
     showPageError('โหลดรายการด่านไม่สำเร็จ กรุณาลองใหม่');
