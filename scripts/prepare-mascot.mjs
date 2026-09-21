@@ -105,6 +105,9 @@ function keepLargestComponent(data, width, height) {
 async function main() {
   await mkdir(OUT_DIR, { recursive: true });
 
+  // รอบแรก: ตัดแต่ละท่าตามปกติ (trim + resize) แต่ยังไม่เขียนไฟล์ เพราะต้องรู้ขนาดของ
+  // ทุกท่าก่อน ถึงจะคำนวณผืนผ้าใบร่วม (shared canvas) ที่ไม่ครอบตัด ไม่ขยายภาพใดเลยได้
+  const processed = [];
   for (const [name, [source, row, col]] of Object.entries(CELLS)) {
     const meta = await sharp(source).metadata();
     const left = Math.round((col * meta.width) / COLS);
@@ -121,13 +124,41 @@ async function main() {
     clearOutsideBackground(data, info.width, info.height);
     const blobs = keepLargestComponent(data, info.width, info.height);
 
-    const out = `${OUT_DIR}/${name}.png`;
-    await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
+    const trimmed = await sharp(data, { raw: { width: info.width, height: info.height, channels: 4 } })
       .trim({ threshold: 1 })
       .resize({ height: 512, fit: 'inside', withoutEnlargement: true })
       .png({ compressionLevel: 9 })
+      .toBuffer();
+    const trimmedMeta = await sharp(trimmed).metadata();
+
+    processed.push({ name, buffer: trimmed, width: trimmedMeta.width, height: trimmedMeta.height, blobs });
+  }
+
+  // แต่ละท่ากว้าง/สูงไม่เท่ากัน (ท่ากางแขนกว้างกว่าท่ายืนตรง) แต่หน้าเว็บทุกหน้าวาง
+  // มาสคอตเป็นกล่องเดียวกัน ผืนผ้าใบร่วมจึงต้องกว้าง/สูงพอสำหรับท่าที่กว้างสุด/สูงสุด
+  // เพื่อไม่ครอบตัดท่าไหนเลย และห้ามขยายภาพใดเกินขนาดจริงของมันด้วย
+  const canvasWidth = Math.max(...processed.map((p) => p.width));
+  const canvasHeight = Math.max(...processed.map((p) => p.height));
+
+  for (const { name, buffer, width, height, blobs } of processed) {
+    const left = Math.round((canvasWidth - width) / 2);
+    const top = Math.round((canvasHeight - height) / 2);
+
+    const out = `${OUT_DIR}/${name}.png`;
+    await sharp({
+      create: {
+        width: canvasWidth,
+        height: canvasHeight,
+        channels: 4,
+        background: { r: 0, g: 0, b: 0, alpha: 0 },
+      },
+    })
+      .composite([{ input: buffer, left, top }])
+      .png({ compressionLevel: 9 })
       .toFile(out);
-    console.log(`เขียน ${out} (พบ ${blobs} ก้อน เก็บก้อนใหญ่สุด)`);
+    console.log(
+      `เขียน ${out} (พบ ${blobs} ก้อน เก็บก้อนใหญ่สุด, วางกึ่งกลางบนผืนผ้าใบ ${canvasWidth}x${canvasHeight})`,
+    );
   }
 }
 

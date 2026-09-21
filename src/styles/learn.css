@@ -18,9 +18,23 @@
   font-size: 0.9375rem;
 }
 
+/* น้องหยกทุกท่าตอนนี้มีสัดส่วนเดียวกัน (303x435, ~0.697) จาก prepare-mascot.mjs
+   width/height ใน markup ทำให้เบราว์เซอร์จองพื้นที่กล่องได้ก่อนรูปโหลดเสร็จ (ไม่มี layout shift)
+   object-fit: contain กันไว้เผื่ออนาคตมีรูปสัดส่วนอื่นหลุดเข้ามา จะย่อพอดีกรอบแทนการยืด */
 .learn-mascot {
   display: block;
+  width: 96px;
+  height: 138px;
+  object-fit: contain;
   margin: var(--space-2) auto var(--space-3);
+}
+
+/* หน้าจอผลลัพธ์คือจังหวะที่มาสคอตเด่นสุด และสลับท่า clear/wrong ตอน render ผลใหม่
+   (ดู play.js) กล่องขนาดคงที่ตรงนี้ทำให้สลับท่าแล้วเลย์เอาต์ไม่กระโดด */
+.learn-mascot--result {
+  width: 140px;
+  height: 201px;
+  margin: 0 auto var(--space-3);
 }
 
 .learn-title {
