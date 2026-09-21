@@ -2,6 +2,7 @@ export const ADMIN_PAGES = [
   { href: 'admin/index.html', label: 'ภาพรวม' },
   { href: 'admin/users.html', label: 'จัดการผู้ใช้' },
   { href: 'admin/content.html', label: 'คลังเนื้อหา' },
+  { href: 'admin/stages.html', label: 'ด่าน' },
   { href: 'admin/import.html', label: 'นำเข้า JSON' },
   { href: 'dashboard.html', label: '← กลับหน้านักเรียน' },
 ];

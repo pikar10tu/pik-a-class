@@ -16,6 +16,7 @@ export default defineConfig({
         admin: resolve(__dirname, 'src/admin/index.html'),
         adminUsers: resolve(__dirname, 'src/admin/users.html'),
         adminContent: resolve(__dirname, 'src/admin/content.html'),
+        adminStages: resolve(__dirname, 'src/admin/stages.html'),
         adminImport: resolve(__dirname, 'src/admin/import.html'),
         adminExercise: resolve(__dirname, 'src/admin/exercise.html'),
       },

@@ -14,6 +14,7 @@ describe('renderAdminNav', () => {
 
     expect(links).toHaveLength(ADMIN_PAGES.length);
     expect(links.map((a) => a.getAttribute('href'))).toContain('/pik-a-class/admin/users.html');
+    expect(links.map((a) => a.getAttribute('href'))).toContain('/pik-a-class/admin/stages.html');
   });
 
   it('marks the current page for screen readers', () => {

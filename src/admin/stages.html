@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ด่าน — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+</head>
+<body>
+  <div id="admin-nav"></div>
+  <main>
+    <h1>ด่าน</h1>
+    <p><a id="new-stage" class="btn-primary" href="#">+ สร้างด่านใหม่</a></p>
+    <div class="admin-filters">
+      <label>สกิล <select id="filter-skill"></select></label>
+      <label>ระดับ <select id="filter-level"></select></label>
+      <label>สถานะ <select id="filter-status"></select></label>
+    </div>
+    <p id="stage-count" aria-live="polite"></p>
+    <ul id="stage-list" class="admin-summary"></ul>
+  </main>
+  <script type="module" src="./stages.js"></script>
+</body>
+</html>
