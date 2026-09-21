@@ -1,12 +1,15 @@
 import { requireLogin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
-import { fetchStage, fetchStageExercises } from '../lib/stage-io.js';
+import { fetchStage, fetchStagePool } from '../lib/stage-io.js';
 import { saveStageResult } from '../lib/stage-result-io.js';
 import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
 import { buildWordBank } from '../lib/word-bank.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { playAnswerSound } from '../lib/answer-audio.js';
 import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
+import { pickRound } from '../lib/stage-pool.js';
+import { readTier } from '../lib/queries.js';
+import { STAGE_ITEM_TYPES } from '../lib/stage-form.js';
 
 const base = import.meta.env.BASE_URL;
 const searchParams = new URLSearchParams(window.location.search);
@@ -178,8 +181,8 @@ async function save() {
   const note = document.getElementById('save-state');
   note.textContent = 'กำลังบันทึกผล…';
   try {
-    // results มาจาก session.results เท่านั้น ซึ่งสร้างจาก session.exercises ที่ผูกกับ stage.itemIds
-    // (ไม่เกิน 20 รายการตาม schema) เสมอ — ไม่มีทางกว้างกว่าด่านนี้
+    // results มาจาก session.results เท่านั้น ซึ่งสร้างจาก session.exercises ที่มาจาก pickRound
+    // (ไม่เกิน stage.drawCount ข้อ ตามเพดาน MAX_DRAW_COUNT ของ schema) เสมอ — ไม่มีทางกว้างกว่าด่านนี้
     await saveStageResult(db, { uid, stage, exercises, results: session.results });
     note.textContent = 'บันทึกผลแล้ว';
   } catch (error) {
@@ -228,7 +231,7 @@ window.addEventListener('beforeunload', (event) => {
   event.returnValue = '';
 });
 
-requireLogin(async (firebaseUser) => {
+requireLogin(async (firebaseUser, userDoc) => {
   uid = firebaseUser.uid;
   try {
     stage = await fetchStage(db, stageId);
@@ -236,16 +239,13 @@ requireLogin(async (firebaseUser) => {
       showEmpty('ไม่พบด่านนี้', backHref());
       return;
     }
-    exercises = await fetchStageExercises(db, stage.itemIds);
+    const pool = await fetchStagePool(db, stage, readTier(userDoc));
+    // กรองชนิดที่เล่นไม่ได้ทิ้งก่อนสุ่ม ไม่ใช่หลังสุ่ม ไม่งั้นรอบนั้นจะได้ข้อน้อยกว่า drawCount
+    // โดยไม่มีเหตุผล ทั้งที่คลังมีข้อที่เล่นได้เหลืออยู่
+    const playable = pool.filter((item) => STAGE_ITEM_TYPES.includes(item.type));
+    exercises = pickRound(playable, stage.drawCount ?? 1);
 
-    // เผื่อกรณีที่ข้อหายไปบางข้อแบบไม่ error (เช่น ข้อถูกลบทิ้งไปแล้ว)
-    // ส่วนกรณี "ไม่มีสิทธิ์อ่านบางข้อ" จะโยน permission-denied ทั้งชุด ดักไว้ที่ catch ด้านล่าง
-    if (exercises.length < stage.itemIds.length) {
-      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref());
-      return;
-    }
-
-    // ด่านที่ยังไม่มีข้อเลย (ตั้งค่าไว้แต่ยังไม่ใส่ข้อ) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
+    // ด่านที่ยังไม่มีข้อเลย (คลังว่าง หรือคลังมีแต่ข้อชนิดที่เล่นไม่ได้) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
     if (exercises.length === 0) {
       showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', backHref());
       return;
@@ -256,8 +256,8 @@ requireLogin(async (firebaseUser) => {
     document.getElementById('play-view').hidden = false;
     renderQuestion();
   } catch (error) {
-    // การอ่านข้อในด่านใช้ documentId() in [...] — ถ้าบัญชีนี้อ่านข้อใดข้อหนึ่งไม่ได้
-    // Firestore ปฏิเสธทั้ง query ไม่ใช่คืนมาแค่บางข้อ เด็กจึงต้องเห็นเหตุผลจริง
+    // คลังของด่านอ่านด้วย query ที่ล็อกเงื่อนไขสิทธิ์ (tier/isPreview) ไว้ในตัวมันเองแล้ว (ดู stagePoolConstraints)
+    // ถ้าบัญชีนี้อ่านไม่ได้จริงๆ Firestore จะปฏิเสธทั้ง query เด็กจึงต้องเห็นเหตุผลจริง
     // ไม่ใช่ "โหลดไม่สำเร็จ กรุณาลองใหม่" ที่ชวนให้กดซ้ำไปเรื่อยๆ ทั้งที่ลองอีกกี่ครั้งก็ไม่ขึ้น
     if (error?.code === 'permission-denied') {
       showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref());
