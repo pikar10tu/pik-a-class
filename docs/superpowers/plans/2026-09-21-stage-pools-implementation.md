@@ -540,6 +540,62 @@ commit นี้รวมไฟล์ schema จาก Task 1 ไว้ด้ว
 
 ---
 
+### Task 4b: ผู้ใช้ `itemIds` ที่เหลืออยู่ (แทรกหลังรีวิว Task 1+4)
+
+> รีวิว Task 1+4 กวาดเจอว่ามีสองไฟล์ที่ยังอ่าน `stage.itemIds` อยู่ และ**ไม่มี task ไหนในแผนเป็นเจ้าของ** ถ้าไม่ทำจะหลุดขึ้น production
+
+**Files:**
+- Modify: `src/lib/stage-progress.js`
+- Modify: `src/lib/stage-progress.test.js`
+- Modify: `src/admin/stages.js`
+
+**Interfaces:**
+- Produces: `buildStagePath` ยังคืนฟิลด์ `itemCount` ชื่อเดิม แต่ความหมายเปลี่ยนเป็น "จำนวนข้อต่อรอบ" ผู้ใช้ปลายทาง (`src/learn/path.js:136`) ไม่ต้องแก้
+
+- [ ] **Step 1: แก้เทสก่อน**
+
+ใน `src/lib/stage-progress.test.js` เคสที่บรรทัด 86 ตรวจ `itemCount` อยู่ — แก้ fixture ของด่านให้ใช้ `drawCount: 2` แทน `itemIds` ที่มีสองข้อ แล้วคงการคาดหวัง `.toBe(2)` ไว้เหมือนเดิม จากนั้นไล่แก้ fixture ด่านทุกตัวในไฟล์ที่ยังใส่ `itemIds` ให้ใช้ `drawCount` แทน
+
+- [ ] **Step 2: รันเทสให้เห็นว่าล้ม**
+
+Run: `npx vitest run src/lib/stage-progress.test.js`
+Expected: FAIL ที่เคส `itemCount` เพราะโค้ดยังอ่าน `itemIds`
+
+- [ ] **Step 3: แก้ `stage-progress.js`**
+
+ที่บรรทัด 24 เปลี่ยนจาก `itemCount: (stage.itemIds ?? []).length,` เป็น:
+
+```js
+      // ด่านไม่ได้เก็บรายชื่อข้อแล้ว จำนวนที่เด็กจะได้เล่นคือจำนวนที่สุ่มต่อรอบ
+      // ชื่อฟิลด์ยังเป็น itemCount เพื่อไม่ให้ต้องแก้หน้าเส้นทางที่แสดง "N ข้อ" อยู่แล้ว
+      itemCount: stage.drawCount ?? 0,
+```
+
+- [ ] **Step 4: รันเทสให้ผ่าน**
+
+Run: `npx vitest run src/lib/stage-progress.test.js`
+Expected: PASS
+
+- [ ] **Step 5: แก้หน้ารายการด่าน**
+
+ใน `src/admin/stages.js` บรรทัดที่ประกอบข้อความ meta เปลี่ยน `${stage.itemIds.length} ข้อ` เป็น `${stage.drawCount ?? 0} ข้อต่อรอบ`
+
+> นี่ไม่ใช่แค่ข้อความเพี้ยน — `stage.itemIds` เป็น `undefined` แล้ว การเรียก `.length` จะ **throw** ทำให้หน้ารายการด่านของครูพังทั้งหน้า
+
+- [ ] **Step 6: รันเทสและ build**
+
+Run: `npm test`
+Expected: PASS · `npm run build` จะยังพังจาก `src/admin/stage.js` ซึ่งเป็นงานของ Task 7 — ไม่ใช่ความผิดของ task นี้
+
+- [ ] **Step 7: Commit**
+
+```bash
+git add src/lib/stage-progress.js src/lib/stage-progress.test.js src/admin/stages.js
+git commit -m "fix: read a stage's round size from drawCount instead of the removed item list"
+```
+
+---
+
 ### Task 5: ชั้น IO ดึงคลัง
 
 **Files:**
