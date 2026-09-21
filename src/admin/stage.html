@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>แก้ด่าน — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+</head>
+<body>
+  <div id="admin-nav"></div>
+  <main>
+    <p><a id="back-link" href="#">← กลับไปหน้าด่าน</a></p>
+    <h1 id="page-title">สร้างด่านใหม่</h1>
+    <p id="mode-badge" class="hint"></p>
+    <p id="banner" class="banner" hidden></p>
+
+    <div id="stage-editor">
+      <div class="form-group">
+        <label for="title">ชื่อด่าน</label>
+        <input type="text" id="title" />
+        <span class="field-error" data-error-for="title"></span>
+      </div>
+      <div class="admin-filters">
+        <label>สกิล <select id="skill"></select></label>
+        <label>ระดับ <select id="level"></select></label>
+        <label>ลำดับ <input type="number" id="order" min="1" value="1" /></label>
+      </div>
+      <div class="form-group">
+        <label for="threshold">เกณฑ์ผ่านด่าน (%)</label>
+        <input type="number" id="threshold" min="0" max="100" value="70" />
+        <span class="field-error" data-error-for="passThreshold"></span>
+      </div>
+      <div class="form-group form-group-check">
+        <label><input type="checkbox" id="isPreview" /> ให้ผู้ใช้ทั่วไป (tier free) เล่นได้</label>
+      </div>
+      <div class="form-group">
+        <label for="reviewStatus">สถานะ</label>
+        <select id="reviewStatus"></select>
+        <span class="field-error" data-error-for="reviewStatus"></span>
+      </div>
+
+      <h2>โจทย์ในด่าน (เรียงตามลำดับที่นักเรียนจะได้เล่น)</h2>
+      <ol id="chosen-list" class="chosen-list"></ol>
+      <span class="field-error" data-error-for="itemIds"></span>
+      <ul id="warning-list" class="warning-list"></ul>
+
+      <h2>เลือกจากคลัง</h2>
+      <p class="hint">แสดงเฉพาะข้อปรนัยและข้อเติมคำที่อยู่ในสกิล/ระดับเดียวกับด่านนี้</p>
+      <ul id="library-list" class="admin-summary"></ul>
+
+      <p id="form-error" class="field-error" aria-live="polite"></p>
+      <p id="save-status" aria-live="polite"></p>
+      <p class="content-actions">
+        <button type="button" id="save" class="btn-primary">บันทึก</button>
+        <button type="button" id="play">ลองเล่นด่านนี้</button>
+      </p>
+    </div>
+  </main>
+  <script type="module" src="./stage.js"></script>
+</body>
+</html>
