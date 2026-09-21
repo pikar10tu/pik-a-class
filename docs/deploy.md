@@ -39,8 +39,8 @@ npx firebase deploy --only firestore:rules,firestore:indexes --project pik-a-cla
 ต้องมี:
 
 - Node + `npm ci` ในโฟลเดอร์โปรเจกต์ (`firebase-tools` อยู่ใน devDependencies แล้ว ไม่ต้องลง global)
-- บัญชี Google ที่เป็น **Owner / Editor** ของโปรเจกต์ `pik-a-class` (หรืออย่างน้อยมี role
-  `Firebase Rules Admin` + `Cloud Datastore Index Admin`)
+- บัญชี Google ที่มี role `Firebase Rules Admin` + `Cloud Datastore Index Admin` + `Service Usage Consumer`
+  ของโปรเจกต์ `pik-a-class` (หรือจะใช้บัญชี **Owner / Editor** ก็ได้แต่ให้สิทธิ์มากกว่าที่ต้อง)
 - `firebase login` ครั้งแรกจะเปิดเบราว์เซอร์ให้ยืนยันสิทธิ์ ครั้งต่อไปจำไว้ให้แล้ว
 
 **ต้องรันเมื่อไหร่:** ทุกครั้งที่แก้ `firestore.rules` หรือ `firestore.indexes.json` — ให้รัน **ก่อน**
@@ -62,15 +62,19 @@ Firebase console) — แปลว่าจนกว่าจะตั้ง sec
 `firebase deploy` เองพังจริง (ไม่ใช่เพราะ secret หาย) กรณีนั้น `deploy` (เว็บ) จะถูกบล็อกไว้ เพราะเป็น
 สัญญาณว่ามีอะไรพังจริงที่ต้องแก้ก่อน ไม่ใช่ช่องโหว่ที่รู้อยู่แล้ว
 
-วิธีตั้ง secret:
+วิธีตั้ง secret (แนะนำ: ใช้บัญชี service account แคบ ไม่ใช้ Owner):
 
-1. Firebase Console → ⚙️ Project settings → Service accounts → Generate new private key
-   (หรือ Google Cloud Console → IAM & Admin → Service Accounts → สร้างใหม่แล้วให้ role
-   `Firebase Rules Admin` + `Cloud Datastore Index Admin` เท่านั้น ปลอดภัยกว่าการใช้ key ของ Owner)
-2. เปิดไฟล์ JSON ที่ได้ คัดลอก **ทั้งไฟล์**
-3. GitHub → repo → Settings → Secrets and variables → Actions → New repository secret
+1. Google Cloud Console → IAM & Admin → Service Accounts → สร้าง service account ใหม่
+2. ให้ role ต่อไปนี้เท่านั้น (ไม่ให้ Owner หรือ Editor เพราะอันนี้ไม่ต้องเข้าข้อมูล Firestore):
+   - `roles/firebaserules.admin` — ขึ้น Firestore rules
+   - `roles/datastore.indexAdmin` — ขึ้น Firestore indexes
+   - `roles/serviceusage.serviceUsageConsumer` — ให้ Firebase CLI เช็คว่า Firestore API เปิดใจ (ถ้าขาด role นี้จะ fail: "HTTP Error: 403, Permission denied to get service [firestore.googleapis.com]")
+3. สร้าง private key (JSON) แล้วเปิดไฟล์ คัดลอก **ทั้งไฟล์**
+4. GitHub → repo → Settings → Secrets and variables → Actions → New repository secret
    ชื่อ `FIREBASE_SERVICE_ACCOUNT` ค่าคือ JSON ทั้งก้อน
-4. push เข้า `main` อีกครั้ง แล้วดูว่า job `firestore` ขึ้นเขียว
+5. push เข้า `main` อีกครั้ง แล้วดูว่า job `firestore` ขึ้นเขียว
+
+**ถ้าจะใช้ Owner/Editor แทน:** Firebase Console → ⚙️ Project settings → Service accounts → Generate new private key (เร็วกว่า แต่ key นี้มีสิทธิ์เข้าข้อมูลทั้งฐานข้อมูล)
 
 job อ่าน project id จาก secret `VITE_FIREBASE_PROJECT_ID` ที่มีอยู่แล้ว ถ้าไม่มีจะ fallback เป็น `pik-a-class`
 
