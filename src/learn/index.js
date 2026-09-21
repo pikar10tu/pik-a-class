@@ -8,10 +8,16 @@ import { showPageError } from '../lib/page-error.js';
 const base = import.meta.env.BASE_URL;
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
 
+// สองสาเหตุที่ลิสต์ว่างต่างกันโดยสิ้นเชิง: tier full/แอดมินว่าง = ยังไม่มีบทเรียนจริง ๆ
+// ส่วน tier free ว่าง = query ถูกล็อกด้วย isPreview จึงมักว่างเพราะบัญชีนี้ยังไม่มีสิทธิ์เห็น
+// ไม่ใช่เพราะไม่มีบทเรียน หน้านี้ไม่รู้ว่าบทเรียนมีจริงไหม จึงห้ามฟันธงทั้งสองทาง
+const EMPTY_MESSAGE_FULL = 'ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ';
+const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักครูเพื่อขอสิทธิ์เพิ่มดูนะครับ';
+
 document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
 
-function render(stages) {
+function render(stages, tier) {
   const groups = new Map();
   for (const stage of stages) {
     const key = `${stage.skill}|${stage.level}`;
@@ -20,7 +26,13 @@ function render(stages) {
 
   const container = document.getElementById('choices');
   container.replaceChildren();
-  document.getElementById('empty-note').hidden = groups.size > 0;
+
+  const isEmpty = groups.size === 0;
+  const emptyNote = document.getElementById('empty-note');
+  emptyNote.hidden = !isEmpty;
+  if (isEmpty) {
+    emptyNote.textContent = tier === 'full' ? EMPTY_MESSAGE_FULL : EMPTY_MESSAGE_FREE;
+  }
 
   for (const [key, count] of groups) {
     const [skill, level] = key.split('|');
@@ -41,9 +53,10 @@ requireLogin(async (firebaseUser, userDoc) => {
   const loadingNote = document.getElementById('loading-note');
   try {
     // ต้องส่ง tier ไปด้วยเสมอ ไม่งั้น query จะไม่ล็อก isPreview และ rules ปฏิเสธทั้งชุด
-    const stages = await fetchStages(db, { tier: readTier(userDoc) });
+    const tier = readTier(userDoc);
+    const stages = await fetchStages(db, { tier });
     loadingNote.hidden = true;
-    render(stages);
+    render(stages, tier);
   } catch (error) {
     loadingNote.hidden = true;
     showPageError('โหลดบทเรียนไม่สำเร็จ กรุณาลองใหม่');

@@ -262,6 +262,16 @@
   border-bottom-width: 6px;
 }
 
+/* เคยเล่นแล้วแต่ได้ 0 ดาว — ต้องแยกจาก path-node-open (ไม่เคยเล่น) โดยไม่พึ่งสีอย่างเดียว
+   จึงใช้เส้นขอบประ (shape) ต่างจาก open/attempted ที่เป็นเส้นทึบ ร่วมกับ path-star-badge
+   ที่ renderPath เติมให้เฉพาะ state นี้ (ดาวกลวงสามดวง) */
+.path-node-tried {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border: 3px dashed var(--color-muted);
+  border-bottom-width: 6px;
+}
+
 .path-node-cleared {
   background: var(--color-primary);
   color: var(--color-primary-text);

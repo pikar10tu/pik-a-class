@@ -1,11 +1,17 @@
 # การ deploy (เว็บ + Firestore rules + indexes)
 
-การ deploy มี **สองฝั่ง** และทั้งสองฝั่งต้องขึ้นพร้อมกันเสมอ:
+> **ต้องทำตอนนี้:** repository secret `FIREBASE_SERVICE_ACCOUNT` ยังไม่ได้ตั้ง จึงทำให้ job `firestore`
+> ใน CI **ล้มเหลว (FAIL) ทุกครั้งที่ push เข้า `main`** และ job `deploy` (เว็บ) จะไม่รันตามไปด้วย —
+> ตั้งใจให้เป็นแบบนี้ เพราะ CI ที่ขึ้นเขียวทั้งที่ rules/index ไม่ได้ขึ้นจริงคือบั๊กที่เคยเกิดมาแล้ว
+> วิธีแก้ถาวร: ตั้ง secret ตามหัวข้อ "ทำให้อัตโนมัติ" ด้านล่าง หรือจะรันมือไปพลาง ๆ ก่อนก็ได้ (หัวข้อถัดไป)
+
+การ deploy มี **สองฝั่ง** และทั้งสองฝั่งต้องขึ้นพร้อมกันเสมอ โดย **Firestore ต้องขึ้นก่อนเว็บเสมอ**
+(ไม่ใช่รันขนานกัน — job `deploy` ของเว็บรอ job `firestore` เสร็จก่อนเริ่ม):
 
 | ฝั่ง | สิ่งที่ขึ้น | ใครทำ |
 | --- | --- | --- |
-| GitHub Pages | ไฟล์เว็บใน `dist/` | อัตโนมัติ — job `build` + `deploy` ใน `.github/workflows/deploy.yml` |
-| Firestore | `firestore.rules` + `firestore.indexes.json` | job `firestore` ถ้ามี secret ไม่งั้น **รันมือ** ตามด้านล่าง |
+| Firestore | `firestore.rules` + `firestore.indexes.json` | job `firestore` (รันหลัง `build`, ก่อน `deploy`) ถ้ามี secret ไม่งั้น job นี้ **FAIL** ต้อง **รันมือ** ตามด้านล่าง |
+| GitHub Pages | ไฟล์เว็บใน `dist/` | อัตโนมัติ — job `build` → `firestore` → `deploy` ใน `.github/workflows/deploy.yml` (job `deploy` รอ `firestore` ผ่านก่อน) |
 
 > **ทำไมต้องแยก:** GitHub Pages เสิร์ฟแค่ไฟล์ static เปลี่ยนกฎความปลอดภัยหรือ index ของฐานข้อมูลไม่ได้
 > ถ้า deploy แต่เว็บ กฎเก่าจะยังบังคับใช้อยู่ใน production (เช่น กฎเจ้าของ `stageClears`, กฎห้ามคะแนนด่านลดลง,
@@ -36,8 +42,11 @@ Firebase Console → Firestore Database → Indexes
 ## ทำให้อัตโนมัติ (job `firestore` ใน CI)
 
 job `firestore` ใน `.github/workflows/deploy.yml` รันคำสั่งเดียวกันให้อัตโนมัติ แต่จะทำงานก็ต่อเมื่อมี
-repository secret ชื่อ **`FIREBASE_SERVICE_ACCOUNT`** ถ้ายังไม่มี job จะขึ้น warning ว่า
-"Firestore rules/indexes not deployed" แล้วข้ามไป (ไม่ทำให้ build ล้ม) — แปลว่าต้องรันมือตามด้านบน
+repository secret ชื่อ **`FIREBASE_SERVICE_ACCOUNT`** ถ้ายังไม่มี job นี้จะ **FAIL ทั้ง run** (error
+"Firestore rules/indexes NOT deployed" พร้อมลิงก์กลับมาที่เอกสารนี้และคำสั่งรันมือ) — ไม่ใช่แค่เตือนแล้วผ่านเหมือนเดิม
+เพราะ CI เขียวทั้งที่ rules/index ไม่ได้ขึ้นจริงคือสถานะที่หลอกคนอ่าน และ job `deploy` (เว็บ) ก็ตั้งใจให้
+ไม่รันต่อด้วยเมื่อ `firestore` ล้มเหลว (ดู `needs: [build, firestore]` ของ job `deploy`) — แปลว่าจนกว่าจะตั้ง
+secret นี้ จะต้องรันมือตามด้านบนทุกครั้งที่แก้ `firestore.rules` หรือ `firestore.indexes.json`
 
 วิธีตั้ง secret:
 

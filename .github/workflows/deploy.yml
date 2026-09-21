@@ -39,22 +39,14 @@ jobs:
         with:
           path: dist
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
-
   # Pages เสิร์ฟแค่ไฟล์ static — security rules กับ composite indexes อยู่ฝั่ง Firestore
   # ต้อง deploy แยกต่างหาก ไม่งั้นกฎใหม่ (เช่น เจ้าของ stageClears, คะแนนห้ามลด, allowlist ฟิลด์ consent)
   # และ index ของ stages/exercises จะไม่ขึ้น production แม้เว็บจะอัปเดตแล้ว
   # ต้องมี secret FIREBASE_SERVICE_ACCOUNT (service account JSON ทั้งก้อน สิทธิ์ Firebase Rules Admin
-  # + Cloud Datastore Index Admin) ถ้ายังไม่ได้ตั้ง job นี้จะเตือนแล้วข้ามไป ไม่ทำให้ build ล้ม
-  # แล้วต้องรันมือตามขั้นตอนใน docs/deploy.md แทน
+  # + Cloud Datastore Index Admin) ถ้ายังไม่ได้ตั้ง job นี้จะ FAIL ทั้ง run (ไม่ใช่แค่เตือนแล้วผ่าน —
+  # เพราะเว็บใหม่ที่ deploy ไปพร้อม rules/index เก่าคือสถานะไม่ปลอดภัยที่เคยเกิดมาแล้ว)
+  # ต้อง deploy ก่อน job deploy (Pages) เสมอ ตามที่ docs/deploy.md ระบุไว้ — ไม่ใช่รันขนานกัน
+  # ถ้า secret ยังไม่มี ให้รันมือตามขั้นตอนใน docs/deploy.md แทนจนกว่าจะตั้ง secret เสร็จ
   firestore:
     needs: build
     runs-on: ubuntu-latest
@@ -73,6 +65,11 @@ jobs:
           else
             echo "present=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Fail loudly when the Firestore deploy secret is missing
+        if: steps.secret.outputs.present != 'true'
+        run: |
+          echo "::error title=Firestore rules/indexes NOT deployed::Repository secret FIREBASE_SERVICE_ACCOUNT is not set, so this job cannot run 'firebase deploy --only firestore:rules,firestore:indexes'. This job now fails instead of skipping, because a green run that never shipped rules/indexes is exactly what let insecure rules sit in production before. See docs/deploy.md ('ทำให้อัตโนมัติ') for how to create the secret (service account needs IAM roles Firebase Rules Admin + Cloud Datastore Index Admin). Until the secret exists, run this manual command yourself before letting students use any new web deploy: npx firebase login && npx firebase deploy --only firestore:rules,firestore:indexes --project pik-a-class"
+          exit 1
       - name: Deploy Firestore rules and indexes
         if: steps.secret.outputs.present == 'true'
         env:
@@ -87,7 +84,16 @@ jobs:
             --only firestore:rules,firestore:indexes \
             --project "${FIREBASE_PROJECT:-pik-a-class}" \
             --non-interactive
-      - name: Say plainly that rules and indexes were NOT deployed
-        if: steps.secret.outputs.present != 'true'
-        run: |
-          echo "::warning title=Firestore rules/indexes not deployed::secret FIREBASE_SERVICE_ACCOUNT is not set. Run the manual command in docs/deploy.md before letting students in."
+
+  # Firestore ต้องขึ้นก่อนเว็บเสมอ (ดู docs/deploy.md) จึงต้อง needs ทั้ง build และ firestore
+  # ไม่ใช่แค่ build — ไม่งั้น job นี้กับ firestore จะรันขนานกัน และเว็บรุ่นใหม่อาจไปถึงนักเรียน
+  # ก่อน rules/index รุ่นใหม่ทัน
+  deploy:
+    needs: [build, firestore]
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
