@@ -130,10 +130,14 @@ function openSheet(stage, state) {
   const bestEl = document.getElementById('sheet-best');
   if (state === 'locked') {
     bestEl.textContent = stage.lockedReason;
-  } else if (stage.stars > 0) {
-    bestEl.innerHTML = `ดาวที่เคยได้ <span class="stars">${starMarkup(stage.stars)}</span>${
-      state === 'attempted' ? ' — ยังไม่ผ่าน ลองอีกครั้งได้เลย' : ''
-    }`;
+  } else if (state === 'cleared') {
+    // ผ่านแล้วเสมอในสาขานี้ แต่ passThreshold ตั้งได้เองต่อด่าน ผ่านโดยได้ 0 ดาวก็เกิดได้จริง
+    bestEl.innerHTML =
+      stage.stars > 0
+        ? `ผ่านด่านนี้แล้ว ดาวที่ได้ <span class="stars">${starMarkup(stage.stars)}</span>`
+        : 'ผ่านด่านนี้แล้ว';
+  } else if (state === 'attempted') {
+    bestEl.innerHTML = `ดาวที่เคยได้ <span class="stars">${starMarkup(stage.stars)}</span> — ยังไม่ผ่าน ลองอีกครั้งได้เลย`;
   } else {
     bestEl.textContent = 'ยังไม่เคยเล่นด่านนี้ — ตอบถูกหมดได้ 3 ดาว';
   }
