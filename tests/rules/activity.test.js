@@ -164,4 +164,146 @@ describe('assignments and stageClears rules', () => {
       );
     });
   });
+
+  it('never lets a stage clear score go down', async () => {
+    await withTestEnv(async (env) => {
+      const clear = (overrides = {}) => ({
+        uid: 'student1',
+        stageId: 'st1',
+        skill: 'grammar',
+        level: 'A1',
+        order: 1,
+        score: 0.5,
+        clearedAt: '2026-09-20T10:00:00.000Z',
+        ...overrides,
+      });
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'stageClears/student1__st1': clear({ score: 0.5 }),
+      });
+      const db = authedDb(env, 'student1');
+      // สูงขึ้นได้
+      await assertSucceeds(
+        db.collection('stageClears').doc('student1__st1').set(clear({ score: 0.9 })),
+      );
+      // เท่าเดิมได้ (แม้ client ปกติจะไม่ยิง write ตอนคะแนนเท่าเดิม แต่ rules ต้อง coherent เอง)
+      await assertSucceeds(
+        db.collection('stageClears').doc('student1__st1').set(clear({ score: 0.9 })),
+      );
+      // ต่ำกว่าเดิมต้องถูกปฏิเสธ
+      await assertFails(
+        db.collection('stageClears').doc('student1__st1').set(clear({ score: 0.2 })),
+      );
+    });
+  });
+});
+
+describe('finishing a stage', () => {
+  const stageClear = (overrides = {}) => ({
+    uid: 'student1',
+    stageId: 'st1',
+    skill: 'grammar',
+    level: 'A2',
+    order: 1,
+    score: 0.5,
+    clearedAt: '2026-09-22T04:00:00.000Z',
+    ...overrides,
+  });
+
+  it('writes every submission and the stage clear in one batch', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc() });
+      const db = authedDb(env, 'student1');
+      const batch = db.batch();
+      batch.set(db.collection('submissions').doc('student1__bank__e1'), submission({ exerciseId: 'e1' }));
+      batch.set(db.collection('submissions').doc('student1__bank__e2'), submission({ exerciseId: 'e2' }));
+      batch.set(db.collection('stageClears').doc('student1__st1'), stageClear());
+      await assertSucceeds(batch.commit());
+    });
+  });
+
+  it('rejects the whole batch when one submission lowers bestStars', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'submissions/student1__bank__e1': submission({ exerciseId: 'e1', bestStars: 3 }),
+      });
+      const db = authedDb(env, 'student1');
+      const batch = db.batch();
+      batch.set(db.collection('submissions').doc('student1__bank__e1'), submission({ exerciseId: 'e1', bestStars: 0 }));
+      batch.set(db.collection('stageClears').doc('student1__st1'), stageClear());
+      await assertFails(batch.commit());
+    });
+  });
+
+  it('rejects the whole batch when the stage clear score drops', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'stageClears/student1__st1': stageClear({ score: 0.9 }),
+      });
+      const db = authedDb(env, 'student1');
+      const batch = db.batch();
+      batch.set(db.collection('submissions').doc('student1__bank__e1'), submission({ exerciseId: 'e1' }));
+      batch.set(db.collection('stageClears').doc('student1__st1'), stageClear({ score: 0.5 }));
+      await assertFails(batch.commit());
+    });
+  });
+
+  it('accepts the batch when bestStars stays the same', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, {
+        'users/student1': studentDoc(),
+        'submissions/student1__bank__e1': submission({ exerciseId: 'e1', bestStars: 3 }),
+      });
+      const db = authedDb(env, 'student1');
+      await assertSucceeds(
+        db
+          .collection('submissions')
+          .doc('student1__bank__e1')
+          .set(submission({ exerciseId: 'e1', bestStars: 3, attemptCount: 2, wrongCount: 1, score: 0 })),
+      );
+    });
+  });
+
+  it('blocks writing a stage clear that belongs to somebody else', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc(), 'users/student2': studentDoc({ uid: 'student2' }) });
+      const db = authedDb(env, 'student1');
+      await assertFails(
+        db.collection('stageClears').doc('student2__st1').set(stageClear({ uid: 'student2' })),
+      );
+    });
+  });
+
+  it('allows creating the first stage clear when none exists yet', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc() });
+      const db = authedDb(env, 'student1');
+      await assertSucceeds(db.collection('stageClears').doc('student1__st1').set(stageClear()));
+    });
+  });
+
+  it('blocks a free-tier student from reading a stage that is not a preview', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, {
+        'users/student1': studentDoc({ tier: 'free' }),
+        'stages/st1': {
+          skill: 'grammar',
+          level: 'A2',
+          order: 1,
+          title: 'Past Simple',
+          itemIds: ['e1'],
+          passThreshold: 0.7,
+          isPreview: false,
+          reviewStatus: 'published',
+          createdAt: '2026-09-22T04:00:00.000Z',
+          updatedAt: '2026-09-22T04:00:00.000Z',
+          createdBy: 'admin1',
+        },
+      });
+      const db = authedDb(env, 'student1');
+      await assertFails(db.collection('stages').doc('st1').get());
+    });
+  });
 });
