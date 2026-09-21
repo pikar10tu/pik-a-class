@@ -45,11 +45,15 @@ jobs:
   # ต้องมี secret FIREBASE_SERVICE_ACCOUNT (service account JSON ทั้งก้อน สิทธิ์ Firebase Rules Admin
   # + Cloud Datastore Index Admin) ถ้ายังไม่ได้ตั้ง job นี้จะ FAIL ทั้ง run (ไม่ใช่แค่เตือนแล้วผ่าน —
   # เพราะเว็บใหม่ที่ deploy ไปพร้อม rules/index เก่าคือสถานะไม่ปลอดภัยที่เคยเกิดมาแล้ว)
-  # ต้อง deploy ก่อน job deploy (Pages) เสมอ ตามที่ docs/deploy.md ระบุไว้ — ไม่ใช่รันขนานกัน
-  # ถ้า secret ยังไม่มี ให้รันมือตามขั้นตอนใน docs/deploy.md แทนจนกว่าจะตั้ง secret เสร็จ
+  # ต้อง deploy ก่อน job deploy (Pages) เสมอเมื่อ secret มี ตามที่ docs/deploy.md ระบุไว้ — ไม่ใช่รันขนานกัน
+  # ถ้า secret ยังไม่มี job นี้จะแดงเพื่อเตือน แต่ job deploy (Pages) จะไม่ถูก block ตามไปด้วย (ดู
+  # เงื่อนไข if: ของ job deploy ด้านล่าง) เพราะ block เว็บทั้งเว็บไว้ไม่ได้ป้องกันอะไรเพิ่ม — ให้รันมือ
+  # ตามขั้นตอนใน docs/deploy.md แทนจนกว่าจะตั้ง secret เสร็จ
   firestore:
     needs: build
     runs-on: ubuntu-latest
+    outputs:
+      secret_present: ${{ steps.secret.outputs.present }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -85,11 +89,20 @@ jobs:
             --project "${FIREBASE_PROJECT:-pik-a-class}" \
             --non-interactive
 
-  # Firestore ต้องขึ้นก่อนเว็บเสมอ (ดู docs/deploy.md) จึงต้อง needs ทั้ง build และ firestore
-  # ไม่ใช่แค่ build — ไม่งั้น job นี้กับ firestore จะรันขนานกัน และเว็บรุ่นใหม่อาจไปถึงนักเรียน
-  # ก่อน rules/index รุ่นใหม่ทัน
+  # Firestore ต้องขึ้นก่อนเว็บเสมอเมื่อมันขึ้นได้จริง (ดู docs/deploy.md) จึงต้อง needs ทั้ง build
+  # และ firestore ไม่ใช่แค่ build — กัน job นี้กับ firestore รันขนานกัน
+  # แต่ "firestore ล้มเหลว" มีสองแบบที่ต้องแยกกัน (secret ยังไม่มี VS secret มีแต่ deploy จริงพัง):
+  #   - secret ไม่มี (present != 'true'): เป็นช่องโหว่โครงสร้างที่รู้อยู่แล้วและมีทางแก้แบบรันมือ
+  #     (docs/deploy.md) ไม่ใช่ของพังจากโค้ด job firestore จะยังแดงเพื่อเตือน แต่เว็บต้อง deploy ต่อได้
+  #     เพราะ block เว็บทั้งเว็บไว้ไม่ได้ป้องกันอะไรเพิ่มเลย ในเมื่อ rules/index ต้องรันมืออยู่แล้ว
+  #   - secret มีแต่ npx firebase deploy ล้มจริง (steps.secret.outputs.present == 'true' แต่ job fail):
+  #     คือของพังจริง ต้อง block เว็บไว้เหมือนเดิม
   deploy:
     needs: [build, firestore]
+    if: |
+      always() &&
+      needs.build.result == 'success' &&
+      (needs.firestore.result == 'success' || needs.firestore.outputs.secret_present != 'true')
     runs-on: ubuntu-latest
     environment:
       name: github-pages

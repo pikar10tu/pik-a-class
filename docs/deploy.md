@@ -1,17 +1,28 @@
 # การ deploy (เว็บ + Firestore rules + indexes)
 
 > **ต้องทำตอนนี้:** repository secret `FIREBASE_SERVICE_ACCOUNT` ยังไม่ได้ตั้ง จึงทำให้ job `firestore`
-> ใน CI **ล้มเหลว (FAIL) ทุกครั้งที่ push เข้า `main`** และ job `deploy` (เว็บ) จะไม่รันตามไปด้วย —
-> ตั้งใจให้เป็นแบบนี้ เพราะ CI ที่ขึ้นเขียวทั้งที่ rules/index ไม่ได้ขึ้นจริงคือบั๊กที่เคยเกิดมาแล้ว
+> ใน CI **ล้มเหลว (FAIL) ทุกครั้งที่ push เข้า `main`** — ตั้งใจให้เป็นแบบนี้ เพราะ CI ที่ขึ้นเขียวทั้งที่
+> rules/index ไม่ได้ขึ้นจริงคือบั๊กที่เคยเกิดมาแล้ว **แต่ job `deploy` (เว็บ) ยังรันต่อและปล่อยเว็บตามปกติ**
+> เมื่อสาเหตุที่ `firestore` แดงคือ secret ยังไม่มี (ไม่ใช่ `firebase deploy` รันแล้วพังจริง) — เห็น run
+> สีแดงแล้วอย่าเข้าใจว่าเว็บติดค้างไม่ออก มันไม่ค้าง แค่ rules/index ยังต้องรันมือ (ดูด้านล่าง)
 > วิธีแก้ถาวร: ตั้ง secret ตามหัวข้อ "ทำให้อัตโนมัติ" ด้านล่าง หรือจะรันมือไปพลาง ๆ ก่อนก็ได้ (หัวข้อถัดไป)
 
-การ deploy มี **สองฝั่ง** และทั้งสองฝั่งต้องขึ้นพร้อมกันเสมอ โดย **Firestore ต้องขึ้นก่อนเว็บเสมอ**
-(ไม่ใช่รันขนานกัน — job `deploy` ของเว็บรอ job `firestore` เสร็จก่อนเริ่ม):
+การ deploy มี **สองฝั่ง** และทั้งสองฝั่งต้องขึ้นพร้อมกันเสมอ โดย **Firestore ต้องขึ้นก่อนเว็บเสมอเมื่อ
+Firestore deploy ได้จริง** (ไม่ใช่รันขนานกัน — job `deploy` ของเว็บรอ job `firestore` เสร็จก่อนเริ่ม):
 
 | ฝั่ง | สิ่งที่ขึ้น | ใครทำ |
 | --- | --- | --- |
 | Firestore | `firestore.rules` + `firestore.indexes.json` | job `firestore` (รันหลัง `build`, ก่อน `deploy`) ถ้ามี secret ไม่งั้น job นี้ **FAIL** ต้อง **รันมือ** ตามด้านล่าง |
-| GitHub Pages | ไฟล์เว็บใน `dist/` | อัตโนมัติ — job `build` → `firestore` → `deploy` ใน `.github/workflows/deploy.yml` (job `deploy` รอ `firestore` ผ่านก่อน) |
+| GitHub Pages | ไฟล์เว็บใน `dist/` | อัตโนมัติ — job `build` → `firestore` → `deploy` ใน `.github/workflows/deploy.yml` |
+
+**สองแบบของ "firestore ล้มเหลว" ที่ job `deploy` แยกออกจากกัน (ดู `if:` ของ job `deploy` ใน
+`.github/workflows/deploy.yml`):**
+
+- **secret ยังไม่มี** (ช่องโหว่โครงสร้างที่รู้อยู่แล้ว มีทางแก้แบบรันมือ) — `firestore` แดง แต่ `deploy`
+  (เว็บ) **รันต่อตามปกติ ไม่ถูกบล็อก** เพราะบล็อกเว็บทั้งเว็บไว้ไม่ได้ป้องกันอะไรเพิ่ม ในเมื่อทางแก้คือ
+  รันมืออยู่แล้ว
+- **secret มีแต่ `npx firebase deploy` รันแล้วพังจริง** (เช่น credential หมดอายุ, project id ผิด) —
+  ของพังจริง `deploy` (เว็บ) **ถูกบล็อกไว้เหมือนเดิม** จนกว่าจะแก้ `firestore` ให้ผ่าน
 
 > **ทำไมต้องแยก:** GitHub Pages เสิร์ฟแค่ไฟล์ static เปลี่ยนกฎความปลอดภัยหรือ index ของฐานข้อมูลไม่ได้
 > ถ้า deploy แต่เว็บ กฎเก่าจะยังบังคับใช้อยู่ใน production (เช่น กฎเจ้าของ `stageClears`, กฎห้ามคะแนนด่านลดลง,
@@ -42,11 +53,14 @@ Firebase Console → Firestore Database → Indexes
 ## ทำให้อัตโนมัติ (job `firestore` ใน CI)
 
 job `firestore` ใน `.github/workflows/deploy.yml` รันคำสั่งเดียวกันให้อัตโนมัติ แต่จะทำงานก็ต่อเมื่อมี
-repository secret ชื่อ **`FIREBASE_SERVICE_ACCOUNT`** ถ้ายังไม่มี job นี้จะ **FAIL ทั้ง run** (error
+repository secret ชื่อ **`FIREBASE_SERVICE_ACCOUNT`** ถ้ายังไม่มี job นี้จะ **FAIL** (error
 "Firestore rules/indexes NOT deployed" พร้อมลิงก์กลับมาที่เอกสารนี้และคำสั่งรันมือ) — ไม่ใช่แค่เตือนแล้วผ่านเหมือนเดิม
-เพราะ CI เขียวทั้งที่ rules/index ไม่ได้ขึ้นจริงคือสถานะที่หลอกคนอ่าน และ job `deploy` (เว็บ) ก็ตั้งใจให้
-ไม่รันต่อด้วยเมื่อ `firestore` ล้มเหลว (ดู `needs: [build, firestore]` ของ job `deploy`) — แปลว่าจนกว่าจะตั้ง
-secret นี้ จะต้องรันมือตามด้านบนทุกครั้งที่แก้ `firestore.rules` หรือ `firestore.indexes.json`
+เพราะ CI เขียวทั้งที่ rules/index ไม่ได้ขึ้นจริงคือสถานะที่หลอกคนอ่าน **แต่ job `deploy` (เว็บ) ยังรันต่อ
+ตามปกติ** เมื่อสาเหตุคือ secret ไม่มี (ไม่บล็อกเว็บทั้งเว็บเพื่อรอ secret ที่อาจใช้เวลาหลายวันกว่าจะได้จาก
+Firebase console) — แปลว่าจนกว่าจะตั้ง secret นี้ จะต้องรันมือตามด้านบนทุกครั้งที่แก้ `firestore.rules`
+หรือ `firestore.indexes.json`, **เว็บจะ deploy ต่อไปเรื่อย ๆ โดยไม่รอ** ส่วนถ้า secret มีอยู่แล้วแต่
+`firebase deploy` เองพังจริง (ไม่ใช่เพราะ secret หาย) กรณีนั้น `deploy` (เว็บ) จะถูกบล็อกไว้ เพราะเป็น
+สัญญาณว่ามีอะไรพังจริงที่ต้องแก้ก่อน ไม่ใช่ช่องโหว่ที่รู้อยู่แล้ว
 
 วิธีตั้ง secret:
 
