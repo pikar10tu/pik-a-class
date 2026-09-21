@@ -284,7 +284,9 @@ for (const id of ['skill', 'level']) {
 }
 
 document.getElementById('play').addEventListener('click', () => {
-  window.location.href = `${base}learn/play.html?stage=${stageId}`;
+  // ?from=admin บอกหน้าเล่นด่านว่าเปิดมาจากหน้าแก้ด่าน (พรีวิว) — ให้ทุกทางออกพากลับมาที่นี่
+  // แทนที่จะพาครูหลุดไปหน้าเส้นทางของนักเรียนแบบย้อนกลับไม่ได้ (ดู src/learn/play.js)
+  window.location.href = `${base}learn/play.html?stage=${stageId}&from=admin`;
 });
 
 saveButton.addEventListener('click', async () => {

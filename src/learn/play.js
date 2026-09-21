@@ -9,7 +9,12 @@ import { playAnswerSound } from '../lib/answer-audio.js';
 import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 
 const base = import.meta.env.BASE_URL;
-const stageId = new URLSearchParams(window.location.search).get('stage');
+const searchParams = new URLSearchParams(window.location.search);
+const stageId = searchParams.get('stage');
+// ตั้งโดย admin/stage.js ตอนกด "ลองเล่นด่านนี้" (พรีวิว) — เป็นแค่ทางลัดนำทางเพื่อพากลับหน้าแก้ด่านเดิม
+// ไม่ใช่ขอบเขตสิทธิ์ใดๆ ต่อให้ใครแก้ URL เติม &from=admin เอง ทางที่พาไปก็ยังโดน requireAdmin ที่หน้า
+// admin/stage.html คุมอยู่ดี และการอ่านข้อมูลจริงก็ยังโดน Firestore rules คุมแยกต่างหากเหมือนเดิมทุกกรณี
+const fromAdmin = searchParams.get('from') === 'admin';
 
 let stage = null;
 let exercises = [];
@@ -54,8 +59,29 @@ muteButton.addEventListener('click', () => {
 
 renderMuteButton();
 
+// พรีวิวจากหน้าแก้ด่าน — เปลี่ยนป้ายปุ่ม/ลิงก์ "กลับเส้นทางด่าน" ให้ตรงกับที่มันจะพาไปจริง (หน้าแก้ด่าน ไม่ใช่เส้นทางนักเรียน)
+// ตั้งค่าตรงนี้ครั้งเดียวตอนโหลดหน้า เพราะ fromAdmin ไม่เปลี่ยนระหว่างเล่น
+if (fromAdmin) {
+  document.getElementById('back-to-path').textContent = 'กลับไปหน้าแก้ด่าน';
+  document.getElementById('empty-back').textContent = 'กลับไปหน้าแก้ด่าน';
+}
+
 function pathHref() {
   return `${base}learn/path.html?skill=${stage.skill}&level=${stage.level}`;
+}
+
+// ทางออกปกติของนักเรียน: มีด่านแล้วพากลับเส้นทาง (pathHref) ยังไม่มีด่าน (โหลดไม่ทัน/ไม่พบ) พากลับหน้ารวมด่าน
+function studentBackHref() {
+  return stage ? pathHref() : `${base}learn/index.html`;
+}
+
+// ทางออกรวมของทุกจุดในหน้านี้ — พรีวิวจากแอดมินพากลับหน้าแก้ด่านเดิมเสมอ ไม่ว่าจะออกจากจุดไหน
+// (กด "ออก" กลางด่าน, กด "กลับ" หลังจบด่าน, หรือเจอ empty state ทั้งสามแบบ)
+// ไม่มี stageId (URL ถูกตัดต่อจนพารามิเตอร์ stage หายไป) ก็อย่าสร้างลิงก์ตายไปที่ "?id=" เปล่าๆ
+// ให้ถอยไปหน้ารายการด่านแทน ซึ่งยังปลอดภัยเพราะเข้าได้จริงเสมอ
+function backHref() {
+  if (!fromAdmin) return studentBackHref();
+  return stageId ? `${base}admin/stage.html?id=${stageId}` : `${base}admin/stages.html`;
 }
 
 function showEmpty(message, backHref) {
@@ -182,7 +208,7 @@ document.getElementById('next').addEventListener('click', (event) => {
 document.getElementById('quit').addEventListener('click', () => {
   if (window.confirm('ออกตอนนี้ความคืบหน้าจะหาย ออกเลยไหม?')) {
     midStage = false;
-    window.location.href = pathHref();
+    window.location.href = backHref();
   }
 });
 
@@ -191,7 +217,7 @@ document.getElementById('retry').addEventListener('click', () => {
 });
 
 document.getElementById('back-to-path').addEventListener('click', () => {
-  window.location.href = pathHref();
+  window.location.href = backHref();
 });
 
 // กันปิดแท็บ/รีเฟรช/กดย้อนกลับเบราว์เซอร์กลางด่านโดยไม่เตือน — เสริมจากปุ่ม "ออก" ที่ถามยืนยันอยู่แล้ว
@@ -207,7 +233,7 @@ requireLogin(async (firebaseUser) => {
   try {
     stage = await fetchStage(db, stageId);
     if (!stage) {
-      showEmpty('ไม่พบด่านนี้', `${base}learn/index.html`);
+      showEmpty('ไม่พบด่านนี้', backHref());
       return;
     }
     exercises = await fetchStageExercises(db, stage.itemIds);
@@ -215,13 +241,13 @@ requireLogin(async (firebaseUser) => {
     // เผื่อกรณีที่ข้อหายไปบางข้อแบบไม่ error (เช่น ข้อถูกลบทิ้งไปแล้ว)
     // ส่วนกรณี "ไม่มีสิทธิ์อ่านบางข้อ" จะโยน permission-denied ทั้งชุด ดักไว้ที่ catch ด้านล่าง
     if (exercises.length < stage.itemIds.length) {
-      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', pathHref());
+      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref());
       return;
     }
 
     // ด่านที่ยังไม่มีข้อเลย (ตั้งค่าไว้แต่ยังไม่ใส่ข้อ) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
     if (exercises.length === 0) {
-      showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', pathHref());
+      showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', backHref());
       return;
     }
 
@@ -230,14 +256,13 @@ requireLogin(async (firebaseUser) => {
     document.getElementById('play-view').hidden = false;
     renderQuestion();
   } catch (error) {
-    const backHref = stage ? pathHref() : `${base}learn/index.html`;
     // การอ่านข้อในด่านใช้ documentId() in [...] — ถ้าบัญชีนี้อ่านข้อใดข้อหนึ่งไม่ได้
     // Firestore ปฏิเสธทั้ง query ไม่ใช่คืนมาแค่บางข้อ เด็กจึงต้องเห็นเหตุผลจริง
     // ไม่ใช่ "โหลดไม่สำเร็จ กรุณาลองใหม่" ที่ชวนให้กดซ้ำไปเรื่อยๆ ทั้งที่ลองอีกกี่ครั้งก็ไม่ขึ้น
     if (error?.code === 'permission-denied') {
-      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref);
+      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref());
     } else {
-      showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', backHref);
+      showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', backHref());
     }
     console.error(error);
   }
