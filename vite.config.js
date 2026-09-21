@@ -15,6 +15,7 @@ export default defineConfig({
         dashboard: resolve(__dirname, 'src/dashboard.html'),
         learn: resolve(__dirname, 'src/learn/index.html'),
         learnPath: resolve(__dirname, 'src/learn/path.html'),
+        learnPlay: resolve(__dirname, 'src/learn/play.html'),
         admin: resolve(__dirname, 'src/admin/index.html'),
         adminUsers: resolve(__dirname, 'src/admin/users.html'),
         adminContent: resolve(__dirname, 'src/admin/content.html'),

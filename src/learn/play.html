@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>เล่นด่าน — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/learn.css" />
+</head>
+<body>
+  <main class="learn-main">
+    <section id="play-view" hidden>
+      <header style="display: flex; align-items: center; gap: var(--space-2);">
+        <button type="button" id="quit" class="btn-ghost" style="width: auto;">✕</button>
+        <span class="progress-bar"><span id="progress-fill" style="width: 0%"></span></span>
+        <span id="progress-text"></span>
+      </header>
+      <p id="question-label" style="color: var(--color-muted); font-size: 0.8125rem;"></p>
+      <h1 id="question-prompt" style="font-size: 1.3125rem; font-weight: 500;"></h1>
+      <div id="answers"></div>
+      <div id="verdict" hidden>
+        <p id="verdict-text"></p>
+        <button type="button" id="next" class="btn-chunky">ต่อไป</button>
+      </div>
+    </section>
+
+    <section id="result-view" hidden style="text-align: center;">
+      <img id="result-mascot" width="140" height="140" alt="" />
+      <h1 id="result-title"></h1>
+      <p id="result-stars" class="stars" style="font-size: 2rem;"></p>
+      <p id="result-score"></p>
+      <p id="save-state"></p>
+      <button type="button" id="retry" class="btn-chunky">เล่นด่านนี้อีกครั้ง</button>
+      <button type="button" id="back-to-path" class="btn-ghost" style="margin-top: var(--space-2);">กลับเส้นทางด่าน</button>
+    </section>
+
+    <section id="empty-state" class="path-empty" hidden>
+      <img id="empty-mascot" class="learn-mascot" width="96" height="96" alt="" />
+      <p id="empty-message" class="hint"></p>
+      <a id="empty-back" class="btn-chunky path-empty-link" href="#">กลับเส้นทางด่าน</a>
+    </section>
+  </main>
+  <script type="module" src="./play.js"></script>
+</body>
+</html>

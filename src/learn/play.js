@@ -1,0 +1,199 @@
+import { requireLogin } from '../lib/auth-guard.js';
+import { db } from '../lib/firebase.js';
+import { fetchStage, fetchStageExercises } from '../lib/stage-io.js';
+import { saveStageResult } from '../lib/stage-result-io.js';
+import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
+import { buildWordBank } from '../lib/word-bank.js';
+import { mascotSrc } from '../lib/mascot.js';
+
+const base = import.meta.env.BASE_URL;
+const stageId = new URLSearchParams(window.location.search).get('stage');
+
+let stage = null;
+let exercises = [];
+let session = null;
+let uid = null;
+let answered = false;
+// จริงๆ แล้วเก็บสถานะ "กำลังเล่นด่านอยู่ ยังไม่จบ" ไว้กันหลุดหน้าโดยไม่เตือน (ปิดแท็บ/รีเฟรช/ย้อนกลับ)
+// ต่างจากปุ่ม "ออก" ที่ถามยืนยันเฉพาะตอนกดเอง — อันนี้ครอบคลุมทางออกอื่นๆ ที่ JS ดักไม่ได้ตรงๆ ด้วย beforeunload
+let midStage = false;
+// กันกดปุ่ม "ต่อไป" รัว/แตะซ้ำจนเรียก finish()/บันทึกผลซ้ำสอง — บันทึกจริงเกิดที่ save() แต่กันไว้สองชั้น
+let saveInFlight = false;
+
+const TYPE_LABELS = { mcq: 'เลือกคำตอบที่ถูก', fill_blank: 'เติมคำให้ถูก' };
+
+function pathHref() {
+  return `${base}learn/path.html?skill=${stage.skill}&level=${stage.level}`;
+}
+
+function showEmpty(message, backHref) {
+  midStage = false;
+  document.getElementById('play-view').hidden = true;
+  document.getElementById('result-view').hidden = true;
+  document.getElementById('empty-mascot').src = mascotSrc('normal', base);
+  document.getElementById('empty-message').textContent = message;
+  document.getElementById('empty-back').href = backHref;
+  document.getElementById('empty-state').hidden = false;
+}
+
+function optionsFor(exercise) {
+  return exercise.type === 'mcq' ? exercise.choices ?? [] : buildWordBank(exercise, exercises);
+}
+
+function renderQuestion() {
+  const exercise = currentExercise(session);
+  if (!exercise) {
+    finish();
+    return;
+  }
+  answered = false;
+
+  document.getElementById('progress-text').textContent = `${session.index + 1}/${exercises.length}`;
+  document.getElementById('progress-fill').style.width = `${(session.index / exercises.length) * 100}%`;
+  document.getElementById('question-label').textContent = TYPE_LABELS[exercise.type] ?? '';
+  document.getElementById('question-prompt').textContent = exercise.prompt;
+  document.getElementById('verdict').hidden = true;
+
+  const nextButton = document.getElementById('next');
+  nextButton.disabled = false;
+
+  const answers = document.getElementById('answers');
+  answers.replaceChildren();
+  for (const option of optionsFor(exercise)) {
+    const card = document.createElement('button');
+    card.type = 'button';
+    card.className = 'answer-card';
+    card.textContent = option;
+    card.addEventListener('click', () => pick(card, option));
+    answers.appendChild(card);
+  }
+}
+
+function pick(card, option) {
+  // สัญญาของ stage-session: คำตอบแรกต่อข้อเท่านั้นที่ถูกบันทึก ส่วนหน้านี้ปิดปุ่มตั้งแต่ตอบครั้งแรก
+  // จึงไม่มีทางแตะซ้ำแล้วเห็นสถานะเปลี่ยน — กันสับสนว่าคำตอบที่สองถูกรับไปด้วย
+  if (answered) return;
+  answered = true;
+
+  const exercise = currentExercise(session);
+  session = answerCurrent(session, option);
+  const result = session.results[session.results.length - 1];
+  const accepted = (exercise.answerKey ?? []).map((value) => String(value));
+
+  for (const button of document.querySelectorAll('.answer-card')) {
+    button.disabled = true;
+    if (accepted.includes(button.textContent)) button.dataset.state = 'correct';
+  }
+  if (!result.correct) card.dataset.state = 'wrong';
+
+  document.getElementById('verdict-text').textContent = result.correct
+    ? 'เก่งมาก! ถูกต้อง'
+    : `ยังไม่ถูก — คำตอบคือ "${accepted[0]}"`;
+  document.getElementById('verdict').hidden = false;
+}
+
+async function finish() {
+  midStage = false;
+  const summary = summarize(session, stage.passThreshold);
+  document.getElementById('play-view').hidden = true;
+  document.getElementById('result-view').hidden = false;
+  document.getElementById('result-mascot').src = mascotSrc(summary.passed ? 'clear' : 'wrong', base);
+  document.getElementById('result-title').textContent = summary.passed
+    ? 'ผ่านด่านแล้ว!'
+    : 'ยังไม่ผ่าน ลองอีกครั้งนะ';
+  document.getElementById('result-stars').innerHTML =
+    '★'.repeat(summary.stars) + `<span class="off">${'★'.repeat(3 - summary.stars)}</span>`;
+  document.getElementById('result-score').textContent =
+    `ตอบถูก ${summary.correctCount} จาก ${summary.total} ข้อ (${Math.round(summary.score * 100)}%)`;
+  await save();
+}
+
+async function save() {
+  // ชั้นป้องกันการบันทึกซ้ำ: ต่อให้ finish() ถูกเรียกซ้อนกันจากการแตะ "ต่อไป" รัวๆ
+  // ตัวจริงที่ยิง batch.commit() มีทางเข้าทางเดียวคือฟังก์ชันนี้ และมันเรียกซ้อนกันเองไม่ได้
+  if (saveInFlight) return;
+  saveInFlight = true;
+  const note = document.getElementById('save-state');
+  note.textContent = 'กำลังบันทึกผล…';
+  try {
+    // results มาจาก session.results เท่านั้น ซึ่งสร้างจาก session.exercises ที่ผูกกับ stage.itemIds
+    // (ไม่เกิน 20 รายการตาม schema) เสมอ — ไม่มีทางกว้างกว่าด่านนี้
+    await saveStageResult(db, { uid, stage, exercises, results: session.results });
+    note.textContent = 'บันทึกผลแล้ว';
+  } catch (error) {
+    console.error(error);
+    note.replaceChildren();
+    note.appendChild(document.createTextNode('ยังบันทึกผลไม่ได้ (เน็ตอาจมีปัญหา) '));
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'btn-ghost';
+    retry.textContent = 'ลองบันทึกอีกครั้ง';
+    retry.addEventListener('click', save);
+    note.appendChild(retry);
+  } finally {
+    saveInFlight = false;
+  }
+}
+
+document.getElementById('next').addEventListener('click', (event) => {
+  // ปิดปุ่มทันทีเป็นบรรทัดแรกแบบ sync กันแตะซ้ำเร็วๆ ทำให้ advance() ยิงสองที (ข้ามคำถามไปเฉยๆ)
+  event.currentTarget.disabled = true;
+  session = advance(session);
+  if (session.finished) finish();
+  else renderQuestion();
+});
+
+document.getElementById('quit').addEventListener('click', () => {
+  if (window.confirm('ออกตอนนี้ความคืบหน้าจะหาย ออกเลยไหม?')) {
+    midStage = false;
+    window.location.href = pathHref();
+  }
+});
+
+document.getElementById('retry').addEventListener('click', () => {
+  window.location.reload();
+});
+
+document.getElementById('back-to-path').addEventListener('click', () => {
+  window.location.href = pathHref();
+});
+
+// กันปิดแท็บ/รีเฟรช/กดย้อนกลับเบราว์เซอร์กลางด่านโดยไม่เตือน — เสริมจากปุ่ม "ออก" ที่ถามยืนยันอยู่แล้ว
+// (ข้อความจริงที่เห็นเป็นข้อความมาตรฐานของเบราว์เซอร์ กำหนดเองไม่ได้แล้วในเบราว์เซอร์สมัยใหม่)
+window.addEventListener('beforeunload', (event) => {
+  if (!midStage) return;
+  event.preventDefault();
+  event.returnValue = '';
+});
+
+requireLogin(async (firebaseUser) => {
+  uid = firebaseUser.uid;
+  try {
+    stage = await fetchStage(db, stageId);
+    if (!stage) {
+      showEmpty('ไม่พบด่านนี้', `${base}learn/index.html`);
+      return;
+    }
+    exercises = await fetchStageExercises(db, stage.itemIds);
+
+    // rules คืนข้อมาไม่ครบโดยไม่ error ได้ ถ้าบัญชีนี้ยังไม่มีสิทธิ์อ่านบางข้อ หรือข้อถูกลบไปแล้ว
+    if (exercises.length < stage.itemIds.length) {
+      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', pathHref());
+      return;
+    }
+
+    // ด่านที่ยังไม่มีข้อเลย (ตั้งค่าไว้แต่ยังไม่ใส่ข้อ) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
+    if (exercises.length === 0) {
+      showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', pathHref());
+      return;
+    }
+
+    session = createSession(exercises);
+    midStage = true;
+    document.getElementById('play-view').hidden = false;
+    renderQuestion();
+  } catch (error) {
+    showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', stage ? pathHref() : `${base}learn/index.html`);
+    console.error(error);
+  }
+});
