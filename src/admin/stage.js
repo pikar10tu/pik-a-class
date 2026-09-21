@@ -1,17 +1,14 @@
 import { requireAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { renderAdminNav } from '../lib/admin-nav.js';
-import { fetchStage, saveStage } from '../lib/stage-io.js';
-import { fetchContent } from '../lib/admin-content-io.js';
-import { contentLibraryConstraints } from '../lib/queries.js';
+import { fetchStage, saveStage, fetchStagePool } from '../lib/stage-io.js';
 import { showPageError } from '../lib/page-error.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
+import { availableTags, changeLevel } from '../lib/exercise-form.js';
 import {
-  STAGE_ITEM_TYPES,
   emptyStageState,
   stageStateFromDoc,
-  toggleItem,
-  moveItem,
+  toggleTag,
   validateStage,
   buildStageDoc,
 } from '../lib/stage-form.js';
@@ -27,7 +24,10 @@ document.getElementById('play').hidden = !stageId;
 let state = emptyStageState();
 let existing = null;
 let adminUid = null;
-let library = [];
+// คลังสดของด่านนี้ (ผลของ fetchStagePool ด้วยตัวกรองปัจจุบัน) — ใช้ทั้งแสดงจำนวน/ตัวอย่าง และส่งเข้า validateStage
+let pool = [];
+// กัน race condition: ถ้าครูสลับแท็ก/สกิล/ระดับเร็วๆ คำขอเก่าที่ตอบกลับมาช้าต้องไม่ทับผลของคำขอล่าสุด
+let poolRequestId = 0;
 // สแนปช็อตของ state ล่าสุดที่บันทึกสำเร็จ (หรือ state เริ่มต้นตอนโหลดหน้า) ใช้เทียบว่ามีอะไรแก้ค้างไว้
 // ที่ยังไม่บันทึกหรือไม่ — ถ้ามี ต้องเตือนก่อนออกจากหน้า ไม่ให้ครูเสียงานที่แก้ไปโดยไม่รู้ตัว
 let savedSnapshot = JSON.stringify(state);
@@ -91,122 +91,98 @@ fillSelect('reviewStatus', [
   ['published', 'อนุมัติแล้ว'],
 ]);
 
-function libraryById() {
-  return Object.fromEntries(library.map((item) => [item.id, item]));
-}
-
 function shortPrompt(item) {
   return item.prompt.length > 60 ? `${item.prompt.slice(0, 60)}…` : item.prompt;
 }
 
-function renderChosen() {
-  const byId = libraryById();
-  const list = document.getElementById('chosen-list');
-  list.replaceChildren();
+// เหมือน renderTagPicker ใน src/admin/exercise.js ทุกประการ (กลุ่มไวยากรณ์/คำศัพท์ กรองด้วยระดับ)
+// ตั้งใจให้เหมือนกัน เพราะเป็นชุดแท็กเดียวกันจาก taxonomy เดียวกัน ครูไม่ต้องเรียนรู้ UI สองแบบ
+function renderTagList() {
+  const container = document.getElementById('tag-list');
+  container.replaceChildren();
+  const tags = availableTags(state.level);
 
-  if (state.itemIds.length === 0) {
-    const empty = document.createElement('li');
-    empty.className = 'hint';
-    empty.textContent = 'ยังไม่มีโจทย์ในด่านนี้ เลือกจากคลังด้านล่างเพื่อเพิ่ม';
-    list.appendChild(empty);
-    return;
+  for (const skill of ['grammar', 'vocab']) {
+    const group = tags.filter((tag) => tag.skill === skill);
+    if (group.length === 0) continue;
+
+    const box = document.createElement('div');
+    const heading = document.createElement('h3');
+    heading.textContent = skill === 'grammar' ? 'ไวยากรณ์' : 'คำศัพท์';
+    box.appendChild(heading);
+
+    for (const tag of group) {
+      const label = document.createElement('label');
+      label.className = 'tag-option';
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.checked = state.tags.includes(tag.id);
+      input.addEventListener('change', () => {
+        state = toggleTag(state, tag.id);
+        renderValidation();
+        void refreshPool();
+      });
+      label.append(input, document.createTextNode(` ${tag.label} (${tag.level})`));
+      box.appendChild(label);
+    }
+    container.appendChild(box);
   }
 
-  state.itemIds.forEach((id, index) => {
-    const item = document.createElement('li');
-    item.className = 'chosen-item';
-    const found = byId[id];
-    const label = document.createElement('span');
-
-    if (!found) {
-      // อ้างถึงข้อที่ถูกลบไปแล้ว — ต้องบอกว่าเป็นข้อไหน (id) ไม่ใช่แค่บอกว่า "มีปัญหา" เฉยๆ
-      label.textContent = `⚠ ไม่พบโจทย์นี้แล้ว (อาจถูกลบไปแล้ว) — id: ${id} — กด "เอาออก" เพื่อแก้`;
-      label.classList.add('chosen-item-warning');
-    } else if (!STAGE_ITEM_TYPES.includes(found.type)) {
-      // ข้อที่ชนิดไม่ใช่ mcq/fill_blank (เช่น ถูกเปลี่ยนชนิดหลังถูกเพิ่มเข้าด่านไปแล้ว)
-      label.textContent = `⚠ [${found.type}] ${shortPrompt(found)} — ชนิดนี้ใช้ในด่านไม่ได้ กด "เอาออก" เพื่อแก้`;
-      label.classList.add('chosen-item-warning');
-    } else {
-      label.textContent = `[${found.type}] ${shortPrompt(found)}`;
-    }
-    item.appendChild(label);
-
-    for (const [glyph, delta, verb] of [
-      ['↑', -1, 'ขึ้น'],
-      ['↓', 1, 'ลง'],
-    ]) {
-      const button = document.createElement('button');
-      button.type = 'button';
-      button.textContent = glyph;
-      button.setAttribute('aria-label', `เลื่อนข้อที่ ${index + 1} ${verb}`);
-      button.disabled = index + delta < 0 || index + delta >= state.itemIds.length;
-      button.addEventListener('click', () => {
-        state = moveItem(state, index, delta);
-        renderAll();
-      });
-      item.appendChild(button);
-    }
-
-    const remove = document.createElement('button');
-    remove.type = 'button';
-    remove.textContent = 'เอาออก';
-    remove.setAttribute('aria-label', `เอาข้อที่ ${index + 1} ออกจากด่าน`);
-    remove.addEventListener('click', () => {
-      state = toggleItem(state, id);
-      renderAll();
-    });
-    item.appendChild(remove);
-    list.appendChild(item);
-  });
+  if (container.children.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'hint';
+    empty.textContent = `ยังไม่มีแท็กสำหรับระดับ "${state.level}" ในระบบ`;
+    container.appendChild(empty);
+  }
 }
 
-function renderLibrary() {
-  const list = document.getElementById('library-list');
-  list.replaceChildren();
+function renderPoolSummary() {
+  const summary = document.getElementById('pool-summary');
+  summary.replaceChildren();
 
-  const pickable = library.filter((item) => STAGE_ITEM_TYPES.includes(item.type));
-
-  if (pickable.length === 0) {
-    const empty = document.createElement('li');
-    empty.className = 'hint';
-    if (library.length === 0) {
-      empty.append(
-        `ยังไม่มีโจทย์ในคลังสำหรับสกิล "${state.skill}" ระดับ "${state.level}" เลย — `,
-      );
-      const link = document.createElement('a');
-      link.href = `${base}admin/content.html`;
-      link.textContent = 'ไปสร้างโจทย์ในคลังเนื้อหาก่อน';
-      empty.appendChild(link);
-    } else {
-      empty.textContent =
-        `มีโจทย์ในคลังสำหรับสกิล "${state.skill}" ระดับ "${state.level}" อยู่ ${library.length} ข้อ ` +
-        'แต่ไม่มีข้อที่เป็นปรนัยหรือเติมคำเลย (ด่านรับได้เฉพาะสองชนิดนี้)';
-    }
-    list.appendChild(empty);
+  if (state.tags.length === 0) {
+    const hint = document.createElement('p');
+    hint.className = 'hint';
+    hint.textContent = 'ยังไม่ได้เลือกแท็ก — เลือกอย่างน้อย 1 อันเพื่อดูว่าคลังมีโจทย์กี่ข้อ';
+    summary.appendChild(hint);
     return;
   }
 
-  for (const item of pickable) {
-    const row = document.createElement('li');
-    const label = document.createElement('label');
-    const check = document.createElement('input');
-    check.type = 'checkbox';
-    check.checked = state.itemIds.includes(item.id);
-    check.addEventListener('change', () => {
-      state = toggleItem(state, item.id);
-      renderAll();
-    });
-    label.appendChild(check);
-    label.appendChild(
-      document.createTextNode(` [${item.type}] ${shortPrompt(item)} — ${item.reviewStatus}`),
-    );
-    row.appendChild(label);
-    list.appendChild(row);
+  const count = document.createElement('p');
+  count.textContent = `คลังนี้ตอนนี้มีโจทย์ที่ใช้ในด่านได้ ${pool.length} ข้อ`;
+  summary.appendChild(count);
+
+  if (pool.length > 0) {
+    const examples = document.createElement('ul');
+    examples.className = 'admin-summary';
+    for (const item of pool.slice(0, 3)) {
+      const li = document.createElement('li');
+      li.textContent = `[${item.type}] ${shortPrompt(item)}`;
+      examples.appendChild(li);
+    }
+    summary.appendChild(examples);
   }
+}
+
+// ทุกครั้งที่ skill, level หรือ tags เปลี่ยน ต้องเรียกฟังก์ชันนี้ใหม่ — คลังของด่านนิยามด้วยตัวกรองสามตัวนี้
+// ใช้ tier 'full' เสมอในหน้าแอดมิน เพราะครูต้องเห็นคลังทั้งหมดที่ด่านจะสุ่มได้ ไม่ใช่เฉพาะข้อ preview
+async function refreshPool() {
+  const requestId = ++poolRequestId;
+  try {
+    const result = await fetchStagePool(db, state, 'full');
+    if (requestId !== poolRequestId) return; // มีการเปลี่ยนตัวกรองใหม่ระหว่างรอ ผลนี้เก่าแล้ว ทิ้งไป
+    pool = result;
+  } catch (error) {
+    if (requestId !== poolRequestId) return;
+    console.error(error);
+    pool = [];
+  }
+  renderPoolSummary();
+  renderValidation();
 }
 
 function renderValidation() {
-  const { errors, warnings } = validateStage(state, libraryById());
+  const { errors, warnings } = validateStage(state, pool);
   document.querySelectorAll('.field-error').forEach((el) => {
     el.textContent = '';
   });
@@ -217,7 +193,7 @@ function renderValidation() {
     if (el) el.textContent = message;
     else leftovers.push(message);
   }
-  // เผื่อไว้เฉยๆ: ทุก key ของ errors ตอนนี้มีช่องของตัวเองในหน้าแล้ว (title, itemIds, passThreshold, reviewStatus, isPreview)
+  // เผื่อไว้เฉยๆ: ทุก key ของ errors ตอนนี้มีช่องของตัวเองในหน้าแล้ว (title, tags, drawCount, passThreshold)
   // ถ้าวันหน้า stage-form.js เพิ่ม error key ใหม่ที่หน้านี้ยังไม่มีช่องรองรับ อย่างน้อยข้อความจะไม่หายเงียบๆ
   formError.textContent = leftovers.join(' • ');
 
@@ -237,23 +213,14 @@ function renderAll() {
   document.getElementById('skill').value = state.skill;
   document.getElementById('level').value = state.level;
   document.getElementById('order').value = state.order;
+  document.getElementById('drawCount').value = state.drawCount;
   document.getElementById('threshold').value = Math.round(state.passThreshold * 100);
   document.getElementById('isPreview').checked = state.isPreview;
   document.getElementById('reviewStatus').value = state.reviewStatus;
-  renderChosen();
-  renderLibrary();
+  renderTagList();
   renderValidation();
+  renderPoolSummary();
   document.getElementById('play').hidden = !stageId;
-}
-
-async function reloadLibrary() {
-  library = await fetchContent(
-    db,
-    'exercises',
-    contentLibraryConstraints({ skill: state.skill, level: state.level }),
-  );
-  library = library.filter((item) => !item.deletedAt);
-  renderAll();
 }
 
 document.getElementById('title').addEventListener('input', (event) => {
@@ -263,25 +230,37 @@ document.getElementById('title').addEventListener('input', (event) => {
 document.getElementById('order').addEventListener('input', (event) => {
   state = { ...state, order: Number(event.target.value) || 1 };
 });
+document.getElementById('drawCount').addEventListener('input', (event) => {
+  state = { ...state, drawCount: Number(event.target.value) || 0 };
+  renderValidation();
+});
 document.getElementById('threshold').addEventListener('input', (event) => {
   state = { ...state, passThreshold: (Number(event.target.value) || 0) / 100 };
   renderValidation();
 });
 document.getElementById('isPreview').addEventListener('change', (event) => {
   state = { ...state, isPreview: event.target.checked };
-  // ติ๊กช่องนี้ทั้งที่โจทย์ในด่านยังไม่เปิดให้ tier free = ด่านพังเงียบๆ ต้องเตือนทันทีที่ติ๊ก
+  // ติ๊กช่องนี้ทั้งที่คลังยังไม่มีโจทย์ preview เลย = ด่านพังเงียบๆ สำหรับผู้ใช้ทั่วไป ต้องเตือนทันทีที่ติ๊ก
   renderValidation();
 });
 document.getElementById('reviewStatus').addEventListener('change', (event) => {
   state = { ...state, reviewStatus: event.target.value };
   renderValidation();
 });
-for (const id of ['skill', 'level']) {
-  document.getElementById(id).addEventListener('change', async (event) => {
-    state = { ...state, [id]: event.target.value };
-    await reloadLibrary();
-  });
-}
+document.getElementById('skill').addEventListener('change', async (event) => {
+  state = { ...state, skill: event.target.value };
+  renderValidation();
+  await refreshPool();
+});
+document.getElementById('level').addEventListener('change', async (event) => {
+  // เหมือนที่ exercise.js ทำตอนเปลี่ยนระดับ: ตัดแท็กที่สูงกว่าระดับใหม่ทิ้ง ไม่งั้นจะเหลือแท็กที่มองไม่เห็น
+  // ในรายการ (เพราะ renderTagList กรองด้วยระดับ) แต่ยังติดอยู่ใน state และถูกบันทึกไปกับด่าน
+  const result = changeLevel(state, event.target.value);
+  state = result.state;
+  renderTagList();
+  renderValidation();
+  await refreshPool();
+});
 
 document.getElementById('play').addEventListener('click', () => {
   // ?from=admin บอกหน้าเล่นด่านว่าเปิดมาจากหน้าแก้ด่าน (พรีวิว) — ให้ทุกทางออกพากลับมาที่นี่
@@ -332,7 +311,8 @@ requireAdmin(async (firebaseUser) => {
       savedSnapshot = JSON.stringify(state);
       document.getElementById('page-title').textContent = `แก้ด่าน: ${existing.title}`;
     }
-    await reloadLibrary();
+    renderAll();
+    await refreshPool();
   } catch (error) {
     console.error(error);
     showPageError('โหลดข้อมูลด่านไม่สำเร็จ กรุณาลองใหม่');

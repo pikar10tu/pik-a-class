@@ -29,6 +29,11 @@
         <label>ลำดับ <input type="number" id="order" min="1" value="1" /></label>
       </div>
       <div class="form-group">
+        <label for="drawCount">จำนวนข้อต่อรอบ</label>
+        <input type="number" id="drawCount" min="1" max="30" value="7" />
+        <span class="field-error" data-error-for="drawCount"></span>
+      </div>
+      <div class="form-group">
         <label for="threshold">เกณฑ์ผ่านด่าน (%)</label>
         <input type="number" id="threshold" min="0" max="100" value="70" />
         <span class="field-error" data-error-for="passThreshold"></span>
@@ -43,14 +48,18 @@
         <span class="field-error" data-error-for="reviewStatus"></span>
       </div>
 
-      <h2>โจทย์ในด่าน (เรียงตามลำดับที่นักเรียนจะได้เล่น)</h2>
-      <ol id="chosen-list" class="chosen-list"></ol>
-      <span class="field-error" data-error-for="itemIds"></span>
+      <h2>แท็กที่ด่านนี้ดึงโจทย์มา</h2>
+      <p class="hint">
+        ติ๊กแท็กที่ต้องการ ด่านจะสุ่มโจทย์จากคลังที่มีแท็กเหล่านี้ ในสกิล/ระดับเดียวกับด่านนี้เท่านั้น
+        (แสดงเฉพาะแท็กที่ใช้กับระดับนี้ได้)
+      </p>
+      <div id="tag-list" class="tag-picker"></div>
+      <span class="field-error" data-error-for="tags"></span>
       <ul id="warning-list" class="warning-list"></ul>
 
-      <h2>เลือกจากคลัง</h2>
-      <p class="hint">แสดงเฉพาะข้อปรนัยและข้อเติมคำที่อยู่ในสกิล/ระดับเดียวกับด่านนี้</p>
-      <ul id="library-list" class="admin-summary"></ul>
+      <h2>คลังที่ตรงกับตัวกรองนี้ตอนนี้</h2>
+      <p class="hint">อัปเดตทุกครั้งที่เปลี่ยนสกิล ระดับ หรือแท็ก — ใช้เช็กว่าตัวกรองนี้เจอโจทย์จริงก่อนบันทึก</p>
+      <div id="pool-summary" aria-live="polite"></div>
 
       <p id="form-error" class="field-error" aria-live="polite"></p>
       <p id="save-status" aria-live="polite"></p>
