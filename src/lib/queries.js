@@ -39,9 +39,24 @@ export function contentLibraryConstraints({ reviewStatus, skill, level } = {}) {
   return constraints;
 }
 
-export function stageConstraints({ skill, level, publishedOnly = true } = {}) {
+// แอดมินอ่าน stages/exercises ได้ทุกใบเพราะ rules เช็ก isAdmin() ก่อนเงื่อนไข preview/tier
+// จึงยิง query ได้เหมือน tier "full" ไม่ต้องใส่ตัวกรอง isPreview
+// ไม่มี userDoc หรือไม่มี tier ให้ถือว่า free ไว้ก่อน (ปลอดภัยกว่า เพราะ query จะแคบลงไม่ใช่กว้างขึ้น)
+export function readTier(userDoc) {
+  if (userDoc?.role === 'admin') return 'full';
+  return userDoc?.tier ?? 'free';
+}
+
+// rules ของ /stages อ่าน resource.data.get('isPreview', false) ผ่าน publishedAndAllowed()
+// บน list query ทุกฟิลด์ที่ rule แตะต้องถูกล็อกค่าด้วยตัว query เอง ไม่งั้น Firestore จะ
+// ประเมิน rule ไม่ได้และปฏิเสธทั้งชุด (permission-denied: evaluation error) ไม่ใช่แค่กรองบางใบทิ้ง
+// เกณฑ์เดียวกับ bankExerciseConstraints ด้านบน เพื่อให้สองที่ไม่เพี้ยนกัน
+export function stageConstraints({ skill, level, publishedOnly = true, tier } = {}) {
   const constraints = [];
-  if (publishedOnly) constraints.push(['reviewStatus', '==', 'published']);
+  if (publishedOnly) {
+    constraints.push(['reviewStatus', '==', 'published']);
+    if (tier !== 'full') constraints.push(['isPreview', '==', true]);
+  }
   if (skill) constraints.push(['skill', '==', skill]);
   if (level) constraints.push(['level', '==', level]);
   return constraints;

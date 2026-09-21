@@ -4,7 +4,15 @@
   padding: var(--space-3);
 }
 
+/* ปุ่มออกเดียวของสองหน้านี้ และเด็กกดบนมือถือ — ต้องแตะโดนง่าย อย่างน้อย 44px ตามเกณฑ์ touch target
+   ขยับซ้ายเท่า padding เพื่อให้ตัวอักษรยังอยู่แนวเดียวกับเนื้อหาอื่นในหน้า */
 .learn-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  margin-inline-start: calc(var(--space-3) * -1);
+  border-radius: var(--radius);
   color: var(--color-text);
   text-decoration: none;
   font-size: 0.9375rem;
@@ -66,6 +74,20 @@
   font-family: var(--font-base);
   font-size: 0.9375rem;
   cursor: pointer;
+}
+
+/* ปุ่ม "ออก" กลางด่าน — ไอคอนเดียวแต่ต้องแตะโดนง่ายเท่าปุ่มอื่น ไม่ยืดเต็มแถวทับ progress bar */
+.btn-quit {
+  width: auto;
+  flex: none;
+  min-width: 44px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  font-size: 1.125rem;
+  line-height: 1;
 }
 
 .progress-bar {

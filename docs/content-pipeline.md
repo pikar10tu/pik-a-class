@@ -53,3 +53,8 @@ npm run check:content -- <ไฟล์ใหม่.json>
 2. เข้า `admin/content.html` → กรองสถานะ `draft` → อ่านทีละข้อ แก้ได้ในหน้าเลย → กด **อนุมัติ** ทีละข้อหรือทั้งชุด
 
 **นักเรียนเห็นเฉพาะข้อที่ `reviewStatus: published` เท่านั้น** และกฎนี้บังคับที่ Firestore security rules ไม่ใช่แค่ที่หน้าเว็บ — ข้อที่ยังไม่อนุมัติจึงอ่านไม่ได้แม้จะ query ตรงจาก devtools
+
+## หลังอนุมัติ — อย่าลืม deploy ฝั่ง Firestore
+
+ถ้ารอบนี้แก้ `firestore.rules` หรือ `firestore.indexes.json` ด้วย ต้อง deploy สองฝั่ง ไม่ใช่แค่เว็บ
+ดูขั้นตอนและคำสั่งที่ `docs/deploy.md`

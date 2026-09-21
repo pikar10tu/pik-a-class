@@ -9,6 +9,7 @@ import {
   contentLibraryConstraints,
   stageConstraints,
   myClearConstraints,
+  readTier,
 } from './queries.js';
 
 describe('query constraints', () => {
@@ -50,15 +51,72 @@ describe('query constraints', () => {
 
 describe('stageConstraints', () => {
   it('asks only for published stages of one skill and level', () => {
-    expect(stageConstraints({ skill: 'grammar', level: 'A2' })).toEqual([
+    expect(stageConstraints({ skill: 'grammar', level: 'A2', tier: 'full' })).toEqual([
       ['reviewStatus', '==', 'published'],
       ['skill', '==', 'grammar'],
       ['level', '==', 'A2'],
     ]);
   });
 
-  it('lets an admin ask for drafts too', () => {
+  it('adds the preview filter for free users so the rules can evaluate the list query', () => {
+    expect(stageConstraints({ tier: 'free' })).toEqual([
+      ['reviewStatus', '==', 'published'],
+      ['isPreview', '==', true],
+    ]);
+    expect(stageConstraints({ skill: 'grammar', level: 'A2', tier: 'free' })).toEqual([
+      ['reviewStatus', '==', 'published'],
+      ['isPreview', '==', true],
+      ['skill', '==', 'grammar'],
+      ['level', '==', 'A2'],
+    ]);
+  });
+
+  it('leaves the preview filter out for full-tier users', () => {
+    expect(stageConstraints({ tier: 'full' })).toEqual([['reviewStatus', '==', 'published']]);
+  });
+
+  it('treats a missing tier as free, exactly like bankExerciseConstraints does', () => {
+    const stageTiers = stageConstraints({});
+    expect(stageTiers).toContainEqual(['isPreview', '==', true]);
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1' })).toContainEqual([
+      'isPreview',
+      '==',
+      true,
+    ]);
+  });
+
+  it('has no admin special case — like bankExerciseConstraints only tier decides', () => {
+    // แอดมินถูกแปลงเป็น tier "full" ที่ฝั่งหน้าเว็บด้วย readTier() ก่อนเรียกตรงนี้
+    expect(stageConstraints({ tier: readTier({ role: 'admin', tier: 'free' }) })).toEqual(
+      stageConstraints({ tier: 'full' }),
+    );
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: readTier({ role: 'admin', tier: 'free' }) })).toEqual(
+      bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: 'full' }),
+    );
+  });
+
+  it('lets an admin ask for drafts too, with no preview filter in the way', () => {
     expect(stageConstraints({ publishedOnly: false })).toEqual([]);
+    expect(stageConstraints({ publishedOnly: false, skill: 'vocab' })).toEqual([
+      ['skill', '==', 'vocab'],
+    ]);
+  });
+});
+
+describe('readTier', () => {
+  it('reads an admin as full tier because the rules short-circuit on isAdmin()', () => {
+    expect(readTier({ role: 'admin', tier: 'free' })).toBe('full');
+  });
+
+  it('keeps a student on their own tier', () => {
+    expect(readTier({ role: 'student', tier: 'full' })).toBe('full');
+    expect(readTier({ role: 'student', tier: 'free' })).toBe('free');
+  });
+
+  it('falls back to free when the user doc or tier is missing', () => {
+    expect(readTier(null)).toBe('free');
+    expect(readTier(undefined)).toBe('free');
+    expect(readTier({ role: 'student' })).toBe('free');
   });
 });
 

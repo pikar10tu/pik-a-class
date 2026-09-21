@@ -184,4 +184,73 @@ describe('stages and grammarNotes rules', () => {
       );
     });
   });
+
+  // list query ของ /stages ต้องล็อกทุกฟิลด์ที่ rule แตะ (reviewStatus + isPreview)
+  // ไม่งั้น Firestore ประเมิน publishedAndAllowed() ไม่ได้และปฏิเสธทั้งชุด — ไม่ใช่แค่กรองบางใบทิ้ง
+  // นี่คือ query จริงที่ stageConstraints() สร้างให้แต่ละ tier
+  describe('the stage list query the learn pages actually issue', () => {
+    const world = {
+      ...baseWorld,
+      'stages/st-preview': { ...stage, isPreview: true },
+      'stages/st-paid': { ...stage, order: 2 },
+      'stages/st-draft': { ...stage, order: 3, reviewStatus: 'draft' },
+    };
+
+    it('denies a free student who forgets the isPreview clause', async () => {
+      await withTestEnv(async (env) => {
+        await seed(env, world);
+        await assertFails(
+          authedDb(env, 'student1')
+            .collection('stages')
+            .where('reviewStatus', '==', 'published')
+            .orderBy('order')
+            .get(),
+        );
+      });
+    });
+
+    it('allows a free student once the isPreview clause is there', async () => {
+      await withTestEnv(async (env) => {
+        await seed(env, world);
+        await assertSucceeds(
+          authedDb(env, 'student1')
+            .collection('stages')
+            .where('reviewStatus', '==', 'published')
+            .where('isPreview', '==', true)
+            .orderBy('order')
+            .get(),
+        );
+        await assertSucceeds(
+          authedDb(env, 'student1')
+            .collection('stages')
+            .where('reviewStatus', '==', 'published')
+            .where('isPreview', '==', true)
+            .where('skill', '==', 'grammar')
+            .where('level', '==', 'A1')
+            .orderBy('order')
+            .get(),
+        );
+      });
+    });
+
+    it('allows a full-tier student without the isPreview clause', async () => {
+      await withTestEnv(async (env) => {
+        await seed(env, world);
+        await assertSucceeds(
+          authedDb(env, 'paid1')
+            .collection('stages')
+            .where('reviewStatus', '==', 'published')
+            .orderBy('order')
+            .get(),
+        );
+      });
+    });
+
+    it('allows the admin stage list to see drafts with no filters at all', async () => {
+      await withTestEnv(async (env) => {
+        await seed(env, world);
+        await assertSucceeds(authedDb(env, 'admin1').collection('stages').orderBy('order').get());
+      });
+    });
+  });
 });

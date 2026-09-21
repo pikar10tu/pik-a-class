@@ -1,6 +1,7 @@
 import { requireLogin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { fetchStages } from '../lib/stage-io.js';
+import { readTier } from '../lib/queries.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { showPageError } from '../lib/page-error.js';
 
@@ -36,10 +37,11 @@ function render(stages) {
   }
 }
 
-requireLogin(async () => {
+requireLogin(async (firebaseUser, userDoc) => {
   const loadingNote = document.getElementById('loading-note');
   try {
-    const stages = await fetchStages(db);
+    // ต้องส่ง tier ไปด้วยเสมอ ไม่งั้น query จะไม่ล็อก isPreview และ rules ปฏิเสธทั้งชุด
+    const stages = await fetchStages(db, { tier: readTier(userDoc) });
     loadingNote.hidden = true;
     render(stages);
   } catch (error) {

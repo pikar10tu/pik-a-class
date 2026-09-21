@@ -48,3 +48,46 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # Pages เสิร์ฟแค่ไฟล์ static — security rules กับ composite indexes อยู่ฝั่ง Firestore
+  # ต้อง deploy แยกต่างหาก ไม่งั้นกฎใหม่ (เช่น เจ้าของ stageClears, คะแนนห้ามลด, allowlist ฟิลด์ consent)
+  # และ index ของ stages/exercises จะไม่ขึ้น production แม้เว็บจะอัปเดตแล้ว
+  # ต้องมี secret FIREBASE_SERVICE_ACCOUNT (service account JSON ทั้งก้อน สิทธิ์ Firebase Rules Admin
+  # + Cloud Datastore Index Admin) ถ้ายังไม่ได้ตั้ง job นี้จะเตือนแล้วข้ามไป ไม่ทำให้ build ล้ม
+  # แล้วต้องรันมือตามขั้นตอนใน docs/deploy.md แทน
+  firestore:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: npm ci
+      - id: secret
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "$FIREBASE_SERVICE_ACCOUNT" ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Deploy Firestore rules and indexes
+        if: steps.secret.outputs.present == 'true'
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          FIREBASE_PROJECT: ${{ secrets.VITE_FIREBASE_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT" > "$RUNNER_TEMP/firebase-sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/firebase-sa.json"
+          trap 'rm -f "$RUNNER_TEMP/firebase-sa.json"' EXIT
+          npx firebase deploy \
+            --only firestore:rules,firestore:indexes \
+            --project "${FIREBASE_PROJECT:-pik-a-class}" \
+            --non-interactive
+      - name: Say plainly that rules and indexes were NOT deployed
+        if: steps.secret.outputs.present != 'true'
+        run: |
+          echo "::warning title=Firestore rules/indexes not deployed::secret FIREBASE_SERVICE_ACCOUNT is not set. Run the manual command in docs/deploy.md before letting students in."

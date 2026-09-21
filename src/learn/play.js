@@ -176,7 +176,8 @@ requireLogin(async (firebaseUser) => {
     }
     exercises = await fetchStageExercises(db, stage.itemIds);
 
-    // rules คืนข้อมาไม่ครบโดยไม่ error ได้ ถ้าบัญชีนี้ยังไม่มีสิทธิ์อ่านบางข้อ หรือข้อถูกลบไปแล้ว
+    // เผื่อกรณีที่ข้อหายไปบางข้อแบบไม่ error (เช่น ข้อถูกลบทิ้งไปแล้ว)
+    // ส่วนกรณี "ไม่มีสิทธิ์อ่านบางข้อ" จะโยน permission-denied ทั้งชุด ดักไว้ที่ catch ด้านล่าง
     if (exercises.length < stage.itemIds.length) {
       showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', pathHref());
       return;
@@ -193,7 +194,15 @@ requireLogin(async (firebaseUser) => {
     document.getElementById('play-view').hidden = false;
     renderQuestion();
   } catch (error) {
-    showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', stage ? pathHref() : `${base}learn/index.html`);
+    const backHref = stage ? pathHref() : `${base}learn/index.html`;
+    // การอ่านข้อในด่านใช้ documentId() in [...] — ถ้าบัญชีนี้อ่านข้อใดข้อหนึ่งไม่ได้
+    // Firestore ปฏิเสธทั้ง query ไม่ใช่คืนมาแค่บางข้อ เด็กจึงต้องเห็นเหตุผลจริง
+    // ไม่ใช่ "โหลดไม่สำเร็จ กรุณาลองใหม่" ที่ชวนให้กดซ้ำไปเรื่อยๆ ทั้งที่ลองอีกกี่ครั้งก็ไม่ขึ้น
+    if (error?.code === 'permission-denied') {
+      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref);
+    } else {
+      showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', backHref);
+    }
     console.error(error);
   }
 });

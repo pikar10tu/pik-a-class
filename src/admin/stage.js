@@ -217,7 +217,7 @@ function renderValidation() {
     if (el) el.textContent = message;
     else leftovers.push(message);
   }
-  // เผื่อไว้เฉยๆ: ทุก key ของ errors ตอนนี้มีช่องของตัวเองในหน้าแล้ว (title, itemIds, passThreshold, reviewStatus)
+  // เผื่อไว้เฉยๆ: ทุก key ของ errors ตอนนี้มีช่องของตัวเองในหน้าแล้ว (title, itemIds, passThreshold, reviewStatus, isPreview)
   // ถ้าวันหน้า stage-form.js เพิ่ม error key ใหม่ที่หน้านี้ยังไม่มีช่องรองรับ อย่างน้อยข้อความจะไม่หายเงียบๆ
   formError.textContent = leftovers.join(' • ');
 
@@ -269,6 +269,8 @@ document.getElementById('threshold').addEventListener('input', (event) => {
 });
 document.getElementById('isPreview').addEventListener('change', (event) => {
   state = { ...state, isPreview: event.target.checked };
+  // ติ๊กช่องนี้ทั้งที่โจทย์ในด่านยังไม่เปิดให้ tier free = ด่านพังเงียบๆ ต้องเตือนทันทีที่ติ๊ก
+  renderValidation();
 });
 document.getElementById('reviewStatus').addEventListener('change', (event) => {
   state = { ...state, reviewStatus: event.target.value };

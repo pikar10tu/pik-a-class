@@ -2,6 +2,7 @@ import { requireLogin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { fetchStages, fetchMyClears } from '../lib/stage-io.js';
 import { buildStagePath, totalStars, clearsByStageId } from '../lib/stage-progress.js';
+import { readTier } from '../lib/queries.js';
 import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
@@ -173,10 +174,11 @@ if (!isValidQuery) {
 } else {
   document.getElementById('path-title').textContent = SKILL_LABELS[skill];
 
-  requireLogin(async (firebaseUser) => {
+  requireLogin(async (firebaseUser, userDoc) => {
     try {
       const [stages, clears] = await Promise.all([
-        fetchStages(db, { skill, level }),
+        // ต้องส่ง tier ไปด้วยเสมอ ไม่งั้น query จะไม่ล็อก isPreview และ rules ปฏิเสธทั้งชุด
+        fetchStages(db, { skill, level, tier: readTier(userDoc) }),
         fetchMyClears(db, firebaseUser.uid),
       ]);
 

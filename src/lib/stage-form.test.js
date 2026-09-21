@@ -139,6 +139,37 @@ describe('validateStage', () => {
     expect(validateStage(readyState(), shelf).valid).toBe(true);
   });
 
+  it('blocks opening a stage to free users while its questions are still closed', () => {
+    // โจทย์ทั้งสองข้อยังเป็น isPreview: false (ค่าเริ่มต้นของ exercise() ในเทสนี้)
+    const { valid, errors } = validateStage(readyState({ isPreview: true }), library);
+    expect(valid).toBe(false);
+    expect(errors.isPreview).toBe(
+      'เปิดด่านนี้ให้ผู้ใช้ทั่วไปไม่ได้ เพราะมีโจทย์ 2 ข้อที่ยังไม่เปิดให้ผู้ใช้ทั่วไป ' +
+        'ต้องไปเปิดโจทย์เหล่านั้นในคลังเนื้อหาก่อน หรือเอาออกจากด่าน',
+    );
+  });
+
+  it('counts only the questions that are still closed', () => {
+    const shelf = { ...library, e1: exercise('e1', { isPreview: true }) };
+    const { errors } = validateStage(readyState({ isPreview: true }), shelf);
+    expect(errors.isPreview).toContain('มีโจทย์ 1 ข้อ');
+  });
+
+  it('accepts a preview stage once every question is open to free users', () => {
+    const shelf = {
+      ...library,
+      e1: exercise('e1', { isPreview: true }),
+      e2: exercise('e2', { isPreview: true }),
+    };
+    const { valid, errors } = validateStage(readyState({ isPreview: true }), shelf);
+    expect(valid).toBe(true);
+    expect(errors.isPreview).toBeUndefined();
+  });
+
+  it('says nothing about preview questions while the stage itself is not preview', () => {
+    expect(validateStage(readyState({ isPreview: false }), library).errors.isPreview).toBeUndefined();
+  });
+
   it('warns when a question does not match the skill or level of the stage', () => {
     const shelf = { ...library, e2: exercise('e2', { level: 'B1' }) };
     const { valid, warnings } = validateStage(readyState(), shelf);

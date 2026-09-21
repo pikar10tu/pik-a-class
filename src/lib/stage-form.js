@@ -79,6 +79,18 @@ export function validateStage(state, exercisesById) {
     errors.reviewStatus = 'อนุมัติด่านไม่ได้ เพราะยังมีโจทย์ที่ยังไม่อนุมัติอยู่ในด่าน';
   }
 
+  // เปิดด่านให้ tier free แต่ข้อข้างในยังไม่เปิด = เด็ก free เห็นด่านแต่กดเข้าไปแล้วโหลดไม่ขึ้นเลย
+  // (การอ่านข้อใช้ documentId() in [...] ซึ่งถ้าอ่านข้อใดข้อหนึ่งไม่ได้ จะโดนปฏิเสธทั้ง query
+  //  ไม่ใช่คืนมาแค่บางข้อ) ต้องบอกครูตั้งแต่ตอนสร้างด่าน ไม่ใช่ให้ไปเจอตอนเด็กเล่นไม่ได้
+  if (state.isPreview) {
+    const notPreview = items.filter((item) => item.isPreview !== true).length;
+    if (notPreview > 0) {
+      errors.isPreview =
+        `เปิดด่านนี้ให้ผู้ใช้ทั่วไปไม่ได้ เพราะมีโจทย์ ${notPreview} ข้อที่ยังไม่เปิดให้ผู้ใช้ทั่วไป ` +
+        'ต้องไปเปิดโจทย์เหล่านั้นในคลังเนื้อหาก่อน หรือเอาออกจากด่าน';
+    }
+  }
+
   items.forEach((item, index) => {
     if (item.level !== state.level) {
       warnings.push(`โจทย์ข้อที่ ${index + 1} เป็นระดับ ${item.level} ไม่ตรงกับด่าน (${state.level})`);
