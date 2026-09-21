@@ -1,0 +1,40 @@
+import { starsFor } from './grading.js';
+
+export function clearsByStageId(clearDocs) {
+  const map = {};
+  for (const clear of clearDocs) {
+    map[clear.stageId] = { score: clear.score };
+  }
+  return map;
+}
+
+export function buildStagePath(stages, clearsMap) {
+  const ordered = [...stages].sort((a, b) => a.order - b.order);
+  let previous = null;
+
+  return ordered.map((stage) => {
+    const score = clearsMap[stage.id]?.score ?? 0;
+    const cleared = clearsMap[stage.id] !== undefined && score >= stage.passThreshold;
+    const unlocked = previous === null ? true : previous.cleared;
+    const entry = {
+      id: stage.id,
+      order: stage.order,
+      title: stage.title,
+      itemCount: (stage.itemIds ?? []).length,
+      passThreshold: stage.passThreshold,
+      score,
+      stars: clearsMap[stage.id] === undefined ? 0 : starsFor(score),
+      cleared,
+      unlocked,
+      lockedReason: unlocked
+        ? null
+        : `ผ่านด่าน ${previous.order} ที่ ${Math.round(previous.passThreshold * 100)}% ก่อน`,
+    };
+    previous = { order: stage.order, cleared, passThreshold: stage.passThreshold };
+    return entry;
+  });
+}
+
+export function totalStars(path) {
+  return path.reduce((sum, stage) => sum + stage.stars, 0);
+}
