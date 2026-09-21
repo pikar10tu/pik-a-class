@@ -1,5 +1,5 @@
-import { collection, doc, documentId, getDoc, getDocs, query, setDoc, where } from 'firebase/firestore';
-import { buildQuery, stageConstraints, myClearConstraints } from './queries.js';
+import { collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore';
+import { buildQuery, stageConstraints, stagePoolConstraints, myClearConstraints } from './queries.js';
 
 export async function fetchStages(db, options = {}) {
   const snapshot = await getDocs(
@@ -19,15 +19,19 @@ export async function saveStage(db, id, data) {
   return ref.id;
 }
 
-// itemIds มีได้ไม่เกิน 20 ตาม schema ส่วนลิมิตของ `in` คือ 30 จึงจบใน query เดียวเสมอ
-export async function fetchStageExercises(db, itemIds) {
-  if (itemIds.length === 0) return [];
+// ดึงคลังของด่านด้วยเงื่อนไข ไม่ใช่รายชื่อข้อ
+// ไม่ใส่ limit เพราะ limit ที่ไม่มี orderBy จะได้ "ข้อแรกๆ ตาม document id" ซึ่งเป็นชุดเดิมทุกครั้ง
+// กลายเป็นอคติถาวรที่มองไม่เห็น แทนที่จะสุ่มจริง — คลังโตเกินคาดค่อยกลับมาทำ paging
+export async function fetchStagePool(db, stage, tier) {
   const snapshot = await getDocs(
-    query(collection(db, 'exercises'), where(documentId(), 'in', itemIds)),
+    buildQuery(db, 'exercises', stagePoolConstraints({
+      skill: stage.skill,
+      level: stage.level,
+      tags: stage.tags ?? [],
+      tier,
+    })),
   );
-  const byId = new Map(snapshot.docs.map((snap) => [snap.id, { id: snap.id, ...snap.data() }]));
-  // Firestore ไม่รับประกันลำดับผลลัพธ์ ต้องเรียงกลับตาม itemIds เอง
-  return itemIds.map((id) => byId.get(id)).filter(Boolean);
+  return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }));
 }
 
 export async function fetchMyClears(db, uid) {
