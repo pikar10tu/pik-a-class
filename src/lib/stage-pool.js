@@ -1,6 +1,8 @@
 // คลังของด่านกับการสุ่มข้อมาเล่นหนึ่งรอบ — ตรรกะบริสุทธิ์ ไม่แตะ Firestore
 // เงื่อนไขที่นี่ต้องสะท้อน stagePoolConstraints ใน queries.js ให้ตรงกัน
 // ที่โน่นใช้กรองฝั่งเซิร์ฟเวอร์ ที่นี่ใช้ตรวจฝั่งเราเองตอนหาข้อกำพร้า
+// ข้อยกเว้น: isPreview ไม่รวมใน findOrphanExercises เพราะหาข้อกำพร้าถามยาว
+// "ข้อใดที่อนุมัติแล้วแต่ไม่มีด่านไหนลากได้" (มุมมอง full-tier สูงสุด) ไม่ใช่ "ข้อที่ผู้ใช้ปัจจุบันสามารถหาได้"
 
 export function matchesStagePool(stage, exercise) {
   if (exercise.reviewStatus !== 'published') return false;

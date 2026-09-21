@@ -55,6 +55,23 @@ describe('pickRound', () => {
     const ids = new Set(pool.map((item) => item.id));
     for (const item of pickRound(pool, 4, () => 0.3)) expect(ids.has(item.id)).toBe(true);
   });
+
+  it('ลำดับที่ต่างกันของ random ทำให้ลำดับข้อต่างกัน', () => {
+    const seq1 = () => 0.1;
+    const seq2 = () => 0.9;
+    const order1 = pickRound(pool, 5, seq1).map((item) => item.id).join('');
+    const order2 = pickRound(pool, 5, seq2).map((item) => item.id).join('');
+    expect(order1).not.toBe(order2);
+  });
+
+  it('random ที่ต่างกันเลือกเซตข้อต่างกันเมื่อคลังใหญ่กว่า drawCount', () => {
+    const bigPool = [ex('a'), ex('b'), ex('c'), ex('d'), ex('e'), ex('f'), ex('g')];
+    let i1 = 0;
+    let i2 = 0;
+    const set1 = new Set(pickRound(bigPool, 3, () => (i1 += 0.1) % 1).map((item) => item.id));
+    const set2 = new Set(pickRound(bigPool, 3, () => (i2 += 0.3) % 1).map((item) => item.id));
+    expect([...set1].sort().join('')).not.toBe([...set2].sort().join(''));
+  });
 });
 
 describe('matchesStagePool', () => {
