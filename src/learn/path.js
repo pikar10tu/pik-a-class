@@ -17,12 +17,14 @@ const level = params.get('level');
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
 const isValidQuery = Object.hasOwn(SKILL_LABELS, skill ?? '') && LEVELS.includes(level ?? '');
 
-// พิกัดเส้นทางซิกแซก — วงกลมด่านสลับซ้าย/ขวาไล่ลงมา เส้นโค้งลากผ่านศูนย์กลางทุกวง
+// พิกัดเส้นทางผจญภัยไต่ระดับจากล่างขึ้นบน — ด่าน 1 อยู่ล่างสุด มุ่งหน้าสู่ยอดปราสาท/บอสใหญ่ด้านบนสุด
 const NODE = 64;
-const STEP = 118;
+const STEP = 120;
 const LEFT = 76;
 const RIGHT = 216;
 const CANVAS_WIDTH = 292;
+const TOP_PAD = 96;
+const BOTTOM_PAD = 90;
 
 document.getElementById('back-link').href = `${base}learn/index.html`;
 document.getElementById('empty-back').href = `${base}learn/index.html`;
@@ -35,8 +37,12 @@ function starMarkup(stars) {
   return `<span aria-hidden="true">${filled}<span class="off">${empty}</span></span><span class="sr-only">ได้ ${stars} จาก 3 ดาว</span>`;
 }
 
-function centerOf(index) {
-  return { x: index % 2 === 0 ? LEFT : RIGHT, y: 60 + index * STEP };
+function centerOf(index, total) {
+  // index 0 (ด่าน 1) อยู่ล่างสุด -> y สูงสุด
+  // index total - 1 (ด่านสุดท้าย/บอส) อยู่บนสุด -> y ต่ำสุด (TOP_PAD)
+  const y = TOP_PAD + (total - 1 - index) * STEP;
+  const x = index % 2 === 0 ? LEFT : RIGHT;
+  return { x, y };
 }
 
 // เส้นทางโค้งลากผ่านทุกด่านจริง ไม่ใช่เส้นตรงหลังวงกลม
@@ -83,9 +89,37 @@ function renderPath(path) {
   canvas.replaceChildren();
   canvas.hidden = false;
 
-  const points = path.map((_, index) => centerOf(index));
-  const height = 60 + Math.max(0, path.length - 1) * STEP + 96;
+  const total = path.length;
+  const points = path.map((_, index) => centerOf(index, total));
+  const height = TOP_PAD + Math.max(0, total - 1) * STEP + BOTTOM_PAD;
 
+  // 1. หมุดยอดเขา / ปราสาทไวยากรณ์ (Summit Landmark ด้านบนสุด)
+  const summit = document.createElement('div');
+  summit.className = 'path-landmark path-landmark--summit';
+  summit.innerHTML = `
+    <div class="landmark-pill">
+      <span class="landmark-icon">🏰</span>
+      <span class="landmark-text">ยอดปราสาทไวยากรณ์</span>
+    </div>
+  `;
+  summit.style.top = '24px';
+  summit.style.left = '50%';
+  canvas.appendChild(summit);
+
+  // 2. หมุดจุดเริ่มต้นผจญภัย (Start Landmark ด้านล่างสุด)
+  const startLandmark = document.createElement('div');
+  startLandmark.className = 'path-landmark path-landmark--start';
+  startLandmark.innerHTML = `
+    <div class="landmark-pill">
+      <span class="landmark-icon">🏕️</span>
+      <span class="landmark-text">จุดเริ่มต้นผจญภัย</span>
+    </div>
+  `;
+  startLandmark.style.top = `${height - 48}px`;
+  startLandmark.style.left = '50%';
+  canvas.appendChild(startLandmark);
+
+  // 3. SVG เส้นทางโค้งไต่เขาจากล่างขึ้นบน
   const svgNs = 'http://www.w3.org/2000/svg';
   const svg = document.createElementNS(svgNs, 'svg');
   svg.setAttribute('viewBox', `0 0 ${CANVAS_WIDTH} ${height}`);
@@ -106,15 +140,34 @@ function renderPath(path) {
   }
   canvas.appendChild(svg);
 
+  // 4. ด่านที่ควรโฟกัส (Active Node: ด่านแรกที่ unlocked แต่ยังไม่เคลียร์ หรือด่านสุดท้ายถ้าเคลียร์หมดแล้ว)
+  const activeStage = path.find((s) => s.unlocked && !s.cleared) || path[path.length - 1];
+
   path.forEach((stage, index) => {
     const point = points[index];
     const state = nodeState(stage);
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `path-node path-node-${state}`;
-    if (stage.order === 9 || stage.order === 10 || (stage.title && stage.title.includes('บอส'))) {
+
+    const isFinalBoss = stage.order === path.length && (stage.title?.includes('บอส') || stage.title?.includes('Master'));
+    if (isFinalBoss) {
+      button.classList.add('path-node--boss', 'path-node--final-boss');
+    } else if (stage.order === 9 || stage.order === 10 || (stage.title && stage.title.includes('บอส'))) {
       button.classList.add('path-node--boss');
     }
+
+    if (stage.id === activeStage?.id) {
+      button.classList.add('path-node--active');
+
+      const callout = document.createElement('div');
+      callout.className = 'path-callout';
+      callout.textContent = 'ลุยเลย! ✨';
+      callout.style.left = `${(point.x / CANVAS_WIDTH) * 100}%`;
+      callout.style.top = `calc(${(point.y / height) * 100}% - ${NODE / 2 + 28}px)`;
+      canvas.appendChild(callout);
+    }
+
     button.textContent = nodeLabel(stage, state);
     button.setAttribute('aria-label', nodeAriaLabel(stage, state));
     button.style.left = `calc(${(point.x / CANVAS_WIDTH) * 100}% - ${NODE / 2}px)`;
@@ -132,6 +185,26 @@ function renderPath(path) {
       badge.style.top = `calc(${(point.y / height) * 100}% + ${NODE / 2 - 2}px)`;
       canvas.appendChild(badge);
     }
+  });
+
+  // 5. ปุ่มด่านปัจจุบัน (FAB) และ Auto-Scroll ไปยังด่านปัจจุบัน
+  const snapBtn = document.getElementById('snap-active-btn');
+  const scrollToActive = (smooth = true) => {
+    const activeEl = canvas.querySelector('.path-node--active') || canvas.querySelector('.path-node');
+    if (activeEl) {
+      activeEl.scrollIntoView({ behavior: smooth ? 'smooth' : 'auto', block: 'center' });
+    }
+  };
+
+  if (snapBtn) {
+    snapBtn.hidden = false;
+    snapBtn.onclick = () => scrollToActive(true);
+  }
+
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      scrollToActive(true);
+    }, 120);
   });
 }
 
@@ -197,6 +270,8 @@ document.getElementById('sheet-close').addEventListener('click', () => {
 function showEmpty(message) {
   document.getElementById('loading-note').hidden = true;
   document.getElementById('path-canvas').hidden = true;
+  const snapBtn = document.getElementById('snap-active-btn');
+  if (snapBtn) snapBtn.hidden = true;
   document.getElementById('empty-message').textContent = message;
   document.getElementById('empty-state').hidden = false;
 }
