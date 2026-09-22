@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
 
 const EMPTY_MESSAGE_FULL = 'ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ';
-const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักปิ๊กเพื่อขอสิทธิ์เพิ่มดูนะครับ';
+const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ สามารถติดต่อผู้สอนเพื่อขอรับสิทธิ์ได้เลยครับ';
 
 document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
@@ -38,7 +38,7 @@ function openLockDialog(level, skill) {
     lockTitle.textContent = `ระดับ ${level} ยังไม่ได้เปิดนะครับ`;
     lockBody.innerHTML = `
       <p>ตอนนี้ระบบเปิดให้ลองเล่นระดับ <strong>A1 ได้ฟรีครบทุกด่าน</strong> เลยครับ</p>
-      <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ ${level} ลุยต่อ ทักบอกปิ๊กได้เลยครับ เดี๋ยวเปิดให้!</p>
+      <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ ${level} ลุยต่อ ทักหาพี่ปิ๊กได้เลยครับ เดี๋ยวเปิดให้!</p>
     `;
   }
   lockDialog.showModal();
@@ -89,7 +89,7 @@ function render(stages, tier, isUserAdmin, userDoc) {
     } else {
       button.className = 'btn-ghost';
       button.style.opacity = '0.9';
-      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ทักปิ๊กเพื่อปลดล็อก)`;
+      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ติดต่อผู้สอนเพื่อปลดล็อก)`;
       button.addEventListener('click', () => {
         openLockDialog(level, skill);
       });

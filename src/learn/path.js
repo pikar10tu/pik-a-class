@@ -297,7 +297,7 @@ if (!isValidQuery) {
 
   requireLogin(async (firebaseUser, userDoc) => {
     if (!isLevelAllowed(userDoc, level)) {
-      showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักปิ๊กเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
+      showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
       return;
     }
 

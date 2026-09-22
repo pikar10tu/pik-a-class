@@ -526,7 +526,7 @@ requireLogin(async (firebaseUser, userDoc) => {
       return;
     }
     if (!isLevelAllowed(userDoc, stage.level)) {
-      showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักปิ๊กเพื่อขอเปิดด่านได้เลยครับ`, backHref());
+      showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านได้เลยครับ`, backHref());
       return;
     }
     setupGrammarNote(stage.tags);
@@ -566,7 +566,7 @@ requireLogin(async (firebaseUser, userDoc) => {
     // ถ้าบัญชีนี้อ่านไม่ได้จริงๆ Firestore จะปฏิเสธทั้ง query เด็กจึงต้องเห็นเหตุผลจริง
     // ไม่ใช่ "โหลดไม่สำเร็จ กรุณาลองใหม่" ที่ชวนให้กดซ้ำไปเรื่อยๆ ทั้งที่ลองอีกกี่ครั้งก็ไม่ขึ้น
     if (error?.code === 'permission-denied') {
-      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ลองทักปิ๊กเพื่อขอเปิดได้ครับ', backHref());
+      showEmpty('ด่านนี้ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านได้ครับ', backHref());
     } else {
       showEmpty('โหลดด่านไม่สำเร็จ กรุณาลองใหม่', backHref());
     }
