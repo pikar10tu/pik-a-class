@@ -554,11 +554,21 @@ body::after {
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
 }
 
+.path-landmark--summit {
+  top: 24px;
+  left: 50%;
+}
+
 .path-landmark--summit .landmark-pill {
   border-color: #fde68a;
   background: linear-gradient(135deg, rgba(254, 243, 199, 0.95), rgba(253, 230, 138, 0.9));
   color: #92400e;
   box-shadow: 0 4px 14px rgba(245, 158, 11, 0.25);
+}
+
+.path-landmark--start {
+  bottom: 24px;
+  left: 50%;
 }
 
 .path-landmark--start .landmark-pill {

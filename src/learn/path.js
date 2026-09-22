@@ -102,8 +102,6 @@ function renderPath(path) {
       <span class="landmark-text">ยอดปราสาทไวยากรณ์</span>
     </div>
   `;
-  summit.style.top = '24px';
-  summit.style.left = '50%';
   canvas.appendChild(summit);
 
   // 2. หมุดจุดเริ่มต้นผจญภัย (Start Landmark ด้านล่างสุด)
@@ -115,8 +113,6 @@ function renderPath(path) {
       <span class="landmark-text">จุดเริ่มต้นผจญภัย</span>
     </div>
   `;
-  startLandmark.style.top = `${height - 48}px`;
-  startLandmark.style.left = '50%';
   canvas.appendChild(startLandmark);
 
   // 3. SVG เส้นทางโค้งไต่เขาจากล่างขึ้นบน
@@ -201,10 +197,11 @@ function renderPath(path) {
     snapBtn.onclick = () => scrollToActive(true);
   }
 
+  // เลื่อนจอไปด่านปัจจุบันทันทีเมื่อเข้าหน้า เพื่อให้อยู่ที่จุดเริ่มต้น/ด่านล่าสุดทันที ไม่ค้างกลางทาง
   requestAnimationFrame(() => {
-    setTimeout(() => {
-      scrollToActive(true);
-    }, 120);
+    scrollToActive(false);
+    setTimeout(() => scrollToActive(false), 80);
+    setTimeout(() => scrollToActive(false), 250);
   });
 }
 
