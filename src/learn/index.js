@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
 
 const EMPTY_MESSAGE_FULL = 'ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ';
-const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักพี่ปิ๊กเพื่อขอสิทธิ์เพิ่มดูนะครับ';
+const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักปิ๊กเพื่อขอสิทธิ์เพิ่มดูนะครับ';
 
 document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
@@ -29,17 +29,16 @@ if (lockCloseX) lockCloseX.addEventListener('click', () => lockDialog?.close());
 function openLockDialog(level, skill) {
   if (!lockDialog) return;
   if (level === 'B1' || level === 'B2') {
-    lockTitle.textContent = `🏰 ด่านระดับ ${level} กำลังก่อสร้าง!`;
+    lockTitle.textContent = `ระดับ ${level} กำลังเตรียมเนื้อหาครับ`;
     lockBody.innerHTML = `
-      <p>เกาะไวยากรณ์ระดับ <strong>${level}</strong> กำลังอยู่ระหว่างการก่อสร้างอย่างเข้มข้นครับ! 🚧✨</p>
-      <p>พี่ปิ๊กกำลังเตรียมเนื้อหาและแบบฝึกหัดชุดพิเศษให้อยู่ครับ แนะนำให้ตะลุยเกาะ <strong>A1 และ A2</strong> ให้เชี่ยวชาญก่อนได้เลยครับ!</p>
+      <p>เนื้อหาและแบบฝึกหัดระดับ <strong>${level}</strong> กำลังอยู่ระหว่างการจัดทำครับ</p>
+      <p>แนะนำให้ฝึกฝนระดับ <strong>A1 และ A2</strong> ให้คล่องก่อนได้เลยครับ รอติดตามได้เร็วๆ นี้!</p>
     `;
   } else {
-    lockTitle.textContent = `🏰 ด่านระดับ ${level} ปิดผนึกอยู่!`;
+    lockTitle.textContent = `ระดับ ${level} ยังไม่ได้เปิดนะครับ`;
     lockBody.innerHTML = `
-      <p>ยินดีต้อนรับสู่ <strong>Pik a Class</strong> ครับ! 🎒</p>
-      <p>สำหรับสมาชิกใหม่ พี่ปิ๊กเปิดเกาะ <strong>A1 ให้ผจญภัยฟรีครบทั้ง 20 ด่าน</strong> (ข้อสอบกว่า 150 ข้อ) เพื่อสร้างรากฐานไวยากรณ์ให้แน่นเปรี๊ยะก่อนครับ ✨</p>
-      <p>เมื่อหนูๆ พร้อมลุยต่อในระดับ ${level} หรือต้องการขอเปิดด่านล่วงหน้า สามารถทักหาพี่ปิ๊กทาง LINE เพื่อปลดล็อกได้เลยครับ!</p>
+      <p>ตอนนี้ระบบเปิดให้ลองเล่นระดับ <strong>A1 ได้ฟรีครบทุกด่าน</strong> เลยครับ</p>
+      <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ ${level} ลุยต่อ ทักบอกปิ๊กทาง LINE ได้เลยครับ เดี๋ยวเปิดให้!</p>
     `;
   }
   lockDialog.showModal();
@@ -90,7 +89,7 @@ function render(stages, tier, isUserAdmin, userDoc) {
     } else {
       button.className = 'btn-ghost';
       button.style.opacity = '0.9';
-      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ปลดล็อกเมื่อผ่าน A1 / ติดต่อพี่ปิ๊ก)`;
+      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ทักปิ๊กเพื่อปลดล็อก)`;
       button.addEventListener('click', () => {
         openLockDialog(level, skill);
       });
@@ -106,7 +105,7 @@ function render(stages, tier, isUserAdmin, userDoc) {
       futureBtn.type = 'button';
       futureBtn.className = 'btn-ghost';
       futureBtn.style.opacity = '0.75';
-      futureBtn.textContent = `🔒 ไวยากรณ์ · ระดับ ${futureLevel} (เร็วๆ นี้ · กำลังสร้าง)`;
+      futureBtn.textContent = `🔒 ไวยากรณ์ · ระดับ ${futureLevel} (เร็วๆ นี้)`;
       futureBtn.addEventListener('click', () => {
         openLockDialog(futureLevel, 'grammar');
       });

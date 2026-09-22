@@ -32,31 +32,30 @@
     <div id="empty-box" hidden>
       <p id="empty-note" class="hint">ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ</p>
       <div id="admin-draft-hint" class="admin-draft-box" hidden>
-        <p>💡 <strong>สำหรับพี่ปิ๊ก:</strong> ด่านในระบบยังเป็นฉบับร่าง (Draft) ทั้งหมด นักเรียนจึงยังมองไม่เห็น คุณสามารถไปตรวจสอบและกดอนุมัติด่านได้ที่นี่ครับ:</p>
+        <p>💡 <strong>สำหรับผู้ดูแลระบบ:</strong> ด่านในระบบยังเป็นฉบับร่าง (Draft) ทั้งหมด นักเรียนจึงยังมองไม่เห็น คุณสามารถไปตรวจสอบและกดอนุมัติด่านได้ที่นี่ครับ:</p>
         <a id="go-admin-stages" class="btn-primary" href="#">ไปหน้าจัดการด่าน (Admin Stages) →</a>
       </div>
     </div>
   </main>
 
-  <!-- Modal สำหรับด่านที่ล็อกอยู่ (สไตล์ผจญภัย Option 1) -->
+  <!-- Modal สำหรับด่านที่ล็อกอยู่ (สไตล์ 1: ชิลๆ จริงใจ ไม่เวิ่นเว้อ) -->
   <dialog id="lock-dialog" class="modal-dialog">
     <div class="lock-dialog-card">
       <div class="lock-dialog-header">
-        <span class="lock-dialog-badge">🏰 ด่านผจญภัยปิดผนึกอยู่</span>
+        <span class="lock-dialog-badge">🔒 ระดับนี้ยังไม่ได้เปิด</span>
         <button id="lock-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิด">✕</button>
       </div>
-      <div class="lock-dialog-icon">🗺️✨</div>
-      <h2 id="lock-dialog-title" class="lock-dialog-title">ด่านระดับ A2 ปิดผนึกอยู่!</h2>
+      <div class="lock-dialog-icon">🔒✨</div>
+      <h2 id="lock-dialog-title" class="lock-dialog-title">ระดับ A2 ยังไม่ได้เปิดนะครับ</h2>
       <div id="lock-dialog-body" class="lock-dialog-body">
-        <p>ยินดีต้อนรับสู่ <strong>Pik a Class</strong> ครับ! 🎒</p>
-        <p>สำหรับสมาชิกใหม่ พี่ปิ๊กเปิดเกาะ <strong>A1 ให้ผจญภัยฟรีครบทั้ง 20 ด่าน</strong> (ข้อสอบกว่า 150 ข้อ) เพื่อสร้างรากฐานไวยากรณ์ให้แน่นเปรี๊ยะก่อนครับ ✨</p>
-        <p>เมื่อหนูๆ พร้อมลุยต่อในระดับ A2 หรือต้องการขอเปิดด่านล่วงหน้า สามารถทักหาพี่ปิ๊กทาง LINE เพื่อปลดล็อกได้เลยครับ!</p>
+        <p>ตอนนี้ระบบเปิดให้ลองเล่นระดับ <strong>A1 ได้ฟรีครบทุกด่าน</strong> เลยครับ</p>
+        <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ A2 ลุยต่อ ทักบอกปิ๊กทาง LINE ได้เลยครับ เดี๋ยวเปิดให้!</p>
       </div>
       <div class="lock-dialog-actions">
         <a id="line-contact-btn" class="btn-chunky btn-line-contact" href="https://line.me/ti/p/~prawich.aum" target="_blank" rel="noopener noreferrer">
-          💬 ทักหาพี่ปิ๊กทาง LINE (ID: prawich.aum)
+          💬 ทัก LINE ปิ๊ก (ID: prawich.aum)
         </a>
-        <button id="lock-dialog-close" type="button" class="btn-ghost">ไว้ลุยเกาะ A1 ก่อนนะ (ปิด)</button>
+        <button id="lock-dialog-close" type="button" class="btn-ghost">โอเค เดี๋ยวเล่น A1 ก่อน</button>
       </div>
     </div>
   </dialog>
