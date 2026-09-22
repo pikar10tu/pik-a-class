@@ -1,49 +1,48 @@
 /* Scenic Pastel Atmosphere & Playful Accents */
-body:has(.learn-main),
-body:has(.dashboard-main) {
-  background: linear-gradient(180deg, #f0fdf4 0%, #e0f2fe 40%, #f8fafc 100%);
-  background-attachment: fixed;
+body {
+  background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 30%, #ecfdf5 70%, #d1fae5 100%) !important;
+  background-attachment: fixed !important;
   min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-body:has(.learn-main)::before,
-body:has(.dashboard-main)::before {
+/* เมฆปุกปุยสีขาวลอยละล่องแอนิเมชันนุ่มนวล */
+body::before {
   content: '';
   position: fixed;
-  top: -60px;
-  right: -50px;
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(224, 242, 254, 0) 70%);
-  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 250%;
+  height: 240px;
   pointer-events: none;
-  z-index: -1;
-  animation: floatCloud1 14s ease-in-out infinite alternate;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='200' viewBox='0 0 600 200'%3E%3Cpath fill='%23ffffff' fill-opacity='0.8' d='M80,150 Q55,150 40,132 Q25,114 38,94 Q52,74 78,80 Q90,48 125,44 Q165,40 185,72 Q205,60 232,72 Q260,86 252,112 Q272,124 265,142 Q258,150 225,150 Z'/%3E%3Cpath fill='%23ffffff' fill-opacity='0.65' d='M380,120 Q360,120 348,106 Q336,92 348,76 Q360,62 380,66 Q392,40 418,36 Q452,32 468,58 Q485,48 505,58 Q525,70 518,90 Q535,100 530,114 Q525,120 500,120 Z'/%3E%3Cpath fill='%23ffffff' fill-opacity='0.5' d='M10,90 Q0,90 -5,80 Q-10,70 -5,60 Q0,50 10,53 Q18,35 35,32 Q58,30 68,48 Q80,40 92,48 Q105,56 100,70 Q112,78 108,86 Q104,90 90,90 Z'/%3E%3Ccircle cx='110' cy='180' r='2.5' fill='%23ffffff' fill-opacity='0.8'/%3E%3Ccircle cx='310' cy='70' r='3' fill='%23ffffff' fill-opacity='0.7'/%3E%3Ccircle cx='560' cy='130' r='2.5' fill='%23ffffff' fill-opacity='0.8'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 600px 200px;
+  animation: driftClouds 45s linear infinite;
+  opacity: 0.95;
 }
 
-body:has(.learn-main)::after,
-body:has(.dashboard-main)::after {
+/* ทุ่งหญ้าเนินเขาพาสเทลแสนสดชื่นที่พื้นผิวด้านล่าง */
+body::after {
   content: '';
   position: fixed;
-  bottom: 5%;
-  left: -60px;
-  width: 360px;
-  height: 360px;
-  background: radial-gradient(circle, rgba(167, 243, 208, 0.4) 0%, rgba(209, 250, 229, 0) 70%);
-  border-radius: 50%;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
   pointer-events: none;
-  z-index: -1;
-  animation: floatCloud2 18s ease-in-out infinite alternate;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='140' viewBox='0 0 1200 140' preserveAspectRatio='none'%3E%3Cpath fill='%23a7f3d0' fill-opacity='0.6' d='M0,70 Q300,15 600,60 T1200,45 L1200,140 L0,140 Z'/%3E%3Cpath fill='%236ee7b7' fill-opacity='0.45' d='M0,90 Q350,35 750,80 T1200,65 L1200,140 L0,140 Z'/%3E%3C/svg%3E");
+  background-size: 100% 140px;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
-@keyframes floatCloud1 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(-30px, 35px) scale(1.08); }
-}
-
-@keyframes floatCloud2 {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(35px, -25px) scale(1.06); }
+@keyframes driftClouds {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-600px); }
 }
 
 .learn-main {
@@ -51,6 +50,7 @@ body:has(.dashboard-main)::after {
   margin: 0 auto;
   padding: var(--space-3);
   position: relative;
+  z-index: 1;
 }
 
 /* ปุ่มออกเดียวของสองหน้านี้ และเด็กกดบนมือถือ — ต้องแตะโดนง่าย อย่างน้อย 44px ตามเกณฑ์ touch target
@@ -274,6 +274,13 @@ body:has(.dashboard-main)::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+  padding: 4px 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
 }
 
 .path-total-stars {
@@ -283,11 +290,25 @@ body:has(.dashboard-main)::after {
 
 .path-summary {
   text-align: center;
-  margin-top: 0;
+  margin: var(--space-2) auto 0;
+  display: table;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 4px 18px;
+  border-radius: var(--radius-full);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
 }
 
 .path-empty {
   text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: var(--space-4);
+  border: 1.5px solid rgba(255, 255, 255, 0.9);
 }
 
 .path-empty-link {
@@ -299,7 +320,26 @@ body:has(.dashboard-main)::after {
 
 .path-canvas {
   position: relative;
-  margin-top: var(--space-4);
+  margin-top: var(--space-3);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 28px;
+  padding: var(--space-4) var(--space-2) var(--space-5);
+  box-shadow: 0 12px 32px rgba(14, 165, 233, 0.12), 0 2px 10px rgba(0, 0, 0, 0.04);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+}
+
+#play-view,
+#result-view {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: var(--space-4);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08), 0 2px 8px rgba(0, 0, 0, 0.02);
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  margin-top: var(--space-2);
 }
 
 .path-track {
