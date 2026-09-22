@@ -1033,5 +1033,28 @@ body::after {
   border-bottom-width: 2px;
 }
 
+.btn-fb-contact {
+  background: #1877f2;
+  color: #ffffff;
+  border-color: #0d65d9;
+  border-bottom-width: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.25);
+  transition: transform 0.1s ease, filter 0.15s ease;
+}
 
+.btn-fb-contact:hover {
+  filter: brightness(1.05);
+}
 
+.btn-fb-contact:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}

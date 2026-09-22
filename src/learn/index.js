@@ -38,7 +38,7 @@ function openLockDialog(level, skill) {
     lockTitle.textContent = `ระดับ ${level} ยังไม่ได้เปิดนะครับ`;
     lockBody.innerHTML = `
       <p>ตอนนี้ระบบเปิดให้ลองเล่นระดับ <strong>A1 ได้ฟรีครบทุกด่าน</strong> เลยครับ</p>
-      <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ ${level} ลุยต่อ ทักบอกปิ๊กทาง LINE ได้เลยครับ เดี๋ยวเปิดให้!</p>
+      <p>ถ้าเล่นจบ A1 แล้ว หรืออยากปลดล็อกระดับ ${level} ลุยต่อ ทักบอกปิ๊กได้เลยครับ เดี๋ยวเปิดให้!</p>
     `;
   }
   lockDialog.showModal();
