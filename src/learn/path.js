@@ -230,6 +230,17 @@ function openSheet(stage, state) {
           <span class="concept-formula-label">โครงสร้าง:</span>
           <code class="concept-formula-code">${note.formula}</code>
         </div>
+        ${note.tips ? `
+          <div class="concept-card-tip" style="margin-top: 6px; font-size: 0.8125rem; color: #475569;">
+            💡 <strong>ทริก:</strong> ${note.tips}
+          </div>` : ''}
+        ${note.examples && note.examples.length > 0 ? `
+          <div class="concept-card-examples" style="margin-top: 6px; font-size: 0.8125rem;">
+            <strong>ตัวอย่าง:</strong>
+            <ul style="margin: 2px 0 0 16px; padding: 0; color: var(--color-text);">
+              ${note.examples.slice(0, 2).map((ex) => `<li>${ex}</li>`).join('')}
+            </ul>
+          </div>` : ''}
       `;
     } else {
       conceptEl.hidden = true;

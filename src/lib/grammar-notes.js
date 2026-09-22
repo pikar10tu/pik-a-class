@@ -156,6 +156,19 @@ export const GRAMMAR_NOTES = {
     ],
     tips: 'จำง่ายๆ: at จุดเวลา -> on วัน -> in เดือนปี'
   },
+  'grammar:present-continuous': {
+    title: 'Present Continuous (กำลังกระทำอยู่ในขณะนี้)',
+    badge: 'กำลังเกิดขึ้นตอนนี้',
+    concept: 'ใช้บอกการกระทำที่กำลังดำเนินอยู่ในขณะที่พูด มักมีคำบอกเวลา เช่น now, right now, at the moment, Listen!, Look!',
+    formula: 'S + is/am/are + V.ing',
+    negQuestion: 'ปฏิเสธ: isn’t / aren’t / am not + V.ing | คำถาม: Is / Am / Are + S + V.ing?',
+    examples: [
+      'He is reading a comic book right now.',
+      'Look! It is raining outside.',
+      'Are they playing football in the garden?'
+    ],
+    tips: 'ระวังหลุมพรางเด็กไทย: ห้ามลืม Verb to be เด็ดขาด! เช่น "He sleeping" (ผิด) ต้องเป็น "He is sleeping" (ถูก)'
+  },
   'grammar:can-cant': {
     title: 'can / can\'t (ความสามารถ & ขออนุญาต)',
     badge: 'ทำได้ vs ทำไม่ได้',
