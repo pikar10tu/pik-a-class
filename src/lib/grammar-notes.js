@@ -233,6 +233,100 @@ export const GRAMMAR_NOTES = {
       'They were happy yesterday.'
     ],
     tips: 'ขอให้โชคดีในการประลองกับบอสใหญ่ประจำระดับ A1 ครับ!'
+  },
+  'grammar:some-any-countable': {
+    title: 'Countable & Uncountable Nouns + Quantifiers',
+    badge: 'นับได้ vs นับไม่ได้ & some/any',
+    concept: 'คำนามนับได้มีรูปเอกพจน์และพหูพจน์ (a cat / two cats) คำนามนับไม่ได้ไม่มีรูปพหูพจน์ (water, sugar, money, homework) some ใช้ในบอกเล่า, any ใช้ในปฏิเสธและคำถาม',
+    formula: 'some + นามพหูพจน์/นับไม่ได้ (บอกเล่า) | any + นามพหูพจน์/นับไม่ได้ (ปฏิเสธ/คำถาม) | much + นับไม่ได้ | many + นับได้พหูพจน์',
+    negQuestion: 'ข้อยกเว้น: some ใช้ในคำถามได้เมื่อเป็นการ "ยื่นข้อเสนอ" หรือ "ขอร้อง" เช่น Would you like some tea? / Can I have some water?',
+    examples: [
+      'There is some milk in the fridge.',
+      'We don’t have any apples left.',
+      'How many students are in the room?',
+      'How much money do you need?'
+    ],
+    tips: 'คำว่า money, advice, information, furniture, homework ในภาษาอังกฤษเป็น "นามนับไม่ได้" เสมอ ห้ามเติม s เด็ดขาด!'
+  },
+  'grammar:comparatives-superlatives': {
+    title: 'ขั้นกว่า & ขั้นสุด (Comparatives & Superlatives)',
+    badge: 'เปรียบเทียบ -er / more vs -est / most',
+    concept: 'ขั้นกว่าใช้เปรียบเทียบของ 2 สิ่ง (-er than หรือ more ... than) ขั้นสุดใช้เปรียบเทียบ 3 สิ่งขึ้นไป (the -est หรือ the most ...) และ as...as ใช้บอกความเท่ากัน',
+    formula: 'ขั้นกว่า: Adj+er than หรือ more + Adj + than | ขั้นสุด: the + Adj+est หรือ the most + Adj | เท่ากัน: as + Adj + as',
+    negQuestion: 'คำ 1 พยางค์เติม -er/-est (tall -> taller -> tallest) | คำ 2 พยางค์ขึ้นไปใช้ more/most (more beautiful -> most beautiful)',
+    examples: [
+      'A plane is faster than a train.',
+      'This is the most expensive watch in the shop.',
+      'He is as tall as his father.'
+    ],
+    tips: 'ระวังคำเปลี่ยนรูปพิเศษ: good -> better -> the best, bad -> worse -> the worst, far -> further -> the furthest'
+  },
+  'grammar:modals-obligation': {
+    title: 'Modals of Obligation & Advice (must / have to / should)',
+    badge: 'หน้าที่ กฎหมาย & คำแนะนำ',
+    concept: 'must = จำเป็นต้องทำอย่างยิ่ง (กฎหมาย/ความรู้สึกตนเอง), have to = จำเป็นต้องทำ (กฎระเบียบภายนอก), should = ควรทำ (คำแนะนำ), mustn’t = ห้ามทำเด็ดขาด, don’t have to = ไม่จำเป็นต้องทำ',
+    formula: 'S + must / have to / should + V.1 (รูปแท้ไม่ผัน)',
+    negQuestion: 'ระวังความหมายต่างกันสิ้นเชิง: mustn’t (ห้ามทำเด็ดขาด/ผิดกฎ) vs don’t have to (ไม่จำเป็นต้องทำ/จะทำหรือไม่ก็ได้)',
+    examples: [
+      'You must stop at the red traffic light.',
+      'I have to wear a school uniform on Mondays.',
+      'You should drink plenty of water every day.',
+      'You mustn’t smoke inside the hospital.'
+    ],
+    tips: 'หลัง modal verbs ทุกตัว (must, should, can) กริยาต้องเป็น V.1 รูปเดิมเสมอ ห้ามเติม to, -s, -ed, -ing'
+  },
+  'grammar:verb-patterns-basic': {
+    title: 'Basic Verb Patterns (Gerunds & Infinitives)',
+    badge: 'V.ing vs to + V.1',
+    concept: 'เมื่อมีกริยา 2 ตัวติดกัน กริยาตัวหลังจะอยู่ในรูป V.ing (Gerund) หรือ to + V.1 (Infinitive) ขึ้นอยู่กับกริยาตัวหน้า',
+    formula: 'Verb + V.ing (เช่น enjoy, like, mind, finish, practice) | Verb + to V.1 (เช่น want, hope, decide, plan, need)',
+    negQuestion: 'หลังบุพบท (prepositions: in, on, at, about, for) ต้องตามด้วย V.ing เสมอ เช่น He is good at swimming.',
+    examples: [
+      'She enjoys reading fantasy novels before bed.',
+      'I want to travel to Japan next summer.',
+      'Thank you for helping me with this project.'
+    ],
+    tips: 'จำกลุ่มยอดฮิต: want to, hope to, decide to, need to | enjoy -ing, finish -ing, practice -ing'
+  },
+  'grammar:conjunctions-basic': {
+    title: 'Basic Conjunctions (คำเชื่อมประโยค)',
+    badge: 'and, but, so, because, although',
+    concept: 'ใช้เชื่อมประโยคหรือความคิดเข้าด้วยกัน: and (และ - เสริมกัน), but (แต่ - ขัดแย้ง), so (ดังนั้น - ผลลัพธ์), because (เพราะว่า - สาเหตุ), although (แม้ว่า - ขัดแย้ง)',
+    formula: 'เหตุ + so + ผล | ผล + because + เหตุ | although + ประโยคขัดแย้ง, ประโยคหลัก',
+    negQuestion: 'ภาษาไทยชอบพูด "เพราะว่า...ดังนั้น..." แต่ภาษาอังกฤษเลือกใช้อย่างใดอย่างหนึ่ง ห้ามใช้ because คู่กับ so ในประโยคเดียวกันเด็ดขาด!',
+    examples: [
+      'It was raining heavily, so we stayed indoors.',
+      'We stayed indoors because it was raining heavily.',
+      'Although he was exhausted, he finished the marathon.'
+    ],
+    tips: 'จำคู่ผล-เหตุ: so ตามด้วย "ผลลัพธ์", because ตามด้วย "เหตุผล"'
+  },
+  'grammar:zero-first-conditional': {
+    title: 'Zero & First Conditionals (ประโยคเงื่อนไข)',
+    badge: 'ความจริงทั่วไป vs อนาคตที่เป็นไปได้',
+    concept: 'Zero Conditional ใช้กับความจริงทางวิทยาศาสตร์หรือกฎธรรมชาติ (ถ้า...จะเกิดขึ้นแน่นอน), First Conditional ใช้กับเหตุการณ์ที่เป็นไปได้ในอนาคต (ถ้าทำสิ่งนี้...สิ่งนั้นจะเกิดขึ้น)',
+    formula: 'Zero: If + Present Simple, Present Simple | First: If + Present Simple, will + V.1',
+    negQuestion: 'ในประโยค First Conditional ท่อนหลัง if ห้ามใส่ will เด็ดขาด! (พูด If it rains... ห้ามพูด If it will rain...)',
+    examples: [
+      'If you freeze water, it turns into ice. (Zero)',
+      'If it rains tomorrow, we will stay at home. (First)',
+      'If you practice every day, you will improve. (First)'
+    ],
+    tips: 'สูตรลับ: ท่อน if เป็น Present Sim (V.1) ส่วนอีกท่อนถ้าเป็นอนาคตใส่ will + V.1'
+  },
+  'review:a2-finalboss': {
+    title: '👑 บอสใหญ่ผู้พิทักษ์ไวยากรณ์ A2 (Master of A2 Grammar)',
+    badge: 'ศึกตัดสินจ้าวแห่ง A2 สู่ระดับ B1',
+    concept: 'บททดสอบรวบยอดไวยากรณ์ A2 ครบทั้ง 10 หัวข้อ ตั้งแต่ 4 Tenses, คำนามนับได้-นับไม่ได้, ขั้นกว่าขั้นสุด, Modals, Verb patterns, คำเชื่อม จนถึง Conditionals เพื่อก้าวสู่ระดับ B1 อย่างเต็มภาคภูมิ',
+    formula: 'รวมทุกโครงสร้างไวยากรณ์หลักสูตร A2 ทั้งหมด',
+    negQuestion: 'อ่านโจทย์อย่างมีสมาธิ จับโครงสร้างประโยคและบริบทให้แม่นยำ',
+    examples: [
+      'While I was studying, my phone rang. (Past Con + Sim)',
+      'Have you ever traveled to another country? (Present Perfect)',
+      'Mount Everest is higher than any other mountain. (Comparative)',
+      'If you leave now, you will catch the train. (First Conditional)'
+    ],
+    tips: 'ขอให้พลังแห่งความมุ่งมั่นนำพาคุณครูปิ๊กและนักเรียนพิชิตบอสใหญ่ A2 ได้สำเร็จครับ!'
   }
 };
 
@@ -240,13 +334,21 @@ export function getGrammarNote(tags = []) {
   if (!Array.isArray(tags) || tags.length === 0) return null;
 
   const grammarTags = tags.filter(t => t.startsWith('grammar:'));
-  if (tags.includes('review:a1-finalboss') || grammarTags.length >= 8) {
+
+  // A2 Final Boss: เมื่อมีแท็กของเงื่อนไข (zero-first-conditional) หรือมีแท็ก A2 ครบ
+  if (tags.includes('review:a2-finalboss') || (grammarTags.length >= 8 && tags.includes('grammar:zero-first-conditional'))) {
+    return GRAMMAR_NOTES['review:a2-finalboss'];
+  }
+  // A1 Final Boss: เมื่อมีแท็กของ A1 (present-simple & past-simple-be)
+  if (tags.includes('review:a1-finalboss') || (grammarTags.length >= 8 && tags.includes('grammar:present-simple'))) {
     return GRAMMAR_NOTES['review:a1-finalboss'];
   }
-  if (tags.includes('review:a1-midboss') || (grammarTags.length === 5 && grammarTags.includes('grammar:present-simple'))) {
+  // A1 Mid-Boss (5 โมดูลแรกของ A1)
+  if (tags.includes('review:a1-midboss') || (grammarTags.length === 5 && tags.includes('grammar:present-simple'))) {
     return GRAMMAR_NOTES['review:a1-midboss'];
   }
-  if (grammarTags.length >= 4) {
+  // A2 Mid-Boss / Tenses Review (4 Tenses ของ A2)
+  if (tags.includes('review:tenses-miniboss') || (grammarTags.length >= 4 && tags.includes('grammar:past-simple'))) {
     return GRAMMAR_NOTES['review:tenses-miniboss'];
   }
   if (grammarTags.length > 1) {

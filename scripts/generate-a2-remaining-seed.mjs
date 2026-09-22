@@ -1,0 +1,1625 @@
+import { writeFileSync, readFileSync, mkdirSync } from 'node:fs';
+
+const remainingExercises = [
+  // ==========================================
+  // TOPIC 5: COUNTABLE & UNCOUNTABLE NOUNS + QUANTIFIERS (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: พวกเราจำเป็นต้องซื้อน้ำตาลและแอปเปิ้ลสองสามผล',
+    choices: ['We', 'need', 'to', 'buy', 'some', 'sugar', 'and', 'a', 'few', 'apples', 'any', 'much', 'apple'],
+    answerKey: [
+      'We need to buy some sugar and a few apples',
+      'We need to buy a few apples and some sugar'
+    ],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: มีนมเหลืออยู่ในตู้เย็นบ้างไหม',
+    choices: ['Is', 'there', 'any', 'milk', 'left', 'in', 'the', 'fridge', 'Are', 'some', 'on'],
+    answerKey: [
+      'Is there any milk left in the fridge'
+    ],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: คุณอยากดื่มน้ำผลไม้สักหน่อยไหม',
+    choices: ['Would', 'you', 'like', 'some', 'fruit', 'juice', 'Do', 'any', 'drink', 'to'],
+    answerKey: [
+      'Would you like some fruit juice'
+    ],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: นักเรียนหลายคนทำการบ้านเสร็จเรียบร้อยแล้ว',
+    choices: ['Many', 'students', 'have', 'finished', 'their', 'homework', 'Much', 'student', 'has', 'homeworks'],
+    answerKey: [
+      'Many students have finished their homework'
+    ],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: "We don't have ___ butter left, so we need to go to the supermarket.",
+    answerKey: ['any'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'How ___ money do you spend on lunch every day?',
+    answerKey: ['much'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'There are only a ___ books on the shelf, perhaps three or four.',
+    answerKey: ['few'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Can I have ___ water, please? I am very thirsty.',
+    answerKey: ['some'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'She gave me a piece of useful ___ about studying abroad.',
+    answerKey: ['advice', 'information'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'How ___ cups of coffee do you drink in the morning?',
+    choices: ['many', 'much', 'any', 'little'],
+    answerKey: ['many'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Would you like ___ cake with your hot tea?',
+    choices: ['some', 'any', 'many', 'a few'],
+    answerKey: ['some'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: "I don't have ___ brothers or sisters. I am an only child.",
+    choices: ['any', 'some', 'much', 'a little'],
+    answerKey: ['any'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'There is only a ___ milk in the glass, not enough for breakfast cereal.',
+    choices: ['little', 'few', 'many', 'any'],
+    answerKey: ['little'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Which of the following is an UNCOUNTABLE noun in English?',
+    choices: ['furniture', 'chair', 'table', 'desk'],
+    answerKey: ['furniture'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'She has got ___ good friends in her new high school.',
+    choices: ['a lot of', 'much', 'any', 'a little'],
+    answerKey: ['a lot of'],
+    tags: ['grammar:some-any-countable'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // ==========================================
+  // TOPIC 6: COMPARATIVES & SUPERLATIVES (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: วันนี้อากาศร้อนกว่าเมื่อวานนี้มาก',
+    choices: ['Today', 'is', 'much', 'hotter', 'than', 'yesterday', 'hot', 'more', 'that', 'then'],
+    answerKey: [
+      'Today is much hotter than yesterday'
+    ],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: วาฬสีน้ำเงินเป็นสัตว์ที่ตัวใหญ่ที่สุดในโลก',
+    choices: ['The', 'blue', 'whale', 'is', 'the', 'biggest', 'animal', 'in', 'the', 'world', 'bigger', 'most', 'at'],
+    answerKey: [
+      'The blue whale is the biggest animal in the world'
+    ],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ฉันไม่ได้วิ่งเร็วเท่าพี่ชายของฉัน',
+    choices: ['I', 'do', 'not', 'run', 'as', 'fast', 'as', 'my', 'brother', 'faster', 'than', 'more'],
+    answerKey: [
+      'I do not run as fast as my brother',
+      "I don't run as fast as my brother"
+    ],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ภาษาอังกฤษง่ายกว่าภาษาจีนสำหรับฉัน',
+    choices: ['English', 'is', 'easier', 'than', 'Chinese', 'for', 'me', 'more', 'easy', 'as', 'to'],
+    answerKey: [
+      'English is easier than Chinese for me',
+      'For me English is easier than Chinese'
+    ],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'This math exam was much ___ than the one we took last month. (easy)',
+    answerKey: ['easier'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Mount Everest is the ___ mountain on Earth. (high)',
+    answerKey: ['highest'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'His health is getting ___ because he exercises every morning. (good)',
+    answerKey: ['better'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'This smartphone is not as expensive ___ that new laptop.',
+    answerKey: ['as'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Yesterday was the ___ day of my life; everything went wrong. (bad)',
+    answerKey: ['worst'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Travelling by plane is ___ than travelling by train.',
+    choices: ['faster', 'more fast', 'fastest', 'as fast'],
+    answerKey: ['faster'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Bangkok is one of the ___ cities in Southeast Asia.',
+    choices: ['most crowded', 'crowdedest', 'more crowded', 'as crowded'],
+    answerKey: ['most crowded'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'My younger sister is ___ student in her class.',
+    choices: ['the smartest', 'smartest', 'more smart', 'the most smart'],
+    answerKey: ['the smartest'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'This mountain road is ___ than the old highway.',
+    choices: ['narrower', 'more narrow', 'narrowest', 'as narrow'],
+    answerKey: ['narrower'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'The traffic today is even ___ than it was yesterday evening.',
+    choices: ['worse', 'badder', 'worst', 'more bad'],
+    answerKey: ['worse'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'John is not as tall ___ his father.',
+    choices: ['as', 'than', 'from', 'like'],
+    answerKey: ['as'],
+    tags: ['grammar:comparatives-superlatives'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // ==========================================
+  // TOPIC 7: MODALS OF OBLIGATION & ADVICE (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: คุณต้องหยุดรถเมื่อสัญญาณไฟจราจรเป็นสีแดง',
+    choices: ['You', 'must', 'stop', 'when', 'the', 'traffic', 'light', 'is', 'red', 'to', 'stopping', 'should'],
+    answerKey: [
+      'You must stop when the traffic light is red'
+    ],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: เธอไม่ต้องตื่นแต่เช้าในวันอาทิตย์',
+    choices: ['She', "doesn't", 'have', 'to', 'wake', 'up', 'early', 'on', 'Sunday', "mustn't", 'has', 'in'],
+    answerKey: [
+      "She doesn't have to wake up early on Sunday",
+      'She does not have to wake up early on Sunday'
+    ],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: คุณควรไปพบแพทย์หากอาการของคุณแย่ลง',
+    choices: ['You', 'should', 'see', 'a', 'doctor', 'if', 'you', 'feel', 'worse', 'to', 'seeing', 'must'],
+    answerKey: [
+      'You should see a doctor if you feel worse'
+    ],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: นักเรียนห้ามใช้โทรศัพท์มือถือระหว่างการสอบเด็ดขาด',
+    choices: ['Students', "mustn't", 'use', 'mobile', 'phones', 'during', 'the', 'exam', "don't", 'have', 'using'],
+    answerKey: [
+      "Students mustn't use mobile phones during the exam",
+      'Students must not use mobile phones during the exam'
+    ],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'You ___ touch that exposed wire! It is extremely dangerous.',
+    answerKey: ["mustn't", 'must not'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: "Tomorrow is a public holiday, so I don't ___ to go to work.",
+    answerKey: ['have'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'He ___ to wear glasses because his eyesight is quite weak.',
+    answerKey: ['has'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'You look exhausted; you ___ go to bed early tonight.',
+    answerKey: ['should'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Passengers ___ fasten their seatbelts before the airplane takes off.',
+    answerKey: ['must'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'You ___ smoke anywhere inside the hospital building. It is strictly against the law.',
+    choices: ["mustn't", "don't have to", 'should', 'might'],
+    answerKey: ["mustn't"],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Museum entry is completely free on Sundays, so we ___ buy any tickets.',
+    choices: ["don't have to", "mustn't", "shouldn't", 'must'],
+    answerKey: ["don't have to"],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Tom has a high fever. What ___ he do?',
+    choices: ['should', 'must to', 'ought', 'should to'],
+    answerKey: ['should'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'My brother ___ wear a scout uniform to school every Monday morning.',
+    choices: ['has to', 'have to', 'must to', 'should to'],
+    answerKey: ['has to'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'You ___ eat too much junk food if you want to stay in good health.',
+    choices: ["shouldn't", "don't have to", 'must', 'have not to'],
+    answerKey: ["shouldn't"],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'In Thailand and the UK, drivers ___ drive on the left side of the road.',
+    choices: ['must', 'should to', 'must to', 'has to'],
+    answerKey: ['must'],
+    tags: ['grammar:modals-obligation'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // ==========================================
+  // TOPIC 8: BASIC VERB PATTERNS (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ฉันชอบอ่านหนังสือนวนิยายก่อนนอนทุกคืน',
+    choices: ['I', 'enjoy', 'reading', 'novels', 'before', 'sleeping', 'every', 'night', 'to', 'read', 'sleeps'],
+    answerKey: [
+      'I enjoy reading novels before sleeping every night'
+    ],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: พวกเขาตัดสินใจไปเที่ยวภูเก็ตในช่วงวันหยุดยาว',
+    choices: ['They', 'decided', 'to', 'visit', 'Phuket', 'during', 'the', 'long', 'holiday', 'visiting', 'visit to', 'at'],
+    answerKey: [
+      'They decided to visit Phuket during the long holiday'
+    ],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ขอบคุณมากสำหรับการช่วยฉันยกกล่องหนักใบนี้',
+    choices: ['Thank', 'you', 'for', 'helping', 'me', 'with', 'this', 'heavy', 'box', 'to', 'help', 'helped'],
+    answerKey: [
+      'Thank you for helping me with this heavy box'
+    ],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: พี่ชายของฉันฝึกพูดภาษาอังกฤษทุกวัน',
+    choices: ['My', 'brother', 'practices', 'speaking', 'English', 'every', 'single', 'day', 'to', 'speak', 'spoken'],
+    answerKey: [
+      'My brother practices speaking English every single day'
+    ],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'I really want ___ learn how to play the acoustic guitar.',
+    answerKey: ['to'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Have you finished ___ your bedroom yet? (clean)',
+    answerKey: ['cleaning'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'She promised ___ call me as soon as she arrived at the airport.',
+    answerKey: ['to'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'He is exceptionally good at ___ delicious Thai dishes. (cook)',
+    answerKey: ['cooking'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'We decided ___ stay at home because of the heavy storm.',
+    answerKey: ['to'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Sarah enjoys ___ to classical music when she studies in the library.',
+    choices: ['listening', 'to listen', 'listen', 'listened'],
+    answerKey: ['listening'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'I hope ___ my university entrance exam with a high score next year.',
+    choices: ['to pass', 'passing', 'pass', 'passed'],
+    answerKey: ['to pass'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Are you interested in ___ with us to the cinema this evening?',
+    choices: ['coming', 'to come', 'come', 'came'],
+    answerKey: ['coming'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'They planned ___ their grandparents in Chiang Mai next weekend.',
+    choices: ['to visit', 'visiting', 'visit', 'visited'],
+    answerKey: ['to visit'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Would you mind ___ the window? It is getting quite warm in the room.',
+    choices: ['opening', 'to open', 'open', 'opened'],
+    answerKey: ['opening'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'He needs ___ his passport before heading to the airport.',
+    choices: ['to check', 'checking', 'check', 'checks'],
+    answerKey: ['to check'],
+    tags: ['grammar:verb-patterns-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // ==========================================
+  // TOPIC 9: BASIC CONJUNCTIONS (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ฝนตกหนักมากพวกเราจึงตัดสินใจอยู่บ้าน',
+    choices: ['It', 'rained', 'heavily', 'so', 'we', 'decided', 'to', 'stay', 'home', 'because', 'but', 'staying'],
+    answerKey: [
+      'It rained heavily so we decided to stay home'
+    ],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: แม้ว่าเขาจะเหนื่อยมากแต่เขาก็ยังคงยิ้มแย้ม',
+    choices: ['Although', 'he', 'was', 'very', 'tired', 'he', 'kept', 'smiling', 'but', 'so', 'smiled', 'is'],
+    answerKey: [
+      'Although he was very tired he kept smiling'
+    ],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ฉันชอบส้มตำแต่ฉันไม่ชอบอาหารเผ็ดมาก',
+    choices: ['I', 'like', 'papaya', 'salad', 'but', 'I', 'dislike', 'very', 'spicy', 'food', 'and', 'so', 'foods'],
+    answerKey: [
+      'I like papaya salad but I dislike very spicy food'
+    ],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: เธอมาทำงานสายเพราะว่าการจราจรติดขัดมาก',
+    choices: ['She', 'was', 'late', 'for', 'work', 'because', 'the', 'traffic', 'was', 'terrible', 'so', 'although'],
+    answerKey: [
+      'She was late for work because the traffic was terrible'
+    ],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'I wanted to buy that warm jacket, ___ it was far too expensive.',
+    answerKey: ['but'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'We stayed inside all afternoon ___ it was raining heavily outside.',
+    answerKey: ['because', 'as', 'since'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: "He didn't study for the history test, ___ he got a very low score.",
+    answerKey: ['so'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: '___ the water was cold, the children enjoyed swimming in the lake.',
+    answerKey: ['Although', 'Even though', 'Though'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'She loves reading books ___ listening to English podcasts in her free time.',
+    answerKey: ['and'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'He woke up late this morning, ___ he missed the morning school bus.',
+    choices: ['so', 'because', 'although', 'but'],
+    answerKey: ['so'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: "We couldn't go on a family picnic ___ the weather was stormy.",
+    choices: ['because', 'so', 'but', 'although'],
+    answerKey: ['because'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: '___ it was raining heavily, they continued playing football on the field.',
+    choices: ['Although', 'Because', 'So', 'And'],
+    answerKey: ['Although'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'I wanted to call you last night, ___ my mobile battery was completely dead.',
+    choices: ['but', 'so', 'because', 'or'],
+    answerKey: ['but'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Which sentence is grammatically CORRECT in English?',
+    choices: [
+      'Because it rained heavily, we stayed at home.',
+      'Because it rained heavily, so we stayed at home.',
+      'Although he ran fast, but he missed the bus.',
+      'Since she was tired, so she went to sleep early.'
+    ],
+    answerKey: ['Because it rained heavily, we stayed at home.'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'She is extremely smart ___ hardworking, which is why her teachers admire her.',
+    choices: ['and', 'but', 'although', 'so'],
+    answerKey: ['and'],
+    tags: ['grammar:conjunctions-basic'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // ==========================================
+  // TOPIC 10: ZERO & FIRST CONDITIONALS (15 ข้อ)
+  // ==========================================
+  // Sentence Builder (4 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ถ้าน้ำมีอุณหภูมิถึงหนึ่งร้อยองศามันจะเดือด',
+    choices: ['If', 'water', 'reaches', 'one', 'hundred', 'degrees', 'it', 'boils', 'will', 'boil', 'reach', 'is'],
+    answerKey: [
+      'If water reaches one hundred degrees it boils'
+    ],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ถ้าพรุ่งนี้ฝนตกพวกเราจะยกเลิกการไปปิกนิก',
+    choices: ['If', 'it', 'rains', 'tomorrow', 'we', 'will', 'cancel', 'the', 'picnic', 'rain', 'cancels', 'would'],
+    answerKey: [
+      'If it rains tomorrow we will cancel the picnic'
+    ],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: คุณจะสอบผ่านถ้าคุณทบทวนบทเรียนสม่ำเสมอ',
+    choices: ['You', 'will', 'pass', 'the', 'exam', 'if', 'you', 'review', 'regularly', 'passes', 'would', 'reviewed'],
+    answerKey: [
+      'You will pass the exam if you review regularly'
+    ],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'sentence_builder',
+    prompt: 'จงเรียงคำให้เป็นประโยค: ถ้าคุณไม่รีบตอนนี้คุณจะตกรถไฟเที่ยวสุดท้าย',
+    choices: ['If', 'you', 'do', 'not', 'hurry', 'you', 'will', 'miss', 'the', 'last', 'train', 'wont', 'hurries'],
+    answerKey: [
+      'If you do not hurry you will miss the last train',
+      "If you don't hurry you will miss the last train"
+    ],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // Fill in the Blank (5 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'If you heat ice, it ___ into liquid water. (melt)',
+    answerKey: ['melts'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: true,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'If she studies hard, she ___ pass the English test easily.',
+    answerKey: ['will', 'can'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'If it ___ tomorrow, we will stay at home and play board games. (rain)',
+    answerKey: ['rains'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'Plants die if they do not ___ enough sunlight and water. (get)',
+    answerKey: ['get'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'fill_blank',
+    prompt: 'I will call you as soon as I ___ at the hotel room. (arrive)',
+    answerKey: ['arrive'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+
+  // MCQ (6 ข้อ)
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'If you mix red and yellow paint, you ___ orange color.',
+    choices: ['get', 'will get', 'got', 'getting'],
+    answerKey: ['get'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'If it ___ sunny this weekend, we will go cycling in the city park.',
+    choices: ['is', 'will be', 'was', 'are'],
+    answerKey: ['is'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'What ___ you do if you miss the morning express train?',
+    choices: ['will', 'do', 'did', 'are'],
+    answerKey: ['will'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'If you touch a boiling hot kettle, you ___ your hand.',
+    choices: ['burn', 'burned', 'will burning', 'are burning'],
+    answerKey: ['burn'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'She will be very sad if you ___ to her birthday celebration.',
+    choices: ["don't come", "won't come", "didn't come", 'not come'],
+    answerKey: ["don't come"],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    type: 'mcq',
+    prompt: 'Which sentence is grammatically CORRECT?',
+    choices: [
+      'If you eat healthy food, you feel more energetic.',
+      'If you will eat healthy food, you will feel more energetic.',
+      'If it will rain tomorrow, we will stay at home.',
+      'If she will practice daily, she passes the exam.'
+    ],
+    answerKey: ['If you eat healthy food, you feel more energetic.'],
+    tags: ['grammar:zero-first-conditional'],
+    visibility: 'bank',
+    isPreview: false,
+    reviewStatus: 'published',
+    assignedUids: [],
+    source: 'Pik a Class Curriculum A2 Mastery'
+  }
+];
+
+// Stages 1 to 20 for A2
+const allA2Stages = [
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 1,
+    title: 'Past Simple (Part 1: สร้างความคุ้นเคย)',
+    tags: ['grammar:past-simple'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: true,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 2,
+    title: 'Past Simple (Part 2: ท้าทายขึ้น)',
+    tags: ['grammar:past-simple'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 3,
+    title: 'Past Continuous (Part 1: สร้างความคุ้นเคย)',
+    tags: ['grammar:past-continuous'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 4,
+    title: 'Past Continuous (Part 2: ท้าทายขึ้น)',
+    tags: ['grammar:past-continuous'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 5,
+    title: 'Present Perfect (Part 1: สร้างความคุ้นเคย)',
+    tags: ['grammar:present-perfect'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 6,
+    title: 'Present Perfect (Part 2: ท้าทายขึ้น)',
+    tags: ['grammar:present-perfect'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 7,
+    title: 'Future Forms (Part 1: สร้างความคุ้นเคย)',
+    tags: ['grammar:future-going-to-will'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 8,
+    title: 'Future Forms (Part 2: ท้าทายขึ้น)',
+    tags: ['grammar:future-going-to-will'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 9,
+    title: '⚔️ มินิบอสประลอง 4 Tenses (Part 1: ด่านวัดความแม่นยำ)',
+    tags: [
+      'grammar:past-simple',
+      'grammar:past-continuous',
+      'grammar:present-perfect',
+      'grammar:future-going-to-will'
+    ],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 10,
+    title: '👑 มินิบอสประลอง 4 Tenses (Part 2: ศึกตัดสินจ้าวแห่งกาลเวลา)',
+    tags: [
+      'grammar:past-simple',
+      'grammar:past-continuous',
+      'grammar:present-perfect',
+      'grammar:future-going-to-will'
+    ],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 11,
+    title: 'คำนามและปริมาณ: some, any และนามนับได้/ไม่ได้',
+    tags: ['grammar:some-any-countable'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 12,
+    title: 'การเปรียบเทียบ ภาค 1: ขั้นเท่าและขั้นกว่า',
+    tags: ['grammar:comparatives-superlatives'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 13,
+    title: 'การเปรียบเทียบ ภาค 2: ขั้นสุดยอดแห่งการเปรียบเทียบ',
+    tags: ['grammar:comparatives-superlatives'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 14,
+    title: 'กฎและหน้าที่: must กับ have to',
+    tags: ['grammar:modals-obligation'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 15,
+    title: 'คำแนะนำและความเหมาะสม: should กับ shouldn\'t',
+    tags: ['grammar:modals-obligation'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 16,
+    title: 'รูปกริยาคู่หู: Gerunds (-ing) และ Infinitives (to + V.1)',
+    tags: ['grammar:verb-patterns-basic'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 17,
+    title: 'คำเชื่อมประสานประโยค: and, but, so, because, although',
+    tags: ['grammar:conjunctions-basic'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 18,
+    title: 'ประโยคเงื่อนไข ภาค 1: Zero Conditional ความจริงรอบตัว',
+    tags: ['grammar:zero-first-conditional'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 19,
+    title: 'ประโยคเงื่อนไข ภาค 2: First Conditional โอกาสและอนาคต',
+    tags: ['grammar:zero-first-conditional'],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  },
+  {
+    skill: 'grammar',
+    level: 'A2',
+    order: 20,
+    title: '👑 บอสใหญ่: มหาศึกผู้พิทักษ์ไวยากรณ์ A2 (Master of A2 Grammar)',
+    tags: [
+      'grammar:past-simple',
+      'grammar:past-continuous',
+      'grammar:present-perfect',
+      'grammar:future-going-to-will',
+      'grammar:some-any-countable',
+      'grammar:comparatives-superlatives',
+      'grammar:modals-obligation',
+      'grammar:verb-patterns-basic',
+      'grammar:conjunctions-basic',
+      'grammar:zero-first-conditional'
+    ],
+    drawCount: 7,
+    passThreshold: 0.7,
+    isPreview: false,
+    reviewStatus: 'published'
+  }
+];
+
+const now = '2026-09-23T00:00:00.000Z';
+const seededRemainingExercises = remainingExercises.map(ex => ({
+  ...ex,
+  createdAt: now,
+  updatedAt: now,
+  createdBy: 'prawich.aum@dome.tu.ac.th'
+}));
+
+// Load existing 60 exercises from a2-tenses-saga-exercises.json
+const existingA2Exercises = JSON.parse(readFileSync('docs/seeds/a2-tenses-saga-exercises.json', 'utf8'));
+const fullA2Exercises = [...existingA2Exercises, ...seededRemainingExercises];
+
+const seededFullStages = allA2Stages.map(st => ({
+  ...st,
+  createdAt: now,
+  updatedAt: now,
+  createdBy: 'prawich.aum@dome.tu.ac.th'
+}));
+
+mkdirSync('docs/seeds', { recursive: true });
+writeFileSync('docs/seeds/a2-remaining-exercises.json', JSON.stringify(seededRemainingExercises, null, 2), 'utf8');
+writeFileSync('docs/seeds/a2-full-exercises.json', JSON.stringify(fullA2Exercises, null, 2), 'utf8');
+writeFileSync('docs/seeds/a2-full-stages.json', JSON.stringify(seededFullStages, null, 2), 'utf8');
+
+console.log(`Generated:`);
+console.log(`- docs/seeds/a2-remaining-exercises.json: ${seededRemainingExercises.length} exercises`);
+console.log(`- docs/seeds/a2-full-exercises.json: ${fullA2Exercises.length} exercises (all 10 modules)`);
+console.log(`- docs/seeds/a2-full-stages.json: ${seededFullStages.length} stages (1 to 20)`);

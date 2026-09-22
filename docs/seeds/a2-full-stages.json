@@ -1,0 +1,337 @@
+[
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 1,
+    "title": "Past Simple (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 2,
+    "title": "Past Simple (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 3,
+    "title": "Past Continuous (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 4,
+    "title": "Past Continuous (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 5,
+    "title": "Present Perfect (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 6,
+    "title": "Present Perfect (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 7,
+    "title": "Future Forms (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 8,
+    "title": "Future Forms (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 9,
+    "title": "⚔️ มินิบอสประลอง 4 Tenses (Part 1: ด่านวัดความแม่นยำ)",
+    "tags": [
+      "grammar:past-simple",
+      "grammar:past-continuous",
+      "grammar:present-perfect",
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 10,
+    "title": "👑 มินิบอสประลอง 4 Tenses (Part 2: ศึกตัดสินจ้าวแห่งกาลเวลา)",
+    "tags": [
+      "grammar:past-simple",
+      "grammar:past-continuous",
+      "grammar:present-perfect",
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 11,
+    "title": "คำนามและปริมาณ: some, any และนามนับได้/ไม่ได้",
+    "tags": [
+      "grammar:some-any-countable"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 12,
+    "title": "การเปรียบเทียบ ภาค 1: ขั้นเท่าและขั้นกว่า",
+    "tags": [
+      "grammar:comparatives-superlatives"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 13,
+    "title": "การเปรียบเทียบ ภาค 2: ขั้นสุดยอดแห่งการเปรียบเทียบ",
+    "tags": [
+      "grammar:comparatives-superlatives"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 14,
+    "title": "กฎและหน้าที่: must กับ have to",
+    "tags": [
+      "grammar:modals-obligation"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 15,
+    "title": "คำแนะนำและความเหมาะสม: should กับ shouldn't",
+    "tags": [
+      "grammar:modals-obligation"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 16,
+    "title": "รูปกริยาคู่หู: Gerunds (-ing) และ Infinitives (to + V.1)",
+    "tags": [
+      "grammar:verb-patterns-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 17,
+    "title": "คำเชื่อมประสานประโยค: and, but, so, because, although",
+    "tags": [
+      "grammar:conjunctions-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 18,
+    "title": "ประโยคเงื่อนไข ภาค 1: Zero Conditional ความจริงรอบตัว",
+    "tags": [
+      "grammar:zero-first-conditional"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 19,
+    "title": "ประโยคเงื่อนไข ภาค 2: First Conditional โอกาสและอนาคต",
+    "tags": [
+      "grammar:zero-first-conditional"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 20,
+    "title": "👑 บอสใหญ่: มหาศึกผู้พิทักษ์ไวยากรณ์ A2 (Master of A2 Grammar)",
+    "tags": [
+      "grammar:past-simple",
+      "grammar:past-continuous",
+      "grammar:present-perfect",
+      "grammar:future-going-to-will",
+      "grammar:some-any-countable",
+      "grammar:comparatives-superlatives",
+      "grammar:modals-obligation",
+      "grammar:verb-patterns-basic",
+      "grammar:conjunctions-basic",
+      "grammar:zero-first-conditional"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  }
+]
