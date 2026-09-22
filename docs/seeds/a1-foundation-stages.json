@@ -1,0 +1,335 @@
+[
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 1,
+    "title": "Present Simple ภาค 1: ประธานและกริยา",
+    "tags": [
+      "grammar:present-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 2,
+    "title": "Present Simple ภาค 2: ปฏิเสธและตั้งคำถาม",
+    "tags": [
+      "grammar:present-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 3,
+    "title": "Articles & Nouns ภาค 1: a, an และคำนาม",
+    "tags": [
+      "grammar:articles-nouns"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 4,
+    "title": "Articles & Nouns ภาค 2: the และพหูพจน์",
+    "tags": [
+      "grammar:articles-nouns"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 5,
+    "title": "There is / There are ภาค 1: มีสิ่งของรอบตัว",
+    "tags": [
+      "grammar:there-is-are"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 6,
+    "title": "There is / There are ภาค 2: ตำแหน่งแห่งที่",
+    "tags": [
+      "grammar:there-is-are"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 7,
+    "title": "Wh- Questions ภาค 1: ถามหาข้อมูล",
+    "tags": [
+      "grammar:wh-questions-inversion"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 8,
+    "title": "Wh- Questions ภาค 2: สลับกริยาช่วย do/does",
+    "tags": [
+      "grammar:wh-questions-inversion"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 9,
+    "title": "Adjectives & 's: คุณศัพท์และความเป็นเจ้าของ",
+    "tags": [
+      "grammar:adjectives-possessive-s"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 10,
+    "title": "⚔️ มินิบอส Part 1: ประลองพื้นฐาน 5 บทแรก",
+    "tags": [
+      "grammar:present-simple",
+      "grammar:articles-nouns",
+      "grammar:there-is-are",
+      "grammar:wh-questions-inversion",
+      "grammar:adjectives-possessive-s"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 11,
+    "title": "Prepositions of Time ภาค 1: at, on, in บอกเวลา",
+    "tags": [
+      "grammar:prepositions-time-frequency"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 12,
+    "title": "Prepositions & Frequency ภาค 2: ความถี่ในชีวิตประจำวัน",
+    "tags": [
+      "grammar:prepositions-time-frequency"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 13,
+    "title": "Present Continuous ภาค 1: ตอนนี้กำลังทำ",
+    "tags": [
+      "grammar:present-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 14,
+    "title": "Present Continuous ภาค 2: คำถามและปฏิเสธ",
+    "tags": [
+      "grammar:present-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 15,
+    "title": "can / can't ภาค 1: ความสามารถและทักษะ",
+    "tags": [
+      "grammar:can-cant"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 16,
+    "title": "can / can't ภาค 2: ขอร้องและขออนุญาต",
+    "tags": [
+      "grammar:can-cant"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 17,
+    "title": "Imperatives: คำสั่ง ข้อห้าม และคำแนะนำ",
+    "tags": [
+      "grammar:imperatives"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 18,
+    "title": "Past Simple of 'be' ภาค 1: was กับ were ในอดีต",
+    "tags": [
+      "grammar:past-simple-be"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 19,
+    "title": "Past Simple of 'be' ภาค 2: ปฏิเสธและถามหาอดีต",
+    "tags": [
+      "grammar:past-simple-be"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A1",
+    "order": 20,
+    "title": "👑 บอสใหญ่: ศึกผู้พิทักษ์ไวยากรณ์ A1 (Master of A1)",
+    "tags": [
+      "grammar:present-simple",
+      "grammar:articles-nouns",
+      "grammar:there-is-are",
+      "grammar:wh-questions-inversion",
+      "grammar:adjectives-possessive-s",
+      "grammar:prepositions-time-frequency",
+      "grammar:present-continuous",
+      "grammar:can-cant",
+      "grammar:imperatives",
+      "grammar:past-simple-be"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  }
+]
