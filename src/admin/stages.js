@@ -107,7 +107,7 @@ if (fixBtn) {
     try {
       const allStages = await fetchStages(db, { publishedOnly: false });
       for (const config of PILOT_CONFIGS) {
-        const match = allStages.find((s) => s.order === config.order || s.title?.includes(config.title.split(' ')[0]));
+        const match = allStages.find((s) => s.order === config.order || s.title?.toLowerCase().startsWith(config.title.toLowerCase()));
         const now = new Date().toISOString();
         const stageData = {
           skill: 'grammar',
