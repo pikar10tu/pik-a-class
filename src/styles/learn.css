@@ -421,3 +421,178 @@
   margin-top: var(--space-2);
 }
 
+/* Grammar Concept Card in Path Sheet */
+.sheet-concept-card {
+  background: var(--color-primary-light, #e8f9ee);
+  border: 1.5px solid #a8e6bf;
+  border-radius: var(--radius-lg);
+  padding: var(--space-3);
+  margin: var(--space-2) 0 var(--space-3);
+  text-align: left;
+}
+
+.concept-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+}
+
+.concept-card-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #17753c;
+  background: #ffffff;
+  padding: 2px 10px;
+  border-radius: 99px;
+  border: 1px solid #a8e6bf;
+}
+
+.concept-card-tag {
+  font-size: 0.75rem;
+  color: #2e7d32;
+  font-weight: 500;
+}
+
+.concept-card-text {
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  margin: var(--space-2) 0 0;
+  line-height: 1.5;
+}
+
+.concept-card-formula {
+  margin-top: var(--space-2);
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.concept-formula-label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #17753c;
+}
+
+.concept-formula-code {
+  background: #ffffff;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  border: 1px solid #c8e6c9;
+  font-family: monospace;
+  font-size: 0.875rem;
+  color: #1b5e20;
+  font-weight: 600;
+}
+
+/* Grammar Note Button in Play Header */
+.btn-concept {
+  width: auto;
+  flex: none;
+  min-height: 44px;
+  padding: var(--space-2) var(--space-3);
+  font-size: 0.8125rem;
+  white-space: nowrap;
+  font-weight: 600;
+  background: var(--color-primary-light, #e8f9ee);
+  border-color: #a8e6bf;
+  color: #17753c;
+}
+
+.btn-concept:hover {
+  background: #d4f3df;
+}
+
+/* Grammar Note Modal / Sheet in Play View */
+.note-sheet {
+  max-height: 85vh;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.note-sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.note-header-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.note-title {
+  font-size: 1.25rem;
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.note-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.note-section {
+  background: #ffffff;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: var(--space-3);
+}
+
+.note-section-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0 0 var(--space-1);
+}
+
+.note-text {
+  font-size: 0.9375rem;
+  margin: 0;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.note-formula-box {
+  background: var(--color-primary-light, #e8f9ee);
+  border: 1px solid #a8e6bf;
+  border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3);
+  margin-top: var(--space-1);
+  font-family: monospace;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #17753c;
+}
+
+.note-subtext {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin: var(--space-1) 0 0;
+}
+
+.note-examples {
+  margin: var(--space-1) 0 0;
+  padding-inline-start: var(--space-3);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.note-tip-box {
+  background: #fff9db;
+  border-color: #ffe066;
+  font-size: 0.875rem;
+  color: #744210;
+  line-height: 1.5;
+}
+
+

@@ -11,6 +11,7 @@ import { pickRound } from '../lib/stage-pool.js';
 import { readTier } from '../lib/queries.js';
 import { STAGE_ITEM_TYPES } from '../lib/stage-form.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
+import { getGrammarNote } from '../lib/grammar-notes.js';
 
 const base = import.meta.env.BASE_URL;
 attachUiSounds();
@@ -67,6 +68,61 @@ muteButton.addEventListener('click', () => {
 });
 
 renderMuteButton();
+
+const noteButton = document.getElementById('btn-grammar-note');
+const noteBackdrop = document.getElementById('note-backdrop');
+const noteCloseIcon = document.getElementById('note-close-icon');
+const noteCloseBtn = document.getElementById('note-close-btn');
+
+function setupGrammarNote(tags) {
+  const note = getGrammarNote(tags);
+  if (!note || !noteButton) {
+    if (noteButton) noteButton.hidden = true;
+    return;
+  }
+
+  noteButton.hidden = false;
+  noteButton.onclick = () => {
+    document.getElementById('note-title').textContent = note.title;
+    document.getElementById('note-body').innerHTML = `
+      <div class="note-section">
+        <h3 class="note-section-title">📌 วิธีใช้ & คอนเซปต์</h3>
+        <p class="note-text">${note.concept}</p>
+      </div>
+      <div class="note-section">
+        <h3 class="note-section-title">✨ โครงสร้างประโยค</h3>
+        <div class="note-formula-box">
+          <code>${note.formula}</code>
+        </div>
+        ${note.negQuestion ? `<p class="note-subtext">${note.negQuestion}</p>` : ''}
+      </div>
+      ${note.examples && note.examples.length > 0 ? `
+      <div class="note-section">
+        <h3 class="note-section-title">💬 ตัวอย่างประโยค</h3>
+        <ul class="note-examples">
+          ${note.examples.map((ex) => `<li>${ex}</li>`).join('')}
+        </ul>
+      </div>` : ''}
+      ${note.tips ? `
+      <div class="note-section note-tip-box">
+        <strong>💡 ทริกสำคัญ:</strong> ${note.tips}
+      </div>` : ''}
+    `;
+    noteBackdrop.hidden = false;
+  };
+}
+
+function closeNote() {
+  if (noteBackdrop) noteBackdrop.hidden = true;
+}
+
+if (noteCloseIcon) noteCloseIcon.addEventListener('click', closeNote);
+if (noteCloseBtn) noteCloseBtn.addEventListener('click', closeNote);
+if (noteBackdrop) {
+  noteBackdrop.addEventListener('click', (e) => {
+    if (e.target === noteBackdrop) closeNote();
+  });
+}
 
 // พรีวิวจากหน้าแก้ด่าน — เปลี่ยนป้ายปุ่ม/ลิงก์ "กลับเส้นทางด่าน" ให้ตรงกับที่มันจะพาไปจริง (หน้าแก้ด่าน ไม่ใช่เส้นทางนักเรียน)
 // ตั้งค่าตรงนี้ครั้งเดียวตอนโหลดหน้า เพราะ fromAdmin ไม่เปลี่ยนระหว่างเล่น
@@ -363,6 +419,7 @@ requireLogin(async (firebaseUser, userDoc) => {
       showEmpty('ไม่พบด่านนี้', backHref());
       return;
     }
+    setupGrammarNote(stage.tags);
     const pool = await fetchStagePool(db, stage, readTier(userDoc));
     // กรองชนิดที่เล่นไม่ได้ทิ้งก่อนสุ่ม ไม่ใช่หลังสุ่ม ไม่งั้นรอบนั้นจะได้ข้อน้อยกว่า drawCount
     // โดยไม่มีเหตุผล ทั้งที่คลังมีข้อที่เล่นได้เหลืออยู่

@@ -21,6 +21,7 @@ export function buildStagePath(stages, clearsMap) {
       id: stage.id,
       order: stage.order,
       title: stage.title,
+      tags: stage.tags ?? [],
       // ด่านไม่ได้เก็บรายชื่อข้อแล้ว จำนวนที่เด็กจะได้เล่นคือจำนวนที่สุ่มต่อรอบ
       // ชื่อฟิลด์ยังเป็น itemCount เพื่อไม่ให้ต้องแก้หน้าเส้นทางที่แสดง "N ข้อ" อยู่แล้ว
       itemCount: stage.drawCount ?? 0,

@@ -20,6 +20,7 @@
         <button type="button" id="quit" class="btn-ghost btn-quit" aria-label="ออกจากด่าน">✕</button>
         <span class="progress-bar"><span id="progress-fill" style="width: 0%"></span></span>
         <span id="progress-text"></span>
+        <button type="button" id="btn-grammar-note" class="btn-ghost btn-concept" aria-label="ดูสรุปไวยากรณ์" title="ดูสรุปไวยากรณ์" hidden>💡 สรุป</button>
         <button type="button" id="mute-toggle" class="btn-ghost btn-mute" aria-pressed="false" aria-label="ปิดเสียงตอบคำถาม">ปิดเสียง</button>
       </header>
       <p id="question-label" style="color: var(--color-muted); font-size: 0.8125rem;"></p>
@@ -46,6 +47,20 @@
       <p id="empty-message" class="hint"></p>
       <a id="empty-back" class="btn-chunky path-empty-link" href="#">กลับเส้นทางด่าน</a>
     </section>
+
+    <div id="note-backdrop" class="sheet-backdrop" hidden>
+      <section class="sheet note-sheet">
+        <div class="note-sheet-header">
+          <div class="note-header-left">
+            <span class="concept-card-badge">💡 สรุปไวยากรณ์</span>
+            <h2 id="note-title" class="note-title"></h2>
+          </div>
+          <button type="button" id="note-close-icon" class="btn-ghost btn-quit" aria-label="ปิดสรุป">✕</button>
+        </div>
+        <div id="note-body" class="note-body"></div>
+        <button type="button" id="note-close-btn" class="btn-chunky" style="margin-top: var(--space-3);">เข้าใจแล้ว ทำต่อ</button>
+      </section>
+    </div>
   </main>
   <script type="module" src="./play.js"></script>
 </body>

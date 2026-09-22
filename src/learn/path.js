@@ -7,6 +7,7 @@ import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
+import { getGrammarNote } from '../lib/grammar-notes.js';
 
 const base = import.meta.env.BASE_URL;
 const params = new URLSearchParams(window.location.search);
@@ -136,6 +137,28 @@ function openSheet(stage, state) {
   document.getElementById('sheet-title').textContent = stage.title;
   document.getElementById('sheet-meta').textContent =
     `${stage.itemCount} ข้อ · ผ่านที่ ${Math.round(stage.passThreshold * 100)}%`;
+
+  const conceptEl = document.getElementById('sheet-concept');
+  if (conceptEl) {
+    const note = getGrammarNote(stage.tags);
+    if (note) {
+      conceptEl.hidden = false;
+      conceptEl.innerHTML = `
+        <div class="concept-card-top">
+          <span class="concept-card-badge">💡 สรุปก่อนเริ่ม</span>
+          ${note.badge ? `<span class="concept-card-tag">${note.badge}</span>` : ''}
+        </div>
+        <p class="concept-card-text">${note.concept}</p>
+        <div class="concept-card-formula">
+          <span class="concept-formula-label">โครงสร้าง:</span>
+          <code class="concept-formula-code">${note.formula}</code>
+        </div>
+      `;
+    } else {
+      conceptEl.hidden = true;
+      conceptEl.replaceChildren();
+    }
+  }
 
   const bestEl = document.getElementById('sheet-best');
   if (state === 'locked') {
