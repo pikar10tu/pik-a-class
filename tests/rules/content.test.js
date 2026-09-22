@@ -1,6 +1,18 @@
-import { describe, it } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { assertFails, assertSucceeds } from '@firebase/rules-unit-testing';
 import { withTestEnv, authedDb, anonDb, seed, studentDoc, adminDoc } from './helpers.js';
+import { stagePoolConstraints } from '../../src/lib/queries.js';
+
+function buildQuery(db, collectionName, constraints, orderBySpec = null) {
+  let q = constraints.reduce(
+    (acc, [field, op, value]) => acc.where(field, op, value),
+    db.collection(collectionName),
+  );
+  if (orderBySpec) {
+    q = q.orderBy(orderBySpec.field, orderBySpec.direction ?? 'asc');
+  }
+  return q;
+}
 
 function exercise(overrides = {}) {
   return {
@@ -254,3 +266,44 @@ describe('stages and grammarNotes rules', () => {
     });
   });
 });
+
+describe('stage pool query rules', () => {
+  const poolWorld = {
+    'users/student1': studentDoc(),
+    'users/paid1': studentDoc({ uid: 'paid1', tier: 'full' }),
+    'exercises/pool-preview': exercise({ isPreview: true, contentHash: 'h-pool-preview' }),
+    'exercises/pool-paid': exercise({ isPreview: false, contentHash: 'h-pool-paid' }),
+    'exercises/pool-draft': exercise({ reviewStatus: 'draft', isPreview: true, contentHash: 'h-pool-draft' }),
+  };
+
+  it('allows a free student to query the pool and returns only published preview exercises', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, poolWorld);
+      const constraints = stagePoolConstraints({
+        skill: 'grammar',
+        level: 'A1',
+        tags: ['grammar:present-simple'],
+        tier: 'free',
+      });
+      const db = authedDb(env, 'student1');
+      const snap = await assertSucceeds(buildQuery(db, 'exercises', constraints).get());
+      expect(snap.docs.map((d) => d.id)).toEqual(['pool-preview']);
+    });
+  });
+
+  it('allows a full-tier student to query the pool and returns both preview and paid exercises but not drafts', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, poolWorld);
+      const constraints = stagePoolConstraints({
+        skill: 'grammar',
+        level: 'A1',
+        tags: ['grammar:present-simple'],
+        tier: 'full',
+      });
+      const db = authedDb(env, 'paid1');
+      const snap = await assertSucceeds(buildQuery(db, 'exercises', constraints).get());
+      expect(snap.docs.map((d) => d.id).sort()).toEqual(['pool-paid', 'pool-preview']);
+    });
+  });
+});
+
