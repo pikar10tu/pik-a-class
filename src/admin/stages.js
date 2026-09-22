@@ -108,6 +108,7 @@ if (fixBtn) {
       const allStages = await fetchStages(db, { publishedOnly: false });
       for (const config of PILOT_CONFIGS) {
         const match = allStages.find((s) => s.order === config.order || s.title?.includes(config.title.split(' ')[0]));
+        const now = new Date().toISOString();
         const stageData = {
           skill: 'grammar',
           level: 'A2',
@@ -118,6 +119,9 @@ if (fixBtn) {
           passThreshold: 0.7,
           isPreview: false,
           reviewStatus: 'published',
+          createdAt: match?.createdAt ?? now,
+          updatedAt: now,
+          createdBy: match?.createdBy ?? currentAdminUid ?? 'admin',
         };
         await saveStage(db, match?.id, stageData);
       }
@@ -131,6 +135,8 @@ if (fixBtn) {
     }
   });
 }
+
+let currentAdminUid = null;
 
 async function reload() {
   count.textContent = 'กำลังโหลด…';
@@ -156,6 +162,7 @@ for (const id of ['filter-skill', 'filter-level', 'filter-status']) {
   document.getElementById(id).addEventListener('change', reload);
 }
 
-requireAdmin(() => {
+requireAdmin((firebaseUser) => {
+  currentAdminUid = firebaseUser?.uid;
   reload();
 });

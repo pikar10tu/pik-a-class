@@ -82,7 +82,7 @@ service cloud.firestore {
 
     match /stages/{id} {
       function stageFields() {
-        return ['skill', 'level', 'order', 'title', 'itemIds', 'passThreshold', 'isPreview',
+        return ['skill', 'level', 'order', 'title', 'tags', 'drawCount', 'itemIds', 'passThreshold', 'isPreview',
                 'reviewStatus', 'createdAt', 'updatedAt', 'createdBy'];
       }
 
