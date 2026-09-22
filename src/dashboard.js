@@ -1,17 +1,35 @@
 import { signOut } from 'firebase/auth';
 import { requireLogin, isAdmin } from './lib/auth-guard.js';
 import { auth } from './lib/firebase.js';
+import { mascotSrc } from './lib/mascot.js';
 
-document.getElementById('learn-link').href = `${import.meta.env.BASE_URL}learn/index.html`;
+const base = import.meta.env.BASE_URL;
+const learnLink = document.getElementById('learn-link');
+if (learnLink) learnLink.href = `${base}learn/index.html`;
+
+const mascotEl = document.getElementById('dashboard-mascot');
+if (mascotEl) mascotEl.src = mascotSrc('normal', base);
 
 requireLogin((firebaseUser, userDoc) => {
-  const name = userDoc?.nickname || firebaseUser.displayName || firebaseUser.email;
-  document.getElementById('welcome-message').textContent = `สวัสดี ${name}`;
+  const name = userDoc?.nickname || firebaseUser.displayName || firebaseUser.email || 'เพื่อนๆ';
+  const welcomeEl = document.getElementById('welcome-message');
+  if (welcomeEl) welcomeEl.textContent = `สวัสดีคุณ ${name}!`;
+
+  const userPill = document.getElementById('user-pill');
+  if (userPill) userPill.textContent = `👤 ${name}`;
 
   // ทางเข้าฝั่ง admin โผล่เฉพาะกับ role admin เท่านั้น — นักเรียนทั่วไปไม่เห็นเมนูนี้เลย
   if (isAdmin(userDoc)) {
-    document.getElementById('admin-link').href = `${import.meta.env.BASE_URL}admin/index.html`;
-    document.getElementById('admin-entry').hidden = false;
+    const adminLink = document.getElementById('admin-link');
+    if (adminLink) adminLink.href = `${base}admin/index.html`;
+    const adminEntry = document.getElementById('admin-entry');
+    if (adminEntry) adminEntry.hidden = false;
+
+    const navAdminLink = document.getElementById('nav-admin-link');
+    if (navAdminLink) {
+      navAdminLink.href = `${base}admin/index.html`;
+      navAdminLink.hidden = false;
+    }
   }
 });
 

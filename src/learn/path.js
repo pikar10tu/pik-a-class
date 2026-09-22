@@ -1,4 +1,4 @@
-import { requireLogin } from '../lib/auth-guard.js';
+import { requireLogin, isAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { fetchStages, fetchMyClears } from '../lib/stage-io.js';
 import { buildStagePath, totalStars, clearsByStageId } from '../lib/stage-progress.js';
@@ -189,7 +189,17 @@ if (!isValidQuery) {
       ]);
 
       if (stages.length === 0) {
-        showEmpty(`ยังไม่มีด่านสำหรับระดับ ${level} ในหมวดนี้ ลองเลือกบทเรียนอื่นดูก่อนนะครับ`);
+        const msg = isAdmin(userDoc)
+          ? `ยังไม่มีด่านที่อนุมัติสำหรับระดับ ${level} (คุณล็อกอินเป็นแอดมิน สามารถไปตรวจสอบและอนุมัติด่านฉบับร่างได้ที่หน้าจัดการด่านครับ)`
+          : `ยังไม่มีด่านสำหรับระดับ ${level} ในหมวดนี้ ลองเลือกบทเรียนอื่นดูก่อนนะครับ`;
+        showEmpty(msg, `${base}learn/index.html`);
+        if (isAdmin(userDoc)) {
+          const emptyBack = document.getElementById('empty-back');
+          if (emptyBack) {
+            emptyBack.textContent = 'ไปหน้าจัดการด่าน (Admin Stages) →';
+            emptyBack.href = `${base}admin/stages.html`;
+          }
+        }
         return;
       }
 

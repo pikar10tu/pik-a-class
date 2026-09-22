@@ -1,9 +1,12 @@
 :root {
-  --color-bg: #ffffff;
+  --color-bg: #f8faf9;
+  --color-surface: #ffffff;
   --color-text: #1f2933;
+  --color-text-muted: #627d98;
   --color-primary: #37c871;
   --color-primary-shadow: #26a058;
   --color-primary-text: #ffffff;
+  --color-primary-light: #e8f9ee;
   --color-border: #dfe3e8;
   --color-error: #dc2626;
   --color-correct-bg: #e8f9ee;
@@ -12,6 +15,8 @@
   --color-wrong-text: #a3181c;
   --color-star: #f5b91d;
   --color-muted: #9aa5b1;
+  --color-admin-bg: #f3e8ff;
+  --color-admin-text: #6b21a8;
   --space-1: 4px;
   --space-2: 8px;
   --space-3: 16px;
@@ -19,6 +24,10 @@
   --space-5: 32px;
   --font-base: 'Mitr', system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-size-base: 16px;
-  --radius: 8px;
-  --radius-lg: 14px;
+  --radius-sm: 6px;
+  --radius: 10px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
 }

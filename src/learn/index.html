@@ -11,13 +11,36 @@
   <link rel="stylesheet" href="../styles/learn.css" />
 </head>
 <body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="../dashboard.html">
+        <span class="app-brand-logo">🌱</span>
+        <span>Pik a Class</span>
+      </a>
+      <nav class="app-nav-links">
+        <a class="app-nav-link" href="../dashboard.html">หน้าหลัก</a>
+        <a class="app-nav-link" href="./index.html" aria-current="page">ตะลุยด่าน</a>
+      </nav>
+      <div class="app-user-actions">
+        <a id="nav-admin-link" class="admin-switch-pill" href="../admin/index.html" hidden>⚙️ จัดการระบบ</a>
+        <a class="btn-ghost-sm" href="../dashboard.html">← แดชบอร์ด</a>
+      </div>
+    </div>
+  </header>
+
   <main class="learn-main">
     <p><a id="back-link" class="learn-back" href="#">← กลับหน้าหลัก</a></p>
     <img id="mascot" class="learn-mascot" width="96" height="138" alt="น้องหยกทักทาย" />
     <h1 class="learn-title">วันนี้อยากฝึกอะไรดี?</h1>
     <p id="loading-note" class="hint">กำลังโหลด…</p>
     <div id="choices" class="choice-list"></div>
-    <p id="empty-note" class="hint" hidden>ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ</p>
+    <div id="empty-box" hidden>
+      <p id="empty-note" class="hint">ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ</p>
+      <div id="admin-draft-hint" class="admin-draft-box" hidden>
+        <p>💡 <strong>สำหรับครูปิ๊ก:</strong> ด่านในระบบยังเป็นฉบับร่าง (Draft) ทั้งหมด นักเรียนจึงยังมองไม่เห็น คุณสามารถไปตรวจสอบและกดอนุมัติด่านได้ที่นี่ครับ:</p>
+        <a id="go-admin-stages" class="btn-primary" href="#">ไปหน้าจัดการด่าน (Admin Stages) →</a>
+      </div>
+    </div>
   </main>
   <script type="module" src="./index.js"></script>
 </body>

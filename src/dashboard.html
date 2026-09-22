@@ -8,13 +8,58 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600&display=swap" />
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/learn.css" />
 </head>
 <body>
-  <main>
-    <p id="welcome-message"></p>
-    <p id="admin-entry" hidden><a id="admin-link" class="btn-primary" href="#">เข้าหน้าผู้ดูแลระบบ</a></p>
-    <p><a id="learn-link" class="btn-primary" href="#">ไปฝึก</a></p>
-    <button id="sign-out-btn" class="btn-primary">ออกจากระบบ</button>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="./dashboard.html">
+        <span class="app-brand-logo">🌱</span>
+        <span>Pik a Class</span>
+      </a>
+      <nav class="app-nav-links">
+        <a class="app-nav-link" href="./dashboard.html" aria-current="page">หน้าหลัก</a>
+        <a class="app-nav-link" href="./learn/index.html">ตะลุยด่าน</a>
+      </nav>
+      <div class="app-user-actions">
+        <span id="user-pill" class="user-pill">กำลังโหลด…</span>
+        <a id="nav-admin-link" class="admin-switch-pill" href="./admin/index.html" hidden>⚙️ จัดการระบบ</a>
+        <button id="sign-out-btn" class="btn-signout" type="button">ออกจากระบบ</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-main">
+    <section class="dashboard-hero">
+      <img id="dashboard-mascot" class="dashboard-mascot" width="100" height="143" alt="น้องหยกทักทาย" />
+      <div class="dashboard-hero-text">
+        <span class="hero-badge">ยินดีต้อนรับ 👋</span>
+        <h1 id="welcome-message" class="dashboard-title">สวัสดีครับ!</h1>
+        <p class="dashboard-subtitle">พร้อมฝึกภาษาอังกฤษให้เก่งขึ้นไปอีกขั้นแล้วหรือยัง?</p>
+      </div>
+    </section>
+
+    <section class="dashboard-grid">
+      <div class="dashboard-card card-learn">
+        <div class="card-icon">🚀</div>
+        <div class="card-content">
+          <span class="card-tag">โหมดหลัก</span>
+          <h2>ตะลุยด่านภาษาอังกฤษ</h2>
+          <p>ฝึกทำโจทย์ไวยากรณ์และคำศัพท์ตามระดับ CEFR สุ่มรอบละ 6–10 ข้อ พร้อมสะสมดาวและปลดล็อกด่านต่อไป</p>
+          <a id="learn-link" class="btn-chunky card-btn" href="#">เริ่มตะลุยด่านเลย ✨</a>
+        </div>
+      </div>
+
+      <div id="admin-entry" class="dashboard-card card-admin" hidden>
+        <div class="card-icon">🛠️</div>
+        <div class="card-content">
+          <span class="card-tag card-tag-admin">สำหรับครูปิ๊ก / Admin</span>
+          <h2>ระบบจัดการบทเรียน</h2>
+          <p>จัดการผู้เรียน, สร้างและแก้ด่าน, อนุมัติโจทย์ในคลัง, และนำเข้าไฟล์ข้อสอบ JSON</p>
+          <a id="admin-link" class="btn-primary card-btn" href="#">เข้าสู่เมนูผู้ดูแลระบบ ⚙️</a>
+        </div>
+      </div>
+    </section>
   </main>
   <script type="module" src="./dashboard.js"></script>
 </body>
