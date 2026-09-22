@@ -40,7 +40,7 @@ const baseWorld = {
   'users/student1': studentDoc(),
   'users/paid1': studentDoc({ uid: 'paid1', tier: 'full' }),
   'exercises/preview1': exercise({ isPreview: true, contentHash: 'h-preview' }),
-  'exercises/paid-only': exercise({ contentHash: 'h-paid' }),
+  'exercises/paid-only': exercise({ level: 'A2', contentHash: 'h-paid' }),
   'exercises/draft1': exercise({ reviewStatus: 'draft', contentHash: 'h-draft' }),
   'exercises/assigned1': exercise({
     visibility: 'assignmentOnly',
@@ -182,8 +182,8 @@ describe('stages and grammarNotes rules', () => {
     await withTestEnv(async (env) => {
       await seed(env, {
         ...baseWorld,
-        'stages/st1': stage,
-        'stages/st-draft': { ...stage, order: 2, reviewStatus: 'draft' },
+        'stages/st1': { ...stage, level: 'A2' },
+        'stages/st-draft': { ...stage, level: 'A2', order: 2, reviewStatus: 'draft' },
         'grammarNotes/n1': note,
       });
 
@@ -271,17 +271,17 @@ describe('stage pool query rules', () => {
   const poolWorld = {
     'users/student1': studentDoc(),
     'users/paid1': studentDoc({ uid: 'paid1', tier: 'full' }),
-    'exercises/pool-preview': exercise({ isPreview: true, contentHash: 'h-pool-preview' }),
-    'exercises/pool-paid': exercise({ isPreview: false, contentHash: 'h-pool-paid' }),
-    'exercises/pool-draft': exercise({ reviewStatus: 'draft', isPreview: true, contentHash: 'h-pool-draft' }),
+    'exercises/pool-preview': exercise({ level: 'A2', isPreview: true, contentHash: 'h-pool-preview' }),
+    'exercises/pool-paid': exercise({ level: 'A2', isPreview: false, contentHash: 'h-pool-paid' }),
+    'exercises/pool-draft': exercise({ level: 'A2', reviewStatus: 'draft', isPreview: true, contentHash: 'h-pool-draft' }),
   };
 
-  it('allows a free student to query the pool and returns only published preview exercises', async () => {
+  it('allows a free student to query the pool on a locked level and returns only published preview exercises', async () => {
     await withTestEnv(async (env) => {
       await seed(env, poolWorld);
       const constraints = stagePoolConstraints({
         skill: 'grammar',
-        level: 'A1',
+        level: 'A2',
         tags: ['grammar:present-simple'],
         tier: 'free',
       });
@@ -296,13 +296,33 @@ describe('stage pool query rules', () => {
       await seed(env, poolWorld);
       const constraints = stagePoolConstraints({
         skill: 'grammar',
-        level: 'A1',
+        level: 'A2',
         tags: ['grammar:present-simple'],
         tier: 'full',
       });
       const db = authedDb(env, 'paid1');
       const snap = await assertSucceeds(buildQuery(db, 'exercises', constraints).get());
       expect(snap.docs.map((d) => d.id).sort()).toEqual(['pool-paid', 'pool-preview']);
+    });
+  });
+
+  it('allows a free student to query an A1 pool and get all exercises without preview filter', async () => {
+    await withTestEnv(async (env) => {
+      const a1World = {
+        'users/student1': studentDoc(),
+        'exercises/a1-preview': exercise({ level: 'A1', isPreview: true, contentHash: 'h-a1-prev' }),
+        'exercises/a1-full': exercise({ level: 'A1', isPreview: false, contentHash: 'h-a1-full' }),
+      };
+      await seed(env, a1World);
+      const constraints = stagePoolConstraints({
+        skill: 'grammar',
+        level: 'A1',
+        tags: ['grammar:present-simple'],
+        tier: 'free',
+      });
+      const db = authedDb(env, 'student1');
+      const snap = await assertSucceeds(buildQuery(db, 'exercises', constraints).get());
+      expect(snap.docs.map((d) => d.id).sort()).toEqual(['a1-full', 'a1-preview']);
     });
   });
 });
