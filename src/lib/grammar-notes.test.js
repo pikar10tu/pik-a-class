@@ -29,6 +29,13 @@ describe('getGrammarNote', () => {
     expect(note.formula).toContain('have/has');
   });
 
+  it('returns future note for grammar:future-going-to-will', () => {
+    const note = getGrammarNote(['grammar:future-going-to-will']);
+    expect(note).toBeDefined();
+    expect(note.title).toContain('Future Forms');
+    expect(note.formula).toContain('going to');
+  });
+
   it('returns review note when multiple grammar tags are present', () => {
     const note = getGrammarNote([
       'grammar:past-simple',
@@ -37,5 +44,16 @@ describe('getGrammarNote', () => {
     ]);
     expect(note).toBeDefined();
     expect(note.title).toContain('ทบทวนเปรียบเทียบ');
+  });
+
+  it('returns miniboss note when 4 grammar tags are present', () => {
+    const note = getGrammarNote([
+      'grammar:past-simple',
+      'grammar:past-continuous',
+      'grammar:present-perfect',
+      'grammar:future-going-to-will'
+    ]);
+    expect(note).toBeDefined();
+    expect(note.title).toContain('มินิบอส');
   });
 });

@@ -93,21 +93,27 @@ function render(stages, status, anyFilterActive) {
 }
 
 const PILOT_CONFIGS = [
-  { order: 1, title: 'Past Simple', tags: ['grammar:past-simple'], drawCount: 7 },
-  { order: 2, title: 'Past Continuous', tags: ['grammar:past-continuous'], drawCount: 7 },
-  { order: 3, title: 'Present Perfect', tags: ['grammar:present-perfect'], drawCount: 6 },
-  { order: 4, title: 'ทบทวนรวม — เลือก tense ให้ถูก', tags: ['grammar:past-simple', 'grammar:past-continuous', 'grammar:present-perfect'], drawCount: 10 },
+  { order: 1, title: 'Past Simple (Part 1: สร้างความคุ้นเคย)', tags: ['grammar:past-simple'], drawCount: 7, minSentenceBuilders: 1 },
+  { order: 2, title: 'Past Simple (Part 2: ท้าทายขึ้น)', tags: ['grammar:past-simple'], drawCount: 7, minSentenceBuilders: 2 },
+  { order: 3, title: 'Past Continuous (Part 1: สร้างความคุ้นเคย)', tags: ['grammar:past-continuous'], drawCount: 7, minSentenceBuilders: 1 },
+  { order: 4, title: 'Past Continuous (Part 2: ท้าทายขึ้น)', tags: ['grammar:past-continuous'], drawCount: 7, minSentenceBuilders: 2 },
+  { order: 5, title: 'Present Perfect (Part 1: สร้างความคุ้นเคย)', tags: ['grammar:present-perfect'], drawCount: 7, minSentenceBuilders: 1 },
+  { order: 6, title: 'Present Perfect (Part 2: ท้าทายขึ้น)', tags: ['grammar:present-perfect'], drawCount: 7, minSentenceBuilders: 2 },
+  { order: 7, title: 'Future Forms (Part 1: สร้างความคุ้นเคย)', tags: ['grammar:future-going-to-will'], drawCount: 7, minSentenceBuilders: 1 },
+  { order: 8, title: 'Future Forms (Part 2: ท้าทายขึ้น)', tags: ['grammar:future-going-to-will'], drawCount: 7, minSentenceBuilders: 2 },
+  { order: 9, title: '⚔️ มินิบอสประลอง 4 Tenses (Part 1: ด่านวัดความแม่นยำ)', tags: ['grammar:past-simple', 'grammar:past-continuous', 'grammar:present-perfect', 'grammar:future-going-to-will'], drawCount: 7, minSentenceBuilders: 1 },
+  { order: 10, title: '👑 มินิบอสประลอง 4 Tenses (Part 2: ศึกตัดสินจ้าวแห่งกาลเวลา)', tags: ['grammar:past-simple', 'grammar:past-continuous', 'grammar:present-perfect', 'grammar:future-going-to-will'], drawCount: 7, minSentenceBuilders: 2 },
 ];
 
 const fixBtn = document.getElementById('fix-pilot-stages');
 if (fixBtn) {
   fixBtn.addEventListener('click', async () => {
     fixBtn.disabled = true;
-    showBanner('กำลังอัปเกรด 4 ด่านนำร่องสู่ระบบ Pool...');
+    showBanner('กำลังอัปเกรด 10 ด่าน Tenses Saga สู่ระบบ Pool...');
     try {
       const allStages = await fetchStages(db, { publishedOnly: false });
       for (const config of PILOT_CONFIGS) {
-        const match = allStages.find((s) => s.order === config.order || s.title?.toLowerCase().startsWith(config.title.toLowerCase()));
+        const match = allStages.find((s) => s.order === config.order);
         const now = new Date().toISOString();
         const stageData = {
           skill: 'grammar',
@@ -116,6 +122,7 @@ if (fixBtn) {
           title: config.title,
           tags: config.tags,
           drawCount: config.drawCount,
+          minSentenceBuilders: config.minSentenceBuilders,
           passThreshold: 0.7,
           isPreview: false,
           reviewStatus: 'published',
@@ -125,7 +132,7 @@ if (fixBtn) {
         };
         await saveStage(db, match?.id, stageData);
       }
-      showBanner('✅ อัปเกรดและอนุมัติ 4 ด่านนำร่องเรียบร้อยแล้ว! สามารถเข้าเล่นได้ทันที');
+      showBanner('✅ อัปเกรดและอนุมัติ 10 ด่าน Tenses Saga เรียบร้อยแล้ว! สามารถเข้าเล่นได้ทันที');
       await reload();
     } catch (err) {
       console.error(err);

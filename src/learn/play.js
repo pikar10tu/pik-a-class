@@ -424,7 +424,10 @@ requireLogin(async (firebaseUser, userDoc) => {
     // กรองชนิดที่เล่นไม่ได้ทิ้งก่อนสุ่ม ไม่ใช่หลังสุ่ม ไม่งั้นรอบนั้นจะได้ข้อน้อยกว่า drawCount
     // โดยไม่มีเหตุผล ทั้งที่คลังมีข้อที่เล่นได้เหลืออยู่
     const playable = pool.filter((item) => STAGE_ITEM_TYPES.includes(item.type));
-    exercises = pickRound(playable, stage.drawCount ?? 1);
+    exercises = pickRound(playable, stage.drawCount ?? 1, Math.random, {
+      minSentenceBuilders: stage.minSentenceBuilders,
+      stageOrder: stage.order,
+    });
 
     // ด่านที่ยังไม่มีข้อเลย (คลังว่าง หรือคลังมีแต่ข้อชนิดที่เล่นไม่ได้) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
     if (exercises.length === 0) {

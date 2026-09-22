@@ -21,13 +21,45 @@ export function findOrphanExercises(stages, exercises) {
   });
 }
 
-// Fisher-Yates บนสำเนา แล้วตัดเอาเท่าที่ขอ — สุ่มทั้งว่าได้ข้อไหนและได้เรียงยังไงในคราวเดียว
-// รับ random เข้ามาเพื่อให้เทสตรึงผลได้ ห้ามเรียก Math.random ตรงๆ ข้างใน
-export function pickRound(pool, drawCount, random = Math.random) {
-  const copy = [...pool];
+function shuffle(array, random) {
+  const copy = [...array];
   for (let i = copy.length - 1; i > 0; i -= 1) {
     const j = Math.floor(random() * (i + 1));
     [copy[i], copy[j]] = [copy[j], copy[i]];
   }
-  return copy.slice(0, Math.max(0, drawCount));
+  return copy;
+}
+
+// Fisher-Yates บนสำเนา แล้วตัดเอาเท่าที่ขอ — สุ่มทั้งว่าได้ข้อไหนและได้เรียงยังไงในคราวเดียว
+// รองรับ options.minSentenceBuilders หรือ options.stageOrder (คี่=1, คู่=2) เพื่อการันตีชนิดข้อสอบในระบบคู่ด่าน
+// รับ random เข้ามาเพื่อให้เทสตรึงผลได้ ห้ามเรียก Math.random ตรงๆ ข้างใน
+export function pickRound(pool, drawCount, random = Math.random, options = {}) {
+  const targetCount = Math.max(0, drawCount);
+  if (!Array.isArray(pool) || pool.length === 0 || targetCount === 0) return [];
+
+  let minSb = options.minSentenceBuilders;
+  if (minSb === undefined && typeof options.stageOrder === 'number') {
+    minSb = options.stageOrder % 2 === 0 ? 2 : 1;
+  }
+
+  if (typeof minSb === 'number' && minSb > 0) {
+    const sbList = pool.filter((item) => item.type === 'sentence_builder');
+    if (sbList.length > 0) {
+      const takeSbCount = Math.min(sbList.length, Math.min(targetCount, minSb));
+      const shuffledSb = shuffle(sbList, random);
+      const chosenSb = shuffledSb.slice(0, takeSbCount);
+      const chosenIds = new Set(chosenSb.map((item) => item.id));
+
+      const remainingPool = pool.filter((item) => !chosenIds.has(item.id));
+      const remainingNeeded = targetCount - chosenSb.length;
+      const shuffledRemaining = shuffle(remainingPool, random);
+      const chosenRemaining = shuffledRemaining.slice(0, remainingNeeded);
+
+      const combined = [...chosenSb, ...chosenRemaining];
+      return shuffle(combined, random);
+    }
+  }
+
+  const copy = shuffle(pool, random);
+  return copy.slice(0, targetCount);
 }

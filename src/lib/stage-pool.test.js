@@ -72,6 +72,58 @@ describe('pickRound', () => {
     const set2 = new Set(pickRound(bigPool, 3, () => (i2 += 0.3) % 1).map((item) => item.id));
     expect([...set1].sort().join('')).not.toBe([...set2].sort().join(''));
   });
+
+  describe('sentence builder quotas (paired stages)', () => {
+    const mixedPool = [
+      ex('fb1', { type: 'fill_blank' }),
+      ex('fb2', { type: 'fill_blank' }),
+      ex('mcq1', { type: 'mcq' }),
+      ex('mcq2', { type: 'mcq' }),
+      ex('sb1', { type: 'sentence_builder' }),
+      ex('sb2', { type: 'sentence_builder' }),
+      ex('sb3', { type: 'sentence_builder' }),
+    ];
+
+    it('การันตีเรียงคำ 1 ข้อเมื่อระบุ minSentenceBuilders = 1', () => {
+      const picked = pickRound(mixedPool, 4, Math.random, { minSentenceBuilders: 1 });
+      expect(picked).toHaveLength(4);
+      const sbCount = picked.filter((item) => item.type === 'sentence_builder').length;
+      expect(sbCount).toBeGreaterThanOrEqual(1);
+    });
+
+    it('การันตีเรียงคำ 2 ข้อเมื่อระบุ minSentenceBuilders = 2', () => {
+      const picked = pickRound(mixedPool, 5, Math.random, { minSentenceBuilders: 2 });
+      expect(picked).toHaveLength(5);
+      const sbCount = picked.filter((item) => item.type === 'sentence_builder').length;
+      expect(sbCount).toBeGreaterThanOrEqual(2);
+    });
+
+    it('คำนวณอัตโนมัติจาก stageOrder: ด่านคี่ (1) ได้เรียงคำอย่างน้อย 1 ข้อ', () => {
+      const picked = pickRound(mixedPool, 4, Math.random, { stageOrder: 1 });
+      expect(picked).toHaveLength(4);
+      const sbCount = picked.filter((item) => item.type === 'sentence_builder').length;
+      expect(sbCount).toBeGreaterThanOrEqual(1);
+    });
+
+    it('คำนวณอัตโนมัติจาก stageOrder: ด่านคู่ (2) ได้เรียงคำอย่างน้อย 2 ข้อ', () => {
+      const picked = pickRound(mixedPool, 5, Math.random, { stageOrder: 2 });
+      expect(picked).toHaveLength(5);
+      const sbCount = picked.filter((item) => item.type === 'sentence_builder').length;
+      expect(sbCount).toBeGreaterThanOrEqual(2);
+    });
+
+    it('หากในคลังมีเรียงคำน้อยกว่าที่ขอ ก็ดึงเท่าที่มีและไม่พัง', () => {
+      const scarcePool = [
+        ex('fb1', { type: 'fill_blank' }),
+        ex('fb2', { type: 'fill_blank' }),
+        ex('sb1', { type: 'sentence_builder' }),
+      ];
+      const picked = pickRound(scarcePool, 3, Math.random, { minSentenceBuilders: 2 });
+      expect(picked).toHaveLength(3);
+      const sbCount = picked.filter((item) => item.type === 'sentence_builder').length;
+      expect(sbCount).toBe(1);
+    });
+  });
 });
 
 describe('matchesStagePool', () => {

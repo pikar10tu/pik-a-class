@@ -93,13 +93,21 @@ dueDate?, createdAt
 
 ## 8. โซนตะลุยด่าน (Duolingo-style stage path)
 
-เส้นทางด่านต่อ 1 สกิล+เลเวล เรียงลำดับ ปลดล็อกด่านถัดไปเมื่อผ่านเกณฑ์ แต่ละด่าน = ชุดข้อเติมคำ (fill_blank) 5–10 ข้อ อาจแทรก shadowing prompt (อ่านออกเสียงตามเอง ไม่อัดเสียง ไม่ประเมิน แค่กด "ลองแล้ว")
+เส้นทางด่านต่อ 1 สกิล+เลเวล เรียงลำดับ ปลดล็อกด่านถัดไปเมื่อผ่านเกณฑ์ (70% หรือ 2 ดาวขึ้นไป)
+
+**สถาปัตยกรรมการจัดด่าน & คลังโจทย์ (อัปเดต 2026-09-22):**
+1. **คลังโจทย์ (Item Pool):** แต่ละหัวข้อไวยากรณ์มีคลัง **15 ข้อ** (ผสม Sentence Builder 4 ข้อ, เติมคำ 5-6 ข้อ, MCQ 5-6 ข้อ)
+2. **คู่ด่าน (Paired Stages — Two-Stage Spiral Learning):** จัด 2 ด่านต่อ 1 หัวข้อไวยากรณ์ เพื่อเน้นการทำซ้ำสร้างความเข้าใจคงทน:
+   - **ด่านที่ 1 ของคู่ (Part 1 - สร้างความคุ้นเคย):** สุ่ม 7 ข้อ โดยการันตีมีข้อเรียงคำ (sentence_builder) 1 ข้อ + ข้ออื่นๆ 6 ข้อ
+   - **ด่านที่ 2 ของคู่ (Part 2 - ท้าทายขึ้น):** สุ่ม 7 ข้อจากคลังเดิม โดยการันตีมีข้อเรียงคำ 2 ข้อ + ข้ออื่นๆ 5 ข้อ
+3. **ด่านมินิบอส (Mini-Boss Checkpoint):** จุดตัดสำคัญ (เช่น หลังจบบท Tenses) มีคู่ด่านมินิบอสที่สุ่มจากคลังโจทย์ทุกหัวข้อก่อนหน้า
+4. **ด่านบอสใหญ่ประจำเลเวล (Master Review Final Boss):** ด่านปิดท้ายของเลเวล สุ่ม 10 ข้อรวมทุกหัวข้อในเลเวล โดย **ปลดล็อกเฉพาะเมื่อนักเรียนเก็บ 3 ดาวได้ครบทุกด่านก่อนหน้าในเลเวลนั้น**
 
 **`stages`**
 ```
 id, skill: grammar|vocab|dialogue, level: A1|A2|B1|B2|C1, order,
-title, itemIds: string[], passThreshold: number, isPreview: bool,
-reviewStatus: draft|reviewed|published,   // เพิ่มตาม spec 2026-09-20 — กันด่านที่สร้างค้างครึ่งทางโผล่ให้นักเรียนเห็น
+title, tags: string[], drawCount: number, passThreshold: number, isPreview: bool,
+reviewStatus: draft|reviewed|published,
 createdAt, updatedAt, createdBy
 ```
 
@@ -123,15 +131,13 @@ reviewStatus: draft|reviewed|published   // ใช้ audit pipeline เดี�
 
 เฉพาะ**สกิลไวยากรณ์**ก่อน (vocab/dialogue ยังเน้นทำโจทย์อย่างเดียวตามเดิม ไม่ต้องมีสรุปแยก เพราะเป็นคำ/บทสนทนาไม่ใช่กฎที่ต้องอธิบาย)
 
-### Taxonomy ร่าง: หัวข้อไวยากรณ์/tense ต่อเลเวล (ปรับตามที่ปิ๊กสอนจริงได้)
+### Taxonomy มาตรฐาน 10 หัวข้อต่อระดับ (Finalized จาก Curriculum Audit อิง CEFR 2020 & ข้อสอบ TGAT/A-Level)
 
-- **A1:** Present Simple (be/do), there is/are, Present Continuous (พื้นฐาน), can/can't, imperatives, plural nouns, possessive 's, Past Simple (be, verbs regular พื้นฐาน)
-- **A2:** Past Simple (regular+irregular ครบ), Past Continuous, Present Perfect (experience พื้นฐาน), Future (going to / will), comparatives/superlatives, must/have to/should, some/any + countable-uncountable
-- **B1:** Present Perfect Continuous, Past Perfect, Future Continuous, First & Second Conditional, Passive Voice (พื้นฐาน), Reported Speech (statements), modals of deduction (must/might/could), relative clauses (defining)
-- **B2:** Past Perfect Continuous, Future Perfect, Third Conditional, Mixed Conditionals, Passive (ครบ tense), Reported Speech (questions/commands), relative clauses (non-defining), causative (have/get something done)
+- **A1:** Present Simple (be/do), Articles & Nouns, there is/are & Prepositions of Place, Wh- Questions & Inversion, Adjectives & Possessive ('s), Prepositions of Time & Frequency, Present Continuous, can/can't & Imperatives, Past Simple of 'be' (was/were)
+- **A2:** Past Simple (regular+irregular), Past Continuous & When/While, Present Perfect (Experience), Future Forms (going to / will / Pres Cont), Countable/Uncountable & Quantifiers, Comparatives & Superlatives, Modals of Obligation & Advice (must/have to/should), Basic Verb Patterns (Gerunds/Infinitives), Conjunctions & Sentence Connectors, Zero & First Conditionals
+- **B1:** Present Perfect Continuous vs Simple, Past Perfect Simple (Sequencing), Past Habits ('used to' vs 'be used to' vs 'เคย'), Passive Voice (Core), Second Conditional & Wishes, Modals of Deduction (Present), Defining Relative Clauses, Reported Speech & Indirect Questions, Verb Patterns (Meaning Changes), Discourse Connectors
+- **B2:** Participle Clauses & Reduced Relatives, Third & Mixed Conditionals, Unreal Past, Wishes & Subjunctive, Past Modals of Deduction & Regret, Advanced Passive & Causatives, Non-defining Relative Clauses & Prepositions, Advanced Future Aspects (Future Cont & Future Perfect), Inversion for Emphasis (Negative Adverbials), Cleft Sentences & Focusing, Advanced Discourse Markers & Academic Hedging
 - **C1:** Advanced conditionals/inversion, subjunctive, advanced passive/reporting, cleft sentences, discourse markers ขั้นสูง, nuanced modal usage
-
-> รายการนี้เป็น draft อิงมาตรฐาน CEFR ทั่วไป ไม่ใช่คำแนะนำทางวิชาการตายตัว — ปิ๊กในฐานะคนสอนจริงปรับลำดับ/เพิ่มลดหัวข้อตามที่เจอกับนักเรียนจริงได้เลย ก่อน generate เนื้อหาแนะนำ finalize รายการนี้ก่อน เพราะ `tags` ในทุก exercise/stage/grammarNotes จะอิงตามชื่อหัวข้อในนี้ (เพื่อให้ "จุดอ่อนที่ควรทบทวน" ทำงานถูกต้องด้วย)
 
 ## 9. Data model (Firestore, สรุปรวม)
 
