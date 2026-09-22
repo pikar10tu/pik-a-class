@@ -13,6 +13,8 @@ import {
 } from '../lib/admin-content-io.js';
 import { previewLines, TYPE_LABELS } from '../lib/exercise-form.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
+import { findOrphanExercises } from '../lib/stage-pool.js';
+import { fetchStages } from '../lib/stage-io.js';
 
 renderAdminNav(document.getElementById('admin-nav'), 'admin/content.html', import.meta.env.BASE_URL);
 
@@ -32,6 +34,7 @@ const statusFilter = document.getElementById('filter-status');
 const publishAllButton = document.getElementById('publish-all');
 const toggleTrashButton = document.getElementById('toggle-trash');
 const dialog = document.getElementById('confirm-dialog');
+const orphanNote = document.getElementById('orphan-note');
 
 document.getElementById('new-link').href = `${base}admin/exercise.html`;
 
@@ -172,6 +175,7 @@ function renderItem(item) {
 
 async function load() {
   status.textContent = 'กำลังโหลด…';
+  if (orphanNote) orphanNote.hidden = true;
   list.replaceChildren();
 
   try {
@@ -194,6 +198,21 @@ async function load() {
     publishAllButton.disabled = showingTrash || items.length === 0 || statusFilter.value === 'published';
 
     for (const item of items) list.appendChild(renderItem(item));
+
+    if (!showingTrash) {
+      const stages = await fetchStages(db, { publishedOnly: false });
+      const orphans = findOrphanExercises(stages, items);
+      if (orphans.length > 0) {
+        const sampleNames = orphans
+          .slice(0, 3)
+          .map((item) => `"${item.prompt.length > 60 ? `${item.prompt.slice(0, 60)}…` : item.prompt}"`)
+          .join(', ');
+        orphanNote.textContent = `พบข้อที่อนุมัติแล้วแต่ไม่มีด่านใดสุ่มได้ ${orphans.length} ข้อ (เช่น ${sampleNames}) — โปรดตรวจแท็กของข้อเหล่านี้หรือของด่าน`;
+        orphanNote.hidden = false;
+      } else {
+        orphanNote.hidden = true;
+      }
+    }
   } catch (error) {
     console.error(error);
     showPageError('โหลดคลังเนื้อหาไม่สำเร็จ — ถ้าเพิ่งเพิ่ม index ใหม่ รอสักครู่แล้วลองอีกครั้ง');
@@ -205,6 +224,7 @@ function applyView() {
   toggleTrashButton.textContent = showingTrash ? '← กลับไปคลังเนื้อหา' : 'ดูถังขยะ';
   filters.hidden = showingTrash;
   publishAllButton.hidden = showingTrash;
+  if (showingTrash && orphanNote) orphanNote.hidden = true;
 }
 
 toggleTrashButton.addEventListener('click', () => {
