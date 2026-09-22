@@ -350,6 +350,38 @@ async function finish() {
     '★'.repeat(summary.stars) + `<span class="off">${'★'.repeat(3 - summary.stars)}</span>`;
   document.getElementById('result-score').textContent =
     `ตอบถูก ${summary.correctCount} จาก ${summary.total} ข้อ (${Math.round(summary.score * 100)}%)`;
+
+  const retryBtn = document.getElementById('retry');
+  const backBtn = document.getElementById('back-to-path');
+
+  if (summary.passed) {
+    // ผ่านด่าน: เน้นปุ่ม "ไปต่อ" เป็นหลัก (btn-chunky), ปุ่ม "เล่นอีกครั้ง" เป็นทางเลือกรอง (btn-ghost)
+    backBtn.className = 'btn-chunky';
+    backBtn.textContent = fromAdmin ? 'กลับไปหน้าแก้ด่าน' : 'ไปต่อ';
+    backBtn.style.marginTop = '0';
+
+    retryBtn.className = 'btn-ghost';
+    retryBtn.textContent = 'เล่นด่านนี้อีกครั้ง';
+    retryBtn.style.marginTop = 'var(--space-2)';
+
+    if (backBtn.parentNode) {
+      backBtn.parentNode.insertBefore(backBtn, retryBtn);
+    }
+  } else {
+    // ไม่ผ่าน: เน้นปุ่ม "ลองอีกครั้ง" เป็นหลัก (btn-chunky), ปุ่ม "กลับเส้นทางด่าน" เป็นทางเลือกรอง (btn-ghost)
+    retryBtn.className = 'btn-chunky';
+    retryBtn.textContent = 'ลองอีกครั้ง';
+    retryBtn.style.marginTop = '0';
+
+    backBtn.className = 'btn-ghost';
+    backBtn.textContent = fromAdmin ? 'กลับไปหน้าแก้ด่าน' : 'กลับเส้นทางด่าน';
+    backBtn.style.marginTop = 'var(--space-2)';
+
+    if (retryBtn.parentNode) {
+      retryBtn.parentNode.insertBefore(retryBtn, backBtn);
+    }
+  }
+
   await save();
 }
 
