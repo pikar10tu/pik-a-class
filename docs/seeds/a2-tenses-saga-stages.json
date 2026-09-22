@@ -1,0 +1,168 @@
+[
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 1,
+    "title": "Past Simple ภาค 1: เรื่องเล่าวันวาน",
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 2,
+    "title": "Past Simple ภาค 2: ปฏิเสธและซักถาม",
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 3,
+    "title": "Past Continuous ภาค 1: ขณะนั้นกำลังทำ",
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 4,
+    "title": "Past Continuous ภาค 2: เหตุการณ์ซ้อนตัด",
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 5,
+    "title": "Present Perfect ภาค 1: ประสบการณ์ชีวิต",
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 6,
+    "title": "Present Perfect ภาค 2: ผลลัพธ์ถึงปัจจุบัน",
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 7,
+    "title": "Future Forms ภาค 1: วางแผนล่วงหน้า",
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 8,
+    "title": "Future Forms ภาค 2: สัญญาและทำนาย",
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 9,
+    "title": "⚔️ มินิบอส Part 1: ประลองยุทธ์ 4 กาลเวลา",
+    "tags": [
+      "grammar:past-simple",
+      "grammar:past-continuous",
+      "grammar:present-perfect",
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "A2",
+    "order": 10,
+    "title": "👑 มินิบอส Part 2: ศึกตัดสินจ้าวแห่ง Tenses",
+    "tags": [
+      "grammar:past-simple",
+      "grammar:past-continuous",
+      "grammar:present-perfect",
+      "grammar:future-going-to-will"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  }
+]

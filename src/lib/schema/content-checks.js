@@ -21,11 +21,12 @@ function fnv1a(input, seed) {
 }
 
 export function contentHash(item) {
-  const body = normalizeContent(item.prompt ?? item.summary ?? '');
+  const body = normalizeContent(item.prompt ?? item.summary ?? item.title ?? '');
   const choices = Array.isArray(item.choices)
     ? [...item.choices].map(normalizeContent).sort().join('|')
     : '';
-  const material = `${body}##${choices}`;
+  const extra = item.order !== undefined ? `#${item.order}` : '';
+  const material = `${body}##${choices}${extra}`;
   return fnv1a(material, 0x811c9dc5) + fnv1a(material, 0x1000193);
 }
 

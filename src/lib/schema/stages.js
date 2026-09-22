@@ -18,6 +18,8 @@ export const stagesSchema = {
     passThreshold: num({ min: 0, max: 1 }),
     isPreview: bool(),
     reviewStatus: enumOf(REVIEW_STATUSES),
+    contentHash: str({ required: false }),
+    importBatchId: str({ required: false }),
     createdAt: isoDate(),
     updatedAt: isoDate(),
     createdBy: str(),
