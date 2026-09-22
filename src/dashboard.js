@@ -18,7 +18,7 @@ requireLogin((firebaseUser, userDoc) => {
   const nickname = userDoc?.nickname?.trim();
   const displayName = nickname || firebaseUser.displayName || 'เพื่อนๆ';
   
-  // ถ้าครูปิ๊กตั้งชื่อเรียกเฉพาะตัว (เช่น น้องบีน, พี่โก้, คุณแม่น้องมินท์) ให้ทักทายโดยตรง
+  // ถ้าพี่ปิ๊กตั้งชื่อเรียกเฉพาะตัว (เช่น น้องบีน, พี่โก้, คุณแม่น้องมินท์) ให้ทักทายโดยตรง
   // ถ้ายังไม่ได้ตั้ง ให้ใช้ค่ามาตรฐานสุภาพ: สวัสดีคุณ [ชื่อเล่น]
   const greetingTarget = callName ? callName : `คุณ ${displayName}`;
   const welcomeEl = document.getElementById('welcome-message');

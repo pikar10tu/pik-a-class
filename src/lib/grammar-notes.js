@@ -326,7 +326,7 @@ export const GRAMMAR_NOTES = {
       'Mount Everest is higher than any other mountain. (Comparative)',
       'If you leave now, you will catch the train. (First Conditional)'
     ],
-    tips: 'ขอให้พลังแห่งความมุ่งมั่นนำพาคุณครูปิ๊กและนักเรียนพิชิตบอสใหญ่ A2 ได้สำเร็จครับ!'
+    tips: 'ขอให้พลังแห่งความมุ่งมั่นนำพาพี่ปิ๊กและน้องๆ พิชิตบอสใหญ่ A2 ได้สำเร็จครับ!'
   }
 };
 

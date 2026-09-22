@@ -526,7 +526,7 @@ requireLogin(async (firebaseUser, userDoc) => {
       return;
     }
     if (!isLevelAllowed(userDoc, stage.level)) {
-      showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักครูปิ๊กเพื่อขอเปิดด่านได้เลยครับ`, backHref());
+      showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักพี่ปิ๊กเพื่อขอเปิดด่านได้เลยครับ`, backHref());
       return;
     }
     setupGrammarNote(stage.tags);
@@ -544,8 +544,8 @@ requireLogin(async (firebaseUser, userDoc) => {
       if (isAdmin(userDoc)) {
         const hasTags = Array.isArray(stage.tags) && stage.tags.length > 0;
         const msg = hasTags
-          ? 'ด่านนี้ยังมีข้อสอบที่ตรงกับแท็กในคลังไม่พอ หรือยังไม่มีข้อสอบที่อนุมัติ (สำหรับครูปิ๊ก: ไปตรวจคลังข้อสอบหรือด่านได้ที่นี่)'
-          : 'ด่านนี้ยังไม่ได้ตั้งค่าแท็กโจทย์ (สำหรับครูปิ๊ก: ไปเลือกแท็กของด่านได้ที่นี่)';
+          ? 'ด่านนี้ยังมีข้อสอบที่ตรงกับแท็กในคลังไม่พอ หรือยังไม่มีข้อสอบที่อนุมัติ (สำหรับพี่ปิ๊ก: ไปตรวจคลังข้อสอบหรือด่านได้ที่นี่)'
+          : 'ด่านนี้ยังไม่ได้ตั้งค่าแท็กโจทย์ (สำหรับพี่ปิ๊ก: ไปเลือกแท็กของด่านได้ที่นี่)';
         showEmpty(msg, `${base}admin/stage.html?id=${stageId}`);
         const emptyBack = document.getElementById('empty-back');
         if (emptyBack) {

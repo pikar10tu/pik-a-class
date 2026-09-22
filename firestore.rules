@@ -53,6 +53,7 @@ service cloud.firestore {
     function publishedAndAllowed(assignedUids) {
       return resource.data.reviewStatus == "published"
         && (resource.data.get('isPreview', false) == true
+            || resource.data.level == "A1"
             || myUserDoc().tier == "full"
             || request.auth.uid in assignedUids);
     }
@@ -73,6 +74,7 @@ service cloud.firestore {
           && (
             (resource.data.visibility == "bank"
               && (resource.data.get('isPreview', false) == true
+                  || resource.data.level == "A1"
                   || (myUserDoc().tier == "full" && (
                       myUserDoc().get('allowedLevels', []).size() == 0
                       || resource.data.level in myUserDoc().get('allowedLevels', [])

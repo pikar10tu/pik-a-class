@@ -7,7 +7,8 @@ export function bankExerciseConstraints({ skill, level, tier }) {
     ['skill', '==', skill],
     ['level', '==', level],
   ];
-  if (tier !== 'full') constraints.push(['isPreview', '==', true]);
+  // ระดับ A1 เปิดให้เข้าถึงได้ครบทุกข้อเป็นค่าเริ่มต้น ส่วนระดับอื่นๆ หากไม่ใช่ full tier จะเห็นเฉพาะข้อ preview
+  if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
   return constraints;
 }
 
@@ -55,7 +56,7 @@ export function stageConstraints({ skill, level, publishedOnly = true, tier } = 
   const constraints = [];
   if (publishedOnly) {
     constraints.push(['reviewStatus', '==', 'published']);
-    if (tier !== 'full') constraints.push(['isPreview', '==', true]);
+    if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
   }
   if (skill) constraints.push(['skill', '==', skill]);
   if (level) constraints.push(['level', '==', level]);
@@ -74,7 +75,7 @@ export function stagePoolConstraints({ skill, level, tags, tier }) {
     ['level', '==', level],
     ['tags', 'array-contains-any', tags],
   ];
-  if (tier !== 'full') constraints.push(['isPreview', '==', true]);
+  if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
   return constraints;
 }
 

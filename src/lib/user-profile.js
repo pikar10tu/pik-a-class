@@ -36,5 +36,10 @@ export function isLevelAllowed(userDoc, level) {
     return true;
   }
 
+  // ผู้เรียนทุกคนรวมทั้งสมาชิกใหม่ ได้รับสิทธิ์เรียนระดับ A1 ฟรีครบทุกด่านเป็นค่าเริ่มต้น
+  if (level === 'A1') {
+    return true;
+  }
+
   return false;
 }

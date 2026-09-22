@@ -11,11 +11,39 @@ const base = import.meta.env.BASE_URL;
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
 
 const EMPTY_MESSAGE_FULL = 'ยังไม่มีบทเรียนที่เปิดให้เล่นตอนนี้ครับ';
-const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักครูเพื่อขอสิทธิ์เพิ่มดูนะครับ';
+const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้รับสิทธิ์ดูบทเรียนตอนนี้ครับ ลองทักพี่ปิ๊กเพื่อขอสิทธิ์เพิ่มดูนะครับ';
 
 document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
 attachUiSounds();
+
+const lockDialog = document.getElementById('lock-dialog');
+const lockTitle = document.getElementById('lock-dialog-title');
+const lockBody = document.getElementById('lock-dialog-body');
+const lockClose = document.getElementById('lock-dialog-close');
+const lockCloseX = document.getElementById('lock-dialog-close-x');
+
+if (lockClose) lockClose.addEventListener('click', () => lockDialog?.close());
+if (lockCloseX) lockCloseX.addEventListener('click', () => lockDialog?.close());
+
+function openLockDialog(level, skill) {
+  if (!lockDialog) return;
+  if (level === 'B1' || level === 'B2') {
+    lockTitle.textContent = `🏰 ด่านระดับ ${level} กำลังก่อสร้าง!`;
+    lockBody.innerHTML = `
+      <p>เกาะไวยากรณ์ระดับ <strong>${level}</strong> กำลังอยู่ระหว่างการก่อสร้างอย่างเข้มข้นครับ! 🚧✨</p>
+      <p>พี่ปิ๊กกำลังเตรียมเนื้อหาและแบบฝึกหัดชุดพิเศษให้อยู่ครับ แนะนำให้ตะลุยเกาะ <strong>A1 และ A2</strong> ให้เชี่ยวชาญก่อนได้เลยครับ!</p>
+    `;
+  } else {
+    lockTitle.textContent = `🏰 ด่านระดับ ${level} ปิดผนึกอยู่!`;
+    lockBody.innerHTML = `
+      <p>ยินดีต้อนรับสู่ <strong>Pik a Class</strong> ครับ! 🎒</p>
+      <p>สำหรับสมาชิกใหม่ พี่ปิ๊กเปิดเกาะ <strong>A1 ให้ผจญภัยฟรีครบทั้ง 20 ด่าน</strong> (ข้อสอบกว่า 150 ข้อ) เพื่อสร้างรากฐานไวยากรณ์ให้แน่นเปรี๊ยะก่อนครับ ✨</p>
+      <p>เมื่อหนูๆ พร้อมลุยต่อในระดับ ${level} หรือต้องการขอเปิดด่านล่วงหน้า สามารถทักหาพี่ปิ๊กทาง LINE เพื่อปลดล็อกได้เลยครับ!</p>
+    `;
+  }
+  lockDialog.showModal();
+}
 
 function render(stages, tier, isUserAdmin, userDoc) {
   const groups = new Map();
@@ -46,6 +74,7 @@ function render(stages, tier, isUserAdmin, userDoc) {
     adminDraftHint.hidden = false;
   }
 
+  // 1. ระดับที่มีอยู่ในระบบ (เช่น A1, A2)
   for (const [key, count] of groups) {
     const [skill, level] = key.split('|');
     const allowed = isLevelAllowed(userDoc, level);
@@ -53,19 +82,36 @@ function render(stages, tier, isUserAdmin, userDoc) {
     button.type = 'button';
     if (allowed) {
       button.className = 'btn-chunky';
-      button.textContent = `${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} — ${count} ด่าน`;
+      const freeBadge = level === 'A1' && userDoc?.tier !== 'full' && userDoc?.role !== 'admin' ? ' (เล่นฟรี ✨)' : '';
+      button.textContent = `${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} — ${count} ด่าน${freeBadge}`;
       button.addEventListener('click', () => {
         window.location.href = `${base}learn/path.html?skill=${skill}&level=${level}`;
       });
     } else {
       button.className = 'btn-ghost';
-      button.style.opacity = '0.85';
-      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ยังไม่ได้รับสิทธิ์)`;
+      button.style.opacity = '0.9';
+      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ปลดล็อกเมื่อผ่าน A1 / ติดต่อพี่ปิ๊ก)`;
       button.addEventListener('click', () => {
-        alert(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณครับ\nสามารถทักครูปิ๊กเพื่อขอเปิดด่านระดับนี้ได้เลยครับ! 😊`);
+        openLockDialog(level, skill);
       });
     }
     container.appendChild(button);
+  }
+
+  // 2. ป้ายสำหรับระดับ B1 และ B2 (เตรียมพร้อมไว้ ล็อกไว้ก่อน)
+  const existingLevels = new Set([...groups.keys()].map(k => k.split('|')[1]));
+  for (const futureLevel of ['B1', 'B2']) {
+    if (!existingLevels.has(futureLevel)) {
+      const futureBtn = document.createElement('button');
+      futureBtn.type = 'button';
+      futureBtn.className = 'btn-ghost';
+      futureBtn.style.opacity = '0.75';
+      futureBtn.textContent = `🔒 ไวยากรณ์ · ระดับ ${futureLevel} (เร็วๆ นี้ · กำลังสร้าง)`;
+      futureBtn.addEventListener('click', () => {
+        openLockDialog(futureLevel, 'grammar');
+      });
+      container.appendChild(futureBtn);
+    }
   }
 }
 
@@ -81,7 +127,17 @@ requireLogin(async (firebaseUser, userDoc) => {
 
   try {
     const tier = readTier(userDoc);
-    const stages = await fetchStages(db, { tier });
+    let stages = [];
+    if (tier === 'full' || isUserAdmin) {
+      stages = await fetchStages(db, { tier });
+    } else {
+      // ผู้เรียนทั่วไป / สมาชิกใหม่: ดึงด่าน A1 ครบ 20 ด่าน และด่านตัวอย่างของ A2
+      const [a1Stages, a2Stages] = await Promise.all([
+        fetchStages(db, { skill: 'grammar', level: 'A1', tier: 'free' }),
+        fetchStages(db, { skill: 'grammar', level: 'A2', tier: 'free' })
+      ]);
+      stages = [...a1Stages, ...a2Stages];
+    }
     loadingNote.hidden = true;
     render(stages, tier, isUserAdmin, userDoc);
   } catch (error) {

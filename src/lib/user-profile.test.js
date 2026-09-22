@@ -55,8 +55,10 @@ describe('isLevelAllowed', () => {
     expect(isLevelAllowed(student, 'B2')).toBe(false);
   });
 
-  it('denies free tier users by default', () => {
-    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A1')).toBe(false);
+  it('allows A1 by default for free tier users, but locks A2 and above', () => {
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A1')).toBe(true);
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A2')).toBe(false);
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'B1')).toBe(false);
   });
 
   it('allows free tier user if specific level is granted in allowedLevels', () => {

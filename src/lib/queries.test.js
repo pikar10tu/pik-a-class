@@ -23,12 +23,16 @@ describe('query constraints', () => {
     ]);
   });
 
-  it('adds the preview filter for free users so the rules can allow the query', () => {
-    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: 'free' })).toContainEqual([
+  it('adds the preview filter for free users on A2+ so the rules can allow the query', () => {
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A2', tier: 'free' })).toContainEqual([
       'isPreview',
       '==',
       true,
     ]);
+  });
+
+  it('allows all bank exercises for A1 even on free tier', () => {
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: 'free' }).some(([f]) => f === 'isPreview')).toBe(false);
   });
 
   it('builds the remaining documented queries', () => {
@@ -79,7 +83,7 @@ describe('stageConstraints', () => {
   it('treats a missing tier as free, exactly like bankExerciseConstraints does', () => {
     const stageTiers = stageConstraints({});
     expect(stageTiers).toContainEqual(['isPreview', '==', true]);
-    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1' })).toContainEqual([
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A2' })).toContainEqual([
       'isPreview',
       '==',
       true,
@@ -91,8 +95,8 @@ describe('stageConstraints', () => {
     expect(stageConstraints({ tier: readTier({ role: 'admin', tier: 'free' }) })).toEqual(
       stageConstraints({ tier: 'full' }),
     );
-    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: readTier({ role: 'admin', tier: 'free' }) })).toEqual(
-      bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: 'full' }),
+    expect(bankExerciseConstraints({ skill: 'grammar', level: 'A2', tier: readTier({ role: 'admin', tier: 'free' }) })).toEqual(
+      bankExerciseConstraints({ skill: 'grammar', level: 'A2', tier: 'full' }),
     );
   });
 
