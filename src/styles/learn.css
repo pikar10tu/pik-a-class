@@ -1,10 +1,14 @@
-/* Scenic Pastel Atmosphere & Playful Accents */
+html,
+body {
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 30%, #ecfdf5 70%, #d1fae5 100%) !important;
   background-attachment: fixed !important;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
 }
 
 /* เมฆปุกปุยสีขาวลอยละล่องแอนิเมชันนุ่มนวล */
@@ -258,7 +262,7 @@ body::after {
   max-width: 480px;
   background: var(--color-surface, #ffffff);
   border-radius: 24px 24px 0 0;
-  padding: var(--space-4) var(--space-3) var(--space-4);
+  padding: var(--space-4) var(--space-3) calc(var(--space-4) + env(safe-area-inset-bottom, 0px));
   box-shadow: 0 -10px 35px rgba(0, 0, 0, 0.25);
   border-top: 2px solid rgba(255, 255, 255, 0.9);
   position: relative;
@@ -725,5 +729,36 @@ body::after {
   color: #744210;
   line-height: 1.5;
 }
+
+/* ปรับความกว้างและการบีบพื้นที่บนจอมือถือขนาดกะทัดรัด (เช่น iPhone SE หรือหน้าจอต่ำกว่า 380px) */
+@media (max-width: 380px) {
+  .learn-main {
+    padding: var(--space-2);
+  }
+
+  .btn-quit {
+    min-width: 38px;
+    min-height: 38px;
+    padding: var(--space-1);
+  }
+
+  .btn-mute,
+  .btn-concept {
+    min-height: 38px;
+    padding: var(--space-1) var(--space-2);
+    font-size: 0.75rem;
+  }
+
+  .path-canvas {
+    padding: var(--space-3) var(--space-1) var(--space-4);
+  }
+
+  .path-node {
+    width: 58px;
+    height: 58px;
+    font-size: 1.15rem;
+  }
+}
+
 
 

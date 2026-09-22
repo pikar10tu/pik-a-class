@@ -839,3 +839,35 @@ textarea {
     transition: none !important;
   }
 }
+
+/* Mobile Responsiveness for Header & Dashboard */
+@media (max-width: 520px) {
+  .app-header-inner {
+    padding: var(--space-2) var(--space-3);
+  }
+
+  .user-pill {
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.8125rem;
+  }
+
+  .dashboard-hero {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .dashboard-mascot {
+    width: 80px;
+    height: 114px;
+  }
+
+  .dashboard-title {
+    font-size: 1.35rem;
+  }
+}
+
