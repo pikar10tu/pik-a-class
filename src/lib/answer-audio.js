@@ -1,6 +1,6 @@
 // ส่วนที่เรียก Web Audio API จริง — ทดสอบด้วย jsdom ไม่ได้ (ไม่มี AudioContext) จึงตั้งใจไม่มีไฟล์เทสต์
 // สำหรับไฟล์นี้ ส่วนที่ทดสอบได้ (โน้ต/envelope) แยกไว้ที่ ./answer-sound.js แล้ว มีเทสต์ครบที่นั่น
-import { CORRECT_TONE, WRONG_TONE, toneEvents } from './answer-sound.js';
+import { CORRECT_TONE, WRONG_TONE, BUTTON_POP_TONE, MASCOT_CHIME_TONE, toneEvents } from './answer-sound.js';
 
 let sharedContext = null;
 
@@ -46,13 +46,10 @@ function scheduleEvent(context, destination, startTime, event) {
   oscillator.stop(noteEnd + 0.02);
 }
 
-// เล่นเสียง "ถูก" หรือ "ผิด" — แค่ "ตั้งเวลา" เล่นเสียงในอนาคตแล้วคืนค่าทันที ไม่ await อะไรเลย
-// จึงไม่มีทางดีเลย์ visual feedback ที่หน้าเรียกก่อนหน้านี้ได้ — ห้าม throw ออกไปเด็ดขาด (ไม่มี Web Audio ก็ต้องเงียบ)
-export function playAnswerSound(kind) {
+function playTone(tone) {
   try {
     const context = getContext();
     if (!context) return;
-    const tone = kind === 'correct' ? CORRECT_TONE : WRONG_TONE;
     const startTime = context.currentTime;
     for (const event of toneEvents(tone)) {
       scheduleEvent(context, context.destination, startTime + event.startOffset, event);
@@ -60,4 +57,19 @@ export function playAnswerSound(kind) {
   } catch (error) {
     console.error(error);
   }
+}
+
+// เล่นเสียง "ถูก" หรือ "ผิด" — แค่ "ตั้งเวลา" เล่นเสียงในอนาคตแล้วคืนค่าทันที ไม่ await อะไรเลย
+// จึงไม่มีทางดีเลย์ visual feedback ที่หน้าเรียกก่อนหน้านี้ได้ — ห้าม throw ออกไปเด็ดขาด (ไม่มี Web Audio ก็ต้องเงียบ)
+export function playAnswerSound(kind) {
+  const tone = kind === 'correct' ? CORRECT_TONE : WRONG_TONE;
+  playTone(tone);
+}
+
+export function playButtonSound() {
+  playTone(BUTTON_POP_TONE);
+}
+
+export function playMascotSound() {
+  playTone(MASCOT_CHIME_TONE);
 }

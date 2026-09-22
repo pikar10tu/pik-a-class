@@ -25,6 +25,29 @@ export const WRONG_TONE = {
   ],
 };
 
+// กดปุ่ม: เสียงป๊อปฟองสบู่สั้นๆ น่ารักและสดใส (E5-A5) สั้นมาก (~0.09s) ไม่หน่วง ไม่น่ารำคาญ
+export const BUTTON_POP_TONE = {
+  waveform: 'sine',
+  peakGain: 0.12,
+  attack: 0.005,
+  notes: [
+    { freq: 659.25, duration: 0.04 }, // E5
+    { freq: 880.00, duration: 0.05 }, // A5
+  ],
+};
+
+// จิ้มน้องหยก: เสียงกระดิ่งกุ๊งกิ๊ง 3 ตัวโน้ต (D5-A5-D6) ให้ความรู้สึกกระตือรือร้น น่ารัก
+export const MASCOT_CHIME_TONE = {
+  waveform: 'sine',
+  peakGain: 0.15,
+  attack: 0.006,
+  notes: [
+    { freq: 587.33, duration: 0.06 }, // D5
+    { freq: 880.00, duration: 0.08 }, // A5
+    { freq: 1174.66, duration: 0.12 }, // D6
+  ],
+};
+
 // แปลง tone เป็นรายการ event พร้อมเวลาเริ่ม (offset จากจุดเริ่มเล่น หน่วยวินาที) — เรียงโน้ตต่อกันโดยไม่ overlap
 // แยกออกมาให้ทดสอบได้ล้วนๆ โดยไม่ต้องสร้าง AudioContext จริง
 export function toneEvents(tone) {

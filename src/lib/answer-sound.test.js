@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { CORRECT_TONE, WRONG_TONE, toneEvents, toneDuration } from './answer-sound.js';
+import { CORRECT_TONE, WRONG_TONE, BUTTON_POP_TONE, MASCOT_CHIME_TONE, toneEvents, toneDuration } from './answer-sound.js';
 
 describe('toneDuration', () => {
   it('keeps the correct-answer tone short, under the ~350ms budget', () => {
@@ -8,6 +8,14 @@ describe('toneDuration', () => {
 
   it('keeps the wrong-answer tone short, under the ~350ms budget', () => {
     expect(toneDuration(WRONG_TONE)).toBeLessThan(0.35);
+  });
+
+  it('keeps the button-pop tone very short, under 150ms', () => {
+    expect(toneDuration(BUTTON_POP_TONE)).toBeLessThan(0.15);
+  });
+
+  it('keeps the mascot chime pleasant and under 300ms', () => {
+    expect(toneDuration(MASCOT_CHIME_TONE)).toBeLessThan(0.30);
   });
 });
 

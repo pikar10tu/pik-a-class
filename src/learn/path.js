@@ -6,6 +6,7 @@ import { readTier } from '../lib/queries.js';
 import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
+import { attachUiSounds } from '../lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
 const params = new URLSearchParams(window.location.search);
@@ -23,6 +24,7 @@ const CANVAS_WIDTH = 292;
 
 document.getElementById('back-link').href = `${base}learn/index.html`;
 document.getElementById('empty-back').href = `${base}learn/index.html`;
+attachUiSounds();
 document.getElementById('empty-mascot').src = mascotSrc('normal', base);
 
 function starMarkup(stars) {

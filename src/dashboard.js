@@ -2,6 +2,7 @@ import { signOut } from 'firebase/auth';
 import { requireLogin, isAdmin } from './lib/auth-guard.js';
 import { auth } from './lib/firebase.js';
 import { mascotSrc } from './lib/mascot.js';
+import { attachUiSounds } from './lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
 const learnLink = document.getElementById('learn-link');
@@ -9,6 +10,8 @@ if (learnLink) learnLink.href = `${base}learn/index.html`;
 
 const mascotEl = document.getElementById('dashboard-mascot');
 if (mascotEl) mascotEl.src = mascotSrc('normal', base);
+
+attachUiSounds();
 
 requireLogin((firebaseUser, userDoc) => {
   const name = userDoc?.nickname || firebaseUser.displayName || firebaseUser.email || 'เพื่อนๆ';

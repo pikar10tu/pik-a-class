@@ -4,6 +4,7 @@ import { fetchStages } from '../lib/stage-io.js';
 import { readTier } from '../lib/queries.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { showPageError } from '../lib/page-error.js';
+import { attachUiSounds } from '../lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
 const SKILL_LABELS = { grammar: 'ไวยากรณ์', vocab: 'คำศัพท์', dialogue: 'บทสนทนา' };
@@ -13,6 +14,7 @@ const EMPTY_MESSAGE_FREE = 'บัญชีนี้ยังไม่ได้�
 
 document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
+attachUiSounds();
 
 function render(stages, tier, isUserAdmin) {
   const groups = new Map();

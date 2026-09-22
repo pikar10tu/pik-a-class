@@ -4,10 +4,12 @@ import { fetchUserDoc, createUserDoc } from './lib/user-profile-io.js';
 import { buildNewUserDoc, getPostLoginRedirect } from './lib/user-profile.js';
 import { showPageError } from './lib/page-error.js';
 import { mascotSrc } from './lib/mascot.js';
+import { attachUiSounds } from './lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
 const mascotEl = document.getElementById('mascot');
 if (mascotEl) mascotEl.src = mascotSrc('normal', base);
+attachUiSounds();
 
 document.getElementById('google-signin-btn').addEventListener('click', async () => {
   try {

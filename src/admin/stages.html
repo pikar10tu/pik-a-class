@@ -14,7 +14,10 @@
   <main>
     <h1>ด่าน</h1>
     <p id="banner" class="banner" hidden></p>
-    <p><a id="new-stage" class="btn-primary" href="#">+ สร้างด่านใหม่</a></p>
+    <p style="display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center;">
+      <a id="new-stage" class="btn-primary" href="#">+ สร้างด่านใหม่</a>
+      <button type="button" id="fix-pilot-stages" class="btn-ghost" style="width: auto;">🔄 อัปเกรด 4 ด่านนำร่อง (Task 11)</button>
+    </p>
     <div class="admin-filters">
       <label>สกิล <select id="filter-skill"></select></label>
       <label>ระดับ <select id="filter-level"></select></label>

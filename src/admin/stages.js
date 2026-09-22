@@ -1,7 +1,7 @@
 import { requireAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { renderAdminNav } from '../lib/admin-nav.js';
-import { fetchStages } from '../lib/stage-io.js';
+import { fetchStages, saveStage } from '../lib/stage-io.js';
 import { publishItems } from '../lib/admin-content-io.js';
 import { showPageError } from '../lib/page-error.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
@@ -72,7 +72,10 @@ function render(stages, status, anyFilterActive) {
     link.textContent = `ด่าน ${stage.order} · ${stage.title}`;
     item.appendChild(link);
     const meta = document.createElement('span');
-    meta.textContent = ` — ${stage.skill} ${stage.level} · ${stage.drawCount ?? 0} ข้อต่อรอบ · ${stage.reviewStatus}`;
+    const hasTags = Array.isArray(stage.tags) && stage.tags.length > 0;
+    const tagNotice = hasTags ? ` · ${stage.tags.length} แท็ก` : ' · ⚠️ ยังไม่มีแท็ก (กดเพื่อเลือก)';
+    meta.textContent = ` — ${stage.skill} ${stage.level} · ${stage.drawCount ?? 0} ข้อต่อรอบ${tagNotice} · ${stage.reviewStatus}`;
+    if (!hasTags) meta.style.color = 'var(--color-error)';
     item.appendChild(meta);
 
     const actions = document.createElement('p');
@@ -87,6 +90,46 @@ function render(stages, status, anyFilterActive) {
 
     list.appendChild(item);
   }
+}
+
+const PILOT_CONFIGS = [
+  { order: 1, title: 'Past Simple', tags: ['grammar:past-simple'], drawCount: 7 },
+  { order: 2, title: 'Past Continuous', tags: ['grammar:past-continuous'], drawCount: 7 },
+  { order: 3, title: 'Present Perfect', tags: ['grammar:present-perfect'], drawCount: 6 },
+  { order: 4, title: 'ทบทวนรวม — เลือก tense ให้ถูก', tags: ['grammar:past-simple', 'grammar:past-continuous', 'grammar:present-perfect'], drawCount: 10 },
+];
+
+const fixBtn = document.getElementById('fix-pilot-stages');
+if (fixBtn) {
+  fixBtn.addEventListener('click', async () => {
+    fixBtn.disabled = true;
+    showBanner('กำลังอัปเกรด 4 ด่านนำร่องสู่ระบบ Pool...');
+    try {
+      const allStages = await fetchStages(db, { publishedOnly: false });
+      for (const config of PILOT_CONFIGS) {
+        const match = allStages.find((s) => s.order === config.order || s.title?.includes(config.title.split(' ')[0]));
+        const stageData = {
+          skill: 'grammar',
+          level: 'A2',
+          order: config.order,
+          title: config.title,
+          tags: config.tags,
+          drawCount: config.drawCount,
+          passThreshold: 0.7,
+          isPreview: false,
+          reviewStatus: 'published',
+        };
+        await saveStage(db, match?.id, stageData);
+      }
+      showBanner('✅ อัปเกรดและอนุมัติ 4 ด่านนำร่องเรียบร้อยแล้ว! สามารถเข้าเล่นได้ทันที');
+      await reload();
+    } catch (err) {
+      console.error(err);
+      showBanner('❌ เกิดข้อผิดพลาดในการอัปเกรด: ' + (err.message ?? err));
+    } finally {
+      fixBtn.disabled = false;
+    }
+  });
 }
 
 async function reload() {

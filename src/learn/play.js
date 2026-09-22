@@ -1,4 +1,4 @@
-import { requireLogin } from '../lib/auth-guard.js';
+import { requireLogin, isAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { fetchStage, fetchStagePool } from '../lib/stage-io.js';
 import { saveStageResult } from '../lib/stage-result-io.js';
@@ -10,8 +10,10 @@ import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 import { pickRound } from '../lib/stage-pool.js';
 import { readTier } from '../lib/queries.js';
 import { STAGE_ITEM_TYPES } from '../lib/stage-form.js';
+import { attachUiSounds } from '../lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
+attachUiSounds();
 const searchParams = new URLSearchParams(window.location.search);
 const stageId = searchParams.get('stage');
 // ตั้งโดย admin/stage.js ตอนกด "ลองเล่นด่านนี้" (พรีวิว) — เป็นแค่ทางลัดนำทางเพื่อพากลับหน้าแก้ด่านเดิม
@@ -247,7 +249,19 @@ requireLogin(async (firebaseUser, userDoc) => {
 
     // ด่านที่ยังไม่มีข้อเลย (คลังว่าง หรือคลังมีแต่ข้อชนิดที่เล่นไม่ได้) — เล่นไม่ได้จริง อย่าให้ session จบทันทีจนไปบันทึกผล 0/0
     if (exercises.length === 0) {
-      showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', backHref());
+      if (isAdmin(userDoc)) {
+        const hasTags = Array.isArray(stage.tags) && stage.tags.length > 0;
+        const msg = hasTags
+          ? 'ด่านนี้ยังมีข้อสอบที่ตรงกับแท็กในคลังไม่พอ หรือยังไม่มีข้อสอบที่อนุมัติ (สำหรับครูปิ๊ก: ไปตรวจคลังข้อสอบหรือด่านได้ที่นี่)'
+          : 'ด่านนี้ยังไม่ได้ตั้งค่าแท็กโจทย์ (สำหรับครูปิ๊ก: ไปเลือกแท็กของด่านได้ที่นี่)';
+        showEmpty(msg, `${base}admin/stage.html?id=${stageId}`);
+        const emptyBack = document.getElementById('empty-back');
+        if (emptyBack) {
+          emptyBack.textContent = 'ไปแก้ไขด่านนี้ในระบบจัดการ (Admin) →';
+        }
+      } else {
+        showEmpty('ด่านนี้ยังไม่มีข้อเลย ลองด่านอื่นก่อนนะครับ', backHref());
+      }
       return;
     }
 

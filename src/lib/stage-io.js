@@ -23,11 +23,15 @@ export async function saveStage(db, id, data) {
 // ไม่ใส่ limit เพราะ limit ที่ไม่มี orderBy จะได้ "ข้อแรกๆ ตาม document id" ซึ่งเป็นชุดเดิมทุกครั้ง
 // กลายเป็นอคติถาวรที่มองไม่เห็น แทนที่จะสุ่มจริง — คลังโตเกินคาดค่อยกลับมาทำ paging
 export async function fetchStagePool(db, stage, tier) {
+  const tags = stage?.tags ?? [];
+  if (!Array.isArray(tags) || tags.length === 0) {
+    return [];
+  }
   const snapshot = await getDocs(
     buildQuery(db, 'exercises', stagePoolConstraints({
       skill: stage.skill,
       level: stage.level,
-      tags: stage.tags ?? [],
+      tags,
       tier,
     })),
   );
