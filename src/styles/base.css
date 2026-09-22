@@ -283,6 +283,17 @@ main {
 .dashboard-mascot {
   flex-shrink: 0;
   object-fit: contain;
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.dashboard-mascot:hover {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.dashboard-mascot:active {
+  transform: scale(0.94) rotate(-2deg);
 }
 
 .hero-badge {
@@ -324,12 +335,30 @@ main {
   flex-direction: column;
   gap: var(--space-3);
   box-shadow: var(--shadow-sm);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
 }
 
 .dashboard-card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-md);
+}
+
+.dashboard-card.card-learn {
+  background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
+  border: 1.5px solid #bbf7d0;
+}
+
+.dashboard-card.card-learn:hover {
+  border-color: var(--color-primary);
+}
+
+.dashboard-card.card-admin {
+  background: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
+  border: 1.5px solid #e9d5ff;
+}
+
+.dashboard-card.card-admin:hover {
+  border-color: #c084fc;
 }
 
 .card-icon {

@@ -1,7 +1,56 @@
+/* Scenic Pastel Atmosphere & Playful Accents */
+body:has(.learn-main),
+body:has(.dashboard-main) {
+  background: linear-gradient(180deg, #f0fdf4 0%, #e0f2fe 40%, #f8fafc 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+body:has(.learn-main)::before,
+body:has(.dashboard-main)::before {
+  content: '';
+  position: fixed;
+  top: -60px;
+  right: -50px;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(224, 242, 254, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: floatCloud1 14s ease-in-out infinite alternate;
+}
+
+body:has(.learn-main)::after,
+body:has(.dashboard-main)::after {
+  content: '';
+  position: fixed;
+  bottom: 5%;
+  left: -60px;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(167, 243, 208, 0.4) 0%, rgba(209, 250, 229, 0) 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+  animation: floatCloud2 18s ease-in-out infinite alternate;
+}
+
+@keyframes floatCloud1 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(-30px, 35px) scale(1.08); }
+}
+
+@keyframes floatCloud2 {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(35px, -25px) scale(1.06); }
+}
+
 .learn-main {
   max-width: 480px;
   margin: 0 auto;
   padding: var(--space-3);
+  position: relative;
 }
 
 /* ปุ่มออกเดียวของสองหน้านี้ และเด็กกดบนมือถือ — ต้องแตะโดนง่าย อย่างน้อย 44px ตามเกณฑ์ touch target
@@ -27,6 +76,17 @@
   height: 138px;
   object-fit: contain;
   margin: var(--space-2) auto var(--space-3);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.learn-mascot:hover {
+  transform: scale(1.08) rotate(2.5deg);
+}
+
+.learn-mascot:active {
+  transform: scale(0.94) rotate(-2deg);
 }
 
 /* หน้าจอผลลัพธ์คือจังหวะที่มาสคอตเด่นสุด และสลับท่า clear/wrong ตอน render ผลใหม่
@@ -308,6 +368,30 @@
   border: 3px solid var(--color-primary-shadow);
   border-bottom-width: 6px;
   font-size: 1.5rem;
+}
+
+.path-node--boss {
+  box-shadow: 0 0 0 3px #fbbf24, 0 6px 16px rgba(245, 158, 11, 0.45);
+  animation: bossPulse 2.4s ease-in-out infinite alternate;
+}
+
+@keyframes bossPulse {
+  0% {
+    box-shadow: 0 0 0 3px #fbbf24, 0 6px 16px rgba(245, 158, 11, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 5px #f59e0b, 0 8px 24px rgba(239, 68, 68, 0.55);
+  }
+}
+
+.path-node--boss::after {
+  content: '👑';
+  position: absolute;
+  top: -12px;
+  right: -6px;
+  font-size: 1.15rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  transform: rotate(12deg);
 }
 
 .path-star-badge {

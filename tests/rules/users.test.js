@@ -56,6 +56,7 @@ describe('users rules', () => {
       await assertFails(db.collection('users').doc('student1').update({ tier: 'full' }));
       await assertFails(db.collection('users').doc('student1').update({ role: 'admin' }));
       await assertFails(db.collection('users').doc('student1').update({ groupTags: ['เสาร์บ่าย'] }));
+      await assertFails(db.collection('users').doc('student1').update({ allowedLevels: ['A1', 'A2'] }));
       await assertFails(db.collection('users').doc('student1').update({ email: 'other@example.com' }));
       await assertFails(db.collection('users').doc('student1').update({ createdAt: '2020-01-01T00:00:00.000Z' }));
     });
@@ -79,7 +80,7 @@ describe('users rules', () => {
         db
           .collection('users')
           .doc('student1')
-          .update({ tier: 'full', tierNote: 'จ่ายแล้ว', groupTags: ['เสาร์บ่าย'] }),
+          .update({ tier: 'full', tierNote: 'จ่ายแล้ว', groupTags: ['เสาร์บ่าย'], callName: 'น้องบีน', allowedLevels: ['A1', 'A2'] }),
       );
     });
   });

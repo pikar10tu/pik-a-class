@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildNewUserDoc, getPostLoginRedirect } from './user-profile.js';
+import { buildNewUserDoc, getPostLoginRedirect, isLevelAllowed } from './user-profile.js';
 
 describe('buildNewUserDoc', () => {
   it('builds a stub doc defaulting role, tier, and onboarding state', () => {
@@ -35,3 +35,37 @@ describe('getPostLoginRedirect', () => {
     expect(getPostLoginRedirect({ onboardingComplete: true })).toBe('dashboard');
   });
 });
+
+describe('isLevelAllowed', () => {
+  it('always allows admins full access to any level', () => {
+    expect(isLevelAllowed({ role: 'admin' }, 'A1')).toBe(true);
+    expect(isLevelAllowed({ role: 'admin' }, 'B2')).toBe(true);
+  });
+
+  it('allows full tier users all levels if allowedLevels is empty or not set', () => {
+    expect(isLevelAllowed({ role: 'student', tier: 'full' }, 'A1')).toBe(true);
+    expect(isLevelAllowed({ role: 'student', tier: 'full', allowedLevels: [] }, 'B2')).toBe(true);
+  });
+
+  it('restricts full tier users to explicitly ticked allowedLevels', () => {
+    const student = { role: 'student', tier: 'full', allowedLevels: ['A1', 'A2'] };
+    expect(isLevelAllowed(student, 'A1')).toBe(true);
+    expect(isLevelAllowed(student, 'A2')).toBe(true);
+    expect(isLevelAllowed(student, 'B1')).toBe(false);
+    expect(isLevelAllowed(student, 'B2')).toBe(false);
+  });
+
+  it('denies free tier users by default', () => {
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A1')).toBe(false);
+  });
+
+  it('allows free tier user if specific level is granted in allowedLevels', () => {
+    expect(isLevelAllowed({ role: 'student', tier: 'free', allowedLevels: ['A1'] }, 'A1')).toBe(true);
+    expect(isLevelAllowed({ role: 'student', tier: 'free', allowedLevels: ['A1'] }, 'A2')).toBe(false);
+  });
+
+  it('returns false when userDoc is null or undefined', () => {
+    expect(isLevelAllowed(null, 'A1')).toBe(false);
+  });
+});
+

@@ -28,7 +28,7 @@
     <div class="admin-table-wrapper">
       <table class="admin-table">
         <thead>
-          <tr><th>ชื่อเล่น</th><th>ชื่อจริง</th><th>ช่วงชั้น</th><th>tier</th><th>ติดต่อ</th><th>กลุ่ม</th><th></th></tr>
+          <tr><th>ชื่อเล่น</th><th>ชื่อจริง</th><th>ช่วงชั้น</th><th>tier</th><th>ระดับที่เข้าถึงได้</th><th>ติดต่อ</th><th>กลุ่ม</th><th></th></tr>
         </thead>
         <tbody id="student-rows"></tbody>
       </table>
@@ -42,6 +42,32 @@
             <option value="free">free — เห็นเฉพาะเนื้อหาตัวอย่าง</option>
             <option value="full">full — เห็นเนื้อหาทั้งหมด</option>
           </select>
+        </label>
+        <fieldset style="margin: var(--space-2) 0; border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-2) var(--space-3);">
+          <legend style="font-weight: 500; font-size: 0.9375rem; padding: 0 4px;">ระดับด่านที่ให้เข้าถึง (Allowed Levels)</legend>
+          <div style="display: flex; gap: var(--space-3); flex-wrap: wrap; margin-top: 4px;">
+            <label style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+              <input type="checkbox" name="allowed-level" value="A1" /> <strong>A1</strong>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+              <input type="checkbox" name="allowed-level" value="A2" /> <strong>A2</strong>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+              <input type="checkbox" name="allowed-level" value="B1" /> <strong>B1</strong>
+            </label>
+            <label style="display: inline-flex; align-items: center; gap: 5px; cursor: pointer;">
+              <input type="checkbox" name="allowed-level" value="B2" /> <strong>B2</strong>
+            </label>
+          </div>
+          <span class="hint" style="font-size: 0.8125rem; color: var(--color-muted); display: block; margin-top: 4px;">
+            ติ๊กระดับที่อนุญาตให้ผู้เรียนเล่นได้ (หากไม่ติ๊กเลย และเป็น tier full จะเข้าถึงได้ทุกระดับ)
+          </span>
+        </fieldset>
+        <label>ชื่อเรียก / คำนำหน้า (สำหรับทักทายบนหน้าเว็บ)
+          <input id="edit-call-name" type="text" maxlength="50" placeholder="เช่น น้องบีน, พี่โก้, คุณแม่น้องมินท์" />
+          <span class="hint" style="font-size: 0.8125rem; color: var(--color-muted); display: block; margin-top: 2px;">
+            คำเรียกเฉพาะตัว เช่น น้อง... พี่... คุณแม่น้อง... (ถ้าเว้นว่างจะใช้ "คุณ [ชื่อเล่น]")
+          </span>
         </label>
         <label>โน้ต (เห็นเฉพาะแอดมิน)
           <input id="edit-tier-note" type="text" maxlength="500" />

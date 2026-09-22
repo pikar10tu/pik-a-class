@@ -7,16 +7,27 @@ const students = [
   {
     id: 'c',
     nickname: 'โก้',
+    callName: 'พี่โก้',
     fullName: 'ประวิทย์ ทำงาน',
     grade: 'วัยทำงาน/บุคคลทั่วไป',
     groupTags: ['เสาร์บ่าย'],
     phone: '0833333333',
+    allowedLevels: ['A1', 'A2'],
+  },
+  {
+    id: 'd',
+    nickname: 'มินท์',
+    callName: 'คุณแม่น้องมินท์',
+    fullName: 'รัตนา นารี',
+    grade: 'วัยทำงาน/บุคคลทั่วไป',
+    groupTags: [],
+    phone: '0844444444',
   },
 ];
 
 describe('filterStudents', () => {
   it('returns everybody when no filter is set', () => {
-    expect(filterStudents(students, {})).toHaveLength(3);
+    expect(filterStudents(students, {})).toHaveLength(4);
   });
 
   it('filters by grade and by group tag', () => {
@@ -24,10 +35,13 @@ describe('filterStudents', () => {
     expect(filterStudents(students, { groupTag: 'เสาร์บ่าย' }).map((s) => s.id)).toEqual(['a', 'c']);
   });
 
-  it('searches nickname, full name, and phone', () => {
+  it('searches nickname, callName, full name, phone, and allowedLevels', () => {
     expect(filterStudents(students, { search: 'สมหญิง' }).map((s) => s.id)).toEqual(['b']);
     expect(filterStudents(students, { search: 'โก้' }).map((s) => s.id)).toEqual(['c']);
+    expect(filterStudents(students, { search: 'พี่โก้' }).map((s) => s.id)).toEqual(['c']);
+    expect(filterStudents(students, { search: 'คุณแม่' }).map((s) => s.id)).toEqual(['d']);
     expect(filterStudents(students, { search: '0822' }).map((s) => s.id)).toEqual(['b']);
+    expect(filterStudents(students, { search: 'A2' }).map((s) => s.id)).toEqual(['c']);
     expect(filterStudents(students, { search: 'ไม่มีจริง' })).toEqual([]);
   });
 

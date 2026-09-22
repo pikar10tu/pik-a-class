@@ -1,6 +1,15 @@
 // ส่วนที่เรียก Web Audio API จริง — ทดสอบด้วย jsdom ไม่ได้ (ไม่มี AudioContext) จึงตั้งใจไม่มีไฟล์เทสต์
 // สำหรับไฟล์นี้ ส่วนที่ทดสอบได้ (โน้ต/envelope) แยกไว้ที่ ./answer-sound.js แล้ว มีเทสต์ครบที่นั่น
-import { CORRECT_TONE, WRONG_TONE, BUTTON_POP_TONE, MASCOT_CHIME_TONE, toneEvents } from './answer-sound.js';
+import {
+  CORRECT_TONE,
+  WRONG_TONE,
+  BUTTON_POP_TONE,
+  MASCOT_CHIME_TONE,
+  STAGE_CLEAR_FANFARE,
+  STAR_CHIME,
+  STAGE_FAIL_GENTLE,
+  toneEvents,
+} from './answer-sound.js';
 
 let sharedContext = null;
 
@@ -72,4 +81,16 @@ export function playButtonSound() {
 
 export function playMascotSound() {
   playTone(MASCOT_CHIME_TONE);
+}
+
+export function playStageClearSound() {
+  playTone(STAGE_CLEAR_FANFARE);
+}
+
+export function playStarSound() {
+  playTone(STAR_CHIME);
+}
+
+export function playStageFailedSound() {
+  playTone(STAGE_FAIL_GENTLE);
 }

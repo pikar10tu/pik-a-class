@@ -1,5 +1,15 @@
 import { describe, it, expect } from 'vitest';
-import { CORRECT_TONE, WRONG_TONE, BUTTON_POP_TONE, MASCOT_CHIME_TONE, toneEvents, toneDuration } from './answer-sound.js';
+import {
+  CORRECT_TONE,
+  WRONG_TONE,
+  BUTTON_POP_TONE,
+  MASCOT_CHIME_TONE,
+  STAGE_CLEAR_FANFARE,
+  STAR_CHIME,
+  STAGE_FAIL_GENTLE,
+  toneEvents,
+  toneDuration,
+} from './answer-sound.js';
 
 describe('toneDuration', () => {
   it('keeps the correct-answer tone short, under the ~350ms budget', () => {
@@ -16,6 +26,19 @@ describe('toneDuration', () => {
 
   it('keeps the mascot chime pleasant and under 300ms', () => {
     expect(toneDuration(MASCOT_CHIME_TONE)).toBeLessThan(0.30);
+  });
+
+  it('keeps the stage clear fanfare uplifting and under 1 second', () => {
+    expect(toneDuration(STAGE_CLEAR_FANFARE)).toBeGreaterThan(0.5);
+    expect(toneDuration(STAGE_CLEAR_FANFARE)).toBeLessThan(1.0);
+  });
+
+  it('keeps star chime short and sparkly under 400ms', () => {
+    expect(toneDuration(STAR_CHIME)).toBeLessThan(0.40);
+  });
+
+  it('keeps stage fail gentle sound under 700ms', () => {
+    expect(toneDuration(STAGE_FAIL_GENTLE)).toBeLessThan(0.70);
   });
 });
 
@@ -76,5 +99,45 @@ describe('toneEvents', () => {
   it('produces one event per note', () => {
     expect(toneEvents(CORRECT_TONE)).toHaveLength(CORRECT_TONE.notes.length);
     expect(toneEvents(WRONG_TONE)).toHaveLength(WRONG_TONE.notes.length);
+    expect(toneEvents(STAGE_CLEAR_FANFARE)).toHaveLength(STAGE_CLEAR_FANFARE.notes.length);
+  });
+});
+
+describe('STAGE_CLEAR_FANFARE', () => {
+  it('rises across its notes as a victory arpeggio', () => {
+    const freqs = STAGE_CLEAR_FANFARE.notes.map((n) => n.freq);
+    for (let i = 1; i < freqs.length; i += 1) {
+      expect(freqs[i]).toBeGreaterThan(freqs[i - 1]);
+    }
+  });
+
+  it('uses triangle waveform for bright, warm fanfare timbre', () => {
+    expect(STAGE_CLEAR_FANFARE.waveform).toBe('triangle');
+  });
+
+  it('keeps peak volume modest', () => {
+    expect(STAGE_CLEAR_FANFARE.peakGain).toBeLessThanOrEqual(0.25);
+  });
+});
+
+describe('STAR_CHIME', () => {
+  it('sits in high bell register above 900Hz', () => {
+    for (const note of STAR_CHIME.notes) {
+      expect(note.freq).toBeGreaterThan(900);
+    }
+  });
+
+  it('uses sine wave for pure chime effect', () => {
+    expect(STAR_CHIME.waveform).toBe('sine');
+  });
+});
+
+describe('STAGE_FAIL_GENTLE', () => {
+  it('keeps peak volume soft and gentle', () => {
+    expect(STAGE_FAIL_GENTLE.peakGain).toBeLessThan(STAGE_CLEAR_FANFARE.peakGain);
+  });
+
+  it('uses sine wave for smooth comforting tone', () => {
+    expect(STAGE_FAIL_GENTLE.waveform).toBe('sine');
   });
 });

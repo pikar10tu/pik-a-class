@@ -2,6 +2,7 @@ import { requireLogin, isAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { fetchStages } from '../lib/stage-io.js';
 import { readTier } from '../lib/queries.js';
+import { isLevelAllowed } from '../lib/user-profile.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { showPageError } from '../lib/page-error.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
@@ -16,7 +17,7 @@ document.getElementById('back-link').href = `${base}dashboard.html`;
 document.getElementById('mascot').src = mascotSrc('normal', base);
 attachUiSounds();
 
-function render(stages, tier, isUserAdmin) {
+function render(stages, tier, isUserAdmin, userDoc) {
   const groups = new Map();
   for (const stage of stages) {
     const key = `${stage.skill}|${stage.level}`;
@@ -47,13 +48,23 @@ function render(stages, tier, isUserAdmin) {
 
   for (const [key, count] of groups) {
     const [skill, level] = key.split('|');
+    const allowed = isLevelAllowed(userDoc, level);
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = 'btn-chunky';
-    button.textContent = `${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} — ${count} ด่าน`;
-    button.addEventListener('click', () => {
-      window.location.href = `${base}learn/path.html?skill=${skill}&level=${level}`;
-    });
+    if (allowed) {
+      button.className = 'btn-chunky';
+      button.textContent = `${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} — ${count} ด่าน`;
+      button.addEventListener('click', () => {
+        window.location.href = `${base}learn/path.html?skill=${skill}&level=${level}`;
+      });
+    } else {
+      button.className = 'btn-ghost';
+      button.style.opacity = '0.85';
+      button.textContent = `🔒 ${SKILL_LABELS[skill] ?? skill} · ระดับ ${level} (ยังไม่ได้รับสิทธิ์)`;
+      button.addEventListener('click', () => {
+        alert(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณครับ\nสามารถทักครูปิ๊กเพื่อขอเปิดด่านระดับนี้ได้เลยครับ! 😊`);
+      });
+    }
     container.appendChild(button);
   }
 }
@@ -72,7 +83,7 @@ requireLogin(async (firebaseUser, userDoc) => {
     const tier = readTier(userDoc);
     const stages = await fetchStages(db, { tier });
     loadingNote.hidden = true;
-    render(stages, tier, isUserAdmin);
+    render(stages, tier, isUserAdmin, userDoc);
   } catch (error) {
     loadingNote.hidden = true;
     showPageError('โหลดบทเรียนไม่สำเร็จ กรุณาลองใหม่');

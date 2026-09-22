@@ -14,12 +14,18 @@ if (mascotEl) mascotEl.src = mascotSrc('normal', base);
 attachUiSounds();
 
 requireLogin((firebaseUser, userDoc) => {
-  const name = userDoc?.nickname || firebaseUser.displayName || firebaseUser.email || 'เพื่อนๆ';
+  const callName = userDoc?.callName?.trim();
+  const nickname = userDoc?.nickname?.trim();
+  const displayName = nickname || firebaseUser.displayName || 'เพื่อนๆ';
+  
+  // ถ้าครูปิ๊กตั้งชื่อเรียกเฉพาะตัว (เช่น น้องบีน, พี่โก้, คุณแม่น้องมินท์) ให้ทักทายโดยตรง
+  // ถ้ายังไม่ได้ตั้ง ให้ใช้ค่ามาตรฐานสุภาพ: สวัสดีคุณ [ชื่อเล่น]
+  const greetingTarget = callName ? callName : `คุณ ${displayName}`;
   const welcomeEl = document.getElementById('welcome-message');
-  if (welcomeEl) welcomeEl.textContent = `สวัสดีคุณ ${name}!`;
+  if (welcomeEl) welcomeEl.textContent = `สวัสดี${greetingTarget}!`;
 
   const userPill = document.getElementById('user-pill');
-  if (userPill) userPill.textContent = `👤 ${name}`;
+  if (userPill) userPill.textContent = `👤 ${callName || displayName}`;
 
   // ทางเข้าฝั่ง admin โผล่เฉพาะกับ role admin เท่านั้น — นักเรียนทั่วไปไม่เห็นเมนูนี้เลย
   if (isAdmin(userDoc)) {

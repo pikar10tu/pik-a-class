@@ -3,6 +3,7 @@ import { db } from '../lib/firebase.js';
 import { fetchStages, fetchMyClears } from '../lib/stage-io.js';
 import { buildStagePath, totalStars, clearsByStageId } from '../lib/stage-progress.js';
 import { readTier } from '../lib/queries.js';
+import { isLevelAllowed } from '../lib/user-profile.js';
 import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
@@ -111,6 +112,9 @@ function renderPath(path) {
     const button = document.createElement('button');
     button.type = 'button';
     button.className = `path-node path-node-${state}`;
+    if (stage.order === 9 || stage.order === 10 || (stage.title && stage.title.includes('บอส'))) {
+      button.classList.add('path-node--boss');
+    }
     button.textContent = nodeLabel(stage, state);
     button.setAttribute('aria-label', nodeAriaLabel(stage, state));
     button.style.left = `calc(${(point.x / CANVAS_WIDTH) * 100}% - ${NODE / 2}px)`;
@@ -206,6 +210,11 @@ if (!isValidQuery) {
   document.getElementById('path-title').textContent = SKILL_LABELS[skill];
 
   requireLogin(async (firebaseUser, userDoc) => {
+    if (!isLevelAllowed(userDoc, level)) {
+      showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักครูปิ๊กเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
+      return;
+    }
+
     try {
       const [stages, clears] = await Promise.all([
         // ต้องส่ง tier ไปด้วยเสมอ ไม่งั้น query จะไม่ล็อก isPreview และ rules ปฏิเสธทั้งชุด

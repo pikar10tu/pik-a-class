@@ -48,6 +48,44 @@ export const MASCOT_CHIME_TONE = {
   ],
 };
 
+// ผ่านด่าน: เสียงแฟนแฟร์ฉลองชัยชนะ 5 ตัวโน้ต (C5-E5-G5-C6-E6) อบอุ่น สดใส ชวนภาคภูมิใจ
+export const STAGE_CLEAR_FANFARE = {
+  waveform: 'triangle',
+  peakGain: 0.20,
+  attack: 0.008,
+  notes: [
+    { freq: 523.25, duration: 0.10 }, // C5
+    { freq: 659.25, duration: 0.10 }, // E5
+    { freq: 783.99, duration: 0.10 }, // G5
+    { freq: 1046.50, duration: 0.12 }, // C6
+    { freq: 1318.51, duration: 0.35 }, // E6
+  ],
+};
+
+// ดาวระยิบระยับ: เสียงกระดิ่งดาววิ้งๆ 3 ตัวโน้ตสูงใส (B5-E6-G#6)
+export const STAR_CHIME = {
+  waveform: 'sine',
+  peakGain: 0.15,
+  attack: 0.005,
+  notes: [
+    { freq: 987.77, duration: 0.08 }, // B5
+    { freq: 1318.51, duration: 0.08 }, // E6
+    { freq: 1661.22, duration: 0.18 }, // G#6
+  ],
+};
+
+// ยังไม่ผ่านด่าน: เสียงนุ่มนวลให้กำลังใจ ไม่ลงโทษ (E4-G4-E4) อบอุ่น ฟังสบาย
+export const STAGE_FAIL_GENTLE = {
+  waveform: 'sine',
+  peakGain: 0.12,
+  attack: 0.015,
+  notes: [
+    { freq: 329.63, duration: 0.14 }, // E4
+    { freq: 392.00, duration: 0.14 }, // G4
+    { freq: 329.63, duration: 0.25 }, // E4
+  ],
+};
+
 // แปลง tone เป็นรายการ event พร้อมเวลาเริ่ม (offset จากจุดเริ่มเล่น หน่วยวินาที) — เรียงโน้ตต่อกันโดยไม่ overlap
 // แยกออกมาให้ทดสอบได้ล้วนๆ โดยไม่ต้องสร้าง AudioContext จริง
 export function toneEvents(tone) {

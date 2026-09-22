@@ -5,10 +5,11 @@ import { saveStageResult } from '../lib/stage-result-io.js';
 import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
 import { buildWordBank } from '../lib/word-bank.js';
 import { mascotSrc } from '../lib/mascot.js';
-import { playAnswerSound, playButtonSound } from '../lib/answer-audio.js';
+import { playAnswerSound, playButtonSound, playStageClearSound, playStageFailedSound } from '../lib/answer-audio.js';
 import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 import { pickRound } from '../lib/stage-pool.js';
 import { readTier } from '../lib/queries.js';
+import { isLevelAllowed } from '../lib/user-profile.js';
 import { STAGE_ITEM_TYPES } from '../lib/stage-form.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
 import { getGrammarNote } from '../lib/grammar-notes.js';
@@ -337,6 +338,72 @@ function pick(card, option) {
   if (!soundMuted) playAnswerSound(result.correct ? 'correct' : 'wrong');
 }
 
+function launchConfetti() {
+  const canvas = document.createElement('canvas');
+  canvas.id = 'confetti-canvas';
+  canvas.style.cssText = 'position: fixed; inset: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: 999;';
+  document.body.appendChild(canvas);
+
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  const dpr = window.devicePixelRatio || 1;
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.scale(dpr, dpr);
+
+  const colors = ['#f59e0b', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6', '#06b6d4', '#f97316'];
+  const particleCount = 55;
+  const particles = Array.from({ length: particleCount }, () => ({
+    x: width * (0.2 + Math.random() * 0.6),
+    y: height * 0.35,
+    vx: (Math.random() - 0.5) * 8,
+    vy: -Math.random() * 8 - 4,
+    size: Math.random() * 7 + 5,
+    color: colors[Math.floor(Math.random() * colors.length)],
+    rotation: Math.random() * 360,
+    rotSpeed: (Math.random() - 0.5) * 10,
+    opacity: 1,
+  }));
+
+  const startTime = performance.now();
+  const duration = 2600;
+
+  function frame(now) {
+    const elapsed = now - startTime;
+    if (elapsed > duration) {
+      canvas.remove();
+      return;
+    }
+
+    ctx.clearRect(0, 0, width, height);
+    const progress = elapsed / duration;
+    const fade = progress > 0.7 ? 1 - (progress - 0.7) / 0.3 : 1;
+
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      p.vy += 0.28;
+      p.vx *= 0.98;
+      p.rotation += p.rotSpeed;
+
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate((p.rotation * Math.PI) / 180);
+      ctx.globalAlpha = Math.max(0, p.opacity * fade);
+      ctx.fillStyle = p.color;
+      ctx.fillRect(-p.size / 2, -p.size / 4, p.size, p.size / 2);
+      ctx.restore();
+    }
+
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+}
+
 async function finish() {
   midStage = false;
   const summary = summarize(session, stage.passThreshold);
@@ -355,6 +422,9 @@ async function finish() {
   const backBtn = document.getElementById('back-to-path');
 
   if (summary.passed) {
+    if (!soundMuted) playStageClearSound();
+    launchConfetti();
+
     // ผ่านด่าน: เน้นปุ่ม "ไปต่อ" เป็นหลัก (btn-chunky), ปุ่ม "เล่นอีกครั้ง" เป็นทางเลือกรอง (btn-ghost)
     backBtn.className = 'btn-chunky';
     backBtn.textContent = fromAdmin ? 'กลับไปหน้าแก้ด่าน' : 'ไปต่อ';
@@ -368,6 +438,8 @@ async function finish() {
       backBtn.parentNode.insertBefore(backBtn, retryBtn);
     }
   } else {
+    if (!soundMuted) playStageFailedSound();
+
     // ไม่ผ่าน: เน้นปุ่ม "ลองอีกครั้ง" เป็นหลัก (btn-chunky), ปุ่ม "กลับเส้นทางด่าน" เป็นทางเลือกรอง (btn-ghost)
     retryBtn.className = 'btn-chunky';
     retryBtn.textContent = 'ลองอีกครั้ง';
@@ -428,10 +500,12 @@ document.getElementById('quit').addEventListener('click', () => {
 });
 
 document.getElementById('retry').addEventListener('click', () => {
+  document.getElementById('confetti-canvas')?.remove();
   window.location.reload();
 });
 
 document.getElementById('back-to-path').addEventListener('click', () => {
+  document.getElementById('confetti-canvas')?.remove();
   window.location.href = backHref();
 });
 
@@ -449,6 +523,10 @@ requireLogin(async (firebaseUser, userDoc) => {
     stage = await fetchStage(db, stageId);
     if (!stage) {
       showEmpty('ไม่พบด่านนี้', backHref());
+      return;
+    }
+    if (!isLevelAllowed(userDoc, stage.level)) {
+      showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ทักครูปิ๊กเพื่อขอเปิดด่านได้เลยครับ`, backHref());
       return;
     }
     setupGrammarNote(stage.tags);

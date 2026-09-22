@@ -4,7 +4,14 @@ export function filterStudents(students, { grade = '', groupTag = '', search = '
     if (grade && student.grade !== grade) return false;
     if (groupTag && !(student.groupTags ?? []).includes(groupTag)) return false;
     if (!needle) return true;
-    const haystack = [student.nickname, student.fullName, student.phone, student.lineId]
+    const haystack = [
+      student.callName,
+      student.nickname,
+      student.fullName,
+      student.phone,
+      student.lineId,
+      ...(student.allowedLevels ?? []),
+    ]
       .filter(Boolean)
       .join(' ')
       .toLowerCase();
