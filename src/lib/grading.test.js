@@ -1,8 +1,14 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeAnswer, gradeAnswer, starsFor, scoreOf } from './grading.js';
+import { normalizeAnswer, normalizeSentence, gradeAnswer, starsFor, scoreOf } from './grading.js';
 
 const mcq = { type: 'mcq', choices: ['go', 'goes'], answerKey: ['goes'] };
 const blank = { type: 'fill_blank', prompt: 'She ___ home.', answerKey: ["doesn't", 'does not'] };
+const sentenceBuilder = {
+  type: 'sentence_builder',
+  prompt: 'เมื่อวานนี้ฉันไปโรงเรียน',
+  choices: ['Yesterday', 'I', 'went', 'to', 'school', 'goes', 'at'],
+  answerKey: ['Yesterday I went to school.', 'I went to school yesterday.'],
+};
 
 describe('normalizeAnswer', () => {
   it('trims, collapses spaces and ignores letter case', () => {
@@ -23,6 +29,20 @@ describe('normalizeAnswer', () => {
 
   it('keeps punctuation that carries meaning', () => {
     expect(normalizeAnswer('Yes, I do.')).toBe('yes, i do.');
+  });
+});
+
+describe('normalizeSentence', () => {
+  it('handles array of tokens and trims punctuation', () => {
+    expect(normalizeSentence(['Yesterday', 'I', 'went', 'to', 'school'])).toBe('yesterday i went to school');
+  });
+
+  it('strips ending periods, question marks, and commas from string', () => {
+    expect(normalizeSentence('Yesterday, I went to school.')).toBe('yesterday i went to school');
+  });
+
+  it('normalizes curly apostrophes in sentence tokens', () => {
+    expect(normalizeSentence(["She", "didn’t", "come."])).toBe("she didn't come");
   });
 });
 
@@ -47,6 +67,13 @@ describe('gradeAnswer', () => {
 
   it('treats a missing answer as wrong instead of throwing', () => {
     expect(gradeAnswer(mcq, undefined)).toEqual({ correct: false, score: 0 });
+  });
+
+  it('grades sentence_builder correctly from array of words or string', () => {
+    expect(gradeAnswer(sentenceBuilder, ['Yesterday', 'I', 'went', 'to', 'school'])).toEqual({ correct: true, score: 1 });
+    expect(gradeAnswer(sentenceBuilder, 'Yesterday I went to school')).toEqual({ correct: true, score: 1 });
+    expect(gradeAnswer(sentenceBuilder, ['I', 'went', 'to', 'school', 'yesterday'])).toEqual({ correct: true, score: 1 });
+    expect(gradeAnswer(sentenceBuilder, ['I', 'goes', 'to', 'school'])).toEqual({ correct: false, score: 0 });
   });
 });
 

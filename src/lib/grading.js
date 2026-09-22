@@ -6,7 +6,25 @@ export function normalizeAnswer(value) {
     .toLowerCase();
 }
 
+export function normalizeSentence(value) {
+  if (Array.isArray(value)) {
+    value = value.join(' ');
+  }
+  return String(value ?? '')
+    .replace(/['\u2019']/g, "'")
+    .replace(/[.,!?;:]/g, '')
+    .trim()
+    .replace(/\s+/g, ' ')
+    .toLowerCase();
+}
+
 export function gradeAnswer(exercise, answer) {
+  if (exercise.type === 'sentence_builder') {
+    const given = normalizeSentence(answer);
+    const accepted = (exercise.answerKey ?? []).map(normalizeSentence);
+    const correct = given !== '' && accepted.includes(given);
+    return { correct, score: correct ? 1 : 0 };
+  }
   const given = normalizeAnswer(answer);
   const accepted = (exercise.answerKey ?? []).map(normalizeAnswer);
   const correct = given !== '' && accepted.includes(given);

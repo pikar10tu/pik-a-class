@@ -320,3 +320,104 @@
   padding: 1px 7px;
   white-space: nowrap;
 }
+
+/* Duolingo-style Sentence Builder */
+.sentence-builder {
+  display: flex;
+  flex-direction: column;
+  margin: var(--space-3) 0;
+}
+
+.sentence-target-wrapper {
+  min-height: 84px;
+  background: var(--color-surface, #ffffff);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2) var(--space-3);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
+  gap: var(--space-2);
+  transition: border-color 0.2s ease;
+}
+
+.sentence-target-wrapper.has-words {
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.sentence-target-placeholder {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  padding: var(--space-2) 0;
+}
+
+.sentence-bank {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.word-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 6px 14px;
+  font-family: var(--font-base);
+  font-size: 1.0625rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+  background: var(--color-surface, #ffffff);
+  border: 2px solid var(--color-border);
+  border-bottom-width: 4px;
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  transition: transform 0.08s ease, background-color 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+.word-chip:hover:not(:disabled):not(.is-placed) {
+  border-color: var(--color-primary);
+}
+
+.word-chip:active:not(:disabled):not(.is-placed) {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.word-chip.is-placed {
+  background: var(--color-border);
+  border-color: var(--color-border);
+  color: transparent;
+  border-bottom-width: 2px;
+  opacity: 0.35;
+  cursor: default;
+  transform: none;
+}
+
+.word-chip[data-state='correct'] {
+  background: var(--color-correct-bg);
+  border-color: var(--color-primary);
+  color: var(--color-correct-text);
+}
+
+.word-chip[data-state='wrong'] {
+  background: var(--color-wrong-bg);
+  border-color: var(--color-error);
+  color: var(--color-wrong-text);
+}
+
+.sentence-check-btn {
+  margin-top: var(--space-2);
+}
+

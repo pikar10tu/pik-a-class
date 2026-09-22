@@ -5,7 +5,7 @@ import { saveStageResult } from '../lib/stage-result-io.js';
 import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
 import { buildWordBank } from '../lib/word-bank.js';
 import { mascotSrc } from '../lib/mascot.js';
-import { playAnswerSound } from '../lib/answer-audio.js';
+import { playAnswerSound, playButtonSound } from '../lib/answer-audio.js';
 import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 import { pickRound } from '../lib/stage-pool.js';
 import { readTier } from '../lib/queries.js';
@@ -32,7 +32,11 @@ let midStage = false;
 // กันกดปุ่ม "ต่อไป" รัว/แตะซ้ำจนเรียก finish()/บันทึกผลซ้ำสอง — บันทึกจริงเกิดที่ save() แต่กันไว้สองชั้น
 let saveInFlight = false;
 
-const TYPE_LABELS = { mcq: 'เลือกคำตอบที่ถูก', fill_blank: 'เติมคำให้ถูก' };
+const TYPE_LABELS = {
+  mcq: 'เลือกคำตอบที่ถูก',
+  fill_blank: 'เติมคำให้ถูก',
+  sentence_builder: 'เรียงประโยคภาษาอังกฤษ',
+};
 
 // เข้าถึง localStorage แบบกันพัง — บาง browser mode (private mode บางยี่ห้อ) throw ตอนแตะ window.localStorage เลย
 function safeLocalStorage() {
@@ -103,6 +107,118 @@ function optionsFor(exercise) {
   return exercise.type === 'mcq' ? exercise.choices ?? [] : buildWordBank(exercise, exercises);
 }
 
+function shuffleWords(items) {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+function renderSentenceBuilder(exercise, answers) {
+  const tokens = shuffleWords(
+    (exercise.choices ?? []).map((text, i) => ({ id: `w_${i}`, text }))
+  );
+  let selectedTokens = [];
+
+  const wrapper = document.createElement('div');
+  wrapper.className = 'sentence-builder';
+
+  const targetArea = document.createElement('div');
+  targetArea.className = 'sentence-target-wrapper';
+
+  const bankArea = document.createElement('div');
+  bankArea.className = 'sentence-bank';
+
+  const checkButton = document.createElement('button');
+  checkButton.type = 'button';
+  checkButton.className = 'btn-chunky sentence-check-btn';
+  checkButton.textContent = 'ตรวจคำตอบ';
+  checkButton.disabled = true;
+
+  function update() {
+    targetArea.classList.toggle('has-words', selectedTokens.length > 0);
+    targetArea.replaceChildren();
+
+    if (selectedTokens.length === 0) {
+      const placeholder = document.createElement('span');
+      placeholder.className = 'sentence-target-placeholder';
+      placeholder.textContent = 'แตะคำด้านล่างเพื่อเรียงประโยค';
+      targetArea.appendChild(placeholder);
+    } else {
+      for (let idx = 0; idx < selectedTokens.length; idx++) {
+        const token = selectedTokens[idx];
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'word-chip word-chip--target';
+        chip.textContent = token.text;
+        if (!answered) {
+          chip.addEventListener('click', () => {
+            if (!soundMuted) playButtonSound();
+            selectedTokens.splice(idx, 1);
+            update();
+          });
+        }
+        targetArea.appendChild(chip);
+      }
+    }
+
+    bankArea.replaceChildren();
+    for (const token of tokens) {
+      const isPlaced = selectedTokens.some((t) => t.id === token.id);
+      const chip = document.createElement('button');
+      chip.type = 'button';
+      chip.className = `word-chip ${isPlaced ? 'is-placed' : ''}`;
+      chip.textContent = token.text;
+      chip.disabled = isPlaced || answered;
+      if (!isPlaced && !answered) {
+        chip.addEventListener('click', () => {
+          if (!soundMuted) playButtonSound();
+          selectedTokens.push(token);
+          update();
+        });
+      }
+      bankArea.appendChild(chip);
+    }
+
+    checkButton.disabled = selectedTokens.length === 0 || answered;
+  }
+
+  checkButton.addEventListener('click', () => {
+    if (answered || selectedTokens.length === 0) return;
+    answered = true;
+
+    const answerString = selectedTokens.map((t) => t.text).join(' ');
+    session = answerCurrent(session, answerString);
+    const result = session.results[session.results.length - 1];
+    const accepted = (exercise.answerKey ?? []).map((value) => String(value));
+
+    for (const chip of targetArea.querySelectorAll('.word-chip')) {
+      chip.disabled = true;
+      chip.dataset.state = result.correct ? 'correct' : 'wrong';
+    }
+    for (const chip of bankArea.querySelectorAll('.word-chip')) {
+      chip.disabled = true;
+    }
+    checkButton.hidden = true;
+
+    document.getElementById('verdict-text').textContent = result.correct
+      ? 'เก่งมาก! ถูกต้อง'
+      : `ยังไม่ถูก — คำตอบคือ "${accepted[0]}"`;
+    document.getElementById('verdict').hidden = false;
+
+    if (!soundMuted) playAnswerSound(result.correct ? 'correct' : 'wrong');
+  });
+
+  wrapper.appendChild(targetArea);
+  wrapper.appendChild(bankArea);
+  wrapper.appendChild(checkButton);
+  answers.appendChild(wrapper);
+
+  update();
+}
+
 function renderQuestion() {
   const exercise = currentExercise(session);
   if (!exercise) {
@@ -122,6 +238,12 @@ function renderQuestion() {
 
   const answers = document.getElementById('answers');
   answers.replaceChildren();
+
+  if (exercise.type === 'sentence_builder') {
+    renderSentenceBuilder(exercise, answers);
+    return;
+  }
+
   for (const option of optionsFor(exercise)) {
     const card = document.createElement('button');
     card.type = 'button';

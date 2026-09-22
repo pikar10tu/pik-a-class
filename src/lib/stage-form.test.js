@@ -29,7 +29,7 @@ describe('emptyStageState', () => {
   });
 
   it('only allows auto-gradable question types in a stage', () => {
-    expect(STAGE_ITEM_TYPES).toEqual(['mcq', 'fill_blank']);
+    expect(STAGE_ITEM_TYPES).toEqual(['mcq', 'fill_blank', 'sentence_builder']);
   });
 });
 

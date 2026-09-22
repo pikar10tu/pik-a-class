@@ -1,7 +1,7 @@
 import { DEFAULT_PASS_THRESHOLD, DEFAULT_DRAW_COUNT, MAX_DRAW_COUNT, MAX_STAGE_TAGS } from './schema/stages.js';
 import { distractorPool, WORD_BANK_SIZE } from './word-bank.js';
 
-export const STAGE_ITEM_TYPES = ['mcq', 'fill_blank'];
+export const STAGE_ITEM_TYPES = ['mcq', 'fill_blank', 'sentence_builder'];
 
 export function emptyStageState(overrides = {}) {
   return {

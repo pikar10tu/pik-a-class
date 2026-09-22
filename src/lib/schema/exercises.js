@@ -1,12 +1,12 @@
 import { str, enumOf, bool, arrayOfStr, isoDate } from './field-types.js';
 import { LEVELS, checkTagsForLevel } from './taxonomy.js';
 
-export const EXERCISE_TYPES = ['mcq', 'fill_blank', 'matching', 'short_answer', 'paragraph', 'shadowing'];
+export const EXERCISE_TYPES = ['mcq', 'fill_blank', 'sentence_builder', 'matching', 'short_answer', 'paragraph', 'shadowing'];
 export const REVIEW_STATUSES = ['draft', 'reviewed', 'published'];
 export const BLANK_MARKER = '___';
 
-const TYPES_WITH_CHOICES = ['mcq', 'matching'];
-const TYPES_WITH_ANSWER_KEY = ['mcq', 'fill_blank', 'matching'];
+const TYPES_WITH_CHOICES = ['mcq', 'matching', 'sentence_builder'];
+const TYPES_WITH_ANSWER_KEY = ['mcq', 'fill_blank', 'sentence_builder', 'matching'];
 const TYPES_WITH_RUBRIC = ['short_answer', 'paragraph'];
 
 function typeShapeRule(data) {
@@ -17,7 +17,7 @@ function typeShapeRule(data) {
   if (TYPES_WITH_CHOICES.includes(type)) {
     if (!choices || choices.length < 2) {
       errors.push({ field: 'choices', message: `ข้อชนิด ${type} ต้องมีตัวเลือกอย่างน้อย 2 ตัว` });
-    } else if (new Set(choices).size !== choices.length) {
+    } else if (type !== 'sentence_builder' && new Set(choices).size !== choices.length) {
       errors.push({ field: 'choices', message: 'ตัวเลือกห้ามซ้ำกัน' });
     }
   } else if (choices !== undefined) {
@@ -72,7 +72,7 @@ export const exercisesSchema = {
     level: enumOf(LEVELS),
     type: enumOf(EXERCISE_TYPES),
     prompt: str({ maxLength: 4000 }),
-    choices: arrayOfStr({ required: false, maxItems: 10 }),
+    choices: arrayOfStr({ required: false, maxItems: 20 }),
     answerKey: arrayOfStr({ required: false, maxItems: 10 }),
     rubric: str({ required: false, maxLength: 2000 }),
     tags: arrayOfStr({ minItems: 1, maxItems: 10 }),
