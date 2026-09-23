@@ -242,9 +242,17 @@ function renderSentenceBuilder(exercise, answers) {
     checkButton.disabled = selectedTokens.length === 0 || answered;
   }
 
+  let isChecked = false;
   checkButton.addEventListener('click', () => {
+    if (isChecked) {
+      checkButton.disabled = true;
+      document.getElementById('next').click();
+      return;
+    }
+
     if (answered || selectedTokens.length === 0) return;
     answered = true;
+    isChecked = true;
 
     const answerString = selectedTokens.map((t) => t.text).join(' ');
     session = answerCurrent(session, answerString);
@@ -258,12 +266,21 @@ function renderSentenceBuilder(exercise, answers) {
     for (const chip of bankArea.querySelectorAll('.word-chip')) {
       chip.disabled = true;
     }
-    checkButton.hidden = true;
 
-    document.getElementById('verdict-text').textContent = result.correct
+    const verdictEl = document.getElementById('verdict');
+    const verdictTextEl = document.getElementById('verdict-text');
+    const nextBtn = document.getElementById('next');
+
+    verdictTextEl.textContent = result.correct
       ? 'เก่งมาก! ถูกต้อง'
       : `ยังไม่ถูก — คำตอบคือ "${accepted[0]}"`;
-    document.getElementById('verdict').hidden = false;
+
+    verdictEl.hidden = false;
+    if (nextBtn) nextBtn.style.display = 'none';
+
+    checkButton.textContent = 'ต่อไป ✨';
+    checkButton.disabled = false;
+    checkButton.focus();
 
     if (!soundMuted) playAnswerSound(result.correct ? 'correct' : 'wrong');
   });
@@ -292,6 +309,7 @@ function renderQuestion() {
 
   const nextButton = document.getElementById('next');
   nextButton.disabled = false;
+  nextButton.style.display = '';
 
   const answers = document.getElementById('answers');
   answers.replaceChildren();

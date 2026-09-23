@@ -45,12 +45,20 @@ attachUiSounds();
 
 const searchInput = document.getElementById('handbook-search');
 const topicsContainer = document.getElementById('topics-container');
+const quickJumpBar = document.getElementById('quick-jump-bar');
+const handbookCount = document.getElementById('handbook-count');
+const btnToggleAll = document.getElementById('btn-toggle-all');
+const toggleAllText = document.getElementById('toggle-all-text');
+const toggleAllIcon = document.getElementById('toggle-all-icon');
+const btnBackToTop = document.getElementById('btn-back-to-top');
 const emptyState = document.getElementById('handbook-empty');
 const emptyMsg = document.getElementById('handbook-empty-msg');
 const metaTitle = document.getElementById('level-meta-title');
 const metaDesc = document.getElementById('level-meta-desc');
 const playBtn = document.getElementById('btn-play-level');
 const tabButtons = document.querySelectorAll('.level-tab-btn');
+
+let allExpanded = false;
 
 // Initial level from URL query or fallback to A1
 const urlParams = new URLSearchParams(window.location.search);
@@ -86,7 +94,15 @@ function noteMatchesQuery(note, query) {
   return searchPool.includes(q);
 }
 
-function renderTopicCard(note, number) {
+function getShortTopicLabel(note, index) {
+  // Extract a brief label for quick-jump pill (e.g. "1. Pres Simple")
+  const rawTitle = note.title || '';
+  const englishPart = rawTitle.split('(')[0].trim();
+  const shortTitle = englishPart.length > 18 ? englishPart.slice(0, 16) + '…' : englishPart;
+  return `${index}. ${shortTitle}`;
+}
+
+function renderTopicCard(note, number, isOpen) {
   const examplesHtml = Array.isArray(note.examples) && note.examples.length > 0
     ? `
       <div class="topic-examples-title">ตัวอย่างประโยค</div>
@@ -109,32 +125,36 @@ function renderTopicCard(note, number) {
     : '';
 
   return `
-    <article class="topic-card" id="topic-${number}">
-      <header class="topic-card-header">
+    <article class="topic-card ${isOpen ? 'is-open' : ''}" id="topic-${number}">
+      <header class="topic-card-header" data-toggle="topic-${number}">
         <div class="topic-header-main">
           <span class="topic-number-badge">${number}</span>
           <h3 class="topic-title">${escapeHtml(note.title)}</h3>
         </div>
-        <span class="topic-badge">${escapeHtml(note.badge || '')}</span>
+        <div class="topic-header-actions">
+          <span class="topic-badge">${escapeHtml(note.badge || '')}</span>
+          <span class="topic-chevron" aria-hidden="true">▼</span>
+        </div>
       </header>
 
       ${note.formula ? `
-        <div class="topic-formula-box">
+        <div class="topic-formula-box" data-toggle="topic-${number}" title="แตะเพื่อเปิด/ปิดเนื้อหา">
           <span class="formula-icon">💡</span>
           <code>${escapeHtml(note.formula)}</code>
         </div>
       ` : ''}
 
-      <p class="topic-concept">${escapeHtml(note.concept)}</p>
-
-      ${negQuestionHtml}
-      ${examplesHtml}
-      ${tipHtml}
+      <div class="topic-card-body">
+        <p class="topic-concept">${escapeHtml(note.concept)}</p>
+        ${negQuestionHtml}
+        ${examplesHtml}
+        ${tipHtml}
+      </div>
     </article>
   `;
 }
 
-function renderBossCard(note) {
+function renderBossCard(note, index, isOpen) {
   const examplesHtml = Array.isArray(note.examples) && note.examples.length > 0
     ? `
       <div class="topic-examples-title">ตัวอย่างประโยคสำคัญ</div>
@@ -157,29 +177,74 @@ function renderBossCard(note) {
     : '';
 
   return `
-    <article class="topic-card card-boss">
-      <header class="topic-card-header">
+    <article class="topic-card card-boss ${isOpen ? 'is-open' : ''}" id="boss-${index}">
+      <header class="topic-card-header" data-toggle="boss-${index}">
         <div class="topic-header-main">
           <span class="topic-number-badge" style="background: #9333ea;">👑</span>
           <h3 class="topic-title">${escapeHtml(note.title)}</h3>
         </div>
-        <span class="topic-badge">${escapeHtml(note.badge || 'บททดสอบ')}</span>
+        <div class="topic-header-actions">
+          <span class="topic-badge">${escapeHtml(note.badge || 'บททดสอบ')}</span>
+          <span class="topic-chevron" aria-hidden="true">▼</span>
+        </div>
       </header>
 
       ${note.formula ? `
-        <div class="topic-formula-box" style="background: #faf5ff; border-color: #e9d5ff; color: #6b21a8;">
+        <div class="topic-formula-box" data-toggle="boss-${index}" title="แตะเพื่อเปิด/ปิดเนื้อหา">
           <span class="formula-icon">🎯</span>
           <code>${escapeHtml(note.formula)}</code>
         </div>
       ` : ''}
 
-      <p class="topic-concept">${escapeHtml(note.concept)}</p>
-
-      ${negQuestionHtml}
-      ${examplesHtml}
-      ${tipHtml}
+      <div class="topic-card-body">
+        <p class="topic-concept">${escapeHtml(note.concept)}</p>
+        ${negQuestionHtml}
+        ${examplesHtml}
+        ${tipHtml}
+      </div>
     </article>
   `;
+}
+
+function renderQuickJumpPills(coreEntries, bossEntries) {
+  if (!quickJumpBar) return;
+  let pillsHtml = '';
+
+  coreEntries.forEach((item, idx) => {
+    const num = idx + 1;
+    const label = getShortTopicLabel(item.note, num);
+    pillsHtml += `<button type="button" class="quick-jump-pill" data-target="topic-${num}">${escapeHtml(label)}</button>`;
+  });
+
+  bossEntries.forEach((item, idx) => {
+    const label = item.note.title?.includes('มินิ') ? '⚔️ Mini-Boss' : '👑 Final Boss';
+    pillsHtml += `<button type="button" class="quick-jump-pill is-boss" data-target="boss-${idx}">${escapeHtml(label)}</button>`;
+  });
+
+  quickJumpBar.innerHTML = pillsHtml;
+
+  // Add click handlers
+  quickJumpBar.querySelectorAll('.quick-jump-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      const targetId = pill.dataset.target;
+      const targetEl = document.getElementById(targetId);
+      if (!targetEl) return;
+
+      // Ensure open
+      targetEl.classList.add('is-open');
+
+      // Scroll smoothly
+      targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Highlight animation
+      targetEl.classList.remove('is-highlighted');
+      void targetEl.offsetWidth; // trigger reflow
+      targetEl.classList.add('is-highlighted');
+      setTimeout(() => {
+        targetEl.classList.remove('is-highlighted');
+      }, 1600);
+    });
+  });
 }
 
 function updateView() {
@@ -214,6 +279,9 @@ function updateView() {
     }
   }
 
+  // Populate quick jump bar (using all entries in level)
+  renderQuickJumpPills(coreEntries, bossEntries);
+
   const matchingCore = coreEntries.filter(item => noteMatchesQuery(item.note, query));
   const matchingBoss = bossEntries.filter(item => noteMatchesQuery(item.note, query));
 
@@ -221,6 +289,7 @@ function updateView() {
 
   if (totalMatches === 0) {
     topicsContainer.innerHTML = '';
+    if (handbookCount) handbookCount.textContent = 'ไม่พบผลลัพธ์';
     if (emptyState) {
       emptyState.hidden = false;
       if (emptyMsg) {
@@ -232,43 +301,94 @@ function updateView() {
 
   if (emptyState) emptyState.hidden = true;
 
+  if (handbookCount) {
+    if (query) {
+      handbookCount.textContent = `พบ ${totalMatches} รายการที่ตรงกับ "${query}"`;
+    } else {
+      handbookCount.textContent = `แสดง ${matchingCore.length} หัวข้อ + ${matchingBoss.length} ด่านบอส`;
+    }
+  }
+
+  // If user searched, auto-expand all matching cards for instant viewing; otherwise respect allExpanded
+  const shouldOpen = Boolean(query) || allExpanded;
+
   let html = '';
 
   // Render core topics
-  matchingCore.forEach((item, idx) => {
-    // Original index 1..10
+  matchingCore.forEach((item) => {
     const originalNumber = coreEntries.findIndex(e => e.key === item.key) + 1;
-    html += renderTopicCard(item.note, originalNumber);
+    html += renderTopicCard(item.note, originalNumber, shouldOpen);
   });
 
   // Render boss reviews if any match
   if (matchingBoss.length > 0) {
     html += `<h2 class="reviews-section-title">⚔️ ด่านประลองบอส & ทบทวนรวบยอด (${currentLevel})</h2>`;
-    matchingBoss.forEach(item => {
-      html += renderBossCard(item.note);
+    matchingBoss.forEach((item, idx) => {
+      html += renderBossCard(item.note, idx, shouldOpen);
     });
   }
 
   topicsContainer.innerHTML = html;
+
+  // Wire up accordion toggle handlers on all cards
+  topicsContainer.querySelectorAll('[data-toggle]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      // Don't toggle if user clicked on a link or button inside header
+      if (e.target.closest('a, button')) return;
+      const cardId = trigger.dataset.toggle;
+      const cardEl = document.getElementById(cardId);
+      if (cardEl) {
+        cardEl.classList.toggle('is-open');
+      }
+    });
+  });
 }
 
 // Switch level handler
 function setLevel(newLevel) {
   if (!LEVEL_DATA[newLevel]) return;
   currentLevel = newLevel;
+  allExpanded = false;
+  if (toggleAllText) toggleAllText.textContent = 'ขยายทั้งหมด';
+  if (toggleAllIcon) toggleAllIcon.textContent = '▾';
   const newUrl = new URL(window.location);
   newUrl.searchParams.set('level', currentLevel);
   window.history.replaceState(null, '', newUrl);
   updateView();
 }
 
-// Event Listeners
+// Toggle all cards open/collapsed
+if (btnToggleAll) {
+  btnToggleAll.addEventListener('click', () => {
+    allExpanded = !allExpanded;
+    if (toggleAllText) toggleAllText.textContent = allExpanded ? 'ยุบทั้งหมด' : 'ขยายทั้งหมด';
+    if (toggleAllIcon) toggleAllIcon.textContent = allExpanded ? '▴' : '▾';
+
+    topicsContainer.querySelectorAll('.topic-card').forEach(card => {
+      card.classList.toggle('is-open', allExpanded);
+    });
+  });
+}
+
+// Floating back-to-top handler
+if (btnBackToTop) {
+  window.addEventListener('scroll', () => {
+    btnBackToTop.hidden = window.scrollY < 300;
+  });
+
+  btnBackToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// Tab button event listeners
 tabButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     setLevel(btn.dataset.level);
   });
 });
 
+// Search input listener
 if (searchInput) {
   searchInput.addEventListener('input', () => {
     updateView();

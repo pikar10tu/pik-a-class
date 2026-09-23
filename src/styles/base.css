@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -157,6 +161,8 @@ main {
   color: var(--color-text);
   font-weight: 600;
   font-size: 1.15rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .app-brand-logo {
@@ -168,12 +174,14 @@ main {
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
+  flex-shrink: 0;
 }
 
 .app-nav-links {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  white-space: nowrap;
 }
 
 .app-nav-link {
@@ -184,6 +192,7 @@ main {
   font-size: 0.9375rem;
   font-weight: 500;
   transition: all 0.15s ease;
+  white-space: nowrap;
 }
 
 .app-nav-link:hover {
@@ -200,6 +209,8 @@ main {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .user-pill {
@@ -209,6 +220,10 @@ main {
   background: var(--color-bg);
   border-radius: var(--radius-full);
   border: 1px solid var(--color-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
 }
 
 .admin-switch-pill {
@@ -223,6 +238,8 @@ main {
   display: inline-flex;
   align-items: center;
   gap: var(--space-1);
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: transform 0.1s ease, box-shadow 0.15s ease;
 }
 
@@ -240,6 +257,8 @@ main {
   font-family: var(--font-base);
   font-size: 0.875rem;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: all 0.15s ease;
 }
 
@@ -1114,15 +1133,52 @@ textarea {
 /* Mobile Responsiveness for Header & Dashboard */
 @media (max-width: 520px) {
   .app-header-inner {
-    padding: var(--space-2) var(--space-3);
+    padding: 6px 10px;
+    gap: 6px;
+  }
+
+  .app-brand {
+    font-size: 0.9375rem;
+    gap: 6px;
+    white-space: nowrap;
+  }
+
+  .app-brand-logo {
+    width: 28px;
+    height: 28px;
+    font-size: 1.05rem;
+  }
+
+  .app-user-actions {
+    gap: 4px;
+    flex-shrink: 0;
   }
 
   .user-pill {
-    max-width: 110px;
+    max-width: 75px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .admin-switch-pill {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .btn-signout {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    white-space: nowrap;
+  }
+
+  .btn-ghost-sm {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    white-space: nowrap;
   }
 
   .dashboard-hero {

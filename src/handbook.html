@@ -10,7 +10,6 @@
   <meta name="theme-color" content="#37c871" />
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./styles/learn.css" />
   <link rel="stylesheet" href="./styles/handbook.css" />
 </head>
 <body>
@@ -81,7 +80,19 @@
       </a>
     </div>
 
-    <!-- Topics Grid -->
+    <!-- Quick-Jump Topic Bar -->
+    <nav id="quick-jump-bar" class="quick-jump-bar" aria-label="ทางลัดเลือกหัวข้อ"></nav>
+
+    <!-- Toolbar: Item counter & Toggle all button -->
+    <div class="handbook-toolbar">
+      <span id="handbook-count" class="handbook-count"></span>
+      <button type="button" id="btn-toggle-all" class="btn-toggle-all" aria-expanded="false">
+        <span id="toggle-all-text">ขยายทั้งหมด</span>
+        <span id="toggle-all-icon">▾</span>
+      </button>
+    </div>
+
+    <!-- Topics Grid (Accordion Cards) -->
     <div id="topics-container" class="topics-grid"></div>
 
     <!-- Empty Search State -->
@@ -90,6 +101,11 @@
       <p id="handbook-empty-msg">ไม่พบหัวข้อไวยากรณ์ที่ตรงกับคำค้นหาในระดับนี้</p>
     </div>
   </main>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" id="btn-back-to-top" class="btn-back-to-top" aria-label="กลับสู่ด้านบน" hidden>
+    <span>⬆️ ด้านบน</span>
+  </button>
 
   <script type="module" src="./handbook.js"></script>
 </body>
