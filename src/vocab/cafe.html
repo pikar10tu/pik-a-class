@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pik Speed Cafe — มินิเกมเสิร์ฟคำศัพท์</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <meta name="theme-color" content="#f59e0b" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/vocab.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="./index.html">
+        <span class="app-brand-logo">☕</span>
+        <span>Pik Speed Cafe</span>
+      </a>
+      <div class="app-user-actions">
+        <a href="./index.html" class="chip-btn" style="text-decoration: none;">🗂️ คลังคำศัพท์</a>
+        <span id="user-pill" class="user-pill">ผู้เรียน</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="cafe-page">
+    <!-- Screen 1: Lobby / Setup -->
+    <section id="cafe-lobby" class="summary-card" style="margin-top: var(--space-4);">
+      <div class="summary-hero-icon">👨‍🍳🌱</div>
+      <h1 class="summary-title">ยินดีต้อนรับสู่ Pik Speed Cafe!</h1>
+      <p style="color: var(--color-muted); font-size: 0.9375rem; margin-bottom: var(--space-4);">
+        ช่วยน้องหยกเสิร์ฟออเดอร์คำศัพท์ให้ลูกค้าทันเวลา สะสมคอมโบ และปลดล็อกดาวสะสม!
+      </p>
+
+      <div style="text-align: left; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 16px; padding: var(--space-3) var(--space-4); margin-bottom: var(--space-4);">
+        <label style="display: block; font-weight: 600; font-size: 0.875rem; margin-bottom: 6px;">
+          เลือกระดับคำศัพท์:
+          <select id="select-level" style="width: 100%; font-family: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--color-border); margin-top: 4px;">
+            <option value="all">ทุกระดับ (A1 – B2 ผสมกัน)</option>
+            <option value="A1">ระดับ A1 (เริ่มต้น / พื้นฐาน)</option>
+            <option value="A2">ระดับ A2 (ประถมปลาย - ม.ต้น)</option>
+            <option value="B1">ระดับ B1 (ม.ต้น - ม.ปลาย)</option>
+            <option value="B2">ระดับ B2 (เตรียมสอบเข้ามหาลัย)</option>
+          </select>
+        </label>
+
+        <label style="display: block; font-weight: 600; font-size: 0.875rem; margin-top: 12px; margin-bottom: 6px;">
+          จำนวนออเดอร์ต่อรอบ:
+          <select id="select-count" style="width: 100%; font-family: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--color-border); margin-top: 4px;">
+            <option value="10">10 ออเดอร์ (โหมดด่วน 1–2 นาที)</option>
+            <option value="15">15 ออเดอร์ (กำลังดี)</option>
+            <option value="20">20 ออเดอร์ (ท้าทายความจำ)</option>
+          </select>
+        </label>
+      </div>
+
+      <button type="button" id="btn-start-game" class="btn-cafe-hero" style="width: 100%; justify-content: center; font-size: 1.125rem; padding: 14px;">
+        🚀 เปิดร้าน เริ่มเสิร์ฟเลย!
+      </button>
+    </section>
+
+    <!-- Screen 2: Game Stage -->
+    <section id="cafe-game-stage" hidden>
+      <!-- HUD -->
+      <div class="cafe-hud">
+        <div id="hud-lives" class="cafe-lives" title="หัวใจที่เหลือ">❤️❤️❤️</div>
+        <div id="hud-streak" class="cafe-streak-badge">⚡ 0x คอมโบ</div>
+        <div id="hud-score" class="cafe-score">🪙 0</div>
+      </div>
+
+      <!-- Cafe Counter Stage -->
+      <div class="cafe-stage">
+        <!-- Progress Text -->
+        <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #9a3412; font-weight: 600;">
+          <span id="order-number-text">ออเดอร์ที่ 1 / 10</span>
+          <span id="order-level-tag" style="background: white; padding: 1px 6px; border-radius: 4px; border: 1px solid #fed7aa;">A1</span>
+        </div>
+
+        <!-- Customer & Order -->
+        <div class="cafe-counter-area">
+          <div id="customer-avatar" class="customer-avatar">🐱</div>
+          <div class="order-bubble">
+            <p id="customer-greeting" class="customer-greeting">ขอสั่งเมนูนี้หน่อยเมี๊ยว~</p>
+            <div class="order-word-row">
+              <h2 id="order-word" class="order-word-text">breakfast</h2>
+              <button type="button" id="btn-order-audio" class="btn-tts" title="ฟังเสียงอ่าน" style="padding: 4px 10px;">
+                🔊 ฟัง
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Patience / Timer Bar -->
+        <div class="patience-bar-wrapper">
+          <div id="patience-bar" class="patience-bar-fill" style="width: 100%;"></div>
+        </div>
+
+        <!-- 4 Dish Choices -->
+        <div id="dishes-container" class="dishes-grid">
+          <!-- 4 button choices injected here -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Screen 3: Summary -->
+    <section id="cafe-summary" class="summary-card" hidden>
+      <div id="summary-icon" class="summary-hero-icon">🎉</div>
+      <h2 id="summary-title" class="summary-title">ยอดเยี่ยมมาก!</h2>
+      <div id="summary-stars" class="summary-stars">⭐⭐⭐</div>
+
+      <div class="summary-stats-box">
+        <div class="summary-stat-item">
+          <span id="sum-score" class="summary-stat-val">0</span>
+          <span class="summary-stat-lbl">คะแนน</span>
+        </div>
+        <div class="summary-stat-item">
+          <span id="sum-accuracy" class="summary-stat-val">0%</span>
+          <span class="summary-stat-lbl">ความแม่นยำ</span>
+        </div>
+        <div class="summary-stat-item">
+          <span id="sum-combo" class="summary-stat-val">0x</span>
+          <span class="summary-stat-lbl">คอมโบสูงสุด</span>
+        </div>
+      </div>
+
+      <!-- Missed words review box -->
+      <div id="missed-words-box" class="missed-words-section" hidden>
+        <h3 class="missed-words-title">📌 คำศัพท์ที่ตอบพลาดในรอบนี้:</h3>
+        <div id="missed-words-list"></div>
+      </div>
+
+      <div class="summary-actions">
+        <button type="button" id="btn-replay" class="btn-cafe-hero" style="padding: 10px 18px;">
+          🎮 เล่นอีกรอบ
+        </button>
+        <button type="button" id="btn-review-missed" class="chip-btn" style="padding: 10px 18px; font-weight: 600;" hidden>
+          🔁 ฝึกซ่อมคำที่ผิด
+        </button>
+        <a href="./index.html" class="chip-btn" style="text-decoration: none; padding: 10px 18px;">
+          📖 คลังศัพท์
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./cafe.js"></script>
+</body>
+</html>

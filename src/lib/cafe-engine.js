@@ -1,0 +1,174 @@
+import { shuffleArray } from './vocab-data.js';
+
+export const CUSTOMER_TYPES = [
+  { emoji: '🐱', name: 'น้องแมว ส้มจี๊ด', greeting: 'ขอสั่งเมนูนี้หน่อยเมี๊ยว~' },
+  { emoji: '🐻', name: 'คุณหมี โบโบ้', greeting: 'สวัสดีครับ ขอจานนี้ด่วนเลยนะ!' },
+  { emoji: '🐰', name: 'น้องกระต่าย ปุ๊กปิ๊ก', greeting: 'หิวจังเลย ขอเสิร์ฟไวนะคะ~' },
+  { emoji: '🦉', name: 'คุณนกฮูก ดร.ฮูก', greeting: 'ทดสอบความจำหน่อย เมนูนี้คืออะไร?' },
+  { emoji: '🐶', name: 'น้องหมา ช็อกโก้', greeting: 'โฮ่ง! อยากกินเมนูนี้มากๆ เลย' },
+  { emoji: '🐼', name: 'น้องแพนด้า เปาเปา', greeting: 'กำลังง่วงเลย ขอเติมพลังหน่อยนะ' },
+];
+
+export function createCafeSession({ words = [], maxLives = 3, timeLimitSeconds = 8 } = {}) {
+  if (!Array.isArray(words) || words.length === 0) {
+    throw new Error('ต้องระบุรายการคำศัพท์อย่างน้อย 1 คำ');
+  }
+
+  return {
+    words: [...words],
+    currentIndex: 0,
+    lives: maxLives,
+    maxLives,
+    timeLimitSeconds,
+    score: 0,
+    streak: 0,
+    maxStreak: 0,
+    history: [],
+    state: 'playing', // 'playing' | 'won' | 'lost'
+  };
+}
+
+export function getCurrentOrder(session) {
+  if (!session || session.state !== 'playing' || session.currentIndex >= session.words.length) {
+    return null;
+  }
+
+  const currentWord = session.words[session.currentIndex];
+  // 4 ตัวเลือก: คำแปลที่ถูกต้อง 1 ข้อ + ตัวเลือกหลอก 3 ข้อ
+  const choices = shuffleArray([currentWord.thai, ...currentWord.alternatives.slice(0, 3)]);
+  const customer = CUSTOMER_TYPES[session.currentIndex % CUSTOMER_TYPES.length];
+
+  return {
+    word: currentWord,
+    choices,
+    customer,
+    orderNumber: session.currentIndex + 1,
+    totalOrders: session.words.length,
+    lives: session.lives,
+    maxLives: session.maxLives,
+    score: session.score,
+    streak: session.streak,
+    timeLimitSeconds: session.timeLimitSeconds,
+  };
+}
+
+export function submitAnswer(session, selectedAnswer) {
+  if (session.state !== 'playing') {
+    return { ok: false, reason: 'เกมสิ้นสุดแล้ว' };
+  }
+
+  const currentWord = session.words[session.currentIndex];
+  const isCorrect = selectedAnswer === currentWord.thai;
+
+  let pointsEarned = 0;
+  if (isCorrect) {
+    session.streak += 1;
+    session.maxStreak = Math.max(session.maxStreak, session.streak);
+    // คะแนนฐาน 100 + โบนัสคอมโบ (คอมโบ * 25)
+    pointsEarned = 100 + (session.streak - 1) * 25;
+    session.score += pointsEarned;
+  } else {
+    session.streak = 0;
+    session.lives -= 1;
+  }
+
+  session.history.push({
+    word: currentWord,
+    selectedAnswer,
+    correct: isCorrect,
+    timedOut: false,
+    pointsEarned,
+  });
+
+  // เช็คสถานะเกม
+  if (session.lives <= 0) {
+    session.state = 'lost';
+  } else {
+    session.currentIndex += 1;
+    if (session.currentIndex >= session.words.length) {
+      session.state = 'won';
+    }
+  }
+
+  return {
+    ok: true,
+    correct: isCorrect,
+    pointsEarned,
+    lives: session.lives,
+    streak: session.streak,
+    score: session.score,
+    state: session.state,
+    correctAnswer: currentWord.thai,
+  };
+}
+
+export function timeoutOrder(session) {
+  if (session.state !== 'playing') {
+    return { ok: false, reason: 'เกมสิ้นสุดแล้ว' };
+  }
+
+  const currentWord = session.words[session.currentIndex];
+  session.streak = 0;
+  session.lives -= 1;
+
+  session.history.push({
+    word: currentWord,
+    selectedAnswer: null,
+    correct: false,
+    timedOut: true,
+    pointsEarned: 0,
+  });
+
+  if (session.lives <= 0) {
+    session.state = 'lost';
+  } else {
+    session.currentIndex += 1;
+    if (session.currentIndex >= session.words.length) {
+      session.state = 'won';
+    }
+  }
+
+  return {
+    ok: true,
+    correct: false,
+    timedOut: true,
+    lives: session.lives,
+    streak: session.streak,
+    score: session.score,
+    state: session.state,
+    correctAnswer: currentWord.thai,
+  };
+}
+
+export function getCafeSummary(session) {
+  const total = session.history.length;
+  const servedOrders = session.history.filter((h) => h.correct).length;
+  const accuracy = total > 0 ? Math.round((servedOrders / total) * 100) : 0;
+  const missedWords = session.history.filter((h) => !h.correct).map((h) => h.word);
+
+  let stars = 0;
+  if (session.state === 'won') {
+    if (accuracy === 100 && session.lives === session.maxLives) {
+      stars = 3;
+    } else if (accuracy >= 70) {
+      stars = 2;
+    } else {
+      stars = 1;
+    }
+  }
+
+  return {
+    score: session.score,
+    lives: session.lives,
+    maxLives: session.maxLives,
+    totalOrders: session.words.length,
+    servedOrders,
+    accuracy,
+    maxStreak: session.maxStreak,
+    stars,
+    missedWords,
+    isVictory: session.state === 'won',
+    isGameOver: session.state === 'lost',
+    history: session.history,
+  };
+}

@@ -11,6 +11,9 @@ if (learnLink) learnLink.href = `${base}learn/index.html`;
 const handbookLink = document.getElementById('handbook-link');
 if (handbookLink) handbookLink.href = `${base}handbook.html`;
 
+const vocabLink = document.getElementById('vocab-link');
+if (vocabLink) vocabLink.href = `${base}vocab/index.html`;
+
 const mascotEl = document.getElementById('dashboard-mascot');
 if (mascotEl) mascotEl.src = mascotSrc('normal', base);
 

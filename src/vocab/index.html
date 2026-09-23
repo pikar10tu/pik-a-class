@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>คลังคำศัพท์ & Flashcards — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="../favicon.png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <meta name="theme-color" content="#37c871" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/vocab.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="../dashboard.html">
+        <span class="app-brand-logo">🌱</span>
+        <span>Pik a Class</span>
+      </a>
+      <div class="app-user-actions">
+        <a href="../dashboard.html" class="chip-btn" style="text-decoration: none;">🏠 แดชบอร์ด</a>
+        <span id="user-pill" class="user-pill">ผู้เรียน</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="vocab-container">
+    <!-- Header Card -->
+    <section class="vocab-header-card">
+      <div class="vocab-header-titles">
+        <h1>🗂️ คลังคำศัพท์อัจฉริยะ (Vocab Hub)</h1>
+        <p>ท่องศัพท์ A1–B2 และคำศัพท์ชีวิตประจำวัน พร้อมการ์ดคำศัพท์ 3D และมินิเกมตอบคำถาม</p>
+      </div>
+      <div class="vocab-cta-group">
+        <a href="./cafe.html" class="btn-cafe-hero">
+          ☕ เล่นเกม Pik Speed Cafe
+        </a>
+      </div>
+    </section>
+
+    <!-- Filters & Search -->
+    <section class="vocab-controls" aria-label="ตัวกรองและค้นหาคำศัพท์">
+      <div class="vocab-filter-row">
+        <span class="vocab-filter-label">ระดับ:</span>
+        <button type="button" class="chip-btn active" data-level="all">ทั้งหมด</button>
+        <button type="button" class="chip-btn" data-level="A1">A1</button>
+        <button type="button" class="chip-btn" data-level="A2">A2</button>
+        <button type="button" class="chip-btn" data-level="B1">B1</button>
+        <button type="button" class="chip-btn" data-level="B2">B2</button>
+      </div>
+
+      <div class="vocab-filter-row" id="category-filter-row">
+        <span class="vocab-filter-label">หมวดหมู่:</span>
+        <button type="button" class="chip-btn active" data-category="all">ทุกหมวด</button>
+        <!-- Populated dynamically from categories -->
+      </div>
+
+      <div>
+        <input
+          type="search"
+          id="vocab-search"
+          class="vocab-search-input"
+          placeholder="🔍 พิมพ์คำศัพท์ภาษาอังกฤษ หรือความหมายภาษาไทยเพื่อค้นหา..."
+        />
+      </div>
+    </section>
+
+    <!-- Interactive Flashcard Deck -->
+    <section class="flashcard-deck-section">
+      <div id="flashcard-scene" class="flashcard-scene" aria-label="การ์ดคำศัพท์">
+        <div id="flashcard-inner" class="flashcard-inner">
+          <!-- Front Face -->
+          <div class="flashcard-front">
+            <div class="card-top-meta">
+              <span id="card-cat-badge" class="card-category-badge">อาหาร & เครื่องดื่ม</span>
+              <span id="card-lvl-badge" class="card-level-badge">A1</span>
+            </div>
+            <div class="card-main-word">
+              <h2 id="card-word" class="card-word-text">delicious</h2>
+              <span id="card-pos" class="card-pos-tag">adj.</span>
+            </div>
+            <div class="card-bottom-hint">
+              <button type="button" id="btn-audio-front" class="btn-tts" title="ฟังเสียงอ่าน">
+                🔊 ฟังเสียงอ่าน
+              </button>
+              <span>• แตะที่การ์ดเพื่อดูคำแปล 🔄</span>
+            </div>
+          </div>
+
+          <!-- Back Face -->
+          <div class="flashcard-back">
+            <div class="card-top-meta">
+              <span id="card-cat-badge-back" class="card-category-badge">อาหาร & เครื่องดื่ม</span>
+              <span class="card-level-badge" style="background: #e2e8f0; color: #475569;">ความหมาย</span>
+            </div>
+            <div>
+              <p id="card-thai" class="card-thai-meaning">อร่อย</p>
+              <div class="card-example-box">
+                <p id="card-example-en" class="card-example-en">This homemade soup is very delicious.</p>
+                <p id="card-example-th" class="card-example-th">ซุปทำเองถ้วยนี้อร่อยมาก</p>
+              </div>
+            </div>
+            <div class="card-bottom-hint">
+              <span>แตะอีกครั้งเพื่อพลิกกลับ 🔄</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deck Controls -->
+      <div class="deck-controls">
+        <button type="button" id="btn-prev-card" class="deck-nav-btn" title="คำก่อนหน้า">◀</button>
+        <span id="card-counter">1 / 45 คำ</span>
+        <button type="button" id="btn-next-card" class="deck-nav-btn" title="คำถัดไป">▶</button>
+        <button type="button" id="btn-shuffle-deck" class="chip-btn" style="margin-left: 8px;">
+          🔀 สุ่มทั้งหมด
+        </button>
+      </div>
+    </section>
+
+    <!-- Grid View Section -->
+    <section class="vocab-grid-section">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
+        <h2 style="font-size: 1.125rem; font-weight: 600; margin: 0; color: #1e293b;">
+          📋 คำศัพท์ในหมวดนี้ (<span id="total-words-count">0</span> คำ)
+        </h2>
+      </div>
+      <div id="vocab-grid" class="vocab-grid">
+        <!-- Dynamically rendered word cards -->
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./hub.js"></script>
+</body>
+</html>

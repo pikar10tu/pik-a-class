@@ -63,6 +63,8 @@ export default defineConfig({
         adminExercise: resolve(__dirname, 'src/admin/exercise.html'),
         adminStage: resolve(__dirname, 'src/admin/stage.html'),
         adminStudentReport: resolve(__dirname, 'src/admin/student-report.html'),
+        vocabHub: resolve(__dirname, 'src/vocab/index.html'),
+        vocabCafe: resolve(__dirname, 'src/vocab/cafe.html'),
       },
     },
   },
