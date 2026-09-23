@@ -88,5 +88,38 @@ describe('getGrammarNote', () => {
     expect(note).toBeDefined();
     expect(note.title).toContain('มหาศึกผู้เชี่ยวชาญไวยากรณ์ B1');
   });
+
+  it('returns B2 notes for individual B2 tags', () => {
+    const note = getGrammarNote(['grammar:participle-clauses']);
+    expect(note).toBeDefined();
+    expect(note.title).toContain('Participle Clauses');
+    expect(note.formula).toContain('V.ing');
+
+    const cond3 = getGrammarNote(['grammar:conditional-3-mixed']);
+    expect(cond3).toBeDefined();
+    expect(cond3.title).toContain('Third & Mixed Conditionals');
+
+    const inv = getGrammarNote(['grammar:inversion-negative']);
+    expect(inv).toBeDefined();
+    expect(inv.title).toContain('Inversion for Emphasis');
+  });
+
+  it('returns B2 midboss note when 4 B2 tags are passed', () => {
+    const note = getGrammarNote([
+      'grammar:participle-clauses',
+      'grammar:conditional-3-mixed',
+      'grammar:unreal-past-subjunctive',
+      'grammar:modals-deduction-past'
+    ]);
+    expect(note).toBeDefined();
+    expect(note.title).toContain('มินิบอสประลอง 4 โครงสร้างขั้นสูง B2');
+  });
+
+  it('returns B2 final boss note when B2 tags are combined', () => {
+    const note = getGrammarNote(['review:b2-finalboss']);
+    expect(note).toBeDefined();
+    expect(note.title).toContain('มหาศึกผู้เชี่ยวชาญไวยากรณ์ขั้นสูง B2');
+  });
 });
+
 

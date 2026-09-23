@@ -1,15 +1,18 @@
 import { GRAMMAR_NOTES_A1 } from './notes-a1.js';
 import { GRAMMAR_NOTES_A2 } from './notes-a2.js';
 import { GRAMMAR_NOTES_B1 } from './notes-b1.js';
+import { GRAMMAR_NOTES_B2 } from './notes-b2.js';
 
 export { GRAMMAR_NOTES_A1 } from './notes-a1.js';
 export { GRAMMAR_NOTES_A2 } from './notes-a2.js';
 export { GRAMMAR_NOTES_B1 } from './notes-b1.js';
+export { GRAMMAR_NOTES_B2 } from './notes-b2.js';
 
 export const GRAMMAR_NOTES = {
   ...GRAMMAR_NOTES_A1,
   ...GRAMMAR_NOTES_A2,
   ...GRAMMAR_NOTES_B1,
+  ...GRAMMAR_NOTES_B2,
 };
 
 export function getGrammarNote(tags = []) {
@@ -17,6 +20,10 @@ export function getGrammarNote(tags = []) {
 
   const grammarTags = tags.filter(t => t.startsWith('grammar:'));
 
+  // B2 Final Boss: เมื่อมีแท็ก review หรือมีแท็ก B2 ครบ (รวม academic-hedging)
+  if (tags.includes('review:b2-finalboss') || (grammarTags.length >= 8 && tags.includes('grammar:academic-hedging'))) {
+    return GRAMMAR_NOTES['review:b2-finalboss'];
+  }
   // B1 Final Boss: เมื่อมีแท็ก review หรือมีแท็ก B1 ครบ (รวม discourse-connectors)
   if (tags.includes('review:b1-finalboss') || (grammarTags.length >= 8 && tags.includes('grammar:discourse-connectors'))) {
     return GRAMMAR_NOTES['review:b1-finalboss'];
@@ -28,6 +35,10 @@ export function getGrammarNote(tags = []) {
   // A1 Final Boss: เมื่อมีแท็กของ A1 (present-simple & past-simple-be)
   if (tags.includes('review:a1-finalboss') || (grammarTags.length >= 8 && tags.includes('grammar:present-simple'))) {
     return GRAMMAR_NOTES['review:a1-finalboss'];
+  }
+  // B2 Mid-Boss (4 โมดูลแรกของ B2: participle, cond-3-mixed, unreal-past, modals-past)
+  if (tags.includes('review:b2-midboss') || (grammarTags.length >= 4 && tags.includes('grammar:participle-clauses'))) {
+    return GRAMMAR_NOTES['review:b2-midboss'];
   }
   // B1 Mid-Boss (4 โมดูลแรกของ B1: pres-perf-con, past-perf, used-to, passive)
   if (tags.includes('review:b1-midboss') || (grammarTags.length >= 4 && tags.includes('grammar:present-perfect-continuous'))) {
@@ -41,6 +52,7 @@ export function getGrammarNote(tags = []) {
   if (tags.includes('review:tenses-miniboss') || (grammarTags.length >= 4 && tags.includes('grammar:past-simple'))) {
     return GRAMMAR_NOTES['review:tenses-miniboss'];
   }
+
 
   if (grammarTags.length > 1 && GRAMMAR_NOTES['review:past-tenses']) {
     return GRAMMAR_NOTES['review:past-tenses'];

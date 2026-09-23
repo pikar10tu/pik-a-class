@@ -1,0 +1,3922 @@
+[
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เมื่อรู้สึกเหนื่อยล้า ซาร่าห์จึงเข้านอนทันที",
+    "choices": [
+      "Feeling",
+      "exhausted",
+      "Sarah",
+      "went",
+      "straight",
+      "to",
+      "bed",
+      "Felt",
+      "was",
+      "feel"
+    ],
+    "answerKey": [
+      "Feeling exhausted Sarah went straight to bed"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": true,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เมื่อสร้างเสร็จในปี 1889 หอไอเฟลก็ดึงดูดนักท่องเที่ยวนับล้าน",
+    "choices": [
+      "Built",
+      "in",
+      "1889",
+      "the",
+      "Eiffel",
+      "Tower",
+      "attracts",
+      "millions",
+      "of",
+      "tourists",
+      "Building",
+      "was"
+    ],
+    "answerKey": [
+      "Built in 1889 the Eiffel Tower attracts millions of tourists"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เมื่อทำการบ้านเสร็จแล้ว เขาก็ออกไปเล่นกับเพื่อนๆ",
+    "choices": [
+      "Having",
+      "finished",
+      "his",
+      "homework",
+      "he",
+      "went",
+      "out",
+      "to",
+      "play",
+      "with",
+      "friends",
+      "Have",
+      "finish"
+    ],
+    "answerKey": [
+      "Having finished his homework he went out to play with his friends"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เมื่อไม่รู้ว่าจะทำอะไรต่อไป เขาจึงโทรหาผู้จัดการของเขา",
+    "choices": [
+      "Not",
+      "knowing",
+      "what",
+      "to",
+      "do",
+      "next",
+      "he",
+      "called",
+      "his",
+      "manager",
+      "Knowing",
+      "didn't"
+    ],
+    "answerKey": [
+      "Not knowing what to do next he called his manager"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "___ (hear) the loud explosion, everyone ran out of the building into the street.",
+    "answerKey": [
+      "Hearing",
+      "On hearing"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": true,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The laptop ___ (damage) during the storm has now been completely repaired.",
+    "answerKey": [
+      "damaged"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "___ (live) in Rome for ten years, Marco speaks Italian fluently.",
+    "answerKey": [
+      "Having lived",
+      "Living"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The passengers ___ (wait) in the departure lounge were growing impatient.",
+    "answerKey": [
+      "waiting"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "___ (see) from the sky, the coral reef looks like a glittering jewel.",
+    "answerKey": [
+      "Seen"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Not ___ (want) to wake up his sick daughter, David walked on tiptoe.",
+    "answerKey": [
+      "wanting"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "___ from recycled ocean plastics, these modern sneakers are eco-friendly.",
+    "choices": [
+      "Made",
+      "Making",
+      "Having made",
+      "To make"
+    ],
+    "answerKey": [
+      "Made"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": true,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "___ all her savings on traveling across Asia, Emma had to borrow money from her family.",
+    "choices": [
+      "Having spent",
+      "Spent",
+      "Spending have",
+      "To spend"
+    ],
+    "answerKey": [
+      "Having spent"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ย่อประโยค Relative Clause: \"The woman who is sitting in the corner is an author.\"",
+    "choices": [
+      "The woman sitting in the corner is an author.",
+      "The woman sat in the corner is an author.",
+      "The woman to sit in the corner is an author.",
+      "The woman having sat in the corner is an author."
+    ],
+    "answerKey": [
+      "The woman sitting in the corner is an author."
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ข้อใดใช้ Participle Clause ได้ถูกต้องโดยไม่มีปัญหา Dangling Participle?",
+    "choices": [
+      "Walking down the street, I noticed a tiny stray kitten.",
+      "Walking down the street, a tiny stray kitten was noticed by me.",
+      "Walking down the street, the trees looked majestic.",
+      "Walking down the street, my hat blew away."
+    ],
+    "answerKey": [
+      "Walking down the street, I noticed a tiny stray kitten."
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "___ by the ferocious storm, the tourists sought immediate refuge inside the cave.",
+    "choices": [
+      "Terrified",
+      "Terrifying",
+      "Having terrified",
+      "Terrify"
+    ],
+    "answerKey": [
+      "Terrified"
+    ],
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ถ้าฉันอ่านหนังสือหนักกว่านี้ ฉันคงสอบผ่านไปแล้ว",
+    "choices": [
+      "If",
+      "I",
+      "had",
+      "studied",
+      "harder",
+      "would",
+      "have",
+      "passed",
+      "the",
+      "exam",
+      "will",
+      "have"
+    ],
+    "answerKey": [
+      "If I had studied harder I would have passed the exam",
+      "I would have passed the exam if I had studied harder"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ถ้าเธอไม่ตกรถไฟ เธอคงมาถึงตรงเวลาแล้ว",
+    "choices": [
+      "If",
+      "she",
+      "had",
+      "not",
+      "hadn't",
+      "missed",
+      "the",
+      "train",
+      "would",
+      "have",
+      "arrived",
+      "on",
+      "time",
+      "will"
+    ],
+    "answerKey": [
+      "If she had not missed the train she would have arrived on time",
+      "If she hadn't missed the train she would have arrived on time"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ถ้าฉันได้ทุนนั้น ตอนนี้ฉันคงกำลังอาศัยอยู่ในลอนดอน",
+    "choices": [
+      "If",
+      "I",
+      "had",
+      "won",
+      "that",
+      "scholarship",
+      "would",
+      "be",
+      "living",
+      "in",
+      "London",
+      "now",
+      "have",
+      "lived"
+    ],
+    "answerKey": [
+      "If I had won that scholarship I would be living in London now",
+      "I would be living in London now if I had won that scholarship"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: พวกเราคงหลงทางไปแล้วถ้าเราไม่ได้พกแผนที่มาด้วย",
+    "choices": [
+      "We",
+      "would",
+      "have",
+      "been",
+      "lost",
+      "if",
+      "had",
+      "not",
+      "hadn't",
+      "brought",
+      "a",
+      "map",
+      "will",
+      "are"
+    ],
+    "answerKey": [
+      "We would have been lost if we had not brought a map",
+      "We would have been lost if we hadn't brought a map"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "If you had told me about the meeting, I ___ (attend) it without hesitation.",
+    "answerKey": [
+      "would have attended",
+      "could have attended"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "If she ___ (not forget) her passport, she wouldn't have missed her international flight.",
+    "answerKey": [
+      "hadn't forgotten",
+      "had not forgotten"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "If he had taken his medicine yesterday, he ___ feel much healthier today.",
+    "answerKey": [
+      "would",
+      "might",
+      "could"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "What would you have ___ (do) if you had been in my position?",
+    "answerKey": [
+      "done"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "If we ___ (book) the flight tickets earlier, we could have saved a lot of money.",
+    "answerKey": [
+      "had booked"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "If I were fluent in German, I ___ have accepted the job in Berlin last year.",
+    "answerKey": [
+      "would",
+      "might",
+      "could"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "If the weather had been sunny yesterday, we ___ to the beach.",
+    "choices": [
+      "would have gone",
+      "would go",
+      "will go",
+      "had gone"
+    ],
+    "answerKey": [
+      "would have gone"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Mixed Conditional: \"If I hadn't spent all my salary last week, I ___ enough money now.\"",
+    "choices": [
+      "would have",
+      "would have had",
+      "will have",
+      "had had"
+    ],
+    "answerKey": [
+      "would have"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "She wouldn't be in hospital right now if she ___ her seatbelt during the crash.",
+    "choices": [
+      "had worn",
+      "wore",
+      "would wear",
+      "has worn"
+    ],
+    "answerKey": [
+      "had worn"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ประโยคใดแสดงความเสียดายเกี่ยวกับสิ่งที่ไม่ได้ทำในอดีต (Third Conditional)?",
+    "choices": [
+      "If I had listened to your advice, I would have avoided this error.",
+      "If I listen to your advice, I will avoid this error.",
+      "If I listened to your advice, I would avoid this error.",
+      "When I listen to your advice, I avoid errors."
+    ],
+    "answerKey": [
+      "If I had listened to your advice, I would have avoided this error."
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "If you ___ that red lever, the emergency alarms wouldn't have sounded!",
+    "choices": [
+      "hadn't pulled",
+      "didn't pull",
+      "wouldn't pull",
+      "haven't pulled"
+    ],
+    "answerKey": [
+      "hadn't pulled"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ถึงเวลาอันสมควรแล้วที่คุณควรเริ่มอ่านหนังสือ",
+    "choices": [
+      "It's",
+      "It",
+      "is",
+      "high",
+      "time",
+      "you",
+      "started",
+      "studying",
+      "for",
+      "finals",
+      "start",
+      "will"
+    ],
+    "answerKey": [
+      "It's high time you started studying for finals",
+      "It is high time you started studying for finals"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันอยากให้คุณไม่บอกความลับนี้กับใคร",
+    "choices": [
+      "I'd",
+      "rather",
+      "you",
+      "did",
+      "not",
+      "didn't",
+      "tell",
+      "anyone",
+      "about",
+      "this",
+      "secret",
+      "don't",
+      "told"
+    ],
+    "answerKey": [
+      "I'd rather you did not tell anyone about this secret",
+      "I'd rather you didn't tell anyone about this secret"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: คุณหมอแนะนำให้เขาหยุดพักงานสองสามวัน",
+    "choices": [
+      "The",
+      "doctor",
+      "recommended",
+      "that",
+      "he",
+      "take",
+      "a",
+      "few",
+      "days",
+      "off",
+      "work",
+      "takes",
+      "took"
+    ],
+    "answerKey": [
+      "The doctor recommended that he take a few days off work"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันหวังว่าฉันจะไม่ได้พูดเรื่องแย่ๆ แบบนั้นออกไปเมื่อวานนี้",
+    "choices": [
+      "I",
+      "wish",
+      "had",
+      "not",
+      "hadn't",
+      "said",
+      "those",
+      "terrible",
+      "things",
+      "yesterday",
+      "didn't",
+      "say"
+    ],
+    "answerKey": [
+      "I wish I had not said those terrible things yesterday",
+      "I wish I hadn't said those terrible things yesterday"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It's about time we ___ (go) home; it is well past midnight.",
+    "answerKey": [
+      "went"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The director insists that every employee ___ (be) punctual for the briefing.",
+    "answerKey": [
+      "be",
+      "should be"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "I'd rather you ___ (not smoke) inside the conference room.",
+    "answerKey": [
+      "didn't smoke",
+      "did not smoke"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It is essential that he ___ (submit) the scholarship application before Friday.",
+    "answerKey": [
+      "submit",
+      "should submit"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "I wish I ___ (know) the truth before I signed that risky contract.",
+    "answerKey": [
+      "had known"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The court ordered that the prisoner ___ (release) immediately due to lack of evidence.",
+    "answerKey": [
+      "be released"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The professor suggested that each candidate ___ a distinct research proposal.",
+    "choices": [
+      "choose",
+      "chooses",
+      "chose",
+      "has chosen"
+    ],
+    "answerKey": [
+      "choose"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "It's high time she ___ looking for a career opportunity.",
+    "choices": [
+      "started",
+      "starts",
+      "start",
+      "will start"
+    ],
+    "answerKey": [
+      "started"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "I'd rather ___ at home tonight than dine out in this freezing blizzard.",
+    "choices": [
+      "stay",
+      "stayed",
+      "to stay",
+      "staying"
+    ],
+    "answerKey": [
+      "stay"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ใน Mandative Subjunctive ข้อใดถูกต้อง: \"It is crucial that she ___ present at the ceremony.\"",
+    "choices": [
+      "be",
+      "is",
+      "was",
+      "been"
+    ],
+    "answerKey": [
+      "be"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "I wish you ___ stop interrupting me while I am presenting my slides!",
+    "choices": [
+      "would",
+      "will",
+      "did",
+      "had"
+    ],
+    "answerKey": [
+      "would"
+    ],
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ถนนเปียกโชก เมื่อคืนฝนต้องตกหนักแน่ๆ",
+    "choices": [
+      "The",
+      "streets",
+      "are",
+      "wet",
+      "it",
+      "must",
+      "have",
+      "rained",
+      "heavily",
+      "last",
+      "night",
+      "can't",
+      "has"
+    ],
+    "answerKey": [
+      "The streets are wet it must have rained heavily last night"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เขาไม่มีทางขโมยเงินนั้นไปแน่ๆ เพราะเขาอยู่กับฉันตลอดเวลา",
+    "choices": [
+      "He",
+      "can't",
+      "couldn't",
+      "have",
+      "stolen",
+      "the",
+      "money",
+      "because",
+      "was",
+      "with",
+      "me",
+      "must",
+      "steals"
+    ],
+    "answerKey": [
+      "He can't have stolen the money because he was with me",
+      "He couldn't have stolen the money because he was with me"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันควรจะตั้งนาฬิกาปลุกไว้ เมื่อเช้านี้ฉันเลยตื่นสาย",
+    "choices": [
+      "I",
+      "should",
+      "have",
+      "set",
+      "an",
+      "alarm",
+      "so",
+      "woke",
+      "up",
+      "late",
+      "this",
+      "morning",
+      "must",
+      "setting"
+    ],
+    "answerKey": [
+      "I should have set an alarm so I woke up late this morning"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เธออาจจะลืมกุญแจไว้ที่ออฟฟิศก็เป็นได้",
+    "choices": [
+      "She",
+      "might",
+      "could",
+      "have",
+      "left",
+      "her",
+      "keys",
+      "at",
+      "the",
+      "office",
+      "must",
+      "leave"
+    ],
+    "answerKey": [
+      "She might have left her keys at the office",
+      "She could have left her keys at the office"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The window was smashed. The mischievous boys must ___ (kick) the football through it.",
+    "answerKey": [
+      "have kicked"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "You ___ have informed me you were coming; I would have prepared lunch!",
+    "answerKey": [
+      "should",
+      "could"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "He ___ have passed that difficult medical board exam; he didn't revise at all!",
+    "answerKey": [
+      "can't",
+      "couldn't"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "I am not positive where Diana went. She ___ have caught the express train.",
+    "answerKey": [
+      "might",
+      "could",
+      "may"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "We ___ (not / buy) so many fresh groceries; more than half spoiled.",
+    "answerKey": [
+      "shouldn't have bought",
+      "should not have bought"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Arthur looks overjoyed today. He must have ___ (receive) his dream job offer.",
+    "answerKey": [
+      "received"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Mark scored zero on the calculus quiz. He ___ studied very conscientiously.",
+    "choices": [
+      "can't have",
+      "must have",
+      "should have",
+      "might have"
+    ],
+    "answerKey": [
+      "can't have"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "I feel awful with food poisoning. I ___ eaten that unrefrigerated sushi!",
+    "choices": [
+      "shouldn't have",
+      "must have",
+      "couldn't have",
+      "might have"
+    ],
+    "answerKey": [
+      "shouldn't have"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The office lights were completely turned off and nobody answered. Everyone ___ home.",
+    "choices": [
+      "must have gone",
+      "can't have gone",
+      "should have gone",
+      "might go"
+    ],
+    "answerKey": [
+      "must have gone"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Modal ในอดีตโครงสร้างใดใช้แสดงความเสียดาย (Regret) ต่อการกระทำที่ผิดพลาด?",
+    "choices": [
+      "should have + V.3",
+      "must have + V.3",
+      "can't have + V.3",
+      "will have + V.3"
+    ],
+    "answerKey": [
+      "should have + V.3"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Sarah never showed up at the party. Her smartphone ___ run out of battery power.",
+    "choices": [
+      "might have",
+      "mustn't have",
+      "should have to",
+      "can have"
+    ],
+    "answerKey": [
+      "might have"
+    ],
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันไปให้ช่างตัดผมให้เมื่อวานนี้",
+    "choices": [
+      "I",
+      "had",
+      "my",
+      "hair",
+      "cut",
+      "yesterday",
+      "got",
+      "was",
+      "cutting"
+    ],
+    "answerKey": [
+      "I had my hair cut yesterday"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เธอให้ช่างผู้เชี่ยวชาญซ่อมรถของเธอ",
+    "choices": [
+      "She",
+      "got",
+      "her",
+      "car",
+      "repaired",
+      "by",
+      "an",
+      "expert",
+      "mechanic",
+      "had",
+      "repair"
+    ],
+    "answerKey": [
+      "She got her car repaired by an expert mechanic"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เชื่อกันว่าวัดโบราณนี้ถูกสร้างขึ้นเมื่อกว่าพันปีที่แล้ว",
+    "choices": [
+      "It",
+      "is",
+      "believed",
+      "that",
+      "this",
+      "ancient",
+      "temple",
+      "was",
+      "built",
+      "over",
+      "a",
+      "thousand",
+      "years",
+      "ago",
+      "has"
+    ],
+    "answerKey": [
+      "It is believed that this ancient temple was built over a thousand years ago"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เขาได้รับรายงานว่ากำลังซ่อนตัวอยู่ในป่า",
+    "choices": [
+      "He",
+      "is",
+      "reported",
+      "to",
+      "be",
+      "hiding",
+      "in",
+      "the",
+      "forest",
+      "that",
+      "hides"
+    ],
+    "answerKey": [
+      "He is reported to be hiding in the forest"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "We need to ___ (have / get) our damaged roof repaired before the torrential monsoon starts.",
+    "answerKey": [
+      "have",
+      "get"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The instructor had the students ___ (write) a 500-word essay in silence.",
+    "answerKey": [
+      "write"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "I managed to get the technician ___ (install) the security patch on my device.",
+    "answerKey": [
+      "to install"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It is commonly ___ (say) that daily meditation enhances cognitive clarity.",
+    "answerKey": [
+      "said"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The billionaire is rumored to ___ (own) multiple private islands in the Caribbean.",
+    "answerKey": [
+      "own",
+      "have owned"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "I must have my passport ___ (renew) before traveling abroad next autumn.",
+    "answerKey": [
+      "renewed"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Causative structure: \"have someone ___ (do something)\" vs \"get someone ___ (do something)\"",
+    "choices": [
+      "do / to do",
+      "to do / do",
+      "doing / done",
+      "done / to do"
+    ],
+    "answerKey": [
+      "do / to do"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "I don't know how to paint interiors, so I am going to have my apartment ___.",
+    "choices": [
+      "painted",
+      "paint",
+      "to paint",
+      "painting"
+    ],
+    "answerKey": [
+      "painted"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Impersonal Passive: \"People say that she speaks six languages.\" -> \"She is said ___ six languages.\"",
+    "choices": [
+      "to speak",
+      "speaking",
+      "speak",
+      "that speaks"
+    ],
+    "answerKey": [
+      "to speak"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The suspect was observed ___ the crime scene immediately before the explosion.",
+    "choices": [
+      "leaving",
+      "leave",
+      "left",
+      "to leaving"
+    ],
+    "answerKey": [
+      "leaving"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Where can I get my leather boots professionally ___?",
+    "choices": [
+      "repaired",
+      "repair",
+      "to repair",
+      "repairing"
+    ],
+    "answerKey": [
+      "repaired"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: พี่ชายของฉันซึ่งอาศัยอยู่ในนิวยอร์กเป็นวิศวกร",
+    "choices": [
+      "My",
+      "brother",
+      "who",
+      "lives",
+      "in",
+      "New",
+      "York",
+      "is",
+      "an",
+      "engineer",
+      "which",
+      "that"
+    ],
+    "answerKey": [
+      "My brother who lives in New York is an engineer"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ห้องประชุมซึ่งการสัมมนาถูกจัดขึ้นมีขนาดใหญ่มาก",
+    "choices": [
+      "The",
+      "meeting",
+      "room",
+      "in",
+      "which",
+      "the",
+      "conference",
+      "was",
+      "held",
+      "was",
+      "huge",
+      "where",
+      "that"
+    ],
+    "answerKey": [
+      "The meeting room in which the conference was held was huge"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เขาเสนอที่จะช่วยเหลือฉันซึ่งเป็นความใจดีมากของเขา",
+    "choices": [
+      "He",
+      "offered",
+      "to",
+      "help",
+      "me",
+      "which",
+      "was",
+      "very",
+      "kind",
+      "of",
+      "him",
+      "that",
+      "who"
+    ],
+    "answerKey": [
+      "He offered to help me which was very kind of him"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ศาสตราจารย์ซึ่งฉันได้คุยด้วยเมื่อวานนี้เป็นผู้เชี่ยวชาญ",
+    "choices": [
+      "The",
+      "professor",
+      "with",
+      "whom",
+      "I",
+      "spoke",
+      "yesterday",
+      "is",
+      "an",
+      "expert",
+      "who",
+      "which"
+    ],
+    "answerKey": [
+      "The professor with whom I spoke yesterday is an expert"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Mount Everest, ___ is the highest peak above sea level, attracts veteran mountaineers.",
+    "answerKey": [
+      "which"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "My mentor, ___ daughter is a renowned concert violinist, invited us to the recital.",
+    "answerKey": [
+      "whose"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The research project ___ which we dedicated two years has finally yielded breakthroughs.",
+    "answerKey": [
+      "on",
+      "to",
+      "upon"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "He arrived late and unprepared for the interview, ___ irritated the hiring manager.",
+    "answerKey": [
+      "which"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The scientist, ___ groundbreaking discovery won the Nobel Prize, presented a keynote.",
+    "answerKey": [
+      "whose"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The scholar to ___ the honor was presented expressed heartfelt gratitude.",
+    "answerKey": [
+      "whom"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ใน Non-defining Relative Clauses (ประโยคขยายที่มี comma คั่น) คำสรรพนามใด \"ห้ามใช้เด็ดขาด\"?",
+    "choices": [
+      "that",
+      "which",
+      "who",
+      "whose"
+    ],
+    "answerKey": [
+      "that"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "London, ___ is situated on the River Thames, is renowned for its cultural heritage.",
+    "choices": [
+      "which",
+      "that",
+      "where",
+      "what"
+    ],
+    "answerKey": [
+      "which"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "He failed his driving examination for the third time, ___ astounded everyone.",
+    "choices": [
+      "which",
+      "that",
+      "what",
+      "who"
+    ],
+    "answerKey": [
+      "which"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Formal English: \"The multinational enterprise for ___ she consults is expanding rapidly.\"",
+    "choices": [
+      "which",
+      "whom",
+      "that",
+      "whose"
+    ],
+    "answerKey": [
+      "which"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "My grandmother, ___ was born in 1942, remains an energetic yoga instructor.",
+    "choices": [
+      "who",
+      "which",
+      "that",
+      "whom"
+    ],
+    "answerKey": [
+      "who"
+    ],
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เวลานี้พรุ่งนี้ฉันจะกำลังบินไปโตเกียว",
+    "choices": [
+      "This",
+      "time",
+      "tomorrow",
+      "I",
+      "will",
+      "be",
+      "flying",
+      "to",
+      "Tokyo",
+      "am",
+      "fly",
+      "flown"
+    ],
+    "answerKey": [
+      "This time tomorrow I will be flying to Tokyo"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ภายในสิ้นปีนี้พวกเขาจะสร้างบ้านเสร็จเรียบร้อยแล้ว",
+    "choices": [
+      "By",
+      "the",
+      "end",
+      "of",
+      "this",
+      "year",
+      "they",
+      "will",
+      "have",
+      "built",
+      "the",
+      "house",
+      "are",
+      "building"
+    ],
+    "answerKey": [
+      "By the end of this year they will have built the house"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: อย่าโทรหาฉันตอนสองทุ่มเพราะฉันจะกำลังทานอาหารเย็นอยู่",
+    "choices": [
+      "Don't",
+      "call",
+      "me",
+      "at",
+      "eight",
+      "because",
+      "I",
+      "will",
+      "be",
+      "having",
+      "dinner",
+      "have",
+      "am"
+    ],
+    "answerKey": [
+      "Don't call me at eight because I will be having dinner"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: คุณจะเขียนรายงานเสร็จก่อนเวลาห้าโมงเย็นไหม",
+    "choices": [
+      "Will",
+      "you",
+      "have",
+      "finished",
+      "the",
+      "report",
+      "by",
+      "five",
+      "PM",
+      "be",
+      "finishing",
+      "are"
+    ],
+    "answerKey": [
+      "Will you have finished the report by five PM"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "By 2030, engineers will ___ (develop) commercial electric aircraft.",
+    "answerKey": [
+      "have developed"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "This time next month, we will be ___ (relax) on the sunlit beaches of Bali.",
+    "answerKey": [
+      "relaxing"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "By the time you wake up tomorrow, the courier will ___ (deliver) the package.",
+    "answerKey": [
+      "have delivered"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Will you be ___ (use) the projector this afternoon, or may I reserve it?",
+    "answerKey": [
+      "using"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "By next spring, Arthur will have ___ (work) at this institute for twenty years.",
+    "answerKey": [
+      "worked",
+      "been working"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Don't visit their headquarters at 3 PM; the committee will be ___ (conduct) an audit.",
+    "answerKey": [
+      "conducting"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "By the time the guests arrive, Mom ___ preparing the feast.",
+    "choices": [
+      "will have finished",
+      "will finish",
+      "is finishing",
+      "finishes"
+    ],
+    "answerKey": [
+      "will have finished"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "At 10 o'clock tomorrow morning, the students ___ their final examination.",
+    "choices": [
+      "will be taking",
+      "will take have",
+      "take will",
+      "have been taken"
+    ],
+    "answerKey": [
+      "will be taking"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "By next year, Dr. Anderson ___ from university with honors.",
+    "choices": [
+      "will have graduated",
+      "will be graduate",
+      "graduates",
+      "has graduated"
+    ],
+    "answerKey": [
+      "will have graduated"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Future Continuous นิยมใช้ถามแผนการของผู้อื่นอย่างสุภาพ ข้อใดเป็นตัวอย่างดังกล่าว?",
+    "choices": [
+      "Will you be passing by the post office today?",
+      "Did you go to the post office?",
+      "You must go to the post office.",
+      "Are you go to the post office?"
+    ],
+    "answerKey": [
+      "Will you be passing by the post office today?"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "By this time next Friday, I ___ my comprehensive driver's test.",
+    "choices": [
+      "will have passed",
+      "will be pass",
+      "passed",
+      "am passing"
+    ],
+    "answerKey": [
+      "will have passed"
+    ],
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันไม่เคยเห็นพระอาทิตย์ตกดินที่งดงามขนาดนี้มาก่อนเลย",
+    "choices": [
+      "Never",
+      "have",
+      "I",
+      "seen",
+      "such",
+      "a",
+      "beautiful",
+      "sunset",
+      "did",
+      "saw",
+      "am"
+    ],
+    "answerKey": [
+      "Never have I seen such a beautiful sunset"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: เขาไม่เพียงแต่ชนะการแข่งขันเท่านั้น แต่เขายังทำลายสถิติอีกด้วย",
+    "choices": [
+      "Not",
+      "only",
+      "did",
+      "he",
+      "win",
+      "the",
+      "race",
+      "but",
+      "he",
+      "also",
+      "broke",
+      "the",
+      "record",
+      "does",
+      "wins"
+    ],
+    "answerKey": [
+      "Not only did he win the race but he also broke the record"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ฉันแทบจะยังไม่ทันได้หลับตาเลย เสียงนาฬิกาปลุกก็ดังขึ้น",
+    "choices": [
+      "Hardly",
+      "had",
+      "I",
+      "closed",
+      "my",
+      "eyes",
+      "when",
+      "the",
+      "alarm",
+      "rang",
+      "than",
+      "did"
+    ],
+    "answerKey": [
+      "Hardly had I closed my eyes when the alarm rang"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: นานๆ ทีเราถึงจะได้พบกับปรากฏการณ์ทางธรรมชาติเช่นนี้",
+    "choices": [
+      "Rarely",
+      "do",
+      "we",
+      "witness",
+      "such",
+      "a",
+      "rare",
+      "natural",
+      "phenomenon",
+      "are",
+      "witnessed"
+    ],
+    "answerKey": [
+      "Rarely do we witness such a rare natural phenomenon"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Seldom ___ (have / do) they seen such astonishing bravery under pressure.",
+    "answerKey": [
+      "have",
+      "had"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "No sooner had she entered the cabin ___ the blizzard broke out.",
+    "answerKey": [
+      "than"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Hardly had the keynote begun ___ the auditorium lights went out.",
+    "answerKey": [
+      "when"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Under no circumstances ___ you share this confidential key with unauthorized personnel.",
+    "answerKey": [
+      "should",
+      "must",
+      "can"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Little ___ he know about the surprise celebration his peers had orchestrated.",
+    "answerKey": [
+      "did"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Not until yesterday ___ she realize that her boarding pass had fallen.",
+    "answerKey": [
+      "did"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Negative Inversion: \"Never ___ such an astonishing symphonic performance!\"",
+    "choices": [
+      "have I witnessed",
+      "I have witnessed",
+      "did I witnessed",
+      "witnessed I"
+    ],
+    "answerKey": [
+      "have I witnessed"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "\"Hardly had the conductor raised his baton ___ the orchestra commenced playing.\"",
+    "choices": [
+      "when",
+      "than",
+      "then",
+      "as"
+    ],
+    "answerKey": [
+      "when"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "\"No sooner had the plane touched down ___ passengers unfastened their seatbelts.\"",
+    "choices": [
+      "than",
+      "when",
+      "then",
+      "before"
+    ],
+    "answerKey": [
+      "than"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Not only ___ fluent English, but she is also proficient in Mandarin.",
+    "choices": [
+      "does she speak",
+      "she speaks",
+      "speaks she",
+      "is she speak"
+    ],
+    "answerKey": [
+      "does she speak"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Only after the board meeting adjourned ___ the gravity of the merger.",
+    "choices": [
+      "did we understand",
+      "we understood",
+      "we had understood",
+      "had we understand"
+    ],
+    "answerKey": [
+      "did we understand"
+    ],
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ปีเตอร์ต่างหากที่เป็นคนทำแจกันโบราณแตก",
+    "choices": [
+      "It",
+      "was",
+      "Peter",
+      "who",
+      "that",
+      "broke",
+      "the",
+      "antique",
+      "vase",
+      "not",
+      "Tom",
+      "is",
+      "breaks"
+    ],
+    "answerKey": [
+      "It was Peter who broke the antique vase not Tom",
+      "It was Peter that broke the antique vase not Tom"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: สิ่งที่ฉันต้องการอย่างยิ่งในตอนนี้คือกาแฟร้อนสักแก้ว",
+    "choices": [
+      "What",
+      "I",
+      "really",
+      "need",
+      "right",
+      "now",
+      "is",
+      "a",
+      "hot",
+      "cup",
+      "of",
+      "coffee",
+      "that",
+      "are"
+    ],
+    "answerKey": [
+      "What I really need right now is a hot cup of coffee"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: สิ่งเดียวที่คุณต้องทำคือกดปุ่มสีเขียวนี้",
+    "choices": [
+      "All",
+      "you",
+      "have",
+      "to",
+      "do",
+      "is",
+      "press",
+      "this",
+      "green",
+      "button",
+      "are",
+      "that",
+      "pressed"
+    ],
+    "answerKey": [
+      "All you have to do is press this green button"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: ที่กรุงปารีสนี่เองที่พวกเขาได้พบกันเป็นครั้งแรก",
+    "choices": [
+      "It",
+      "was",
+      "in",
+      "Paris",
+      "that",
+      "they",
+      "first",
+      "met",
+      "each",
+      "other",
+      "where",
+      "are"
+    ],
+    "answerKey": [
+      "It was in Paris that they first met each other"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It was John ___ brought the mouthwatering homemade pastries.",
+    "answerKey": [
+      "who",
+      "that"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "What astonished everyone ___ her sudden resignation.",
+    "answerKey": [
+      "was",
+      "is"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "All I am asking ___ is an honest evaluation of my performance.",
+    "answerKey": [
+      "for"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It was not until yesterday evening ___ the committee disclosed the findings.",
+    "answerKey": [
+      "that"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "What you need most right now ___ forty-eight hours of genuine rest.",
+    "answerKey": [
+      "is"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The primary reason ___ he stepped down was health concerns.",
+    "answerKey": [
+      "why",
+      "that"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "เน้นย้ำชื่อ \"David\" โดยใช้ It-cleft: \"David organized the annual charity gala.\"",
+    "choices": [
+      "It was David who organized the annual charity gala.",
+      "What David organized was the annual charity gala.",
+      "All David organized was the charity gala.",
+      "David was it who organized the gala."
+    ],
+    "answerKey": [
+      "It was David who organized the annual charity gala."
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "___ I admire most about her leadership is her empathy.",
+    "choices": [
+      "What",
+      "That",
+      "Which",
+      "It"
+    ],
+    "answerKey": [
+      "What"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "It was because of a sudden signal failure ___ the express subway halted.",
+    "choices": [
+      "that",
+      "which",
+      "what",
+      "who"
+    ],
+    "answerKey": [
+      "that"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "All that matters in this situation ___ keeping the passengers safe.",
+    "choices": [
+      "is",
+      "are",
+      "were",
+      "being"
+    ],
+    "answerKey": [
+      "is"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "___ was in July 1969 that Neil Armstrong set foot on the lunar surface.",
+    "choices": [
+      "It",
+      "There",
+      "That",
+      "What"
+    ],
+    "answerKey": [
+      "It"
+    ],
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: งานวิจัยมีข้อจำกัดหลายอย่าง อย่างไรก็ตามผลลัพธ์ก็ยังมีคุณค่า",
+    "choices": [
+      "The",
+      "research",
+      "had",
+      "limitations",
+      "nevertheless",
+      "the",
+      "findings",
+      "are",
+      "valuable",
+      "whereas",
+      "despite"
+    ],
+    "answerKey": [
+      "The research had limitations nevertheless the findings are valuable"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: บางคนชอบเมืองที่พลุกพล่าน ในขณะที่คนอื่นๆ ชอบชนบท",
+    "choices": [
+      "Some",
+      "people",
+      "enjoy",
+      "busy",
+      "cities",
+      "whereas",
+      "others",
+      "prefer",
+      "the",
+      "countryside",
+      "however",
+      "despite"
+    ],
+    "answerKey": [
+      "Some people enjoy busy cities whereas others prefer the countryside"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: นักเรียนที่อ่านหนังสือสม่ำเสมอมีแนวโน้มที่จะได้คะแนนสูงกว่า",
+    "choices": [
+      "Students",
+      "who",
+      "read",
+      "regularly",
+      "tend",
+      "to",
+      "achieve",
+      "higher",
+      "test",
+      "scores",
+      "tends",
+      "achieved"
+    ],
+    "answerKey": [
+      "Students who read regularly tend to achieve higher test scores"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "sentence_builder",
+    "prompt": "จงเรียงคำให้เป็นประโยค: มีการสันนิษฐานกันอย่างกว้างขวางว่าสภาพอากาศกำลังเปลี่ยนแปลง",
+    "choices": [
+      "It",
+      "is",
+      "widely",
+      "assumed",
+      "that",
+      "global",
+      "climate",
+      "patterns",
+      "are",
+      "shifting",
+      "assumes",
+      "which"
+    ],
+    "answerKey": [
+      "It is widely assumed that global climate patterns are shifting"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The newly proposed model appears ___ (be) viable according to the pilot study.",
+    "answerKey": [
+      "to be"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "He is naturally reserved, ___ his twin brother is remarkably extroverted.",
+    "answerKey": [
+      "whereas",
+      "while"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "The clinical trial faced regulatory hurdles; ___, the researchers persevered.",
+    "answerKey": [
+      "nevertheless",
+      "nonetheless",
+      "however"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Experienced investors ___ to exercise prudence during volatile market cycles.",
+    "answerKey": [
+      "tend"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "It is commonly ___ (believe) that regular aerobic activity sharpens mental focus.",
+    "answerKey": [
+      "believed",
+      "thought"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "fill_blank",
+    "prompt": "Preliminary evidence seems to ___ (suggest) that the fiscal reform has succeeded.",
+    "answerKey": [
+      "suggest",
+      "indicate"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "เหตุใดนักเขียนเชิงวิชาการจึงนิยมใช้ \"Hedging\" (เช่น tend to, appear to, arguably)?",
+    "choices": [
+      "เพื่อหลีกเลี่ยงการด่วนสรุปเกินจริงและแสดงความรอบคอบอย่างเหมาะสม",
+      "เพื่อให้ประโยคยาวและซับซ้อนขึ้นโดยไม่จำเป็น",
+      "เพื่อแสดงว่าผู้เขียนไม่มั่นใจในหลักไวยากรณ์",
+      "เพื่อทำให้ผู้อ่านสับสน"
+    ],
+    "answerKey": [
+      "เพื่อหลีกเลี่ยงการด่วนสรุปเกินจริงและแสดงความรอบคอบอย่างเหมาะสม"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The institutional budget was severely curtailed; ___, the department exceeded targets.",
+    "choices": [
+      "nevertheless",
+      "whereas",
+      "on the contrary",
+      "as a consequence"
+    ],
+    "answerKey": [
+      "nevertheless"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "Private academies depend on student tuition, ___ state institutions receive public funds.",
+    "choices": [
+      "whereas",
+      "despite",
+      "in spite of",
+      "therefore"
+    ],
+    "answerKey": [
+      "whereas"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "ประโยคใดแสดงการใช้ Academic Hedging เพื่อลดความฟันธงได้อย่างเหมาะสม?",
+    "choices": [
+      "The empirical data seems to indicate a positive correlation.",
+      "The data completely and undeniably proves the theory without doubt.",
+      "Everyone knows this hypothesis is 100% correct.",
+      "No other conclusion is ever possible."
+    ],
+    "answerKey": [
+      "The empirical data seems to indicate a positive correlation."
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The market economy did not collapse during the recession; ___, it expanded moderately.",
+    "choices": [
+      "on the contrary",
+      "whereas",
+      "despite",
+      "although"
+    ],
+    "answerKey": [
+      "on the contrary"
+    ],
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Upper-Intermediate",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  }
+]

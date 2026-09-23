@@ -1,0 +1,337 @@
+[
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 1,
+    "title": "Participle Clauses (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 2,
+    "title": "Participle Clauses & Reduced Relatives (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:participle-clauses"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 3,
+    "title": "Third Conditional (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 4,
+    "title": "Third & Mixed Conditionals (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:conditional-3-mixed"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 5,
+    "title": "Unreal Past & Wishes (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 6,
+    "title": "Mandative Subjunctive (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:unreal-past-subjunctive"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 7,
+    "title": "Past Modals of Deduction (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 8,
+    "title": "Past Modals of Regret: should have + V.3 (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:modals-deduction-past"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 9,
+    "title": "⚔️ มินิบอสประลอง 4 โครงสร้างขั้นสูง B2 (Part 1: ด่านวัดความแม่นยำ)",
+    "tags": [
+      "grammar:participle-clauses",
+      "grammar:conditional-3-mixed",
+      "grammar:unreal-past-subjunctive",
+      "grammar:modals-deduction-past"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 10,
+    "title": "👑 มินิบอสประลอง 4 โครงสร้างขั้นสูง B2 (Part 2: ศึกชิงไหวพริบ)",
+    "tags": [
+      "grammar:participle-clauses",
+      "grammar:conditional-3-mixed",
+      "grammar:unreal-past-subjunctive",
+      "grammar:modals-deduction-past"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 11,
+    "title": "Causative Verbs: have / get something done (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 12,
+    "title": "Impersonal Passive: It is said that... (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:passive-advanced-causative"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 13,
+    "title": "Non-defining Relative Clauses & Prepositions (in which, to whom)",
+    "tags": [
+      "grammar:relative-clauses-non-defining"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 14,
+    "title": "Future Continuous (Part 1: กำลังกระทำในอนาคต)",
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 15,
+    "title": "Future Perfect (Part 2: เสร็จสิ้นภายในเวลาในอนาคต)",
+    "tags": [
+      "grammar:future-advanced"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 16,
+    "title": "Negative Inversion: Never, Rarely, Seldom (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 17,
+    "title": "Negative Inversion: Not only, Hardly... when (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:inversion-negative"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 18,
+    "title": "Cleft Sentences: It was X that... & What I need is...",
+    "tags": [
+      "grammar:cleft-sentences-focusing"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 19,
+    "title": "Academic Hedging: nevertheless, whereas, tend to, appear to",
+    "tags": [
+      "grammar:academic-hedging"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "order": 20,
+    "title": "👑 บอสใหญ่: มหาศึกผู้เชี่ยวชาญไวยากรณ์ขั้นสูง B2 (Master of B2 Grammar)",
+    "tags": [
+      "grammar:participle-clauses",
+      "grammar:conditional-3-mixed",
+      "grammar:unreal-past-subjunctive",
+      "grammar:modals-deduction-past",
+      "grammar:passive-advanced-causative",
+      "grammar:relative-clauses-non-defining",
+      "grammar:future-advanced",
+      "grammar:inversion-negative",
+      "grammar:cleft-sentences-focusing",
+      "grammar:academic-hedging"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  }
+]
