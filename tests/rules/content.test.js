@@ -39,6 +39,7 @@ const baseWorld = {
   'users/admin1': adminDoc(),
   'users/student1': studentDoc(),
   'users/paid1': studentDoc({ uid: 'paid1', tier: 'full' }),
+  'users/allowed1': studentDoc({ uid: 'allowed1', tier: 'free', allowedLevels: ['A2'] }),
   'exercises/preview1': exercise({ isPreview: true, contentHash: 'h-preview' }),
   'exercises/paid-only': exercise({ level: 'A2', contentHash: 'h-paid' }),
   'exercises/draft1': exercise({ reviewStatus: 'draft', contentHash: 'h-draft' }),
@@ -63,6 +64,13 @@ describe('exercises rules', () => {
     await withTestEnv(async (env) => {
       await seed(env, baseWorld);
       await assertSucceeds(authedDb(env, 'paid1').collection('exercises').doc('paid-only').get());
+    });
+  });
+
+  it('lets a free student with allowedLevels read content of that level', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, baseWorld);
+      await assertSucceeds(authedDb(env, 'allowed1').collection('exercises').doc('paid-only').get());
     });
   });
 
@@ -189,6 +197,7 @@ describe('stages and grammarNotes rules', () => {
 
       await assertFails(authedDb(env, 'student1').collection('stages').doc('st1').get());
       await assertSucceeds(authedDb(env, 'paid1').collection('stages').doc('st1').get());
+      await assertSucceeds(authedDb(env, 'allowed1').collection('stages').doc('st1').get());
       await assertFails(authedDb(env, 'paid1').collection('stages').doc('st-draft').get());
       await assertSucceeds(authedDb(env, 'student1').collection('grammarNotes').doc('n1').get());
       await assertFails(

@@ -70,7 +70,6 @@ function nodeState(stage) {
 
 function nodeLabel(stage, state) {
   if (state === 'locked') return '🔒';
-  if (state === 'cleared') return '✓';
   return String(stage.order);
 }
 
@@ -300,8 +299,8 @@ if (!isValidQuery) {
 
     try {
       const [stages, clears] = await Promise.all([
-        // ต้องส่ง tier ไปด้วยเสมอ ไม่งั้น query จะไม่ล็อก isPreview และ rules ปฏิเสธทั้งชุด
-        fetchStages(db, { skill, level, tier: readTier(userDoc) }),
+        // ต้องส่ง tier และ allowedLevels ไปด้วยเสมอ เพื่อให้ query สอดคล้องกับ security rules
+        fetchStages(db, { skill, level, tier: readTier(userDoc), allowedLevels: userDoc?.allowedLevels }),
         fetchMyClears(db, firebaseUser.uid),
       ]);
 

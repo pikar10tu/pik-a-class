@@ -1,9 +1,46 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   root: 'src',
   base: '/pik-a-class/',
+  plugins: [
+    VitePWA({
+      registerType: 'autoUpdate',
+      includeAssets: ['favicon.ico', 'favicon.png', 'apple-touch-icon.png', 'mascot/*.png'],
+      manifest: {
+        name: 'Pik a Class — ห้องเรียนภาษาอังกฤษตะลุยด่าน',
+        short_name: 'Pik a Class',
+        description: 'เว็บทบทวนและฝึกฝนภาษาอังกฤษแบบตะลุยด่าน สนุก เข้าใจง่าย',
+        theme_color: '#37c871',
+        background_color: '#f8faf9',
+        display: 'standalone',
+        start_url: '/pik-a-class/',
+        icons: [
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable',
+          },
+        ],
+      },
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+      },
+    }),
+  ],
   build: {
     outDir: '../dist',
     emptyOutDir: true,

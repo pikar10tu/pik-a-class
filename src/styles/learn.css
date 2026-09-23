@@ -421,7 +421,7 @@ body::after {
   color: var(--color-primary-text);
   border: 3px solid var(--color-primary-shadow);
   border-bottom-width: 6px;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
 
 .path-node--boss {

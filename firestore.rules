@@ -50,11 +50,19 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    function isLevelPermitted() {
+      return resource.data.level == "A1"
+        || resource.data.level in myUserDoc().get('allowedLevels', [])
+        || (myUserDoc().tier == "full" && (
+            myUserDoc().get('allowedLevels', []).size() == 0
+            || resource.data.level in myUserDoc().get('allowedLevels', [])
+           ));
+    }
+
     function publishedAndAllowed(assignedUids) {
       return resource.data.reviewStatus == "published"
         && (resource.data.get('isPreview', false) == true
-            || resource.data.level == "A1"
-            || myUserDoc().tier == "full"
+            || isLevelPermitted()
             || request.auth.uid in assignedUids);
     }
 
@@ -66,19 +74,15 @@ service cloud.firestore {
                 'createdAt', 'updatedAt', 'createdBy'];
       }
 
-      // โจทย์ในคลัง (bank) ใช้เกณฑ์ preview/tier ตามปกติ
-      // ถ้ามีการกำหนด allowedLevels จะอ่านได้เฉพาะโจทย์ในระดับที่ได้รับอนุญาต
+      // โจทย์ในคลัง (bank) ใช้เกณฑ์ preview/tier/allowedLevels
+      // ถ้าได้รับอนุญาตในระดับนั้น (A1 ฟรี, อยู่ใน allowedLevels, หรือ tier full) จะอ่านได้ทั้งระดับ
       // ส่วนโจทย์การบ้าน (assignmentOnly) อ่านได้เฉพาะคนที่ถูก assign เท่านั้น ไม่ว่า tier ไหน
       function canReadExercise() {
         return resource.data.reviewStatus == "published"
           && (
             (resource.data.visibility == "bank"
               && (resource.data.get('isPreview', false) == true
-                  || resource.data.level == "A1"
-                  || (myUserDoc().tier == "full" && (
-                      myUserDoc().get('allowedLevels', []).size() == 0
-                      || resource.data.level in myUserDoc().get('allowedLevels', [])
-                     ))))
+                  || isLevelPermitted()))
             || request.auth.uid in resource.data.get('assignedUids', [])
           );
       }

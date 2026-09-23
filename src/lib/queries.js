@@ -1,14 +1,26 @@
 import { collection, query, where, orderBy } from 'firebase/firestore';
 
-export function bankExerciseConstraints({ skill, level, tier }) {
+export function isLevelPermitted({ tier, level, allowedLevels } = {}) {
+  if (level === 'A1') return true;
+  if (Array.isArray(allowedLevels) && allowedLevels.includes(level)) return true;
+  if (tier === 'full') {
+    if (!Array.isArray(allowedLevels) || allowedLevels.length === 0) return true;
+    return allowedLevels.includes(level);
+  }
+  return false;
+}
+
+export function bankExerciseConstraints({ skill, level, tier, allowedLevels }) {
   const constraints = [
     ['reviewStatus', '==', 'published'],
     ['visibility', '==', 'bank'],
     ['skill', '==', skill],
     ['level', '==', level],
   ];
-  // ระดับ A1 เปิดให้เข้าถึงได้ครบทุกข้อเป็นค่าเริ่มต้น ส่วนระดับอื่นๆ หากไม่ใช่ full tier จะเห็นเฉพาะข้อ preview
-  if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
+  // ระดับ A1 หรือระดับที่ได้รับอนุญาตใน allowedLevels / full tier จะเข้าถึงได้ครบทุกข้อ
+  if (!isLevelPermitted({ tier, level, allowedLevels })) {
+    constraints.push(['isPreview', '==', true]);
+  }
   return constraints;
 }
 
@@ -52,11 +64,13 @@ export function readTier(userDoc) {
 // บน list query ทุกฟิลด์ที่ rule แตะต้องถูกล็อกค่าด้วยตัว query เอง ไม่งั้น Firestore จะ
 // ประเมิน rule ไม่ได้และปฏิเสธทั้งชุด (permission-denied: evaluation error) ไม่ใช่แค่กรองบางใบทิ้ง
 // เกณฑ์เดียวกับ bankExerciseConstraints ด้านบน เพื่อให้สองที่ไม่เพี้ยนกัน
-export function stageConstraints({ skill, level, publishedOnly = true, tier } = {}) {
+export function stageConstraints({ skill, level, publishedOnly = true, tier, allowedLevels } = {}) {
   const constraints = [];
   if (publishedOnly) {
     constraints.push(['reviewStatus', '==', 'published']);
-    if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
+    if (!isLevelPermitted({ tier, level, allowedLevels })) {
+      constraints.push(['isPreview', '==', true]);
+    }
   }
   if (skill) constraints.push(['skill', '==', skill]);
   if (level) constraints.push(['level', '==', level]);
@@ -67,7 +81,7 @@ export function stageConstraints({ skill, level, publishedOnly = true, tier } = 
 // เงื่อนไขชุดนี้ตั้งใจให้ตรงกับ bankExerciseConstraints ด้านบน บวกเงื่อนไขแท็ก เพื่อให้สองที่ไม่เพี้ยนกัน
 // ข้อดีที่สำคัญกว่าความสะดวก: การกรองสิทธิ์อยู่ใน query เอง เด็กจึงได้เฉพาะข้อที่ตัวเองอ่านได้
 // ต่างจากการอ่านด้วย documentId() in [...] ที่ถ้าอ่านข้อใดข้อหนึ่งไม่ได้จะโดนปฏิเสธทั้งชุด
-export function stagePoolConstraints({ skill, level, tags, tier }) {
+export function stagePoolConstraints({ skill, level, tags, tier, allowedLevels }) {
   const constraints = [
     ['reviewStatus', '==', 'published'],
     ['visibility', '==', 'bank'],
@@ -75,7 +89,9 @@ export function stagePoolConstraints({ skill, level, tags, tier }) {
     ['level', '==', level],
     ['tags', 'array-contains-any', tags],
   ];
-  if (tier !== 'full' && level !== 'A1') constraints.push(['isPreview', '==', true]);
+  if (!isLevelPermitted({ tier, level, allowedLevels })) {
+    constraints.push(['isPreview', '==', true]);
+  }
   return constraints;
 }
 

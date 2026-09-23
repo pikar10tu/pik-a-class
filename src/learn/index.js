@@ -126,14 +126,15 @@ requireLogin(async (firebaseUser, userDoc) => {
 
   try {
     const tier = readTier(userDoc);
+    const allowedLevels = userDoc?.allowedLevels;
     let stages = [];
     if (tier === 'full' || isUserAdmin) {
-      stages = await fetchStages(db, { tier });
+      stages = await fetchStages(db, { tier, allowedLevels });
     } else {
-      // ผู้เรียนทั่วไป / สมาชิกใหม่: ดึงด่าน A1 ครบ 20 ด่าน และด่านตัวอย่างของ A2
+      // ผู้เรียนทั่วไป / สมาชิกใหม่: ดึงด่าน A1 ครบ 20 ด่าน และด่าน A2 (หากได้รับสิทธิ์ใน allowedLevels หรือด่านตัวอย่าง)
       const [a1Stages, a2Stages] = await Promise.all([
-        fetchStages(db, { skill: 'grammar', level: 'A1', tier: 'free' }),
-        fetchStages(db, { skill: 'grammar', level: 'A2', tier: 'free' })
+        fetchStages(db, { skill: 'grammar', level: 'A1', tier: 'free', allowedLevels }),
+        fetchStages(db, { skill: 'grammar', level: 'A2', tier: 'free', allowedLevels })
       ]);
       stages = [...a1Stages, ...a2Stages];
     }

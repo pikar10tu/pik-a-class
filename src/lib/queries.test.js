@@ -35,6 +35,13 @@ describe('query constraints', () => {
     expect(bankExerciseConstraints({ skill: 'grammar', level: 'A1', tier: 'free' }).some(([f]) => f === 'isPreview')).toBe(false);
   });
 
+  it('allows bank exercises for levels in allowedLevels even on free tier', () => {
+    expect(
+      bankExerciseConstraints({ skill: 'grammar', level: 'A2', tier: 'free', allowedLevels: ['A2'] })
+        .some(([f]) => f === 'isPreview')
+    ).toBe(false);
+  });
+
   it('builds the remaining documented queries', () => {
     expect(assignedExerciseConstraints('u1')).toEqual([['assignedUids', 'array-contains', 'u1']]);
     expect(myAssignmentConstraints('u1')).toEqual([['assignedTo', 'array-contains', 'u1']]);
@@ -78,6 +85,13 @@ describe('stageConstraints', () => {
 
   it('leaves the preview filter out for full-tier users', () => {
     expect(stageConstraints({ tier: 'full' })).toEqual([['reviewStatus', '==', 'published']]);
+  });
+
+  it('leaves the preview filter out if the level is in allowedLevels even on free tier', () => {
+    expect(
+      stageConstraints({ skill: 'grammar', level: 'A2', tier: 'free', allowedLevels: ['A2'] })
+        .some(([f]) => f === 'isPreview')
+    ).toBe(false);
   });
 
   it('treats a missing tier as free, exactly like bankExerciseConstraints does', () => {
@@ -128,6 +142,11 @@ describe('stagePoolConstraints', () => {
 
   it('tier full ไม่ต้องมีเงื่อนไข isPreview', () => {
     const constraints = stagePoolConstraints({ ...base, tier: 'full' });
+    expect(constraints.some(([field]) => field === 'isPreview')).toBe(false);
+  });
+
+  it('เด็ก tier free ที่มี allowedLevels ในระดับนั้น ไม่ต้องมีเงื่อนไข isPreview', () => {
+    const constraints = stagePoolConstraints({ ...base, tier: 'free', allowedLevels: ['A2'] });
     expect(constraints.some(([field]) => field === 'isPreview')).toBe(false);
   });
 

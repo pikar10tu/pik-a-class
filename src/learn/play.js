@@ -530,7 +530,7 @@ requireLogin(async (firebaseUser, userDoc) => {
       return;
     }
     setupGrammarNote(stage.tags);
-    const pool = await fetchStagePool(db, stage, readTier(userDoc));
+    const pool = await fetchStagePool(db, stage, readTier(userDoc), userDoc?.allowedLevels);
     // กรองชนิดที่เล่นไม่ได้ทิ้งก่อนสุ่ม ไม่ใช่หลังสุ่ม ไม่งั้นรอบนั้นจะได้ข้อน้อยกว่า drawCount
     // โดยไม่มีเหตุผล ทั้งที่คลังมีข้อที่เล่นได้เหลืออยู่
     const playable = pool.filter((item) => STAGE_ITEM_TYPES.includes(item.type));

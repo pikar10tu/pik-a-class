@@ -1,4 +1,4 @@
-import { signInWithPopup } from 'firebase/auth';
+import { signInWithPopup, onAuthStateChanged } from 'firebase/auth';
 import { auth, googleProvider, db } from './lib/firebase.js';
 import { fetchUserDoc, createUserDoc } from './lib/user-profile-io.js';
 import { buildNewUserDoc, getPostLoginRedirect } from './lib/user-profile.js';
@@ -65,7 +65,19 @@ function checkLineBrowser() {
 
 const isInsideLine = checkLineBrowser();
 
-// 2. จัดการการคลิกปุ่มเข้าสู่ระบบด้วย Google
+// 2. ตรวจจับ Session เดิมที่เคยล็อกอินไว้แล้ว — ถือว่ามีสิทธิ์ ให้พากลับเข้าสู่ Dashboard ทันที
+onAuthStateChanged(auth, async (firebaseUser) => {
+  if (!firebaseUser) return;
+  try {
+    const userDoc = await fetchUserDoc(db, firebaseUser.uid);
+    const target = getPostLoginRedirect(userDoc) === 'onboarding' ? './onboarding.html' : './dashboard.html';
+    window.location.replace(target);
+  } catch (err) {
+    console.error('Auto-login session restore error:', err);
+  }
+});
+
+// 3. จัดการการคลิกปุ่มเข้าสู่ระบบด้วย Google
 document.getElementById('google-signin-btn').addEventListener('click', async () => {
   // หากตรวจพบว่าเปิดอยู่ใน LINE ให้เตือนก่อนเพื่อไม่ให้ติด error 403 disallowed_useragent ของ Google
   if (isInsideLine) {

@@ -22,7 +22,7 @@ export async function saveStage(db, id, data) {
 // ดึงคลังของด่านด้วยเงื่อนไข ไม่ใช่รายชื่อข้อ
 // ไม่ใส่ limit เพราะ limit ที่ไม่มี orderBy จะได้ "ข้อแรกๆ ตาม document id" ซึ่งเป็นชุดเดิมทุกครั้ง
 // กลายเป็นอคติถาวรที่มองไม่เห็น แทนที่จะสุ่มจริง — คลังโตเกินคาดค่อยกลับมาทำ paging
-export async function fetchStagePool(db, stage, tier) {
+export async function fetchStagePool(db, stage, tier, allowedLevels) {
   const tags = stage?.tags ?? [];
   if (!Array.isArray(tags) || tags.length === 0) {
     return [];
@@ -33,6 +33,7 @@ export async function fetchStagePool(db, stage, tier) {
       level: stage.level,
       tags,
       tier,
+      allowedLevels,
     })),
   );
   return snapshot.docs.map((docSnap) => ({ id: docSnap.id, ...docSnap.data() }));
