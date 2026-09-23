@@ -28,7 +28,15 @@ const heroAvatarImg = document.getElementById('hero-avatar-img');
 const heroDisplayName = document.getElementById('hero-display-name');
 const heroEmail = document.getElementById('hero-email');
 const heroTierBadge = document.getElementById('hero-tier-badge');
-const avatarPicker = document.getElementById('avatar-picker');
+const openAvatarPickerBtn = document.getElementById('open-avatar-picker-btn');
+const btnChangeAvatarText = document.getElementById('btn-change-avatar-text');
+
+// Avatar Modal Elements
+const avatarDialog = document.getElementById('avatar-dialog');
+const avatarDialogCloseX = document.getElementById('avatar-dialog-close-x');
+const avatarDialogCancel = document.getElementById('avatar-dialog-cancel');
+const avatarDialogConfirm = document.getElementById('avatar-dialog-confirm');
+const avatarPickerModal = document.getElementById('avatar-picker-modal');
 
 const profileForm = document.getElementById('profile-form');
 const inputNickname = document.getElementById('input-nickname');
@@ -56,6 +64,8 @@ const badgeDialogCloseX = document.getElementById('badge-dialog-close-x');
 if (badgeDialogClose) badgeDialogClose.addEventListener('click', () => badgeDialog?.close());
 if (badgeDialogCloseX) badgeDialogCloseX.addEventListener('click', () => badgeDialog?.close());
 
+let modalSelectedAvatarId = DEFAULT_AVATAR;
+
 function showToast(message) {
   if (!toastEl) return;
   toastEl.textContent = message;
@@ -71,9 +81,9 @@ function updateHeroAvatar(avatarId) {
   }
 }
 
-function renderAvatarPicker(activeId) {
-  if (!avatarPicker) return;
-  avatarPicker.replaceChildren();
+function renderAvatarPickerModal(activeId) {
+  if (!avatarPickerModal) return;
+  avatarPickerModal.replaceChildren();
 
   for (const av of AVATAR_LIST) {
     const isSelected = av.id === activeId;
@@ -86,20 +96,54 @@ function renderAvatarPicker(activeId) {
     btn.title = `${av.title} (${av.en})`;
 
     btn.innerHTML = `
-      <img class="avatar-thumb" src="${base}avatars/${av.id}.webp" alt="${av.title}" onerror="this.onerror=null; this.src='${base}avatars/${av.id}.png'" loading="lazy" />
+      <img class="avatar-thumb" src="${base}avatars/${av.id}.webp" alt="${av.title}" width="56" height="56" onerror="this.onerror=null; this.src='${base}avatars/${av.id}.png'" loading="lazy" />
       <span class="avatar-name">${av.title}</span>
     `;
 
     btn.addEventListener('click', () => {
-      selectedAvatarId = av.id;
-      updateHeroAvatar(av.id);
-      avatarPicker.querySelectorAll('.avatar-option-btn').forEach((b) => {
+      modalSelectedAvatarId = av.id;
+      avatarPickerModal.querySelectorAll('.avatar-option-btn').forEach((b) => {
         b.setAttribute('aria-checked', b.getAttribute('data-id') === av.id ? 'true' : 'false');
       });
     });
 
-    avatarPicker.appendChild(btn);
+    avatarPickerModal.appendChild(btn);
   }
+}
+
+function openAvatarPicker() {
+  if (!avatarDialog) return;
+  modalSelectedAvatarId = selectedAvatarId;
+  renderAvatarPickerModal(modalSelectedAvatarId);
+  avatarDialog.showModal();
+}
+
+if (openAvatarPickerBtn) openAvatarPickerBtn.addEventListener('click', openAvatarPicker);
+if (btnChangeAvatarText) btnChangeAvatarText.addEventListener('click', openAvatarPicker);
+if (avatarDialogCloseX) avatarDialogCloseX.addEventListener('click', () => avatarDialog?.close());
+if (avatarDialogCancel) avatarDialogCancel.addEventListener('click', () => avatarDialog?.close());
+
+if (avatarDialogConfirm) {
+  avatarDialogConfirm.addEventListener('click', async () => {
+    selectedAvatarId = modalSelectedAvatarId;
+    updateHeroAvatar(selectedAvatarId);
+    avatarDialog?.close();
+
+    // Auto-save avatar choice if user is logged in
+    if (currentUid) {
+      try {
+        await setDoc(
+          doc(db, 'users', currentUid),
+          { avatarId: selectedAvatarId, updatedAt: new Date().toISOString() },
+          { merge: true }
+        );
+        showToast('เปลี่ยนอวตารเรียบร้อยแล้ว ✨');
+      } catch (err) {
+        console.error('Failed to auto-save avatar:', err);
+        showToast('เลือกอวตารแล้ว (อย่าลืมกดบันทึกข้อมูล)');
+      }
+    }
+  });
 }
 
 function openBadgeModal(badge) {
@@ -175,7 +219,6 @@ requireLogin(async (firebaseUser, userDoc) => {
   // Populate hero
   selectedAvatarId = userDoc?.avatarId || DEFAULT_AVATAR;
   updateHeroAvatar(selectedAvatarId);
-  renderAvatarPicker(selectedAvatarId);
 
   const nickname = userDoc?.nickname || '';
   const fullName = userDoc?.fullName || firebaseUser.displayName || '';
@@ -281,8 +324,26 @@ requireLogin(async (firebaseUser, userDoc) => {
     const cafeHighScore = userDoc?.speedCafeStats?.highScore || 0;
     if (statCafeScore) statCafeScore.textContent = cafeHighScore.toLocaleString();
 
-    // Evaluate 12 Badges
-    const badges = evaluateBadges({ overview, userDoc });
+    // Read client-side metrics for badges
+    let cafeMaxCombo = userDoc?.speedCafeStats?.maxCombo || 0;
+    let hasReadHandbook = false;
+    try {
+      if (!cafeMaxCombo) {
+        cafeMaxCombo = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
+      }
+      hasReadHandbook = localStorage.getItem('pik_handbook_visited') === 'true';
+    } catch {}
+
+    // Evaluate 12 Badges with flattened metrics
+    const badges = evaluateBadges({
+      totalStars: overview.totalStars,
+      totalStagesCleared: overview.totalStagesCleared,
+      masteredStagesCount: overview.masteredStagesCount,
+      totalQuestionsAnswered: overview.totalQuestionsAnswered,
+      stageClears,
+      cafeMaxCombo,
+      hasReadHandbook,
+    });
     renderBadges(badges);
   } catch (err) {
     console.error('Failed to load profile stats:', err);

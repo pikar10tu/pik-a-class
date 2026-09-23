@@ -81,14 +81,15 @@ describe('isLevelAllowed', () => {
 });
 
 describe('avatar helpers', () => {
-  it('defines 6 distinct rabbit avatars', () => {
-    expect(AVATAR_LIST).toHaveLength(6);
+  it('defines 12 distinct themed rabbit avatars', () => {
+    expect(AVATAR_LIST).toHaveLength(12);
     expect(DEFAULT_AVATAR).toBe('avatar-1');
   });
 
   it('resolves correct avatar image path and falls back to default on invalid id', () => {
     expect(getAvatarSrc('avatar-1')).toBe('avatars/avatar-1.png');
     expect(getAvatarSrc('avatar-5', '/base/')).toBe('/base/avatars/avatar-5.png');
+    expect(getAvatarSrc('avatar-12', '/base/')).toBe('/base/avatars/avatar-12.png');
     expect(getAvatarSrc('unknown-avatar')).toBe('avatars/avatar-1.png');
     expect(getAvatarSrc(null)).toBe('avatars/avatar-1.png');
   });

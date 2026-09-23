@@ -5,7 +5,6 @@ import { auth, db } from './lib/firebase.js';
 import { getAvatarSrc } from './lib/user-profile.js';
 import { attachUiSounds } from './lib/ui-sound.js';
 import { calculateStudentOverview } from './lib/student-analytics.js';
-import { evaluateBadges } from './lib/badges.js';
 
 const base = import.meta.env.BASE_URL;
 
@@ -20,9 +19,6 @@ if (vocabLink) vocabLink.href = `${base}vocab/index.html`;
 
 const userPillLink = document.getElementById('user-pill-link');
 if (userPillLink) userPillLink.href = `${base}profile.html`;
-
-const viewTrophiesLink = document.getElementById('view-trophies-link');
-if (viewTrophiesLink) viewTrophiesLink.href = `${base}profile.html#trophies`;
 
 attachUiSounds();
 
@@ -94,33 +90,8 @@ requireLogin(async (firebaseUser, userDoc) => {
     if (statQuestions) statQuestions.textContent = overview.totalQuestionsAnswered;
     if (heroStats) heroStats.hidden = false;
 
-    // Read client-side metrics
-    let cafeMaxCombo = userDoc?.speedCafeStats?.maxCombo || 0;
-    let hasReadHandbook = false;
-    try {
-      if (!cafeMaxCombo) {
-        cafeMaxCombo = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
-      }
-      hasReadHandbook = localStorage.getItem('pik_handbook_visited') === 'true';
-    } catch {}
-
-    const badges = evaluateBadges({
-      totalStars: overview.totalStars,
-      totalStagesCleared: overview.totalStagesCleared,
-      masteredStagesCount: overview.masteredStagesCount,
-      totalQuestionsAnswered: overview.totalQuestionsAnswered,
-      stageClears,
-      cafeMaxCombo,
-      hasReadHandbook,
-    });
-
-    const unlockedCount = badges.filter((b) => b.unlocked).length;
-    const unlockedCountEl = document.getElementById('unlocked-count');
-    if (unlockedCountEl) {
-      unlockedCountEl.textContent = unlockedCount;
-    }
   } catch (error) {
-    console.error('Failed to load student progress or badges:', error);
+    console.error('Failed to load student progress:', error);
   }
 });
 

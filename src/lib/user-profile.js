@@ -1,12 +1,18 @@
 export const DEFAULT_AVATAR = 'avatar-1';
 
 export const AVATAR_LIST = [
-  { id: 'avatar-1', title: 'น้องหยกสดใส', en: 'Classic Happy', icon: '🐰' },
-  { id: 'avatar-2', title: 'น้องหยกชัยชนะ', en: 'Victory Peace', icon: '✌️' },
-  { id: 'avatar-3', title: 'น้องหยกพลังใจ', en: 'Champion Power', icon: '💪' },
-  { id: 'avatar-4', title: 'น้องหยกตาประกาย', en: 'Star Dreamer', icon: '⭐' },
-  { id: 'avatar-5', title: 'น้องหยกเยี่ยมยอด', en: 'Double Thumbs Up', icon: '👍' },
-  { id: 'avatar-6', title: 'น้องหยกส่งรัก', en: 'Heart Love', icon: '💖' },
+  { id: 'avatar-1', title: 'น้องหยกสดใส', en: 'Classic Mint', icon: '🌱' },
+  { id: 'avatar-2', title: 'น้องหยกซากุระ', en: 'Sakura Pink', icon: '🌸' },
+  { id: 'avatar-3', title: 'น้องหยกท้องฟ้า', en: 'Sky Blue', icon: '☁️' },
+  { id: 'avatar-4', title: 'จอมเวทน้อย', en: 'Magic Wizard', icon: '🧙' },
+  { id: 'avatar-5', title: 'อัศวินผู้กล้า', en: 'Brave Knight', icon: '🛡️' },
+  { id: 'avatar-6', title: 'คอสเพลย์มังกร', en: 'Dragon Cosplay', icon: '🐉' },
+  { id: 'avatar-7', title: 'ภูตน้อยมีปีก', en: 'Angel Fairy', icon: '🪽' },
+  { id: 'avatar-8', title: 'บาริสต้าต่าย', en: 'Speed Barista', icon: '☕' },
+  { id: 'avatar-9', title: 'ราชาดวงดาว', en: 'Star King', icon: '👑' },
+  { id: 'avatar-10', title: 'เกมเมอร์ไซเบอร์', en: 'Cyber Gamer', icon: '🎧' },
+  { id: 'avatar-11', title: 'น้องหยกพลังใจ', en: 'Champion Power', icon: '💪' },
+  { id: 'avatar-12', title: 'น้องหยกส่งรัก', en: 'Heart Love', icon: '💖' },
 ];
 
 export function getAvatarSrc(avatarId, base = '') {

@@ -10,7 +10,6 @@
   <meta name="theme-color" content="#37c871" />
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
-  <link rel="stylesheet" href="./styles/learn.css" />
   <link rel="stylesheet" href="./styles/profile.css" />
 </head>
 <body>
@@ -31,27 +30,22 @@
     <!-- 1. Hero Summary -->
     <section class="profile-hero">
       <div class="profile-hero-avatar-wrap">
-        <img id="hero-avatar-img" class="profile-hero-avatar-img" src="./avatars/avatar-1.png" alt="อวตารน้องหยก" />
+        <button type="button" id="open-avatar-picker-btn" class="profile-avatar-trigger" aria-label="เปลี่ยนรูปอวตาร" title="คลิกเพื่อเปลี่ยนรูปอวตาร">
+          <img id="hero-avatar-img" class="profile-hero-avatar-img" src="./avatars/avatar-1.png" alt="อวตารน้องหยก" width="84" height="84" />
+          <span class="avatar-edit-badge" aria-hidden="true">✏️</span>
+        </button>
       </div>
       <div class="profile-hero-info">
-        <h1 id="hero-display-name" class="profile-hero-name">กำลังโหลด…</h1>
+        <div class="profile-hero-name-row">
+          <h1 id="hero-display-name" class="profile-hero-name">กำลังโหลด…</h1>
+          <button type="button" id="btn-change-avatar-text" class="btn-change-avatar-text" type="button">เปลี่ยนอวตาร 🎨</button>
+        </div>
         <p id="hero-email" class="profile-hero-sub">-</p>
         <span id="hero-tier-badge" class="profile-tier-badge">🌱 Free Tier</span>
       </div>
     </section>
 
-    <!-- 2. เลือกอวตารน้องต่ายประจำตัว -->
-    <section class="profile-card">
-      <div class="profile-card-header">
-        <h2 class="profile-card-title">🐰 เลือกอวตารน้องหยกประจำตัว</h2>
-        <p class="profile-card-desc">เลือกอวตารมาสคอตกระต่ายในสไตล์ที่คุณชอบ เพื่อแสดงผลบนหน้าจอและปุ่มโปรไฟล์</p>
-      </div>
-      <div id="avatar-picker" class="avatar-grid" role="radiogroup" aria-label="เลือกอวตารน้องหยก">
-        <!-- Rendered by profile.js -->
-      </div>
-    </section>
-
-    <!-- 3. แบบฟอร์มข้อมูลส่วนตัว -->
+    <!-- 2. แบบฟอร์มข้อมูลส่วนตัว -->
     <section class="profile-card">
       <div class="profile-card-header">
         <h2 class="profile-card-title">✏️ ข้อมูลส่วนตัวผู้เรียน</h2>
@@ -168,6 +162,28 @@
       </div>
     </section>
   </main>
+
+  <!-- Modal สำหรับเลือกอวตารน้องหยก (12 แบบ) -->
+  <dialog id="avatar-dialog" class="modal-dialog avatar-dialog">
+    <div class="avatar-dialog-card">
+      <div class="avatar-dialog-header">
+        <div>
+          <h2 class="avatar-dialog-title">🐰 เลือกอวตารน้องหยก</h2>
+          <p class="avatar-dialog-desc">เลือกสไตล์ที่คุณชื่นชอบเพื่อแสดงผลบนโปรไฟล์และมุมจอ</p>
+        </div>
+        <button id="avatar-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิดหน้าต่าง">✕</button>
+      </div>
+
+      <div id="avatar-picker-modal" class="avatar-grid avatar-dialog-grid" role="radiogroup" aria-label="เลือกอวตารน้องหยก">
+        <!-- Rendered by profile.js -->
+      </div>
+
+      <div class="avatar-dialog-actions">
+        <button id="avatar-dialog-cancel" type="button" class="btn-ghost-sm">ยกเลิก</button>
+        <button id="avatar-dialog-confirm" type="button" class="btn-chunky avatar-dialog-save-btn">เลือกอวตารนี้ ✨</button>
+      </div>
+    </div>
+  </dialog>
 
   <!-- Modal สำหรับดูรายละเอียดเหรียญรางวัล -->
   <dialog id="badge-dialog" class="modal-dialog">
