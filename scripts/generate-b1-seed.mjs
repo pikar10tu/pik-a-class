@@ -1,5 +1,7 @@
 import { writeFileSync, mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { contentHash } from '../src/lib/schema/content-checks.js';
+import { fixSentenceBuilder, B1_MCQ_UPGRADES } from './audit-and-fix-seeds.mjs';
 
 const exercises = [
   // ==========================================
@@ -2584,7 +2586,29 @@ const defaultMeta = {
   createdBy: 'prawich.aum@dome.tu.ac.th'
 };
 
-const exercisesWithMeta = exercises.map(ex => ({ ...ex, ...defaultMeta }));
+const b1McqMap = new Map();
+for (const up of B1_MCQ_UPGRADES) {
+  b1McqMap.set(up.prompt.trim().toLowerCase(), up);
+}
+
+const exercisesWithMeta = exercises.map(ex => {
+  let item = { ...ex, ...defaultMeta };
+  if (item.type === 'sentence_builder') {
+    item = fixSentenceBuilder(item);
+  } else if (item.type === 'fill_blank') {
+    const key = (item.prompt || '').trim().toLowerCase();
+    if (b1McqMap.has(key)) {
+      const up = b1McqMap.get(key);
+      item = {
+        ...item,
+        type: 'mcq',
+        choices: up.choices,
+        answerKey: up.answerKey,
+      };
+    }
+  }
+  return { ...item, contentHash: contentHash(item) };
+});
 
 mkdirSync('docs/seeds', { recursive: true });
 writeFileSync('docs/seeds/b1-full-exercises.json', JSON.stringify(exercisesWithMeta, null, 2), 'utf8');

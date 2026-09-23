@@ -769,6 +769,7 @@ body::after {
   color: var(--color-text);
   margin: var(--space-2) 0 0;
   line-height: 1.5;
+  white-space: pre-line;
 }
 
 .concept-card-formula {
@@ -867,6 +868,7 @@ body::after {
   margin: 0;
   line-height: 1.5;
   color: var(--color-text);
+  white-space: pre-line;
 }
 
 .note-formula-box {

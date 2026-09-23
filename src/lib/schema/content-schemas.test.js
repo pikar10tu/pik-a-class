@@ -103,6 +103,29 @@ describe('exercises schema', () => {
     const result = validate('exercises', mcq({ tags: [] }));
     expect(result.errors).toContainEqual({ field: 'tags', message: 'ต้องมีอย่างน้อย 1 รายการ' });
   });
+
+  it('validates sentence_builder that all words in answerKey exist in choices with sufficient frequency', () => {
+    const validSb = mcq({
+      type: 'sentence_builder',
+      prompt: 'จงเรียงประโยค',
+      choices: ['Having', 'finished', 'his', 'homework', 'he', 'went', 'out', 'with', 'his', 'friends'],
+      answerKey: ['Having finished his homework he went out with his friends'],
+    });
+    expect(validate('exercises', validSb)).toEqual({ ok: true, errors: [] });
+
+    const missingDuplicate = mcq({
+      type: 'sentence_builder',
+      prompt: 'จงเรียงประโยค',
+      choices: ['Having', 'finished', 'his', 'homework', 'he', 'went', 'out', 'with', 'friends'],
+      answerKey: ['Having finished his homework he went out with his friends'],
+    });
+    const result = validate('exercises', missingDuplicate);
+    expect(result.ok).toBe(false);
+    expect(result.errors).toContainEqual({
+      field: 'choices',
+      message: 'คำว่า "his" มีในตัวเลือกไม่พอสำหรับเฉลย (ต้องใช้ 2 คำ แต่มี 1 คำ)',
+    });
+  });
 });
 
 describe('stages schema', () => {

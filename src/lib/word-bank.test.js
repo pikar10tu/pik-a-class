@@ -39,6 +39,23 @@ describe('distractorPool', () => {
     ];
     expect(distractorPool(target, duplicated)).toEqual(['went']);
   });
+
+  it('ignores full sentences or punctuated options from mcq choices', () => {
+    const withSentence = [
+      target,
+      {
+        id: 'e10',
+        type: 'mcq',
+        choices: [
+          'The woman having sat in the corner is an author.',
+          'Walking down the street, my hat blew away.',
+          'went',
+        ],
+        answerKey: ['went'],
+      },
+    ];
+    expect(distractorPool(target, withSentence)).toEqual(['went']);
+  });
 });
 
 describe('buildWordBank', () => {

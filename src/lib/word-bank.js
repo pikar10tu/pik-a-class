@@ -2,8 +2,20 @@ import { normalizeAnswer } from './grading.js';
 
 export const WORD_BANK_SIZE = 4;
 
+function isReasonableWordBankChoice(text) {
+  if (typeof text !== 'string') return false;
+  const trimmed = text.trim();
+  if (!trimmed) return false;
+  // ห้ามเป็นประโยคยาว (มากกว่า 2 คำ) หรือมีเครื่องหมายวรรคตอนของประโยค
+  const words = trimmed.split(/\s+/);
+  if (words.length > 2) return false;
+  if (/[.,!?;:]/.test(trimmed)) return false;
+  return true;
+}
+
 function collect(words, seen, out) {
   for (const word of words) {
+    if (!isReasonableWordBankChoice(word)) continue;
     const key = normalizeAnswer(word);
     if (key === '' || seen.has(key)) continue;
     seen.add(key);

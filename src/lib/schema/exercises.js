@@ -35,6 +35,28 @@ function typeShapeRule(data) {
       }
     } else if (type === 'matching' && choices && answerKey.length !== choices.length) {
       errors.push({ field: 'answerKey', message: 'ข้อจับคู่ต้องมีเฉลยเท่ากับจำนวนตัวเลือก' });
+    } else if (type === 'sentence_builder' && choices && Array.isArray(answerKey) && typeof answerKey[0] === 'string') {
+      const choiceCounts = {};
+      for (const c of choices) {
+        const k = String(c).trim().toLowerCase().replace(/[.,!?;:]/g, '');
+        choiceCounts[k] = (choiceCounts[k] || 0) + 1;
+      }
+      const primaryAnswer = answerKey[0];
+      const answerWords = primaryAnswer.trim().split(/\s+/).map((w) => w.toLowerCase().replace(/[.,!?;:]/g, ''));
+      const neededCounts = {};
+      for (const w of answerWords) {
+        if (!w) continue;
+        neededCounts[w] = (neededCounts[w] || 0) + 1;
+      }
+      for (const [w, needed] of Object.entries(neededCounts)) {
+        const available = choiceCounts[w] || 0;
+        if (available < needed) {
+          errors.push({
+            field: 'choices',
+            message: `คำว่า "${w}" มีในตัวเลือกไม่พอสำหรับเฉลย (ต้องใช้ ${needed} คำ แต่มี ${available} คำ)`,
+          });
+        }
+      }
     }
   } else if (answerKey !== undefined) {
     errors.push({ field: 'answerKey', message: `ข้อชนิด ${type} ห้ามมีเฉลย` });

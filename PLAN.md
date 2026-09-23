@@ -438,10 +438,27 @@ uid, stageId, skill, level, order, score, clearedAt
 
 ---
 
-### 4. แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):
+### 4. รายงานการตรวจสอบและยกเครื่องเนื้อหา B1 & B2 (Content Audit & Overhaul):
+1. **แก้ปัญหา Sentence Builder คำซ้ำไม่พอ (Duplicate Token Fix):**
+   - เพิ่ม `typeShapeRule` ใน `src/lib/schema/exercises.js` ตรวจสอบความถี่ของทุกโทเค็นใน `answerKey[0]` เทียบกับ `choices`
+   - แก้ไขข้อสอบทั้งใน B2, B1, A2 เมล็ดข้อมูล (เช่น ข้อ "Having finished his homework he went out to play with his friends" มี his ครบ 2 ตัว)
+2. **ขจัดช้อยส์มั่วใน Word Bank & ปรับโจทย์ผันกริยาเป็น MCQ:**
+   - เพิ่มตัวกรอง `isReasonableWordBankChoice` ใน `src/lib/word-bank.js` ตัดประโยคยาวและเครื่องหมายวรรคตอนออกจากคลังตัวเลือกลวง
+   - แปลงข้อสอบผันรูปกริยา `___ (verb)` 60 ข้อใน B2 และ 60 ข้อใน B1 ให้เป็น MCQ 4 ตัวเลือกไวยากรณ์ตามมาตรฐาน CEFR
+3. **ยกเครื่องคำอธิบายไวยากรณ์เป็นการ์ดสรุป "สไตล์พี่ปิ๊ก":**
+   - เขียนใหม่ทั้ง 12 หัวข้อของ B2 และ 12 หัวข้อของ B1 ให้เข้าใจง่าย มีลูกศรชี้ชัดเจน แปลไทยครบทุกตัวอย่าง พร้อม `💡 ทริกลัดข้อสอบสไตล์พี่ปิ๊ก`
+   - ปรับ CSS `.concept-card-text` และ `.note-text` ให้รองรับ `white-space: pre-line`
+4. **ซิงค์ข้อมูลขึ้น Production Firestore ครบ 100%:**
+   - รันสคริปต์ `sync-audited-exercises-to-firestore.mjs` อัปเดตแบบฝึกหัด 143 ข้อขึ้น Firestore เรียบร้อยสมบูรณ์
+   - ชุดทดสอบ Vitest ทั้งหมด 34 ไฟล์ 355/355 ผ่าน 100% และบิลด์โปรดักชัน Vite PWA ผ่านฉลุย
+
+---
+
+### 5. แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):
 1. **Dry Run & First Class Launch:**
    - เชิญนักเรียนกลุ่มแรกทดลองใช้งาน (Onboarding ➔ Adventure ➔ Animal Cafe)
    - ครูปิ๊กตรวจสอบข้อมูลใน Admin Macro Dashboard และปลดล็อกสิทธิ์ Full Tier ให้นักเรียน
 2. **ขยายคลังโจทย์และเนื้อหาบทเรียน:**
    - ทยอยเพิ่มข้อสอบในด่าน A1–B2 และคำศัพท์ใหม่ๆ ใน Animal Cafe ตามความก้าวหน้าของผู้เรียน
+
 

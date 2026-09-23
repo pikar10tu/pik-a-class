@@ -30,7 +30,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8c1fbe88e78d026a"
   },
   {
     "skill": "grammar",
@@ -62,7 +63,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "807c0a91fbbce667"
   },
   {
     "skill": "grammar",
@@ -94,7 +96,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "7baa079315adcf3d"
   },
   {
     "skill": "grammar",
@@ -128,12 +131,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "827ff47344156911"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Sarah looks tired because she has been ___ (run) in the park for an hour.",
     "answerKey": [
       "running"
@@ -148,12 +152,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "running",
+      "ran",
+      "run",
+      "to run"
+    ],
+    "contentHash": "5f24fc5fd51fe03d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "How long ___ you been learning to play the piano?",
     "answerKey": [
       "have"
@@ -168,12 +179,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "have",
+      "has",
+      "had",
+      "are"
+    ],
+    "contentHash": "d1db519f08a0e7a9"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "He has ___ living in this apartment since last December.",
     "answerKey": [
       "been"
@@ -188,12 +206,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "been",
+      "being",
+      "be",
+      "was"
+    ],
+    "contentHash": "fa8b20099410efd7"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "We have been waiting for the bus ___ forty minutes.",
     "answerKey": [
       "for"
@@ -208,12 +233,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "for",
+      "since",
+      "during",
+      "in"
+    ],
+    "contentHash": "7466698f12e51191"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "It has been snowing heavily ___ yesterday afternoon.",
     "answerKey": [
       "since"
@@ -228,12 +260,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "since",
+      "for",
+      "from",
+      "at"
+    ],
+    "contentHash": "28ebbb92399b7058"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "My eyes hurt because I have been ___ (read) on my tablet all evening.",
     "answerKey": [
       "reading"
@@ -248,7 +287,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "reading",
+      "read",
+      "reads",
+      "to read"
+    ],
+    "contentHash": "13ecb4a416242df6"
   },
   {
     "skill": "grammar",
@@ -274,7 +320,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "3e651820f9794e0a"
   },
   {
     "skill": "grammar",
@@ -300,7 +347,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "652c60cb11914731"
   },
   {
     "skill": "grammar",
@@ -326,7 +374,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "75391eb74348d111"
   },
   {
     "skill": "grammar",
@@ -352,7 +401,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "54882c74bf2a0b62"
   },
   {
     "skill": "grammar",
@@ -378,7 +428,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ea9eef9af7e538a8"
   },
   {
     "skill": "grammar",
@@ -414,7 +465,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "46d34f118b412817"
   },
   {
     "skill": "grammar",
@@ -431,7 +483,8 @@
       "friend",
       "called",
       "has",
-      "calling"
+      "calling",
+      "her"
     ],
     "answerKey": [
       "She had finished her homework before her friend called",
@@ -447,7 +500,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "a9f1a605dd48511f"
   },
   {
     "skill": "grammar",
@@ -464,7 +518,8 @@
       "visited",
       "Japan",
       "have",
-      "saw"
+      "saw",
+      "They"
     ],
     "answerKey": [
       "They had never seen snow before they visited Japan",
@@ -480,7 +535,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "0191f16eee504b24"
   },
   {
     "skill": "grammar",
@@ -498,7 +554,9 @@
       "bought",
       "popcorn",
       "have",
-      "buy"
+      "buy",
+      "the",
+      "the"
     ],
     "answerKey": [
       "By the time the movie started we had bought the popcorn",
@@ -514,16 +572,16 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "2366af9599d46cb3"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "After Tom ___ (eat) his breakfast, he went to work.",
     "answerKey": [
-      "had eaten",
-      "had had"
+      "had eaten"
     ],
     "tags": [
       "grammar:past-perfect"
@@ -535,12 +593,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "had eaten",
+      "eats",
+      "has eaten",
+      "was eating"
+    ],
+    "contentHash": "2090ce453eeb009f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The teacher was angry because Alex ___ not done his homework.",
     "answerKey": [
       "had"
@@ -555,12 +620,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "had",
+      "has",
+      "did",
+      "was"
+    ],
+    "contentHash": "3883ece9769a870b"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "By the time the police arrived, the thief had already ___ (escape).",
     "answerKey": [
       "escaped"
@@ -575,12 +647,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "escaped",
+      "escape",
+      "escapes",
+      "escaping"
+    ],
+    "contentHash": "28a6f2362eb6c5b4"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I couldn't enter the house because I had ___ (lose) my key.",
     "answerKey": [
       "lost"
@@ -595,12 +674,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "lost",
+      "lose",
+      "losing",
+      "been lost"
+    ],
+    "contentHash": "7d3dca5c1a48cbfa"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "She realized that she ___ forgotten her passport at home.",
     "answerKey": [
       "had"
@@ -615,12 +701,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "had",
+      "has",
+      "was",
+      "did"
+    ],
+    "contentHash": "d596b4df16b6dbc9"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Before she moved to London, she had ___ (live) in Manchester for ten years.",
     "answerKey": [
       "lived"
@@ -635,7 +728,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "lived",
+      "live",
+      "living",
+      "lives"
+    ],
+    "contentHash": "0363f6b90eb8ecf3"
   },
   {
     "skill": "grammar",
@@ -661,7 +761,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "95c8dd71f927969f"
   },
   {
     "skill": "grammar",
@@ -687,7 +788,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "6ad3c43fd61090c1"
   },
   {
     "skill": "grammar",
@@ -713,7 +815,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ca6ef39c311b97a2"
   },
   {
     "skill": "grammar",
@@ -739,7 +842,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "0ee709402cd44ac2"
   },
   {
     "skill": "grammar",
@@ -765,7 +869,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "82896a0af5ab4ad0"
   },
   {
     "skill": "grammar",
@@ -784,7 +889,8 @@
       "young",
       "am",
       "playing",
-      "use"
+      "use",
+      "I"
     ],
     "answerKey": [
       "I used to play the piano when I was young",
@@ -800,7 +906,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "dc5b168584d895ef"
   },
   {
     "skill": "grammar",
@@ -821,7 +928,8 @@
       "every",
       "day",
       "used",
-      "likes"
+      "likes",
+      "He"
     ],
     "answerKey": [
       "He didn't use to like coffee but now he drinks it every day"
@@ -836,7 +944,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "5f58df7e7b4a840c"
   },
   {
     "skill": "grammar",
@@ -868,7 +977,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8db1a27b371103b5"
   },
   {
     "skill": "grammar",
@@ -901,12 +1011,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "b5ec2b8f3f98b59d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "My grandfather ___ to walk five kilometers to school every day when he was a boy.",
     "answerKey": [
       "used"
@@ -921,12 +1032,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "used",
+      "use",
+      "uses",
+      "using"
+    ],
+    "contentHash": "4317490e3e565c24"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Did they ___ to have long hair when they were at university?",
     "answerKey": [
       "use"
@@ -941,12 +1059,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "use",
+      "used",
+      "using",
+      "uses"
+    ],
+    "contentHash": "d138283e85dbc094"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "We didn't ___ to eat spicy food, but now we love som tam.",
     "answerKey": [
       "use"
@@ -961,12 +1086,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "use",
+      "used",
+      "using",
+      "uses"
+    ],
+    "contentHash": "58683f943effc29e"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Living in London is noisy, but I am getting used to ___ (hear) the sirens.",
     "answerKey": [
       "hearing"
@@ -981,12 +1113,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "hearing",
+      "hear",
+      "heard",
+      "to hear"
+    ],
+    "contentHash": "8c3f33683ac21e72"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "He is a professional chef, so he is used to ___ (cook) for hundreds of guests.",
     "answerKey": [
       "cooking"
@@ -1001,12 +1140,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "cooking",
+      "cook",
+      "cooked",
+      "to cook"
+    ],
+    "contentHash": "33125230b8d7883a"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "There ___ to be a quiet park here before the mall was built.",
     "answerKey": [
       "used"
@@ -1021,7 +1167,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "used",
+      "use",
+      "was used",
+      "using"
+    ],
+    "contentHash": "98c6a2a2843a2520"
   },
   {
     "skill": "grammar",
@@ -1047,7 +1200,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "2361f8e30ea70f61"
   },
   {
     "skill": "grammar",
@@ -1073,7 +1227,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "c26f71f18a1179c3"
   },
   {
     "skill": "grammar",
@@ -1099,7 +1254,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "9b1824b5cfe5d00f"
   },
   {
     "skill": "grammar",
@@ -1125,7 +1281,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "bfa51e162955b760"
   },
   {
     "skill": "grammar",
@@ -1151,7 +1308,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d74450ab30f72829"
   },
   {
     "skill": "grammar",
@@ -1184,7 +1342,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "7b5dd93d6908184f"
   },
   {
     "skill": "grammar",
@@ -1216,7 +1375,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "baa1ecb83b3cc62e"
   },
   {
     "skill": "grammar",
@@ -1248,7 +1408,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "e9590753052b0135"
   },
   {
     "skill": "grammar",
@@ -1282,12 +1443,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ed88ac73a8cf8e7d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "English is ___ (speak) in many countries around the world.",
     "answerKey": [
       "spoken"
@@ -1302,12 +1464,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "spoken",
+      "speak",
+      "spoke",
+      "speaking"
+    ],
+    "contentHash": "1762146e97e95570"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The telephone was ___ (invent) by Alexander Graham Bell.",
     "answerKey": [
       "invented"
@@ -1322,12 +1491,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "invented",
+      "invent",
+      "invents",
+      "inventing"
+    ],
+    "contentHash": "39b53a541b705336"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "All smartphones must ___ turned off during the exam.",
     "answerKey": [
       "be"
@@ -1342,12 +1518,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "be",
+      "been",
+      "being",
+      "is"
+    ],
+    "contentHash": "feb139dc1a717686"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "These sports cars are ___ (make) in Germany.",
     "answerKey": [
       "made"
@@ -1362,12 +1545,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "made",
+      "make",
+      "makes",
+      "making"
+    ],
+    "contentHash": "1759ab7a8d58a0e8"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The stolen bicycles were ___ (find) by the police yesterday.",
     "answerKey": [
       "found"
@@ -1382,12 +1572,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "found",
+      "find",
+      "finds",
+      "finding"
+    ],
+    "contentHash": "428889ee0ecf44dc"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "A brand-new shopping mall will be ___ (open) next month.",
     "answerKey": [
       "opened"
@@ -1402,7 +1599,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "opened",
+      "open",
+      "opening",
+      "opens"
+    ],
+    "contentHash": "a24ec7d290650ab0"
   },
   {
     "skill": "grammar",
@@ -1428,7 +1632,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "1c7fe0e1f645549f"
   },
   {
     "skill": "grammar",
@@ -1454,7 +1659,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "292c6d129668f178"
   },
   {
     "skill": "grammar",
@@ -1480,7 +1686,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8886ec39d6e8d49b"
   },
   {
     "skill": "grammar",
@@ -1506,7 +1713,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "c1de78ab26616425"
   },
   {
     "skill": "grammar",
@@ -1532,7 +1740,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d69978c7252f0751"
   },
   {
     "skill": "grammar",
@@ -1550,7 +1759,9 @@
       "around",
       "world",
       "win",
-      "will"
+      "will",
+      "I",
+      "the"
     ],
     "answerKey": [
       "If I won the lottery I would travel around the world",
@@ -1566,7 +1777,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d437654e37100d78"
   },
   {
     "skill": "grammar",
@@ -1585,7 +1797,8 @@
       "truth",
       "am",
       "will",
-      "told"
+      "told",
+      "I"
     ],
     "answerKey": [
       "If I were you I would tell him the truth",
@@ -1601,7 +1814,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ff1074478ff35419"
   },
   {
     "skill": "grammar",
@@ -1618,7 +1832,8 @@
       "superpowers",
       "will",
       "have",
-      "did"
+      "did",
+      "you"
     ],
     "answerKey": [
       "What would you do if you had superpowers",
@@ -1634,7 +1849,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "69e6d517501c1765"
   },
   {
     "skill": "grammar",
@@ -1652,7 +1868,8 @@
       "enough",
       "money",
       "will",
-      "has"
+      "has",
+      "She"
     ],
     "answerKey": [
       "She would buy that car if she had enough money",
@@ -1668,16 +1885,16 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d7cc091aa36deba8"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "If I had more free time, I ___ learn how to play the guitar.",
     "answerKey": [
-      "would",
-      "could"
+      "would"
     ],
     "tags": [
       "grammar:conditional-2"
@@ -1689,12 +1906,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "would",
+      "will",
+      "did",
+      "have"
+    ],
+    "contentHash": "5b77440ae027da00"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "If she ___ (know) the answer, she would tell us immediately.",
     "answerKey": [
       "knew"
@@ -1709,16 +1933,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "knew",
+      "knows",
+      "know",
+      "has known"
+    ],
+    "contentHash": "59a5d992952ce108"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "If I ___ (be) you, I would take that great job offer.",
     "answerKey": [
-      "were",
-      "was"
+      "were"
     ],
     "tags": [
       "grammar:conditional-2"
@@ -1730,16 +1960,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "were",
+      "am",
+      "will be",
+      "have been"
+    ],
+    "contentHash": "68664ffec584a158"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "They would travel more often if plane tickets ___ (be) cheaper.",
     "answerKey": [
-      "were",
-      "was"
+      "were"
     ],
     "tags": [
       "grammar:conditional-2"
@@ -1751,12 +1987,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "were",
+      "are",
+      "will be",
+      "have been"
+    ],
+    "contentHash": "dbf0ae3768a1d24d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "What ___ you do if you found a lost dog in the street?",
     "answerKey": [
       "would"
@@ -1771,12 +2014,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "would",
+      "will",
+      "did",
+      "do"
+    ],
+    "contentHash": "d9d02cbbf281df21"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I live in a small room. I wish I ___ (have) a bigger room.",
     "answerKey": [
       "had"
@@ -1791,7 +2041,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "had",
+      "have",
+      "has",
+      "am having"
+    ],
+    "contentHash": "9c4c759e934d957c"
   },
   {
     "skill": "grammar",
@@ -1817,7 +2074,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8d22855ba30a9ac5"
   },
   {
     "skill": "grammar",
@@ -1843,7 +2101,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "a47a52dc097562f6"
   },
   {
     "skill": "grammar",
@@ -1869,7 +2128,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "11f2b3d0cca09b2a"
   },
   {
     "skill": "grammar",
@@ -1895,7 +2155,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "e72cce1bd72f0e39"
   },
   {
     "skill": "grammar",
@@ -1921,7 +2182,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "9abf4cde3c003c84"
   },
   {
     "skill": "grammar",
@@ -1956,7 +2218,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d741ac8c468d4e3e"
   },
   {
     "skill": "grammar",
@@ -1973,7 +2236,8 @@
       "be",
       "hungry",
       "must",
-      "isn't"
+      "isn't",
+      "She"
     ],
     "answerKey": [
       "She just ate lunch so she can't be hungry"
@@ -1988,7 +2252,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "aed4a9bddc225a3f"
   },
   {
     "skill": "grammar",
@@ -2020,7 +2285,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "a31c00a62d0af668"
   },
   {
     "skill": "grammar",
@@ -2051,12 +2317,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "56d58ac2e0c0f3a4"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "He has won three international math awards. He ___ be a genius.",
     "answerKey": [
       "must"
@@ -2071,12 +2338,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "must",
+      "can't",
+      "should",
+      "will"
+    ],
+    "contentHash": "af2b7365e1441e0f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "You have been running for two straight hours! You ___ be exhausted.",
     "answerKey": [
       "must"
@@ -2091,16 +2365,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "must",
+      "can't",
+      "might not",
+      "won't"
+    ],
+    "contentHash": "b91db0c01a7b2c26"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "That woman speaks only Japanese; she ___ be from Spain.",
     "answerKey": [
-      "can't",
-      "cannot"
+      "can't"
     ],
     "tags": [
       "grammar:modals-deduction"
@@ -2112,17 +2392,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "can't",
+      "must",
+      "should",
+      "might"
+    ],
+    "contentHash": "2dc6ae46e66664d0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I am not sure where Peter is right now. He ___ be in the library studying.",
     "answerKey": [
-      "might",
-      "could",
-      "may"
+      "might"
     ],
     "tags": [
       "grammar:modals-deduction"
@@ -2134,16 +2419,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "might",
+      "must",
+      "can't",
+      "will"
+    ],
+    "contentHash": "ac1635fa39c37fc0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "It ___ be true! It's completely impossible!",
     "answerKey": [
-      "can't",
-      "cannot"
+      "can't"
     ],
     "tags": [
       "grammar:modals-deduction"
@@ -2155,12 +2446,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "can't",
+      "must",
+      "might",
+      "should"
+    ],
+    "contentHash": "13f7d9e4978ccb8a"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Don't call him now. He might ___ sleeping after his night shift.",
     "answerKey": [
       "be"
@@ -2175,7 +2473,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "be",
+      "been",
+      "being",
+      "is"
+    ],
+    "contentHash": "bee1922499c547a6"
   },
   {
     "skill": "grammar",
@@ -2201,7 +2506,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "f45157088152c7ea"
   },
   {
     "skill": "grammar",
@@ -2227,7 +2533,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "a4a47e44db314b6a"
   },
   {
     "skill": "grammar",
@@ -2253,7 +2560,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "25bb5ee6356298d0"
   },
   {
     "skill": "grammar",
@@ -2279,7 +2587,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "fbfaa4991aadb3a7"
   },
   {
     "skill": "grammar",
@@ -2305,7 +2614,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "e92b74936984999d"
   },
   {
     "skill": "grammar",
@@ -2339,7 +2649,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "18f61ba05613ffd2"
   },
   {
     "skill": "grammar",
@@ -2372,7 +2683,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "4415d858cd03bc2e"
   },
   {
     "skill": "grammar",
@@ -2390,7 +2702,8 @@
       "doctor",
       "who",
       "which",
-      "her"
+      "her",
+      "a"
     ],
     "answerKey": [
       "I know a woman whose son is a doctor"
@@ -2405,7 +2718,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "f7e84092ec34f168"
   },
   {
     "skill": "grammar",
@@ -2438,16 +2752,16 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "60dc01f606050a18"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The woman ___ lives next door is an architect.",
     "answerKey": [
-      "who",
-      "that"
+      "who"
     ],
     "tags": [
       "grammar:relative-clauses-defining"
@@ -2459,16 +2773,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "who",
+      "which",
+      "whose",
+      "where"
+    ],
+    "contentHash": "7e99ba5b7436c8f9"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I lost the watch ___ my father gave me for my birthday.",
     "answerKey": [
-      "which",
-      "that"
+      "which"
     ],
     "tags": [
       "grammar:relative-clauses-defining"
@@ -2480,16 +2800,22 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "which",
+      "who",
+      "whose",
+      "where"
+    ],
+    "contentHash": "e9e35a10b41db12e"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Do you know anyone ___ speaks fluent German?",
     "answerKey": [
-      "who",
-      "that"
+      "who"
     ],
     "tags": [
       "grammar:relative-clauses-defining"
@@ -2501,12 +2827,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "who",
+      "which",
+      "where",
+      "whose"
+    ],
+    "contentHash": "52ebde666de75338"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "A bakery is a shop ___ you can buy fresh bread and pastries.",
     "answerKey": [
       "where"
@@ -2521,12 +2854,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "where",
+      "which",
+      "who",
+      "whose"
+    ],
+    "contentHash": "74d6a91bf327942d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The boy ___ dog ran away was crying in the park.",
     "answerKey": [
       "whose"
@@ -2541,12 +2881,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "whose",
+      "who",
+      "which",
+      "where"
+    ],
+    "contentHash": "2bcdcca145a1ca9f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The hotel ___ we stayed during our holiday had a lovely swimming pool.",
     "answerKey": [
       "where"
@@ -2561,7 +2908,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "where",
+      "which",
+      "who",
+      "whose"
+    ],
+    "contentHash": "885a1a08de87e7aa"
   },
   {
     "skill": "grammar",
@@ -2587,7 +2941,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ada904a2cd8d94d8"
   },
   {
     "skill": "grammar",
@@ -2613,7 +2968,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "abe1e75aece95a5c"
   },
   {
     "skill": "grammar",
@@ -2639,7 +2995,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "491b107d82979ad3"
   },
   {
     "skill": "grammar",
@@ -2665,7 +3022,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ed86fcfc0e0481b6"
   },
   {
     "skill": "grammar",
@@ -2691,7 +3049,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "35671a8f700dbb51"
   },
   {
     "skill": "grammar",
@@ -2724,7 +3083,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "3ab4da701b0098fa"
   },
   {
     "skill": "grammar",
@@ -2758,7 +3118,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "ffc147ee0e653604"
   },
   {
     "skill": "grammar",
@@ -2791,7 +3152,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "2bab34cfe4530345"
   },
   {
     "skill": "grammar",
@@ -2822,12 +3184,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "b388a3ebc0d02c61"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Direct: \"I want some water.\" -> Reported: He said that he ___ (want) some water.",
     "answerKey": [
       "wanted"
@@ -2842,12 +3205,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "wanted",
+      "wants",
+      "want",
+      "wanting"
+    ],
+    "contentHash": "1076dd8ff397807d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Direct: \"I can swim across the river.\" -> Reported: She said that she ___ swim across the river.",
     "answerKey": [
       "could"
@@ -2862,12 +3232,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "could",
+      "can",
+      "may",
+      "will"
+    ],
+    "contentHash": "7eb28501b8adf35b"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Direct: \"We will arrive soon.\" -> Reported: They told us that they ___ arrive soon.",
     "answerKey": [
       "would"
@@ -2882,12 +3259,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "would",
+      "will",
+      "can",
+      "shall"
+    ],
+    "contentHash": "2d93dfd9e014095f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Do you know what time the supermarket ___ (close) on Sundays?",
     "answerKey": [
       "closes"
@@ -2902,12 +3286,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "closes",
+      "close",
+      "closed",
+      "closing"
+    ],
+    "contentHash": "6abb917a8af8f550"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Could you tell me how much this backpack ___ (cost)?",
     "answerKey": [
       "costs"
@@ -2922,12 +3313,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "costs",
+      "cost",
+      "costed",
+      "costing"
+    ],
+    "contentHash": "51c6f39b435d250d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "He ___ (said / told) me that he had already finished his assignment.",
     "answerKey": [
       "told"
@@ -2942,7 +3340,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "told",
+      "said",
+      "spoke",
+      "talked"
+    ],
+    "contentHash": "b23da396b610b4e4"
   },
   {
     "skill": "grammar",
@@ -2968,7 +3373,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "c8242b7f2bd98001"
   },
   {
     "skill": "grammar",
@@ -2994,7 +3400,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "55ad0a5daf7c31cb"
   },
   {
     "skill": "grammar",
@@ -3020,7 +3427,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "a479d06bf585261d"
   },
   {
     "skill": "grammar",
@@ -3046,7 +3454,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d3c2bad1b8b84b67"
   },
   {
     "skill": "grammar",
@@ -3072,7 +3481,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "9056fce4d28de216"
   },
   {
     "skill": "grammar",
@@ -3105,7 +3515,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "09e991b33e889021"
   },
   {
     "skill": "grammar",
@@ -3139,7 +3550,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "233f85e541cdfd8b"
   },
   {
     "skill": "grammar",
@@ -3173,7 +3585,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8e4f6e01b3fb1ff3"
   },
   {
     "skill": "grammar",
@@ -3205,12 +3618,13 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "b3196cbed0cc8620"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Don't forget ___ (turn) off the air conditioner before leaving the classroom.",
     "answerKey": [
       "to turn"
@@ -3225,12 +3639,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "to turn",
+      "turning",
+      "turned",
+      "turn"
+    ],
+    "contentHash": "f74cc3e2fff8c0d0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I will never forget ___ (see) the Grand Canyon for the very first time.",
     "answerKey": [
       "seeing"
@@ -3245,12 +3666,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "seeing",
+      "to see",
+      "seen",
+      "saw"
+    ],
+    "contentHash": "044ee552d3d03088"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "While driving home, Dad stopped ___ (buy) some fresh bread at the bakery.",
     "answerKey": [
       "to buy"
@@ -3265,12 +3693,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "to buy",
+      "buying",
+      "bought",
+      "buy"
+    ],
+    "contentHash": "641c477d713cd533"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "Please stop ___ (make) so much noise; the baby is sleeping.",
     "answerKey": [
       "making"
@@ -3285,12 +3720,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "making",
+      "to make",
+      "made",
+      "make"
+    ],
+    "contentHash": "8ec4904234366300"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "I tried ___ (open) the tight lid with a spoon, but it was still stuck.",
     "answerKey": [
       "to open"
@@ -3305,12 +3747,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "to open",
+      "opening",
+      "opened",
+      "open"
+    ],
+    "contentHash": "88fb0646ba66c7f0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "If you have trouble falling asleep, try ___ (drink) a warm cup of milk.",
     "answerKey": [
       "drinking"
@@ -3325,7 +3774,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "drinking",
+      "to drink",
+      "drank",
+      "drunk"
+    ],
+    "contentHash": "aff76312b3cf4fc8"
   },
   {
     "skill": "grammar",
@@ -3351,7 +3807,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "6e82ec44c121155e"
   },
   {
     "skill": "grammar",
@@ -3377,7 +3834,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "93e262038cc62dbd"
   },
   {
     "skill": "grammar",
@@ -3403,7 +3861,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "982f0078f6986cae"
   },
   {
     "skill": "grammar",
@@ -3429,7 +3888,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "16cf673fd43d4d25"
   },
   {
     "skill": "grammar",
@@ -3455,7 +3915,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "75074263d75394e9"
   },
   {
     "skill": "grammar",
@@ -3490,7 +3951,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "b51c2e5a3fba455c"
   },
   {
     "skill": "grammar",
@@ -3523,7 +3985,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "9beee7ff9a0031ed"
   },
   {
     "skill": "grammar",
@@ -3544,7 +4007,8 @@
       "for",
       "work",
       "in",
-      "order"
+      "order",
+      "I"
     ],
     "answerKey": [
       "I woke up early so that I would not be late for work"
@@ -3559,7 +4023,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "fc829c66c90ea734"
   },
   {
     "skill": "grammar",
@@ -3591,17 +4056,16 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "b37dd80e286fc8b4"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "___ it was freezing cold outside, she refused to wear a jacket.",
     "answerKey": [
-      "Although",
-      "Even though",
-      "Though"
+      "Although"
     ],
     "tags": [
       "grammar:discourse-connectors"
@@ -3613,12 +4077,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "Although",
+      "Despite",
+      "In spite of",
+      "Because"
+    ],
+    "contentHash": "c5c8cb090e0174e3"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "In ___ of the heavy traffic, we arrived at the airport on time.",
     "answerKey": [
       "spite"
@@ -3633,12 +4104,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "spite",
+      "because",
+      "order",
+      "case"
+    ],
+    "contentHash": "27322d7cb2bfebda"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "He exercised every single day in ___ to stay healthy and fit.",
     "answerKey": [
       "order"
@@ -3653,12 +4131,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "order",
+      "case",
+      "spite",
+      "view"
+    ],
+    "contentHash": "4da43c88e9e0ec0a"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "She studied diligently; as a ___, she received top marks in all her exams.",
     "answerKey": [
       "result"
@@ -3673,12 +4158,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "result",
+      "reason",
+      "cause",
+      "purpose"
+    ],
+    "contentHash": "944fe0d5ee8be7b3"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "The outdoor concert was cancelled ___ of the severe thunderstorm.",
     "answerKey": [
       "because"
@@ -3693,12 +4185,19 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "because",
+      "due",
+      "in spite",
+      "instead"
+    ],
+    "contentHash": "36cecec4e0b08ba2"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "fill_blank",
+    "type": "mcq",
     "prompt": "She saved money for two whole years ___ that she could buy a new laptop.",
     "answerKey": [
       "so"
@@ -3713,7 +4212,14 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "choices": [
+      "so",
+      "in order",
+      "because",
+      "as"
+    ],
+    "contentHash": "05091951b86edcbb"
   },
   {
     "skill": "grammar",
@@ -3739,7 +4245,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "77b4b2e167c175af"
   },
   {
     "skill": "grammar",
@@ -3765,7 +4272,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "8f735c3c8df6d6b6"
   },
   {
     "skill": "grammar",
@@ -3791,7 +4299,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "5106458688d24df0"
   },
   {
     "skill": "grammar",
@@ -3817,7 +4326,8 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "d170464d3d2e5683"
   },
   {
     "skill": "grammar",
@@ -3843,6 +4353,7 @@
     "source": "Pik a Class Curriculum B1 Intermediate",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
-    "createdBy": "prawich.aum@dome.tu.ac.th"
+    "createdBy": "prawich.aum@dome.tu.ac.th",
+    "contentHash": "de9ee85453b6e8ba"
   }
 ]
