@@ -15,7 +15,7 @@ export async function fetchStudentReportData(db, uid) {
     getDoc(doc(db, 'users', uid)),
     getDocs(query(collection(db, 'stageClears'), where('uid', '==', uid))),
     getDocs(query(collection(db, 'submissions'), where('uid', '==', uid))),
-    fetchStages(db, { publishedOnly: true }),
+    fetchStages(db, { publishedOnly: true, tier: 'full' }),
   ]);
 
   if (!userSnap.exists()) {
