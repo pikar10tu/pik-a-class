@@ -1,3 +1,41 @@
+/* ==========================================================================
+   Cross-Document View Transitions (Smooth Native-App Page Transitions)
+   ========================================================================== */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: 0.16s cubic-bezier(0.4, 0, 1, 1) both page-fade-out;
+}
+
+::view-transition-new(root) {
+  animation: 0.2s cubic-bezier(0, 0, 0.2, 1) both page-fade-in;
+}
+
+@keyframes page-fade-out {
+  from { opacity: 1; transform: scale(1); }
+  to { opacity: 0; transform: scale(0.992); }
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; transform: scale(1.008); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Stable header element across navigation */
+.app-header {
+  view-transition-name: app-header;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -43,9 +81,10 @@ main {
   align-items: center;
   justify-content: center;
   gap: var(--space-2);
-  transition: transform 0.1s ease, filter 0.15s ease;
+  transition: transform 0.08s ease, filter 0.15s ease;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  will-change: transform;
 }
 
 .btn-primary:hover {
@@ -54,10 +93,9 @@ main {
 
 .btn-primary:active {
   transform: translateY(2px);
-  border-bottom-width: 1px;
 }
 
-/* Chunky 3D Button (Signature Game Button) */
+/* Chunky 3D Button (Signature Game Button - GPU Optimized) */
 .btn-chunky {
   display: inline-flex;
   align-items: center;
@@ -75,8 +113,9 @@ main {
   text-decoration: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.1s ease, filter 0.15s ease, border-bottom-width 0.1s ease;
+  transition: transform 0.08s cubic-bezier(0.2, 0, 0, 1), filter 0.15s ease;
   user-select: none;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -87,7 +126,6 @@ main {
 
 .btn-chunky:active {
   transform: translateY(3px);
-  border-bottom-width: 2px;
 }
 
 .btn-chunky:disabled {
@@ -97,9 +135,10 @@ main {
   cursor: not-allowed;
   transform: none;
   filter: none;
+  will-change: auto;
 }
 
-/* Ghost Button (Secondary alternative) */
+/* Ghost Button (Secondary alternative - GPU Optimized) */
 .btn-ghost {
   display: inline-flex;
   align-items: center;
@@ -117,8 +156,9 @@ main {
   text-decoration: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease;
   user-select: none;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -130,10 +170,9 @@ main {
 
 .btn-ghost:active {
   transform: translateY(2px);
-  border-bottom-width: 2px;
 }
 
-/* High-Visibility Navigation Back Button */
+/* High-Visibility Navigation Back Button (GPU Optimized) */
 .btn-nav-back {
   display: inline-flex;
   align-items: center;
@@ -154,10 +193,11 @@ main {
   box-shadow: 0 2px 6px rgba(15, 23, 42, 0.06);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
-  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+  transition: transform 0.08s ease, background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   user-select: none;
   line-height: 1;
   white-space: nowrap;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -172,7 +212,6 @@ main {
 
 .btn-nav-back:active {
   transform: translateY(2px);
-  border-bottom-width: 2px;
 }
 
 /* Close Circle Button (Dialogs & Sheets) */
@@ -516,6 +555,7 @@ main {
   gap: var(--space-3);
   box-shadow: var(--shadow-sm);
   transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  will-change: transform;
 }
 
 .dashboard-card:hover {
@@ -930,6 +970,8 @@ textarea {
   border-radius: var(--radius);
   padding: var(--space-3);
   background: var(--color-surface, #ffffff);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 90px;
 }
 
 .content-item form {
@@ -1364,6 +1406,7 @@ textarea {
   box-shadow: 0 4px 10px rgba(34, 197, 94, 0.15);
   margin-bottom: 6px;
   animation: speechBounce 2.5s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes speechBounce {
@@ -1390,6 +1433,7 @@ textarea {
   position: relative;
   z-index: 1;
   animation: mascotFloat 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 @keyframes mascotFloat {

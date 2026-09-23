@@ -298,6 +298,12 @@
   box-shadow: var(--shadow-sm);
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
   scroll-margin-top: 75px;
+  content-visibility: auto;
+  contain-intrinsic-size: 0 95px;
+}
+
+.topic-card.is-open {
+  contain-intrinsic-size: 0 350px;
 }
 
 .topic-card:hover {
