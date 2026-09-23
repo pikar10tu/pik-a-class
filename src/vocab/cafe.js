@@ -262,6 +262,13 @@ async function finishGame() {
   sumAccuracy.textContent = `${summary.accuracy}%`;
   sumCombo.textContent = `${summary.maxStreak}x`;
 
+  try {
+    const prevMax = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
+    if ((summary.maxStreak || 0) > prevMax) {
+      localStorage.setItem('pik_cafe_max_combo', String(summary.maxStreak || 0));
+    }
+  } catch {}
+
   // Render missed words review
   if (summary.missedWords.length > 0) {
     missedWordsBox.hidden = false;

@@ -34,6 +34,11 @@
         <span class="hero-badge">ยินดีต้อนรับ 👋</span>
         <h1 id="welcome-message" class="dashboard-title">สวัสดีครับ!</h1>
         <p class="dashboard-subtitle">พร้อมฝึกภาษาอังกฤษให้เก่งขึ้นไปอีกขั้นแล้วหรือยัง?</p>
+        <div id="hero-stats" class="hero-stats-row" hidden>
+          <span class="hero-stat-pill">⭐ <strong id="stat-stars">0</strong> ดาว</span>
+          <span class="hero-stat-pill">⛳ <strong id="stat-stages">0</strong> ด่านที่ผ่าน</span>
+          <span class="hero-stat-pill">🔁 <strong id="stat-questions">0</strong> ข้อที่ฝึก</span>
+        </div>
       </div>
     </section>
 
@@ -78,7 +83,49 @@
         </div>
       </div>
     </section>
+
+    <!-- ตู้โชว์เหรียญตราความสำเร็จ (Trophy Room) -->
+    <section class="trophy-section">
+      <div class="trophy-header">
+        <div class="trophy-header-title">
+          <span class="trophy-badge-icon">🏆</span>
+          <div>
+            <h2 class="trophy-title">ตู้โชว์เหรียญรางวัล (Trophy Room)</h2>
+            <p class="trophy-subtitle">สะสมเหรียญตราความสำเร็จจากการฝึกฝนและพิชิตบอสใหญ่ประจำเกาะ</p>
+          </div>
+        </div>
+        <div class="trophy-counter">
+          ปลดล็อกแล้ว <strong id="unlocked-count" style="color: #d97706;">0</strong> / 12 เหรียญ
+        </div>
+      </div>
+      <div class="trophy-grid" id="trophy-grid">
+        <p class="hint" style="grid-column: 1 / -1; text-align: center; padding: 20px 0;">กำลังโหลดเหรียญรางวัล…</p>
+      </div>
+    </section>
   </main>
+
+  <!-- Modal สำหรับดูรายละเอียดเหรียญรางวัล -->
+  <dialog id="badge-dialog" class="modal-dialog">
+    <div class="badge-dialog-card">
+      <div class="badge-dialog-header">
+        <span id="badge-dialog-rarity" class="badge-dialog-rarity">COMMON</span>
+        <button id="badge-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิด">✕</button>
+      </div>
+      <div id="badge-dialog-icon" class="badge-dialog-icon">⭐</div>
+      <h2 id="badge-dialog-title" class="badge-dialog-title">ชื่อเหรียญ</h2>
+      <p id="badge-dialog-desc" class="badge-dialog-desc">คำอธิบาย</p>
+      <div class="badge-dialog-progress-wrap">
+        <div class="badge-dialog-progress-labels">
+          <span id="badge-dialog-status-text">ความคืบหน้า</span>
+          <span id="badge-dialog-progress-val">0/15</span>
+        </div>
+        <div class="island-progress-track">
+          <div id="badge-dialog-progress-bar" class="island-progress-bar" style="width: 0%; background: #f59e0b;"></div>
+        </div>
+      </div>
+      <button id="badge-dialog-close" type="button" class="btn-primary" style="margin-top: var(--space-3); width: 100%;">เข้าใจแล้ว ✨</button>
+    </div>
+  </dialog>
   <script type="module" src="./dashboard.js"></script>
 </body>
 </html>

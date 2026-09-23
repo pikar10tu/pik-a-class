@@ -1,6 +1,33 @@
 import { playButtonSound, playMascotSound } from './answer-audio.js';
 import { loadMuted } from './sound-prefs.js';
 
+export function triggerMascotReaction(mascot) {
+  if (!mascot) return;
+  playMascotSound();
+
+  mascot.classList.remove('mascot-react');
+  if (mascot._reactTimer) {
+    clearTimeout(mascot._reactTimer);
+    mascot._reactTimer = null;
+  }
+
+  // Force reflow
+  void mascot.offsetWidth;
+  mascot.classList.add('mascot-react');
+
+  const onEnd = () => {
+    mascot.classList.remove('mascot-react');
+    mascot.removeEventListener('animationend', onEnd);
+    if (mascot._reactTimer) {
+      clearTimeout(mascot._reactTimer);
+      mascot._reactTimer = null;
+    }
+  };
+
+  mascot.addEventListener('animationend', onEnd, { once: true });
+  mascot._reactTimer = setTimeout(onEnd, 600);
+}
+
 export function attachUiSounds() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
 
@@ -10,10 +37,7 @@ export function attachUiSounds() {
 
       const mascot = event.target.closest('.learn-mascot, .dashboard-mascot, .login-mascot');
       if (mascot) {
-        playMascotSound();
-        mascot.classList.remove('mascot-react');
-        void mascot.offsetWidth;
-        mascot.classList.add('mascot-react');
+        triggerMascotReaction(mascot);
         return;
       }
 

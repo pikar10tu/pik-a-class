@@ -42,6 +42,9 @@ const backLink = document.getElementById('back-link');
 if (backLink) backLink.href = `${base}dashboard.html`;
 
 attachUiSounds();
+try {
+  localStorage.setItem('pik_handbook_visited', 'true');
+} catch {}
 
 const searchInput = document.getElementById('handbook-search');
 const topicsContainer = document.getElementById('topics-container');

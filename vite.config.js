@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'favicon.png', 'apple-touch-icon.png', 'mascot/*.png'],
+      includeAssets: ['favicon.ico', 'favicon.png', 'apple-touch-icon.png', 'mascot/*.png', 'islands/*.jpg'],
       manifest: {
         name: 'Pik a Class — ห้องเรียนภาษาอังกฤษตะลุยด่าน',
         short_name: 'Pik a Class',

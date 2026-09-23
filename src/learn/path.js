@@ -295,7 +295,28 @@ if (!isValidQuery) {
     showEmpty('ลิงก์นี้ใช้ไม่ได้ ลองเลือกบทเรียนใหม่อีกครั้งนะครับ');
   });
 } else {
-  document.getElementById('path-title').textContent = SKILL_LABELS[skill];
+  const ISLAND_NAMES = {
+    A1: 'เกาะทุ่งหญ้าเริ่มต้น',
+    A2: 'เกาะชายหาดนักสำรวจ',
+    B1: 'นครเวทมนตร์ลอยฟ้า',
+    B2: 'ปราสาทสวรรค์ผู้กล้า',
+  };
+  const ISLAND_IMAGES = {
+    A1: 'islands/island-a1.jpg',
+    A2: 'islands/island-a2.jpg',
+    B1: 'islands/island-b1.jpg',
+    B2: 'islands/island-b2.jpg',
+  };
+
+  const islandTitle = ISLAND_NAMES[level] ? `${SKILL_LABELS[skill]} · ${ISLAND_NAMES[level]}` : `${SKILL_LABELS[skill]} · ระดับ ${level}`;
+  document.getElementById('path-title').textContent = islandTitle;
+
+  const bannerWrap = document.getElementById('path-banner-wrap');
+  const bannerImg = document.getElementById('path-banner-img');
+  if (bannerWrap && bannerImg && ISLAND_IMAGES[level]) {
+    bannerImg.src = `${base}${ISLAND_IMAGES[level]}`;
+    bannerWrap.hidden = false;
+  }
 
   requireLogin(async (firebaseUser, userDoc) => {
     if (!isLevelAllowed(userDoc, level)) {
