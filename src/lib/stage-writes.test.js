@@ -79,7 +79,7 @@ describe('buildStageWrites', () => {
     expect(write.data.createdAt).toBe('2026-09-01T00:00:00.000Z');
   });
 
-  it('writes a stage clear that records the score even when the stage was not passed', () => {
+  it('writes a stage clear with attemptCount and stats even when the stage was not passed', () => {
     const { stageClear } = build();
     expect(stageClear.id).toBe('student1__st1');
     expect(stageClear.data).toEqual({
@@ -89,19 +89,51 @@ describe('buildStageWrites', () => {
       level: 'A2',
       order: 1,
       score: 0.5,
+      lastScore: 0.5,
+      bestStars: 1,
+      attemptCount: 1,
+      clearCount: 0,
+      totalQuestionsAnswered: 2,
+      lastPlayedAt: now,
       clearedAt: now,
     });
   });
 
-  it('skips the stage clear when the stored score is already better', () => {
-    expect(build({ existingClear: { score: 1 } }).stageClear).toBeNull();
+  it('preserves best score and increments attemptCount when stored score is already better', () => {
+    const existing = {
+      score: 1,
+      attemptCount: 3,
+      clearCount: 2,
+      totalQuestionsAnswered: 6,
+      clearedAt: '2026-09-01T00:00:00.000Z',
+    };
+    const { stageClear } = build({ existingClear: existing });
+    expect(stageClear.data.score).toBe(1);
+    expect(stageClear.data.lastScore).toBe(0.5);
+    expect(stageClear.data.bestStars).toBe(3);
+    expect(stageClear.data.attemptCount).toBe(4);
+    expect(stageClear.data.clearCount).toBe(2);
+    expect(stageClear.data.totalQuestionsAnswered).toBe(8);
+    expect(stageClear.data.clearedAt).toBe('2026-09-01T00:00:00.000Z');
   });
 
-  it('replaces the stage clear when this run was better', () => {
-    expect(build({ existingClear: { score: 0.25 } }).stageClear.data.score).toBe(0.5);
-  });
-
-  it('does not churn the stage clear when the score is exactly the same', () => {
-    expect(build({ existingClear: { score: 0.5 } }).stageClear).toBeNull();
+  it('updates best score and increments clearCount when new run passes and is better', () => {
+    const passedResults = [
+      { exerciseId: 'e1', answer: 'went', correct: true },
+      { exerciseId: 'e2', answer: 'went', correct: true },
+    ];
+    const existing = {
+      score: 0.5,
+      attemptCount: 1,
+      clearCount: 0,
+      totalQuestionsAnswered: 2,
+    };
+    const { stageClear } = build({ results: passedResults, existingClear: existing });
+    expect(stageClear.data.score).toBe(1);
+    expect(stageClear.data.lastScore).toBe(1);
+    expect(stageClear.data.bestStars).toBe(3);
+    expect(stageClear.data.attemptCount).toBe(2);
+    expect(stageClear.data.clearCount).toBe(1);
+    expect(stageClear.data.totalQuestionsAnswered).toBe(4);
   });
 });

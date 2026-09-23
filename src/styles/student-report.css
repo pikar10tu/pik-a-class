@@ -1,0 +1,585 @@
+/* Student Progress Report Stylesheet */
+
+.report-page-wrapper {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-3) var(--space-6);
+  color: var(--color-text);
+}
+
+/* Toolbar */
+.report-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  background: white;
+  border-radius: var(--radius-lg, 16px);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.report-toolbar-left,
+.report-toolbar-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.report-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: white;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.report-btn:hover {
+  background: var(--color-surface, #f8fafc);
+  border-color: #cbd5e1;
+}
+
+.report-btn-primary {
+  background: var(--color-primary, #37c871);
+  color: white;
+  border-color: transparent;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(55, 200, 113, 0.25);
+}
+
+.report-btn-primary:hover {
+  background: var(--color-primary-hover, #2eb362);
+  color: white;
+}
+
+.report-btn-line {
+  background: #06c755;
+  color: white;
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.report-btn-line:hover {
+  background: #05b04b;
+  color: white;
+}
+
+/* The Printable / Screenshot Report Card */
+.report-card {
+  background: white;
+  border-radius: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  padding: var(--space-5) var(--space-6);
+  position: relative;
+}
+
+/* Report Header */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-4);
+  padding-bottom: var(--space-4);
+  border-bottom: 2px dashed #e2e8f0;
+  margin-bottom: var(--space-5);
+}
+
+.report-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.report-logo-badge {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #37c871 0%, #10b981 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(55, 200, 113, 0.3);
+}
+
+.report-brand-text h1 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin: 0;
+  color: #1e293b;
+  line-height: 1.2;
+}
+
+.report-brand-text p {
+  margin: 4px 0 0;
+  font-size: 0.875rem;
+  color: #64748b;
+}
+
+.report-student-meta {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+
+.student-callname-tag {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  background: #f1f5f9;
+  padding: 4px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.student-submeta {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+
+/* Hero KPI Grid */
+.report-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.kpi-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: var(--space-3) var(--space-4);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.kpi-card-questions::before { background: #3b82f6; }
+.kpi-card-repetition::before { background: #8b5cf6; }
+.kpi-card-stars::before { background: #f59e0b; }
+.kpi-card-accuracy::before { background: #10b981; }
+
+.kpi-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #0f172a;
+  margin-top: 4px;
+}
+
+.kpi-label {
+  font-size: 0.8125rem;
+  color: #64748b;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+.kpi-subtext {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* Sections */
+.report-section {
+  margin-bottom: var(--space-5);
+}
+
+.report-section-title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 var(--space-3);
+}
+
+/* Skills & Vocab Grid */
+.skills-vocab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.section-box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: var(--space-4);
+}
+
+.skill-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eef2f6;
+}
+
+.skill-row:last-child {
+  border-bottom: none;
+}
+
+.skill-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.skill-name {
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: #334155;
+}
+
+.skill-stats {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+.skill-pill {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.skill-pill.good {
+  background: #ecfdf5;
+  color: #047857;
+}
+
+/* Vocab Levels */
+.vocab-levels-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.vocab-level-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.vocab-level-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.vocab-bar-track {
+  width: 100%;
+  height: 8px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.vocab-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #37c871, #10b981);
+  transition: width 0.3s ease;
+}
+
+/* Insights: Strengths vs Weaknesses */
+.insights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+}
+
+.insight-card {
+  border-radius: 16px;
+  padding: var(--space-4);
+  border: 1px solid;
+}
+
+.insight-card-strength {
+  background: #f0fdf4;
+  border-color: #bbf7d0;
+}
+
+.insight-card-weakness {
+  background: #fffbeb;
+  border-color: #fde68a;
+}
+
+.insight-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  margin: 0 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.insight-card-strength .insight-title { color: #166534; }
+.insight-card-weakness .insight-title { color: #92400e; }
+
+.insight-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.insight-tag {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+
+.insight-card-strength .insight-tag {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+
+.insight-card-weakness .insight-tag {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fcd34d;
+}
+
+/* Stage Repetitions Table */
+.stages-filter-bar {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-3);
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: white;
+  color: #64748b;
+  cursor: pointer;
+}
+
+.filter-btn.active {
+  background: #0f172a;
+  color: white;
+  border-color: #0f172a;
+}
+
+.stage-table-wrapper {
+  max-height: 380px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+}
+
+.stage-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  text-align: left;
+}
+
+.stage-table th {
+  background: #f8fafc;
+  padding: 10px 14px;
+  font-weight: 600;
+  color: #475569;
+  border-bottom: 1px solid #e2e8f0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.stage-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #334155;
+}
+
+.stage-table tr:last-child td {
+  border-bottom: none;
+}
+
+.stage-badge-mastered {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.stage-badge-passed {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #ecfdf5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+
+.stage-badge-practicing {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.stage-badge-unplayed {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #94a3b8;
+}
+
+/* Teacher Note Box */
+.teacher-note-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 16px;
+  padding: var(--space-4);
+  position: relative;
+}
+
+.teacher-presets {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.preset-chip {
+  font-family: inherit;
+  font-size: 0.75rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: white;
+  color: #475569;
+  cursor: pointer;
+}
+
+.preset-chip:hover {
+  background: #e2e8f0;
+}
+
+.teacher-note-textarea {
+  width: 100%;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: #1e293b;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+/* Report Footer */
+.report-footer {
+  text-align: center;
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.8125rem;
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .report-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .report-student-meta {
+    text-align: left;
+    align-items: flex-start;
+  }
+  .report-kpi-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .skills-vocab-grid,
+  .insights-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print Optimization */
+@media print {
+  body {
+    background: white !important;
+    padding: 0 !important;
+  }
+  .report-page-wrapper {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+  .report-toolbar,
+  .no-print {
+    display: none !important;
+  }
+  .report-card {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+  }
+  .stage-table-wrapper {
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}

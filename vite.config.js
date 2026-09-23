@@ -62,6 +62,7 @@ export default defineConfig({
         adminImport: resolve(__dirname, 'src/admin/import.html'),
         adminExercise: resolve(__dirname, 'src/admin/exercise.html'),
         adminStage: resolve(__dirname, 'src/admin/stage.html'),
+        adminStudentReport: resolve(__dirname, 'src/admin/student-report.html'),
       },
     },
   },

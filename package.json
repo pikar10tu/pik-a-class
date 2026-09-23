@@ -21,6 +21,7 @@
     "vitest": "^2.1.0"
   },
   "dependencies": {
-    "firebase": "^10.14.0"
+    "firebase": "^10.14.0",
+    "html2canvas": "^1.4.1"
   }
 }

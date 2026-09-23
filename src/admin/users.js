@@ -86,6 +86,14 @@ function render() {
     tr.appendChild(groupTd);
 
     const actionCell = document.createElement('td');
+    actionCell.style.cssText = 'white-space: nowrap;';
+
+    const reportLink = document.createElement('a');
+    reportLink.href = `./student-report.html?uid=${encodeURIComponent(student.uid)}`;
+    reportLink.style.cssText = 'display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; margin-right: 6px; font-size: 0.8125rem; font-weight: 500; border-radius: 6px; background: #6366f1; color: white; text-decoration: none;';
+    reportLink.textContent = '📊 รายงาน';
+    actionCell.appendChild(reportLink);
+
     const button = document.createElement('button');
     button.type = 'button';
     button.textContent = 'แก้ไข';

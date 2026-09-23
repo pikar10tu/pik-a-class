@@ -194,6 +194,31 @@ describe('assignments and stageClears rules', () => {
       await assertFails(
         db.collection('stageClears').doc('student1__st1').set(clear({ score: 0.2 })),
       );
+
+      // รองรับ attemptCount, clearCount, lastScore, bestStars, totalQuestionsAnswered, lastPlayedAt
+      await assertSucceeds(
+        db.collection('stageClears').doc('student1__st1').set(
+          clear({
+            score: 0.9,
+            attemptCount: 2,
+            clearCount: 1,
+            lastScore: 0.9,
+            bestStars: 2,
+            totalQuestionsAnswered: 4,
+            lastPlayedAt: '2026-09-22T04:00:00.000Z',
+          }),
+        ),
+      );
+
+      // attemptCount ลดลงต้องถูกปฏิเสธ
+      await assertFails(
+        db.collection('stageClears').doc('student1__st1').set(
+          clear({
+            score: 0.9,
+            attemptCount: 1,
+          }),
+        ),
+      );
     });
   });
 

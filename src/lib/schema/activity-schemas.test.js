@@ -93,7 +93,7 @@ describe('assignments schema', () => {
 });
 
 describe('stageClears schema', () => {
-  it('accepts a valid stage clear', () => {
+  it('accepts a valid stage clear without optional fields', () => {
     const clear = {
       uid: 'u1',
       stageId: 'st1',
@@ -101,6 +101,25 @@ describe('stageClears schema', () => {
       level: 'A1',
       order: 1,
       score: 0.8,
+      clearedAt: '2026-09-20T10:00:00.000Z',
+    };
+    expect(validate('stageClears', clear)).toEqual({ ok: true, errors: [] });
+  });
+
+  it('accepts a valid stage clear with all repetition and stats fields', () => {
+    const clear = {
+      uid: 'u1',
+      stageId: 'st1',
+      skill: 'grammar',
+      level: 'A1',
+      order: 1,
+      score: 0.8,
+      lastScore: 0.8,
+      bestStars: 2,
+      attemptCount: 3,
+      clearCount: 2,
+      totalQuestionsAnswered: 30,
+      lastPlayedAt: '2026-09-20T10:00:00.000Z',
       clearedAt: '2026-09-20T10:00:00.000Z',
     };
     expect(validate('stageClears', clear)).toEqual({ ok: true, errors: [] });

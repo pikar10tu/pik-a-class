@@ -44,23 +44,37 @@ export function buildStageWrites({
     });
 
   const score = scoreOf(results);
-  const keepExisting = existingClear !== null && existingClear.score >= score;
+  const threshold = stage.passThreshold ?? 0.7;
+  const isCleared = score >= threshold;
+
+  const previousAttempts = existingClear?.attemptCount ?? (existingClear ? 1 : 0);
+  const previousClears = existingClear?.clearCount ?? (
+    existingClear && (existingClear.score ?? 0) >= threshold ? 1 : 0
+  );
+  const bestScore = Math.max(existingClear?.score ?? 0, score);
+  const bestStars = starsFor(bestScore);
+  const previousTotalQuestions = existingClear?.totalQuestionsAnswered ?? 0;
+  const clearedAt = existingClear?.clearedAt ?? now;
 
   return {
     submissions,
-    stageClear: keepExisting
-      ? null
-      : {
-          id: stageClearId(uid, stage.id),
-          data: {
-            uid,
-            stageId: stage.id,
-            skill: stage.skill,
-            level: stage.level,
-            order: stage.order,
-            score,
-            clearedAt: now,
-          },
-        },
+    stageClear: {
+      id: stageClearId(uid, stage.id),
+      data: {
+        uid,
+        stageId: stage.id,
+        skill: stage.skill,
+        level: stage.level,
+        order: stage.order,
+        score: bestScore,
+        lastScore: score,
+        bestStars,
+        attemptCount: previousAttempts + 1,
+        clearCount: previousClears + (isCleared ? 1 : 0),
+        totalQuestionsAnswered: previousTotalQuestions + exercises.length,
+        lastPlayedAt: now,
+        clearedAt,
+      },
+    },
   };
 }

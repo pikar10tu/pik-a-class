@@ -163,7 +163,10 @@ service cloud.firestore {
 
     match /stageClears/{id} {
       function stageClearFields() {
-        return ['uid', 'stageId', 'skill', 'level', 'order', 'score', 'clearedAt'];
+        return [
+          'uid', 'stageId', 'skill', 'level', 'order', 'score', 'clearedAt',
+          'attemptCount', 'clearCount', 'lastScore', 'bestStars', 'totalQuestionsAnswered', 'lastPlayedAt'
+        ];
       }
 
       allow get, list: if signedIn() && (isAdmin() || resource.data.uid == request.auth.uid);
@@ -174,12 +177,15 @@ service cloud.firestore {
 
       // ต้องเป็นเจ้าของเอกสารเดิมด้วย (ไม่ใช่แค่ uid ที่ส่งมาใหม่) ห้ามสวมสิทธิ์เอกสารคนอื่น
       // และห้ามคะแนนด่านลดลงจากที่เคยบันทึกไว้ เหมือนกับ bestStars ใน submissions
+      // หากมี attemptCount อยู่เดิม จำนวนครั้งที่เล่นใหม่ต้องไม่ลดลง
       allow update: if signedIn()
         && resource.data.uid == request.auth.uid
         && request.resource.data.uid == request.auth.uid
         && unchanged('uid')
+        && unchanged('stageId')
         && request.resource.data.keys().hasOnly(stageClearFields())
-        && request.resource.data.score >= resource.data.score;
+        && request.resource.data.score >= resource.data.score
+        && (!('attemptCount' in resource.data) || request.resource.data.attemptCount >= resource.data.attemptCount);
 
       allow delete: if false;
     }

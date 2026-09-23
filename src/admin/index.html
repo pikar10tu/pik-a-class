@@ -14,9 +14,20 @@
   <main>
     <h1>ภาพรวม</h1>
     <p id="admin-welcome"></p>
+
+    <h2 style="font-size: 1.125rem; font-weight: 600; margin: var(--space-4) 0 var(--space-2);">การจัดการระบบ</h2>
     <ul class="admin-summary">
-      <li>นักเรียนทั้งหมด: <strong id="summary-students">—</strong> คน</li>
-      <li>เนื้อหารออนุมัติ: <strong id="summary-pending-content">—</strong> ข้อ</li>
+      <li><span>นักเรียนทั้งหมด:</span> <strong id="summary-students">—</strong> คน</li>
+      <li><span>เนื้อหารออนุมัติ:</span> <strong id="summary-pending-content">—</strong> ข้อ</li>
+    </ul>
+
+    <h2 style="font-size: 1.125rem; font-weight: 600; margin: var(--space-5) 0 var(--space-2);">สถิติรวมการเรียนรู้ทั้งแพลตฟอร์ม (Global Learning Stats)</h2>
+    <ul class="admin-summary">
+      <li><span>📝 แบบฝึกหัดที่เด็กทำสะสมทั้งเว็บ (รวมทำซ้ำ):</span> <strong id="summary-total-questions" style="color: #2563eb; font-size: 1.125rem;">—</strong> ข้อ</li>
+      <li><span>🔄 จำนวนรอบการฝึกด่านสะสมทั้งเว็บ (Sessions):</span> <strong id="summary-total-sessions" style="color: #7c3aed; font-size: 1.125rem;">—</strong> ครั้ง</li>
+      <li><span>⭐ ดาวสะสมรวมทั้งระบบ:</span> <strong id="summary-total-stars" style="color: #d97706; font-size: 1.125rem;">—</strong> ดาว</li>
+      <li><span>🏆 จำนวนครั้งที่ผ่านด่านสำเร็จ:</span> <strong id="summary-total-clears" style="color: #059669; font-size: 1.125rem;">—</strong> ครั้ง</li>
+      <li><span>📚 คลังบทเรียนและด่านที่เปิดใช้งาน:</span> <strong id="summary-content-ready">—</strong> ด่าน</li>
     </ul>
   </main>
   <script type="module" src="./index.js"></script>

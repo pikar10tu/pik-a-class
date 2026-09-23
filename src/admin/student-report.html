@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>รายงานพัฒนาการผู้เรียน — Admin Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600;700&display=swap" />
+  <link rel="stylesheet" href="../styles/tokens.css" />
+  <link rel="stylesheet" href="../styles/base.css" />
+  <link rel="stylesheet" href="../styles/student-report.css" />
+</head>
+<body>
+  <div id="admin-nav" class="no-print"></div>
+
+  <main class="report-page-wrapper">
+    <div id="loading-state" style="text-align: center; padding: var(--space-6);">
+      <p style="font-size: 1.125rem; color: var(--color-muted);">กำลังโหลดข้อมูลรายงานพัฒนาการ...</p>
+    </div>
+
+    <div id="error-state" hidden style="text-align: center; padding: var(--space-6); color: var(--color-danger);">
+      <p id="error-message"></p>
+      <a href="./users.html" class="report-btn" style="margin-top: var(--space-3);">กลับหน้ารายชื่อผู้ใช้</a>
+    </div>
+
+    <div id="report-content" hidden>
+      <!-- Action Toolbar -->
+      <aside class="report-toolbar no-print" aria-label="เครื่องมือส่งออกรายงาน">
+        <div class="report-toolbar-left">
+          <a href="./users.html" class="report-btn">⬅️ หน้ารายชื่อ</a>
+          <span style="font-size: 0.875rem; color: var(--color-muted);">ใบรายงานผลผู้เรียน</span>
+        </div>
+        <div class="report-toolbar-right">
+          <button type="button" id="btn-save-image" class="report-btn report-btn-primary">
+            📸 บันทึกเป็นรูปภาพ (Save Image)
+          </button>
+          <button type="button" id="btn-copy-line" class="report-btn report-btn-line">
+            📋 คัดลอกสรุปส่ง LINE
+          </button>
+          <button type="button" id="btn-print" class="report-btn">
+            🖨️ พิมพ์ / PDF
+          </button>
+        </div>
+      </aside>
+
+      <!-- Printable & Screenshot Report Card -->
+      <article id="report-card" class="report-card">
+        <!-- Header -->
+        <header class="report-header">
+          <div class="report-brand">
+            <div class="report-logo-badge">P</div>
+            <div class="report-brand-text">
+              <h1>Pik a Class</h1>
+              <p>Personalized English Learning & Progress Report</p>
+            </div>
+          </div>
+          <div class="report-student-meta">
+            <div id="report-callname" class="student-callname-tag">
+              <span id="student-name-text">—</span>
+              <span id="student-grade-badge" style="font-size: 0.8125rem; font-weight: 500; color: #0284c7;"></span>
+            </div>
+            <div class="student-submeta">
+              <span id="report-date-text"></span> • รหัสผู้เรียน: <span id="student-uid-text"></span>
+            </div>
+          </div>
+        </header>
+
+        <!-- 4 Hero KPI Cards -->
+        <section class="report-kpi-grid" aria-label="สถิติไฮไลต์">
+          <div class="kpi-card kpi-card-questions">
+            <span class="kpi-label">📝 ฝึกทำสะสมทั้งหมด</span>
+            <span id="kpi-total-questions" class="kpi-value">0</span>
+            <span class="kpi-subtext">ข้อ (นับรวมการทำซ้ำ)</span>
+          </div>
+          <div class="kpi-card kpi-card-repetition">
+            <span class="kpi-label">🔄 ดัชนีความพยายามฝึกซ้ำ</span>
+            <span id="kpi-rep-index" class="kpi-value">0</span>
+            <span class="kpi-subtext">ครั้ง / ด่านโดยเฉลี่ย</span>
+          </div>
+          <div class="kpi-card kpi-card-stars">
+            <span class="kpi-label">⭐ ดาวสะสม</span>
+            <span id="kpi-stars" class="kpi-value">0</span>
+            <span id="kpi-stars-sub" class="kpi-subtext">จาก 240 ดาว</span>
+          </div>
+          <div class="kpi-card kpi-card-accuracy">
+            <span class="kpi-label">🎯 ความแม่นยำรวม</span>
+            <span id="kpi-accuracy" class="kpi-value">0%</span>
+            <span class="kpi-subtext">อัตราตอบถูกสะสม</span>
+          </div>
+        </section>
+
+        <!-- Skills & Vocab Breakdown -->
+        <section class="report-section" aria-label="สรุปทักษะและคำศัพท์">
+          <div class="skills-vocab-grid">
+            <!-- Skill Breakdown -->
+            <div class="section-box">
+              <h2 class="report-section-title">📊 สรุปความแม่นยำรายทักษะ</h2>
+              <div id="skill-rows-container">
+                <!-- Dynamically generated -->
+              </div>
+            </div>
+
+            <!-- Vocab by Level -->
+            <div class="section-box">
+              <h2 class="report-section-title">📚 คลังคำศัพท์ที่ซ้อม (แยกตามระดับ)</h2>
+              <div id="vocab-levels-container" class="vocab-levels-list">
+                <!-- Dynamically generated -->
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Strengths vs Focus Areas -->
+        <section class="report-section" aria-label="จุดเด่นและจุดพัฒนา">
+          <div class="insights-grid">
+            <div class="insight-card insight-card-strength">
+              <h3 class="insight-title">✨ จุดแข็งที่แม่นยำ (Top Mastered Topics)</h3>
+              <div id="strength-tags" class="insight-tags"></div>
+            </div>
+            <div class="insight-card insight-card-weakness">
+              <h3 class="insight-title">📌 จุดที่แนะนำให้ทบทวนเพิ่ม (Areas for Focus)</h3>
+              <div id="weakness-tags" class="insight-tags"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Stage Repetition Table -->
+        <section class="report-section" aria-label="ประวัติการทำซ้ำแต่ละด่าน">
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: var(--space-2);">
+            <h2 class="report-section-title" style="margin-bottom: 0;">🎮 ประวัติการตะลุยด่านและการทำซ้ำ</h2>
+            <div class="stages-filter-bar no-print" id="stages-filter-bar">
+              <button type="button" class="filter-btn active" data-filter="all">ทั้งหมด</button>
+              <button type="button" class="filter-btn" data-filter="grammar">Grammar</button>
+              <button type="button" class="filter-btn" data-filter="vocab">Vocab</button>
+              <button type="button" class="filter-btn" data-filter="dialogue">Dialogue</button>
+              <button type="button" class="filter-btn" data-level="A1">A1</button>
+              <button type="button" class="filter-btn" data-level="A2">A2</button>
+              <button type="button" class="filter-btn" data-level="B1">B1</button>
+              <button type="button" class="filter-btn" data-level="B2">B2</button>
+            </div>
+          </div>
+          <div class="stage-table-wrapper">
+            <table class="stage-table">
+              <thead>
+                <tr>
+                  <th>ด่าน</th>
+                  <th>ทักษะ / ระดับ</th>
+                  <th style="text-align: center;">ทำซ้ำ (Played)</th>
+                  <th style="text-align: center;">ผ่าน (Cleared)</th>
+                  <th style="text-align: center;">คะแนนสูงสุด</th>
+                  <th>สถานะ</th>
+                </tr>
+              </thead>
+              <tbody id="stage-rows-tbody">
+                <!-- Dynamically generated -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Teacher's Note -->
+        <section class="report-section" aria-label="คำแนะนำจากคุณครู">
+          <div class="teacher-note-box">
+            <h3 class="report-section-title">💬 คำแนะนำและข้อเสนอแนะจากครูพี่ปิ๊ก</h3>
+            <div class="teacher-presets no-print" aria-label="ข้อความด่วน">
+              <button type="button" class="preset-chip" data-preset="ขยันและมีวินัยในการทบทวนซ้ำสูงมาก พัฒนาการดีขึ้นอย่างเห็นได้ชัดครับ! 🌟">🌟 ขยันมีวินัย</button>
+              <button type="button" class="preset-chip" data-preset="คลังคำศัพท์แม่นยำขึ้นมาก สัปดาห์หน้าครูจะเสริมเทคนิคไวยากรณ์เพิ่มเติมครับ! 📚">📚 ศัพท์แม่นยำ</button>
+              <button type="button" class="preset-chip" data-preset="มีความตั้งใจดีมาก หมั่นทบทวนจุดที่ผิดซ้ำอีกนิดจะเก่งขึ้นแน่นอนครับ! 💪">💪 สู้ๆ หมั่นทบทวน</button>
+            </div>
+            <textarea id="teacher-note-input" class="teacher-note-textarea" placeholder="พิมพ์ข้อความคำชม ข้อเสนอแนะ หรือข้อแนะนำส่วนตัวให้น้องคนนี้ก่อนแคปภาพส่งผู้ปกครอง..."></textarea>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="report-footer">
+          <p style="margin: 0; font-weight: 500;">Pik a Class — ห้องเรียนภาษาอังกฤษตะลุยด่าน เก่งขึ้นได้ทุกวัน</p>
+          <p style="margin: 4px 0 0; font-size: 0.75rem;">รายงานนี้สร้างขึ้นโดยระบบติดตามการเรียนรู้อัตโนมัติ • www.pikaclass.com</p>
+        </footer>
+      </article>
+    </div>
+  </main>
+
+  <script type="module" src="./student-report.js"></script>
+</body>
+</html>
