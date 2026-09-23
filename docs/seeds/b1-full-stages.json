@@ -1,0 +1,337 @@
+[
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 1,
+    "title": "Present Perfect Continuous (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:present-perfect-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 2,
+    "title": "Present Perfect Continuous (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:present-perfect-continuous"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 3,
+    "title": "Past Perfect Simple (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:past-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 4,
+    "title": "Past Perfect Simple (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:past-perfect"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 5,
+    "title": "ความเคยชินในอดีต: used to (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:used-to-habits"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 6,
+    "title": "ความเคยชินในอดีต: used to vs be used to (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:used-to-habits"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 7,
+    "title": "Passive Voice (Part 1: สร้างความคุ้นเคย)",
+    "tags": [
+      "grammar:passive-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 8,
+    "title": "Passive Voice (Part 2: ท้าทายขึ้น)",
+    "tags": [
+      "grammar:passive-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 9,
+    "title": "⚔️ มินิบอสประลอง 4 โครงสร้าง B1 (Part 1: ด่านวัดความแม่นยำ)",
+    "tags": [
+      "grammar:present-perfect-continuous",
+      "grammar:past-perfect",
+      "grammar:used-to-habits",
+      "grammar:passive-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 10,
+    "title": "👑 มินิบอสประลอง 4 โครงสร้าง B1 (Part 2: ศึกชิงไหวพริบ)",
+    "tags": [
+      "grammar:present-perfect-continuous",
+      "grammar:past-perfect",
+      "grammar:used-to-habits",
+      "grammar:passive-basic"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 11,
+    "title": "Second Conditional (Part 1: สมมุติสิ่งที่ไม่จริง)",
+    "tags": [
+      "grammar:conditional-2"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 12,
+    "title": "Second Conditional & Wishes (Part 2: If I were you & ความปรารถนา)",
+    "tags": [
+      "grammar:conditional-2"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 13,
+    "title": "Modals of Deduction: must, can’t, might, could",
+    "tags": [
+      "grammar:modals-deduction"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 14,
+    "title": "Defining Relative Clauses (Part 1: who, which, that)",
+    "tags": [
+      "grammar:relative-clauses-defining"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 15,
+    "title": "Defining Relative Clauses (Part 2: whose, where และการละสรรพนาม)",
+    "tags": [
+      "grammar:relative-clauses-defining"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 16,
+    "title": "Reported Speech (Part 1: การเปลี่ยนคำพูดบอกเล่า)",
+    "tags": [
+      "grammar:reported-speech-statements"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 17,
+    "title": "Reported Speech & Indirect Questions (Part 2: คำถามทางอ้อม)",
+    "tags": [
+      "grammar:reported-speech-statements"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 18,
+    "title": "กริยาเปลี่ยนความหมาย: remember, stop, forget (to V.1 vs V.ing)",
+    "tags": [
+      "grammar:verb-patterns-meaning-change"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 19,
+    "title": "Discourse Connectors: although, despite, so that, therefore",
+    "tags": [
+      "grammar:discourse-connectors"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  },
+  {
+    "skill": "grammar",
+    "level": "B1",
+    "order": 20,
+    "title": "👑 บอสใหญ่: มหาศึกผู้เชี่ยวชาญไวยากรณ์ B1 (Master of B1 Grammar)",
+    "tags": [
+      "grammar:present-perfect-continuous",
+      "grammar:past-perfect",
+      "grammar:used-to-habits",
+      "grammar:passive-basic",
+      "grammar:conditional-2",
+      "grammar:modals-deduction",
+      "grammar:relative-clauses-defining",
+      "grammar:reported-speech-statements",
+      "grammar:verb-patterns-meaning-change",
+      "grammar:discourse-connectors"
+    ],
+    "drawCount": 7,
+    "passThreshold": 0.7,
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-23T00:00:00.000Z",
+    "updatedAt": "2026-09-23T00:00:00.000Z",
+    "createdBy": "prawich.aum@dome.tu.ac.th"
+  }
+]
