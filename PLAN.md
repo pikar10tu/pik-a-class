@@ -289,3 +289,141 @@ uid, stageId, skill, level, order, score, clearedAt
 - แยก session ระหว่าง "เขียนโค้ดฟีเจอร์" กับ "generate เนื้อหา" — สองงานนี้ธรรมชาติต่างกัน ปนกันแล้ว AI จะสลับโหมดไม่นิ่ง
 - ตอนสั่งตรวจทานเนื้อหารอบสอง ให้ระบุ checklist ชัดเจนทุกครั้ง (คำตอบถูกข้อเดียวไหม, ยากง่ายตรงเลเวลไหม, มีคำถามกำกวมไหม) ไม่ใช่แค่บอกว่า "ช่วยเช็กให้หน่อย"
 - Commit code เป็นก้อนเล็กๆ ทุกครั้งที่ฟีเจอร์หนึ่งทำงานได้จริง จะได้ rollback ง่ายถ้ารอบหลังพัง
+
+
+---
+
+# Part 2: กฎเหล็กและข้อกำหนดของระบบ (Core Constraints & Commitments)
+
+## 16. กฎเหล็กประจำโปรเจกต์ (Non-Negotiable Rules)
+1. **STRICTLY NO STREAK SYSTEM (ยกเลิกระบบ Streak ถาวร):**
+   - ห้ามใส่ระบบนับวันล็อกอินต่อเนื่อง (Consecutive Day Streak) หรือระบบที่ลงโทษผู้เรียนเมื่อหยุดพัก (แม้จะมีในร่าง Data Model ข้อ 9 เดิม แต่ถูกยกเลิกอย่างเป็นทางการแล้ว)
+   - แรงจูงใจต้องขับเคลื่อนด้วยความพยายาม (Effort), การสะสมดาว (Stars), การพิชิตด่าน/บอส (Clears), ถ้วยรางวัล (Trophies/Badges), และความสนุกเท่านั้น
+2. **Visual Consistency & Mascot Art Direction:**
+   - งานกราฟิกและมาสคอตต้องคงสัดส่วน Chibi ลายเส้นขอบหนาสะอาดตา ไฮไลต์ผิวนุ่มนวล สไตล์สติกเกอร์เวกเตอร์ 100% สอดคล้องกับน้องหยก (น้องต่ายเขียวมรกต)
+3. **Mobile-First Touch & Web Accessibility (WCAG 2.2 AA):**
+   - ขนาดพื้นที่กดสัมผัสขั้นต่ำ $ge 44 \times 44\text{px}$ ตามเกณฑ์ Apple HIG และ WCAG
+   - ใช้ `touch-action: manipulation;` และ `-webkit-tap-highlight-color: transparent;`
+   - ป้องกันปัญหาค้างสถานะบนมือถือ: ห้ามใช้ hover ปกติ ให้ครอบด้วย `@media (hover: hover) and (pointer: fine)` เสมอ
+   - Modal หรือ Dialog ต้องใช้ Native `<dialog>` มี focus trapping, รองรับการกดปุ่ม `Escape`, มี `aria-labelledby` และปุ่มปิดชัดเจน
+4. **Asset Optimization & Web Performance:**
+   - รูปภาพประกอบและอวตารทุกรูปต้องผ่านการบีบอัดเป็น `.webp` (ขนาด < 20 KB) และคู่ขนานด้วย Transparent `.png`
+   - ป้องกัน Broken Image Flash: ต้องใส่ default `src` ใน HTML และมี CSS ป้องกัน `img:not([src]), img[src=""] { visibility: hidden; }` เสมอ
+5. **Quality Gate & Precache Verification:**
+   - ก่อนส่งมอบงานทุกครั้ง ต้องรัน `npx vitest run` (ต้องผ่าน 100%) และ `npm run build` ตรวจสอบความถูกต้องของ PWA Precache ทุกครั้ง
+6. **UI/UX Design Standards, Kid-Friendly Lexicon & High-Visibility Navigation:**
+   - **ห้ามใช้ศัพท์เทคนิคในหน้าจอนักเรียน:** ให้ใช้คำว่า "หน้าหลัก" (Home) แทน "แดชบอร์ด (Dashboard)", "คลังบทเรียน/คลังคำศัพท์" แทน "Repository/Bank", "ห้องถ้วยรางวัล" แทน "Trophy Gallery"
+   - **โครงสร้าง 4 โซนกิจกรรมหน้าหลัก:** 1. ตะลุยด่าน (Adventure Mode), 2. Animal Cafe (มินิเกมเสิร์ฟคำศัพท์), 3. คู่มือสรุปไวยากรณ์ (Handbook), 4. คลังคำศัพท์ (Vocab Hub)
+   - **ปุ่มย้อนกลับต้องชัดเจน (High-Visibility Back Nav):** ทุกหน้าย่อยต้องมีปุ่ม `.btn-nav-back` สไตล์ Chunky 3D เด่นชัด มองเห็นได้ใน 1 วินาที ขนาดแตะสัมผัสขั้นต่ำ $\ge 44 \times 44\text{px}$ ตามเกณฑ์ WCAG 2.2 AA
+   - **Custom Project Skill:** รายละเอียดและ Design Tokens ทั้งหมดถูกจัดเก็บไว้ใน `.agents/skills/pik-ui-standards/SKILL.md` และ `docs/design/ui-standards.md`
+
+---
+
+# Part 3: แพทเทิร์นมาตรฐานสำหรับการส่งต่องาน (Session Handover Framework)
+
+> 💡 **คู่มือสำหรับ AI และนักพัฒนาในทุกๆ เซสชั่นถัดไป:**
+> 1. **ห้ามเขียนทับ (Overwrite) เอกสาร `PLAN.md` ทั้งหมดเด็ดขาด!**
+> 2. พิมพ์เขียวสถาปัตยกรรมใน **Part 1 (ข้อ 1–15)** เป็น Single Source of Truth หากมีการเปลี่ยนแปลงสเปก ให้แก้ไขเฉพาะหัวข้อย่อยที่เกี่ยวข้อง
+> 3. เมื่อจบแต่ละเซสชั่น ให้อัปเดตสถานะล่าสุดใน **Part 4 (Session Handover Logs)** ตามโครงสร้าง Template ด้านล่างเสมอ
+
+### โครงสร้าง Template สำหรับบันทึกส่งต่องาน (Handover Template):
+```markdown
+## [Session YYYY-MM-DD]: <ชื่อหัวข้อหรือธีมงานของเซสชั่น>
+- **สถานะการทดสอบ:** Vitest tests ผ่าน X/X (100%), Build PWA สำเร็จ
+- **Commit Hash ล่าสุด:** `<commit-hash>`
+- **สิ่งที่ทำเสร็จสมบูรณ์:**
+  - ...
+- **ไฟล์สำคัญที่มีการเปลี่ยนแปลง:**
+  - ...
+- **ข้อควรระวังหรือการตัดสินใจทางเทคนิค (Technical Decisions):**
+  - ...
+- **แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):**
+  - 1. ...
+  - 2. ...
+```
+
+---
+
+# Part 4: บันทึกประวัติการส่งต่องาน (Session Handover Logs)
+
+## [Session 2026-09-24 Part 2]: ยกเครื่อง UI หน้าหลัก 4 โซน (Animal Cafe อันดับ 2), ติดตั้งปุ่มกลับความชัดเจนสูงทุกหน้า, และสร้าง Custom Skill (pik-ui-standards)
+
+- **สถานะการทดสอบ:** Vitest ผ่านครบ 33 ไฟล์ 345/345 tests (100%), Build PWA สำเร็จ (162 precache entries)
+- **สิ่งที่ทำเสร็จสมบูรณ์:**
+  1. **สร้าง Custom Project Skill (`.agents/skills/pik-ui-standards/SKILL.md`):** บันทึกมาตรฐาน UI/UX, Kid-Friendly Lexicon, การ์ด 4 โซน, และปุ่มกลับเด่นชัดเป็นสกิลถาวรประจำโปรเจกต์
+  2. **สร้างเอกสารมาตรฐาน [`docs/design/ui-standards.md`](file:///d:/WEBPROJECT/pik-a-class/docs/design/ui-standards.md):** สรุปข้อกำหนด Design System ประจำระบบ
+  3. **ยกเครื่องหน้าแรกเป็น "หน้าหลัก" (Home) 4 โซน:**
+     - โซน 1: 🚀 **ตะลุยด่านภาษาอังกฤษ** (Adventure Mode A1–B2)
+     - โซน 2: ☕ **Animal Cafe** (เปลี่ยนชื่อจาก Pik Speed Cafe ย้ายขึ้นมาอยู่อันดับ 2)
+     - โซน 3: 📖 **คู่มือสรุปไวยากรณ์ (Handbook)** (40 หัวข้อหลัก A1–B2)
+     - โซน 4: 🗂️ **คลังคำศัพท์** (Vocab Hub & Flashcards 3D)
+  4. **ระบบปุ่มกลับความชัดเจนสูง (`.btn-nav-back`):**
+     - ออกแบบปุ่ม Chunky 3D นูนหนา ขนาดกดง่าย $\ge 44 \times 44\text{px}$ ตามมาตรฐาน WCAG 2.2 AA
+     - ติดตั้งในทุกหน้าย่อย: `learn/index.html`, `learn/path.html`, `handbook.html`, `profile.html`, `vocab/index.html`, `vocab/cafe.html`, และเมนูแอดมิน
+  5. **เปลี่ยนคำเรียกทั้งระบบ:** เปลี่ยน "แดชบอร์ด" เป็น "หน้าหลัก" และเปลี่ยนชื่อมินิเกมเป็น "Animal Cafe" 100%
+- **ไฟล์สำคัญที่มีการเปลี่ยนแปลง:**
+  - `.agents/skills/pik-ui-standards/SKILL.md` & `docs/design/ui-standards.md`
+  - `AGENTS.md` & `PLAN.md`
+  - `src/styles/base.css` (`.btn-nav-back`, `.card-cafe`, `.card-vocab`, `.btn-cafe`, `.btn-vocab`, `.btn-handbook`)
+  - `src/dashboard.html` & `src/dashboard.js`
+  - `src/vocab/cafe.html` & `src/vocab/index.html`
+  - `src/handbook.html`, `src/profile.html`, `src/learn/index.html`, `src/learn/path.html`
+  - `src/lib/badges.js` & `src/lib/admin-nav.js`
+
+## [Session 2026-09-24]: อัปเกรดระบบอวตารมาสคอต 12 ธีม, ปรับปรุง Profile, และแก้ไข UI/UX พื้นฐาน
+
+- **สถานะการทดสอบ:** Vitest ผ่านครบ 33 ไฟล์ 345/345 tests (100%), Build PWA สำเร็จ (162 precache entries)
+- **Commit Hash ล่าสุด:** `cd05b1a` (ซิงก์กับ `origin/main` บน GitHub เรียบร้อย)
+
+### 1. สิ่งที่ทำเสร็จสมบูรณ์ในเซสชั่นนี้:
+1. **ระบบเลือกอวตารแบบ Modal Dialog (Avatar Picker):**
+   - เปลี่ยนจากการแสดงรูปทั้งหมดบนหน้าจอ เป็นหน้าต่างป๊อปอัป (`<dialog id="avatar-dialog">`) กดเลือกจากรูปโปรไฟล์หรือปุ่ม "เปลี่ยนอวตาร 🎨"
+   - ออกแบบ Accessible Radio Group พร้อมไอคอนติ๊กถูกสีเขียวบนรูปที่ถูกเลือก
+   - บันทึกลง Firestore อัตโนมัติทันทีที่กดเลือกอวตาร
+2. **สร้างคลังอวตารมาสคอตกระต่าย Chibi 12 รูปแบบ:**
+   - `avatar-1`: **น้องหยกสดใส (Classic Mint)** 🌱 (มาสคอตดั้งเดิม)
+   - `avatar-2`: **น้องหยกซากุระ (Sakura Pink)** 🌸 (ชมพูพาสเทล ดอกไม้ประดับหู)
+   - `avatar-3`: **น้องหยกท้องฟ้า (Sky Blue)** ☁️ (ฟ้าพาสเทล ตาประกายดาว)
+   - `avatar-4`: **จอมเวทน้อย (Magic Wizard)** 🧙 (หมวกพ่อมดม่วง-ทอง คทาเวทมนตร์)
+   - `avatar-5`: **อัศวินผู้กล้า (Brave Knight)** 🛡️ (หมวกเกราะอัศวินขนนกแดง โล่ผู้กล้า)
+   - `avatar-6`: **คอสเพลย์มังกร (Dragon Cosplay)** 🐉 (ฮู้ดมังกรเขียว เขาจิ๋วและปีกมังกร)
+   - `avatar-7`: **ภูตน้อยมีปีก (Angel Fairy)** 🪽 (ปีกนางฟ้าเรืองแสง วงแหวนประกายดาว)
+   - `avatar-8`: **บาริสต้าต่าย (Speed Barista)** ☕ (ผ้ากันเปื้อนคาเฟ่ แก้วกาแฟลาเต้อาร์ต)
+   - `avatar-9`: **ราชาดวงดาว (Star King)** 👑 (มงกุฎทองคำประดับอัญมณี ผ้าคลุมกำมะหยี่)
+   - `avatar-10`: **เกมเมอร์ไซเบอร์ (Cyber Gamer)** 🎧 (หูฟังเกมมิ่งเรืองแสงนีออน พร้อมจอยเกม)
+   - `avatar-11`: **น้องหยกพลังใจ (Champion Power)** 💪 (ท่าเบ่งกล้ามส่งพลังใจ)
+   - `avatar-12`: **น้องหยกส่งรัก (Heart Love)** 💖 (ท่าทำมือรูปหัวใจ)
+   - บันทึกทั้งไฟล์ Transparent `.png` และบีบอัดเป็น `.webp` ขนาดเพียง 10–19 KB ต่อรูป
+3. **แก้ไขบั๊ก Trophy Room หน้า Profile แสดง 0/12:**
+   - แก้ไข `src/profile.js` ให้ดึงประวัติความคืบหน้าจริงจาก Firestore และประเมินเหรียญรางวัลครบถ้วนถูกต้อง
+4. **ลบ Trophy Banner ซ้ำซ้อนที่ Dashboard:**
+   - นำแบนเนอร์ถ้วยรางวัลออกจาก `src/dashboard.html` และคลีนโค้ดใน `src/dashboard.js` ให้เหลือเฉพาะที่หน้า Profile
+5. **แก้ปัญหาพื้นหลังหน้า Profile ซ้อนทับเนื้อหา:**
+   - ปลดการเชื่อมโยง `learn.css` ออกจาก `src/profile.html` เพื่อตัดก้อนเมฆลอยและพื้นหญ้าที่กวนสายตา จัดเลเยอร์ `z-index: 1` ชัดเจน
+6. **ย้ายสไตล์ปุ่ม 3D Chunky เข้าสู่ `src/styles/base.css`:**
+   - ย้ายคลาส `.btn-chunky`, `.btn-ghost`, `.btn-close-circle` มาเป็นสไตล์กลาง ทำให้ปุ่มทุกหน้า (Profile, Dialog, Dashboard, Handbook) แสดงผลปุ่ม 3D นูนหนาสวยงามสม่ำเสมอ ไม่กลายเป็นปุ่มเทาของบราวเซอร์
+7. **ป้องกันไอคอนภาพเสียชั่วคราวขณะโหลด (Broken Image Flash):**
+   - ใส่ `src` เริ่มต้นใน HTML และเพิ่ม CSS กฎป้องกัน `img:not([src]), img[src=""] { visibility: hidden; }` ใน `base.css`
+
+### 2. ไฟล์สำคัญที่มีการเปลี่ยนแปลง:
+- `src/profile.html` & `src/profile.js` (Avatar dialog, real-time sync, badge evaluation)
+- `src/dashboard.html` & `src/dashboard.js` (Cleaned trophy banner, default mascot src)
+- `src/styles/base.css` (Global 3D chunky buttons, broken image fix)
+- `src/styles/profile.css` (Modal dialog, avatar grid, backdrop blur)
+- `src/lib/user-profile.js` & `src/lib/user-profile.test.js` (Expanded avatar catalog)
+- `src/public/avatars/` (12 transparent PNG + WebP mascots)
+
+### 3. แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):
+1. **ระบบสถิติผู้เรียนสำหรับครู/ผู้ดูแลระบบ (Admin Student Analytics & Monitoring):**
+   - พัฒนาต่อยอดหน้า `src/admin/student-report.html` และ `src/lib/student-analytics.js`
+   - แดชบอร์ดสรุปภาพรวมผู้เรียน (Total Students, Active Learners)
+   - รายงานความก้าวหน้ารายบุคคล (ด่านที่ผ่าน, ดาวสะสม, ระดับ CEFR ปัจจุบัน)
+   - สถิติคะแนนโหมด Endless ของเกม Pik Speed Cafe
+   - การวิเคราะห์ข้อที่นักเรียนมักตอบผิดบ่อย (Common Misconceptions) เพื่อให้ครูนำไปใช้วางแผนการสอนในห้องเรียนได้ตรงจุด
+2. **การเปิดรับผู้เรียนและทดสอบการใช้งานจริง (User Testing & Onboarding):**
+   - ตรวจสอบ Flow การสมัครสมาชิก การเข้าสู่ระบบด้วย Google Account
+   - ทดสอบความเร็วและการแสดงผลบนสมาร์ตโฟนระบบ iOS (Safari) และ Android (Chrome / LINE In-App Browser)
+   - รวบรวมฟีดแบ็กความเข้าใจของเนื้อหาและคำอธิบายโจทย์ในด่าน A1–B2
+3. **การขยายคลังโจทย์และเนื้อหาบทเรียน:**
+   - ตรวจสอบด่านในระดับ A1, A2, B1, B2 ว่ามีความหลากหลายของประเภทโจทย์เพียงพอหรือไม่ (Sentence Ordering, Multiple Choice, Word Matching ฯลฯ)
+   - อัปเดตคลังคำศัพท์ Flashcards และมินิเกม Speed Cafe ให้มีชุดคำศัพท์ใหม่ๆ รองรับการฝึกฝนอย่างต่อเนื่อง

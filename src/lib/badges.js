@@ -139,7 +139,7 @@ export const BADGE_DEFINITIONS = [
   {
     id: 'speed_barista',
     title: 'บาริสต้าความเร็วแสง',
-    description: 'ทำคอมโบได้ 10x ขึ้นไปในเกม Pik Speed Cafe',
+    description: 'ทำคอมโบได้ 10x ขึ้นไปในเกม Animal Cafe',
     icon: '☕',
     category: 'speed',
     rarity: 'rare',

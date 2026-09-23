@@ -11,6 +11,9 @@ const base = import.meta.env.BASE_URL;
 const learnLink = document.getElementById('learn-link');
 if (learnLink) learnLink.href = `${base}learn/index.html`;
 
+const cafeLink = document.getElementById('cafe-link');
+if (cafeLink) cafeLink.href = `${base}vocab/cafe.html`;
+
 const handbookLink = document.getElementById('handbook-link');
 if (handbookLink) handbookLink.href = `${base}handbook.html`;
 

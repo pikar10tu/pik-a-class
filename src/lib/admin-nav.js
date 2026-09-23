@@ -4,7 +4,7 @@ export const ADMIN_PAGES = [
   { href: 'admin/content.html', label: 'คลังเนื้อหา' },
   { href: 'admin/stages.html', label: 'ด่าน' },
   { href: 'admin/import.html', label: 'นำเข้า JSON' },
-  { href: 'dashboard.html', label: '← กลับหน้านักเรียน' },
+  { href: 'dashboard.html', label: '← กลับหน้าหลัก' },
 ];
 
 export function renderAdminNav(container, currentHref, baseUrl) {

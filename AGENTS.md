@@ -48,3 +48,17 @@ This document contains critical project rules, architectural constraints, and le
 * Always run `npm test` before committing.
 * When updating Firestore security rules, run `npm run test:rules`.
 * GitHub branch mapping: Local `master` pushes to remote `main` (`git push origin master:main`).
+
+---
+
+## 7. UI/UX Design Standards & Kid-Friendly Guidelines
+* **Kid-Friendly Lexicon**: Never use technical terms like "Dashboard", "Repository", or "Aggregation" on student-facing screens. Always use "หน้าหลัก" (Home), "คลังบทเรียน", "คลังคำศัพท์", and "ห้องถ้วยรางวัล".
+* **4-Zone Home Structure**: The home page must feature 4 distinct activity cards in fixed order:
+  1. 🚀 **ตะลุยด่านภาษาอังกฤษ** (Adventure Mode, `#37c871`)
+  2. ☕ **Animal Cafe** (Vocab minigame & endless mode, `#ea580c`)
+  3. 📖 **คู่มือสรุปไวยากรณ์** (Grammar Handbook, `#2563eb`)
+  4. 🗂️ **คลังคำศัพท์** (Vocab Hub & Flashcards, `#7c3aed`)
+* **High-Visibility Back Navigation**: Every sub-page must feature a prominent `.btn-nav-back` button (minimum touch target $44\times 44\text{px}$, WCAG 2.2 AA compliant, 3D chunky style with `←` arrow and clear destination label).
+* **3D Tactile Buttons**: Use chunky 3D buttons (`border-bottom: 3px-4px`), `:active` translates `2px` with audio feedback, wrapped with `@media (hover: hover) and (pointer: fine)` to prevent mobile hover stickiness.
+* **Skill Reference**: See `.agents/skills/pik-ui-standards/SKILL.md` and `docs/design/ui-standards.md` for full design tokens and rules.
+
