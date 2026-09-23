@@ -9,7 +9,7 @@ import {
 
 describe('vocab-data', () => {
   it('has valid categories', () => {
-    expect(CATEGORIES.length).toBeGreaterThanOrEqual(9);
+    expect(CATEGORIES.length).toBeGreaterThanOrEqual(11);
     for (const cat of CATEGORIES) {
       expect(cat.id).toBeTruthy();
       expect(cat.label).toBeTruthy();
@@ -27,7 +27,7 @@ describe('vocab-data', () => {
 
   it('contains complete required fields and no hint commas/parentheses for each word', () => {
     const validLevels = ['A1', 'A2', 'B1', 'B2'];
-    expect(VOCAB_ITEMS.length).toBeGreaterThanOrEqual(200);
+    expect(VOCAB_ITEMS.length).toBeGreaterThanOrEqual(1000);
 
     for (const item of VOCAB_ITEMS) {
       expect(item.word.trim()).not.toBe('');
@@ -47,10 +47,10 @@ describe('vocab-data', () => {
     }
   });
 
-  it('provides at least 20 words for every category', () => {
+  it('provides at least 50 words for every category', () => {
     for (const cat of CATEGORIES) {
       const items = getVocabList({ category: cat.id });
-      expect(items.length).toBeGreaterThanOrEqual(20);
+      expect(items.length).toBeGreaterThanOrEqual(50);
     }
   });
 
