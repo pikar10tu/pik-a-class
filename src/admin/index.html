@@ -11,24 +11,169 @@
 </head>
 <body>
   <div id="admin-nav"></div>
-  <main>
-    <h1>ภาพรวม</h1>
-    <p id="admin-welcome"></p>
+  <main style="max-width: 1100px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-2); margin-bottom: var(--space-3);">
+      <div>
+        <h1 style="margin-bottom: 4px;">ภาพรวมระบบ (Macro Dashboard) 🌱</h1>
+        <p id="admin-welcome" style="color: var(--color-text-muted); font-size: 0.875rem; margin: 0;"></p>
+      </div>
+      <div style="display: flex; gap: var(--space-2);">
+        <a href="./users.html" class="btn-ghost" style="padding: 6px 14px; font-size: 0.875rem;">👥 ผู้เรียนทั้งหมด</a>
+        <a href="./content.html" class="btn-ghost" style="padding: 6px 14px; font-size: 0.875rem;">📚 คลังเนื้อหา</a>
+      </div>
+    </div>
 
-    <h2 style="font-size: 1.125rem; font-weight: 600; margin: var(--space-4) 0 var(--space-2);">การจัดการระบบ</h2>
-    <ul class="admin-summary">
-      <li><span>นักเรียนทั้งหมด:</span> <strong id="summary-students">—</strong> คน</li>
-      <li><span>เนื้อหารออนุมัติ:</span> <strong id="summary-pending-content">—</strong> ข้อ</li>
-    </ul>
+    <!-- Row 1: KPI Cards -->
+    <div class="admin-macro-grid">
+      <!-- Card 1: User & Tier Health -->
+      <section class="macro-card">
+        <div class="macro-card-header">
+          <h2 class="macro-card-title">👥 สิทธิ์ผู้เรียน (User Tiers)</h2>
+          <a href="./users.html" class="btn-ghost" style="padding: 4px 10px; font-size: 0.75rem;">จัดการ ➔</a>
+        </div>
+        <div class="macro-kpi-row">
+          <span class="macro-kpi-label">นักเรียนทั้งหมดในระบบ</span>
+          <span id="summary-students" class="macro-kpi-value">—</span>
+        </div>
+        <div style="display: flex; gap: var(--space-2); justify-content: space-between;">
+          <div class="macro-kpi-row" style="flex: 1; justify-content: space-between;">
+            <span class="macro-kpi-label"><span class="badge-tier-full">Full</span> เต็มรูป</span>
+            <strong id="summary-tier-full" style="color: #059669;">—</strong>
+          </div>
+          <div class="macro-kpi-row" style="flex: 1; justify-content: space-between;">
+            <span class="macro-kpi-label"><span class="badge-tier-free">Free</span> ทดลอง</span>
+            <strong id="summary-tier-free" style="color: #64748b;">—</strong>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: #64748b; margin-bottom: 2px;">
+            <span>สัดส่วน Full Tier</span>
+            <span id="tier-ratio-percent">0%</span>
+          </div>
+          <div class="macro-tier-bar">
+            <div id="tier-bar-full" class="macro-tier-bar-full" style="width: 0%;"></div>
+            <div id="tier-bar-free" class="macro-tier-bar-free" style="width: 100%;"></div>
+          </div>
+        </div>
+      </section>
 
-    <h2 style="font-size: 1.125rem; font-weight: 600; margin: var(--space-5) 0 var(--space-2);">สถิติรวมการเรียนรู้ทั้งแพลตฟอร์ม (Global Learning Stats)</h2>
-    <ul class="admin-summary">
-      <li><span>📝 แบบฝึกหัดที่เด็กทำสะสมทั้งเว็บ (รวมทำซ้ำ):</span> <strong id="summary-total-questions" style="color: #2563eb; font-size: 1.125rem;">—</strong> ข้อ</li>
-      <li><span>🔄 จำนวนรอบการฝึกด่านสะสมทั้งเว็บ (Sessions):</span> <strong id="summary-total-sessions" style="color: #7c3aed; font-size: 1.125rem;">—</strong> ครั้ง</li>
-      <li><span>⭐ ดาวสะสมรวมทั้งระบบ:</span> <strong id="summary-total-stars" style="color: #d97706; font-size: 1.125rem;">—</strong> ดาว</li>
-      <li><span>🏆 จำนวนครั้งที่ผ่านด่านสำเร็จ:</span> <strong id="summary-total-clears" style="color: #059669; font-size: 1.125rem;">—</strong> ครั้ง</li>
-      <li><span>📚 คลังบทเรียนและด่านที่เปิดใช้งาน:</span> <strong id="summary-content-ready">—</strong> ด่าน</li>
-    </ul>
+      <!-- Card 2: Platform Activity & Engagement -->
+      <section class="macro-card">
+        <div class="macro-card-header">
+          <h2 class="macro-card-title">📈 สถิติการเรียนรู้สะสม (Global Stats)</h2>
+        </div>
+        <div class="macro-kpi-row">
+          <span class="macro-kpi-label">📝 แบบฝึกหัดที่เด็กทำสะสม</span>
+          <strong id="summary-total-questions" class="macro-kpi-value" style="color: #2563eb;">—</strong>
+        </div>
+        <div class="macro-kpi-row">
+          <span class="macro-kpi-label">🔄 รอบการฝึกด่าน (Sessions)</span>
+          <strong id="summary-total-sessions" class="macro-kpi-value" style="color: #7c3aed;">—</strong>
+        </div>
+        <div style="display: flex; gap: var(--space-2);">
+          <div class="macro-kpi-row" style="flex: 1;">
+            <span class="macro-kpi-label">⭐ รวมดาวสะสม</span>
+            <strong id="summary-total-stars" style="color: #d97706;">—</strong>
+          </div>
+          <div class="macro-kpi-row" style="flex: 1;">
+            <span class="macro-kpi-label">🏆 ผ่านด่านสำเร็จ</span>
+            <strong id="summary-total-clears" style="color: #059669;">—</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Card 3: CEFR Progression & Content -->
+      <section class="macro-card">
+        <div class="macro-card-header">
+          <h2 class="macro-card-title">🗺️ การผ่านด่านแยกตามระดับ CEFR</h2>
+          <span id="summary-content-ready" style="font-size: 0.75rem; color: #64748b;">—</span>
+        </div>
+        <div class="cefr-grid">
+          <div class="cefr-box">
+            <span class="cefr-box-level">A1</span>
+            <span id="cefr-a1-clears" class="cefr-box-count">0</span>
+            <span class="cefr-box-sub">ครั้งที่ผ่าน</span>
+          </div>
+          <div class="cefr-box">
+            <span class="cefr-box-level">A2</span>
+            <span id="cefr-a2-clears" class="cefr-box-count">0</span>
+            <span class="cefr-box-sub">ครั้งที่ผ่าน</span>
+          </div>
+          <div class="cefr-box">
+            <span class="cefr-box-level">B1</span>
+            <span id="cefr-b1-clears" class="cefr-box-count">0</span>
+            <span class="cefr-box-sub">ครั้งที่ผ่าน</span>
+          </div>
+          <div class="cefr-box">
+            <span class="cefr-box-level">B2</span>
+            <span id="cefr-b2-clears" class="cefr-box-count">0</span>
+            <span class="cefr-box-sub">ครั้งที่ผ่าน</span>
+          </div>
+        </div>
+        <div class="macro-kpi-row" style="margin-top: auto;">
+          <span class="macro-kpi-label">เนื้อหารออนุมัติ (Draft)</span>
+          <strong id="summary-pending-content" style="color: #dc2626;">—</strong>
+        </div>
+      </section>
+    </div>
+
+    <!-- Row 2: Animal Cafe Top 5 + Recent Students -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: var(--space-4); margin-top: var(--space-4);">
+      <!-- Animal Cafe Leaderboard -->
+      <section class="macro-card">
+        <div class="macro-card-header">
+          <h2 class="macro-card-title">☕ Animal Cafe — Top 5 ผู้เล่นยอดเยี่ยม</h2>
+          <span style="font-size: 0.75rem; color: #64748b;">มินิเกมคำศัพท์</span>
+        </div>
+        <div class="admin-table-wrapper" style="margin-bottom: 0;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th style="width: 44px; text-align: center;">อันดับ</th>
+                <th>ผู้เล่น</th>
+                <th>ชั้น</th>
+                <th style="text-align: right;">คะแนน (🪙)</th>
+                <th style="text-align: right;">คอมโบ</th>
+              </tr>
+            </thead>
+            <tbody id="cafe-leaderboard-rows">
+              <tr>
+                <td colspan="5" style="text-align: center; color: var(--color-muted); padding: 24px;">
+                  กำลังโหลดคะแนน Animal Cafe...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Recent Registered Students -->
+      <section class="macro-card">
+        <div class="macro-card-header">
+          <h2 class="macro-card-title">🎒 นักเรียนลงทะเบียนล่าสุด (5 คนล่าสุด)</h2>
+          <a href="./users.html" class="btn-ghost" style="padding: 4px 10px; font-size: 0.75rem;">ดูทั้งหมด ➔</a>
+        </div>
+        <div class="admin-table-wrapper" style="margin-bottom: 0;">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>ชื่อผู้เรียน</th>
+                <th>ชั้น / โรงเรียน</th>
+                <th>สิทธิ์</th>
+                <th>รายงาน</th>
+              </tr>
+            </thead>
+            <tbody id="recent-students-rows">
+              <tr>
+                <td colspan="4" style="text-align: center; color: var(--color-muted); padding: 24px;">
+                  กำลังโหลดรายชื่อนักเรียน...
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
   </main>
   <script type="module" src="./index.js"></script>
 </body>

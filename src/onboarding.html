@@ -12,51 +12,71 @@
   <link rel="stylesheet" href="./styles/tokens.css" />
   <link rel="stylesheet" href="./styles/base.css" />
 </head>
-<body>
-  <main>
-    <h1>กรอกโปรไฟล์ครั้งแรก</h1>
-    <form id="onboarding-form">
-      <div class="form-group">
-        <label for="fullName">ชื่อจริง</label>
-        <input type="text" id="fullName" name="fullName" />
-        <span class="field-error" data-error-for="fullName"></span>
+<body class="onboarding-page">
+  <main class="onboarding-main">
+    <div class="onboarding-card">
+      <div class="login-mascot-wrapper" style="margin-bottom: var(--space-2);">
+        <div class="mascot-speech">ยินดีต้อนรับสู่ Pik a Class! 🌱</div>
+        <div class="mascot-halo"></div>
+        <img id="mascot" class="login-mascot" src="./mascot/normal.png" width="100" height="143" alt="น้องหยกยิ้มต้อนรับ" />
       </div>
-      <div class="form-group">
-        <label for="nickname">ชื่อเล่น</label>
-        <input type="text" id="nickname" name="nickname" />
-        <span class="field-error" data-error-for="nickname"></span>
-      </div>
-      <div class="form-group">
-        <label for="grade">ช่วงชั้น/กลุ่มผู้เรียน</label>
-        <select id="grade" name="grade">
-          <option value="">-- เลือก --</option>
-        </select>
-        <span class="field-error" data-error-for="grade"></span>
-      </div>
-      <div class="form-group">
-        <label for="school">โรงเรียน/หน่วยงาน</label>
-        <input type="text" id="school" name="school" />
-        <span class="field-error" data-error-for="school"></span>
-      </div>
-      <div class="form-group">
-        <label for="phone">เบอร์โทร</label>
-        <input type="text" id="phone" name="phone" />
-        <span class="field-error" data-error-for="phone"></span>
-      </div>
-      <div class="form-group">
-        <label for="lineId">LINE ID</label>
-        <input type="text" id="lineId" name="lineId" />
-      </div>
-      <section class="consent-box" id="consent-box"></section>
-      <div class="form-group form-group-check">
-        <label for="consent">
-          <input type="checkbox" id="consent" name="consent" />
-          <span id="consent-label"></span>
-        </label>
-        <span class="field-error" data-error-for="consent"></span>
-      </div>
-      <button type="submit" class="btn-primary">บันทึกและเริ่มใช้งาน</button>
-    </form>
+
+      <h1 class="onboarding-title">มาแนะนำตัวกันก่อนนะ ✨</h1>
+      <p class="onboarding-subtitle">กรอกข้อมูลเพื่อสร้างโปรไฟล์และเริ่มตะลุยด่านภาษาอังกฤษไปด้วยกัน</p>
+
+      <form id="onboarding-form" novalidate>
+        <div class="form-group">
+          <label for="fullName">ชื่อจริง - นามสกุล <span class="required-star">*</span></label>
+          <input type="text" id="fullName" name="fullName" placeholder="เช่น สมชาย ใจดี" autocomplete="name" />
+          <span class="field-error" data-error-for="fullName"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="nickname">ชื่อเล่น <span class="required-star">*</span></label>
+          <input type="text" id="nickname" name="nickname" placeholder="เช่น ชาย, น้องปิ๊ก" autocomplete="nickname" />
+          <span class="field-error" data-error-for="nickname"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="grade">ช่วงชั้น / กลุ่มผู้เรียน <span class="required-star">*</span></label>
+          <select id="grade" name="grade">
+            <option value="">-- เลือกช่วงชั้น --</option>
+          </select>
+          <span class="field-error" data-error-for="grade"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="school">โรงเรียน / หน่วยงาน <span class="required-star" id="school-required-mark">*</span></label>
+          <input type="text" id="school" name="school" placeholder="เช่น โรงเรียนสาธิตฯ (สำหรับวัยทำงานไม่ต้องระบุ)" />
+          <span class="field-error" data-error-for="school"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">เบอร์โทรศัพท์ <span class="required-star">*</span></label>
+          <input type="tel" id="phone" name="phone" placeholder="เช่น 0812345678 (เบอร์น้องหรือของผู้ปกครอง)" autocomplete="tel" />
+          <span class="field-error" data-error-for="phone"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="lineId">LINE ID <span class="optional-hint">(ถ้ามี)</span></label>
+          <input type="text" id="lineId" name="lineId" placeholder="เช่น pik_official" />
+        </div>
+
+        <section class="consent-box" id="consent-box"></section>
+
+        <div class="form-group form-group-check">
+          <label for="consent">
+            <input type="checkbox" id="consent" name="consent" />
+            <span id="consent-label"></span>
+          </label>
+          <span class="field-error" data-error-for="consent"></span>
+        </div>
+
+        <button type="submit" class="btn-chunky onboarding-submit-btn">
+          บันทึกและเริ่มผจญภัยเลย! 🚀
+        </button>
+      </form>
+    </div>
   </main>
   <script type="module" src="./onboarding.js"></script>
 </body>

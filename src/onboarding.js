@@ -1,17 +1,32 @@
 import { requireLogin } from './lib/auth-guard.js';
 import { db } from './lib/firebase.js';
 import { completeOnboarding } from './lib/user-profile-io.js';
-import { validateOnboardingForm, GRADES } from './lib/onboarding-validation.js';
+import { validateOnboardingForm, GRADES, SCHOOL_GRADES } from './lib/onboarding-validation.js';
 import { showPageError } from './lib/page-error.js';
 import { CONSENT_TITLE, CONSENT_SECTIONS, CONSENT_CHECKBOX_LABEL } from './lib/consent.js';
+import { mascotSrc } from './lib/mascot.js';
+
+const base = import.meta.env.BASE_URL;
+const mascotEl = document.getElementById('mascot');
+if (mascotEl) {
+  mascotEl.src = mascotSrc('normal', base);
+}
 
 const gradeSelect = document.getElementById('grade');
+const schoolRequiredMark = document.getElementById('school-required-mark');
+
 for (const grade of GRADES) {
   const option = document.createElement('option');
   option.value = grade;
   option.textContent = grade;
   gradeSelect.appendChild(option);
 }
+
+gradeSelect.addEventListener('change', () => {
+  if (schoolRequiredMark) {
+    schoolRequiredMark.hidden = !SCHOOL_GRADES.includes(gradeSelect.value);
+  }
+});
 
 const consentBox = document.getElementById('consent-box');
 const heading = document.createElement('h2');

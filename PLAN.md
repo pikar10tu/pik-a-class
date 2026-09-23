@@ -414,17 +414,34 @@ uid, stageId, skill, level, order, score, clearedAt
 - `src/lib/user-profile.js` & `src/lib/user-profile.test.js` (Expanded avatar catalog)
 - `src/public/avatars/` (12 transparent PNG + WebP mascots)
 
-### 3. แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):
-1. **ระบบสถิติผู้เรียนสำหรับครู/ผู้ดูแลระบบ (Admin Student Analytics & Monitoring):**
-   - พัฒนาต่อยอดหน้า `src/admin/student-report.html` และ `src/lib/student-analytics.js`
-   - แดชบอร์ดสรุปภาพรวมผู้เรียน (Total Students, Active Learners)
-   - รายงานความก้าวหน้ารายบุคคล (ด่านที่ผ่าน, ดาวสะสม, ระดับ CEFR ปัจจุบัน)
-   - สถิติคะแนนโหมด Endless ของเกม Pik Speed Cafe
-   - การวิเคราะห์ข้อที่นักเรียนมักตอบผิดบ่อย (Common Misconceptions) เพื่อให้ครูนำไปใช้วางแผนการสอนในห้องเรียนได้ตรงจุด
-2. **การเปิดรับผู้เรียนและทดสอบการใช้งานจริง (User Testing & Onboarding):**
-   - ตรวจสอบ Flow การสมัครสมาชิก การเข้าสู่ระบบด้วย Google Account
-   - ทดสอบความเร็วและการแสดงผลบนสมาร์ตโฟนระบบ iOS (Safari) และ Android (Chrome / LINE In-App Browser)
-   - รวบรวมฟีดแบ็กความเข้าใจของเนื้อหาและคำอธิบายโจทย์ในด่าน A1–B2
-3. **การขยายคลังโจทย์และเนื้อหาบทเรียน:**
-   - ตรวจสอบด่านในระดับ A1, A2, B1, B2 ว่ามีความหลากหลายของประเภทโจทย์เพียงพอหรือไม่ (Sentence Ordering, Multiple Choice, Word Matching ฯลฯ)
-   - อัปเดตคลังคำศัพท์ Flashcards และมินิเกม Speed Cafe ให้มีชุดคำศัพท์ใหม่ๆ รองรับการฝึกฝนอย่างต่อเนื่อง
+### 3. รายงานความคืบหน้าล่าสุด (Pre-launch UI Overhaul & Macro Dashboard):
+1. **ยกเครื่อง UI หน้าหลักสู่ 4 โซนกิจกรรม (Four Distinct Activity Hubs):**
+   - แบ่งหมวดหมู่การเรียนรู้ออกจากกันชัดเจน: 1. ตะลุยด่านผจญภัย (Adventure Path), 2. Animal Cafe (แยกและโปรโมตจากเดิมที่เคยซ่อนอยู่ในคลังศัพท์), 3. คู่มือสรุปไวยากรณ์ (Grammar Handbook), 4. คลังคำศัพท์ (Vocab Hub)
+   - ปรับชื่อ "Pik Speed Cafe" ➔ "Animal Cafe ☕"
+   - สร้างปุ่มย้อนกลับที่มองเห็นได้ชัดเจน (`.btn-nav-back`) และมาตรฐานสัมผัส $\ge 44 \times 44\text{px}$ ตามมาตรฐาน WCAG 2.2 AA ทุกหน้าย่อย
+   - บันทึกกฎมาตรฐาน UI และสกิลประจำโปรเจกต์ที่ `.agents/skills/pik-ui-standards/SKILL.md` และ `docs/design/ui-standards.md`
+2. **Task C: ตรวจสอบความปลอดภัย Firestore Rules & Indexes (เสร็จสมบูรณ์ 100%):**
+   - รันชุดทดสอบความปลอดภัย Firestore Security Rules: 3 ไฟล์ 46/46 security tests ผ่าน 100%
+   - ตรวจสอบ Live Composite Indexes บนโปรดักชัน `pik-a-class`: ครบทั้ง 20 ดัชนี มีสถานะ ACTIVE
+   - ดีพลอย Security Rules ขึ้น production Firebase สำเร็จ
+3. **Onboarding Polish & รองรับกลุ่มประถมปลาย:**
+   - เพิ่ม `'ประถมปลาย (ป.4–ป.6)'` ใน `GRADES` ของ `src/lib/schema/users.js` พร้อมตั้งค่าให้โรงเรียนเป็น required
+   - อัปเดตและผ่านการทดสอบ 100% ใน `validate.test.js` และ `onboarding-validation.test.js`
+   - ปรับแต่งหน้า `src/onboarding.html`: เพิ่มมาสคอตกระต่าย Chibi พร้อมกล่องคำพูดต้อนรับ, ใส่ placeholder ชัดเจนสำหรับเบอร์โทรและโรงเรียน, ตกแต่งการ์ดและปุ่ม Chunky 3D สวยงาม
+4. **Task A: ระบบภาพรวมระดับมหภาคสำหรับครูปิ๊ก (Admin Macro Dashboard):**
+   - ยกเครื่องหน้า `src/admin/index.html` และ `src/admin/index.js`
+   - **User & Tier Health:** สรุปจำนวนนักเรียนทั้งหมด, สัดส่วน Full Tier vs Free Tier พร้อมแถบเปอร์เซ็นต์และปุ่มทางลัดไปจัดการสิทธิ์
+   - **CEFR Progression Breakdown:** แสดงจำนวนครั้งที่ผู้เรียนผ่านด่านสำเร็จแยกตามระดับ CEFR A1, A2, B1, B2
+   - **Animal Cafe Leaderboard:** ตาราง Top 5 ผู้เล่นคะแนนสูงสุด พร้อมเหรียญรางวัล 🥇🥈🥉 และคอมโบสูงสุด
+   - **Recent Registered Students:** รายชื่อ 5 นักเรียนที่ลงทะเบียนล่าสุด พร้อมปุ่มกดดูรายงานพัฒนาการรายบุคคล (`student-report.html?uid=...`) ได้ในคลิกเดียว
+   - แยกตรรกะคำนวณเข้าสู่ `src/lib/macro-dashboard.js` พร้อมชุดทดสอบ `macro-dashboard.test.js` (ผ่าน 100%)
+
+---
+
+### 4. แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):
+1. **Dry Run & First Class Launch:**
+   - เชิญนักเรียนกลุ่มแรกทดลองใช้งาน (Onboarding ➔ Adventure ➔ Animal Cafe)
+   - ครูปิ๊กตรวจสอบข้อมูลใน Admin Macro Dashboard และปลดล็อกสิทธิ์ Full Tier ให้นักเรียน
+2. **ขยายคลังโจทย์และเนื้อหาบทเรียน:**
+   - ทยอยเพิ่มข้อสอบในด่าน A1–B2 และคำศัพท์ใหม่ๆ ใน Animal Cafe ตามความก้าวหน้าของผู้เรียน
+

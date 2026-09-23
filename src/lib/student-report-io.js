@@ -49,12 +49,16 @@ export async function fetchPlatformStats(db) {
   let totalStarsPlatform = 0;
   let totalStagePlaysPlatform = 0;
   let totalQuestionsAnsweredPlatform = 0;
+  const clearsByLevel = { A1: 0, A2: 0, B1: 0, B2: 0 };
 
   for (const docSnap of clearsSnap.docs) {
     const data = docSnap.data();
     totalStarsPlatform += data.bestStars ?? 0;
     totalStagePlaysPlatform += data.attemptCount ?? 1;
     totalQuestionsAnsweredPlatform += data.totalQuestionsAnswered ?? 0;
+    if (data.level && clearsByLevel[data.level] !== undefined) {
+      clearsByLevel[data.level] += 1;
+    }
   }
 
   return {
@@ -66,5 +70,6 @@ export async function fetchPlatformStats(db) {
     totalStarsPlatform,
     totalStagePlaysPlatform,
     totalQuestionsAnsweredPlatform: Math.max(submissionsCountSnap.data().count, totalQuestionsAnsweredPlatform),
+    clearsByLevel,
   };
 }

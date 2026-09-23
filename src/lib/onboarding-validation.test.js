@@ -71,6 +71,16 @@ describe('grade list wiring', () => {
   it('re-exports the schema grade lists instead of keeping a second copy', () => {
     expect(GRADES).toEqual(schemaGrades);
     expect(SCHOOL_GRADES).toEqual(schemaSchoolGrades);
-    expect(GRADES).toHaveLength(7);
+    expect(GRADES).toHaveLength(8);
+    expect(GRADES[0]).toBe('ประถมปลาย (ป.4–ป.6)');
+  });
+
+  it('validates elementary student requiring school', () => {
+    const elemWithoutSchool = { ...validSchoolStudent, grade: 'ประถมปลาย (ป.4–ป.6)', school: '' };
+    expect(validateOnboardingForm(elemWithoutSchool).valid).toBe(false);
+    expect(validateOnboardingForm(elemWithoutSchool).errors.school).toBe('กรุณากรอกชื่อโรงเรียน');
+
+    const elemWithSchool = { ...validSchoolStudent, grade: 'ประถมปลาย (ป.4–ป.6)', school: 'โรงเรียนอนุบาล/ประถม' };
+    expect(validateOnboardingForm(elemWithSchool).valid).toBe(true);
   });
 });

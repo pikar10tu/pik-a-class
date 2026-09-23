@@ -74,13 +74,16 @@ describe('validate', () => {
     const noSchool = validate('users', validUserDoc({ grade: 'ม.3', school: '' }));
     expect(noSchool.errors).toContainEqual({ field: 'school', message: 'กรุณากรอกชื่อโรงเรียน' });
 
+    const elemNoSchool = validate('users', validUserDoc({ grade: 'ประถมปลาย (ป.4–ป.6)', school: '' }));
+    expect(elemNoSchool.errors).toContainEqual({ field: 'school', message: 'กรุณากรอกชื่อโรงเรียน' });
+
     const adult = validate('users', validUserDoc({ grade: 'วัยทำงาน/บุคคลทั่วไป', school: '' }));
     expect(adult).toEqual({ ok: true, errors: [] });
   });
 
   it('exposes the grade lists and the admin-only field list', () => {
-    expect(GRADES).toHaveLength(7);
-    expect(SCHOOL_GRADES).toEqual(['ม.1', 'ม.2', 'ม.3', 'ม.4', 'ม.5', 'ม.6']);
+    expect(GRADES).toHaveLength(8);
+    expect(SCHOOL_GRADES).toEqual(['ประถมปลาย (ป.4–ป.6)', 'ม.1', 'ม.2', 'ม.3', 'ม.4', 'ม.5', 'ม.6']);
     expect(ADMIN_ONLY_USER_FIELDS).toEqual(['role', 'tier', 'tierNote', 'groupTags']);
   });
 });

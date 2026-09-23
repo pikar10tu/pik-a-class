@@ -1,7 +1,16 @@
 import { str, enumOf, bool, int, arrayOfStr, isoDate, obj } from './field-types.js';
 
-export const GRADES = ['ม.1', 'ม.2', 'ม.3', 'ม.4', 'ม.5', 'ม.6', 'วัยทำงาน/บุคคลทั่วไป'];
-export const SCHOOL_GRADES = GRADES.slice(0, 6);
+export const GRADES = [
+  'ประถมปลาย (ป.4–ป.6)',
+  'ม.1',
+  'ม.2',
+  'ม.3',
+  'ม.4',
+  'ม.5',
+  'ม.6',
+  'วัยทำงาน/บุคคลทั่วไป',
+];
+export const SCHOOL_GRADES = GRADES.slice(0, 7);
 export const ADMIN_ONLY_USER_FIELDS = ['role', 'tier', 'tierNote', 'groupTags'];
 
 function isBlank(value) {

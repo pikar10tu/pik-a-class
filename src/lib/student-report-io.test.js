@@ -19,7 +19,7 @@ vi.mock('firebase/firestore', () => {
       if (q?.name === 'stageClears' || q?.coll?.name === 'stageClears') {
         return {
           docs: [
-            { id: 'sc1', data: () => ({ bestStars: 3, attemptCount: 2, totalQuestionsAnswered: 20 }) },
+            { id: 'sc1', data: () => ({ bestStars: 3, attemptCount: 2, totalQuestionsAnswered: 20, level: 'A1' }) },
           ],
         };
       }
@@ -61,5 +61,6 @@ describe('student-report-io', () => {
     expect(stats.stageClearCount).toBe(42);
     expect(stats.totalStarsPlatform).toBe(3);
     expect(stats.totalStagePlaysPlatform).toBe(2);
+    expect(stats.clearsByLevel).toEqual({ A1: 1, A2: 0, B1: 0, B2: 0 });
   });
 });
