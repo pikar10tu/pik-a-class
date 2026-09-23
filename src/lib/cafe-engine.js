@@ -9,13 +9,23 @@ export const CUSTOMER_TYPES = [
   { emoji: '🐼', name: 'น้องแพนด้า เปาเปา', greeting: 'กำลังง่วงเลย ขอเติมพลังหน่อยนะ' },
 ];
 
-export function createCafeSession({ words = [], maxLives = 3, timeLimitSeconds = 8 } = {}) {
+export function createCafeSession({
+  words = [],
+  maxLives = 3,
+  timeLimitSeconds = 8,
+  mode = 'standard', // 'standard' | 'endless'
+  wordPool = [],
+} = {}) {
   if (!Array.isArray(words) || words.length === 0) {
     throw new Error('ต้องระบุรายการคำศัพท์อย่างน้อย 1 คำ');
   }
 
+  const pool = Array.isArray(wordPool) && wordPool.length > 0 ? [...wordPool] : [...words];
+
   return {
     words: [...words],
+    wordPool: pool,
+    mode,
     currentIndex: 0,
     lives: maxLives,
     maxLives,
@@ -34,7 +44,17 @@ export function sanitizeChoiceText(text) {
 }
 
 export function getCurrentOrder(session) {
-  if (!session || session.state !== 'playing' || session.currentIndex >= session.words.length) {
+  if (!session || session.state !== 'playing') {
+    return null;
+  }
+
+  // In endless mode, seamlessly replenish words if nearing the end
+  if (session.mode === 'endless' && session.currentIndex >= session.words.length - 3) {
+    const replenish = shuffleArray([...session.wordPool]);
+    session.words.push(...replenish);
+  }
+
+  if (session.currentIndex >= session.words.length) {
     return null;
   }
 
@@ -50,11 +70,13 @@ export function getCurrentOrder(session) {
     choices,
     customer,
     orderNumber: session.currentIndex + 1,
-    totalOrders: session.words.length,
+    totalOrders: session.mode === 'endless' ? '∞' : session.words.length,
     lives: session.lives,
     maxLives: session.maxLives,
     score: session.score,
     streak: session.streak,
+    isRushHour: session.streak >= 10,
+    mode: session.mode,
     timeLimitSeconds: session.timeLimitSeconds,
   };
 }
@@ -72,8 +94,10 @@ export function submitAnswer(session, selectedAnswer) {
   if (isCorrect) {
     session.streak += 1;
     session.maxStreak = Math.max(session.maxStreak, session.streak);
-    // คะแนนฐาน 100 + โบนัสคอมโบ (คอมโบ * 25)
-    pointsEarned = 100 + (session.streak - 1) * 25;
+    // Rush Hour: เมื่อคอมโบถึง 10x คะแนนจะได้รับคูณ 2!
+    const isRushHour = session.streak >= 10;
+    const multiplier = isRushHour ? 2 : 1;
+    pointsEarned = (100 + (session.streak - 1) * 25) * multiplier;
     session.score += pointsEarned;
   } else {
     session.streak = 0;
@@ -93,7 +117,7 @@ export function submitAnswer(session, selectedAnswer) {
     session.state = 'lost';
   } else {
     session.currentIndex += 1;
-    if (session.currentIndex >= session.words.length) {
+    if (session.mode !== 'endless' && session.currentIndex >= session.words.length) {
       session.state = 'won';
     }
   }
@@ -104,6 +128,7 @@ export function submitAnswer(session, selectedAnswer) {
     pointsEarned,
     lives: session.lives,
     streak: session.streak,
+    isRushHour: session.streak >= 10,
     score: session.score,
     state: session.state,
     correctAnswer: currentWord.thai,
@@ -131,7 +156,7 @@ export function timeoutOrder(session) {
     session.state = 'lost';
   } else {
     session.currentIndex += 1;
-    if (session.currentIndex >= session.words.length) {
+    if (session.mode !== 'endless' && session.currentIndex >= session.words.length) {
       session.state = 'won';
     }
   }
@@ -142,6 +167,7 @@ export function timeoutOrder(session) {
     timedOut: true,
     lives: session.lives,
     streak: session.streak,
+    isRushHour: false,
     score: session.score,
     state: session.state,
     correctAnswer: currentWord.thai,
@@ -155,7 +181,11 @@ export function getCafeSummary(session) {
   const missedWords = session.history.filter((h) => !h.correct).map((h) => h.word);
 
   let stars = 0;
-  if (session.state === 'won') {
+  if (session.mode === 'endless') {
+    if (servedOrders >= 30) stars = 3;
+    else if (servedOrders >= 15) stars = 2;
+    else if (servedOrders >= 5) stars = 1;
+  } else if (session.state === 'won') {
     if (accuracy === 100 && session.lives === session.maxLives) {
       stars = 3;
     } else if (accuracy >= 70) {
@@ -166,16 +196,18 @@ export function getCafeSummary(session) {
   }
 
   return {
+    mode: session.mode,
     score: session.score,
     lives: session.lives,
     maxLives: session.maxLives,
-    totalOrders: session.words.length,
+    totalOrders: session.mode === 'endless' ? total : session.words.length,
     servedOrders,
     accuracy,
     maxStreak: session.maxStreak,
+    isRushHourAchieved: session.maxStreak >= 10,
     stars,
     missedWords,
-    isVictory: session.state === 'won',
+    isVictory: session.mode === 'endless' ? servedOrders >= 15 : session.state === 'won',
     isGameOver: session.state === 'lost',
     history: session.history,
   };

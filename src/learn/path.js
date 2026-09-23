@@ -28,6 +28,8 @@ const BOTTOM_PAD = 90;
 
 document.getElementById('back-link').href = `${base}learn/index.html`;
 document.getElementById('empty-back').href = `${base}learn/index.html`;
+const bottomBack = document.getElementById('bottom-back-link');
+if (bottomBack) bottomBack.href = `${base}learn/index.html`;
 const handbookPill = document.getElementById('handbook-pill-link');
 if (handbookPill && skill === 'grammar') {
   handbookPill.href = `${base}handbook.html?level=${level || 'A1'}`;
@@ -208,6 +210,9 @@ function renderPath(path) {
     setTimeout(() => scrollToActive(false), 80);
     setTimeout(() => scrollToActive(false), 250);
   });
+
+  const bottomExit = document.getElementById('path-bottom-exit');
+  if (bottomExit) bottomExit.hidden = false;
 }
 
 function openSheet(stage, state) {
@@ -296,16 +301,16 @@ if (!isValidQuery) {
   });
 } else {
   const ISLAND_NAMES = {
-    A1: 'เกาะทุ่งหญ้าเริ่มต้น',
-    A2: 'เกาะชายหาดนักสำรวจ',
-    B1: 'นครเวทมนตร์ลอยฟ้า',
-    B2: 'ปราสาทสวรรค์ผู้กล้า',
+    A1: 'พื้นฐานภาษาอังกฤษเริ่มต้น (Starter Meadow)',
+    A2: 'สื่อสารในชีวิตประจำวัน (Explorer Coast)',
+    B1: 'ไวยากรณ์ระดับกลาง & ม.ปลาย (Mystic Citadel)',
+    B2: 'ไวยากรณ์ขั้นสูง & เตรียมสอบมหาวิทยาลัย (Sky Palace)',
   };
   const ISLAND_IMAGES = {
-    A1: 'islands/island-a1.jpg',
-    A2: 'islands/island-a2.jpg',
-    B1: 'islands/island-b1.jpg',
-    B2: 'islands/island-b2.jpg',
+    A1: 'islands/island-a1.webp',
+    A2: 'islands/island-a2.webp',
+    B1: 'islands/island-b1.webp',
+    B2: 'islands/island-b2.webp',
   };
 
   const islandTitle = ISLAND_NAMES[level] ? `${SKILL_LABELS[skill]} · ${ISLAND_NAMES[level]}` : `${SKILL_LABELS[skill]} · ระดับ ${level}`;

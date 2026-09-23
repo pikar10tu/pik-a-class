@@ -49,6 +49,14 @@
         </label>
 
         <label style="display: block; font-weight: 600; font-size: 0.875rem; margin-top: 12px; margin-bottom: 6px;">
+          โหมดการเล่น:
+          <select id="select-mode" style="width: 100%; font-family: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--color-border); margin-top: 4px;">
+            <option value="standard">โหมดมาตรฐาน (กำหนดจำนวนออเดอร์)</option>
+            <option value="endless">🔥 โหมดเอาตัวรอดต่อเนื่อง (Endless Survival - เล่นจนหัวใจหมด ท้าทาย High Score)</option>
+          </select>
+        </label>
+
+        <label id="order-count-wrapper" style="display: block; font-weight: 600; font-size: 0.875rem; margin-top: 12px; margin-bottom: 6px;">
           จำนวนออเดอร์ต่อรอบ:
           <select id="select-count" style="width: 100%; font-family: inherit; padding: 8px; border-radius: 8px; border: 1px solid var(--color-border); margin-top: 4px;">
             <option value="10">10 ออเดอร์ (โหมดด่วน 1–2 นาที)</option>
@@ -65,6 +73,11 @@
 
     <!-- Screen 2: Game Stage -->
     <section id="cafe-game-stage" hidden>
+      <!-- Rush Hour Fever Banner -->
+      <div id="hud-rush-hour" class="cafe-rush-banner" hidden>
+        🔥 RUSH HOUR x2! โบนัสคะแนนคูณสอง! 🔥
+      </div>
+
       <!-- HUD -->
       <div class="cafe-hud">
         <div id="hud-lives" class="cafe-lives" title="หัวใจที่เหลือ">❤️❤️❤️</div>
@@ -109,6 +122,7 @@
     <!-- Screen 3: Summary -->
     <section id="cafe-summary" class="summary-card" hidden>
       <div id="summary-icon" class="summary-hero-icon">🎉</div>
+      <div id="new-high-score-badge" class="high-score-banner" hidden>🏆 สถิติใหม่! NEW HIGH SCORE! 🏆</div>
       <h2 id="summary-title" class="summary-title">ยอดเยี่ยมมาก!</h2>
       <div id="summary-stars" class="summary-stars">⭐⭐⭐</div>
 
@@ -141,7 +155,7 @@
           🔁 ฝึกซ่อมคำที่ผิด
         </button>
         <a href="./index.html" class="chip-btn" style="text-decoration: none; padding: 10px 18px;">
-          📖 คลังศัพท์
+          ย้อนกลับ
         </a>
       </div>
     </section>

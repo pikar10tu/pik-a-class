@@ -1,5 +1,13 @@
 import { describe, it, expect } from 'vitest';
-import { buildNewUserDoc, getPostLoginRedirect, isLevelAllowed } from './user-profile.js';
+import {
+  buildNewUserDoc,
+  getPostLoginRedirect,
+  isLevelAllowed,
+  AVATAR_LIST,
+  DEFAULT_AVATAR,
+  getAvatarSrc,
+  validateProfileData,
+} from './user-profile.js';
 
 describe('buildNewUserDoc', () => {
   it('builds a stub doc defaulting role, tier, and onboarding state', () => {
@@ -10,6 +18,7 @@ describe('buildNewUserDoc', () => {
     expect(doc.email).toBe('a@b.com');
     expect(doc.fullName).toBe('Aum');
     expect(doc.nickname).toBe('');
+    expect(doc.avatarId).toBe('avatar-1');
     expect(doc.role).toBe('student');
     expect(doc.tier).toBe('free');
     expect(doc.onboardingComplete).toBe(false);
@@ -68,6 +77,56 @@ describe('isLevelAllowed', () => {
 
   it('returns false when userDoc is null or undefined', () => {
     expect(isLevelAllowed(null, 'A1')).toBe(false);
+  });
+});
+
+describe('avatar helpers', () => {
+  it('defines 6 distinct rabbit avatars', () => {
+    expect(AVATAR_LIST).toHaveLength(6);
+    expect(DEFAULT_AVATAR).toBe('avatar-1');
+  });
+
+  it('resolves correct avatar image path and falls back to default on invalid id', () => {
+    expect(getAvatarSrc('avatar-1')).toBe('avatars/avatar-1.png');
+    expect(getAvatarSrc('avatar-5', '/base/')).toBe('/base/avatars/avatar-5.png');
+    expect(getAvatarSrc('unknown-avatar')).toBe('avatars/avatar-1.png');
+    expect(getAvatarSrc(null)).toBe('avatars/avatar-1.png');
+  });
+});
+
+describe('validateProfileData', () => {
+  it('accepts valid profile payload and trims strings', () => {
+    const input = {
+      fullName: '  สมชาย ดีมาก  ',
+      nickname: ' นิค ',
+      grade: ' ม.2 ',
+      school: ' สาธิต ',
+      phone: ' 0812345678 ',
+      lineId: ' somchai_line ',
+      avatarId: 'avatar-4',
+    };
+
+    const res = validateProfileData(input);
+    expect(res.valid).toBe(true);
+    expect(res.cleaned.fullName).toBe('สมชาย ดีมาก');
+    expect(res.cleaned.nickname).toBe('นิค');
+    expect(res.cleaned.grade).toBe('ม.2');
+    expect(res.cleaned.school).toBe('สาธิต');
+    expect(res.cleaned.phone).toBe('0812345678');
+    expect(res.cleaned.lineId).toBe('somchai_line');
+    expect(res.cleaned.avatarId).toBe('avatar-4');
+  });
+
+  it('rejects empty nickname', () => {
+    const res = validateProfileData({ nickname: '   ' });
+    expect(res.valid).toBe(false);
+    expect(res.errors.nickname).toBeDefined();
+  });
+
+  it('falls back to default avatar when invalid avatar is given', () => {
+    const res = validateProfileData({ nickname: 'บ็อบ', avatarId: 'invalid-id' });
+    expect(res.valid).toBe(true);
+    expect(res.cleaned.avatarId).toBe('avatar-1');
   });
 });
 

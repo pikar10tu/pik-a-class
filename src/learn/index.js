@@ -12,55 +12,63 @@ const base = import.meta.env.BASE_URL;
 export const ISLAND_METADATA = {
   A1: {
     level: 'A1',
-    name: 'เกาะทุ่งหญ้าเริ่มต้น',
+    name: 'พื้นฐานภาษาอังกฤษเริ่มต้น',
     englishName: 'Starter Meadow',
     badge: 'A1 · Beginner',
+    target: 'นักเรียน ป.5 – ม.1 หรือผู้เริ่มต้นปูพื้นฐานใหม่',
     themeColor: '#10b981',
     borderColor: '#a7f3d0',
     btnColor: '#10b981',
     btnShadow: '#059669',
     image: 'islands/island-a1.jpg',
+    imageWebp: 'islands/island-a1.webp',
     topics: 'Present Simple, Articles, Pronouns, Nouns, can/can\'t',
-    description: 'ก้าวแรกของการผจญภัย ปูพื้นฐานไวยากรณ์และประโยคคำถาม-ปฏิเสธให้แม่นยำ',
+    description: 'ปูพื้นฐานไวยากรณ์ คำนาม คำสรรพนาม และประโยคถาม-ตอบพื้นฐาน เข้าใจโครงสร้างภาษาอังกฤษอย่างมั่นใจ',
   },
   A2: {
     level: 'A2',
-    name: 'เกาะชายหาดนักสำรวจ',
+    name: 'สื่อสารในชีวิตประจำวัน',
     englishName: 'Explorer Coast',
     badge: 'A2 · Elementary',
+    target: 'นักเรียน ม.1 – ม.3 หรือผู้ที่ต้องการสื่อสารคล่องขึ้น',
     themeColor: '#0284c7',
     borderColor: '#bae6fd',
     btnColor: '#0284c7',
     btnShadow: '#0369a1',
     image: 'islands/island-a2.jpg',
+    imageWebp: 'islands/island-a2.webp',
     topics: 'Past Simple, Future Forms, Quantifiers, Comparatives',
-    description: 'ออกสำรวจไวยากรณ์เล่าเรื่องอดีตและอนาคต เปรียบเทียบสิ่งของรอบตัว',
+    description: 'ฝึกเล่าเรื่องราวในอดีต วางแผนอนาคต และเปรียบเทียบสิ่งต่างๆ เพื่อการสื่อสารในชีวิตประจำวัน',
   },
   B1: {
     level: 'B1',
-    name: 'นครเวทมนตร์ลอยฟ้า',
+    name: 'ไวยากรณ์ระดับกลาง & ม.ปลาย',
     englishName: 'Mystic Citadel',
     badge: 'B1 · Intermediate',
+    target: 'นักเรียน ม.4 – ม.5 หรือเตรียมสอบวัดระดับสากล',
     themeColor: '#7c3aed',
     borderColor: '#ddd6fe',
     btnColor: '#7c3aed',
     btnShadow: '#6d28d9',
     image: 'islands/island-b1.jpg',
+    imageWebp: 'islands/island-b1.webp',
     topics: 'Present Perfect, Passive Voice, Conditionals, Relative Clauses',
-    description: 'ไขความลับประโยคซับซ้อนและการเชื่อมโยงความคิด สู่ระดับสื่อสารคล่องแคล่ว',
+    description: 'พัฒนาการเชื่อมโยงประโยคซับซ้อน โครงสร้าง Passive Voice และประโยคเงื่อนไขเพื่อการสื่อสารเชิงวิชาการ',
   },
   B2: {
     level: 'B2',
-    name: 'ปราสาทสวรรค์ผู้กล้า',
+    name: 'ไวยากรณ์ขั้นสูง & เตรียมสอบมหาวิทยาลัย',
     englishName: 'Sky Palace',
     badge: 'B2 · Upper-Inter',
+    target: 'นักเรียน ม.5 – ม.6 เตรียมสอบ TCAS, TGAT 1, A-Level',
     themeColor: '#d97706',
     borderColor: '#fde68a',
     btnColor: '#d97706',
     btnShadow: '#b45309',
     image: 'islands/island-b2.jpg',
-    topics: 'Participle Clauses, Inversion, Advanced Modals, Cleft Sentences',
-    description: 'ด่านทดสอบชั้นยอดแห่งสำนวนไวยากรณ์เชิงลึก พร้อมพิชิตข้อสอบระดับสากล',
+    imageWebp: 'islands/island-b2.webp',
+    topics: 'Participle Clauses, Inversion, Unreal Past, Cleft Sentences',
+    description: 'โครงสร้างไวยากรณ์ชั้นสูง สำนวนภาษาทางการ และเทคนิคการวิเคราะห์ประโยคเพื่อการสอบแข่งขันระดับสูง',
   },
 };
 
@@ -130,7 +138,10 @@ function render(stages, tier, isUserAdmin, userDoc, myClears = []) {
 
     card.innerHTML = `
       <div class="island-banner-wrap">
-        <img class="island-banner-img" src="${base}${meta.image}" alt="${meta.name}" loading="lazy" />
+        <picture>
+          <source srcset="${base}${meta.imageWebp}" type="image/webp">
+          <img class="island-banner-img" src="${base}${meta.image}" alt="${meta.name}" loading="lazy" />
+        </picture>
         <span class="island-overlay-badge" style="color: ${meta.themeColor};">
           🏝️ ${meta.badge}
         </span>
@@ -142,10 +153,14 @@ function render(stages, tier, isUserAdmin, userDoc, myClears = []) {
           <h2 class="island-title">${meta.name}</h2>
           <span class="island-subname">${meta.englishName}</span>
         </div>
+        <div class="island-target-box">
+          <span class="island-target-badge">🎯 เหมาะสำหรับ</span>
+          <span class="island-target-text">${meta.target}</span>
+        </div>
         <p class="island-desc">${meta.description}</p>
         <div class="island-topics-box">
           <span class="island-topics-icon">📖</span>
-          <span class="island-topics-text">${meta.topics}</span>
+          <span class="island-topics-text"><strong>ไวยากรณ์หลัก:</strong> ${meta.topics}</span>
         </div>
         <div class="island-progress-section">
           <div class="island-stats-row">
@@ -157,7 +172,7 @@ function render(stages, tier, isUserAdmin, userDoc, myClears = []) {
           </div>
           ${
             allowed
-              ? `<button type="button" class="btn-chunky island-btn" style="background: ${meta.btnColor}; border-bottom-color: ${meta.btnShadow};">สำรวจเกาะนี้เลย 🚀</button>`
+              ? `<button type="button" class="btn-chunky island-btn" style="background: ${meta.btnColor}; border-bottom-color: ${meta.btnShadow};">เข้าสู่บทเรียน ${level} ✨</button>`
               : `<button type="button" class="btn-ghost island-btn island-btn--locked">🔒 ติดต่อผู้สอนเพื่อปลดล็อก</button>`
           }
         </div>

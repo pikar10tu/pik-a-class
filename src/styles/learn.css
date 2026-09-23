@@ -1,6 +1,6 @@
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -283,18 +283,18 @@ body::after {
 
 .path-header {
   position: sticky;
-  top: var(--space-2);
-  z-index: 20;
+  top: calc(env(safe-area-inset-top, 0px) + 8px);
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border-radius: var(--radius-full);
-  padding: 6px 16px;
+  padding: 8px 16px;
   border: 1.5px solid rgba(255, 255, 255, 0.95);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.12);
 }
 
 .path-total-stars {
@@ -1245,6 +1245,30 @@ body::after {
   line-height: 1.45;
 }
 
+.island-target-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 0.8125rem;
+}
+
+.island-target-badge {
+  font-weight: 700;
+  color: #0d9488;
+  background: #ccfbf1;
+  padding: 2px 6px;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.island-target-text {
+  color: #334155;
+  font-weight: 500;
+}
+
 .island-topics-box {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -1253,19 +1277,52 @@ body::after {
   font-size: 0.8125rem;
   color: #334155;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
   margin-top: 2px;
 }
 
 .island-topics-icon {
   flex-shrink: 0;
+  margin-top: 2px;
 }
 
 .island-topics-text {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.path-bottom-exit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-4) 0 var(--space-6);
+  position: relative;
+  z-index: 10;
+}
+
+.path-bottom-back-btn {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 10px 24px;
+  font-weight: 700;
+  color: #334155;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.path-bottom-back-btn:hover {
+  background: #ffffff;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.15);
 }
 
 .island-progress-section {

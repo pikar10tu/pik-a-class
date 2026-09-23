@@ -143,4 +143,72 @@ describe('cafe-engine', () => {
     const res = submitAnswer(session, 'ซับซ้อน');
     expect(res.correct).toBe(true);
   });
+
+  it('triggers Rush Hour at 10x combo with 2x points multiplier', () => {
+    // Create session with 12 words
+    const words = Array.from({ length: 12 }, (_, i) => ({
+      id: `w_${i}`,
+      word: `word_${i}`,
+      thai: `คำแปล_${i}`,
+      alternatives: ['หลอก 1', 'หลอก 2', 'หลอก 3'],
+    }));
+
+    const session = createCafeSession({ words });
+
+    // Submit 9 correct answers
+    for (let i = 0; i < 9; i++) {
+      const res = submitAnswer(session, `คำแปล_${i}`);
+      expect(res.isRushHour).toBe(false);
+    }
+    expect(session.streak).toBe(9);
+
+    // 10th correct answer -> triggers Rush Hour (streak 10)!
+    // Normal pts = 100 + (10 - 1) * 25 = 325. With Rush Hour 2x = 650!
+    const res10 = submitAnswer(session, 'คำแปล_9');
+    expect(res10.isRushHour).toBe(true);
+    expect(res10.pointsEarned).toBe(650);
+
+    const order11 = getCurrentOrder(session);
+    expect(order11.isRushHour).toBe(true);
+  });
+
+  it('replenishes words indefinitely in Endless mode until lives deplete', () => {
+    const pool = [
+      { id: 'p1', word: 'tea', thai: 'ชา', alternatives: ['กาแฟ', 'นม', 'น้ำ'] },
+      { id: 'p2', word: 'cake', thai: 'เค้ก', alternatives: ['พาย', 'คุกกี้', 'ขนม'] },
+    ];
+
+    const session = createCafeSession({
+      words: pool,
+      mode: 'endless',
+      wordPool: pool,
+      maxLives: 2,
+    });
+
+    expect(session.mode).toBe('endless');
+    const order1 = getCurrentOrder(session);
+    expect(order1.totalOrders).toBe('∞');
+
+    // Answer 5 questions correctly (stream should automatically replenish)
+    for (let i = 0; i < 5; i++) {
+      const current = getCurrentOrder(session);
+      expect(current).not.toBeNull();
+      submitAnswer(session, current.word.thai);
+      expect(session.state).toBe('playing');
+    }
+
+    // Now lose 2 lives
+    submitAnswer(session, 'ผิดนะ');
+    expect(session.lives).toBe(1);
+    expect(session.state).toBe('playing');
+
+    submitAnswer(session, 'ผิดอีกที');
+    expect(session.lives).toBe(0);
+    expect(session.state).toBe('lost');
+
+    const summary = getCafeSummary(session);
+    expect(summary.isGameOver).toBe(true);
+    expect(summary.servedOrders).toBe(5);
+    expect(summary.stars).toBe(1);
+  });
 });

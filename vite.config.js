@@ -8,7 +8,14 @@ export default defineConfig({
   plugins: [
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['favicon.ico', 'favicon.png', 'apple-touch-icon.png', 'mascot/*.png', 'islands/*.jpg'],
+      includeAssets: [
+        'favicon.ico',
+        'favicon.png',
+        'apple-touch-icon.png',
+        'mascot/*.{png,webp}',
+        'islands/*.{jpg,webp}',
+        'avatars/*.{png,webp}',
+      ],
       manifest: {
         name: 'Pik a Class — ห้องเรียนภาษาอังกฤษตะลุยด่าน',
         short_name: 'Pik a Class',
@@ -37,7 +44,7 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,webp}'],
         navigateFallback: null,
       },
     }),
@@ -51,6 +58,7 @@ export default defineConfig({
         login: resolve(__dirname, 'src/login.html'),
         onboarding: resolve(__dirname, 'src/onboarding.html'),
         dashboard: resolve(__dirname, 'src/dashboard.html'),
+        profile: resolve(__dirname, 'src/profile.html'),
         handbook: resolve(__dirname, 'src/handbook.html'),
         learn: resolve(__dirname, 'src/learn/index.html'),
         learnPath: resolve(__dirname, 'src/learn/path.html'),

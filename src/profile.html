@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>โปรไฟล์ผู้เรียน — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <meta name="theme-color" content="#37c871" />
+  <link rel="stylesheet" href="./styles/tokens.css" />
+  <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/learn.css" />
+  <link rel="stylesheet" href="./styles/profile.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="./dashboard.html">
+        <span class="app-brand-logo">🌱</span>
+        <span>Pik a Class</span>
+      </a>
+      <div class="app-user-actions">
+        <a id="nav-admin-link" class="admin-switch-pill" href="./admin/index.html" hidden>⚙️ จัดการระบบ</a>
+        <a id="back-link" class="btn-ghost-sm" href="./dashboard.html">← กลับหน้าหลัก</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="profile-main">
+    <!-- 1. Hero Summary -->
+    <section class="profile-hero">
+      <div class="profile-hero-avatar-wrap">
+        <img id="hero-avatar-img" class="profile-hero-avatar-img" src="./avatars/avatar-1.png" alt="อวตารน้องหยก" />
+      </div>
+      <div class="profile-hero-info">
+        <h1 id="hero-display-name" class="profile-hero-name">กำลังโหลด…</h1>
+        <p id="hero-email" class="profile-hero-sub">-</p>
+        <span id="hero-tier-badge" class="profile-tier-badge">🌱 Free Tier</span>
+      </div>
+    </section>
+
+    <!-- 2. เลือกอวตารน้องต่ายประจำตัว -->
+    <section class="profile-card">
+      <div class="profile-card-header">
+        <h2 class="profile-card-title">🐰 เลือกอวตารน้องหยกประจำตัว</h2>
+        <p class="profile-card-desc">เลือกอวตารมาสคอตกระต่ายในสไตล์ที่คุณชอบ เพื่อแสดงผลบนหน้าจอและปุ่มโปรไฟล์</p>
+      </div>
+      <div id="avatar-picker" class="avatar-grid" role="radiogroup" aria-label="เลือกอวตารน้องหยก">
+        <!-- Rendered by profile.js -->
+      </div>
+    </section>
+
+    <!-- 3. แบบฟอร์มข้อมูลส่วนตัว -->
+    <section class="profile-card">
+      <div class="profile-card-header">
+        <h2 class="profile-card-title">✏️ ข้อมูลส่วนตัวผู้เรียน</h2>
+        <p class="profile-card-desc">คุณสามารถอัปเดตชื่อเล่น ระดับชั้น และช่องทางติดต่อได้ตลอดเวลา</p>
+      </div>
+
+      <form id="profile-form" class="profile-form" novalidate>
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="input-nickname" class="form-label">
+              ชื่อเล่น <span class="form-label-required">*</span>
+            </label>
+            <input id="input-nickname" class="form-input" type="text" placeholder="เช่น น้องกานต์, กัส" required maxlength="30" />
+            <span id="err-nickname" class="form-error" hidden></span>
+          </div>
+
+          <div class="form-group">
+            <label for="input-fullname" class="form-label">ชื่อ - นามสกุลจริง</label>
+            <input id="input-fullname" class="form-input" type="text" placeholder="เช่น สุวิชชา ใจดี" maxlength="80" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="input-grade" class="form-label">ระดับชั้นปัจจุบัน</label>
+            <select id="input-grade" class="form-select">
+              <option value="">-- เลือกระดับชั้น --</option>
+              <option value="ป.4">ประถมศึกษาปีที่ 4 (ป.4)</option>
+              <option value="ป.5">ประถมศึกษาปีที่ 5 (ป.5)</option>
+              <option value="ป.6">ประถมศึกษาปีที่ 6 (ป.6)</option>
+              <option value="ม.1">มัธยมศึกษาปีที่ 1 (ม.1)</option>
+              <option value="ม.2">มัธยมศึกษาปีที่ 2 (ม.2)</option>
+              <option value="ม.3">มัธยมศึกษาปีที่ 3 (ม.3)</option>
+              <option value="ม.4">มัธยมศึกษาปีที่ 4 (ม.4)</option>
+              <option value="ม.5">มัธยมศึกษาปีที่ 5 (ม.5)</option>
+              <option value="ม.6">มัธยมศึกษาปีที่ 6 (ม.6)</option>
+              <option value="มหาวิทยาลัย / บุคคลทั่วไป">มหาวิทยาลัย / บุคคลทั่วไป</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="input-school" class="form-label">โรงเรียน / สถาบัน</label>
+            <input id="input-school" class="form-input" type="text" placeholder="เช่น สาธิตปทุมวัน, สวนกุหลาบ" maxlength="100" />
+          </div>
+        </div>
+
+        <div class="form-grid-2">
+          <div class="form-group">
+            <label for="input-phone" class="form-label">เบอร์โทรศัพท์ (สำหรับติดต่อผู้ปกครอง/นักเรียน)</label>
+            <input id="input-phone" class="form-input" type="tel" placeholder="เช่น 0812345678" maxlength="20" />
+          </div>
+
+          <div class="form-group">
+            <label for="input-lineid" class="form-label">LINE ID</label>
+            <input id="input-lineid" class="form-input" type="text" placeholder="เช่น pik_student" maxlength="50" />
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button id="save-profile-btn" class="btn-chunky profile-save-btn" type="submit">
+            บันทึกข้อมูล ✨
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- 4. สรุปสถิติการเรียนรู้สะสม -->
+    <section class="profile-card">
+      <div class="profile-card-header">
+        <h2 class="profile-card-title">📊 สถิติความก้าวหน้าสะสม</h2>
+        <p class="profile-card-desc">วัดผลความพยายามและผลงานในการฝึกฝนของคุณ</p>
+      </div>
+
+      <div class="stats-summary-grid">
+        <div class="stat-metric-card">
+          <span class="stat-metric-icon">⭐</span>
+          <span id="stat-total-stars" class="stat-metric-val">0</span>
+          <span class="stat-metric-label">ดาวสะสมทั้งหมด</span>
+        </div>
+        <div class="stat-metric-card">
+          <span class="stat-metric-icon">⛳</span>
+          <span id="stat-total-clears" class="stat-metric-val">0</span>
+          <span class="stat-metric-label">ด่านที่พิชิตแล้ว</span>
+        </div>
+        <div class="stat-metric-card">
+          <span class="stat-metric-icon">🔁</span>
+          <span id="stat-total-attempts" class="stat-metric-val">0</span>
+          <span class="stat-metric-label">ข้อที่ฝึกสะสม</span>
+        </div>
+        <div class="stat-metric-card">
+          <span class="stat-metric-icon">☕</span>
+          <span id="stat-cafe-score" class="stat-metric-val">0</span>
+          <span class="stat-metric-label">Speed Cafe High Score</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. ตู้โชว์เหรียญรางวัล (Trophy Room) -->
+    <section id="trophies" class="trophy-section" style="margin-top: 0;">
+      <div class="trophy-header">
+        <div class="trophy-header-title">
+          <span class="trophy-badge-icon">🏆</span>
+          <div>
+            <h2 class="trophy-title">ตู้โชว์เหรียญรางวัล (Trophy Room)</h2>
+            <p class="trophy-subtitle">สะสมเหรียญตราความสำเร็จ 12 ชนิดจากการฝึกฝนและพิชิตบอสใหญ่</p>
+          </div>
+        </div>
+        <div class="trophy-counter">
+          ปลดล็อกแล้ว <strong id="unlocked-count" style="color: #d97706;">0</strong> / 12 เหรียญ
+        </div>
+      </div>
+      <div class="trophy-grid" id="trophy-grid">
+        <p class="hint" style="grid-column: 1 / -1; text-align: center; padding: 20px 0;">กำลังโหลดเหรียญรางวัล…</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal สำหรับดูรายละเอียดเหรียญรางวัล -->
+  <dialog id="badge-dialog" class="modal-dialog">
+    <div class="badge-dialog-card">
+      <div class="badge-dialog-header">
+        <span id="badge-dialog-rarity" class="badge-dialog-rarity">COMMON</span>
+        <button id="badge-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิด">✕</button>
+      </div>
+      <div id="badge-dialog-icon" class="badge-dialog-icon">⭐</div>
+      <h2 id="badge-dialog-title" class="badge-dialog-title">ชื่อเหรียญ</h2>
+      <p id="badge-dialog-desc" class="badge-dialog-desc">คำอธิบาย</p>
+      <div class="badge-dialog-progress-wrap">
+        <div class="badge-dialog-progress-labels">
+          <span id="badge-dialog-status-text">ความคืบหน้า</span>
+          <span id="badge-dialog-progress-val">0/15</span>
+        </div>
+        <div class="island-progress-track">
+          <div id="badge-dialog-progress-bar" class="island-progress-bar" style="width: 0%; background: #f59e0b;"></div>
+        </div>
+      </div>
+      <button id="badge-dialog-close" type="button" class="btn-primary" style="margin-top: var(--space-3); width: 100%;">เข้าใจแล้ว ✨</button>
+    </div>
+  </dialog>
+
+  <!-- Toast Notification -->
+  <div id="profile-toast" class="profile-toast" role="status" aria-live="polite">
+    บันทึกข้อมูลเรียบร้อยแล้ว ✨
+  </div>
+
+  <script type="module" src="./profile.js"></script>
+</body>
+</html>

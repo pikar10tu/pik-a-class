@@ -1,3 +1,4 @@
+import { doc, setDoc } from 'firebase/firestore';
 import { requireLogin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
 import { getRandomWords, VOCAB_ITEMS } from '../lib/vocab-data.js';
@@ -17,10 +18,13 @@ const lobbyScreen = document.getElementById('cafe-lobby');
 const gameStageScreen = document.getElementById('cafe-game-stage');
 const summaryScreen = document.getElementById('cafe-summary');
 
+const selectMode = document.getElementById('select-mode');
+const orderCountWrapper = document.getElementById('order-count-wrapper');
 const selectLevel = document.getElementById('select-level');
 const selectCount = document.getElementById('select-count');
 const btnStartGame = document.getElementById('btn-start-game');
 
+const hudRushHour = document.getElementById('hud-rush-hour');
 const hudLives = document.getElementById('hud-lives');
 const hudStreak = document.getElementById('hud-streak');
 const hudScore = document.getElementById('hud-score');
@@ -35,6 +39,7 @@ const patienceBar = document.getElementById('patience-bar');
 const dishesContainer = document.getElementById('dishes-container');
 
 const summaryIcon = document.getElementById('summary-icon');
+const newHighScoreBadge = document.getElementById('new-high-score-badge');
 const summaryTitle = document.getElementById('summary-title');
 const summaryStars = document.getElementById('summary-stars');
 const sumScore = document.getElementById('sum-score');
@@ -71,17 +76,32 @@ requireLogin(async (firebaseUser, userDoc) => {
 });
 
 function setupEvents() {
+  if (selectMode && orderCountWrapper) {
+    selectMode.addEventListener('change', () => {
+      orderCountWrapper.hidden = selectMode.value === 'endless';
+    });
+  }
+
   btnStartGame.addEventListener('click', () => {
     const level = selectLevel.value;
-    const count = parseInt(selectCount.value, 10) || 10;
-    const words = getRandomWords(count, { level });
+    const mode = selectMode ? selectMode.value : 'standard';
 
-    if (words.length === 0) {
-      alert('ไม่พบคำศัพท์ในระดับที่เลือก กรุณาเลือกใหม่');
-      return;
+    if (mode === 'endless') {
+      const allWords = getRandomWords(100, { level });
+      if (allWords.length === 0) {
+        alert('ไม่พบคำศัพท์ในระดับที่เลือก กรุณาเลือกใหม่');
+        return;
+      }
+      startNewGame(allWords.slice(0, 10), mode, allWords);
+    } else {
+      const count = parseInt(selectCount.value, 10) || 10;
+      const words = getRandomWords(count, { level });
+      if (words.length === 0) {
+        alert('ไม่พบคำศัพท์ในระดับที่เลือก กรุณาเลือกใหม่');
+        return;
+      }
+      startNewGame(words, mode);
     }
-
-    startNewGame(words);
   });
 
   btnOrderAudio.addEventListener('click', () => {
@@ -99,13 +119,13 @@ function setupEvents() {
 
   btnReviewMissed.addEventListener('click', () => {
     if (missedWordsInLastGame.length > 0) {
-      startNewGame(missedWordsInLastGame);
+      startNewGame(missedWordsInLastGame, 'standard');
     }
   });
 }
 
-function startNewGame(words) {
-  session = createCafeSession({ words, maxLives: 3, timeLimitSeconds: 8 });
+function startNewGame(words, mode = 'standard', wordPool = []) {
+  session = createCafeSession({ words, mode, wordPool, maxLives: 3, timeLimitSeconds: 8 });
   totalTimeMs = 8000;
   isSubmitting = false;
 
@@ -129,7 +149,16 @@ function renderOrder() {
   // Update HUD
   hudLives.textContent = '❤️'.repeat(order.lives) + '🖤'.repeat(order.maxLives - order.lives);
   hudScore.textContent = `🪙 ${order.score.toLocaleString()}`;
-  if (order.streak >= 3) {
+
+  // Rush Hour banner
+  if (hudRushHour) {
+    hudRushHour.hidden = !order.isRushHour;
+  }
+
+  if (order.isRushHour) {
+    hudStreak.className = 'cafe-streak-badge fire';
+    hudStreak.textContent = `🔥 ${order.streak}x RUSH HOUR!`;
+  } else if (order.streak >= 3) {
     hudStreak.className = 'cafe-streak-badge fire';
     hudStreak.textContent = `🔥 ${order.streak}x คอมโบ!`;
   } else {
@@ -137,7 +166,10 @@ function renderOrder() {
     hudStreak.textContent = `⚡ ${order.streak}x คอมโบ`;
   }
 
-  orderNumberText.textContent = `ออเดอร์ที่ ${order.orderNumber} / ${order.totalOrders}`;
+  orderNumberText.textContent =
+    order.mode === 'endless'
+      ? `ออเดอร์ที่ ${order.orderNumber} (โหมดไม่รู้จบ)`
+      : `ออเดอร์ที่ ${order.orderNumber} / ${order.totalOrders}`;
   orderLevelTag.textContent = order.word.level;
 
   customerAvatar.textContent = order.customer.emoji;
@@ -158,39 +190,44 @@ function renderOrder() {
   // Speak word automatically
   speak(order.word.word);
 
-  // Start Patience Timer
+  // Start Patience Timer (8s countdown)
+  startPatienceTimer();
+}
+
+function startPatienceTimer() {
   remainingMs = totalTimeMs;
-  updatePatienceBar();
+  updatePatienceBar(1);
+
+  const stepMs = 50;
   timerInterval = setInterval(() => {
-    remainingMs -= 100;
-    updatePatienceBar();
+    remainingMs -= stepMs;
+    const progress = Math.max(0, remainingMs / totalTimeMs);
+    updatePatienceBar(progress);
 
     if (remainingMs <= 0) {
       clearInterval(timerInterval);
       handleTimeout();
     }
-  }, 100);
+  }, stepMs);
 }
 
-function updatePatienceBar() {
-  const percent = Math.max(0, (remainingMs / totalTimeMs) * 100);
-  patienceBar.style.width = `${percent}%`;
-
-  if (percent > 50) {
-    patienceBar.className = 'patience-bar-fill';
-  } else if (percent > 25) {
-    patienceBar.className = 'patience-bar-fill warning';
+function updatePatienceBar(progress) {
+  patienceBar.style.width = `${progress * 100}%`;
+  if (progress > 0.5) {
+    patienceBar.style.backgroundColor = '#10b981';
+  } else if (progress > 0.25) {
+    patienceBar.style.backgroundColor = '#f59e0b';
   } else {
-    patienceBar.className = 'patience-bar-fill danger';
+    patienceBar.style.backgroundColor = '#ef4444';
   }
 }
 
-function handleChoice(choice, btn) {
+function handleChoice(selectedAnswer, btn) {
   if (isSubmitting) return;
   isSubmitting = true;
   clearInterval(timerInterval);
 
-  const result = submitAnswer(session, choice);
+  const result = submitAnswer(session, selectedAnswer);
 
   if (result.correct) {
     playAnswerSound('correct');
@@ -240,6 +277,8 @@ function handleTimeout() {
 
 async function finishGame() {
   clearInterval(timerInterval);
+  if (hudRushHour) hudRushHour.hidden = true;
+
   const summary = getCafeSummary(session);
   missedWordsInLastGame = summary.missedWords;
 
@@ -250,11 +289,17 @@ async function finishGame() {
   if (summary.isVictory) {
     playStageClearSound();
     summaryIcon.textContent = '🎉';
-    summaryTitle.textContent = 'ยอดเยี่ยมมาก! เสิร์ฟครบทุกออเดอร์';
+    summaryTitle.textContent =
+      summary.mode === 'endless'
+        ? `สุดยอดนักเสิร์ฟ! ทำได้ถึง ${summary.servedOrders} ออเดอร์`
+        : 'ยอดเยี่ยมมาก! เสิร์ฟครบทุกออเดอร์';
   } else {
     playStageFailedSound();
     summaryIcon.textContent = '🥺';
-    summaryTitle.textContent = 'ลูกค้าหนีหมดร้านแล้ว! ไว้ลองใหม่อีกทีนะ';
+    summaryTitle.textContent =
+      summary.mode === 'endless'
+        ? `จบเกม! คุณเสิร์ฟไปได้ ${summary.servedOrders} ออเดอร์`
+        : 'ลูกค้าหนีหมดร้านแล้ว! ไว้ลองใหม่อีกทีนะ';
   }
 
   summaryStars.textContent = '⭐'.repeat(summary.stars) || '—';
@@ -262,12 +307,41 @@ async function finishGame() {
   sumAccuracy.textContent = `${summary.accuracy}%`;
   sumCombo.textContent = `${summary.maxStreak}x`;
 
+  // Local storage cache for badges
   try {
     const prevMax = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
     if ((summary.maxStreak || 0) > prevMax) {
       localStorage.setItem('pik_cafe_max_combo', String(summary.maxStreak || 0));
     }
   } catch {}
+
+  // High score tracking & saving to Firestore
+  const prevHighScore = currentStudent?.speedCafeStats?.highScore || 0;
+  const prevMaxCombo = currentStudent?.speedCafeStats?.maxCombo || 0;
+  const isNewHighScore = summary.score > prevHighScore && summary.score > 0;
+
+  if (newHighScoreBadge) {
+    newHighScoreBadge.hidden = !isNewHighScore;
+  }
+
+  if (currentStudent?.uid && (isNewHighScore || summary.maxStreak > prevMaxCombo)) {
+    const updatedStats = {
+      highScore: Math.max(summary.score, prevHighScore),
+      maxCombo: Math.max(summary.maxStreak, prevMaxCombo),
+      lastPlayedAt: new Date().toISOString(),
+    };
+
+    try {
+      await setDoc(doc(db, 'users', currentStudent.uid), { speedCafeStats: updatedStats }, { merge: true });
+      if (currentStudent.speedCafeStats) {
+        Object.assign(currentStudent.speedCafeStats, updatedStats);
+      } else {
+        currentStudent.speedCafeStats = updatedStats;
+      }
+    } catch (e) {
+      console.warn('Could not save speed cafe high score to Firestore:', e);
+    }
+  }
 
   // Render missed words review
   if (summary.missedWords.length > 0) {
