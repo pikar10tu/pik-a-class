@@ -120,6 +120,25 @@ describe('getGrammarNote', () => {
     expect(note).toBeDefined();
     expect(note.title).toContain('มหาศึกผู้เชี่ยวชาญไวยากรณ์ขั้นสูง B2');
   });
+
+  it('contains complete curriculum across A1, A2, B1, and B2', async () => {
+    const { GRAMMAR_NOTES_A1, GRAMMAR_NOTES_A2, GRAMMAR_NOTES_B1, GRAMMAR_NOTES_B2 } = await import('./grammar-notes/index.js');
+    
+    [GRAMMAR_NOTES_A1, GRAMMAR_NOTES_A2, GRAMMAR_NOTES_B1, GRAMMAR_NOTES_B2].forEach((notesObj, idx) => {
+      const coreKeys = Object.keys(notesObj).filter(k => k.startsWith('grammar:'));
+      expect(coreKeys.length).toBeGreaterThanOrEqual(10);
+      
+      coreKeys.forEach(k => {
+        const note = notesObj[k];
+        expect(note.title).toBeTruthy();
+        expect(note.badge).toBeTruthy();
+        expect(note.concept).toBeTruthy();
+        expect(note.formula).toBeTruthy();
+        expect(note.tips).toBeTruthy();
+        expect(Array.isArray(note.examples)).toBe(true);
+      });
+    });
+  });
 });
 
 

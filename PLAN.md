@@ -139,6 +139,8 @@ reviewStatus: draft|reviewed|published   // ใช้ audit pipeline เดี�
 - **B2 (✅ ผลิตและเผยแพร่บน Cloud Firestore แล้ว 150 ข้อ + 20 ด่าน):** Participle Clauses & Reduced Relatives, Third & Mixed Conditionals, Unreal Past, Wishes & Subjunctive, Past Modals of Deduction & Regret, Advanced Passive & Causatives, Non-defining Relative Clauses & Prepositions, Advanced Future Aspects (Future Cont & Future Perfect), Inversion for Emphasis (Negative Adverbials), Cleft Sentences & Focusing, Advanced Discourse Markers & Academic Hedging
 - **C1:** Advanced conditionals/inversion, subjunctive, advanced passive/reporting, cleft sentences, discourse markers ขั้นสูง, nuanced modal usage
 
+> 💡 **จุดขายและการสื่อสารการตลาด:** ดูรายละเอียดการวางตำแหน่งการตลาด จุดขาย 5 ประการ และชุดคำเคลมพร้อมใช้ใน [`docs/marketing-positioning.md`](file:///D:/WEBPROJECT/pik-a-class/docs/marketing-positioning.md) ครอบคลุมผู้เรียนตั้งแต่ประถมปลาย ม.ต้น จนถึงติวสอบเข้ามหาวิทยาลัย TCAS (TGAT 1 / A-Level)
+
 ## 9. Data model (Firestore, สรุปรวม)
 
 **`users`**

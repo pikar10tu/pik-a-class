@@ -50,6 +50,7 @@ export default defineConfig({
         login: resolve(__dirname, 'src/login.html'),
         onboarding: resolve(__dirname, 'src/onboarding.html'),
         dashboard: resolve(__dirname, 'src/dashboard.html'),
+        handbook: resolve(__dirname, 'src/handbook.html'),
         learn: resolve(__dirname, 'src/learn/index.html'),
         learnPath: resolve(__dirname, 'src/learn/path.html'),
         learnPlay: resolve(__dirname, 'src/learn/play.html'),

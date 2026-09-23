@@ -28,6 +28,12 @@ const BOTTOM_PAD = 90;
 
 document.getElementById('back-link').href = `${base}learn/index.html`;
 document.getElementById('empty-back').href = `${base}learn/index.html`;
+const handbookPill = document.getElementById('handbook-pill-link');
+if (handbookPill && skill === 'grammar') {
+  handbookPill.href = `${base}handbook.html?level=${level || 'A1'}`;
+  handbookPill.textContent = `📖 สรุปไวยากรณ์ ${level || ''}`.trim();
+  handbookPill.hidden = false;
+}
 attachUiSounds();
 document.getElementById('empty-mascot').src = mascotSrc('normal', base);
 

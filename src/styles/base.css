@@ -365,6 +365,15 @@ main {
   border-color: #c084fc;
 }
 
+.dashboard-card.card-handbook {
+  background: linear-gradient(145deg, #ffffff 0%, #eff6ff 100%);
+  border: 1.5px solid #bfdbfe;
+}
+
+.dashboard-card.card-handbook:hover {
+  border-color: #3b82f6;
+}
+
 .card-icon {
   font-size: 2.2rem;
   line-height: 1;
@@ -395,6 +404,11 @@ main {
 .card-tag-admin {
   background: var(--color-admin-bg);
   color: var(--color-admin-text);
+}
+
+.card-tag-handbook {
+  background: #dbeafe;
+  color: #1d4ed8;
 }
 
 .card-btn {

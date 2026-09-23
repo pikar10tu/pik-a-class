@@ -302,6 +302,27 @@ body::after {
   font-weight: 600;
 }
 
+.path-handbook-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--color-primary-light);
+  color: #17753c;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  border: 1px solid #a8e6bf;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.path-handbook-pill:hover {
+  background: var(--color-primary);
+  color: #ffffff;
+  border-color: var(--color-primary-shadow);
+}
+
 .path-summary {
   text-align: center;
   margin: var(--space-2) auto 0;

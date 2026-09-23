@@ -8,6 +8,9 @@ const base = import.meta.env.BASE_URL;
 const learnLink = document.getElementById('learn-link');
 if (learnLink) learnLink.href = `${base}learn/index.html`;
 
+const handbookLink = document.getElementById('handbook-link');
+if (handbookLink) handbookLink.href = `${base}handbook.html`;
+
 const mascotEl = document.getElementById('dashboard-mascot');
 if (mascotEl) mascotEl.src = mascotSrc('normal', base);
 

@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>คู่มือสรุปไวยากรณ์ (Grammar Handbook) — Pik a Class</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="icon" type="image/png" href="./favicon.png" />
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+  <meta name="theme-color" content="#37c871" />
+  <link rel="stylesheet" href="./styles/tokens.css" />
+  <link rel="stylesheet" href="./styles/base.css" />
+  <link rel="stylesheet" href="./styles/learn.css" />
+  <link rel="stylesheet" href="./styles/handbook.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header-inner">
+      <a class="app-brand" href="./dashboard.html">
+        <span class="app-brand-logo">🌱</span>
+        <span>Pik a Class</span>
+      </a>
+      <div class="app-user-actions">
+        <a id="back-link" class="btn-ghost-sm" href="./dashboard.html">← แดชบอร์ด</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="handbook-main">
+    <section class="handbook-hero">
+      <img id="handbook-mascot" class="handbook-mascot" width="90" height="129" alt="พี่ปิ๊กชวนทบทวน" />
+      <div class="handbook-hero-text">
+        <span class="handbook-badge">📚 คลังสรุปไวยากรณ์ & สูตรลัด</span>
+        <h1 class="handbook-title">คู่มือไวยากรณ์ภาษาอังกฤษ</h1>
+        <p class="handbook-subtitle">
+          สรุปหัวใจสำคัญ โครงสร้างสูตร ตัวอย่างประโยค และเทคนิคจำฉบับพี่ปิ๊ก ครบ 40 หัวข้อหลัก (A1–B2) เปิดอ่านทบทวนได้ตลอดเวลาโดยไม่ต้องเข้าด่านผจญภัย
+        </p>
+      </div>
+    </section>
+
+    <!-- Search Input -->
+    <div class="handbook-search-wrapper">
+      <span class="handbook-search-icon" aria-hidden="true">🔍</span>
+      <input
+        type="search"
+        id="handbook-search"
+        class="handbook-search-input"
+        placeholder="ค้นหาชื่อหัวข้อ, โครงสร้างสูตร, หรือเทคนิค (เช่น Present, If clause, passive, wish)..."
+        aria-label="ค้นหาหัวข้อไวยากรณ์"
+      />
+    </div>
+
+    <!-- Level Tabs -->
+    <nav class="level-tabs" aria-label="เลือกระดับไวยากรณ์">
+      <button class="level-tab-btn is-active" type="button" data-level="A1">
+        <span>A1 Beginner</span>
+        <span class="level-tab-pill">10 หัวข้อ</span>
+      </button>
+      <button class="level-tab-btn" type="button" data-level="A2">
+        <span>A2 Elementary</span>
+        <span class="level-tab-pill">10 หัวข้อ</span>
+      </button>
+      <button class="level-tab-btn" type="button" data-level="B1">
+        <span>B1 Intermediate</span>
+        <span class="level-tab-pill">10 หัวข้อ</span>
+      </button>
+      <button class="level-tab-btn" type="button" data-level="B2">
+        <span>B2 Upper-Int</span>
+        <span class="level-tab-pill">10 หัวข้อ</span>
+      </button>
+    </nav>
+
+    <!-- Level Meta & Practice Link -->
+    <div id="level-meta-box" class="level-meta-box">
+      <div class="level-meta-text">
+        <div id="level-meta-title" class="level-meta-target"></div>
+        <div id="level-meta-desc"></div>
+      </div>
+      <a id="btn-play-level" class="btn-play-level" href="#">
+        <span>🎮 ลุยโจทย์ระดับนี้</span>
+      </a>
+    </div>
+
+    <!-- Topics Grid -->
+    <div id="topics-container" class="topics-grid"></div>
+
+    <!-- Empty Search State -->
+    <div id="handbook-empty" class="handbook-empty" hidden>
+      <div class="handbook-empty-icon">🔍</div>
+      <p id="handbook-empty-msg">ไม่พบหัวข้อไวยากรณ์ที่ตรงกับคำค้นหาในระดับนี้</p>
+    </div>
+  </main>
+
+  <script type="module" src="./handbook.js"></script>
+</body>
+</html>
