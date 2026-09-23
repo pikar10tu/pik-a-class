@@ -350,7 +350,9 @@
 }
 
 .profile-save-btn {
-  min-width: 150px;
+  min-width: 170px;
+  padding: 12px 28px;
+  font-size: 1.0625rem;
 }
 
 /* 4. Stats Grid */
@@ -511,11 +513,16 @@
   justify-content: flex-end;
   align-items: center;
   gap: 12px;
-  padding-top: var(--space-2);
+  padding-top: var(--space-3);
   border-top: 1px solid var(--color-border);
 }
 
+.avatar-dialog-cancel-btn {
+  padding: 10px 18px;
+  font-size: 0.9375rem;
+}
+
 .avatar-dialog-save-btn {
-  padding: 10px 20px;
+  padding: 10px 22px;
   font-size: 0.9375rem;
 }

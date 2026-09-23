@@ -6,6 +6,12 @@
   display: none !important;
 }
 
+/* ป้องกันไอคอนภาพเสีย (Broken Image Icon) ชั่วคราวก่อน JavaScript จะกำหนด src */
+img:not([src]),
+img[src=""] {
+  visibility: hidden;
+}
+
 body {
   margin: 0;
   font-family: var(--font-base);
@@ -38,6 +44,8 @@ main {
   justify-content: center;
   gap: var(--space-2);
   transition: transform 0.1s ease, filter 0.15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary:hover {
@@ -47,6 +55,113 @@ main {
 .btn-primary:active {
   transform: translateY(2px);
   border-bottom-width: 1px;
+}
+
+/* Chunky 3D Button (Signature Game Button) */
+.btn-chunky {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--radius-lg, 16px);
+  border-bottom: 5px solid var(--color-primary-shadow, #15803d);
+  background: var(--color-primary, #10b981);
+  color: var(--color-primary-text, #ffffff);
+  font-family: var(--font-base);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, filter 0.15s ease, border-bottom-width 0.1s ease;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-chunky:hover {
+    filter: brightness(1.06);
+  }
+}
+
+.btn-chunky:active {
+  transform: translateY(3px);
+  border-bottom-width: 2px;
+}
+
+.btn-chunky:disabled {
+  background: var(--color-border, #e2e8f0);
+  border-bottom-color: var(--color-muted, #94a3b8);
+  color: var(--color-muted, #94a3b8);
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+}
+
+/* Ghost Button (Secondary alternative) */
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 2px solid var(--color-border, #e2e8f0);
+  border-bottom: 4px solid #cbd5e1;
+  border-radius: var(--radius-lg, 16px);
+  background: var(--color-surface, #ffffff);
+  color: var(--color-text, #1e293b);
+  font-family: var(--font-base);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.1s ease, background 0.15s ease, border-color 0.15s ease;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-ghost:hover {
+    background: #f8fafc;
+    border-color: #94a3b8;
+  }
+}
+
+.btn-ghost:active {
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+/* Close Circle Button (Dialogs & Sheets) */
+.btn-close-circle {
+  background: #f1f5f9;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .btn-close-circle:hover {
+    background: #e2e8f0;
+    color: #1e293b;
+    transform: scale(1.05);
+  }
+}
+
+.btn-close-circle:active {
+  transform: scale(0.95);
 }
 
 .form-group {
