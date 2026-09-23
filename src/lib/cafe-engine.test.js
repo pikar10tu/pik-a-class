@@ -5,6 +5,7 @@ import {
   submitAnswer,
   timeoutOrder,
   getCafeSummary,
+  sanitizeChoiceText,
 } from './cafe-engine.js';
 
 describe('cafe-engine', () => {
@@ -117,5 +118,29 @@ describe('cafe-engine', () => {
     expect(summary.accuracy).toBe(100);
     expect(summary.stars).toBe(3);
     expect(summary.missedWords).toHaveLength(0);
+  });
+
+  it('sanitizes choice texts to prevent clue commas and parentheses', () => {
+    expect(sanitizeChoiceText('กระหายน้ำ, หิวน้ำ')).toBe('กระหายน้ำ');
+    expect(sanitizeChoiceText('เรื้อรัง (เป็นเวลานาน)')).toBe('เรื้อรัง');
+    expect(sanitizeChoiceText('   อาหารเช้า   ')).toBe('อาหารเช้า');
+
+    const multiMeaningWord = [
+      {
+        id: 'test_multi',
+        word: 'complex',
+        thai: 'ซับซ้อน, ยุ่งยาก',
+        alternatives: ['ง่ายดาย, สะดวก', 'ตรงไปตรงมา', 'รวดเร็ว'],
+      },
+    ];
+
+    const session = createCafeSession({ words: multiMeaningWord });
+    const order = getCurrentOrder(session);
+    expect(order.choices).toContain('ซับซ้อน');
+    expect(order.choices).not.toContain('ซับซ้อน, ยุ่งยาก');
+    expect(order.choices.every((c) => !c.includes(','))).toBe(true);
+
+    const res = submitAnswer(session, 'ซับซ้อน');
+    expect(res.correct).toBe(true);
   });
 });

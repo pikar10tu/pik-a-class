@@ -25,8 +25,10 @@ describe('vocab-data', () => {
     }
   });
 
-  it('contains complete required fields for each word', () => {
+  it('contains complete required fields and no hint commas/parentheses for each word', () => {
     const validLevels = ['A1', 'A2', 'B1', 'B2'];
+    expect(VOCAB_ITEMS.length).toBeGreaterThanOrEqual(200);
+
     for (const item of VOCAB_ITEMS) {
       expect(item.word.trim()).not.toBe('');
       expect(item.thai.trim()).not.toBe('');
@@ -34,8 +36,21 @@ describe('vocab-data', () => {
       expect(validLevels).toContain(item.level);
       expect(item.example.trim()).not.toBe('');
       expect(item.exampleThai.trim()).not.toBe('');
-      expect(item.alternatives.length).toBeGreaterThanOrEqual(3);
+      expect(item.alternatives.length).toBe(3);
       expect(item.alternatives).not.toContain(item.thai);
+
+      // ข้อสอบที่ดี: คำแปลและตัวเลือกต้องไม่มีลูกน้ำหรือวงเล็บที่บอกใบ้เฉลย
+      expect(item.thai).not.toMatch(/[,()\/]/);
+      for (const alt of item.alternatives) {
+        expect(alt).not.toMatch(/[,()\/]/);
+      }
+    }
+  });
+
+  it('provides at least 20 words for every category', () => {
+    for (const cat of CATEGORIES) {
+      const items = getVocabList({ category: cat.id });
+      expect(items.length).toBeGreaterThanOrEqual(20);
     }
   });
 

@@ -28,14 +28,21 @@ export function createCafeSession({ words = [], maxLives = 3, timeLimitSeconds =
   };
 }
 
+export function sanitizeChoiceText(text) {
+  if (!text || typeof text !== 'string') return '';
+  return text.split(/[,(]/)[0].trim();
+}
+
 export function getCurrentOrder(session) {
   if (!session || session.state !== 'playing' || session.currentIndex >= session.words.length) {
     return null;
   }
 
   const currentWord = session.words[session.currentIndex];
-  // 4 ตัวเลือก: คำแปลที่ถูกต้อง 1 ข้อ + ตัวเลือกหลอก 3 ข้อ
-  const choices = shuffleArray([currentWord.thai, ...currentWord.alternatives.slice(0, 3)]);
+  // 4 ตัวเลือก: คำแปลที่ถูกต้อง 1 ข้อ + ตัวเลือกหลอก 3 ข้อ (ผ่านการคลีนข้อความให้กระชับ ไม่บอกใบ้)
+  const cleanCorrect = sanitizeChoiceText(currentWord.thai);
+  const cleanAlts = (currentWord.alternatives || []).slice(0, 3).map(sanitizeChoiceText);
+  const choices = shuffleArray([cleanCorrect, ...cleanAlts]);
   const customer = CUSTOMER_TYPES[session.currentIndex % CUSTOMER_TYPES.length];
 
   return {
@@ -58,7 +65,8 @@ export function submitAnswer(session, selectedAnswer) {
   }
 
   const currentWord = session.words[session.currentIndex];
-  const isCorrect = selectedAnswer === currentWord.thai;
+  const expectedAnswer = sanitizeChoiceText(currentWord.thai);
+  const isCorrect = selectedAnswer === expectedAnswer || selectedAnswer === currentWord.thai;
 
   let pointsEarned = 0;
   if (isCorrect) {
