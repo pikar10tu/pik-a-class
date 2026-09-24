@@ -73,6 +73,7 @@ export default defineConfig({
         adminStudentReport: resolve(__dirname, 'src/admin/student-report.html'),
         vocabHub: resolve(__dirname, 'src/vocab/index.html'),
         vocabCafe: resolve(__dirname, 'src/vocab/cafe.html'),
+        notFound: resolve(__dirname, 'src/404.html'),
       },
     },
   },
