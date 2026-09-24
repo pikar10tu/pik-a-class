@@ -63,6 +63,11 @@ function renderErrors(errors) {
 document.getElementById('onboarding-form').addEventListener('submit', async (event) => {
   event.preventDefault();
   const formData = Object.fromEntries(new FormData(event.target).entries());
+  const prefix = formData.prefix === 'พี่' ? 'พี่' : 'น้อง';
+  formData.prefix = prefix;
+  if (formData.nickname) {
+    formData.callName = `${prefix}${formData.nickname.trim()}`;
+  }
   const { valid, errors } = validateOnboardingForm(formData);
   renderErrors(errors);
   if (!valid) return;

@@ -32,6 +32,9 @@ export function validateProfileData(data) {
   const fullName = typeof data.fullName === 'string' ? data.fullName.trim() : '';
   cleaned.fullName = fullName;
 
+  const prefix = data.prefix === 'พี่' ? 'พี่' : 'น้อง';
+  cleaned.prefix = prefix;
+
   const nickname = typeof data.nickname === 'string' ? data.nickname.trim() : '';
   if (!nickname) {
     errors.nickname = 'กรุณาระบุชื่อเล่น';
@@ -39,6 +42,7 @@ export function validateProfileData(data) {
     errors.nickname = 'ชื่อเล่นต้องไม่เกิน 30 ตัวอักษร';
   } else {
     cleaned.nickname = nickname;
+    cleaned.callName = `${prefix}${nickname}`;
   }
 
   cleaned.grade = typeof data.grade === 'string' ? data.grade.trim() : '';

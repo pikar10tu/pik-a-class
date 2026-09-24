@@ -37,6 +37,8 @@ export const usersSchema = {
     email: str(),
     fullName: str({ required: false }),
     nickname: str({ required: false }),
+    prefix: enumOf(['น้อง', 'พี่'], { required: false }),
+    callName: str({ required: false }),
     grade: enumOf(GRADES, { required: false }),
     school: str({ required: false }),
     phone: str({ required: false }),

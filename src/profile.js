@@ -334,6 +334,14 @@ requireLogin(async (firebaseUser, userDoc) => {
   }
 
   // Populate form
+  const prefixRadioPee = document.getElementById('profile-prefix-pee');
+  const prefixRadioNong = document.getElementById('profile-prefix-nong');
+  if (userDoc?.prefix === 'พี่') {
+    if (prefixRadioPee) prefixRadioPee.checked = true;
+  } else {
+    if (prefixRadioNong) prefixRadioNong.checked = true;
+  }
+
   if (inputNickname) inputNickname.value = nickname;
   if (inputFullName) inputFullName.value = userDoc?.fullName || '';
   if (inputGrade) inputGrade.value = userDoc?.grade || '';
@@ -347,9 +355,11 @@ requireLogin(async (firebaseUser, userDoc) => {
       e.preventDefault();
       if (errNickname) errNickname.hidden = true;
 
+      const chosenPrefix = document.querySelector('input[name="profile-prefix"]:checked')?.value || 'น้อง';
       const raw = {
         fullName: inputFullName?.value,
         nickname: inputNickname?.value,
+        prefix: chosenPrefix,
         grade: inputGrade?.value,
         school: inputSchool?.value,
         phone: inputPhone?.value,
@@ -380,7 +390,7 @@ requireLogin(async (firebaseUser, userDoc) => {
         await setDoc(doc(db, 'users', currentUid), updatePayload, { merge: true });
 
         // Update local hero display
-        if (heroDisplayName) heroDisplayName.textContent = cleaned.nickname || cleaned.fullName;
+        if (heroDisplayName) heroDisplayName.textContent = cleaned.callName || cleaned.nickname || cleaned.fullName;
         showToast('บันทึกข้อมูลเรียบร้อยแล้ว ✨');
       } catch (err) {
         console.error('Profile update failed:', err);

@@ -32,8 +32,27 @@
         </div>
 
         <div class="form-group">
+          <label class="form-label" style="display: block; margin-bottom: 6px;">
+            คำนำหน้าชื่อที่ให้ครูและน้องหยกเรียก <span class="required-star">*</span>
+          </label>
+          <div class="prefix-choice-row" role="radiogroup" aria-label="เลือกคำนำหน้าชื่อ">
+            <label class="prefix-choice-label">
+              <input type="radio" name="prefix" value="น้อง" checked class="prefix-radio" />
+              <span class="prefix-btn">🌱 น้อง</span>
+            </label>
+            <label class="prefix-choice-label">
+              <input type="radio" name="prefix" value="พี่" class="prefix-radio" />
+              <span class="prefix-btn">⭐ พี่</span>
+            </label>
+          </div>
+          <span class="optional-hint" style="font-size: 0.75rem; color: #64748b; margin-top: 4px; display: block;">
+            (คุณสามารถเปลี่ยนเป็น "น้อง" หรือ "พี่" ได้ตลอดเวลาในหน้าโปรไฟล์)
+          </span>
+        </div>
+
+        <div class="form-group">
           <label for="nickname">ชื่อเล่น <span class="required-star">*</span></label>
-          <input type="text" id="nickname" name="nickname" placeholder="เช่น ชาย, น้องปิ๊ก" autocomplete="nickname" />
+          <input type="text" id="nickname" name="nickname" placeholder="เช่น กานต์, ชาย, กัส" autocomplete="nickname" />
           <span class="field-error" data-error-for="nickname"></span>
         </div>
 
