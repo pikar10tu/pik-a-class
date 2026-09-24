@@ -64,6 +64,15 @@ describe('vocab-data', () => {
     expect(b2List.every((item) => item.level === 'B2')).toBe(true);
   });
 
+  it('filters by allowedLevels array accurately', () => {
+    const listA1A2 = getVocabList({ allowedLevels: ['A1', 'A2'] });
+    expect(listA1A2.length).toBeGreaterThan(0);
+    expect(listA1A2.every((item) => ['A1', 'A2'].includes(item.level))).toBe(true);
+    expect(listA1A2.some((item) => item.level === 'A1')).toBe(true);
+    expect(listA1A2.some((item) => item.level === 'A2')).toBe(true);
+    expect(listA1A2.some((item) => item.level === 'B1')).toBe(false);
+  });
+
   it('filters by category accurately', () => {
     const foodList = getVocabList({ category: 'food-drink' });
     expect(foodList.length).toBeGreaterThan(0);

@@ -55,7 +55,38 @@ describe('users rules', () => {
             streak: { current: 1, longest: 1, lastActiveDate: '2026-09-20' },
             favoriteVocab: ['w-a1-1', 'w-a1-2'],
             favoriteVocabUpdatedAt: '2026-09-24T10:00:00.000Z',
+            hasReviewed: true,
+            reviewSubmittedAt: '2026-09-24T10:00:00.000Z',
           }),
+      );
+      // Student reviews collection test
+      await assertSucceeds(
+        db.collection('reviews').doc('student1').set({
+          uid: 'student1',
+          authorName: 'น้องเรียน',
+          rating: 5,
+          comment: 'เรียนสนุกมากครับ ชอบแอนิเมชันกับเสียง',
+          clearedCount: 3,
+          createdAt: '2026-09-24T10:00:00.000Z',
+        }),
+      );
+      // Cannot submit review with rating 0 or empty comment
+      await assertFails(
+        db.collection('reviews').doc('student1').update({ rating: 0 }),
+      );
+      await assertFails(
+        db.collection('reviews').doc('student1').update({ comment: '' }),
+      );
+      // Other student cannot write someone else's review
+      await assertFails(
+        db.collection('reviews').doc('student2').set({
+          uid: 'student2',
+          authorName: 'น้องบีน',
+          rating: 5,
+          comment: 'เยี่ยม',
+          clearedCount: 3,
+          createdAt: '2026-09-24T10:00:00.000Z',
+        }),
       );
       await assertFails(db.collection('users').doc('student1').update({ tier: 'full' }));
       await assertFails(db.collection('users').doc('student1').update({ role: 'admin' }));

@@ -174,6 +174,42 @@
         </div>
       </section>
     </div>
+
+    <!-- Row 3: Student Reviews & Feedback -->
+    <section class="macro-card" style="margin-top: var(--space-4);">
+      <div class="macro-card-header">
+        <div>
+          <h2 class="macro-card-title">💌 เสียงตอบรับและรีวิวจากผู้เรียน (Student Reviews)</h2>
+          <p style="font-size: 0.8125rem; color: #64748b; margin: 2px 0 0;">
+            ข้อเสนอแนะและคะแนนดาวที่นักเรียนส่งเข้ามาทุกๆ 3 ด่านที่เล่นผ่าน
+          </p>
+        </div>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span id="review-avg-rating" style="font-size: 1.125rem; font-weight: 700; color: #d97706;">★ —</span>
+          <span id="review-total-count" style="font-size: 0.8125rem; color: #64748b;">(0 รีวิว)</span>
+        </div>
+      </div>
+      <div class="admin-table-wrapper" style="margin-bottom: 0;">
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th style="width: 150px;">ผู้เรียน</th>
+              <th style="width: 120px;">คะแนน</th>
+              <th>ข้อเสนอแนะ / ความรู้สึก</th>
+              <th style="width: 100px; text-align: center;">ด่านที่ผ่าน</th>
+              <th style="width: 130px;">วันที่</th>
+            </tr>
+          </thead>
+          <tbody id="reviews-table-rows">
+            <tr>
+              <td colspan="5" style="text-align: center; color: var(--color-muted); padding: 24px;">
+                กำลังโหลดรีวิวจากผู้เรียน...
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
   </main>
   <script type="module" src="./index.js"></script>
 </body>

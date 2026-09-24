@@ -8,8 +8,12 @@ import {
   sortVocabWithFavoritesFirst,
   filterFavorites,
 } from '../lib/vocab-favorites.js';
+import { fetchMyClears } from '../lib/stage-io.js';
+import { getClearedLevels, getUnlockedLevels } from '../lib/user-profile.js';
+import { readTier } from '../lib/queries.js';
 
 let currentUid = null;
+let currentUserDoc = null;
 let favoriteIds = [];
 let currentLevel = 'all';
 let currentCategory = 'all';
@@ -17,6 +21,8 @@ let currentSearch = '';
 let currentDeck = [];
 let deckIndex = 0;
 let isFlipped = false;
+let unlockedLevels = ['A1'];
+let clearedLevels = [];
 
 // DOM Elements
 const userPill = document.getElementById('user-pill');
@@ -57,6 +63,7 @@ export function speakWord(text) {
 
 requireLogin(async (firebaseUser, userDoc) => {
   currentUid = firebaseUser.uid;
+  currentUserDoc = userDoc;
   favoriteIds = getFavoriteIds(userDoc, currentUid);
 
   const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
@@ -66,10 +73,102 @@ requireLogin(async (firebaseUser, userDoc) => {
     favFilterCount.textContent = `(${favoriteIds.length})`;
   }
 
+  try {
+    const myClears = await fetchMyClears(db, currentUid);
+    const clearsByLevel = new Map();
+    for (const clear of myClears) {
+      const lvl = clear.level;
+      if (!lvl) continue;
+      const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
+      if (isCleared) {
+        clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
+      }
+    }
+    clearedLevels = getClearedLevels(clearsByLevel, 20);
+    unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
+  } catch (err) {
+    console.warn('Could not fetch clears for vocab unlock:', err);
+    unlockedLevels = getUnlockedLevels(userDoc, []);
+  }
+
+  renderLevelFilterButtons();
   setupCategoryFilters();
+  setupLockDialog();
   setupEventListeners();
   updateDeck();
 });
+
+function renderLevelFilterButtons() {
+  const levelBtns = document.querySelectorAll('[data-level]');
+  levelBtns.forEach((btn) => {
+    const lvl = btn.getAttribute('data-level');
+    if (lvl === 'all') return;
+    const isUnlocked = unlockedLevels.includes(lvl);
+    if (!isUnlocked) {
+      btn.textContent = `${lvl} 🔒`;
+      btn.classList.add('chip-btn--locked');
+      btn.title = `ระดับ ${lvl} ยังไม่ปลดล็อก (คลิกเพื่อดูวิธีปลดล็อก)`;
+    } else {
+      btn.textContent = lvl;
+      btn.classList.remove('chip-btn--locked');
+      btn.title = `ระดับ ${lvl}`;
+    }
+  });
+}
+
+function openVocabLockDialog(targetLevel) {
+  const dialog = document.getElementById('lock-dialog');
+  const badge = document.getElementById('lock-dialog-badge');
+  const title = document.getElementById('lock-dialog-title');
+  const text = document.getElementById('lock-dialog-text');
+  const icon = document.getElementById('lock-dialog-icon');
+  if (!dialog) return;
+
+  if (targetLevel === 'A2') {
+    if (clearedLevels.includes('A1')) {
+      if (badge) badge.textContent = '🎁 ปลดล็อกฟรี!';
+      if (icon) icon.textContent = '🎉✨';
+      if (title) title.textContent = 'พิชิตด่าน A1 ครบแล้ว! ขอปลดศัพท์ A2 ฟรี';
+      if (text) {
+        text.innerHTML = `
+          เก่งมากเลยครับ! คุณเล่นผ่านด่าน A1 ครบ 20 ด่านแล้ว<br>
+          แคปภาพหน้าจอสรุปหรือด่านที่ผ่านส่งมาทาง LINE หาพี่ปิ๊ก แล้วพี่ปิ๊กจะเปิดทั้ง<strong>เกาะ A2 และคลังคำศัพท์ระดับ A2 ให้เรียนฟรี</strong> ทันทีเลยครับ! 🚀
+        `;
+      }
+    } else {
+      if (badge) badge.textContent = '🔒 ระดับ A2';
+      if (icon) icon.textContent = '🔒📖';
+      if (title) title.textContent = 'คำศัพท์ระดับ A2 ยังล็อกอยู่ครับ';
+      if (text) {
+        text.innerHTML = `
+          คลังคำศัพท์และด่านระดับ A2 จะปลดล็อกหลังจากคุณเล่นผ่าน<strong>ด่านระดับ A1 ครบ 20 ด่าน</strong><br>
+          ตอนนี้ลุยด่าน A1 ให้ชำนาญก่อนนะค้าบ เก่งขึ้นแน่นอน! 💪
+        `;
+      }
+    }
+  } else {
+    // B1 or B2
+    if (badge) badge.textContent = `⭐ ระดับ ${targetLevel} (Full Tier)`;
+    if (icon) icon.textContent = '👑💎';
+    if (title) title.textContent = `คำศัพท์ระดับ ${targetLevel} สำหรับ Full Tier`;
+    if (text) {
+      text.innerHTML = `
+        คลังคำศัพท์และบทเรียนระดับ ${targetLevel} เป็นเนื้อหาระดับเข้มข้นสำหรับผู้เรียนแบบ <strong>Full Tier</strong> หรือคอร์สเรียนกับพี่ปิ๊ก<br>
+        หากสนใจสมัครเรียนหรือสอบถามรายละเอียด ทัก LINE สอบถามพี่ปิ๊กได้เลยครับ ยินดีดูแลเสมอครับ! 😊
+      `;
+    }
+  }
+
+  dialog.showModal();
+}
+
+function setupLockDialog() {
+  const dialog = document.getElementById('lock-dialog');
+  const closeX = document.getElementById('lock-dialog-close-x');
+  const closeBtn = document.getElementById('lock-dialog-close');
+  closeX?.addEventListener('click', () => dialog?.close());
+  closeBtn?.addEventListener('click', () => dialog?.close());
+}
 
 function setupCategoryFilters() {
   for (const cat of CATEGORIES) {
@@ -86,12 +185,14 @@ function updateDeck({ shuffle = false } = {}) {
   if (currentCategory === 'favorites') {
     const baseList = getVocabList({
       level: currentLevel,
+      allowedLevels: unlockedLevels,
       search: currentSearch,
     });
     currentDeck = filterFavorites(baseList, favoriteIds);
   } else {
     currentDeck = getVocabList({
       level: currentLevel,
+      allowedLevels: unlockedLevels,
       category: currentCategory,
       search: currentSearch,
       shuffle,
@@ -287,9 +388,14 @@ function setupEventListeners() {
   // Level Filters
   document.querySelectorAll('[data-level]').forEach((btn) => {
     btn.addEventListener('click', () => {
+      const lvl = btn.getAttribute('data-level');
+      if (lvl !== 'all' && !unlockedLevels.includes(lvl)) {
+        openVocabLockDialog(lvl);
+        return;
+      }
       document.querySelectorAll('[data-level]').forEach((b) => b.classList.remove('active'));
       btn.classList.add('active');
-      currentLevel = btn.getAttribute('data-level');
+      currentLevel = lvl;
       updateDeck();
     });
   });

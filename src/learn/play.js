@@ -1,6 +1,7 @@
+import { doc, setDoc, updateDoc } from 'firebase/firestore';
 import { requireLogin, isAdmin } from '../lib/auth-guard.js';
 import { db } from '../lib/firebase.js';
-import { fetchStage, fetchStagePool } from '../lib/stage-io.js';
+import { fetchStage, fetchStagePool, fetchMyClears } from '../lib/stage-io.js';
 import { saveStageResult } from '../lib/stage-result-io.js';
 import { createSession, currentExercise, answerCurrent, advance, summarize } from '../lib/stage-session.js';
 import { buildWordBank } from '../lib/word-bank.js';
@@ -9,7 +10,7 @@ import { playAnswerSound, playButtonSound, playStageClearSound, playStageFailedS
 import { loadMuted, saveMuted } from '../lib/sound-prefs.js';
 import { pickRound } from '../lib/stage-pool.js';
 import { readTier } from '../lib/queries.js';
-import { isLevelAllowed } from '../lib/user-profile.js';
+import { isLevelAllowed, getClearedLevels } from '../lib/user-profile.js';
 import { STAGE_ITEM_TYPES } from '../lib/stage-form.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
 import { getGrammarNote } from '../lib/grammar-notes.js';
@@ -27,6 +28,7 @@ let stage = null;
 let exercises = [];
 let session = null;
 let uid = null;
+let currentUserDoc = null;
 let answered = false;
 // จริงๆ แล้วเก็บสถานะ "กำลังเล่นด่านอยู่ ยังไม่จบ" ไว้กันหลุดหน้าโดยไม่เตือน (ปิดแท็บ/รีเฟรช/ย้อนกลับ)
 // ต่างจากปุ่ม "ออก" ที่ถามยืนยันเฉพาะตอนกดเอง — อันนี้ครอบคลุมทางออกอื่นๆ ที่ JS ดักไม่ได้ตรงๆ ด้วย beforeunload
@@ -140,6 +142,116 @@ function pathHref() {
 function studentBackHref() {
   return stage ? pathHref() : `${base}learn/index.html`;
 }
+
+const STAR_DESCRIPTIONS = {
+  1: 'ยังไม่ค่อยโอเคเท่าไหร่ (1 ดาว)',
+  2: 'ต้องปรับปรุงบางส่วน (2 ดาว)',
+  3: 'ปานกลาง พอใช้ได้ (3 ดาว)',
+  4: 'ดีมาก สนุกและเข้าใจง่าย (4 ดาว)',
+  5: 'ยอดเยี่ยมมาก ชอบมากเลย! (5 ดาว)',
+};
+
+function setupReviewDialog() {
+  const dialog = document.getElementById('review-dialog');
+  const closeBtn = document.getElementById('review-dialog-close-x');
+  const skipBtn = document.getElementById('review-skip-btn');
+  const starGroup = document.getElementById('review-star-group');
+  const ratingVal = document.getElementById('review-rating-val');
+  const starDesc = document.getElementById('star-desc-text');
+  const form = document.getElementById('review-form');
+  const commentInput = document.getElementById('review-comment');
+  const errorText = document.getElementById('review-error');
+  const submitBtn = document.getElementById('submit-review-btn');
+
+  if (!dialog || !form) return;
+
+  function setStars(starCount) {
+    if (!starGroup) return;
+    const buttons = starGroup.querySelectorAll('.btn-star-select');
+    buttons.forEach((btn) => {
+      const s = Number(btn.dataset.star);
+      if (s <= starCount) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+    if (ratingVal) ratingVal.value = String(starCount);
+    if (starDesc) starDesc.textContent = STAR_DESCRIPTIONS[starCount] || `${starCount} ดาว`;
+  }
+
+  starGroup?.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-star-select');
+    if (!btn) return;
+    const star = Number(btn.dataset.star);
+    setStars(star);
+  });
+
+  closeBtn?.addEventListener('click', () => dialog.close());
+  skipBtn?.addEventListener('click', () => dialog.close());
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const comment = commentInput?.value?.trim() || '';
+    if (comment.length < 3) {
+      if (errorText) errorText.hidden = false;
+      return;
+    }
+    if (errorText) errorText.hidden = true;
+
+    const rating = Number(ratingVal?.value || 5);
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'กำลังส่งความรู้สึก...';
+    }
+
+    try {
+      const now = new Date().toISOString();
+      let clearedCount = 0;
+      try {
+        const clears = await fetchMyClears(db, uid);
+        clearedCount = clears.length;
+      } catch {
+        // fallback
+      }
+
+      const authorName = currentUserDoc?.displayName || currentUserDoc?.nickname || 'ผู้เรียน';
+
+      await setDoc(doc(db, 'reviews', uid), {
+        uid,
+        authorName,
+        rating,
+        comment,
+        clearedCount,
+        createdAt: currentUserDoc?.reviewSubmittedAt || now,
+        updatedAt: now,
+      });
+
+      await updateDoc(doc(db, 'users', uid), {
+        hasReviewed: true,
+        reviewSubmittedAt: now,
+      });
+
+      safeLocalStorage()?.setItem(`pik_has_reviewed_${uid}`, 'true');
+      if (currentUserDoc) {
+        currentUserDoc.hasReviewed = true;
+        currentUserDoc.reviewSubmittedAt = now;
+      }
+
+      dialog.close();
+      alert('ขอบคุณสำหรับข้อเสนอแนะมากครับ! พี่ปิ๊กอ่านทุกข้อความเพื่อพัฒนาบทเรียนให้ดียิ่งขึ้น ❤️');
+    } catch (err) {
+      console.error('Failed to submit review:', err);
+      alert('บันทึกความเห็นไม่สำเร็จ กรุณาลองใหม่อีกครั้ง');
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'ส่งความรู้สึกให้พี่ปิ๊ก 💌';
+      }
+    }
+  });
+}
+
+setupReviewDialog();
 
 // ทางออกรวมของทุกจุดในหน้านี้ — พรีวิวจากแอดมินพากลับหน้าแก้ด่านเดิมเสมอ ไม่ว่าจะออกจากจุดไหน
 // (กด "ออก" กลางด่าน, กด "กลับ" หลังจบด่าน, หรือเจอ empty state ทั้งสามแบบ)
@@ -473,6 +585,31 @@ async function finish() {
   }
 
   await save();
+
+  if (summary.passed) {
+    // 1. ถ้าจบ A1 ด่าน 20 และยังไม่ได้ปลดล็อก A2 (Free Tier) ให้แสดงการ์ดแคปส่งครู
+    const isFreeTier = readTier(currentUserDoc) !== 'full' && !currentUserDoc?.allowedLevels?.includes('A2');
+    if (stage.level === 'A1' && stage.order === 20 && isFreeTier) {
+      document.getElementById('a1-completion-card')?.removeAttribute('hidden');
+    }
+
+    // 2. ขอรีวิวทุกๆ 3 ด่านที่ผ่าน หากยังไม่เคยรีวิว
+    const hasReviewed = currentUserDoc?.hasReviewed || safeLocalStorage()?.getItem(`pik_has_reviewed_${uid}`) === 'true';
+    if (!hasReviewed) {
+      try {
+        const myClears = await fetchMyClears(db, uid);
+        const clearsCount = myClears.length;
+        if (clearsCount > 0 && clearsCount % 3 === 0) {
+          const dialog = document.getElementById('review-dialog');
+          if (dialog && !dialog.open) {
+            dialog.showModal();
+          }
+        }
+      } catch (err) {
+        console.warn('Could not check stage clears for review prompt:', err);
+      }
+    }
+  }
 }
 
 async function save() {
@@ -537,13 +674,27 @@ window.addEventListener('beforeunload', (event) => {
 
 requireLogin(async (firebaseUser, userDoc) => {
   uid = firebaseUser.uid;
+  currentUserDoc = userDoc;
   try {
     stage = await fetchStage(db, stageId);
     if (!stage) {
       showEmpty('ไม่พบด่านนี้', backHref());
       return;
     }
-    if (!isLevelAllowed(userDoc, stage.level)) {
+
+    const myClears = await fetchMyClears(db, uid);
+    const clearsByLevel = new Map();
+    for (const clear of myClears) {
+      const lvl = clear.level;
+      if (!lvl) continue;
+      const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
+      if (isCleared) {
+        clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
+      }
+    }
+    const clearedLevels = getClearedLevels(clearsByLevel, 20);
+
+    if (!isLevelAllowed(userDoc, stage.level, clearedLevels)) {
       showEmpty(`ระดับ ${stage.level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านได้เลยครับ`, backHref());
       return;
     }

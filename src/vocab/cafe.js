@@ -17,6 +17,8 @@ import {
   toggleFavorite,
   getVocabIdByWord,
 } from '../lib/vocab-favorites.js';
+import { fetchMyClears } from '../lib/stage-io.js';
+import { getClearedLevels, getUnlockedLevels } from '../lib/user-profile.js';
 
 // DOM Elements
 const userPill = document.getElementById('user-pill');
@@ -74,6 +76,8 @@ function speak(text) {
 }
 
 let favoriteIds = [];
+let unlockedLevels = ['A1'];
+let clearedLevels = [];
 
 requireLogin(async (firebaseUser, userDoc) => {
   currentStudent = { uid: firebaseUser.uid, ...userDoc };
@@ -81,8 +85,45 @@ requireLogin(async (firebaseUser, userDoc) => {
   const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
   userPill.textContent = name;
 
+  try {
+    const myClears = await fetchMyClears(db, firebaseUser.uid);
+    const clearsByLevel = new Map();
+    for (const clear of myClears) {
+      const lvl = clear.level;
+      if (!lvl) continue;
+      const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
+      if (isCleared) {
+        clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
+      }
+    }
+    clearedLevels = getClearedLevels(clearsByLevel, 20);
+    unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
+  } catch (err) {
+    console.warn('Could not fetch clears for cafe level unlock:', err);
+    unlockedLevels = getUnlockedLevels(userDoc, []);
+  }
+
+  updateLevelSelectOptions();
   setupEvents();
 });
+
+function updateLevelSelectOptions() {
+  if (!selectLevel) return;
+  const options = selectLevel.querySelectorAll('option');
+  options.forEach((opt) => {
+    const val = opt.value;
+    if (val === 'all') return;
+    if (!unlockedLevels.includes(val)) {
+      opt.disabled = true;
+      if (!opt.textContent.includes('🔒')) {
+        opt.textContent += ' 🔒 (ยังไม่ปลดล็อก)';
+      }
+    } else {
+      opt.disabled = false;
+      opt.textContent = opt.textContent.replace(' 🔒 (ยังไม่ปลดล็อก)', '');
+    }
+  });
+}
 
 function setupEvents() {
   if (selectMode && orderCountWrapper) {
@@ -95,8 +136,13 @@ function setupEvents() {
     const level = selectLevel.value;
     const mode = selectMode ? selectMode.value : 'standard';
 
+    if (level !== 'all' && !unlockedLevels.includes(level)) {
+      alert(`ระดับ ${level} ยังไม่ปลดล็อกสำหรับบัญชีของคุณครับ เล่นผ่านด่านเพื่อปลดล็อกก่อนนะค้าบ`);
+      return;
+    }
+
     if (mode === 'endless') {
-      const allWords = getRandomWords(100, { level });
+      const allWords = getRandomWords(100, { level, allowedLevels: unlockedLevels });
       if (allWords.length === 0) {
         alert('ไม่พบคำศัพท์ในระดับที่เลือก กรุณาเลือกใหม่');
         return;
@@ -104,7 +150,7 @@ function setupEvents() {
       startNewGame(allWords.slice(0, 10), mode, allWords);
     } else {
       const count = parseInt(selectCount.value, 10) || 10;
-      const words = getRandomWords(count, { level });
+      const words = getRandomWords(count, { level, allowedLevels: unlockedLevels });
       if (words.length === 0) {
         alert('ไม่พบคำศัพท์ในระดับที่เลือก กรุณาเลือกใหม่');
         return;

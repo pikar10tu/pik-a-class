@@ -1,4 +1,4 @@
-import { getCountFromServer } from 'firebase/firestore';
+import { collection, getDocs, getCountFromServer } from 'firebase/firestore';
 import { requireAdmin } from '../lib/auth-guard.js';
 import { renderAdminNav } from '../lib/admin-nav.js';
 import { buildQuery, contentLibraryConstraints } from '../lib/queries.js';
@@ -14,6 +14,16 @@ import {
 
 renderAdminNav(document.getElementById('admin-nav'), 'admin/index.html', import.meta.env.BASE_URL);
 
+async function fetchReviews(db) {
+  try {
+    const snap = await getDocs(collection(db, 'reviews'));
+    return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+  } catch (err) {
+    console.warn('Could not fetch reviews:', err);
+    return [];
+  }
+}
+
 requireAdmin(async (firebaseUser) => {
   const welcomeEl = document.getElementById('admin-welcome');
   if (welcomeEl) {
@@ -21,10 +31,11 @@ requireAdmin(async (firebaseUser) => {
   }
 
   try {
-    const [pendingSnap, platformStats, students] = await Promise.all([
+    const [pendingSnap, platformStats, students, reviews] = await Promise.all([
       getCountFromServer(buildQuery(db, 'exercises', contentLibraryConstraints({ reviewStatus: 'draft' }))),
       fetchPlatformStats(db),
       fetchStudents(db),
+      fetchReviews(db),
     ]);
 
     // 1. User & Tier Health
@@ -78,6 +89,9 @@ requireAdmin(async (firebaseUser) => {
 
     // 5. Recent Registered Students (5 most recent)
     renderRecentStudents(students);
+
+    // 6. Student Reviews & Feedback
+    renderReviews(reviews);
   } catch (error) {
     console.error(error);
     showPageError('โหลดข้อมูลภาพรวมไม่สำเร็จ กรุณาลองรีเฟรชหน้าอีกครั้ง');
@@ -169,4 +183,58 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function renderReviews(reviews) {
+  const tbody = document.getElementById('reviews-table-rows');
+  const avgRatingEl = document.getElementById('review-avg-rating');
+  const totalCountEl = document.getElementById('review-total-count');
+  if (!tbody) return;
+
+  tbody.replaceChildren();
+
+  if (!reviews || reviews.length === 0) {
+    if (avgRatingEl) avgRatingEl.textContent = '★ —';
+    if (totalCountEl) totalCountEl.textContent = '(0 รีวิว)';
+    const tr = document.createElement('tr');
+    tr.innerHTML = '<td colspan="5" style="text-align: center; color: var(--color-muted); padding: 24px;">ยังไม่มีข้อเสนอแนะหรือรีวิวจากผู้เรียนในระบบ</td>';
+    tbody.appendChild(tr);
+    return;
+  }
+
+  // Sort newest first
+  const sorted = [...reviews].sort((a, b) => (b.createdAt || '').localeCompare(a.createdAt || ''));
+  const totalRating = sorted.reduce((sum, r) => sum + (Number(r.rating) || 0), 0);
+  const avg = (totalRating / sorted.length).toFixed(1);
+
+  if (avgRatingEl) avgRatingEl.textContent = `★ ${avg} / 5.0`;
+  if (totalCountEl) totalCountEl.textContent = `(${sorted.length} รีวิว)`;
+
+  for (const r of sorted) {
+    const tr = document.createElement('tr');
+    const stars = '⭐'.repeat(Math.max(1, Math.min(5, Number(r.rating) || 5)));
+    const author = r.authorName || 'ผู้เรียน';
+    const comment = r.comment || '';
+    const clears = r.clearedCount != null ? `${r.clearedCount} ด่าน` : '—';
+    const date = r.createdAt
+      ? new Date(r.createdAt).toLocaleDateString('th-TH', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        })
+      : '—';
+
+    tr.innerHTML = `
+      <td>
+        <strong style="color: #0f172a;">${escapeHtml(author)}</strong>
+      </td>
+      <td style="font-size: 0.875rem;">${stars}</td>
+      <td style="font-size: 0.875rem; color: #334155; line-height: 1.4;">${escapeHtml(comment)}</td>
+      <td style="text-align: center; font-size: 0.8125rem; color: #64748b;">${clears}</td>
+      <td style="font-size: 0.75rem; color: #94a3b8; white-space: nowrap;">${date}</td>
+    `;
+    tbody.appendChild(tr);
+  }
 }

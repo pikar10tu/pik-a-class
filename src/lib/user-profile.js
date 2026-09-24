@@ -83,29 +83,73 @@ export function getPostLoginRedirect(userDocData) {
   return 'dashboard';
 }
 
+export const LEVEL_SEQUENCE = ['A1', 'A2', 'B1', 'B2'];
+
+/**
+ * คำนวณระดับที่ผู้เรียนผ่านสมบูรณ์แล้ว (clearedLevels)
+ * จากจำนวนด่านที่ผ่านในแต่ละระดับ (เช่น ผ่านครบ 20 ด่าน)
+ */
+export function getClearedLevels(clearsByLevel = new Map(), totalStagesPerLevel = 20) {
+  const cleared = [];
+  for (const lvl of LEVEL_SEQUENCE) {
+    const count = clearsByLevel instanceof Map ? (clearsByLevel.get(lvl) ?? 0) : (clearsByLevel[lvl] ?? 0);
+    if (count >= totalStagesPerLevel) {
+      cleared.push(lvl);
+    }
+  }
+  return cleared;
+}
+
 /**
  * ตรวจสอบสิทธิ์การเข้าถึงด่านในระดับ (level: A1, A2, B1, B2) ของผู้ใช้
- * - Admin เข้าได้ทุกระดับเสมอ
- * - หากมี allowedLevels กำหนดไว้ จะเข้าได้เฉพาะระดับที่ระบุในรายการ
- * - หากเป็น tier full และไม่มีการจำกัด allowedLevels จะเข้าได้ทุกระดับ
- * - tier free (โดยไม่มี allowedLevels) เข้าไม่ได้ (เล่นได้เฉพาะด่าน preview ผ่าน query tier)
+ *
+ * กฎการปลดล็อก:
+ * 1. Admin: ปลดล็อกทุกระดับเสมอ
+ * 2. ครูปิ๊กติ๊กใน Allowed Levels ใน Admin: ปลดล็อกระดับที่ติ๊กเสมอ (Override ข้ามลำดับได้)
+ * 3. ระดับ A1: ปลดล็อกให้ทุกคนเสมอ (เริ่มต้นที่ A1)
+ * 4. ระดับ A2 / B1 / B2:
+ *    - Full Tier: ปลดล็อกตามลำดับเมื่อระดับก่อนหน้าผ่านครบทุกด่าน (A1 -> A2 -> B1 -> B2)
+ *    - Free Tier:
+ *      * A2: ปลดล็อกเมื่อครูปิ๊กติ๊ก Allowed Levels ให้ (หลังจากนักเรียนแคปหน้าจอจบ A1 มาขอสิทธิ์)
+ *      * B1, B2: ปลดล็อกเฉพาะเมื่ออัปเกรดเป็น Full Tier หรือครูปิ๊กติ๊ก Allowed Levels ให้
  */
-export function isLevelAllowed(userDoc, level) {
+export function isLevelAllowed(userDoc, level, clearedLevels = []) {
   if (!userDoc) return false;
   if (userDoc.role === 'admin') return true;
 
+  // 1. ติ๊กใน Allowed Levels โดยครูปิ๊ก (Override ได้ทันที)
   if (Array.isArray(userDoc.allowedLevels) && userDoc.allowedLevels.length > 0) {
     return userDoc.allowedLevels.includes(level);
   }
 
-  if (userDoc.tier === 'full') {
-    return true;
-  }
-
-  // ผู้เรียนทุกคนรวมทั้งสมาชิกใหม่ ได้รับสิทธิ์เรียนระดับ A1 ฟรีครบทุกด่านเป็นค่าเริ่มต้น
+  // 2. A1 เปิดให้ทุกคนเริ่มต้นเสมอ
   if (level === 'A1') {
     return true;
   }
 
+  const prevLevel = level === 'A2' ? 'A1' : level === 'B1' ? 'A2' : level === 'B2' ? 'B1' : null;
+  const isPrevCleared = prevLevel ? clearedLevels.includes(prevLevel) : false;
+
+  // 3. Full Tier: ปลดล็อกอัตโนมัติตามลำดับเมื่อระดับก่อนหน้าเคลียร์สำเร็จ
+  if (userDoc.tier === 'full') {
+    return isPrevCleared;
+  }
+
+  // 4. Free Tier: ระดับ A2, B1, B2 จะถูกล็อกไว้ จนกว่าครูปิ๊กจะติ๊กให้ใน allowedLevels
   return false;
+}
+
+export function isLevelUnlocked(userDoc, level, clearedLevels = []) {
+  return isLevelAllowed(userDoc, level, clearedLevels);
+}
+
+/**
+ * ดึงรายการระดับทั้งหมดที่ผู้เรียนคนนี้ปลดล็อกแล้ว (เช่น ['A1'] หรือ ['A1', 'A2'])
+ * ใช้สำหรับคลังคำศัพท์ (Vocab Hub) และ Animal Cafe
+ */
+export function getUnlockedLevels(userDoc, clearedLevels = []) {
+  if (!userDoc) return ['A1'];
+  if (userDoc.role === 'admin') return [...LEVEL_SEQUENCE];
+
+  return LEVEL_SEQUENCE.filter((lvl) => isLevelAllowed(userDoc, lvl, clearedLevels));
 }

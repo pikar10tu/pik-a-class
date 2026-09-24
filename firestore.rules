@@ -22,6 +22,7 @@ service cloud.firestore {
       function userFields() {
         return ['uid', 'email', 'fullName', 'nickname', 'callName', 'prefix', 'grade', 'school', 'phone',
                 'lineId', 'avatarId', 'speedCafeStats', 'favoriteVocab', 'favoriteVocabUpdatedAt',
+                'hasReviewed', 'reviewSubmittedAt',
                 'role', 'tier', 'tierNote', 'allowedLevels', 'groupTags', 'streak',
                 'onboardingComplete', 'consentAcceptedAt', 'consentVersion',
                 'createdAt', 'updatedAt'];
@@ -189,6 +190,23 @@ service cloud.firestore {
         && (!('attemptCount' in resource.data) || request.resource.data.attemptCount >= resource.data.attemptCount);
 
       allow delete: if false;
+    }
+
+    match /reviews/{uid} {
+      function reviewFields() {
+        return ['uid', 'authorName', 'rating', 'comment', 'clearedCount', 'createdAt', 'updatedAt'];
+      }
+
+      allow get, list: if signedIn() && (isAdmin() || request.auth.uid == uid);
+
+      allow create, update: if signedIn()
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly(reviewFields())
+        && request.resource.data.uid == uid
+        && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
+        && request.resource.data.comment is string && request.resource.data.comment.size() > 0;
+
+      allow delete: if isAdmin();
     }
 
     match /{document=**} {

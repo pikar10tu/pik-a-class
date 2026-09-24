@@ -40,6 +40,23 @@
       <p id="result-stars" class="stars" style="font-size: 2rem;"></p>
       <p id="result-score"></p>
       <p id="save-state"></p>
+
+      <div id="a1-completion-card" class="tier-congrats-card" hidden style="background: linear-gradient(135deg, #fef3c7, #fef9c3); border: 2px solid #f59e0b; border-radius: 16px; padding: 1.25rem; margin: 1.25rem auto; max-width: 480px; text-align: center; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);">
+        <div style="font-size: 2rem; margin-bottom: 0.25rem;">🎉 🎁 ✨</div>
+        <h2 style="margin: 0 0 0.5rem; color: #92400e; font-size: 1.2rem; font-weight: 700;">สุดยอดมาก! พิชิตเกาะ A1 สำเร็จแล้ว</h2>
+        <p style="margin: 0 0 0.75rem; color: #78350f; font-size: 0.875rem; line-height: 1.5;">
+          เก่งมากๆ ครับ! แคปภาพหน้าจอด่านที่ผ่านนี้ส่งมาทาง LINE หาพี่ปิ๊ก แล้วพี่ปิ๊กจะเปิดเกาะ <strong>A2 (Elementary)</strong> ให้ลุยต่อฟรีทันทีเลยครับ! 🚀
+        </p>
+        <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+          <a href="https://line.me/ti/p/~justunreal" target="_blank" rel="noopener noreferrer" class="btn-chunky" style="background: #06c755; border-bottom: 4px solid #059640; color: white; text-decoration: none; padding: 8px 16px; font-size: 0.875rem;">
+            💬 ทัก LINE ส่งภาพปลดเกาะ A2 ฟรี
+          </a>
+          <a href="https://www.facebook.com/search/top?q=Pik%20Prawich" target="_blank" rel="noopener noreferrer" class="btn-chunky" style="background: #1877f2; border-bottom: 4px solid #145dbf; color: white; text-decoration: none; padding: 8px 16px; font-size: 0.875rem;">
+            📘 Facebook
+          </a>
+        </div>
+      </div>
+
       <div id="result-actions" style="margin-top: var(--space-4);">
         <button type="button" id="back-to-path" class="btn-chunky">ไปต่อ</button>
         <button type="button" id="retry" class="btn-ghost" style="margin-top: var(--space-2);">เล่นด่านนี้อีกครั้ง</button>
@@ -65,6 +82,62 @@
         <button type="button" id="note-close-btn" class="btn-chunky" style="margin-top: var(--space-3);">เข้าใจแล้ว ทำต่อ</button>
       </section>
     </div>
+
+    <!-- Modal ขอรีวิวทุกๆ 3 ด่าน -->
+    <dialog id="review-dialog" class="modal-dialog">
+      <div class="lock-dialog-card" style="max-width: 440px;">
+        <div class="lock-dialog-header">
+          <span class="lock-dialog-badge">💌 ข้อเสนอแนะจากใจ</span>
+          <button id="review-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิด">✕</button>
+        </div>
+        <div style="font-size: 2.75rem; text-align: center; margin: 0.25rem 0 0.5rem;">🐰✨</div>
+        <h2 style="font-size: 1.35rem; font-weight: 700; text-align: center; color: #1e293b; margin: 0 0 0.5rem;">
+          แวะบอกความรู้สึกกับพี่ปิ๊กหน่อยนะ!
+        </h2>
+        <p style="font-size: 0.875rem; color: #64748b; text-align: center; line-height: 1.5; margin-bottom: 1rem;">
+          คุณเรียนมาได้สักพักแล้ว เป็นยังไงบ้างครับ? ช่วยให้คะแนนและบอกสิ่งที่ชอบหรืออยากให้ปรับปรุง พี่ปิ๊กอ่านทุกข้อความเพื่อนำไปพัฒนาต่อนะครับ ❤️
+        </p>
+
+        <form id="review-form">
+          <!-- Interactive Star Selector -->
+          <div style="display: flex; justify-content: center; gap: 8px; margin-bottom: 0.5rem;" id="review-star-group">
+            <button type="button" class="btn-star-select active" data-star="1" aria-label="1 ดาว">⭐</button>
+            <button type="button" class="btn-star-select active" data-star="2" aria-label="2 ดาว">⭐</button>
+            <button type="button" class="btn-star-select active" data-star="3" aria-label="3 ดาว">⭐</button>
+            <button type="button" class="btn-star-select active" data-star="4" aria-label="4 ดาว">⭐</button>
+            <button type="button" class="btn-star-select active" data-star="5" aria-label="5 ดาว">⭐</button>
+          </div>
+          <input type="hidden" id="review-rating-val" value="5" />
+          <p id="star-desc-text" style="text-align: center; font-size: 0.8125rem; font-weight: 600; color: #d97706; margin-bottom: 0.75rem;">
+            ยอดเยี่ยมมาก ชอบมากเลย! (5 ดาว)
+          </p>
+
+          <!-- Feedback Textarea -->
+          <div style="margin-bottom: 1rem;">
+            <textarea
+              id="review-comment"
+              rows="3"
+              style="width: 100%; border: 1.5px solid #cbd5e1; border-radius: 12px; padding: 10px 12px; font-family: inherit; font-size: 0.875rem; resize: vertical; box-sizing: border-box;"
+              placeholder="เขียนความรู้สึก คำติชม หรือสิ่งที่อยากให้เพิ่มได้เลยครับ (จำเป็นต้องระบุ)..."
+              required
+              minlength="3"
+            ></textarea>
+            <span id="review-error" style="color: #ef4444; font-size: 0.75rem; display: block; margin-top: 4px;" hidden>
+              กรุณาพิมพ์ข้อเสนอแนะสักนิดนะค้าบ
+            </span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <button type="submit" id="submit-review-btn" class="btn-chunky" style="width: 100%; background: #10b981; border-bottom: 4px solid #059669; color: white;">
+              ส่งความรู้สึกให้พี่ปิ๊ก 💌
+            </button>
+            <button type="button" id="review-skip-btn" class="btn-ghost" style="font-size: 0.8125rem; color: #94a3b8;">
+              ไว้ตอบรอบหน้า (ข้ามไปก่อน)
+            </button>
+          </div>
+        </form>
+      </div>
+    </dialog>
   </main>
   <script type="module" src="./play.js"></script>
 </body>

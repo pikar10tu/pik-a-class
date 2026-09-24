@@ -147,6 +147,32 @@
     </section>
   </main>
 
+  <!-- Modal สำหรับระดับคำศัพท์ที่ยังไม่ปลดล็อก -->
+  <dialog id="lock-dialog" class="modal-dialog">
+    <div class="lock-dialog-card">
+      <div class="lock-dialog-header">
+        <span id="lock-dialog-badge" class="lock-dialog-badge">🔒 ระดับนี้ยังไม่ได้เปิด</span>
+        <button id="lock-dialog-close-x" type="button" class="btn-close-circle" aria-label="ปิด">✕</button>
+      </div>
+      <div id="lock-dialog-icon" class="lock-dialog-icon">🔒✨</div>
+      <h2 id="lock-dialog-title" class="lock-dialog-title">คำศัพท์ระดับนี้ยังไม่ได้เปิดนะครับ</h2>
+      <div id="lock-dialog-body" class="lock-dialog-body">
+        <p id="lock-dialog-text">ข้อความชวนปลดล็อก</p>
+      </div>
+      <div class="lock-dialog-actions">
+        <a id="lock-line-btn" class="btn-line-contact" href="https://line.me/ti/p/~justunreal" target="_blank" rel="noopener noreferrer">
+          💬 ทัก LINE พี่ปิ๊ก (ID: justunreal)
+        </a>
+        <a id="lock-fb-btn" class="btn-fb-contact" href="https://www.facebook.com/search/top?q=Pik%20Prawich" target="_blank" rel="noopener noreferrer">
+          📘 ทัก Facebook: Pik Prawich
+        </a>
+        <button id="lock-dialog-close" type="button" class="btn-ghost" style="padding: 10px; cursor: pointer; border: none; background: transparent; color: #64748b;">
+          เข้าใจแล้ว กลับไปดูคำศัพท์เดิม
+        </button>
+      </div>
+    </div>
+  </dialog>
+
   <script type="module" src="./hub.js"></script>
 </body>
 </html>

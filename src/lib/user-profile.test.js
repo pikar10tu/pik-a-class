@@ -3,6 +3,8 @@ import {
   buildNewUserDoc,
   getPostLoginRedirect,
   isLevelAllowed,
+  getClearedLevels,
+  getUnlockedLevels,
   AVATAR_LIST,
   DEFAULT_AVATAR,
   getAvatarSrc,
@@ -45,38 +47,67 @@ describe('getPostLoginRedirect', () => {
   });
 });
 
-describe('isLevelAllowed', () => {
+describe('isLevelAllowed and progression helpers', () => {
   it('always allows admins full access to any level', () => {
     expect(isLevelAllowed({ role: 'admin' }, 'A1')).toBe(true);
     expect(isLevelAllowed({ role: 'admin' }, 'B2')).toBe(true);
+    expect(getUnlockedLevels({ role: 'admin' })).toEqual(['A1', 'A2', 'B1', 'B2']);
   });
 
-  it('allows full tier users all levels if allowedLevels is empty or not set', () => {
-    expect(isLevelAllowed({ role: 'student', tier: 'full' }, 'A1')).toBe(true);
-    expect(isLevelAllowed({ role: 'student', tier: 'full', allowedLevels: [] }, 'B2')).toBe(true);
+  it('allows full tier users A1 by default, and unlocks subsequent levels progressively upon clear', () => {
+    const fullStudent = { role: 'student', tier: 'full' };
+    expect(isLevelAllowed(fullStudent, 'A1')).toBe(true);
+    // When A1 is not cleared yet, A2, B1, B2 are locked
+    expect(isLevelAllowed(fullStudent, 'A2', [])).toBe(false);
+    expect(isLevelAllowed(fullStudent, 'B1', [])).toBe(false);
+
+    // When A1 is cleared, A2 unlocks!
+    expect(isLevelAllowed(fullStudent, 'A2', ['A1'])).toBe(true);
+    expect(isLevelAllowed(fullStudent, 'B1', ['A1'])).toBe(false);
+
+    // When A2 is cleared, B1 unlocks!
+    expect(isLevelAllowed(fullStudent, 'B1', ['A1', 'A2'])).toBe(true);
+    expect(isLevelAllowed(fullStudent, 'B2', ['A1', 'A2'])).toBe(false);
+
+    // When B1 is cleared, B2 unlocks!
+    expect(isLevelAllowed(fullStudent, 'B2', ['A1', 'A2', 'B1'])).toBe(true);
+    expect(getUnlockedLevels(fullStudent, ['A1', 'A2'])).toEqual(['A1', 'A2', 'B1']);
   });
 
-  it('restricts full tier users to explicitly ticked allowedLevels', () => {
-    const student = { role: 'student', tier: 'full', allowedLevels: ['A1', 'A2'] };
-    expect(isLevelAllowed(student, 'A1')).toBe(true);
-    expect(isLevelAllowed(student, 'A2')).toBe(true);
-    expect(isLevelAllowed(student, 'B1')).toBe(false);
-    expect(isLevelAllowed(student, 'B2')).toBe(false);
+  it('allows teacher to override progression via allowedLevels for both full and free tiers', () => {
+    const customStudent = { role: 'student', tier: 'full', allowedLevels: ['B2'] };
+    // Teacher granted B2 directly: B2 is open immediately even with 0 clears
+    expect(isLevelAllowed(customStudent, 'B2', [])).toBe(true);
+    expect(isLevelAllowed(customStudent, 'A1', [])).toBe(false); // only allowedLevels is active
   });
 
-  it('allows A1 by default for free tier users, but locks A2 and above', () => {
+  it('allows A1 by default for free tier users, but keeps A2-B2 locked unless granted by teacher', () => {
     expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A1')).toBe(true);
-    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A2')).toBe(false);
-    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'B1')).toBe(false);
+    // Even if A1 is cleared, free tier cannot access A2 automatically (must submit screenshot to teacher)
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'A2', ['A1'])).toBe(false);
+    expect(isLevelAllowed({ role: 'student', tier: 'free' }, 'B1', ['A1', 'A2'])).toBe(false);
+
+    // When teacher grants A2 via allowedLevels
+    const freeWithA2 = { role: 'student', tier: 'free', allowedLevels: ['A1', 'A2'] };
+    expect(isLevelAllowed(freeWithA2, 'A2', [])).toBe(true);
+    expect(isLevelAllowed(freeWithA2, 'B1', [])).toBe(false);
   });
 
-  it('allows free tier user if specific level is granted in allowedLevels', () => {
-    expect(isLevelAllowed({ role: 'student', tier: 'free', allowedLevels: ['A1'] }, 'A1')).toBe(true);
-    expect(isLevelAllowed({ role: 'student', tier: 'free', allowedLevels: ['A1'] }, 'A2')).toBe(false);
+  it('calculates cleared levels correctly via getClearedLevels', () => {
+    const clearsMap = new Map([
+      ['A1', 20],
+      ['A2', 19],
+      ['B1', 0],
+    ]);
+    expect(getClearedLevels(clearsMap, 20)).toEqual(['A1']);
+
+    clearsMap.set('A2', 20);
+    expect(getClearedLevels(clearsMap, 20)).toEqual(['A1', 'A2']);
   });
 
   it('returns false when userDoc is null or undefined', () => {
     expect(isLevelAllowed(null, 'A1')).toBe(false);
+    expect(getUnlockedLevels(null)).toEqual(['A1']);
   });
 });
 

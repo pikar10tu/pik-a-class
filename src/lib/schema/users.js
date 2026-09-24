@@ -59,6 +59,8 @@ export const usersSchema = {
     ),
     favoriteVocab: arrayOfStr({ required: false, maxItems: 2000 }),
     favoriteVocabUpdatedAt: isoDate({ required: false }),
+    hasReviewed: bool({ required: false }),
+    reviewSubmittedAt: isoDate({ required: false }),
     streak: obj(
       { current: int({ min: 0 }), longest: int({ min: 0 }), lastActiveDate: str() },
       { required: false },

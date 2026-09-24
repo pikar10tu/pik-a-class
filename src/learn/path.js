@@ -3,7 +3,7 @@ import { db } from '../lib/firebase.js';
 import { fetchStages, fetchMyClears } from '../lib/stage-io.js';
 import { buildStagePath, totalStars, clearsByStageId } from '../lib/stage-progress.js';
 import { readTier } from '../lib/queries.js';
-import { isLevelAllowed } from '../lib/user-profile.js';
+import { isLevelAllowed, getClearedLevels } from '../lib/user-profile.js';
 import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
@@ -324,17 +324,25 @@ if (!isValidQuery) {
   }
 
   requireLogin(async (firebaseUser, userDoc) => {
-    if (!isLevelAllowed(userDoc, level)) {
-      showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
-      return;
-    }
-
     try {
-      const [stages, clears] = await Promise.all([
-        // ต้องส่ง tier และ allowedLevels ไปด้วยเสมอ เพื่อให้ query สอดคล้องกับ security rules
-        fetchStages(db, { skill, level, tier: readTier(userDoc), allowedLevels: userDoc?.allowedLevels }),
-        fetchMyClears(db, firebaseUser.uid),
-      ]);
+      const clears = await fetchMyClears(db, firebaseUser.uid).catch(() => []);
+      const clearsByLevel = new Map();
+      for (const clear of clears) {
+        const lvl = clear.level;
+        if (!lvl) continue;
+        const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
+        if (isCleared) {
+          clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
+        }
+      }
+      const clearedLevels = getClearedLevels(clearsByLevel, 20);
+
+      if (!isLevelAllowed(userDoc, level, clearedLevels)) {
+        showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
+        return;
+      }
+
+      const stages = await fetchStages(db, { skill, level, tier: readTier(userDoc), allowedLevels: userDoc?.allowedLevels });
 
       if (stages.length === 0) {
         const msg = isAdmin(userDoc)
