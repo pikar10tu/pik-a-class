@@ -55,6 +55,9 @@
       <div class="vocab-filter-row" id="category-filter-row">
         <span class="vocab-filter-label">หมวดหมู่:</span>
         <button type="button" class="chip-btn active" data-category="all">ทุกหมวด</button>
+        <button type="button" class="chip-btn chip-fav-filter" data-category="favorites" id="filter-favorites-btn">
+          ⭐ คำที่บันทึกไว้ <span id="fav-filter-count" class="chip-count-pill">(0)</span>
+        </button>
         <!-- Populated dynamically from categories -->
       </div>
 
@@ -76,7 +79,12 @@
           <div class="flashcard-front">
             <div class="card-top-meta">
               <span id="card-cat-badge" class="card-category-badge">อาหาร & เครื่องดื่ม</span>
-              <span id="card-lvl-badge" class="card-level-badge">A1</span>
+              <div class="card-top-actions">
+                <span id="card-lvl-badge" class="card-level-badge">A1</span>
+                <button type="button" id="btn-fav-card-front" class="btn-fav-card" title="บันทึกคำที่ชอบ / ทบทวน" aria-label="บันทึกคำที่ชอบ / ทบทวน">
+                  <span class="fav-star-icon">☆</span>
+                </button>
+              </div>
             </div>
             <div class="card-main-word">
               <h2 id="card-word" class="card-word-text">delicious</h2>
@@ -94,7 +102,12 @@
           <div class="flashcard-back">
             <div class="card-top-meta">
               <span id="card-cat-badge-back" class="card-category-badge">อาหาร & เครื่องดื่ม</span>
-              <span class="card-level-badge" style="background: #e2e8f0; color: #475569;">ความหมาย</span>
+              <div class="card-top-actions">
+                <span class="card-level-badge" style="background: #e2e8f0; color: #475569;">ความหมาย</span>
+                <button type="button" id="btn-fav-card-back" class="btn-fav-card" title="บันทึกคำที่ชอบ / ทบทวน" aria-label="บันทึกคำที่ชอบ / ทบทวน">
+                  <span class="fav-star-icon">☆</span>
+                </button>
+              </div>
             </div>
             <div>
               <p id="card-thai" class="card-thai-meaning">อร่อย</p>

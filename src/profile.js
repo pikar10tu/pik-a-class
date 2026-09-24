@@ -11,6 +11,11 @@ import { calculateStudentOverview } from './lib/student-analytics.js';
 import { evaluateBadges } from './lib/badges.js';
 import { attachUiSounds } from './lib/ui-sound.js';
 import { showPageError } from './lib/page-error.js';
+import {
+  getFavoriteIds,
+  getFavoriteVocabItems,
+  toggleFavorite,
+} from './lib/vocab-favorites.js';
 
 const base = import.meta.env.BASE_URL;
 
@@ -204,8 +209,96 @@ function renderBadges(badges) {
   }
 }
 
+const favWordsCounter = document.getElementById('fav-words-counter');
+const favVocabEmpty = document.getElementById('fav-vocab-empty');
+const favVocabGrid = document.getElementById('fav-vocab-grid');
+let profileFavoriteIds = [];
+
+function speakWord(text) {
+  if (!('speechSynthesis' in window)) return;
+  window.speechSynthesis.cancel();
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = 'en-US';
+  utterance.rate = 0.9;
+  window.speechSynthesis.speak(utterance);
+}
+
+function renderFavoriteVocab(favIds) {
+  if (!favVocabGrid) return;
+  profileFavoriteIds = favIds || [];
+  const items = getFavoriteVocabItems(profileFavoriteIds);
+
+  if (favWordsCounter) {
+    favWordsCounter.textContent = `${items.length} คำ`;
+  }
+
+  if (items.length === 0) {
+    if (favVocabEmpty) favVocabEmpty.hidden = false;
+    favVocabGrid.replaceChildren();
+    return;
+  }
+
+  if (favVocabEmpty) favVocabEmpty.hidden = true;
+  favVocabGrid.replaceChildren();
+
+  for (const item of items) {
+    const card = document.createElement('article');
+    card.className = 'fav-card';
+    card.id = `fav-card-${item.id}`;
+    card.innerHTML = `
+      <div class="fav-card-header">
+        <div class="fav-card-word-wrap">
+          <h3 class="fav-card-word">${item.word}</h3>
+          <span class="fav-card-pos">${item.pos}</span>
+        </div>
+        <div class="fav-card-actions">
+          <button type="button" class="btn-fav-audio" title="ฟังเสียงอ่าน" aria-label="Listen to ${item.word}">
+            🔊
+          </button>
+          <button type="button" class="btn-fav-unstar" title="ถอนคำศัพท์นี้ออกจากรายการที่บันทึกไว้" aria-label="Remove ${item.word} from favorites">
+            ⭐
+          </button>
+        </div>
+      </div>
+      <p class="fav-card-thai">${item.thai}</p>
+      <p class="fav-card-example">${item.example}</p>
+      <div class="fav-card-meta">
+        <span class="fav-level-tag" data-lvl="${item.level}">${item.level}</span>
+        <span class="fav-category-tag">${item.categoryLabel || item.category}</span>
+      </div>
+    `;
+
+    const audioBtn = card.querySelector('.btn-fav-audio');
+    if (audioBtn) {
+      audioBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        speakWord(item.word);
+      });
+    }
+
+    const unstarBtn = card.querySelector('.btn-fav-unstar');
+    if (unstarBtn) {
+      unstarBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        card.classList.add('removing');
+        setTimeout(async () => {
+          profileFavoriteIds = await toggleFavorite(db, currentUid, item.id, profileFavoriteIds);
+          renderFavoriteVocab(profileFavoriteIds);
+          showToast(`ถอนคำว่า "${item.word}" เรียบร้อยแล้ว`);
+        }, 200);
+      });
+    }
+
+    favVocabGrid.appendChild(card);
+  }
+}
+
 requireLogin(async (firebaseUser, userDoc) => {
   currentUid = firebaseUser.uid;
+
+  // Load Favorite Vocabulary
+  profileFavoriteIds = getFavoriteIds(userDoc, currentUid);
+  renderFavoriteVocab(profileFavoriteIds);
 
   // Admin link
   if (isAdmin(userDoc)) {

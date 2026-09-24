@@ -119,6 +119,30 @@
   border-color: #0f172a;
 }
 
+.chip-fav-filter {
+  border-color: #fde68a;
+  background: #fffbeb;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.chip-fav-filter:hover {
+  background: #fef3c7;
+  border-color: #fcd34d;
+}
+
+.chip-fav-filter.active {
+  background: #d97706;
+  color: white;
+  border-color: #b45309;
+}
+
+.chip-count-pill {
+  font-size: 0.75rem;
+  opacity: 0.9;
+  margin-left: 2px;
+}
+
 .vocab-search-input {
   width: 100%;
   font-family: inherit;
@@ -196,6 +220,49 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.card-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateZ(10px);
+}
+
+.btn-fav-card {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.15rem;
+  color: #94a3b8;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  padding: 0;
+  touch-action: manipulation;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.btn-fav-card:hover {
+  transform: scale(1.15);
+  background: white;
+  color: #f59e0b;
+  border-color: #fcd34d;
+}
+
+.btn-fav-card.active {
+  background: #fffbeb;
+  color: #d97706;
+  border-color: #fcd34d;
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+.btn-fav-card.active .fav-star-icon {
+  filter: drop-shadow(0 1px 2px rgba(217, 119, 6, 0.3));
 }
 
 .card-category-badge {
@@ -372,6 +439,42 @@
   font-size: 0.9375rem;
   color: #047857;
   font-weight: 500;
+}
+
+.grid-card-meta-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.grid-card-fav-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  line-height: 1;
+  touch-action: manipulation;
+}
+
+.grid-card-fav-btn:hover {
+  transform: scale(1.2);
+  color: #f59e0b;
+}
+
+.grid-card-fav-btn.active {
+  color: #d97706;
+}
+
+.vocab-grid-card.is-fav {
+  border-color: #fde68a;
+  background: linear-gradient(180deg, #fffdf5 0%, #ffffff 100%);
 }
 
 /* ==========================================================================
@@ -657,14 +760,47 @@
 }
 
 .missed-word-tag {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.8125rem;
   background: white;
   border: 1px solid #fcd34d;
   color: #b45309;
-  padding: 2px 8px;
-  border-radius: 6px;
-  margin: 2px 4px 2px 0;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin: 3px 6px 3px 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.missed-word-text {
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.missed-word-text:hover {
+  text-decoration: underline;
+}
+
+.btn-missed-fav {
+  background: transparent;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #d97706;
+  padding: 0;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+  touch-action: manipulation;
+}
+
+.btn-missed-fav:hover {
+  transform: scale(1.25);
 }
 
 .summary-actions {

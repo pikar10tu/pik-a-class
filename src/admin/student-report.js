@@ -11,6 +11,7 @@ import {
   calculateTopicStrengthsAndWeaknesses,
   formatLineSummary,
 } from '../lib/student-analytics.js';
+import { getFavoriteVocabItems } from '../lib/vocab-favorites.js';
 
 renderAdminNav(document.getElementById('admin-nav'), 'admin/users.html', import.meta.env.BASE_URL);
 
@@ -32,6 +33,8 @@ const kpiAccuracy = document.getElementById('kpi-accuracy');
 
 const skillRowsContainer = document.getElementById('skill-rows-container');
 const vocabLevelsContainer = document.getElementById('vocab-levels-container');
+const reportFavCount = document.getElementById('report-fav-count');
+const reportFavContainer = document.getElementById('report-fav-container');
 const strengthTagsContainer = document.getElementById('strength-tags');
 const weaknessTagsContainer = document.getElementById('weakness-tags');
 const stageRowsTbody = document.getElementById('stage-rows-tbody');
@@ -160,6 +163,28 @@ function renderReport({ student, stageClears, submissions, stages }) {
       </div>
     `;
     vocabLevelsContainer.appendChild(item);
+  }
+
+  // 4.1 Render Favorited Words
+  if (reportFavContainer && reportFavCount) {
+    const favIds = student.favoriteVocab || [];
+    const favItems = getFavoriteVocabItems(favIds);
+    reportFavCount.textContent = `${favItems.length} คำ`;
+    reportFavContainer.replaceChildren();
+
+    if (favItems.length === 0) {
+      reportFavContainer.innerHTML = '<span style="font-size: 0.8125rem; color: #64748b;">ผู้เรียนยังไม่ได้กดบันทึกคำศัพท์ใดเป็นพิเศษ</span>';
+    } else {
+      for (const item of favItems) {
+        const chip = document.createElement('span');
+        chip.className = 'admin-fav-word-chip';
+        chip.innerHTML = `
+          <strong>${item.word}</strong> <span class="admin-fav-thai">(${item.thai})</span>
+          <span class="admin-fav-lvl" data-lvl="${item.level}">${item.level}</span>
+        `;
+        reportFavContainer.appendChild(chip);
+      }
+    }
   }
 
   // 5. Render Strengths & Weaknesses

@@ -1,6 +1,16 @@
 import { requireLogin } from '../lib/auth-guard.js';
+import { db } from '../lib/firebase.js';
 import { CATEGORIES, getVocabList } from '../lib/vocab-data.js';
+import {
+  getFavoriteIds,
+  isFavorite,
+  toggleFavorite,
+  sortVocabWithFavoritesFirst,
+  filterFavorites,
+} from '../lib/vocab-favorites.js';
 
+let currentUid = null;
+let favoriteIds = [];
 let currentLevel = 'all';
 let currentCategory = 'all';
 let currentSearch = '';
@@ -11,6 +21,7 @@ let isFlipped = false;
 // DOM Elements
 const userPill = document.getElementById('user-pill');
 const categoryFilterRow = document.getElementById('category-filter-row');
+const favFilterCount = document.getElementById('fav-filter-count');
 const searchInput = document.getElementById('vocab-search');
 const flashcardScene = document.getElementById('flashcard-scene');
 const flashcardInner = document.getElementById('flashcard-inner');
@@ -24,6 +35,8 @@ const cardThai = document.getElementById('card-thai');
 const cardExampleEn = document.getElementById('card-example-en');
 const cardExampleTh = document.getElementById('card-example-th');
 const cardCounter = document.getElementById('card-counter');
+const btnFavFront = document.getElementById('btn-fav-card-front');
+const btnFavBack = document.getElementById('btn-fav-card-back');
 
 const btnPrevCard = document.getElementById('btn-prev-card');
 const btnNextCard = document.getElementById('btn-next-card');
@@ -43,8 +56,15 @@ export function speakWord(text) {
 }
 
 requireLogin(async (firebaseUser, userDoc) => {
+  currentUid = firebaseUser.uid;
+  favoriteIds = getFavoriteIds(userDoc, currentUid);
+
   const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
   userPill.textContent = name;
+
+  if (favFilterCount) {
+    favFilterCount.textContent = `(${favoriteIds.length})`;
+  }
 
   setupCategoryFilters();
   setupEventListeners();
@@ -63,12 +83,24 @@ function setupCategoryFilters() {
 }
 
 function updateDeck({ shuffle = false } = {}) {
-  currentDeck = getVocabList({
-    level: currentLevel,
-    category: currentCategory,
-    search: currentSearch,
-    shuffle,
-  });
+  if (currentCategory === 'favorites') {
+    const baseList = getVocabList({
+      level: currentLevel,
+      search: currentSearch,
+    });
+    currentDeck = filterFavorites(baseList, favoriteIds);
+  } else {
+    currentDeck = getVocabList({
+      level: currentLevel,
+      category: currentCategory,
+      search: currentSearch,
+      shuffle,
+    });
+    // หากไม่ได้สุ่ม ให้จัดคำที่ fav ขึ้นมาอยู่อันดับแรกเสมอ
+    if (!shuffle) {
+      currentDeck = sortVocabWithFavoritesFirst(currentDeck, favoriteIds);
+    }
+  }
 
   deckIndex = 0;
   isFlipped = false;
@@ -86,10 +118,11 @@ function renderCurrentCard() {
     cardCatBadge.textContent = '—';
     cardCatBadgeBack.textContent = '—';
     cardLvlBadge.textContent = '—';
-    cardThai.textContent = 'ลองเปลี่ยนตัวกรองหรือคำค้นหา';
+    cardThai.textContent = currentCategory === 'favorites' ? 'ยังไม่มีคำศัพท์ที่บันทึกไว้ในหมวดนี้' : 'ลองเปลี่ยนตัวกรองหรือคำค้นหา';
     cardExampleEn.textContent = '';
     cardExampleTh.textContent = '';
     cardCounter.textContent = '0 / 0';
+    updateFlashcardFavButton(false);
     return;
   }
 
@@ -104,6 +137,36 @@ function renderCurrentCard() {
   cardExampleTh.textContent = item.exampleThai;
 
   cardCounter.textContent = `${deckIndex + 1} / ${currentDeck.length} คำ`;
+
+  const fav = isFavorite(favoriteIds, item.id);
+  updateFlashcardFavButton(fav);
+}
+
+function updateFlashcardFavButton(fav) {
+  const updateBtn = (btn) => {
+    if (!btn) return;
+    btn.classList.toggle('active', fav);
+    btn.setAttribute('aria-pressed', fav ? 'true' : 'false');
+    btn.title = fav ? 'ถอนออกจากคำที่บันทึกไว้' : 'บันทึกคำที่ชอบ / ทบทวน';
+    const icon = btn.querySelector('.fav-star-icon');
+    if (icon) icon.textContent = fav ? '⭐' : '☆';
+  };
+  updateBtn(btnFavFront);
+  updateBtn(btnFavBack);
+}
+
+async function handleToggleFavorite(vocabId) {
+  if (!vocabId) return;
+  favoriteIds = await toggleFavorite(db, currentUid, vocabId, favoriteIds);
+  if (favFilterCount) {
+    favFilterCount.textContent = `(${favoriteIds.length})`;
+  }
+  if (currentCategory === 'favorites') {
+    updateDeck();
+  } else {
+    renderCurrentCard();
+    renderGrid();
+  }
 }
 
 function renderGrid() {
@@ -112,22 +175,37 @@ function renderGrid() {
   if (currentDeck.length === 0) {
     const p = document.createElement('p');
     p.style.cssText = 'grid-column: 1 / -1; text-align: center; color: var(--color-muted); padding: 20px;';
-    p.textContent = 'ไม่พบคำศัพท์ที่ตรงกับเงื่อนไข';
+    p.textContent = currentCategory === 'favorites' ? 'ยังไม่มีคำศัพท์ที่บันทึกไว้' : 'ไม่พบคำศัพท์ที่ตรงกับเงื่อนไข';
     vocabGrid.appendChild(p);
     return;
   }
 
   for (const item of currentDeck) {
+    const fav = isFavorite(favoriteIds, item.id);
     const card = document.createElement('div');
-    card.className = 'vocab-grid-card';
+    card.className = `vocab-grid-card ${fav ? 'is-fav' : ''}`;
     card.innerHTML = `
       <div class="vocab-grid-header">
         <span class="vocab-grid-word">${item.word}</span>
-        <span style="font-size: 0.75rem; color: #64748b;">${item.pos} • ${item.level}</span>
+        <div class="grid-card-meta-right">
+          <span style="font-size: 0.75rem; color: #64748b;">${item.pos} • ${item.level}</span>
+          <button type="button" class="grid-card-fav-btn ${fav ? 'active' : ''}" data-id="${item.id}" title="${fav ? 'ถอนคำที่บันทึก' : 'บันทึกคำโปรด'}" aria-label="Favorite ${item.word}">
+            ${fav ? '⭐' : '☆'}
+          </button>
+        </div>
       </div>
       <div class="vocab-grid-thai">${item.thai}</div>
       <div style="font-size: 0.75rem; color: #64748b; margin-top: 4px;">${item.example}</div>
     `;
+
+    // Click favorite star button on grid card
+    const favBtn = card.querySelector('.grid-card-fav-btn');
+    if (favBtn) {
+      favBtn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        await handleToggleFavorite(item.id);
+      });
+    }
 
     // Click on item in grid loads it into flashcard
     card.addEventListener('click', () => {
@@ -147,13 +225,25 @@ function renderGrid() {
 }
 
 function setupEventListeners() {
-  // Flip Card on Click
+  // Flip Card on Click (Ignore if clicked audio or fav buttons)
   flashcardScene.addEventListener('click', (e) => {
-    // Don't flip if clicked audio button
-    if (e.target.closest('#btn-audio-front')) return;
+    if (e.target.closest('#btn-audio-front') || e.target.closest('.btn-fav-card')) return;
     isFlipped = !isFlipped;
     flashcardInner.classList.toggle('flipped', isFlipped);
   });
+
+  // Favorite button on flashcard front and back
+  const onFlashcardFavClick = async (e) => {
+    e.stopPropagation();
+    if (currentDeck.length === 0) return;
+    const currentItem = currentDeck[deckIndex];
+    if (currentItem) {
+      await handleToggleFavorite(currentItem.id);
+    }
+  };
+
+  if (btnFavFront) btnFavFront.addEventListener('click', onFlashcardFavClick);
+  if (btnFavBack) btnFavBack.addEventListener('click', onFlashcardFavClick);
 
   // Audio Button
   btnAudioFront.addEventListener('click', (e) => {
@@ -204,7 +294,7 @@ function setupEventListeners() {
     });
   });
 
-  // Category Filters
+  // Category Filters (including Favorites)
   categoryFilterRow.addEventListener('click', (e) => {
     const btn = e.target.closest('[data-category]');
     if (!btn) return;
@@ -212,6 +302,18 @@ function setupEventListeners() {
     btn.classList.add('active');
     currentCategory = btn.getAttribute('data-category');
     updateDeck();
+  });
+
+  // Listen for favorite events broadcasted from other tabs or components
+  window.addEventListener('vocab-favorites-changed', (e) => {
+    if (e.detail?.favoriteIds) {
+      favoriteIds = e.detail.favoriteIds;
+      if (favFilterCount) {
+        favFilterCount.textContent = `(${favoriteIds.length})`;
+      }
+      renderCurrentCard();
+      renderGrid();
+    }
   });
 
   // Keyboard navigation

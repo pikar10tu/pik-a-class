@@ -11,6 +11,12 @@ import {
 } from '../lib/cafe-engine.js';
 import { playAnswerSound, playStageClearSound, playStageFailedSound } from '../lib/answer-audio.js';
 import { saveVocabSessionResults } from '../lib/vocab-session-io.js';
+import {
+  getFavoriteIds,
+  isFavorite,
+  toggleFavorite,
+  getVocabIdByWord,
+} from '../lib/vocab-favorites.js';
 
 // DOM Elements
 const userPill = document.getElementById('user-pill');
@@ -67,8 +73,11 @@ function speak(text) {
   window.speechSynthesis.speak(utterance);
 }
 
+let favoriteIds = [];
+
 requireLogin(async (firebaseUser, userDoc) => {
   currentStudent = { uid: firebaseUser.uid, ...userDoc };
+  favoriteIds = getFavoriteIds(userDoc, firebaseUser.uid);
   const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
   userPill.textContent = name;
 
@@ -350,12 +359,37 @@ async function finishGame() {
     missedWordsList.replaceChildren();
 
     for (const w of summary.missedWords) {
+      const vocabId = w.id || getVocabIdByWord(w.word);
+      const isFav = isFavorite(favoriteIds, vocabId);
+
       const tag = document.createElement('span');
       tag.className = 'missed-word-tag';
-      tag.textContent = `${w.word} (${w.thai})`;
-      tag.style.cursor = 'pointer';
-      tag.title = 'คลิกเพื่อฟังเสียงอ่าน';
-      tag.addEventListener('click', () => speak(w.word));
+      tag.innerHTML = `
+        <span class="missed-word-text" title="คลิกเพื่อฟังเสียงอ่าน">🔊 ${w.word} (${w.thai})</span>
+        <button type="button" class="btn-missed-fav ${isFav ? 'active' : ''}" title="${isFav ? 'ถอนคำโปรด' : 'บันทึกคำที่จำไม่ได้'}" aria-label="Favorite ${w.word}">
+          ${isFav ? '⭐' : '☆'}
+        </button>
+      `;
+
+      const textEl = tag.querySelector('.missed-word-text');
+      if (textEl) {
+        textEl.addEventListener('click', () => speak(w.word));
+      }
+
+      const favBtn = tag.querySelector('.btn-missed-fav');
+      if (favBtn) {
+        favBtn.addEventListener('click', async (e) => {
+          e.stopPropagation();
+          if (vocabId && currentStudent?.uid) {
+            favoriteIds = await toggleFavorite(db, currentStudent.uid, vocabId, favoriteIds);
+            const nextFav = isFavorite(favoriteIds, vocabId);
+            favBtn.classList.toggle('active', nextFav);
+            favBtn.textContent = nextFav ? '⭐' : '☆';
+            favBtn.title = nextFav ? 'ถอนคำโปรด' : 'บันทึกคำที่จำไม่ได้';
+          }
+        });
+      }
+
       missedWordsList.appendChild(tag);
     }
   } else {
