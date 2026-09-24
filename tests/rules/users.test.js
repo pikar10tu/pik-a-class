@@ -46,12 +46,16 @@ describe('users rules', () => {
     await withTestEnv(async (env) => {
       await seed(env, { 'users/student1': studentDoc() });
       const db = authedDb(env, 'student1');
-      await assertSucceeds(db.collection('users').doc('student1').update({ nickname: 'ชื่อใหม่' }));
+      await assertSucceeds(db.collection('users').doc('student1').update({ nickname: 'ชื่อใหม่', prefix: 'พี่', callName: 'พี่ชื่อใหม่' }));
       await assertSucceeds(
         db
           .collection('users')
           .doc('student1')
-          .update({ streak: { current: 1, longest: 1, lastActiveDate: '2026-09-20' } }),
+          .update({
+            streak: { current: 1, longest: 1, lastActiveDate: '2026-09-20' },
+            favoriteVocab: ['w-a1-1', 'w-a1-2'],
+            favoriteVocabUpdatedAt: '2026-09-24T10:00:00.000Z',
+          }),
       );
       await assertFails(db.collection('users').doc('student1').update({ tier: 'full' }));
       await assertFails(db.collection('users').doc('student1').update({ role: 'admin' }));

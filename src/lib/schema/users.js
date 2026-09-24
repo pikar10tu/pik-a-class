@@ -39,6 +39,7 @@ export const usersSchema = {
     nickname: str({ required: false }),
     prefix: enumOf(['น้อง', 'พี่'], { required: false }),
     callName: str({ required: false }),
+    avatarId: str({ required: false }),
     grade: enumOf(GRADES, { required: false }),
     school: str({ required: false }),
     phone: str({ required: false }),
@@ -46,7 +47,18 @@ export const usersSchema = {
     role: enumOf(['student', 'admin']),
     tier: enumOf(['free', 'full']),
     tierNote: str({ required: false, maxLength: 500 }),
+    allowedLevels: arrayOfStr({ required: false, maxItems: 10 }),
     groupTags: arrayOfStr({ required: false, maxItems: 20 }),
+    speedCafeStats: obj(
+      {
+        highScore: int({ min: 0 }),
+        maxCombo: int({ min: 0 }),
+        lastPlayedAt: str({ required: false }),
+      },
+      { required: false },
+    ),
+    favoriteVocab: arrayOfStr({ required: false, maxItems: 2000 }),
+    favoriteVocabUpdatedAt: isoDate({ required: false }),
     streak: obj(
       { current: int({ min: 0 }), longest: int({ min: 0 }), lastActiveDate: str() },
       { required: false },

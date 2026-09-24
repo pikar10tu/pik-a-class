@@ -20,8 +20,9 @@ service cloud.firestore {
 
     match /users/{uid} {
       function userFields() {
-        return ['uid', 'email', 'fullName', 'nickname', 'callName', 'grade', 'school', 'phone',
-                'lineId', 'avatarId', 'speedCafeStats', 'role', 'tier', 'tierNote', 'allowedLevels', 'groupTags', 'streak',
+        return ['uid', 'email', 'fullName', 'nickname', 'callName', 'prefix', 'grade', 'school', 'phone',
+                'lineId', 'avatarId', 'speedCafeStats', 'favoriteVocab', 'favoriteVocabUpdatedAt',
+                'role', 'tier', 'tierNote', 'allowedLevels', 'groupTags', 'streak',
                 'onboardingComplete', 'consentAcceptedAt', 'consentVersion',
                 'createdAt', 'updatedAt'];
       }
