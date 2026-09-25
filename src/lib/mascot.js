@@ -2,7 +2,7 @@
 // จึงไม่ต้อง import ผ่าน bundler และทดสอบได้ด้วยสตริงล้วน
 export const MASCOT_MOODS = ['normal', 'correct', 'wrong', 'clear'];
 
-export function mascotSrc(mood, baseUrl) {
+export function mascotSrc(mood, baseUrl, ext = 'png') {
   const name = MASCOT_MOODS.includes(mood) ? mood : 'normal';
-  return `${baseUrl}mascot/${name}.png`;
+  return `${baseUrl}mascot/${name}.${ext}`;
 }

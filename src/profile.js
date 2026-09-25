@@ -82,7 +82,10 @@ function showToast(message) {
 
 function updateHeroAvatar(avatarId) {
   if (heroAvatarImg) {
-    heroAvatarImg.src = getAvatarSrc(avatarId, base);
+    heroAvatarImg.onerror = () => {
+      heroAvatarImg.src = getAvatarSrc(avatarId, base, 'png');
+    };
+    heroAvatarImg.src = getAvatarSrc(avatarId, base, 'webp');
   }
 }
 

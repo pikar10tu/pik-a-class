@@ -15,10 +15,10 @@ export const AVATAR_LIST = [
   { id: 'avatar-12', title: 'น้องหยกส่งรัก', en: 'Heart Love', icon: '💖' },
 ];
 
-export function getAvatarSrc(avatarId, base = '') {
+export function getAvatarSrc(avatarId, base = '', ext = 'png') {
   const valid = AVATAR_LIST.some((a) => a.id === avatarId);
   const id = valid ? avatarId : DEFAULT_AVATAR;
-  return `${base}avatars/${id}.png`;
+  return `${base}avatars/${id}.${ext}`;
 }
 
 export function validateProfileData(data) {

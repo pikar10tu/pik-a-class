@@ -1249,6 +1249,8 @@ textarea {
   pointer-events: none;
   z-index: 0;
   opacity: 0.55;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
 }
 
 .login-ambient-1 {
@@ -1270,8 +1272,8 @@ textarea {
 }
 
 @keyframes ambientFloat {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(25px, 20px) scale(1.08); }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(25px, 20px, 0) scale(1.08); }
 }
 
 .login-container {
@@ -1669,6 +1671,7 @@ textarea {
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -2057,4 +2060,71 @@ textarea {
   color: var(--color-text);
   margin-bottom: 6px;
 }
+
+/* ==========================================================================
+   PWA Update Toast Notification
+   ========================================================================== */
+#pwa-update-toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateZ(0);
+  background: #1e293b;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 99999;
+  font-family: var(--font-base);
+  animation: pwa-toast-slide-up 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes pwa-toast-slide-up {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0) scale(1);
+  }
+}
+
+.pwa-toast-content {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.pwa-toast-icon {
+  font-size: 1.1rem;
+}
+
+.pwa-toast-btn {
+  background: var(--color-primary);
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  touch-action: manipulation;
+}
+
+.pwa-toast-btn:hover {
+  background: #2cb563;
+  transform: scale(1.04);
+}
+
+.pwa-toast-btn:active {
+  transform: scale(0.96);
+}
+
 

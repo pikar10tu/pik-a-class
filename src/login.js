@@ -8,7 +8,12 @@ import { attachUiSounds } from './lib/ui-sound.js';
 
 const base = import.meta.env.BASE_URL;
 const mascotEl = document.getElementById('mascot');
-if (mascotEl) mascotEl.src = mascotSrc('normal', base);
+if (mascotEl) {
+  mascotEl.onerror = () => {
+    mascotEl.src = mascotSrc('normal', base, 'png');
+  };
+  mascotEl.src = mascotSrc('normal', base, 'webp');
+}
 attachUiSounds();
 
 // 1. ตรวจจับ LINE In-App Browser และระบบปฏิบัติการ

@@ -36,7 +36,12 @@ const LEVEL_DATA = {
 
 // Elements
 const mascotEl = document.getElementById('handbook-mascot');
-if (mascotEl) mascotEl.src = mascotSrc('smile', base);
+if (mascotEl) {
+  mascotEl.onerror = () => {
+    mascotEl.src = mascotSrc('smile', base, 'png');
+  };
+  mascotEl.src = mascotSrc('smile', base, 'webp');
+}
 
 const backLink = document.getElementById('back-link');
 if (backLink) backLink.href = `${base}dashboard.html`;

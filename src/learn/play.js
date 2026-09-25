@@ -265,8 +265,13 @@ function backHref() {
 function showEmpty(message, backHref) {
   midStage = false;
   document.getElementById('play-view').hidden = true;
-  document.getElementById('result-view').hidden = true;
-  document.getElementById('empty-mascot').src = mascotSrc('normal', base);
+  const emptyMascot = document.getElementById('empty-mascot');
+  if (emptyMascot) {
+    emptyMascot.onerror = () => {
+      emptyMascot.src = mascotSrc('normal', base, 'png');
+    };
+    emptyMascot.src = mascotSrc('normal', base, 'webp');
+  }
   document.getElementById('empty-message').textContent = message;
   document.getElementById('empty-back').href = backHref;
   document.getElementById('empty-state').hidden = false;
@@ -539,7 +544,14 @@ async function finish() {
   const summary = summarize(session, stage.passThreshold);
   document.getElementById('play-view').hidden = true;
   document.getElementById('result-view').hidden = false;
-  document.getElementById('result-mascot').src = mascotSrc(summary.passed ? 'clear' : 'wrong', base);
+  const resultMascot = document.getElementById('result-mascot');
+  if (resultMascot) {
+    const mood = summary.passed ? 'clear' : 'wrong';
+    resultMascot.onerror = () => {
+      resultMascot.src = mascotSrc(mood, base, 'png');
+    };
+    resultMascot.src = mascotSrc(mood, base, 'webp');
+  }
   document.getElementById('result-title').textContent = summary.passed
     ? 'ผ่านด่านแล้ว!'
     : 'ยังไม่ผ่าน ลองอีกครั้งนะ';

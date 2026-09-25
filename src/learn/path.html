@@ -8,6 +8,8 @@
   <meta http-equiv="Expires" content="0" />
   <title>เส้นทางด่าน — Pik a Class</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mitr:wght@400;500;600;700&display=swap" />
   <link rel="icon" type="image/png" href="../favicon.png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <meta name="theme-color" content="#37c871" />
@@ -31,7 +33,7 @@
     <p id="loading-note" class="hint">กำลังโหลด…</p>
 
     <div id="empty-state" class="path-empty" hidden>
-      <img id="empty-mascot" class="learn-mascot" width="96" height="138" alt="น้องหยกยิ้ม" />
+      <img id="empty-mascot" class="learn-mascot" src="../mascot/normal.webp" width="96" height="138" alt="น้องหยกยิ้ม" onerror="this.onerror=null; this.src='../mascot/normal.png';" />
       <p id="empty-message" class="hint"></p>
       <a id="empty-back" class="btn-chunky path-empty-link" href="#">กลับไปเลือกบทเรียน</a>
     </div>

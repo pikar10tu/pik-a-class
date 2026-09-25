@@ -1,5 +1,6 @@
 import { playButtonSound, playMascotSound } from './answer-audio.js';
 import { loadMuted } from './sound-prefs.js';
+import { initPwaUpdate, initInstantNavigation } from './pwa-update.js';
 
 export function triggerMascotReaction(mascot) {
   if (!mascot) return;
@@ -30,6 +31,9 @@ export function triggerMascotReaction(mascot) {
 
 export function attachUiSounds() {
   if (typeof window === 'undefined' || typeof document === 'undefined') return;
+
+  initPwaUpdate();
+  initInstantNavigation();
 
   document.addEventListener('click', (event) => {
     try {

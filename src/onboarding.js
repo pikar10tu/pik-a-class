@@ -9,7 +9,10 @@ import { mascotSrc } from './lib/mascot.js';
 const base = import.meta.env.BASE_URL;
 const mascotEl = document.getElementById('mascot');
 if (mascotEl) {
-  mascotEl.src = mascotSrc('normal', base);
+  mascotEl.onerror = () => {
+    mascotEl.src = mascotSrc('normal', base, 'png');
+  };
+  mascotEl.src = mascotSrc('normal', base, 'webp');
 }
 
 const gradeSelect = document.getElementById('grade');

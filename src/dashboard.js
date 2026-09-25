@@ -31,11 +31,14 @@ requireLogin(async (firebaseUser, userDoc) => {
   const displayName = nickname || firebaseUser.displayName || 'เพื่อนๆ';
 
   const avatarId = userDoc?.avatarId || 'avatar-1';
-  const avatarSrc = getAvatarSrc(avatarId, base);
+  const avatarSrc = getAvatarSrc(avatarId, base, 'webp');
 
   // Update Hero mascot
   const mascotEl = document.getElementById('dashboard-mascot');
   if (mascotEl) {
+    mascotEl.onerror = () => {
+      mascotEl.src = getAvatarSrc(avatarId, base, 'png');
+    };
     mascotEl.src = avatarSrc;
     mascotEl.alt = 'น้องหยกอวตาร';
   }

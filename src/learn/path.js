@@ -36,8 +36,13 @@ if (handbookPill && skill === 'grammar') {
   handbookPill.textContent = `📖 สรุปไวยากรณ์ ${level || ''}`.trim();
   handbookPill.hidden = false;
 }
-attachUiSounds();
-document.getElementById('empty-mascot').src = mascotSrc('normal', base);
+const emptyMascot = document.getElementById('empty-mascot');
+if (emptyMascot) {
+  emptyMascot.onerror = () => {
+    emptyMascot.src = mascotSrc('normal', base, 'png');
+  };
+  emptyMascot.src = mascotSrc('normal', base, 'webp');
+}
 
 function starMarkup(stars) {
   const filled = '★'.repeat(stars);

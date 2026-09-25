@@ -123,6 +123,7 @@ describe('avatar helpers', () => {
     expect(getAvatarSrc('avatar-12', '/base/')).toBe('/base/avatars/avatar-12.png');
     expect(getAvatarSrc('unknown-avatar')).toBe('avatars/avatar-1.png');
     expect(getAvatarSrc(null)).toBe('avatars/avatar-1.png');
+    expect(getAvatarSrc('avatar-3', '/base/', 'webp')).toBe('/base/avatars/avatar-3.webp');
   });
 });
 

@@ -13,4 +13,8 @@ describe('mascotSrc', () => {
   it('lists every mood the app uses', () => {
     expect(MASCOT_MOODS).toEqual(['normal', 'correct', 'wrong', 'clear']);
   });
+
+  it('allows specifying image format such as webp', () => {
+    expect(mascotSrc('correct', '/pik-a-class/', 'webp')).toBe('/pik-a-class/mascot/correct.webp');
+  });
 });

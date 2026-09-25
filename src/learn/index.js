@@ -73,7 +73,13 @@ export const ISLAND_METADATA = {
 };
 
 document.getElementById('back-link').href = `${base}dashboard.html`;
-document.getElementById('mascot').src = mascotSrc('normal', base);
+const mascotEl = document.getElementById('mascot');
+if (mascotEl) {
+  mascotEl.onerror = () => {
+    mascotEl.src = mascotSrc('normal', base, 'png');
+  };
+  mascotEl.src = mascotSrc('normal', base, 'webp');
+}
 attachUiSounds();
 
 const lockDialog = document.getElementById('lock-dialog');
