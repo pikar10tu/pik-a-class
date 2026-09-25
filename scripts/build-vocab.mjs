@@ -187,8 +187,12 @@ export function getLevels() {
   return ['A1', 'A2', 'B1', 'B2'];
 }
 
-export function getVocabList({ level = 'all', category = 'all', search = '', shuffle = false } = {}) {
+export function getVocabList({ level = 'all', allowedLevels = null, category = 'all', search = '', shuffle = false } = {}) {
   let list = [...VOCAB_ITEMS];
+
+  if (Array.isArray(allowedLevels) && allowedLevels.length > 0) {
+    list = list.filter((item) => allowedLevels.includes(item.level));
+  }
 
   if (level && level !== 'all') {
     list = list.filter((item) => item.level === level);

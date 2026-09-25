@@ -828,15 +828,15 @@ export const natureWeatherVocab = [
   },
   {
     id: "v_b1_nature_12",
-    word: "catastrophe",
-    pos: "n.",
+    word: "adapt",
+    pos: "v.",
     level: "B1",
     category: "nature-weather",
     categoryLabel: "ธรรมชาติ & ดินฟ้าอากาศ",
-    thai: "มหันตภัยธรรมชาติ",
-    alternatives: ["เหตุการณ์ปกติประจำวัน", "การพัฒนาอย่างราบรื่น", "ความสงบสุข"],
-    example: "The unexpected tsunami catastrophe devastated coastal infrastructure across several nations.",
-    exampleThai: "มหันตภัยธรรมชาติตสึนามิที่ไม่คาดคิดได้ทำลายล้างโครงสร้างพื้นฐานชายฝั่งในหลายประเทศ"
+    thai: "ปรับตัวให้เข้ากับสภาพแวดล้อม",
+    alternatives: ["ต่อต้านการเปลี่ยนแปลง","ไม่ยอมปรับเปลี่ยน","อยู่อย่างเดิม"],
+    example: "Polar bears must adapt to shrinking arctic ice sheets caused by rising temperatures.",
+    exampleThai: "หมีขั้วโลกต้องปรับตัวให้เข้ากับสภาพแวดล้อมที่แผ่นน้ำแข็งอาร์กติกหดตัวลงจากอุณหภูมิที่สูงขึ้น"
   },
   {
     id: "v_b1_nature_13",
@@ -876,15 +876,15 @@ export const natureWeatherVocab = [
   },
   {
     id: "v_b1_nature_16",
-    word: "volcanic",
-    pos: "adj.",
+    word: "survive",
+    pos: "v.",
     level: "B1",
     category: "nature-weather",
     categoryLabel: "ธรรมชาติ & ดินฟ้าอากาศ",
-    thai: "เกี่ยวกับการปะทุของภูเขาไฟ",
-    alternatives: ["เกี่ยวกับแผ่นดินถล่ม", "เกี่ยวกับพายุสุริยะ", "เกี่ยวกับคลื่นทะเลหนุน"],
-    example: "Volcanic ash plumes from the eruption forced aviation authorities to ground all flights.",
-    exampleThai: "กลุ่มเถ้าถ่านเกี่ยวกับการปะทุของภูเขาไฟบีบให้เจ้าหน้าที่การบินต้องระงับเที่ยวบินทั้งหมด"
+    thai: "เอาชีวิตรอด",
+    alternatives: ["ล้มตายสูญพันธุ์","ยอมแพ้ต่อภัยธรรมชาติ","ละทิ้งถิ่นฐาน"],
+    example: "Desert plants develop deep root systems to survive long periods of severe drought.",
+    exampleThai: "พืชในทะเลทรายพัฒนาระบบรากลึกเพื่อเอาชีวิตรอดจากภัยแล้งรุนแรงที่ยาวนาน"
   },
   {
     id: "v_b1_nature_17",
@@ -964,15 +964,15 @@ export const natureWeatherVocab = [
   },
   {
     id: "v_b2_nature_05",
-    word: "archipelago",
-    pos: "n.",
+    word: "conserve",
+    pos: "v.",
     level: "B2",
     category: "nature-weather",
     categoryLabel: "ธรรมชาติ & ดินฟ้าอากาศ",
-    thai: "หมู่เกาะที่เรียงรายกลางทะเล",
-    alternatives: ["แผ่นดินใหญ่ตอนใน", "ที่ราบสูงภูเขาไฟ", "หุบเหวลึกใต้สมุทร"],
-    example: "Indonesia forms the world's largest equatorial archipelago, spanning over seventeen thousand islands.",
-    exampleThai: "อินโดนีเซียเป็นหมู่เกาะที่เรียงรายกลางทะเลแถบเส้นศูนย์สูตรที่ใหญ่ที่สุดในโลก ครอบคลุมกว่าหนึ่งหมื่นเจ็ดพันเกาะ"
+    thai: "อนุรักษ์สงวนรักษา",
+    alternatives: ["ผลาญทำลายสิ้น","ปล่อยให้สูญพันธุ์","ใช้ประโยชน์จนหมด"],
+    example: "International organizations urge governments to conserve natural wetlands and mangrove forests.",
+    exampleThai: "องค์กรระหว่างประเทศกระตุ้นให้รัฐบาลอนุรักษ์สงวนรักษาพื้นที่ชุ่มน้ำตามธรรมชาติและป่าชายเลน"
   },
   {
     id: "v_b2_nature_06",
@@ -1012,15 +1012,15 @@ export const natureWeatherVocab = [
   },
   {
     id: "v_b2_nature_09",
-    word: "tributary",
-    pos: "n.",
+    word: "deplete",
+    pos: "v.",
     level: "B2",
     category: "nature-weather",
     categoryLabel: "ธรรมชาติ & ดินฟ้าอากาศ",
-    thai: "แม่น้ำสาขาย่อย",
-    alternatives: ["ปากแม่น้ำออกสู่ทะเล", "สันดอนทรายชายฝั่ง", "แม่น้ำสายประธาน"],
-    example: "Numerous mountain streams converge to form a major tributary feeding the Mekong River.",
-    exampleThai: "ลำธารบนภูเขาจำนวนมากไหลมารวมกันจนกลายเป็นแม่น้ำสาขาย่อยสายสำคัญที่ไหลลงสู่แม่น้ำโขง"
+    thai: "ทำให้ร่อยหรอสูญสิ้น",
+    alternatives: ["ฟื้นฟูให้เต็มเปี่ยม","เติมเต็มทดแทน","สะสมเพิ่มพูน"],
+    example: "Overfishing and pollution continue to deplete marine fish stocks across coastal waters.",
+    exampleThai: "การทำประมงเกินขนาดและมลพิษยังคงทำให้ปริมาณปลาในทะเลทำให้ร่อยหรอสูญสิ้นไปอย่างต่อเนื่อง"
   },
   {
     id: "v_b2_nature_10",
@@ -1048,15 +1048,15 @@ export const natureWeatherVocab = [
   },
   {
     id: "v_b2_nature_12",
-    word: "meteorology",
-    pos: "n.",
+    word: "emit",
+    pos: "v.",
     level: "B2",
     category: "nature-weather",
     categoryLabel: "ธรรมชาติ & ดินฟ้าอากาศ",
-    thai: "วิทยาศาสตร์อุตุนิยมวิทยา",
-    alternatives: ["ธรณีวิทยากายภาพ", "ดาราศาสตร์ดวงดาว", "สมุทรศาสตร์ใต้ทะเล"],
-    example: "Advances in satellite meteorology allow scientists to forecast super-typhoon paths accurately.",
-    exampleThai: "ความก้าวหน้าในวิทยาศาสตร์อุตุนิยมวิทยาผ่านดาวเทียมช่วยให้นักวิทยาศาสตร์พยากรณ์เส้นทางซูเปอร์ไต้ฝุ่นได้อย่างแม่นยำ"
+    thai: "ปล่อยก๊าซหรือมลพิษ",
+    alternatives: ["ดูดซับสารพิษ","กักเก็บคาร์บอน","กรองอากาศบริสุทธิ์"],
+    example: "Coal power plants emit substantial volumes of greenhouse gases into the upper atmosphere.",
+    exampleThai: "โรงไฟฟ้าถ่านหินปล่อยก๊าซหรือมลพิษเรือนกระจกในปริมาณมหาศาลขึ้นสู่ชั้นบรรยากาศระดับบน"
   },
   {
     id: "v_b2_nature_13",

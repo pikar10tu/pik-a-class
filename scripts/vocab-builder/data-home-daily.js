@@ -285,8 +285,8 @@ export const homeDailyVocab = [
     level: "A1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "เสื้อผ้าเครื่องแต่งกาย",
-    alternatives: ["รองเท้าผ้าใบ", "เครื่องประดับเงิน", "กระเป๋าสะพาย"],
+    thai: "เสื้อผ้า",
+    alternatives: ["รองเท้าหนัง","ผ้าปูที่นอน","ผ้าม่าน"],
     example: "Fold your clean washed clothes neatly into the wooden closet drawers.",
     exampleThai: "พับเสื้อผ้าเครื่องแต่งกายที่ซักสะอาดแล้วอย่างเป็นระเบียบลงในลิ้นชักตู้ไม้"
   },
@@ -309,8 +309,8 @@ export const homeDailyVocab = [
     level: "A1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "ครอบครัวอันเป็นที่รัก",
-    alternatives: ["เพื่อนร่วมงาน", "เพื่อนบ้าน", "คนแปลกหน้า"],
+    thai: "ครอบครัว",
+    alternatives: ["เพื่อนร่วมงาน","เพื่อนบ้าน","คนแปลกหน้า"],
     example: "Spending quality weekend time with family creates cherished lifetime memories.",
     exampleThai: "การใช้เวลาวันหยุดสุดสัปดาห์ที่มีคุณภาพกับครอบครัวอันเป็นที่รักสร้างความทรงจำที่น่าประทับใจไปตลอดชีวิต"
   },
@@ -529,8 +529,8 @@ export const homeDailyVocab = [
     level: "A2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "กิจวัตรประจำวันที่ทำสม่ำเสมอ",
-    alternatives: ["การเดินทางท่องเที่ยว", "การผจญภัยวันหยุด", "เหตุฉุกเฉิน"],
+    thai: "กิจวัตรประจำวัน",
+    alternatives: ["วันหยุดพิเศษ","การท่องเที่ยว","เหตุฉุกเฉิน"],
     example: "A predictable morning routine of meditation and stretching starts the day well.",
     exampleThai: "กิจวัตรประจำวันที่ทำสม่ำเสมอในยามเช้าด้วยการทำสมาธิและยืดเหยียดเริ่มต้นวันได้อย่างยอดเยี่ยม"
   },
@@ -685,8 +685,8 @@ export const homeDailyVocab = [
     level: "A2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "งานบ้านงานเรือนประจำวัน",
-    alternatives: ["การเล่นสนุก", "การนอนพักผ่อน", "การดูโทรทัศน์"],
+    thai: "งานบ้าน",
+    alternatives: ["การบ้านวิชาคณิต","งานเลี้ยงสังสรรค์","การนอนหลับ"],
     example: "Washing the dinner dishes and taking out rubbish are my evening household chores.",
     exampleThai: "การล้างจานมื้อค่ำและการนำขยะออกไปทิ้งเป็นงานบ้านงานเรือนประจำวันช่วงเย็นของฉัน"
   },
@@ -701,8 +701,8 @@ export const homeDailyVocab = [
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "การซ่อมบำรุงรักษาอาคาร",
-    alternatives: ["การรื้อถอนทิ้ง", "การปล่อยให้ทรุดโทรม", "การสร้างใหม่หมด"],
+    thai: "การบำรุงรักษา",
+    alternatives: ["การรื้อถอนทิ้ง","การปล่อยให้ทรุดโทรม","การสร้างใหม่หมด"],
     example: "Routine roof and pipe maintenance prevents costly domestic water leak damages.",
     exampleThai: "การซ่อมบำรุงรักษาอาคารสำหรับหลังคาและท่อน้ำเป็นประจำช่วยป้องกันความเสียหายจากน้ำรั่วในบ้านที่ต้องจ่ายแพง"
   },
@@ -713,8 +713,8 @@ export const homeDailyVocab = [
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "การปรับปรุงตกแต่งบ้านใหม่",
-    alternatives: ["การรื้อถอนทำลาย", "การขายทอดตลาด", "การปล่อยให้รกร้าง"],
+    thai: "การปรับปรุงซ่อมแซม",
+    alternatives: ["การรื้อถอนทำลาย","การขายทอดตลาด","การปล่อยให้รกร้าง"],
     example: "The kitchen renovation transformed the cramped space into a bright, open cooking hub.",
     exampleThai: "การปรับปรุงตกแต่งบ้านใหม่ในห้องครัวเปลี่ยนพื้นที่คับแคบให้กลายเป็นศูนย์กลางการทำอาหารที่สว่างและเปิดโล่ง"
   },
@@ -725,8 +725,8 @@ export const homeDailyVocab = [
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "ผู้อยู่อาศัยในบ้านเรือน",
-    alternatives: ["ผู้มาเยือนชั่วคราว", "นายหน้าอสังหา", "ช่างก่อสร้าง"],
+    thai: "ผู้อยู่อาศัย",
+    alternatives: ["ผู้มาเยือนชั่วคราว","นายหน้าอสังหา","ช่างก่อสร้าง"],
     example: "Every inhabitant in the residential apartment block must follow communal recycling guidelines.",
     exampleThai: "ผู้อยู่อาศัยในบ้านเรือนทุกคนในอาคารอพาร์ตเมนต์ต้องปฏิบัติตามแนวทางการรีไซเคิลของส่วนรวม"
   },
@@ -773,8 +773,8 @@ export const homeDailyVocab = [
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "เจ้าของบ้านผู้ให้เช่า",
-    alternatives: ["ผู้เช่าอาศัย", "คนดูแลสวน", "เจ้าหน้าที่รักษาความปลอดภัย"],
+    thai: "เจ้าของบ้านเช่า",
+    alternatives: ["ผู้เช่าอาศัย","คนดูแลสวน","เจ้าหน้าที่รักษาความปลอดภัย"],
     example: "The courteous landlord promptly arranged a plumber to fix the kitchen drain.",
     exampleThai: "เจ้าของบ้านผู้ให้เช่าผู้สุภาพรีบจัดหาช่างประปามาซ่อมท่อระบายน้ำในครัวทันที"
   },
@@ -804,15 +804,15 @@ export const homeDailyVocab = [
   },
   {
     id: "v_b1_home_10",
-    word: "domestic",
-    pos: "adj.",
+    word: "maintain",
+    pos: "v.",
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "เกี่ยวกับกิจการภายในบ้าน",
-    alternatives: ["เกี่ยวกับการค้าระหว่างประเทศ", "เกี่ยวกับการท่องเที่ยว", "เกี่ยวกับการเมือง"],
-    example: "Sharing domestic chores equally fosters mutual harmony in modern busy households.",
-    exampleThai: "การแบ่งปันเกี่ยวกับกิจการภายในบ้านอย่างเท่าเทียมสร้างความปรองดองร่วมกันในครัวเรือนยุคใหม่ที่วุ่นวาย"
+    thai: "ดูแลบำรุงรักษา",
+    alternatives: ["ปล่อยให้ทรุดโทรม","ทอดทิ้งบ้านเรือน","ทำลายข้าวของ"],
+    example: "Homeowners need to regularly maintain their water filters and air conditioning units.",
+    exampleThai: "เจ้าของบ้านจำเป็นต้องดูแลบำรุงรักษาเครื่องกรองน้ำและเครื่องปรับอากาศอย่างสม่ำเสมอ"
   },
   {
     id: "v_b1_home_11",
@@ -905,8 +905,8 @@ export const homeDailyVocab = [
     level: "B1",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "สิ่งของเกะกะระเกะระกะ",
-    alternatives: ["ความเป็นระเบียบเรียบร้อย", "ความว่างเปล่าสะอาดตา", "ความสมมาตร"],
+    thai: "สิ่งของเกะกะ",
+    alternatives: ["ความเป็นระเบียบเรียบร้อย","ความว่างเปล่าสะอาดตา","ความสมมาตร"],
     example: "Clearing desk clutter creates a serene and productive home office environment.",
     exampleThai: "การเคลียร์สิ่งของเกะกะระเกะระกะบนโต๊ะสร้างสภาพแวดล้อมโฮมออฟฟิศที่สงบและทำงานได้มีประสิทธิภาพ"
   },
@@ -916,15 +916,15 @@ export const homeDailyVocab = [
   // ==========================================
   {
     id: "v_b2_home_01",
-    word: "domesticity",
-    pos: "n.",
+    word: "accommodate",
+    pos: "v.",
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "ชีวิตความเป็นอยู่ภายในครอบครัว",
-    alternatives: ["การผจญภัยในแดนไกล", "การทำงานในวงการเมือง", "การใช้ชีวิตสันโดษ"],
-    example: "After decades of international globetrotting, he embraced the serene pleasures of rural domesticity.",
-    exampleThai: "หลังจากเดินทางรอบโลกมาหลายทศวรรษ เขาหันมาโอบรับความสุขอันเงียบสงบของชีวิตความเป็นอยู่ภายในครอบครัวในชนบท"
+    thai: "จัดที่พักให้",
+    alternatives: ["ขับไล่ออกจากที่","ปฏิเสธไม่รับ","รื้อถอนทำลาย"],
+    example: "The newly renovated building can accommodate up to one hundred residents comfortably.",
+    exampleThai: "อาคารที่เพิ่งปรับปรุงใหม่สามารถจัดที่พักรองรับผู้อยู่อาศัยได้มากถึงหนึ่งร้อยคนอย่างสะดวกสบาย"
   },
   {
     id: "v_b2_home_02",
@@ -945,8 +945,8 @@ export const homeDailyVocab = [
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "พำนักพักอาศัยอยู่เป็นประจำ",
-    alternatives: ["แวะพักชั่วคราว", "อพยพย้ายถิ่นหนี", "เดินทางผ่านไป"],
+    thai: "อาศัยอยู่",
+    alternatives: ["แวะพักชั่วคราว","อพยพย้ายถิ่นหนี","เดินทางผ่านไป"],
     example: "Indigenous tribes dwell sustainably within ancient tropical forest canopy sanctuaries.",
     exampleThai: "ชนเผ่าพื้นเมืองพำนักพักอาศัยอยู่เป็นประจำอย่างยั่งยืนภายในเขตรักษาพันธุ์ป่าดงดิบโบราณ"
   },
@@ -993,8 +993,8 @@ export const homeDailyVocab = [
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "สถานที่พักผ่อนอันสงบปลอดภัย",
-    alternatives: ["ย่านธุรกิจอันวุ่นวาย", "ศูนย์การค้าที่จอแจ", "ลานชุมนุมสาธารณะ"],
+    thai: "แหล่งพักพิงปลอดภัย",
+    alternatives: ["ย่านธุรกิจอันวุ่นวาย","ศูนย์การค้าที่จอแจ","ลานชุมนุมสาธารณะ"],
     example: "Her quiet sunlit apartment serves as a tranquil personal sanctuary away from urban hustle.",
     exampleThai: "อพาร์ตเมนต์อันเงียบสงบที่แสงแดดส่องถึงของเธอทำหน้าที่เป็นสถานที่พักผ่อนอันสงบปลอดภัยจากความวุ่นวายในเมือง"
   },
@@ -1024,15 +1024,15 @@ export const homeDailyVocab = [
   },
   {
     id: "v_b2_home_10",
-    word: "homestead",
-    pos: "n.",
+    word: "reside",
+    pos: "v.",
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "ที่ดินและบ้านเรือนที่อยู่อาศัยดั้งเดิม",
-    alternatives: ["ห้องชุดให้เช่ารายวัน", "โรงแรมรีสอร์ต", "บ้านพักตากอากาศชั่วคราว"],
-    example: "Generations of family farmers tended organic orchards on their historic northern highland homestead.",
-    exampleThai: "ชาวนาของครอบครัวหลายชั่วอายุคนดูแลสวนผลไม้ออร์แกนิกบนที่ดินและบ้านเรือนที่อยู่อาศัยดั้งเดิมบนที่สูงทางเหนือ"
+    thai: "พำนักอาศัย",
+    alternatives: ["อพยพย้ายหนี","ท่องเที่ยวชั่วคราว","เดินทางผ่าน"],
+    example: "Most of the university professors reside in the quiet suburbs rather than the busy city center.",
+    exampleThai: "อาจารย์มหาวิทยาลัยส่วนใหญ่พำนักอาศัยอยู่ในแถบชานเมืองอันเงียบสงบมากกว่าใจกลางเมืองที่วุ่นวาย"
   },
   {
     id: "v_b2_home_11",
@@ -1041,8 +1041,8 @@ export const homeDailyVocab = [
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "บริเวณละแวกใกล้เคียงโดยรอบ",
-    alternatives: ["ดินแดนโพ้นทะเล", "ป่าลึกห่างไกล", "ยอดเขาสูงชัน"],
+    thai: "บริเวณใกล้เคียง",
+    alternatives: ["ดินแดนโพ้นทะเล","ป่าลึกห่างไกล","ยอดเขาสูงชัน"],
     example: "Having reliable supermarkets and public transit within the immediate residential vicinity adds substantial property value.",
     exampleThai: "การมีซูเปอร์มาร์เก็ตและระบบขนส่งสาธารณะที่ไว้ใจได้ในบริเวณละแวกใกล้เคียงโดยรอบของบ้านช่วยเพิ่มมูลค่าทรัพย์สิน"
   },
@@ -1077,8 +1077,8 @@ export const homeDailyVocab = [
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "สิ่งอำนวยความสะดวกสบายในที่พัก",
-    alternatives: ["ภาระค่าใช้จ่ายแฝง", "กฎข้อห้ามเคร่งครัด", "ความไม่สะดวกสบาย"],
+    thai: "สิ่งอำนวยความสะดวก",
+    alternatives: ["ภาระค่าใช้จ่ายแฝง","กฎข้อห้ามเคร่งครัด","ความไม่สะดวกสบาย"],
     example: "The residential complex boasts luxury amenities including an infinity swimming pool and state-of-the-art gym.",
     exampleThai: "โครงการที่อยู่อาศัยแห่งนี้มีสิ่งอำนวยความสะดวกสบายในที่พักหรูหรา รวมถึงสระว่ายน้ำไร้ขอบและยิมออกกำลังกายทันสมัย"
   },
@@ -1089,33 +1089,33 @@ export const homeDailyVocab = [
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "การบังคับขับไล่ออกจากที่พักอาศัย",
-    alternatives: ["การต่อสัญญาเช่า", "การลดค่าเช่า", "การเชิญเข้าอยู่อาศัย"],
+    thai: "การขับไล่ออกจากที่พัก",
+    alternatives: ["การต่อสัญญาเช่า","การลดค่าเช่า","การเชิญเข้าอยู่อาศัย"],
     example: "Tenants who chronically default on contract payments may face legal eviction proceedings through court channels.",
     exampleThai: "ผู้เช่าที่ผิดนัดชำระเงินตามสัญญาอย่างต่อเนื่องอาจต้องเผชิญกับกระบวนการการบังคับขับไล่ออกจากที่พักอาศัยผ่านช่องทางศาล"
   },
   {
     id: "v_b2_home_16",
-    word: "hearth",
-    pos: "n.",
+    word: "renovate",
+    pos: "v.",
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "เตาผิงและความอบอุ่นในบ้าน",
-    alternatives: ["ระเบียงตากแดด", "รั้วเหล็กดัด", "โรงรถ"],
-    example: "Grandmother gathered storytelling grandchildren beside the comforting, crackling warmth of the brick hearth.",
-    exampleThai: "คุณย่ารวบรวมหลานๆ มานั่งฟังนิทานข้างเตาผิงและความอบอุ่นในบ้านอิฐที่ส่งเสียงเปรี๊ยะๆ อันแสนสบายใจ"
+    thai: "ปรับปรุงซ่อมแซม",
+    alternatives: ["ทุบทำลายทิ้ง","ปล่อยให้ทรุดโทรม","สร้างสิ่งกีดขวาง"],
+    example: "The couple decided to renovate the old wooden townhouse before moving in.",
+    exampleThai: "คู่สามีภรรยาตัดสินใจปรับปรุงซ่อมแซมบ้านทาวน์เฮาส์ไม้หลังเก่าก่อนจะย้ายเข้าไปอยู่"
   },
   {
     id: "v_b2_home_17",
-    word: "sedentary",
-    pos: "adj.",
+    word: "demolish",
+    pos: "v.",
     level: "B2",
     category: "home-daily",
     categoryLabel: "บ้าน & กิจวัตรประจำวัน",
-    thai: "ซึ่งนั่งอยู่กับที่เนือยนิ่ง",
-    alternatives: ["ซึ่งกระฉับกระเฉงตลอดเวลา", "ซึ่งทำงานใช้แรงงาน", "ซึ่งเดินทางบ่อย"],
-    example: "Combating a sedentary indoor lifestyle requires incorporating brisk daily neighborhood strolls.",
-    exampleThai: "การต่อสู้กับวิถีชีวิตในร่มซึ่งนั่งอยู่กับที่เนือยนิ่งต้องอาศัยการเดินเล่นในละแวกบ้านอย่างกระฉับกระเฉงทุกวัน"
+    thai: "รื้อถอนทำลาย",
+    alternatives: ["ก่อสร้างขึ้นใหม่","บูรณะซ่อมแซม","จัดตกแต่งภายใน"],
+    example: "The city council voted to demolish the abandoned warehouse to build a public park.",
+    exampleThai: "สภาเทศบาลเมืองลงมติให้รื้อถอนทำลายโกดังร้างเพื่อสร้างสวนสาธารณะ"
   }
 ];

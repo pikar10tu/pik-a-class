@@ -333,8 +333,8 @@ export const healthBodyVocab = [
     level: "A1",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "เหน็ดเหนื่อยเมื่อยล้า",
-    alternatives: ["กระปรี้กระเปร่า", "มีชีวิตชีวา", "ตื่นตัวเต็มที่"],
+    thai: "เหน็ดเหนื่อย",
+    alternatives: ["สดชื่นกระปรี้กระเปร่า","หิวโซ","อิ่มเอมใจ"],
     example: "After working all afternoon in the garden, he was very tired.",
     exampleThai: "หลังจากทำงานทั้งบ่ายในสวน เขาก็เหน็ดเหนื่อยเมื่อยล้ามาก"
   },
@@ -457,8 +457,8 @@ export const healthBodyVocab = [
     level: "A2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "ผู้ป่วยที่มารับการรักษา",
-    alternatives: ["แพทย์ผู้ตรวจ", "เภสัชกรประจำร้าน", "เจ้าหน้าที่การเงิน"],
+    thai: "ผู้ป่วย",
+    alternatives: ["นายแพทย์ผู้เชี่ยวชาญ","พยาบาลประจำห้องฉุกเฉิน","เภสัชกรจ่ายยา"],
     example: "The compassionate physician listened carefully to each patient.",
     exampleThai: "แพทย์ผู้เปี่ยมด้วยความเห็นอกเห็นใจรับฟังผู้ป่วยที่มารับการรักษาแต่ละคนอย่างตั้งใจ"
   },
@@ -493,8 +493,8 @@ export const healthBodyVocab = [
     level: "A2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "ยาเม็ดสำหรับรับประทาน",
-    alternatives: ["ยาน้ำเชื่อม", "ยาทาภายนอก", "ยาหยอดตา"],
+    thai: "ยาเม็ด",
+    alternatives: ["เข็มฉีดยา","พลาสเตอร์ปิดแผล","ผ้าพันเคล็ด"],
     example: "Swallow one vitamin pill with a full glass of lukewarm water.",
     exampleThai: "กลืนยาเม็ดสำหรับรับประทานวิตามินหนึ่งเม็ดพร้อมน้ำอุ่นเต็มแก้ว"
   },
@@ -916,15 +916,15 @@ export const healthBodyVocab = [
   // ==========================================
   {
     id: "v_b2_health_01",
-    word: "pathology",
-    pos: "n.",
+    word: "diagnose",
+    pos: "v.",
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "พยาธิวิทยา",
-    alternatives: ["เภสัชวิทยา", "จิตวิทยาบำบัด", "กายภาพบำบัด"],
-    example: "The hospital pathology laboratory analyzed the removed tissue biopsy carefully.",
-    exampleThai: "ห้องปฏิบัติการพยาธิวิทยาของโรงพยาบาลได้ตรวจวิเคราะห์ชิ้นเนื้อที่ตัดออกมาอย่างรอบคอบ"
+    thai: "วินิจฉัยโรค",
+    alternatives: ["คาดเดาตามอาการ","ละเลยการรักษา","มองข้ามสัญญาณเตือน"],
+    example: "Specialist doctors used advanced MRI scans to diagnose the neurological disorder accurately.",
+    exampleThai: "แพทย์เฉพาะทางใช้การสแกนด้วยคลื่นแม่เหล็กไฟฟ้าขั้นสูงเพื่อวินิจฉัยโรคความผิดปกติทางระบบประสาทได้อย่างแม่นยำ"
   },
   {
     id: "v_b2_health_02",
@@ -945,8 +945,8 @@ export const healthBodyVocab = [
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "เกี่ยวกับการรับรู้และการทำงานของสมอง",
-    alternatives: ["เกี่ยวกับระบบไหลเวียนโลหิต", "เกี่ยวกับโครงสร้างกระดูก", "เกี่ยวกับกล้ามเนื้อลาย"],
+    thai: "เกี่ยวกับการรับรู้ของสมอง",
+    alternatives: ["เกี่ยวกับระบบย่อยอาหาร","เกี่ยวกับกระดูกและข้อ","เกี่ยวกับผิวหนังภายนอก"],
     example: "Solving complex puzzles aids elderly citizens in preserving vital cognitive function.",
     exampleThai: "การเล่นเกมปริศนาที่ซับซ้อนช่วยให้ผู้สูงอายุรักษาเกี่ยวกับการรับรู้และการทำงานของสมองที่สำคัญไว้ได้"
   },
@@ -1000,15 +1000,15 @@ export const healthBodyVocab = [
   },
   {
     id: "v_b2_health_08",
-    word: "anaesthesia",
-    pos: "n.",
+    word: "prescribe",
+    pos: "v.",
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "การระงับความรู้สึกหรือดมยาสลบ",
-    alternatives: ["การกระตุ้นประสาท", "การฟื้นฟูหลังผ่าตัด", "การตรวจคลื่นไฟฟ้า"],
-    example: "The patient felt no surgical discomfort under the careful administration of general anaesthesia.",
-    exampleThai: "ผู้ป่วยไม่รู้สึกเจ็บปวดใดๆ จากการผ่าตัดภายใต้การระงับความรู้สึกหรือดมยาสลบอย่างรอบคอบ"
+    thai: "สั่งยาตามอาการ",
+    alternatives: ["ห้ามใช้ยา","ซื้อยากินเอง","เพิกเฉยต่อการรักษา"],
+    example: "Physicians must be cautious not to prescribe strong antibiotics for simple viral infections.",
+    exampleThai: "แพทย์ต้องระมัดระวังไม่สั่งยาตามอาการที่เป็นยาปฏิชีวนะชนิดรุนแรงสำหรับการติดเชื้อไวรัสทั่วไป"
   },
   {
     id: "v_b2_health_09",
@@ -1036,27 +1036,27 @@ export const healthBodyVocab = [
   },
   {
     id: "v_b2_health_11",
-    word: "resilience",
-    pos: "n.",
+    word: "alleviate",
+    pos: "v.",
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "ความสามารถในการฟื้นคืนสภาพเดิม",
-    alternatives: ["ความเปราะบางแตกหักง่าย", "การยอมแพ้ต่ออุปสรรค", "ความเฉื่อยชาถดถอย"],
-    example: "Young healthy athletes often demonstrate astounding physiological resilience following severe sports injuries.",
-    exampleThai: "นักกีฬาอายุน้อยที่สุขภาพดีมักแสดงความสามารถในการฟื้นคืนสภาพเดิมทางสรีระอย่างน่าทึ่งหลังการบาดเจ็บจากการเล่นกีฬา"
+    thai: "บรรเทาความเจ็บปวด",
+    alternatives: ["ซ้ำเติมอาการป่วย","เพิ่มความเจ็บปวด","ก่อให้เกิดการอักเสบ"],
+    example: "Gentle physical therapy helps alleviate chronic lower back pain in desk workers.",
+    exampleThai: "กายภาพบำบัดแบบนุ่มนวลช่วยบรรเทาความเจ็บปวดเรื้อรังบริเวณหลังส่วนล่างในคนทำงานออฟฟิศ"
   },
   {
     id: "v_b2_health_12",
-    word: "palliative",
-    pos: "adj.",
+    word: "transmit",
+    pos: "v.",
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "เพื่อการบรรเทาอาการและประคับประคอง",
-    alternatives: ["เพื่อการผ่าตัดกำจัดโรค", "เพื่อการรักษาให้หายขาด", "เพื่อการตรวจหาดีเอ็นเอ"],
-    example: "The hospice nurse specializes in offering compassionate palliative care to terminally ill patients.",
-    exampleThai: "พยาบาลสถานบริบาลผู้ป่วยระยะท้ายเชี่ยวชาญการดูแลเพื่อการบรรเทาอาการและประคับประคองแก่ผู้ป่วยระยะสุดท้าย"
+    thai: "แพร่กระจายเชื้อโรค",
+    alternatives: ["กำจัดเชื้อหมดสิ้น","รักษาให้หายขาด","สกัดกั้นการระบาด"],
+    example: "Infected mosquitoes can transmit tropical diseases such as dengue fever to humans.",
+    exampleThai: "ยุงที่มีเชื้อสามารถแพร่กระจายเชื้อโรคเขตร้อน เช่น ไข้เลือดออก ไปสู่มนุษย์ได้"
   },
   {
     id: "v_b2_health_13",
@@ -1065,8 +1065,8 @@ export const healthBodyVocab = [
     level: "B2",
     category: "health-body",
     categoryLabel: "สุขภาพ & ร่างกาย",
-    thai: "ซึ่งนั่งอยู่กับที่เนือยนิ่ง",
-    alternatives: ["ซึ่งกระฉับกระเฉงตลอดเวลา", "ซึ่งใช้แรงงานหนัก", "ซึ่งเดินทางบ่อย"],
+    thai: "ที่ไม่ค่อยเคลื่อนไหว",
+    alternatives: ["ที่ชอบออกกำลังกายสม่ำเสมอ","ที่ทำงานใช้แรงกาย","ที่เดินทางบ่อยครั้ง"],
     example: "A sedentary desk lifestyle without exercise increases obesity and chronic metabolic risks.",
     exampleThai: "วิถีชีวิตโต๊ะทำงานซึ่งนั่งอยู่กับที่เนือยนิ่งโดยไม่ออกกำลังกายเพิ่มความเสี่ยงโรคอ้วนและการเผาผลาญผิดปกติ"
   },

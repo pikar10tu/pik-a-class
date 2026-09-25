@@ -828,15 +828,15 @@ export const feelingsPersonalityVocab = [
   },
   {
     id: "v_b1_feel_12",
-    word: "temperament",
-    pos: "n.",
+    word: "react",
+    pos: "v.",
     level: "B1",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "นิสัยใจคอและพื้นอารมณ์",
-    alternatives: ["ความรู้ทางวิชาการ", "ทักษะทางภาษา", "สถานะทางสังคม"],
-    example: "Her naturally even-keeled temperament enables her to lead calmly during emergency situations.",
-    exampleThai: "นิสัยใจคอและพื้นอารมณ์ที่สุขุมตามธรรมชาติช่วยให้เธอเป็นผู้นำได้อย่างใจเย็นในสถานการณ์ฉุกเฉิน"
+    thai: "ตอบสนองต่อสิ่งเร้า",
+    alternatives: ["เพิกเฉยเฉยเมย","หยุดนิ่งไม่ขยับ","ไม่รู้สึกรู้สา"],
+    example: "People react differently when facing unexpected bad news or sudden crises.",
+    exampleThai: "ผู้คนมีวิธีตอบสนองต่อสิ่งเร้าแตกต่างกันเมื่อเผชิญกับข่าวร้ายที่ไม่คาดคิดหรือวิกฤตที่กะทันหัน"
   },
   {
     id: "v_b1_feel_13",
@@ -864,15 +864,15 @@ export const feelingsPersonalityVocab = [
   },
   {
     id: "v_b1_feel_15",
-    word: "resentful",
-    pos: "adj.",
+    word: "express",
+    pos: "v.",
     level: "B1",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "ขุ่นเคืองผูกใจเจ็บ",
-    alternatives: ["ให้อภัยไม่ถือโทษ", "ปลาบปลื้มยินดี", "ซาบซึ้งใจ"],
-    example: "She felt deeply resentful when her hard-earned design credit was claimed by her manager.",
-    exampleThai: "เธอรู้สึกขุ่นเคืองผูกใจเจ็บอย่างลึกซึ้งเมื่อผลงานการออกแบบที่เหนื่อยยากถูกผู้จัดการแอบอ้างไป"
+    thai: "แสดงความรู้สึก",
+    alternatives: ["เก็บกดอารมณ์ไว้","ปิดบังซ่อนเร้น","แสร้งทำเป็นไม่รู้"],
+    example: "Art and music allow shy teenagers to express their innermost emotions freely.",
+    exampleThai: "ศิลปะและดนตรีช่วยให้วัยรุ่นที่ขี้อายสามารถแสดงความรู้สึกส่วนลึกที่สุดของตนได้อย่างอิสระ"
   },
   {
     id: "v_b1_feel_16",
@@ -1024,15 +1024,15 @@ export const feelingsPersonalityVocab = [
   },
   {
     id: "v_b2_feel_10",
-    word: "magnanimous",
-    pos: "adj.",
+    word: "anticipate",
+    pos: "v.",
     level: "B2",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "ใจกว้างใหญ่ให้อภัยคู่แข่ง",
-    alternatives: ["อาฆาตพยาบาท", "แค้นฝังหุ่น", "ใจแคบจ้องจับผิด"],
-    example: "In a magnanimous victory speech, the newly elected president warmly praised her defeated rival.",
-    exampleThai: "ในสุนทรพจน์แห่งชัยชนะที่ใจกว้างใหญ่ให้อภัยคู่แข่ง ประธานาธิบดีคนใหม่ได้กล่าวชื่นชมคู่แข่งที่พ่ายแพ้อย่างอบอุ่น"
+    thai: "คาดการณ์ล่วงหน้า",
+    alternatives: ["รำลึกอดีต","มองข้ามสิ่งสำคัญ","เพิกเฉยต่อสัญญาณ"],
+    example: "Economists anticipate that consumer confidence will rise gradually in the second half of the year.",
+    exampleThai: "นักเศรษฐศาสตร์คาดการณ์ล่วงหน้าว่าความเชื่อมั่นของผู้บริโภคจะทยอยปรับตัวสูงขึ้นในครึ่งปีหลัง"
   },
   {
     id: "v_b2_feel_11",
@@ -1072,15 +1072,15 @@ export const feelingsPersonalityVocab = [
   },
   {
     id: "v_b2_feel_14",
-    word: "vindictive",
-    pos: "adj.",
+    word: "distinguish",
+    pos: "v.",
     level: "B2",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "อาฆาตมาดร้ายจ้องล้างแค้น",
-    alternatives: ["มีจิตใจให้อภัย", "เมตตาการุณย์", "ไม่ถือโทษโกรธใคร"],
-    example: "Launching defamatory online rumors against a critic was condemned as petty and vindictive.",
-    exampleThai: "การปล่อยข่าวลือให้ร้ายทางออนไลน์ต่อผู้วิพากษ์วิจารณ์ถูกประณามว่าเป็นการกระทำที่ใจแคบและอาฆาตมาดร้ายจ้องล้างแค้น"
+    thai: "แยกแยะความแตกต่าง",
+    alternatives: ["รวมเป็นสิ่งเดียวกัน","ทำให้สับสนปนเป","มองข้ามความต่าง"],
+    example: "It is crucial to distinguish between genuine scientific evidence and mere online rumors.",
+    exampleThai: "สิ่งสำคัญอย่างยิ่งคือต้องแยกแยะความแตกต่างระหว่างหลักฐานทางวิทยาศาสตร์ที่แท้จริงกับเพียงแค่ข่าวลือทางอินเทอร์เน็ต"
   },
   {
     id: "v_b2_feel_15",
@@ -1096,26 +1096,26 @@ export const feelingsPersonalityVocab = [
   },
   {
     id: "v_b2_feel_16",
-    word: "facetious",
-    pos: "adj.",
+    word: "perceive",
+    pos: "v.",
     level: "B2",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "ชอบพูดเล่นไม่ถูกกาลเทศะ",
-    alternatives: ["สุขุมจริงจัง", "สำรวมสุภาพ", "มีกาลเทศะ"],
-    example: "Making facetious wisecracks during a serious boardroom funeral discussion was deeply inappropriate.",
-    exampleThai: "การเล่นมุกตลกที่ชอบพูดเล่นไม่ถูกกาลเทศะระหว่างการพูดคุยเรื่องงานศพในที่ประชุมเป็นเรื่องที่ไม่เหมาะสมอย่างยิ่ง"
+    thai: "รับรู้และเข้าใจ",
+    alternatives: ["มองข้ามไป","ปิดหูปิดตา","เข้าใจคลาดเคลื่อน"],
+    example: "How we perceive everyday stressful situations largely determines our mental well-being.",
+    exampleThai: "วิธีการที่เรารับรู้และเข้าใจสถานการณ์ตึงเครียดในชีวิตประจำวันมีผลอย่างมากต่อสุขภาวะทางจิตของเรา"
   },
   {
     id: "v_b2_feel_17",
-    word: "euphoria",
-    pos: "n.",
+    word: "empathize",
+    pos: "v.",
     level: "B2",
     category: "feelings-personality",
     categoryLabel: "อารมณ์ & บุคลิก",
-    thai: "ความรู้สึกปลื้มปีติสุขล้นพ้น",
-    alternatives: ["ความซึมเศร้าหดหู่", "ความหวาดผวา", "ความคับแค้นใจ"],
-    example: "A wave of shared euphoria swept through the stadium as the winning goal hit the net in extra time.",
-    exampleThai: "คลื่นแห่งความรู้สึกปลื้มปีติสุขล้นพ้นซัดผ่านทั่วทั้งสนามกีฬาเมื่อประตูชัยเสียบก้นตาข่ายในช่วงต่อเวลาพิเศษ"
+    thai: "เห็นอกเห็นใจ",
+    alternatives: ["ซ้ำเติมความทุกข์","เหยียดหยามดูแคลน","เฉยเมยเย็นชา"],
+    example: "Counselors are trained to listen actively and empathize with patients coping with personal grief.",
+    exampleThai: "ที่ปรึกษาได้รับการฝึกฝนให้รับฟังอย่างตั้งใจและเห็นอกเห็นใจผู้ป่วยที่กำลังรับมือกับความสูญเสียส่วนบุคคล"
   }
 ];

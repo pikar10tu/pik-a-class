@@ -1428,11 +1428,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "food-drink",
     "categoryLabel": "อาหาร & เครื่องดื่ม",
-    "thai": "งานเลี้ยงโต๊ะอาหารมื้อใหญ่",
+    "thai": "งานเลี้ยงโต๊ะอาหาร",
     "alternatives": [
       "อาหารจานด่วน",
-      "การรับประทานคนเดียว",
-      "ของว่างยามบ่าย"
+      "การอดอาหารประท้วง",
+      "มื้ออาหารว่างยามบ่าย"
     ],
     "example": "Foreign dignitaries were invited to a lavish official banquet hosted at the palace.",
     "exampleThai": "บุคคลสำคัญจากต่างประเทศได้รับเชิญร่วมงานเลี้ยงโต๊ะอาหารมื้อใหญ่อย่างเป็นทางการ ณ พระราชวัง"
@@ -1455,67 +1455,67 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_food_13",
-    "word": "confectionery",
-    "pos": "n.",
+    "word": "nourish",
+    "pos": "v.",
     "level": "B2",
     "category": "food-drink",
     "categoryLabel": "อาหาร & เครื่องดื่ม",
-    "thai": "ร้านขนมหวานและลูกกวาด",
+    "thai": "บำรุงเลี้ยงร่างกาย",
     "alternatives": [
-      "ร้านขายเนื้อสัตว์",
-      "ร้านผักออร์แกนิก",
-      "โรงงานผลิตยา"
+      "ทำให้อ่อนแอลง",
+      "ทำลายสุขภาพ",
+      "ปล่อยให้อดอยาก"
     ],
-    "example": "The artisanal confectionery in Brussels creates handcrafted luxury truffles.",
-    "exampleThai": "ร้านขนมหวานและลูกกวาดทำมือในกรุงบรัสเซลส์ผลิตช็อกโกแลตทรูฟเฟิลหรูหราสุดประณีต"
+    "example": "A balanced diet with fresh greens and proteins helps nourish growing children.",
+    "exampleThai": "อาหารที่สมดุลซึ่งประกอบด้วยผักสดและโปรตีนช่วยบำรุงเลี้ยงร่างกายของเด็กที่กำลังเจริญเติบโต"
   },
   {
     "id": "v_b2_food_14",
-    "word": "satiate",
+    "word": "digest",
     "pos": "v.",
     "level": "B2",
     "category": "food-drink",
     "categoryLabel": "อาหาร & เครื่องดื่ม",
-    "thai": "ทำให้อิ่มหนำสำราญ",
+    "thai": "ย่อยอาหาร",
     "alternatives": [
-      "ทำให้หิวกระหาย",
-      "ทำให้คลื่นไส้",
-      "ทำให้เจ็บคอ"
+      "สำรอกอาหารออก",
+      "ดูดซึมสารพิษ",
+      "กักเก็บของเสีย"
     ],
-    "example": "A hearty bowl of Japanese ramen was more than enough to satiate his hunger.",
-    "exampleThai": "ราเมงญี่ปุ่นชามโตเข้มข้นช่วยทำให้อิ่มหนำสำราญจนคลายความหิวได้อย่างหมดจด"
+    "example": "The human stomach produces specialized acids and enzymes to digest complex proteins efficiently.",
+    "exampleThai": "กระเพาะอาหารของมนุษย์ผลิตกรดและเอนไซม์เฉพาะเพื่อย่อยอาหารจำพวกโปรตีนเชิงซ้อนได้อย่างมีประสิทธิภาพ"
   },
   {
     "id": "v_b2_food_15",
-    "word": "gastronomical",
-    "pos": "adj.",
-    "level": "B2",
-    "category": "food-drink",
-    "categoryLabel": "อาหาร & เครื่องดื่ม",
-    "thai": "เชิงศาสตร์แห่งอาหาร",
-    "alternatives": [
-      "เชิงเกษตรกรรม",
-      "เชิงประวัติศาสตร์การเมือง",
-      "เชิงอุตสาหกรรมเครื่องจักร"
-    ],
-    "example": "Tokyo is renowned worldwide as a premier gastronomical destination for food lovers.",
-    "exampleThai": "โตเกียวได้รับการยกย่องไปทั่วโลกในฐานะจุดหมายปลายทางเชิงศาสตร์แห่งอาหารชั้นนำสำหรับคนรักอาหาร"
-  },
-  {
-    "id": "v_b2_food_16",
-    "word": "intoxicate",
+    "word": "preserve",
     "pos": "v.",
     "level": "B2",
     "category": "food-drink",
     "categoryLabel": "อาหาร & เครื่องดื่ม",
-    "thai": "ทำให้มึนเมา",
+    "thai": "ถนอมอาหาร",
     "alternatives": [
-      "ทำให้สร่างเมา",
-      "ทำให้สดชื่นแจ่มใส",
-      "บำรุงประสาท"
+      "ปล่อยให้เน่าเสีย",
+      "ทิ้งให้บูดเน่า",
+      "ทำลายคุณค่าทางอาหาร"
     ],
-    "example": "Heavy consumption of alcohol without food can quickly intoxicate casual drinkers.",
-    "exampleThai": "การดื่มเครื่องดื่มแอลกอฮอล์ปริมาณมากโดยไม่ทานอาหารสามารถทำให้มึนเมาได้อย่างรวดเร็ว"
+    "example": "Traditional societies used salt and smoke to preserve meat for harsh winters.",
+    "exampleThai": "สังคมดั้งเดิมใช้เกลือและควันไฟในการถนอมอาหารประเภทเนื้อสัตว์ไว้สำหรับช่วงฤดูหนาวที่ทารุณ"
+  },
+  {
+    "id": "v_b2_food_16",
+    "word": "contaminate",
+    "pos": "v.",
+    "level": "B2",
+    "category": "food-drink",
+    "categoryLabel": "อาหาร & เครื่องดื่ม",
+    "thai": "ปนเปื้อนสิ่งสกปรก",
+    "alternatives": [
+      "ผ่านการฆ่าเชื้อ",
+      "ทำความสะอาดบริสุทธิ์",
+      "กรองสิ่งแปลกปลอม"
+    ],
+    "example": "Improper storage conditions can quickly contaminate raw seafood with hazardous bacteria.",
+    "exampleThai": "สภาพการจัดเก็บที่ไม่เหมาะสมสามารถทำให้อาหารทะเลดิบปนเปื้อนสิ่งสกปรกและแบคทีเรียอันตรายได้อย่างรวดเร็ว"
   },
   {
     "id": "v_b2_food_17",
@@ -1700,10 +1700,10 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "ถนนหนทาง",
+    "thai": "ถนน",
     "alternatives": [
       "ทางรถไฟ",
-      "คลองส่งน้ำ",
+      "แม่น้ำ",
       "รันเวย์"
     ],
     "example": "Workers are paving the main road through the rural village.",
@@ -2676,7 +2676,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "ด่านศุลกากรตรวจคนเข้าเมือง",
+    "thai": "ด่านศุลกากร",
     "alternatives": [
       "จุดประชาสัมพันธ์",
       "ห้องรับรองพิเศษ",
@@ -2692,7 +2692,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "สำแดงสิ่งของต้องห้าม",
+    "thai": "สำแดงของเสียภาษี",
     "alternatives": [
       "ซุกซ่อนสัมภาระ",
       "ทิ้งสิ่งของลงถัง",
@@ -2772,11 +2772,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "การทัศนศึกษาท่องเที่ยวระยะสั้น",
+    "thai": "การทัศนศึกษาระยะสั้น",
     "alternatives": [
-      "การย้ายถิ่นฐานถาวร",
-      "การลี้ภัยทางการเมือง",
-      "การกักกันโรคสิบสี่วัน"
+      "การย้ายถิ่นฐาน",
+      "การกักตัว",
+      "การเดินทางรอบโลก"
     ],
     "example": "The biology university students took a weekend excursion to study mangrove ecosystems.",
     "exampleThai": "นักศึกษามหาวิทยาลัยภาควิชาชีววิทยาไปร่วมการทัศนศึกษาท่องเที่ยวระยะสั้นเพื่อศึกษาระบบนิเวศป่าชายเลน"
@@ -2804,30 +2804,30 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "ขึ้นยานพาหนะเริ่มต้นการเดินทาง",
+    "thai": "ขึ้นยานพาหนะเดินทาง",
     "alternatives": [
       "ลงจากยานพาหนะ",
-      "ยกเลิกภารกิจ",
-      "ชะลอการเดินทาง"
+      "ยกเลิกการเดินทาง",
+      "พักค้างคืน"
     ],
     "example": "Eager passengers prepared to embark on the transatlantic ocean voyage across the sea.",
     "exampleThai": "ผู้โดยสารผู้กระตือรือร้นเตรียมตัวขึ้นยานพาหนะเริ่มต้นการเดินทางข้ามมหาสมุทรแอตแลนติก"
   },
   {
     "id": "v_b2_travel_06",
-    "word": "repatriation",
-    "pos": "n.",
+    "word": "divert",
+    "pos": "v.",
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "การส่งตัวกลับสู่มาตุภูมิ",
+    "thai": "เปลี่ยนเส้นทางชั่วคราว",
     "alternatives": [
-      "การเนรเทศออกนอกประเทศ",
-      "การให้ที่ลี้ภัย",
-      "การเกณฑ์แรงงาน"
+      "เดินทางตามกำหนดการเดิม",
+      "ลงจอดฉุกเฉิน",
+      "บินตรงสู่จุดหมาย"
     ],
-    "example": "The foreign ministry organized emergency repatriation flights for citizens caught in the warzone.",
-    "exampleThai": "กระทรวงการต่างประเทศจัดเที่ยวบินด่วนสำหรับการส่งตัวกลับสู่มาตุภูมิให้แก่พลเมืองที่ติดอยู่ในเขตสงคราม"
+    "example": "Heavy fog forced air traffic control to divert several incoming flights to a nearby airport.",
+    "exampleThai": "หมอกหนาจัดบีบให้เจ้าหน้าที่ควบคุมการจราจรทางอากาศต้องเปลี่ยนเส้นทางชั่วคราวของหลายเที่ยวบินไปยังสนามบินใกล้เคียง"
   },
   {
     "id": "v_b2_travel_07",
@@ -2868,11 +2868,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "ยังไม่เคยปรากฏในแผนที่สำรวจ",
+    "thai": "ที่ยังไม่เคยสำรวจ",
     "alternatives": [
-      "เป็นที่รู้จักกันดี",
-      "มีป้ายบอกทางครบถ้วน",
-      "พลุกพล่านด้วยนักท่องเที่ยว"
+      "ที่มีคนพลุกพล่าน",
+      "ที่พัฒนาแล้ว",
+      "ที่มีชื่อเสียงระดับโลก"
     ],
     "example": "Pioneering deep-sea ocean explorers sailed through perilous and uncharted polar waters.",
     "exampleThai": "นักสำรวจใต้ทะเลลึกผู้บุกเบิกได้ล่องเรือผ่านน่านน้ำขั้วโลกที่อันตรายและยังไม่เคยปรากฏในแผนที่สำรวจ"
@@ -2959,19 +2959,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_travel_15",
-    "word": "sovereignty",
-    "pos": "n.",
+    "word": "navigate",
+    "pos": "v.",
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "อำนาจอธิปไตยเหนือน่านฟ้า",
+    "thai": "นำทางค้นหาเส้นทาง",
     "alternatives": [
-      "การเปิดน่านฟ้าเสรี",
-      "การค้าแบบไร้พรมแดน",
-      "การยกเว้นหนังสือเดินทาง"
+      "หลงทางในป่า",
+      "หยุดนิ่งอยู่กับที่",
+      "ละทิ้งยานพาหนะ"
     ],
-    "example": "Nations strictly protect their territorial airspace sovereignty against unauthorized military aircraft.",
-    "exampleThai": "นานาประเทศปกป้องอำนาจอธิปไตยเหนือน่านฟ้าอาณาเขตของตนอย่างเข้มงวดจากเครื่องบินทหารที่ไม่ได้รับอนุญาต"
+    "example": "Captains rely on advanced radar and sonar technology to navigate hazardous coastal reefs.",
+    "exampleThai": "กัปตันพึ่งพาเทคโนโลยีเรดาร์และโซนาร์ขั้นสูงเพื่อนำทางค้นหาเส้นทางผ่านแนวปะการังชายฝั่งที่อันตราย"
   },
   {
     "id": "v_b2_travel_16",
@@ -2980,11 +2980,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "เอกสารตราประทับตรวจลงตราเข้าเมือง",
+    "thai": "วีซ่าเข้าเมือง",
     "alternatives": [
-      "บัตรขึ้นเครื่องบิน",
+      "ตั๋วเครื่องบิน",
       "ใบขับขี่สากล",
-      "บัตรเครดิตระหว่างประเทศ"
+      "บัตรเครดิต"
     ],
     "example": "Working professionals must secure a sponsored business visa before taking up overseas employment.",
     "exampleThai": "คนทำงานมืออาชีพต้องได้รับเอกสารตราประทับตรวจลงตราเข้าเมืองประเภทธุรกิจก่อนเริ่มทำงานในต่างประเทศ"
@@ -2996,11 +2996,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "travel-transport",
     "categoryLabel": "การเดินทาง & คมนาคม",
-    "thai": "เกี่ยวกับการเดินเรือและการพาณิชย์ทางทะเล",
+    "thai": "เกี่ยวกับการเดินเรือทางทะเล",
     "alternatives": [
-      "เกี่ยวกับการบินพาณิชย์",
-      "เกี่ยวกับการขนส่งทางราง",
-      "เกี่ยวกับการขนส่งทางท่อ"
+      "เกี่ยวกับอวกาศ",
+      "เกี่ยวกับทางรถไฟ",
+      "เกี่ยวกับการบินพลเรือน"
     ],
     "example": "Singapore and Rotterdam serve as vital global hubs for international maritime trade.",
     "exampleThai": "สิงคโปร์และรอตเทอร์ดัมทำหน้าที่เป็นศูนย์กลางสำคัญระดับโลกสำหรับการค้าเกี่ยวกับการเดินเรือและการพาณิชย์ทางทะเล"
@@ -3444,11 +3444,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "เหน็ดเหนื่อยเมื่อยล้า",
+    "thai": "เหน็ดเหนื่อย",
     "alternatives": [
-      "กระปรี้กระเปร่า",
-      "มีชีวิตชีวา",
-      "ตื่นตัวเต็มที่"
+      "สดชื่นกระปรี้กระเปร่า",
+      "หิวโซ",
+      "อิ่มเอมใจ"
     ],
     "example": "After working all afternoon in the garden, he was very tired.",
     "exampleThai": "หลังจากทำงานทั้งบ่ายในสวน เขาก็เหน็ดเหนื่อยเมื่อยล้ามาก"
@@ -3604,11 +3604,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "ผู้ป่วยที่มารับการรักษา",
+    "thai": "ผู้ป่วย",
     "alternatives": [
-      "แพทย์ผู้ตรวจ",
-      "เภสัชกรประจำร้าน",
-      "เจ้าหน้าที่การเงิน"
+      "นายแพทย์ผู้เชี่ยวชาญ",
+      "พยาบาลประจำห้องฉุกเฉิน",
+      "เภสัชกรจ่ายยา"
     ],
     "example": "The compassionate physician listened carefully to each patient.",
     "exampleThai": "แพทย์ผู้เปี่ยมด้วยความเห็นอกเห็นใจรับฟังผู้ป่วยที่มารับการรักษาแต่ละคนอย่างตั้งใจ"
@@ -3652,11 +3652,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "ยาเม็ดสำหรับรับประทาน",
+    "thai": "ยาเม็ด",
     "alternatives": [
-      "ยาน้ำเชื่อม",
-      "ยาทาภายนอก",
-      "ยาหยอดตา"
+      "เข็มฉีดยา",
+      "พลาสเตอร์ปิดแผล",
+      "ผ้าพันเคล็ด"
     ],
     "example": "Swallow one vitamin pill with a full glass of lukewarm water.",
     "exampleThai": "กลืนยาเม็ดสำหรับรับประทานวิตามินหนึ่งเม็ดพร้อมน้ำอุ่นเต็มแก้ว"
@@ -4207,19 +4207,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_health_01",
-    "word": "pathology",
-    "pos": "n.",
+    "word": "diagnose",
+    "pos": "v.",
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "พยาธิวิทยา",
+    "thai": "วินิจฉัยโรค",
     "alternatives": [
-      "เภสัชวิทยา",
-      "จิตวิทยาบำบัด",
-      "กายภาพบำบัด"
+      "คาดเดาตามอาการ",
+      "ละเลยการรักษา",
+      "มองข้ามสัญญาณเตือน"
     ],
-    "example": "The hospital pathology laboratory analyzed the removed tissue biopsy carefully.",
-    "exampleThai": "ห้องปฏิบัติการพยาธิวิทยาของโรงพยาบาลได้ตรวจวิเคราะห์ชิ้นเนื้อที่ตัดออกมาอย่างรอบคอบ"
+    "example": "Specialist doctors used advanced MRI scans to diagnose the neurological disorder accurately.",
+    "exampleThai": "แพทย์เฉพาะทางใช้การสแกนด้วยคลื่นแม่เหล็กไฟฟ้าขั้นสูงเพื่อวินิจฉัยโรคความผิดปกติทางระบบประสาทได้อย่างแม่นยำ"
   },
   {
     "id": "v_b2_health_02",
@@ -4244,11 +4244,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "เกี่ยวกับการรับรู้และการทำงานของสมอง",
+    "thai": "เกี่ยวกับการรับรู้ของสมอง",
     "alternatives": [
-      "เกี่ยวกับระบบไหลเวียนโลหิต",
-      "เกี่ยวกับโครงสร้างกระดูก",
-      "เกี่ยวกับกล้ามเนื้อลาย"
+      "เกี่ยวกับระบบย่อยอาหาร",
+      "เกี่ยวกับกระดูกและข้อ",
+      "เกี่ยวกับผิวหนังภายนอก"
     ],
     "example": "Solving complex puzzles aids elderly citizens in preserving vital cognitive function.",
     "exampleThai": "การเล่นเกมปริศนาที่ซับซ้อนช่วยให้ผู้สูงอายุรักษาเกี่ยวกับการรับรู้และการทำงานของสมองที่สำคัญไว้ได้"
@@ -4319,19 +4319,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_health_08",
-    "word": "anaesthesia",
-    "pos": "n.",
+    "word": "prescribe",
+    "pos": "v.",
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "การระงับความรู้สึกหรือดมยาสลบ",
+    "thai": "สั่งยาตามอาการ",
     "alternatives": [
-      "การกระตุ้นประสาท",
-      "การฟื้นฟูหลังผ่าตัด",
-      "การตรวจคลื่นไฟฟ้า"
+      "ห้ามใช้ยา",
+      "ซื้อยากินเอง",
+      "เพิกเฉยต่อการรักษา"
     ],
-    "example": "The patient felt no surgical discomfort under the careful administration of general anaesthesia.",
-    "exampleThai": "ผู้ป่วยไม่รู้สึกเจ็บปวดใดๆ จากการผ่าตัดภายใต้การระงับความรู้สึกหรือดมยาสลบอย่างรอบคอบ"
+    "example": "Physicians must be cautious not to prescribe strong antibiotics for simple viral infections.",
+    "exampleThai": "แพทย์ต้องระมัดระวังไม่สั่งยาตามอาการที่เป็นยาปฏิชีวนะชนิดรุนแรงสำหรับการติดเชื้อไวรัสทั่วไป"
   },
   {
     "id": "v_b2_health_09",
@@ -4367,35 +4367,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_health_11",
-    "word": "resilience",
-    "pos": "n.",
+    "word": "alleviate",
+    "pos": "v.",
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "ความสามารถในการฟื้นคืนสภาพเดิม",
+    "thai": "บรรเทาความเจ็บปวด",
     "alternatives": [
-      "ความเปราะบางแตกหักง่าย",
-      "การยอมแพ้ต่ออุปสรรค",
-      "ความเฉื่อยชาถดถอย"
+      "ซ้ำเติมอาการป่วย",
+      "เพิ่มความเจ็บปวด",
+      "ก่อให้เกิดการอักเสบ"
     ],
-    "example": "Young healthy athletes often demonstrate astounding physiological resilience following severe sports injuries.",
-    "exampleThai": "นักกีฬาอายุน้อยที่สุขภาพดีมักแสดงความสามารถในการฟื้นคืนสภาพเดิมทางสรีระอย่างน่าทึ่งหลังการบาดเจ็บจากการเล่นกีฬา"
+    "example": "Gentle physical therapy helps alleviate chronic lower back pain in desk workers.",
+    "exampleThai": "กายภาพบำบัดแบบนุ่มนวลช่วยบรรเทาความเจ็บปวดเรื้อรังบริเวณหลังส่วนล่างในคนทำงานออฟฟิศ"
   },
   {
     "id": "v_b2_health_12",
-    "word": "palliative",
-    "pos": "adj.",
+    "word": "transmit",
+    "pos": "v.",
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "เพื่อการบรรเทาอาการและประคับประคอง",
+    "thai": "แพร่กระจายเชื้อโรค",
     "alternatives": [
-      "เพื่อการผ่าตัดกำจัดโรค",
-      "เพื่อการรักษาให้หายขาด",
-      "เพื่อการตรวจหาดีเอ็นเอ"
+      "กำจัดเชื้อหมดสิ้น",
+      "รักษาให้หายขาด",
+      "สกัดกั้นการระบาด"
     ],
-    "example": "The hospice nurse specializes in offering compassionate palliative care to terminally ill patients.",
-    "exampleThai": "พยาบาลสถานบริบาลผู้ป่วยระยะท้ายเชี่ยวชาญการดูแลเพื่อการบรรเทาอาการและประคับประคองแก่ผู้ป่วยระยะสุดท้าย"
+    "example": "Infected mosquitoes can transmit tropical diseases such as dengue fever to humans.",
+    "exampleThai": "ยุงที่มีเชื้อสามารถแพร่กระจายเชื้อโรคเขตร้อน เช่น ไข้เลือดออก ไปสู่มนุษย์ได้"
   },
   {
     "id": "v_b2_health_13",
@@ -4404,11 +4404,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "health-body",
     "categoryLabel": "สุขภาพ & ร่างกาย",
-    "thai": "ซึ่งนั่งอยู่กับที่เนือยนิ่ง",
+    "thai": "ที่ไม่ค่อยเคลื่อนไหว",
     "alternatives": [
-      "ซึ่งกระฉับกระเฉงตลอดเวลา",
-      "ซึ่งใช้แรงงานหนัก",
-      "ซึ่งเดินทางบ่อย"
+      "ที่ชอบออกกำลังกายสม่ำเสมอ",
+      "ที่ทำงานใช้แรงกาย",
+      "ที่เดินทางบ่อยครั้ง"
     ],
     "example": "A sedentary desk lifestyle without exercise increases obesity and chronic metabolic risks.",
     "exampleThai": "วิถีชีวิตโต๊ะทำงานซึ่งนั่งอยู่กับที่เนือยนิ่งโดยไม่ออกกำลังกายเพิ่มความเสี่ยงโรคอ้วนและการเผาผลาญผิดปกติ"
@@ -5759,19 +5759,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_job_06",
-    "word": "absenteeism",
-    "pos": "n.",
+    "word": "implement",
+    "pos": "v.",
     "level": "B2",
     "category": "jobs-work",
     "categoryLabel": "อาชีพ & การทำงาน",
-    "thai": "การขาดงานประจำโดยไร้เหตุผล",
+    "thai": "นำไปปฏิบัติจริง",
     "alternatives": [
-      "การมาทำงานตรงเวลา",
-      "การทุ่มเททำงานล่วงเวลา",
-      "การร่วมกิจกรรมบริษัท"
+      "ละทิ้งแผนงาน",
+      "ระงับโครงการไว้ก่อน",
+      "คัดค้านนโยบาย"
     ],
-    "example": "Chronic workplace absenteeism often signals underlying employee burnout and low organizational morale.",
-    "exampleThai": "การขาดงานประจำโดยไร้เหตุผลเรื้อรังในที่ทำงานมักสะท้อนถึงภาวะหมดไฟของพนักงานและขวัญกำลังใจที่ตกต่ำ"
+    "example": "The management team worked closely to implement the new environmental policy across all branches.",
+    "exampleThai": "ทีมผู้บริหารทำงานร่วมกันอย่างใกล้ชิดเพื่อนำนโยบายสิ่งแวดล้อมใหม่ไปปฏิบัติจริงในทุกสาขา"
   },
   {
     "id": "v_b2_job_07",
@@ -5887,35 +5887,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_job_14",
-    "word": "tenure",
-    "pos": "n.",
+    "word": "coordinate",
+    "pos": "v.",
     "level": "B2",
     "category": "jobs-work",
     "categoryLabel": "อาชีพ & การทำงาน",
-    "thai": "สถานะการจ้างงานถาวรตลอดชีพ",
+    "thai": "ประสานงานร่วมมือ",
     "alternatives": [
-      "สัญญาจ้างชั่วคราวรายวัน",
-      "การฝึกงานช่วงฤดูร้อน",
-      "การทดลองงานระยะสั้น"
+      "ขัดขวางการทำงาน",
+      "ทำงานแบบแยกส่วน",
+      "ตัดขาดการสื่อสาร"
     ],
-    "example": "Achieving academic tenure grants university professors guaranteed academic freedom and job security.",
-    "exampleThai": "การได้รับสถานะการจ้างงานถาวรตลอดชีพช่วยให้อาจารย์มหาวิทยาลัยมีเสรีภาพทางวิชาการและความมั่นคงในอาชีพ"
+    "example": "The project manager must coordinate with different departments to ensure timely delivery.",
+    "exampleThai": "ผู้จัดการโครงการต้องประสานงานร่วมมือกับแผนกต่างๆ เพื่อให้มั่นใจว่าจะส่งมอบงานได้ตรงเวลา"
   },
   {
     "id": "v_b2_job_15",
-    "word": "nepotism",
-    "pos": "n.",
+    "word": "facilitate",
+    "pos": "v.",
     "level": "B2",
     "category": "jobs-work",
     "categoryLabel": "อาชีพ & การทำงาน",
-    "thai": "การเล่นพรรคเล่นพวกเอื้อประโยชน์เครือญาติ",
+    "thai": "อำนวยความสะดวก",
     "alternatives": [
-      "ระบบคุณธรรมความสามารถ",
-      "การแข่งขันอย่างเปิดเผย",
-      "การคัดเลือกที่เป็นกลาง"
+      "สร้างอุปสรรคกีดขวาง",
+      "ทำให้ล่าช้าซับซ้อน",
+      "ปฏิเสธการช่วยเหลือ"
     ],
-    "example": "Appointing the chairman's unqualified nephew was condemned as blatant corporate nepotism.",
-    "exampleThai": "การแต่งตั้งหลานชายของผู้ก่อตั้งที่ไม่ผ่านเกณฑ์ถูกประณามว่าเป็นการเล่นพรรคเล่นพวกเอื้อประโยชน์เครือญาติอย่างโจ่งแจ้ง"
+    "example": "Modern digital tools help facilitate communication between remote team members.",
+    "exampleThai": "เครื่องมือดิจิทัลสมัยใหม่ช่วยอำนวยความสะดวกในการสื่อสารระหว่างสมาชิกในทีมที่ทำงานจากระยะไกล"
   },
   {
     "id": "v_b2_job_16",
@@ -6036,11 +6036,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "กระโดดข้ามสิ่งกีดขวาง",
+    "thai": "กระโดด",
     "alternatives": [
-      "หมอบคลาน",
-      "ก้มเก็บของ",
-      "นอนคว่ำ"
+      "นอนหลับ",
+      "นั่งพักผ่อน",
+      "คลาน"
     ],
     "example": "Track athletes train daily to jump higher over the hurdles.",
     "exampleThai": "นักกรีฑาฝึกซ้อมทุกวันเพื่อกระโดดข้ามสิ่งกีดขวางรั้วกั้นให้สูงขึ้น"
@@ -6420,11 +6420,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "การแข่งขันกีฬาหนึ่งนัด",
+    "thai": "การแข่งขันกีฬา",
     "alternatives": [
-      "การฝึกซ้อมอุ่นเครื่อง",
-      "การแถลงข่าว",
-      "การจับสลากแบ่งสาย"
+      "การฝึกซ้อมเดี่ยว",
+      "การประกาศรางวัลเกียรติยศ",
+      "พิธีเปิดงาน"
     ],
     "example": "The championship tennis match stretched into an exciting five-set thriller.",
     "exampleThai": "การแข่งขันกีฬาหนึ่งนัดเทนนิสชิงชนะเลิศยืดเยื้อจนกลายเป็นการต่อสู้ห้าเซตอันน่าตื่นเต้น"
@@ -7039,19 +7039,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_hobby_12",
-    "word": "cardiovascular",
-    "pos": "adj.",
+    "word": "compete",
+    "pos": "v.",
     "level": "B1",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "เกี่ยวกับการทำงานของหัวใจและปอด",
+    "thai": "แข่งขันชิงชัย",
     "alternatives": [
-      "เกี่ยวกับระบบประสาทสัมผัส",
-      "เกี่ยวกับข้อต่อกระดูก",
-      "เกี่ยวกับกล้ามเนื้อแขน"
+      "ยอมแพ้ถอนตัว",
+      "นั่งชมการแข่ง",
+      "ตัดสินการแข่งขัน"
     ],
-    "example": "Rowing and trail cycling provide intense cardiovascular training that strengthens the lungs.",
-    "exampleThai": "การพายเรือและการปั่นจักรยานวิบากมอบการฝึกซ้อมเกี่ยวกับการทำงานของหัวใจและปอดที่ช่วยเสริมปอดให้แข็งแรง"
+    "example": "Top athletes from fifty nations gather to compete in the championship tournament.",
+    "exampleThai": "นักกีฬาชั้นนำจากห้าสิบประเทศมารวมตัวกันเพื่อแข่งขันชิงชัยในการแข่งขันชิงแชมป์"
   },
   {
     "id": "v_b1_hobby_13",
@@ -7119,19 +7119,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_hobby_17",
-    "word": "stamina",
-    "pos": "n.",
+    "word": "participate",
+    "pos": "v.",
     "level": "B1",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "พละกำลังความอึด",
+    "thai": "เข้าร่วมกิจกรรม",
     "alternatives": [
-      "ความเหนื่อยล้าอ่อนแรง",
-      "ความคล่องตัวระยะสั้น",
-      "ความยืดหยุ่นของร่างกาย"
+      "ปฏิเสธไม่ยอมร่วม",
+      "นั่งสังเกตการณ์",
+      "ยกเลิกงาน"
     ],
-    "example": "Boxers jump rope for hours to develop the required footwork speed and cardiovascular stamina.",
-    "exampleThai": "นักมวยกระโดดเชือกนานหลายชั่วโมงเพื่อพัฒนาความเร็วของสเต็ปเท้าและพละกำลังความอึดของระบบหัวใจ"
+    "example": "All local residents are warmly invited to participate in the community charity marathon.",
+    "exampleThai": "ชาวบ้านในท้องถิ่นทุกคนได้รับคำเชิญอย่างอบอุ่นให้เข้าร่วมกิจกรรมการวิ่งมาราธอนการกุศลของชุมชน"
   },
   {
     "id": "v_b1_hobby_18",
@@ -7199,19 +7199,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_hobby_04",
-    "word": "equestrian",
-    "pos": "adj.",
+    "word": "dominate",
+    "pos": "v.",
     "level": "B2",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "เกี่ยวกับกีฬาขี่ม้ากระโดดข้ามเครื่องกีดขวาง",
+    "thai": "ครอบงำการแข่งขัน",
     "alternatives": [
-      "เกี่ยวกับการแข่งเรือใบ",
-      "เกี่ยวกับการยิงธนูเป้าบิน",
-      "เกี่ยวกับการฟันดาบสากล"
+      "พ่ายแพ้ยับเยิน",
+      "ตามหลังคู่แข่ง",
+      "ถอนตัวจากการแข่ง"
     ],
-    "example": "Equestrian riders develop an extraordinary bond of trust and communication with their thoroughbred horses.",
-    "exampleThai": "นักกีฬาเกี่ยวกับกีฬาขี่ม้ากระโดดข้ามเครื่องกีดขวางสร้างสายสัมพันธ์แห่งความไว้วางใจอันน่าทึ่งกับม้าพันธุ์แท้ของตน"
+    "example": "The defending champions continued to dominate the national tournament for the third straight year.",
+    "exampleThai": "แชมป์เก่าสามารถครอบงำการแข่งขันในระดับประเทศต่อไปได้เป็นปีที่สามติดต่อกัน"
   },
   {
     "id": "v_b2_hobby_05",
@@ -7343,35 +7343,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_hobby_13",
-    "word": "decathlon",
-    "pos": "n.",
+    "word": "persevere",
+    "pos": "v.",
     "level": "B2",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "การแข่งขันกรีฑาสิบประเภท",
+    "thai": "พากเพียรไม่ย่อท้อ",
     "alternatives": [
-      "การแข่งขันวิ่งผลัดสี่คูณร้อย",
-      "การแข่งกระโดดไกลเดี่ยว",
-      "การทุ่มน้ำหนักเดี่ยว"
+      "ล้มเลิกกลางคัน",
+      "ยอมแพ้ต่ออุปสรรค",
+      "ถอดใจถอยหนี"
     ],
-    "example": "The Olympic decathlon crowns the world's most versatile and well-rounded male track athlete.",
-    "exampleThai": "การแข่งขันกรีฑาสิบประเภทในโอลิมปิกมอบตำแหน่งเกียรติยศแก่นักกรีฑาชายที่มีทักษะรอบด้านและสมบูรณ์แบบที่สุดในโลก"
+    "example": "Marathon athletes must persevere through intense muscle exhaustion to cross the finish line.",
+    "exampleThai": "นักกีฬามาราธอนต้องพากเพียรไม่ย่อท้อต่อความเหนื่อยล้าของกล้ามเนื้อเพื่อเข้าสู่เส้นชัย"
   },
   {
     "id": "v_b2_hobby_14",
-    "word": "calisthenics",
-    "pos": "n.",
+    "word": "excel",
+    "pos": "v.",
     "level": "B2",
     "category": "hobbies-sports",
     "categoryLabel": "งานอดิเรก & กีฬา",
-    "thai": "การออกกำลังกายโดยใช้น้ำหนักตัว",
+    "thai": "โดดเด่นเป็นเลิศ",
     "alternatives": [
-      "การยกน้ำหนักแมชชีน",
-      "การปั่นจักรยานฟิตเนส",
-      "การว่ายน้ำท่ากรรเชียง"
+      "ทำผลงานได้ย่ำแย่",
+      "ตกต่ำลงเรื่อยๆ",
+      "ล้มเหลวไม่เป็นท่า"
     ],
-    "example": "Street calisthenics enthusiasts perform gravity-defying muscle-ups and human flags on outdoor pull-up bars.",
-    "exampleThai": "ผู้ที่หลงใหลการออกกำลังกายโดยใช้น้ำหนักตัวแสดงท่ามัสเซิลอัปและธงมนุษย์ท้าทายแรงโน้มถ่วงบนบาร์โหนกลางแจ้ง"
+    "example": "Through dedicated daily practice, young gymnasts can excel in international competitions.",
+    "exampleThai": "ด้วยการฝึกซ้อมอย่างทุ่มเททุกวัน นักยิมนาสติกรุ่นเยาว์สามารถทำผลงานโดดเด่นเป็นเลิศในการแข่งขันระดับนานาชาติ"
   },
   {
     "id": "v_b2_hobby_15",
@@ -7444,11 +7444,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "เครือข่ายอินเทอร์เน็ต",
+    "thai": "อินเทอร์เน็ต",
     "alternatives": [
-      "ระบบไฟฟ้าในบ้าน",
-      "ท่อส่งประปา",
-      "สัญญาณเคเบิลทีวี"
+      "สถานีวิทยุชุมชน",
+      "โทรทัศน์ดาวเทียม",
+      "ตู้จดหมายปลายทาง"
     ],
     "example": "The cafe provides lightning-fast wireless internet access for patrons.",
     "exampleThai": "คาเฟ่ให้บริการการเข้าถึงเครือข่ายอินเทอร์เน็ตไร้สายความเร็วสูงแก่ลูกค้า"
@@ -7812,11 +7812,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "ลิงก์เชื่อมโยงเว็บไซต์",
+    "thai": "ลิงก์เชื่อมโยง",
     "alternatives": [
-      "รหัสผ่านส่วนตัว",
-      "ชื่อผู้ใช้",
-      "ไฟล์แนบเอกสาร"
+      "แป้นพิมพ์ลัด",
+      "แผ่นรองเมาส์",
+      "ปลั๊กไฟบ้าน"
     ],
     "example": "Click the blue hyperlink to read the full scientific journal article.",
     "exampleThai": "คลิกลิงก์เชื่อมโยงเว็บไซต์สีน้ำเงินเพื่ออ่านบทความวารสารวิทยาศาสตร์ฉบับเต็ม"
@@ -7892,11 +7892,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "แบตเตอรี่กักเก็บพลังงาน",
+    "thai": "แบตเตอรี่",
     "alternatives": [
-      "สายไฟบ้าน",
-      "เต้ารับไฟฟ้า",
-      "หม้อแปลงไฟ"
+      "หน้าจอภาพแสดงผล",
+      "ลำโพงบลูทูธ",
+      "กล้องเว็บแคม"
     ],
     "example": "This lightweight power bank provides enough battery capacity to charge two phones.",
     "exampleThai": "พาวเวอร์แบงก์น้ำหนักเบานี้มีความจุของแบตเตอรี่กักเก็บพลังงานเพียงพอที่จะชาร์จโทรศัพท์ได้สองเครื่อง"
@@ -7940,11 +7940,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "สายชาร์จและอุปกรณ์ชาร์จ",
+    "thai": "ที่ชาร์จแบตเตอรี่",
     "alternatives": [
       "หูฟังไร้สาย",
-      "ขาตั้งโทรศัพท์",
-      "เคสกันกระแทก"
+      "เคสโทรศัพท์มือถือ",
+      "ขาตั้งกล้อง"
     ],
     "example": "Do not forget to pack your universal phone charger before travelling abroad.",
     "exampleThai": "อย่าลืมเก็บสายชาร์จและอุปกรณ์ชาร์จโทรศัพท์อเนกประสงค์ลงกระเป๋าก่อนเดินทางไปต่างประเทศ"
@@ -8735,19 +8735,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_tech_08",
-    "word": "obsolescence",
-    "pos": "n.",
+    "word": "streamline",
+    "pos": "v.",
     "level": "B2",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "ภาวะตกรุ่นล้าสมัยของเทคโนโลยี",
+    "thai": "ปรับกระบวนการให้คล่องตัว",
     "alternatives": [
-      "การเป็นนวัตกรรมล้ำสมัย",
-      "ความทนทานยาวนานนับศตวรรษ",
-      "การเป็นที่ต้องการสูงสุด"
+      "สร้างขั้นตอนยุ่งยาก",
+      "ทำให้ล่าช้าซับซ้อน",
+      "ระงับการทำงาน"
     ],
-    "example": "Planned obsolescence leads consumers to discard functional electronic gadgets every two years.",
-    "exampleThai": "ภาวะตกรุ่นล้าสมัยของเทคโนโลยีที่ถูกวางแผนไว้ล่วงหน้านำไปสู่การที่ผู้บริโภคทิ้งอุปกรณ์อิเล็กทรอนิกส์ทุกสองปี"
+    "example": "The company adopted automated software to streamline its customer support operations.",
+    "exampleThai": "บริษัทได้นำซอฟต์แวร์อัตโนมัติมาใช้เพื่อปรับกระบวนการให้คล่องตัวในการปฏิบัติงานสนับสนุนลูกค้า"
   },
   {
     "id": "v_b2_tech_09",
@@ -8767,19 +8767,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_tech_10",
-    "word": "infotainment",
-    "pos": "n.",
+    "word": "distort",
+    "pos": "v.",
     "level": "B2",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "สาระบันเทิงเชิงข่าวสาร",
+    "thai": "บิดเบือนข้อเท็จจริง",
     "alternatives": [
-      "สารคดีวิชาการล้วน",
-      "ละครซีรีส์ดราม่า",
-      "ภาพยนตร์แฟนตาซี"
+      "รายงานอย่างเที่ยงตรง",
+      "นำเสนอข้อมูลรอบด้าน",
+      "ตรวจสอบความถูกต้อง"
     ],
-    "example": "Evening news broadcasts increasingly blend investigative journalism with celebrity infotainment.",
-    "exampleThai": "การถ่ายทอดสดข่าวค่ำหันมาผสมผสานการรายงานข่าวเชิงสืบสวนเข้ากับสาระบันเทิงเชิงข่าวสารเกี่ยวกับดารามากขึ้น"
+    "example": "Biased commentators often distort economic figures to support their own political agenda.",
+    "exampleThai": "ผู้วิเคราะห์ที่มีอคติมักบิดเบือนข้อเท็จจริงเกี่ยวกับตัวเลขเศรษฐกิจเพื่อสนับสนุนผลประโยชน์ทางการเมืองของตนเอง"
   },
   {
     "id": "v_b2_tech_11",
@@ -8847,35 +8847,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_tech_15",
-    "word": "disinformation",
-    "pos": "n.",
+    "word": "manipulate",
+    "pos": "v.",
     "level": "B2",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "ข่าวลวงที่จงใจสร้างขึ้นเพื่อหลอกลวง",
+    "thai": "ชักใยบงการข้อมูล",
     "alternatives": [
-      "ข้อเท็จจริงที่ผ่านการยืนยัน",
-      "การรายงานข่าวที่โปร่งใส",
-      "คำเตือนภัยธรรมชาติ"
+      "เปิดเผยอย่างโปร่งใส",
+      "เคารพการตัดสินใจ",
+      "รักษาความถูกต้อง"
     ],
-    "example": "Hostile foreign actors weaponize targeted digital disinformation campaigns to disrupt democratic elections.",
-    "exampleThai": "ผู้ไม่หวังดีในต่างประเทศใช้แคมเปญข่าวลวงที่จงใจสร้างขึ้นเพื่อหลอกลวงทางดิจิทัลเป็นอาวุธเพื่อขัดขวางการเลือกตั้ง"
+    "example": "Hackers attempted to manipulate online voting results by creating fake user accounts.",
+    "exampleThai": "แฮกเกอร์พยายามชักใยบงการข้อมูลผลการลงคะแนนออนไลน์ด้วยการสร้างบัญชีผู้ใช้ปลอม"
   },
   {
     "id": "v_b2_tech_16",
-    "word": "syndicate",
-    "pos": "n.",
+    "word": "authenticate",
+    "pos": "v.",
     "level": "B2",
     "category": "tech-media",
     "categoryLabel": "เทคโนโลยี & สื่อ",
-    "thai": "กลุ่มพันธมิตรผู้จัดจำหน่ายสื่อ",
+    "thai": "ยืนยันความถูกต้องแท้จริง",
     "alternatives": [
-      "ผู้อ่านรายบุคคล",
-      "ชมรมถ่ายภาพอิสระ",
-      "ผู้ประท้วง"
+      "ปลอมแปลงเอกสาร",
+      "แอบอ้างสิทธิ์",
+      "ยกเลิกรหัสผ่าน"
     ],
-    "example": "A global news syndicate licenses editorial comic strips and political opinion columns to regional papers.",
-    "exampleThai": "กลุ่มพันธมิตรผู้จัดจำหน่ายสื่อระดับโลกอนุญาตให้หนังสือพิมพ์ระดับภูมิภาคตีพิมพ์การ์ตูนล้อเลียนและคอลัมน์การเมือง"
+    "example": "Two-factor security requires users to authenticate their identity using an SMS code.",
+    "exampleThai": "ความปลอดภัยแบบสองชั้นกำหนดให้ผู้ใช้ต้องยืนยันความถูกต้องแท้จริงของตัวตนโดยใช้รหัสทางข้อความสั้น"
   },
   {
     "id": "v_b2_tech_17",
@@ -9983,19 +9983,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_nature_12",
-    "word": "catastrophe",
-    "pos": "n.",
+    "word": "adapt",
+    "pos": "v.",
     "level": "B1",
     "category": "nature-weather",
     "categoryLabel": "ธรรมชาติ & ดินฟ้าอากาศ",
-    "thai": "มหันตภัยธรรมชาติ",
+    "thai": "ปรับตัวให้เข้ากับสภาพแวดล้อม",
     "alternatives": [
-      "เหตุการณ์ปกติประจำวัน",
-      "การพัฒนาอย่างราบรื่น",
-      "ความสงบสุข"
+      "ต่อต้านการเปลี่ยนแปลง",
+      "ไม่ยอมปรับเปลี่ยน",
+      "อยู่อย่างเดิม"
     ],
-    "example": "The unexpected tsunami catastrophe devastated coastal infrastructure across several nations.",
-    "exampleThai": "มหันตภัยธรรมชาติตสึนามิที่ไม่คาดคิดได้ทำลายล้างโครงสร้างพื้นฐานชายฝั่งในหลายประเทศ"
+    "example": "Polar bears must adapt to shrinking arctic ice sheets caused by rising temperatures.",
+    "exampleThai": "หมีขั้วโลกต้องปรับตัวให้เข้ากับสภาพแวดล้อมที่แผ่นน้ำแข็งอาร์กติกหดตัวลงจากอุณหภูมิที่สูงขึ้น"
   },
   {
     "id": "v_b1_nature_13",
@@ -10047,19 +10047,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_nature_16",
-    "word": "volcanic",
-    "pos": "adj.",
+    "word": "survive",
+    "pos": "v.",
     "level": "B1",
     "category": "nature-weather",
     "categoryLabel": "ธรรมชาติ & ดินฟ้าอากาศ",
-    "thai": "เกี่ยวกับการปะทุของภูเขาไฟ",
+    "thai": "เอาชีวิตรอด",
     "alternatives": [
-      "เกี่ยวกับแผ่นดินถล่ม",
-      "เกี่ยวกับพายุสุริยะ",
-      "เกี่ยวกับคลื่นทะเลหนุน"
+      "ล้มตายสูญพันธุ์",
+      "ยอมแพ้ต่อภัยธรรมชาติ",
+      "ละทิ้งถิ่นฐาน"
     ],
-    "example": "Volcanic ash plumes from the eruption forced aviation authorities to ground all flights.",
-    "exampleThai": "กลุ่มเถ้าถ่านเกี่ยวกับการปะทุของภูเขาไฟบีบให้เจ้าหน้าที่การบินต้องระงับเที่ยวบินทั้งหมด"
+    "example": "Desert plants develop deep root systems to survive long periods of severe drought.",
+    "exampleThai": "พืชในทะเลทรายพัฒนาระบบรากลึกเพื่อเอาชีวิตรอดจากภัยแล้งรุนแรงที่ยาวนาน"
   },
   {
     "id": "v_b1_nature_17",
@@ -10159,19 +10159,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_nature_05",
-    "word": "archipelago",
-    "pos": "n.",
+    "word": "conserve",
+    "pos": "v.",
     "level": "B2",
     "category": "nature-weather",
     "categoryLabel": "ธรรมชาติ & ดินฟ้าอากาศ",
-    "thai": "หมู่เกาะที่เรียงรายกลางทะเล",
+    "thai": "อนุรักษ์สงวนรักษา",
     "alternatives": [
-      "แผ่นดินใหญ่ตอนใน",
-      "ที่ราบสูงภูเขาไฟ",
-      "หุบเหวลึกใต้สมุทร"
+      "ผลาญทำลายสิ้น",
+      "ปล่อยให้สูญพันธุ์",
+      "ใช้ประโยชน์จนหมด"
     ],
-    "example": "Indonesia forms the world's largest equatorial archipelago, spanning over seventeen thousand islands.",
-    "exampleThai": "อินโดนีเซียเป็นหมู่เกาะที่เรียงรายกลางทะเลแถบเส้นศูนย์สูตรที่ใหญ่ที่สุดในโลก ครอบคลุมกว่าหนึ่งหมื่นเจ็ดพันเกาะ"
+    "example": "International organizations urge governments to conserve natural wetlands and mangrove forests.",
+    "exampleThai": "องค์กรระหว่างประเทศกระตุ้นให้รัฐบาลอนุรักษ์สงวนรักษาพื้นที่ชุ่มน้ำตามธรรมชาติและป่าชายเลน"
   },
   {
     "id": "v_b2_nature_06",
@@ -10223,19 +10223,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_nature_09",
-    "word": "tributary",
-    "pos": "n.",
+    "word": "deplete",
+    "pos": "v.",
     "level": "B2",
     "category": "nature-weather",
     "categoryLabel": "ธรรมชาติ & ดินฟ้าอากาศ",
-    "thai": "แม่น้ำสาขาย่อย",
+    "thai": "ทำให้ร่อยหรอสูญสิ้น",
     "alternatives": [
-      "ปากแม่น้ำออกสู่ทะเล",
-      "สันดอนทรายชายฝั่ง",
-      "แม่น้ำสายประธาน"
+      "ฟื้นฟูให้เต็มเปี่ยม",
+      "เติมเต็มทดแทน",
+      "สะสมเพิ่มพูน"
     ],
-    "example": "Numerous mountain streams converge to form a major tributary feeding the Mekong River.",
-    "exampleThai": "ลำธารบนภูเขาจำนวนมากไหลมารวมกันจนกลายเป็นแม่น้ำสาขาย่อยสายสำคัญที่ไหลลงสู่แม่น้ำโขง"
+    "example": "Overfishing and pollution continue to deplete marine fish stocks across coastal waters.",
+    "exampleThai": "การทำประมงเกินขนาดและมลพิษยังคงทำให้ปริมาณปลาในทะเลทำให้ร่อยหรอสูญสิ้นไปอย่างต่อเนื่อง"
   },
   {
     "id": "v_b2_nature_10",
@@ -10271,19 +10271,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_nature_12",
-    "word": "meteorology",
-    "pos": "n.",
+    "word": "emit",
+    "pos": "v.",
     "level": "B2",
     "category": "nature-weather",
     "categoryLabel": "ธรรมชาติ & ดินฟ้าอากาศ",
-    "thai": "วิทยาศาสตร์อุตุนิยมวิทยา",
+    "thai": "ปล่อยก๊าซหรือมลพิษ",
     "alternatives": [
-      "ธรณีวิทยากายภาพ",
-      "ดาราศาสตร์ดวงดาว",
-      "สมุทรศาสตร์ใต้ทะเล"
+      "ดูดซับสารพิษ",
+      "กักเก็บคาร์บอน",
+      "กรองอากาศบริสุทธิ์"
     ],
-    "example": "Advances in satellite meteorology allow scientists to forecast super-typhoon paths accurately.",
-    "exampleThai": "ความก้าวหน้าในวิทยาศาสตร์อุตุนิยมวิทยาผ่านดาวเทียมช่วยให้นักวิทยาศาสตร์พยากรณ์เส้นทางซูเปอร์ไต้ฝุ่นได้อย่างแม่นยำ"
+    "example": "Coal power plants emit substantial volumes of greenhouse gases into the upper atmosphere.",
+    "exampleThai": "โรงไฟฟ้าถ่านหินปล่อยก๊าซหรือมลพิษเรือนกระจกในปริมาณมหาศาลขึ้นสู่ชั้นบรรยากาศระดับบน"
   },
   {
     "id": "v_b2_nature_13",
@@ -10964,11 +10964,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "ห้างสรรพสินค้าครบวงจร",
+    "thai": "ห้างสรรพสินค้า",
     "alternatives": [
-      "ตลาดนัดริมคลอง",
-      "ร้านโชห่วย",
-      "แผงลอย"
+      "ร้านสะดวกซื้อหัวมุมถนน",
+      "แผงขายของสดริมทาง",
+      "ร้านขายยาชุมชน"
     ],
     "example": "Bangkok malls feature air-conditioned boutiques, restaurants, and multiplex cinemas.",
     "exampleThai": "ห้างสรรพสินค้าครบวงจรในกรุงเทพฯ มีร้านค้าปรับอากาศ ร้านอาหาร และโรงภาพยนตร์ครบครัน"
@@ -11140,11 +11140,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "กระแสแฟชั่นเครื่องแต่งกาย",
+    "thai": "แฟชั่นเครื่องแต่งกาย",
     "alternatives": [
-      "กฎระเบียบวินัย",
-      "เครื่องแบบทหาร",
-      "แบบแผนโบราณ"
+      "นโยบายภาษีโรงเรือน",
+      "การก่อสร้างถนน",
+      "อัตราดอกเบี้ย"
     ],
     "example": "Youth clothing stores continually adapt to rapid seasonal shifts in street fashion.",
     "exampleThai": "ร้านเสื้อผ้าวัยรุ่นปรับตัวอย่างต่อเนื่องตามกระแสแฟชั่นเครื่องแต่งกายแนวสตรีทที่เปลี่ยนไว"
@@ -11156,11 +11156,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "สั่งซื้อสินค้าทางร้าน",
+    "thai": "สั่งซื้อสินค้า",
     "alternatives": [
-      "ยกเลิกบัญชี",
-      "ปฏิเสธพัสดุ",
-      "ส่งคืนเงิน"
+      "ยกเลิกบริการทั้งหมด",
+      "ร้องเรียนการบริการ",
+      "ส่งซ่อมแซม"
     ],
     "example": "You can order authentic northern woven cotton scarves directly from the artisans.",
     "exampleThai": "คุณสามารถสั่งซื้อสินค้าทางร้านผ้าพันคอผ้าฝ้ายทอมือแท้จากภาคเหนือได้โดยตรงจากช่างฝีมือ"
@@ -11332,11 +11332,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "แผนงบประมาณรายรับรายจ่าย",
+    "thai": "งบประมาณ",
     "alternatives": [
-      "ใบเสร็จชำระภาษี",
-      "สลิปเงินเดือน",
-      "ใบแจ้งหนี้ค้างจ่าย"
+      "ใบเสร็จค่าน้ำมัน",
+      "ยอดหนี้สินบัตรเครดิต",
+      "อัตราภาษีมูลค่าเพิ่ม"
     ],
     "example": "Setting a strict monthly personal budget keeps unexpected household expenses under control.",
     "exampleThai": "การตั้งแผนงบประมาณรายรับรายจ่ายส่วนตัวรายเดือนที่เข้มงวดช่วยควบคุมรายจ่ายในครัวเรือน"
@@ -11348,11 +11348,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "สกุลเงินตราแลกเปลี่ยน",
+    "thai": "สกุลเงิน",
     "alternatives": [
-      "หุ้นสามัญ",
-      "พันธบัตรรัฐบาล",
-      "ตั๋วสัญญาใช้เงิน"
+      "ตั๋วจำนำ",
+      "สลากกินแบ่งรัฐบาล",
+      "หุ้นสามัญ"
     ],
     "example": "International traders constantly monitor foreign currency exchange rate fluctuations.",
     "exampleThai": "ผู้ค้าสินค้าระหว่างประเทศติดตามความผันผวนของอัตราแลกเปลี่ยนสกุลเงินตราแลกเปลี่ยนต่างประเทศตลอดเวลา"
@@ -11380,11 +11380,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "ภาวะเงินเฟ้อข้าวของแพง",
+    "thai": "ภาวะเงินเฟ้อ",
     "alternatives": [
-      "ภาวะเศรษฐกิจเฟื่องฟู",
-      "การลดราคาสินค้า",
-      "การเพิ่มค่าจ้าง"
+      "ภาวะฟองสบู่แตก",
+      "อัตราดอกเบี้ยคงที่",
+      "ดุลการค้าเกินดุล"
     ],
     "example": "Persistent high inflation reduces the purchasing power of middle-class consumer wages.",
     "exampleThai": "ภาวะเงินเฟ้อข้าวของแพงที่ยืดเยื้อลดทอนอำนาจการซื้อของค่าจ้างแรงงานชนชั้นกลาง"
@@ -11615,19 +11615,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_shop_04",
-    "word": "liquidation",
-    "pos": "n.",
+    "word": "allocate",
+    "pos": "v.",
     "level": "B2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "การชำระบัญชีล้างหนี้สินเพื่อเลิกกิจการ",
+    "thai": "จัดสรรงบประมาณ",
     "alternatives": [
-      "การขยายสาขาใหม่",
-      "การเข้าสู่ตลาดหลักทรัพย์",
-      "การระดมทุนรอบใหม่"
+      "ยึดทรัพย์สินคืน",
+      "ตัดงบประมาณทิ้ง",
+      "ใช้จ่ายอย่างฟุ่มเฟือย"
     ],
-    "example": "Following bankruptcy court rulings, court-appointed trustees oversaw the orderly liquidation of assets.",
-    "exampleThai": "ตามคำตัดสินของศาลล้มละลาย ผู้พิทักษ์ทรัพย์ที่ศาลแต่งตั้งได้ดูแลการชำระบัญชีล้างหนี้สินเพื่อเลิกกิจการอย่างเป็นระเบียบ"
+    "example": "The board agreed to allocate more capital to scientific research and green energy development.",
+    "exampleThai": "คณะกรรมการตกลงที่จะจัดสรรงบประมาณเงินทุนเพิ่มเติมให้แก่การวิจัยทางวิทยาศาสตร์และการพัฒนาพลังงานสะอาด"
   },
   {
     "id": "v_b2_shop_05",
@@ -11684,11 +11684,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "เงินปันผลตอบแทนผู้ถือหุ้น",
+    "thai": "เงินปันผล",
     "alternatives": [
-      "เงินเดือนพนักงาน",
-      "ดอกเบี้ยปรับค้างชำระ",
-      "ค่าธรรมเนียมใบอนุญาต"
+      "เงินกู้ยืมระยะสั้น",
+      "ภาษีมูลค่าเพิ่ม",
+      "ค่างวดรายเดือน"
     ],
     "example": "The profitable telecommunications giant distributed a generous quarterly cash dividend to shareholders.",
     "exampleThai": "บริษัทยักษ์ใหญ่ด้านโทรคมนาคมที่มีกำไรได้จ่ายเงินปันผลตอบแทนผู้ถือหุ้นเป็นเงินสดประจำไตรมาสแก่ผู้ถือหุ้น"
@@ -11759,19 +11759,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_shop_13",
-    "word": "portfolio",
-    "pos": "n.",
+    "word": "fluctuate",
+    "pos": "v.",
     "level": "B2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "พอร์ตโฟลิโอการลงทุนในหลักทรัพย์",
+    "thai": "ผันผวนขึ้นลง",
     "alternatives": [
-      "สมุดบัญชีเงินฝากเล่มเดียว",
-      "กระเป๋าใส่เงินสด",
-      "ตู้เซฟเก็บทอง"
+      "หยุดนิ่งคงที่",
+      "รักษาระดับสม่ำเสมอ",
+      "พุ่งสูงขึ้นไม่หยุด"
     ],
-    "example": "Financial planners recommend balancing your stock portfolio with low-risk government treasury bonds.",
-    "exampleThai": "นักวางแผนการเงินแนะนำให้ปรับสมดุลพอร์ตโฟลิโอการลงทุนในหลักทรัพย์ในหุ้นด้วยพันธบัตรรัฐบาลที่มีความเสี่ยงต่ำ"
+    "example": "Fuel prices continue to fluctuate wildly in response to shifting geopolitical conflicts.",
+    "exampleThai": "ราคาเชื้อเพลิงยังคงผันผวนขึ้นลงอย่างมากเพื่อตอบสนองต่อความขัดแย้งทางภูมิรัฐศาสตร์ที่เปลี่ยนแปลงไป"
   },
   {
     "id": "v_b2_shop_14",
@@ -11791,19 +11791,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_shop_15",
-    "word": "surcharge",
-    "pos": "n.",
+    "word": "compensate",
+    "pos": "v.",
     "level": "B2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "ค่าธรรมเนียมเรียกเก็บเพิ่มพิเศษ",
+    "thai": "ชดเชยค่าเสียหาย",
     "alternatives": [
-      "ส่วนลดทางการค้า",
-      "เงินคืนภาษี",
-      "เงินชดเชยค่าเสียหาย"
+      "เรียกเก็บค่าปรับ",
+      "ริบเงินมัดจำ",
+      "ปฏิเสธความรับผิดชอบ"
     ],
-    "example": "Airlines imposed an emergency jet fuel surcharge on international tickets due to soaring crude oil costs.",
-    "exampleThai": "สายการบินเรียกเก็บค่าธรรมเนียมเรียกเก็บเพิ่มพิเศษค่าน้ำมันเชื้อเพลิงฉุกเฉินในตั๋วโดยสารระหว่างประเทศเนื่องจากราคาน้ำมันดิบพุ่งสูง"
+    "example": "The airline offered cash vouchers to compensate passengers for the extended flight delay.",
+    "exampleThai": "สายการบินเสนอบัตรกำนัลเงินสดเพื่อชดเชยค่าเสียหายให้แก่ผู้โดยสารสำหรับเที่ยวบินที่ล่าช้าเป็นเวลานาน"
   },
   {
     "id": "v_b2_shop_16",
@@ -11823,19 +11823,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_shop_17",
-    "word": "solvency",
-    "pos": "n.",
+    "word": "diminish",
+    "pos": "v.",
     "level": "B2",
     "category": "shopping-money",
     "categoryLabel": "ซื้อของ & การเงิน",
-    "thai": "ความสามารถในการชำระหนี้ระยะยาว",
+    "thai": "ลดน้อยถอยลง",
     "alternatives": [
-      "ภาวะล้มละลายขาดเงินสด",
-      "การถูกฟ้องร้องยึดทรัพย์",
-      "การผิดนัดชำระหนี้"
+      "เพิ่มพูนมหาศาล",
+      "ขยายตัวอย่างรวดเร็ว",
+      "คงที่มั่นคง"
     ],
-    "example": "Insurance regulators rigorously inspect reserve ratios to verify the long-term solvency of underwriters.",
-    "exampleThai": "หน่วยงานกำกับดูแลธุรกิจประกันภัยตรวจสอบอัตราส่วนสำรองอย่างเข้มงวดเพื่อยืนยันความสามารถในการชำระหนี้ระยะยาวของผู้รับประกันภัย"
+    "example": "High inflation rates can rapidly diminish the real purchasing power of household savings.",
+    "exampleThai": "อัตราเงินเฟ้อที่สูงสามารถทำให้กำลังซื้อที่แท้จริงของเงินออมในครัวเรือนลดน้อยถอยลงอย่างรวดเร็ว"
   },
   {
     "id": "v_a1_feel_01",
@@ -12927,19 +12927,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_feel_12",
-    "word": "temperament",
-    "pos": "n.",
+    "word": "react",
+    "pos": "v.",
     "level": "B1",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "นิสัยใจคอและพื้นอารมณ์",
+    "thai": "ตอบสนองต่อสิ่งเร้า",
     "alternatives": [
-      "ความรู้ทางวิชาการ",
-      "ทักษะทางภาษา",
-      "สถานะทางสังคม"
+      "เพิกเฉยเฉยเมย",
+      "หยุดนิ่งไม่ขยับ",
+      "ไม่รู้สึกรู้สา"
     ],
-    "example": "Her naturally even-keeled temperament enables her to lead calmly during emergency situations.",
-    "exampleThai": "นิสัยใจคอและพื้นอารมณ์ที่สุขุมตามธรรมชาติช่วยให้เธอเป็นผู้นำได้อย่างใจเย็นในสถานการณ์ฉุกเฉิน"
+    "example": "People react differently when facing unexpected bad news or sudden crises.",
+    "exampleThai": "ผู้คนมีวิธีตอบสนองต่อสิ่งเร้าแตกต่างกันเมื่อเผชิญกับข่าวร้ายที่ไม่คาดคิดหรือวิกฤตที่กะทันหัน"
   },
   {
     "id": "v_b1_feel_13",
@@ -12975,19 +12975,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_feel_15",
-    "word": "resentful",
-    "pos": "adj.",
+    "word": "express",
+    "pos": "v.",
     "level": "B1",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "ขุ่นเคืองผูกใจเจ็บ",
+    "thai": "แสดงความรู้สึก",
     "alternatives": [
-      "ให้อภัยไม่ถือโทษ",
-      "ปลาบปลื้มยินดี",
-      "ซาบซึ้งใจ"
+      "เก็บกดอารมณ์ไว้",
+      "ปิดบังซ่อนเร้น",
+      "แสร้งทำเป็นไม่รู้"
     ],
-    "example": "She felt deeply resentful when her hard-earned design credit was claimed by her manager.",
-    "exampleThai": "เธอรู้สึกขุ่นเคืองผูกใจเจ็บอย่างลึกซึ้งเมื่อผลงานการออกแบบที่เหนื่อยยากถูกผู้จัดการแอบอ้างไป"
+    "example": "Art and music allow shy teenagers to express their innermost emotions freely.",
+    "exampleThai": "ศิลปะและดนตรีช่วยให้วัยรุ่นที่ขี้อายสามารถแสดงความรู้สึกส่วนลึกที่สุดของตนได้อย่างอิสระ"
   },
   {
     "id": "v_b1_feel_16",
@@ -13183,19 +13183,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_feel_10",
-    "word": "magnanimous",
-    "pos": "adj.",
+    "word": "anticipate",
+    "pos": "v.",
     "level": "B2",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "ใจกว้างใหญ่ให้อภัยคู่แข่ง",
+    "thai": "คาดการณ์ล่วงหน้า",
     "alternatives": [
-      "อาฆาตพยาบาท",
-      "แค้นฝังหุ่น",
-      "ใจแคบจ้องจับผิด"
+      "รำลึกอดีต",
+      "มองข้ามสิ่งสำคัญ",
+      "เพิกเฉยต่อสัญญาณ"
     ],
-    "example": "In a magnanimous victory speech, the newly elected president warmly praised her defeated rival.",
-    "exampleThai": "ในสุนทรพจน์แห่งชัยชนะที่ใจกว้างใหญ่ให้อภัยคู่แข่ง ประธานาธิบดีคนใหม่ได้กล่าวชื่นชมคู่แข่งที่พ่ายแพ้อย่างอบอุ่น"
+    "example": "Economists anticipate that consumer confidence will rise gradually in the second half of the year.",
+    "exampleThai": "นักเศรษฐศาสตร์คาดการณ์ล่วงหน้าว่าความเชื่อมั่นของผู้บริโภคจะทยอยปรับตัวสูงขึ้นในครึ่งปีหลัง"
   },
   {
     "id": "v_b2_feel_11",
@@ -13247,19 +13247,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_feel_14",
-    "word": "vindictive",
-    "pos": "adj.",
+    "word": "distinguish",
+    "pos": "v.",
     "level": "B2",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "อาฆาตมาดร้ายจ้องล้างแค้น",
+    "thai": "แยกแยะความแตกต่าง",
     "alternatives": [
-      "มีจิตใจให้อภัย",
-      "เมตตาการุณย์",
-      "ไม่ถือโทษโกรธใคร"
+      "รวมเป็นสิ่งเดียวกัน",
+      "ทำให้สับสนปนเป",
+      "มองข้ามความต่าง"
     ],
-    "example": "Launching defamatory online rumors against a critic was condemned as petty and vindictive.",
-    "exampleThai": "การปล่อยข่าวลือให้ร้ายทางออนไลน์ต่อผู้วิพากษ์วิจารณ์ถูกประณามว่าเป็นการกระทำที่ใจแคบและอาฆาตมาดร้ายจ้องล้างแค้น"
+    "example": "It is crucial to distinguish between genuine scientific evidence and mere online rumors.",
+    "exampleThai": "สิ่งสำคัญอย่างยิ่งคือต้องแยกแยะความแตกต่างระหว่างหลักฐานทางวิทยาศาสตร์ที่แท้จริงกับเพียงแค่ข่าวลือทางอินเทอร์เน็ต"
   },
   {
     "id": "v_b2_feel_15",
@@ -13279,35 +13279,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_feel_16",
-    "word": "facetious",
-    "pos": "adj.",
+    "word": "perceive",
+    "pos": "v.",
     "level": "B2",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "ชอบพูดเล่นไม่ถูกกาลเทศะ",
+    "thai": "รับรู้และเข้าใจ",
     "alternatives": [
-      "สุขุมจริงจัง",
-      "สำรวมสุภาพ",
-      "มีกาลเทศะ"
+      "มองข้ามไป",
+      "ปิดหูปิดตา",
+      "เข้าใจคลาดเคลื่อน"
     ],
-    "example": "Making facetious wisecracks during a serious boardroom funeral discussion was deeply inappropriate.",
-    "exampleThai": "การเล่นมุกตลกที่ชอบพูดเล่นไม่ถูกกาลเทศะระหว่างการพูดคุยเรื่องงานศพในที่ประชุมเป็นเรื่องที่ไม่เหมาะสมอย่างยิ่ง"
+    "example": "How we perceive everyday stressful situations largely determines our mental well-being.",
+    "exampleThai": "วิธีการที่เรารับรู้และเข้าใจสถานการณ์ตึงเครียดในชีวิตประจำวันมีผลอย่างมากต่อสุขภาวะทางจิตของเรา"
   },
   {
     "id": "v_b2_feel_17",
-    "word": "euphoria",
-    "pos": "n.",
+    "word": "empathize",
+    "pos": "v.",
     "level": "B2",
     "category": "feelings-personality",
     "categoryLabel": "อารมณ์ & บุคลิก",
-    "thai": "ความรู้สึกปลื้มปีติสุขล้นพ้น",
+    "thai": "เห็นอกเห็นใจ",
     "alternatives": [
-      "ความซึมเศร้าหดหู่",
-      "ความหวาดผวา",
-      "ความคับแค้นใจ"
+      "ซ้ำเติมความทุกข์",
+      "เหยียดหยามดูแคลน",
+      "เฉยเมยเย็นชา"
     ],
-    "example": "A wave of shared euphoria swept through the stadium as the winning goal hit the net in extra time.",
-    "exampleThai": "คลื่นแห่งความรู้สึกปลื้มปีติสุขล้นพ้นซัดผ่านทั่วทั้งสนามกีฬาเมื่อประตูชัยเสียบก้นตาข่ายในช่วงต่อเวลาพิเศษ"
+    "example": "Counselors are trained to listen actively and empathize with patients coping with personal grief.",
+    "exampleThai": "ที่ปรึกษาได้รับการฝึกฝนให้รับฟังอย่างตั้งใจและเห็นอกเห็นใจผู้ป่วยที่กำลังรับมือกับความสูญเสียส่วนบุคคล"
   },
   {
     "id": "v_a1_edu_01",
@@ -14260,11 +14260,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "งานชิ้นใหญ่ที่ได้รับมอบหมาย",
+    "thai": "งานที่ได้รับมอบหมาย",
     "alternatives": [
-      "การสอบปากเปล่า",
-      "การเช็กชื่อในห้อง",
-      "การอบรมปฐมนิเทศ"
+      "การสอบไล่",
+      "การเข้าแถว",
+      "การปิดเทอม"
     ],
     "example": "The economics lecturer assigned a comprehensive research assignment on Southeast Asian inflation.",
     "exampleThai": "อาจารย์ผู้บรรยายวิชาเศรษฐศาสตร์ได้มอบหมายงานชิ้นใหญ่ที่ได้รับมอบหมายเชิงวิจัยเรื่องภาวะเงินเฟ้อในเอเชียตะวันออกเฉียงใต้"
@@ -14276,11 +14276,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ปริญญาบัตรมหาวิทยาลัย",
+    "thai": "ปริญญาบัตร",
     "alternatives": [
-      "ประกาศนียบัตรมัธยม",
-      "ใบขับขี่สากล",
-      "บัตรประจำตัวประชาชน"
+      "บัตรนักศึกษา",
+      "ใบเสร็จค่าเทอม",
+      "ชุดครุย"
     ],
     "example": "Graduating with an accredited engineering degree opens exceptional worldwide career opportunities.",
     "exampleThai": "การสำเร็จการศึกษาได้รับปริญญาบัตรมหาวิทยาลัยด้านวิศวกรรมที่ได้รับการรับรองช่วยเปิดโอกาสในการทำงานระดับโลก"
@@ -14340,11 +14340,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ค่าธรรมเนียมการศึกษาเล่าเรียน",
+    "thai": "ค่าเล่าเรียน",
     "alternatives": [
-      "เงินเดือนอาจารย์",
-      "งบประมาณวิจัย",
-      "ค่าใช้จ่ายส่วนตัว"
+      "เงินเดือนครู",
+      "ค่าชุดนักเรียน",
+      "ทุนการศึกษา"
     ],
     "example": "Public state universities maintain affordable tuition rates to guarantee equitable student access.",
     "exampleThai": "มหาวิทยาลัยของรัฐรักษาระดับค่าธรรมเนียมการศึกษาเล่าเรียนให้อยู่ในเกณฑ์ย่อมเยาเพื่อรับรองความเท่าเทียมในการเข้าถึง"
@@ -14356,11 +14356,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ภาคการศึกษาของมหาวิทยาลัย",
+    "thai": "ภาคการศึกษา",
     "alternatives": [
-      "ช่วงปิดเทอมฤดูร้อน",
-      "สัปดาห์สอบปลายภาค",
-      "ช่วงปฐมนิเทศ"
+      "วันหยุดประจำสัปดาห์",
+      "การปฐมนิเทศ",
+      "พิธีประสาทปริญญา"
     ],
     "example": "Students typically register for five to six rigorous academic courses each semester.",
     "exampleThai": "นักศึกษามักลงทะเบียนเรียนห้าถึงห้ารายวิชาเข้มข้นในแต่ละภาคการศึกษาของมหาวิทยาลัย"
@@ -14420,11 +14420,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "หอพักนักศึกษาในมหาวิทยาลัย",
+    "thai": "หอพักนักศึกษา",
     "alternatives": [
-      "อาคารบรรยายรวม",
       "ห้องสมุดกลาง",
-      "โรงฝึกงาน"
+      "โรงอาหาร",
+      "สนามกีฬา"
     ],
     "example": "Living in an on-campus dormitory helps freshmen make lifelong friendships easily.",
     "exampleThai": "การอาศัยในหอพักนักศึกษาในมหาวิทยาลัยช่วยให้นักศึกษาปีหนึ่งสร้างมิตรภาพตลอดชีวิตได้อย่างง่ายดาย"
@@ -14436,11 +14436,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ประมวลรายวิชาและแผนการสอน",
+    "thai": "ประมวลรายวิชา",
     "alternatives": [
-      "ข้อสอบเก่า",
-      "สมุดบันทึกนักเรียน",
-      "ใบเสร็จค่าหน่วยกิต"
+      "ใบแจ้งเกรด",
+      "สมุดบันทึกการบ้าน",
+      "ระเบียบการรับสมัคร"
     ],
     "example": "Review the course syllabus thoroughly to understand grading criteria and exam dates.",
     "exampleThai": "อ่านประมวลรายวิชาและแผนการสอนอย่างละเอียดเพื่อทำความเข้าใจเกณฑ์การให้คะแนนและวันสอบ"
@@ -14468,11 +14468,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "กำหนดเวลาส่งงานวิชาการ",
+    "thai": "กำหนดเวลาส่งงาน",
     "alternatives": [
-      "เวลาเริ่มชั้นเรียน",
-      "ช่วงพักระหว่างคาบ",
-      "วันเปิดเทอม"
+      "วันเปิดภาคเรียน",
+      "ตารางสอบ",
+      "ชั่วโมงกิจกรรม"
     ],
     "example": "The strict assignment submission deadline is Friday at five in the afternoon sharp.",
     "exampleThai": "กำหนดเวลาส่งงานวิชาการที่เข้มงวดของการส่งงานคือวันศุกร์เวลาห้าโมงเย็นตรงเป๊ะ"
@@ -14484,11 +14484,11 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "วินัยในการศึกษาเรียนรู้",
+    "thai": "ระเบียบวินัย",
     "alternatives": [
-      "ความเกียจคร้าน",
-      "การผัดวันประกันพรุ่ง",
-      "ความไม่ใส่ใจ"
+      "การลงโทษ",
+      "การขาดเรียน",
+      "การสอบตก"
     ],
     "example": "Cultivating steady self-discipline is essential for successful independent university study.",
     "exampleThai": "การปลูกฝังวินัยในการศึกษาเรียนรู้ในตนเองที่สม่ำเสมอเป็นสิ่งจำเป็นสำหรับการเรียนมหาวิทยาลัยที่ประสบความสำเร็จ"
@@ -14500,30 +14500,30 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ประเมินผลสัมฤทธิ์ทางการเรียน",
+    "thai": "ประเมินผล",
     "alternatives": [
-      "คาดเดาคะแนน",
-      "เพิกเฉยผลสอบ",
-      "ลงโทษทางวินัย"
+      "เข้าชั้นเรียน",
+      "ลงทะเบียน",
+      "สอบตก"
     ],
     "example": "Professors use continuous assessment rubrics to evaluate student critical thinking skills.",
     "exampleThai": "อาจารย์ใช้เกณฑ์การประเมินแบบต่อเนื่องเพื่อประเมินผลสัมฤทธิ์ทางการเรียนด้านทักษะการคิดวิเคราะห์ของนักศึกษา"
   },
   {
     "id": "v_b2_edu_01",
-    "word": "pedagogy",
-    "pos": "n.",
+    "word": "comprehend",
+    "pos": "v.",
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ศาสตร์และศิลป์การสอน",
+    "thai": "เข้าใจอย่างลึกซึ้ง",
     "alternatives": [
-      "การบริหารงบประมาณโรงเรียน",
-      "การก่อสร้างอาคารเรียน",
-      "การตรวจระเบียบวินัย"
+      "เข้าใจผิดเพี้ยน",
+      "มองข้ามเนื้อหา",
+      "ปฏิเสธที่จะฟัง"
     ],
-    "example": "Innovative child-centered pedagogy encourages hands-on problem solving rather than rote memorization.",
-    "exampleThai": "ศาสตร์และศิลป์การสอนที่เน้นผู้เรียนเป็นศูนย์กลางอันทันสมัยส่งเสริมการแก้ปัญหาแบบลงมือปฏิบัติจริงมากกว่าการท่องจำนกแก้วนกขุนทอง"
+    "example": "Students often struggle to comprehend complex scientific texts without clear visual diagrams.",
+    "exampleThai": "นักเรียนมักประสบความยากลำบากในการเข้าใจอย่างลึกซึ้งในตำราวิทยาศาสตร์ที่ซับซ้อนหากไม่มีแผนภาพประกอบที่ชัดเจน"
   },
   {
     "id": "v_b2_edu_02",
@@ -14559,19 +14559,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_edu_04",
-    "word": "matriculation",
-    "pos": "n.",
+    "word": "cite",
+    "pos": "v.",
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "การขึ้นทะเบียนเป็นนักศึกษาอย่างเป็นทางการ",
+    "thai": "อ้างอิงแหล่งที่มา",
     "alternatives": [
-      "การสำเร็จการศึกษา",
-      "การลาออกพ้นสภาพ",
-      "การพักการเรียน"
+      "คัดลอกผลงานผู้อื่น",
+      "ปลอมแปลงเอกสาร",
+      "ละเลยข้อมูล"
     ],
-    "example": "Freshmen dressed in traditional academic robes for the formal university matriculation ceremony.",
-    "exampleThai": "นักศึกษาใหม่แต่งกายด้วยชุดครุยวิชาการแบบดั้งเดิมสำหรับพิธีการขึ้นทะเบียนเป็นนักศึกษาอย่างเป็นทางการ"
+    "example": "Always remember to cite your sources properly to avoid committing academic plagiarism.",
+    "exampleThai": "อย่าลืมอ้างอิงแหล่งที่มาของข้อมูลอย่างถูกต้องเสมอเพื่อหลีกเลี่ยงการโจรกรรมผลงานทางวิชาการ"
   },
   {
     "id": "v_b2_edu_05",
@@ -14596,11 +14596,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "วิชาบังคับก่อนที่ต้องสอบผ่าน",
+    "thai": "วิชาบังคับก่อน",
     "alternatives": [
       "วิชาเลือกเสรี",
-      "กิจกรรมนอกหลักสูตร",
-      "วิชาบังคับร่วม"
+      "วิทยานิพนธ์",
+      "การฝึกงาน"
     ],
     "example": "Passing introductory calculus is an essential prerequisite before enrolling in advanced thermodynamics.",
     "exampleThai": "การสอบผ่านแคลคูลัสเบื้องต้นเป็นวิชาบังคับก่อนที่ต้องสอบผ่านที่สำคัญก่อนลงทะเบียนเรียนอุณหพลศาสตร์ขั้นสูง"
@@ -14612,11 +14612,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "สมาคมศิษย์เก่าของสถาบัน",
+    "thai": "ศิษย์เก่า",
     "alternatives": [
+      "คณาจารย์",
       "นักศึกษาปัจจุบัน",
-      "คณะกรรมการบริหารมหาวิทยาลัย",
-      "ผู้สมัครเข้าศึกษาใหม่"
+      "ผู้ปกครอง"
     ],
     "example": "Distinguished university alumni funded an endowment for underprivileged STEM students.",
     "exampleThai": "สมาคมศิษย์เก่าของสถาบันที่มีชื่อเสียงได้ร่วมบริจาคกองทุนเพื่อนักเรียนสาขาวิทยาศาสตร์ที่ขาดแคลนทุนทรัพย์"
@@ -14671,35 +14671,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_edu_11",
-    "word": "colloquium",
-    "pos": "n.",
+    "word": "illustrate",
+    "pos": "v.",
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "การสัมมนาวิชาการเฉพาะทาง",
+    "thai": "ยกตัวอย่างอธิบาย",
     "alternatives": [
-      "งานเลี้ยงรุ่นรื่นเริง",
-      "การประชุมผู้ปกครอง",
-      "การแข่งขันกีฬาภายใน"
+      "บิดเบือนข้อเท็จจริง",
+      "ปกปิดหลักฐาน",
+      "ทำให้สับสนงุนงง"
     ],
-    "example": "Theoretical physicists gathered for a week-long colloquium on quantum gravity anomalies.",
-    "exampleThai": "นักฟิสิกส์ทฤษฎีมารวมตัวกันสำหรับการสัมมนาวิชาการเฉพาะทางยาวนานหนึ่งสัปดาห์เรื่องความผิดปกติของแรงโน้มถ่วงควอนตัม"
+    "example": "The professor used real-world case studies to illustrate complex economic principles.",
+    "exampleThai": "อาจารย์ใช้กรณีศึกษาในโลกแห่งความเป็นจริงเพื่อยกตัวอย่างอธิบายหลักการทางเศรษฐศาสตร์ที่ซับซ้อน"
   },
   {
     "id": "v_b2_edu_12",
-    "word": "valedictorian",
-    "pos": "n.",
+    "word": "formulate",
+    "pos": "v.",
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ผู้แทนนักเรียนกล่าวสุนทรพจน์ในวันจบ",
+    "thai": "คิดค้นกำหนดขึ้น",
     "alternatives": [
-      "ประธานนักเรียนรุ่นน้อง",
-      "อาจารย์ที่ปรึกษา",
-      "เจ้าหน้าที่ทะเบียน"
+      "ลบล้างข้อเท็จจริง",
+      "ลอกเลียนแบบคำตอบ",
+      "ยกเลิกโครงการ"
     ],
-    "example": "The graduating class valedictorian inspired peers with a moving address on social responsibility.",
-    "exampleThai": "ผู้แทนนักเรียนกล่าวสุนทรพจน์ในวันจบการศึกษาได้สร้างแรงบันดาลใจให้แก่เพื่อนๆ ด้วยสุนทรพจน์อันน่าซาบซึ้งเรื่องความรับผิดชอบต่อสังคม"
+    "example": "Researchers must formulate a testable hypothesis before conducting clinical experiments.",
+    "exampleThai": "นักวิจัยต้องคิดค้นกำหนดสมมติฐานที่สามารถทดสอบได้ก่อนจะเริ่มการทดลองทางคลินิก"
   },
   {
     "id": "v_b2_edu_13",
@@ -14719,19 +14719,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_edu_14",
-    "word": "erudite",
-    "pos": "adj.",
+    "word": "analyze",
+    "pos": "v.",
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "รอบรู้ลึกซึ้งแตกฉานทางวิชาการ",
+    "thai": "วิเคราะห์อย่างละเอียด",
     "alternatives": [
-      "มีความรู้ตื้นเขิน",
-      "ขาดการศึกษา",
-      "ไร้ประสบการณ์"
+      "เดาสุ่มคำตอบ",
+      "มองข้ามรายละเอียด",
+      "รวบรวมแบบผิวเผิน"
     ],
-    "example": "The erudite professor answered arcane historical questions with effortless intellectual depth.",
-    "exampleThai": "ศาสตราจารย์ผู้รอบรู้ลึกซึ้งแตกฉานทางวิชาการตอบคำถามประวัติศาสตร์อันลึกซึ้งได้อย่างง่ายดายด้วยภูมิปัญญาอันล้ำลึก"
+    "example": "Candidates in the examination are asked to analyze historical trends from various data tables.",
+    "exampleThai": "ผู้เข้าสอบถูกขอให้วิเคราะห์อย่างละเอียดเกี่ยวกับแนวโน้มทางประวัติศาสตร์จากตารางข้อมูลต่างๆ"
   },
   {
     "id": "v_b2_edu_15",
@@ -14772,11 +14772,11 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "education-school",
     "categoryLabel": "การศึกษา & โรงเรียน",
-    "thai": "ทุนทำวิจัยหลังปริญญาเอก",
+    "thai": "ทุนวิจัย",
     "alternatives": [
-      "เงินกู้ยืมส่วนบุคคล",
-      "เบี้ยเลี้ยงรายวัน",
-      "ค่าประกันสุขภาพ"
+      "เงินกู้ยืม",
+      "ค่าธรรมเนียมหอพัก",
+      "รางวัลเรียนดี"
     ],
     "example": "She was awarded an international postdoctoral research fellowship to study cancer genomics.",
     "exampleThai": "เธอได้รับรางวัลทุนทำวิจัยหลังปริญญาเอกระดับนานาชาติเพื่อศึกษาพันธุศาสตร์ของโรคมะเร็ง"
@@ -15156,11 +15156,11 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "เสื้อผ้าเครื่องแต่งกาย",
+    "thai": "เสื้อผ้า",
     "alternatives": [
-      "รองเท้าผ้าใบ",
-      "เครื่องประดับเงิน",
-      "กระเป๋าสะพาย"
+      "รองเท้าหนัง",
+      "ผ้าปูที่นอน",
+      "ผ้าม่าน"
     ],
     "example": "Fold your clean washed clothes neatly into the wooden closet drawers.",
     "exampleThai": "พับเสื้อผ้าเครื่องแต่งกายที่ซักสะอาดแล้วอย่างเป็นระเบียบลงในลิ้นชักตู้ไม้"
@@ -15188,7 +15188,7 @@ export const VOCAB_ITEMS = [
     "level": "A1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "ครอบครัวอันเป็นที่รัก",
+    "thai": "ครอบครัว",
     "alternatives": [
       "เพื่อนร่วมงาน",
       "เพื่อนบ้าน",
@@ -15476,10 +15476,10 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "กิจวัตรประจำวันที่ทำสม่ำเสมอ",
+    "thai": "กิจวัตรประจำวัน",
     "alternatives": [
-      "การเดินทางท่องเที่ยว",
-      "การผจญภัยวันหยุด",
+      "วันหยุดพิเศษ",
+      "การท่องเที่ยว",
       "เหตุฉุกเฉิน"
     ],
     "example": "A predictable morning routine of meditation and stretching starts the day well.",
@@ -15684,11 +15684,11 @@ export const VOCAB_ITEMS = [
     "level": "A2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "งานบ้านงานเรือนประจำวัน",
+    "thai": "งานบ้าน",
     "alternatives": [
-      "การเล่นสนุก",
-      "การนอนพักผ่อน",
-      "การดูโทรทัศน์"
+      "การบ้านวิชาคณิต",
+      "งานเลี้ยงสังสรรค์",
+      "การนอนหลับ"
     ],
     "example": "Washing the dinner dishes and taking out rubbish are my evening household chores.",
     "exampleThai": "การล้างจานมื้อค่ำและการนำขยะออกไปทิ้งเป็นงานบ้านงานเรือนประจำวันช่วงเย็นของฉัน"
@@ -15700,7 +15700,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "การซ่อมบำรุงรักษาอาคาร",
+    "thai": "การบำรุงรักษา",
     "alternatives": [
       "การรื้อถอนทิ้ง",
       "การปล่อยให้ทรุดโทรม",
@@ -15716,7 +15716,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "การปรับปรุงตกแต่งบ้านใหม่",
+    "thai": "การปรับปรุงซ่อมแซม",
     "alternatives": [
       "การรื้อถอนทำลาย",
       "การขายทอดตลาด",
@@ -15732,7 +15732,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "ผู้อยู่อาศัยในบ้านเรือน",
+    "thai": "ผู้อยู่อาศัย",
     "alternatives": [
       "ผู้มาเยือนชั่วคราว",
       "นายหน้าอสังหา",
@@ -15796,7 +15796,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "เจ้าของบ้านผู้ให้เช่า",
+    "thai": "เจ้าของบ้านเช่า",
     "alternatives": [
       "ผู้เช่าอาศัย",
       "คนดูแลสวน",
@@ -15839,19 +15839,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b1_home_10",
-    "word": "domestic",
-    "pos": "adj.",
+    "word": "maintain",
+    "pos": "v.",
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "เกี่ยวกับกิจการภายในบ้าน",
+    "thai": "ดูแลบำรุงรักษา",
     "alternatives": [
-      "เกี่ยวกับการค้าระหว่างประเทศ",
-      "เกี่ยวกับการท่องเที่ยว",
-      "เกี่ยวกับการเมือง"
+      "ปล่อยให้ทรุดโทรม",
+      "ทอดทิ้งบ้านเรือน",
+      "ทำลายข้าวของ"
     ],
-    "example": "Sharing domestic chores equally fosters mutual harmony in modern busy households.",
-    "exampleThai": "การแบ่งปันเกี่ยวกับกิจการภายในบ้านอย่างเท่าเทียมสร้างความปรองดองร่วมกันในครัวเรือนยุคใหม่ที่วุ่นวาย"
+    "example": "Homeowners need to regularly maintain their water filters and air conditioning units.",
+    "exampleThai": "เจ้าของบ้านจำเป็นต้องดูแลบำรุงรักษาเครื่องกรองน้ำและเครื่องปรับอากาศอย่างสม่ำเสมอ"
   },
   {
     "id": "v_b1_home_11",
@@ -15972,7 +15972,7 @@ export const VOCAB_ITEMS = [
     "level": "B1",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "สิ่งของเกะกะระเกะระกะ",
+    "thai": "สิ่งของเกะกะ",
     "alternatives": [
       "ความเป็นระเบียบเรียบร้อย",
       "ความว่างเปล่าสะอาดตา",
@@ -15983,19 +15983,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_home_01",
-    "word": "domesticity",
-    "pos": "n.",
+    "word": "accommodate",
+    "pos": "v.",
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "ชีวิตความเป็นอยู่ภายในครอบครัว",
+    "thai": "จัดที่พักให้",
     "alternatives": [
-      "การผจญภัยในแดนไกล",
-      "การทำงานในวงการเมือง",
-      "การใช้ชีวิตสันโดษ"
+      "ขับไล่ออกจากที่",
+      "ปฏิเสธไม่รับ",
+      "รื้อถอนทำลาย"
     ],
-    "example": "After decades of international globetrotting, he embraced the serene pleasures of rural domesticity.",
-    "exampleThai": "หลังจากเดินทางรอบโลกมาหลายทศวรรษ เขาหันมาโอบรับความสุขอันเงียบสงบของชีวิตความเป็นอยู่ภายในครอบครัวในชนบท"
+    "example": "The newly renovated building can accommodate up to one hundred residents comfortably.",
+    "exampleThai": "อาคารที่เพิ่งปรับปรุงใหม่สามารถจัดที่พักรองรับผู้อยู่อาศัยได้มากถึงหนึ่งร้อยคนอย่างสะดวกสบาย"
   },
   {
     "id": "v_b2_home_02",
@@ -16020,7 +16020,7 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "พำนักพักอาศัยอยู่เป็นประจำ",
+    "thai": "อาศัยอยู่",
     "alternatives": [
       "แวะพักชั่วคราว",
       "อพยพย้ายถิ่นหนี",
@@ -16084,7 +16084,7 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "สถานที่พักผ่อนอันสงบปลอดภัย",
+    "thai": "แหล่งพักพิงปลอดภัย",
     "alternatives": [
       "ย่านธุรกิจอันวุ่นวาย",
       "ศูนย์การค้าที่จอแจ",
@@ -16127,19 +16127,19 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_home_10",
-    "word": "homestead",
-    "pos": "n.",
+    "word": "reside",
+    "pos": "v.",
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "ที่ดินและบ้านเรือนที่อยู่อาศัยดั้งเดิม",
+    "thai": "พำนักอาศัย",
     "alternatives": [
-      "ห้องชุดให้เช่ารายวัน",
-      "โรงแรมรีสอร์ต",
-      "บ้านพักตากอากาศชั่วคราว"
+      "อพยพย้ายหนี",
+      "ท่องเที่ยวชั่วคราว",
+      "เดินทางผ่าน"
     ],
-    "example": "Generations of family farmers tended organic orchards on their historic northern highland homestead.",
-    "exampleThai": "ชาวนาของครอบครัวหลายชั่วอายุคนดูแลสวนผลไม้ออร์แกนิกบนที่ดินและบ้านเรือนที่อยู่อาศัยดั้งเดิมบนที่สูงทางเหนือ"
+    "example": "Most of the university professors reside in the quiet suburbs rather than the busy city center.",
+    "exampleThai": "อาจารย์มหาวิทยาลัยส่วนใหญ่พำนักอาศัยอยู่ในแถบชานเมืองอันเงียบสงบมากกว่าใจกลางเมืองที่วุ่นวาย"
   },
   {
     "id": "v_b2_home_11",
@@ -16148,7 +16148,7 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "บริเวณละแวกใกล้เคียงโดยรอบ",
+    "thai": "บริเวณใกล้เคียง",
     "alternatives": [
       "ดินแดนโพ้นทะเล",
       "ป่าลึกห่างไกล",
@@ -16196,7 +16196,7 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "สิ่งอำนวยความสะดวกสบายในที่พัก",
+    "thai": "สิ่งอำนวยความสะดวก",
     "alternatives": [
       "ภาระค่าใช้จ่ายแฝง",
       "กฎข้อห้ามเคร่งครัด",
@@ -16212,7 +16212,7 @@ export const VOCAB_ITEMS = [
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "การบังคับขับไล่ออกจากที่พักอาศัย",
+    "thai": "การขับไล่ออกจากที่พัก",
     "alternatives": [
       "การต่อสัญญาเช่า",
       "การลดค่าเช่า",
@@ -16223,35 +16223,35 @@ export const VOCAB_ITEMS = [
   },
   {
     "id": "v_b2_home_16",
-    "word": "hearth",
-    "pos": "n.",
+    "word": "renovate",
+    "pos": "v.",
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "เตาผิงและความอบอุ่นในบ้าน",
+    "thai": "ปรับปรุงซ่อมแซม",
     "alternatives": [
-      "ระเบียงตากแดด",
-      "รั้วเหล็กดัด",
-      "โรงรถ"
+      "ทุบทำลายทิ้ง",
+      "ปล่อยให้ทรุดโทรม",
+      "สร้างสิ่งกีดขวาง"
     ],
-    "example": "Grandmother gathered storytelling grandchildren beside the comforting, crackling warmth of the brick hearth.",
-    "exampleThai": "คุณย่ารวบรวมหลานๆ มานั่งฟังนิทานข้างเตาผิงและความอบอุ่นในบ้านอิฐที่ส่งเสียงเปรี๊ยะๆ อันแสนสบายใจ"
+    "example": "The couple decided to renovate the old wooden townhouse before moving in.",
+    "exampleThai": "คู่สามีภรรยาตัดสินใจปรับปรุงซ่อมแซมบ้านทาวน์เฮาส์ไม้หลังเก่าก่อนจะย้ายเข้าไปอยู่"
   },
   {
     "id": "v_b2_home_17",
-    "word": "sedentary",
-    "pos": "adj.",
+    "word": "demolish",
+    "pos": "v.",
     "level": "B2",
     "category": "home-daily",
     "categoryLabel": "บ้าน & กิจวัตรประจำวัน",
-    "thai": "ซึ่งนั่งอยู่กับที่เนือยนิ่ง",
+    "thai": "รื้อถอนทำลาย",
     "alternatives": [
-      "ซึ่งกระฉับกระเฉงตลอดเวลา",
-      "ซึ่งทำงานใช้แรงงาน",
-      "ซึ่งเดินทางบ่อย"
+      "ก่อสร้างขึ้นใหม่",
+      "บูรณะซ่อมแซม",
+      "จัดตกแต่งภายใน"
     ],
-    "example": "Combating a sedentary indoor lifestyle requires incorporating brisk daily neighborhood strolls.",
-    "exampleThai": "การต่อสู้กับวิถีชีวิตในร่มซึ่งนั่งอยู่กับที่เนือยนิ่งต้องอาศัยการเดินเล่นในละแวกบ้านอย่างกระฉับกระเฉงทุกวัน"
+    "example": "The city council voted to demolish the abandoned warehouse to build a public park.",
+    "exampleThai": "สภาเทศบาลเมืองลงมติให้รื้อถอนทำลายโกดังร้างเพื่อสร้างสวนสาธารณะ"
   }
 ];
 

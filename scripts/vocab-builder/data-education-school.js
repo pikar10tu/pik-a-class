@@ -725,8 +725,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "งานชิ้นใหญ่ที่ได้รับมอบหมาย",
-    alternatives: ["การสอบปากเปล่า", "การเช็กชื่อในห้อง", "การอบรมปฐมนิเทศ"],
+    thai: "งานที่ได้รับมอบหมาย",
+    alternatives: ["การสอบไล่","การเข้าแถว","การปิดเทอม"],
     example: "The economics lecturer assigned a comprehensive research assignment on Southeast Asian inflation.",
     exampleThai: "อาจารย์ผู้บรรยายวิชาเศรษฐศาสตร์ได้มอบหมายงานชิ้นใหญ่ที่ได้รับมอบหมายเชิงวิจัยเรื่องภาวะเงินเฟ้อในเอเชียตะวันออกเฉียงใต้"
   },
@@ -737,8 +737,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ปริญญาบัตรมหาวิทยาลัย",
-    alternatives: ["ประกาศนียบัตรมัธยม", "ใบขับขี่สากล", "บัตรประจำตัวประชาชน"],
+    thai: "ปริญญาบัตร",
+    alternatives: ["บัตรนักศึกษา","ใบเสร็จค่าเทอม","ชุดครุย"],
     example: "Graduating with an accredited engineering degree opens exceptional worldwide career opportunities.",
     exampleThai: "การสำเร็จการศึกษาได้รับปริญญาบัตรมหาวิทยาลัยด้านวิศวกรรมที่ได้รับการรับรองช่วยเปิดโอกาสในการทำงานระดับโลก"
   },
@@ -785,8 +785,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ค่าธรรมเนียมการศึกษาเล่าเรียน",
-    alternatives: ["เงินเดือนอาจารย์", "งบประมาณวิจัย", "ค่าใช้จ่ายส่วนตัว"],
+    thai: "ค่าเล่าเรียน",
+    alternatives: ["เงินเดือนครู","ค่าชุดนักเรียน","ทุนการศึกษา"],
     example: "Public state universities maintain affordable tuition rates to guarantee equitable student access.",
     exampleThai: "มหาวิทยาลัยของรัฐรักษาระดับค่าธรรมเนียมการศึกษาเล่าเรียนให้อยู่ในเกณฑ์ย่อมเยาเพื่อรับรองความเท่าเทียมในการเข้าถึง"
   },
@@ -797,8 +797,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ภาคการศึกษาของมหาวิทยาลัย",
-    alternatives: ["ช่วงปิดเทอมฤดูร้อน", "สัปดาห์สอบปลายภาค", "ช่วงปฐมนิเทศ"],
+    thai: "ภาคการศึกษา",
+    alternatives: ["วันหยุดประจำสัปดาห์","การปฐมนิเทศ","พิธีประสาทปริญญา"],
     example: "Students typically register for five to six rigorous academic courses each semester.",
     exampleThai: "นักศึกษามักลงทะเบียนเรียนห้าถึงห้ารายวิชาเข้มข้นในแต่ละภาคการศึกษาของมหาวิทยาลัย"
   },
@@ -845,8 +845,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "หอพักนักศึกษาในมหาวิทยาลัย",
-    alternatives: ["อาคารบรรยายรวม", "ห้องสมุดกลาง", "โรงฝึกงาน"],
+    thai: "หอพักนักศึกษา",
+    alternatives: ["ห้องสมุดกลาง","โรงอาหาร","สนามกีฬา"],
     example: "Living in an on-campus dormitory helps freshmen make lifelong friendships easily.",
     exampleThai: "การอาศัยในหอพักนักศึกษาในมหาวิทยาลัยช่วยให้นักศึกษาปีหนึ่งสร้างมิตรภาพตลอดชีวิตได้อย่างง่ายดาย"
   },
@@ -857,8 +857,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ประมวลรายวิชาและแผนการสอน",
-    alternatives: ["ข้อสอบเก่า", "สมุดบันทึกนักเรียน", "ใบเสร็จค่าหน่วยกิต"],
+    thai: "ประมวลรายวิชา",
+    alternatives: ["ใบแจ้งเกรด","สมุดบันทึกการบ้าน","ระเบียบการรับสมัคร"],
     example: "Review the course syllabus thoroughly to understand grading criteria and exam dates.",
     exampleThai: "อ่านประมวลรายวิชาและแผนการสอนอย่างละเอียดเพื่อทำความเข้าใจเกณฑ์การให้คะแนนและวันสอบ"
   },
@@ -881,8 +881,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "กำหนดเวลาส่งงานวิชาการ",
-    alternatives: ["เวลาเริ่มชั้นเรียน", "ช่วงพักระหว่างคาบ", "วันเปิดเทอม"],
+    thai: "กำหนดเวลาส่งงาน",
+    alternatives: ["วันเปิดภาคเรียน","ตารางสอบ","ชั่วโมงกิจกรรม"],
     example: "The strict assignment submission deadline is Friday at five in the afternoon sharp.",
     exampleThai: "กำหนดเวลาส่งงานวิชาการที่เข้มงวดของการส่งงานคือวันศุกร์เวลาห้าโมงเย็นตรงเป๊ะ"
   },
@@ -893,8 +893,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "วินัยในการศึกษาเรียนรู้",
-    alternatives: ["ความเกียจคร้าน", "การผัดวันประกันพรุ่ง", "ความไม่ใส่ใจ"],
+    thai: "ระเบียบวินัย",
+    alternatives: ["การลงโทษ","การขาดเรียน","การสอบตก"],
     example: "Cultivating steady self-discipline is essential for successful independent university study.",
     exampleThai: "การปลูกฝังวินัยในการศึกษาเรียนรู้ในตนเองที่สม่ำเสมอเป็นสิ่งจำเป็นสำหรับการเรียนมหาวิทยาลัยที่ประสบความสำเร็จ"
   },
@@ -905,8 +905,8 @@ export const educationSchoolVocab = [
     level: "B1",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ประเมินผลสัมฤทธิ์ทางการเรียน",
-    alternatives: ["คาดเดาคะแนน", "เพิกเฉยผลสอบ", "ลงโทษทางวินัย"],
+    thai: "ประเมินผล",
+    alternatives: ["เข้าชั้นเรียน","ลงทะเบียน","สอบตก"],
     example: "Professors use continuous assessment rubrics to evaluate student critical thinking skills.",
     exampleThai: "อาจารย์ใช้เกณฑ์การประเมินแบบต่อเนื่องเพื่อประเมินผลสัมฤทธิ์ทางการเรียนด้านทักษะการคิดวิเคราะห์ของนักศึกษา"
   },
@@ -916,15 +916,15 @@ export const educationSchoolVocab = [
   // ==========================================
   {
     id: "v_b2_edu_01",
-    word: "pedagogy",
-    pos: "n.",
+    word: "comprehend",
+    pos: "v.",
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ศาสตร์และศิลป์การสอน",
-    alternatives: ["การบริหารงบประมาณโรงเรียน", "การก่อสร้างอาคารเรียน", "การตรวจระเบียบวินัย"],
-    example: "Innovative child-centered pedagogy encourages hands-on problem solving rather than rote memorization.",
-    exampleThai: "ศาสตร์และศิลป์การสอนที่เน้นผู้เรียนเป็นศูนย์กลางอันทันสมัยส่งเสริมการแก้ปัญหาแบบลงมือปฏิบัติจริงมากกว่าการท่องจำนกแก้วนกขุนทอง"
+    thai: "เข้าใจอย่างลึกซึ้ง",
+    alternatives: ["เข้าใจผิดเพี้ยน","มองข้ามเนื้อหา","ปฏิเสธที่จะฟัง"],
+    example: "Students often struggle to comprehend complex scientific texts without clear visual diagrams.",
+    exampleThai: "นักเรียนมักประสบความยากลำบากในการเข้าใจอย่างลึกซึ้งในตำราวิทยาศาสตร์ที่ซับซ้อนหากไม่มีแผนภาพประกอบที่ชัดเจน"
   },
   {
     id: "v_b2_edu_02",
@@ -952,15 +952,15 @@ export const educationSchoolVocab = [
   },
   {
     id: "v_b2_edu_04",
-    word: "matriculation",
-    pos: "n.",
+    word: "cite",
+    pos: "v.",
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "การขึ้นทะเบียนเป็นนักศึกษาอย่างเป็นทางการ",
-    alternatives: ["การสำเร็จการศึกษา", "การลาออกพ้นสภาพ", "การพักการเรียน"],
-    example: "Freshmen dressed in traditional academic robes for the formal university matriculation ceremony.",
-    exampleThai: "นักศึกษาใหม่แต่งกายด้วยชุดครุยวิชาการแบบดั้งเดิมสำหรับพิธีการขึ้นทะเบียนเป็นนักศึกษาอย่างเป็นทางการ"
+    thai: "อ้างอิงแหล่งที่มา",
+    alternatives: ["คัดลอกผลงานผู้อื่น","ปลอมแปลงเอกสาร","ละเลยข้อมูล"],
+    example: "Always remember to cite your sources properly to avoid committing academic plagiarism.",
+    exampleThai: "อย่าลืมอ้างอิงแหล่งที่มาของข้อมูลอย่างถูกต้องเสมอเพื่อหลีกเลี่ยงการโจรกรรมผลงานทางวิชาการ"
   },
   {
     id: "v_b2_edu_05",
@@ -981,8 +981,8 @@ export const educationSchoolVocab = [
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "วิชาบังคับก่อนที่ต้องสอบผ่าน",
-    alternatives: ["วิชาเลือกเสรี", "กิจกรรมนอกหลักสูตร", "วิชาบังคับร่วม"],
+    thai: "วิชาบังคับก่อน",
+    alternatives: ["วิชาเลือกเสรี","วิทยานิพนธ์","การฝึกงาน"],
     example: "Passing introductory calculus is an essential prerequisite before enrolling in advanced thermodynamics.",
     exampleThai: "การสอบผ่านแคลคูลัสเบื้องต้นเป็นวิชาบังคับก่อนที่ต้องสอบผ่านที่สำคัญก่อนลงทะเบียนเรียนอุณหพลศาสตร์ขั้นสูง"
   },
@@ -993,8 +993,8 @@ export const educationSchoolVocab = [
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "สมาคมศิษย์เก่าของสถาบัน",
-    alternatives: ["นักศึกษาปัจจุบัน", "คณะกรรมการบริหารมหาวิทยาลัย", "ผู้สมัครเข้าศึกษาใหม่"],
+    thai: "ศิษย์เก่า",
+    alternatives: ["คณาจารย์","นักศึกษาปัจจุบัน","ผู้ปกครอง"],
     example: "Distinguished university alumni funded an endowment for underprivileged STEM students.",
     exampleThai: "สมาคมศิษย์เก่าของสถาบันที่มีชื่อเสียงได้ร่วมบริจาคกองทุนเพื่อนักเรียนสาขาวิทยาศาสตร์ที่ขาดแคลนทุนทรัพย์"
   },
@@ -1036,27 +1036,27 @@ export const educationSchoolVocab = [
   },
   {
     id: "v_b2_edu_11",
-    word: "colloquium",
-    pos: "n.",
+    word: "illustrate",
+    pos: "v.",
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "การสัมมนาวิชาการเฉพาะทาง",
-    alternatives: ["งานเลี้ยงรุ่นรื่นเริง", "การประชุมผู้ปกครอง", "การแข่งขันกีฬาภายใน"],
-    example: "Theoretical physicists gathered for a week-long colloquium on quantum gravity anomalies.",
-    exampleThai: "นักฟิสิกส์ทฤษฎีมารวมตัวกันสำหรับการสัมมนาวิชาการเฉพาะทางยาวนานหนึ่งสัปดาห์เรื่องความผิดปกติของแรงโน้มถ่วงควอนตัม"
+    thai: "ยกตัวอย่างอธิบาย",
+    alternatives: ["บิดเบือนข้อเท็จจริง","ปกปิดหลักฐาน","ทำให้สับสนงุนงง"],
+    example: "The professor used real-world case studies to illustrate complex economic principles.",
+    exampleThai: "อาจารย์ใช้กรณีศึกษาในโลกแห่งความเป็นจริงเพื่อยกตัวอย่างอธิบายหลักการทางเศรษฐศาสตร์ที่ซับซ้อน"
   },
   {
     id: "v_b2_edu_12",
-    word: "valedictorian",
-    pos: "n.",
+    word: "formulate",
+    pos: "v.",
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ผู้แทนนักเรียนกล่าวสุนทรพจน์ในวันจบ",
-    alternatives: ["ประธานนักเรียนรุ่นน้อง", "อาจารย์ที่ปรึกษา", "เจ้าหน้าที่ทะเบียน"],
-    example: "The graduating class valedictorian inspired peers with a moving address on social responsibility.",
-    exampleThai: "ผู้แทนนักเรียนกล่าวสุนทรพจน์ในวันจบการศึกษาได้สร้างแรงบันดาลใจให้แก่เพื่อนๆ ด้วยสุนทรพจน์อันน่าซาบซึ้งเรื่องความรับผิดชอบต่อสังคม"
+    thai: "คิดค้นกำหนดขึ้น",
+    alternatives: ["ลบล้างข้อเท็จจริง","ลอกเลียนแบบคำตอบ","ยกเลิกโครงการ"],
+    example: "Researchers must formulate a testable hypothesis before conducting clinical experiments.",
+    exampleThai: "นักวิจัยต้องคิดค้นกำหนดสมมติฐานที่สามารถทดสอบได้ก่อนจะเริ่มการทดลองทางคลินิก"
   },
   {
     id: "v_b2_edu_13",
@@ -1072,15 +1072,15 @@ export const educationSchoolVocab = [
   },
   {
     id: "v_b2_edu_14",
-    word: "erudite",
-    pos: "adj.",
+    word: "analyze",
+    pos: "v.",
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "รอบรู้ลึกซึ้งแตกฉานทางวิชาการ",
-    alternatives: ["มีความรู้ตื้นเขิน", "ขาดการศึกษา", "ไร้ประสบการณ์"],
-    example: "The erudite professor answered arcane historical questions with effortless intellectual depth.",
-    exampleThai: "ศาสตราจารย์ผู้รอบรู้ลึกซึ้งแตกฉานทางวิชาการตอบคำถามประวัติศาสตร์อันลึกซึ้งได้อย่างง่ายดายด้วยภูมิปัญญาอันล้ำลึก"
+    thai: "วิเคราะห์อย่างละเอียด",
+    alternatives: ["เดาสุ่มคำตอบ","มองข้ามรายละเอียด","รวบรวมแบบผิวเผิน"],
+    example: "Candidates in the examination are asked to analyze historical trends from various data tables.",
+    exampleThai: "ผู้เข้าสอบถูกขอให้วิเคราะห์อย่างละเอียดเกี่ยวกับแนวโน้มทางประวัติศาสตร์จากตารางข้อมูลต่างๆ"
   },
   {
     id: "v_b2_edu_15",
@@ -1113,8 +1113,8 @@ export const educationSchoolVocab = [
     level: "B2",
     category: "education-school",
     categoryLabel: "การศึกษา & โรงเรียน",
-    thai: "ทุนทำวิจัยหลังปริญญาเอก",
-    alternatives: ["เงินกู้ยืมส่วนบุคคล", "เบี้ยเลี้ยงรายวัน", "ค่าประกันสุขภาพ"],
+    thai: "ทุนวิจัย",
+    alternatives: ["เงินกู้ยืม","ค่าธรรมเนียมหอพัก","รางวัลเรียนดี"],
     example: "She was awarded an international postdoctoral research fellowship to study cancer genomics.",
     exampleThai: "เธอได้รับรางวัลทุนทำวิจัยหลังปริญญาเอกระดับนานาชาติเพื่อศึกษาพันธุศาสตร์ของโรคมะเร็ง"
   }

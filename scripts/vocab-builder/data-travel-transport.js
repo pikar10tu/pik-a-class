@@ -129,8 +129,8 @@ export const travelTransportVocab = [
     level: "A1",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "ถนนหนทาง",
-    alternatives: ["ทางรถไฟ", "คลองส่งน้ำ", "รันเวย์"],
+    thai: "ถนน",
+    alternatives: ["ทางรถไฟ","แม่น้ำ","รันเวย์"],
     example: "Workers are paving the main road through the rural village.",
     exampleThai: "คนงานกำลังลาดยางถนนหนทางสายหลักที่ตัดผ่านหมู่บ้านชนบท"
   },
@@ -869,8 +869,8 @@ export const travelTransportVocab = [
     level: "B1",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "ด่านศุลกากรตรวจคนเข้าเมือง",
-    alternatives: ["จุดประชาสัมพันธ์", "ห้องรับรองพิเศษ", "จุดแลกเปลี่ยนเงินตรา"],
+    thai: "ด่านศุลกากร",
+    alternatives: ["จุดประชาสัมพันธ์","ห้องรับรองพิเศษ","จุดแลกเปลี่ยนเงินตรา"],
     example: "Officers at airport customs examined imported luxury goods thoroughly.",
     exampleThai: "เจ้าหน้าที่ ณ ด่านศุลกากรตรวจคนเข้าเมืองของสนามบินตรวจสอบสินค้านำเข้าหรูหราอย่างละเอียด"
   },
@@ -881,8 +881,8 @@ export const travelTransportVocab = [
     level: "B1",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "สำแดงสิ่งของต้องห้าม",
-    alternatives: ["ซุกซ่อนสัมภาระ", "ทิ้งสิ่งของลงถัง", "ส่งพัสดุล่วงหน้า"],
+    thai: "สำแดงของเสียภาษี",
+    alternatives: ["ซุกซ่อนสัมภาระ","ทิ้งสิ่งของลงถัง","ส่งพัสดุล่วงหน้า"],
     example: "Travelers must declare agricultural plant products upon landing in Australia.",
     exampleThai: "นักเดินทางต้องสำแดงสิ่งของต้องห้ามประเภทพืชผลทางการเกษตรเมื่อเดินทางถึงออสเตรเลีย"
   },
@@ -945,8 +945,8 @@ export const travelTransportVocab = [
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "การทัศนศึกษาท่องเที่ยวระยะสั้น",
-    alternatives: ["การย้ายถิ่นฐานถาวร", "การลี้ภัยทางการเมือง", "การกักกันโรคสิบสี่วัน"],
+    thai: "การทัศนศึกษาระยะสั้น",
+    alternatives: ["การย้ายถิ่นฐาน","การกักตัว","การเดินทางรอบโลก"],
     example: "The biology university students took a weekend excursion to study mangrove ecosystems.",
     exampleThai: "นักศึกษามหาวิทยาลัยภาควิชาชีววิทยาไปร่วมการทัศนศึกษาท่องเที่ยวระยะสั้นเพื่อศึกษาระบบนิเวศป่าชายเลน"
   },
@@ -969,22 +969,22 @@ export const travelTransportVocab = [
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "ขึ้นยานพาหนะเริ่มต้นการเดินทาง",
-    alternatives: ["ลงจากยานพาหนะ", "ยกเลิกภารกิจ", "ชะลอการเดินทาง"],
+    thai: "ขึ้นยานพาหนะเดินทาง",
+    alternatives: ["ลงจากยานพาหนะ","ยกเลิกการเดินทาง","พักค้างคืน"],
     example: "Eager passengers prepared to embark on the transatlantic ocean voyage across the sea.",
     exampleThai: "ผู้โดยสารผู้กระตือรือร้นเตรียมตัวขึ้นยานพาหนะเริ่มต้นการเดินทางข้ามมหาสมุทรแอตแลนติก"
   },
   {
     id: "v_b2_travel_06",
-    word: "repatriation",
-    pos: "n.",
+    word: "divert",
+    pos: "v.",
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "การส่งตัวกลับสู่มาตุภูมิ",
-    alternatives: ["การเนรเทศออกนอกประเทศ", "การให้ที่ลี้ภัย", "การเกณฑ์แรงงาน"],
-    example: "The foreign ministry organized emergency repatriation flights for citizens caught in the warzone.",
-    exampleThai: "กระทรวงการต่างประเทศจัดเที่ยวบินด่วนสำหรับการส่งตัวกลับสู่มาตุภูมิให้แก่พลเมืองที่ติดอยู่ในเขตสงคราม"
+    thai: "เปลี่ยนเส้นทางชั่วคราว",
+    alternatives: ["เดินทางตามกำหนดการเดิม","ลงจอดฉุกเฉิน","บินตรงสู่จุดหมาย"],
+    example: "Heavy fog forced air traffic control to divert several incoming flights to a nearby airport.",
+    exampleThai: "หมอกหนาจัดบีบให้เจ้าหน้าที่ควบคุมการจราจรทางอากาศต้องเปลี่ยนเส้นทางชั่วคราวของหลายเที่ยวบินไปยังสนามบินใกล้เคียง"
   },
   {
     id: "v_b2_travel_07",
@@ -1017,8 +1017,8 @@ export const travelTransportVocab = [
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "ยังไม่เคยปรากฏในแผนที่สำรวจ",
-    alternatives: ["เป็นที่รู้จักกันดี", "มีป้ายบอกทางครบถ้วน", "พลุกพล่านด้วยนักท่องเที่ยว"],
+    thai: "ที่ยังไม่เคยสำรวจ",
+    alternatives: ["ที่มีคนพลุกพล่าน","ที่พัฒนาแล้ว","ที่มีชื่อเสียงระดับโลก"],
     example: "Pioneering deep-sea ocean explorers sailed through perilous and uncharted polar waters.",
     exampleThai: "นักสำรวจใต้ทะเลลึกผู้บุกเบิกได้ล่องเรือผ่านน่านน้ำขั้วโลกที่อันตรายและยังไม่เคยปรากฏในแผนที่สำรวจ"
   },
@@ -1084,15 +1084,15 @@ export const travelTransportVocab = [
   },
   {
     id: "v_b2_travel_15",
-    word: "sovereignty",
-    pos: "n.",
+    word: "navigate",
+    pos: "v.",
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "อำนาจอธิปไตยเหนือน่านฟ้า",
-    alternatives: ["การเปิดน่านฟ้าเสรี", "การค้าแบบไร้พรมแดน", "การยกเว้นหนังสือเดินทาง"],
-    example: "Nations strictly protect their territorial airspace sovereignty against unauthorized military aircraft.",
-    exampleThai: "นานาประเทศปกป้องอำนาจอธิปไตยเหนือน่านฟ้าอาณาเขตของตนอย่างเข้มงวดจากเครื่องบินทหารที่ไม่ได้รับอนุญาต"
+    thai: "นำทางค้นหาเส้นทาง",
+    alternatives: ["หลงทางในป่า","หยุดนิ่งอยู่กับที่","ละทิ้งยานพาหนะ"],
+    example: "Captains rely on advanced radar and sonar technology to navigate hazardous coastal reefs.",
+    exampleThai: "กัปตันพึ่งพาเทคโนโลยีเรดาร์และโซนาร์ขั้นสูงเพื่อนำทางค้นหาเส้นทางผ่านแนวปะการังชายฝั่งที่อันตราย"
   },
   {
     id: "v_b2_travel_16",
@@ -1101,8 +1101,8 @@ export const travelTransportVocab = [
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "เอกสารตราประทับตรวจลงตราเข้าเมือง",
-    alternatives: ["บัตรขึ้นเครื่องบิน", "ใบขับขี่สากล", "บัตรเครดิตระหว่างประเทศ"],
+    thai: "วีซ่าเข้าเมือง",
+    alternatives: ["ตั๋วเครื่องบิน","ใบขับขี่สากล","บัตรเครดิต"],
     example: "Working professionals must secure a sponsored business visa before taking up overseas employment.",
     exampleThai: "คนทำงานมืออาชีพต้องได้รับเอกสารตราประทับตรวจลงตราเข้าเมืองประเภทธุรกิจก่อนเริ่มทำงานในต่างประเทศ"
   },
@@ -1113,8 +1113,8 @@ export const travelTransportVocab = [
     level: "B2",
     category: "travel-transport",
     categoryLabel: "การเดินทาง & คมนาคม",
-    thai: "เกี่ยวกับการเดินเรือและการพาณิชย์ทางทะเล",
-    alternatives: ["เกี่ยวกับการบินพาณิชย์", "เกี่ยวกับการขนส่งทางราง", "เกี่ยวกับการขนส่งทางท่อ"],
+    thai: "เกี่ยวกับการเดินเรือทางทะเล",
+    alternatives: ["เกี่ยวกับอวกาศ","เกี่ยวกับทางรถไฟ","เกี่ยวกับการบินพลเรือน"],
     example: "Singapore and Rotterdam serve as vital global hubs for international maritime trade.",
     exampleThai: "สิงคโปร์และรอตเทอร์ดัมทำหน้าที่เป็นศูนย์กลางสำคัญระดับโลกสำหรับการค้าเกี่ยวกับการเดินเรือและการพาณิชย์ทางทะเล"
   }

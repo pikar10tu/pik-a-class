@@ -142,7 +142,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "___ (hear) the loud explosion, everyone ran out of the building into the street.",
     "answerKey": [
       "Hearing"
@@ -158,18 +158,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "Hearing",
-      "Heard",
-      "Having heard",
-      "To hear"
-    ],
     "contentHash": "dcd3aa6c707ad20e"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The laptop ___ (damage) during the storm has now been completely repaired.",
     "answerKey": [
       "damaged"
@@ -185,18 +179,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "damaged",
-      "damaging",
-      "was damaged",
-      "to damage"
-    ],
     "contentHash": "371abb520ef7317c"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "___ (live) in Rome for ten years, Marco speaks Italian fluently.",
     "answerKey": [
       "Having lived"
@@ -212,18 +200,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "Having lived",
-      "Lived",
-      "To live",
-      "Had lived"
-    ],
     "contentHash": "2be0ee7d51eec5ab"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The passengers ___ (wait) in the departure lounge were growing impatient.",
     "answerKey": [
       "waiting"
@@ -239,18 +221,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "waiting",
-      "waited",
-      "to wait",
-      "were waiting"
-    ],
     "contentHash": "92937f1fa2993f79"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "___ (see) from the sky, the coral reef looks like a glittering jewel.",
     "answerKey": [
       "Seen"
@@ -266,19 +242,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "Seen",
-      "Seeing",
-      "Having seen",
-      "To see"
-    ],
     "contentHash": "1932a5f93b076b8f"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "Not ___ (want) to wake up his sick daughter, David walked on tiptoe.",
+    "prompt": "Not ___ to wake up his sick daughter, David walked on tiptoe.",
     "answerKey": [
       "wanting"
     ],
@@ -461,7 +431,8 @@
       "I would have passed the exam if I had studied harder"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -500,7 +471,8 @@
       "If she hadn't missed the train she would have arrived on time"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -539,7 +511,8 @@
       "I would be living in London now if I had won that scholarship"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -578,7 +551,8 @@
       "We would have been lost if we hadn't brought a map"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -593,13 +567,14 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If you had told me about the meeting, I ___ (attend) it without hesitation.",
     "answerKey": [
       "would have attended"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -609,24 +584,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "would have attended",
-      "would attend",
-      "had attended",
-      "will attend"
-    ],
     "contentHash": "df7602788b5f2eb6"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If she ___ (not forget) her passport, she wouldn't have missed her international flight.",
     "answerKey": [
       "hadn't forgotten"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -636,24 +606,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "hadn't forgotten",
-      "didn't forget",
-      "doesn't forget",
-      "wouldn't forget"
-    ],
     "contentHash": "8e20cdf85a7bdb96"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If he had taken his medicine yesterday, he ___ feel much healthier today.",
     "answerKey": [
       "would"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -663,24 +628,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "would",
-      "would have",
-      "had",
-      "will"
-    ],
     "contentHash": "85be1a32211bf86c"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "What would you have ___ (do) if you had been in my position?",
     "answerKey": [
       "done"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -690,24 +650,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "done",
-      "do",
-      "did",
-      "doing"
-    ],
     "contentHash": "b6592131558ca0a7"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If we ___ (book) the flight tickets earlier, we could have saved a lot of money.",
     "answerKey": [
       "had booked"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -717,12 +672,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "had booked",
-      "booked",
-      "would book",
-      "have booked"
-    ],
     "contentHash": "9965cf382527d576"
   },
   {
@@ -734,7 +683,8 @@
       "would"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -767,7 +717,8 @@
       "would have gone"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -794,7 +745,8 @@
       "would have"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -821,7 +773,8 @@
       "had worn"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -848,7 +801,8 @@
       "If I had listened to your advice, I would have avoided this error."
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -875,7 +829,8 @@
       "hadn't pulled"
     ],
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3-mixed",
+      "grammar:conditional-3"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1036,7 +991,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It's about time we ___ (go) home; it is well past midnight.",
     "answerKey": [
       "went"
@@ -1052,18 +1007,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "went",
-      "go",
-      "gone",
-      "have gone"
-    ],
     "contentHash": "9a697f2a3c7548fc"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The director insists that every employee ___ (be) punctual for the briefing.",
     "answerKey": [
       "be"
@@ -1079,18 +1028,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "be",
-      "is",
-      "was",
-      "are"
-    ],
     "contentHash": "f3020deb14bca9d9"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I'd rather you ___ (not smoke) inside the conference room.",
     "answerKey": [
       "didn't smoke"
@@ -1106,18 +1049,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "didn't smoke",
-      "don't smoke",
-      "not smoke",
-      "not to smoke"
-    ],
     "contentHash": "fdf06111bc0a93cb"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It is essential that he ___ (submit) the scholarship application before Friday.",
     "answerKey": [
       "submit"
@@ -1133,18 +1070,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "submit",
-      "submits",
-      "submitted",
-      "is submitting"
-    ],
     "contentHash": "b4bf3e50a9785642"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I wish I ___ (know) the truth before I signed that risky contract.",
     "answerKey": [
       "had known"
@@ -1160,19 +1091,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "had known",
-      "knew",
-      "know",
-      "have known"
-    ],
     "contentHash": "8ae68bd66b08a70c"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "The court ordered that the prisoner ___ (release) immediately due to lack of evidence.",
+    "prompt": "The court ordered that the prisoner ___ immediately due to lack of evidence.",
     "answerKey": [
       "be released"
     ],
@@ -1481,7 +1406,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The window was smashed. The mischievous boys must ___ (kick) the football through it.",
     "answerKey": [
       "have kicked"
@@ -1497,18 +1422,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have kicked",
-      "kick",
-      "had kicked",
-      "kicked"
-    ],
     "contentHash": "2011edc16334904f"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "You ___ have informed me you were coming; I would have prepared lunch!",
     "answerKey": [
       "should"
@@ -1524,18 +1443,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "should",
-      "must",
-      "can",
-      "will"
-    ],
     "contentHash": "8cb161bfd75bdd39"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He ___ have passed that difficult medical board exam; he didn't revise at all!",
     "answerKey": [
       "can't"
@@ -1551,18 +1464,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "can't",
-      "must",
-      "should",
-      "might"
-    ],
     "contentHash": "bb24527530f54d3b"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I am not positive where Diana went. She ___ have caught the express train.",
     "answerKey": [
       "might"
@@ -1578,18 +1485,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "might",
-      "must",
-      "should",
-      "can't"
-    ],
     "contentHash": "85d64c598b4c2bd3"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "We ___ (not / buy) so many fresh groceries; more than half spoiled.",
     "answerKey": [
       "shouldn't have bought"
@@ -1605,19 +1506,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "shouldn't have bought",
-      "mustn't have bought",
-      "couldn't buy",
-      "didn't buy"
-    ],
     "contentHash": "fe2ade6c89055532"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "Arthur looks overjoyed today. He must have ___ (receive) his dream job offer.",
+    "prompt": "Arthur looks overjoyed today. He must have ___ his dream job offer.",
     "answerKey": [
       "received"
     ],
@@ -1795,7 +1690,8 @@
       "I had my hair cut yesterday"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1829,7 +1725,8 @@
       "She got her car repaired by an expert mechanic"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1867,7 +1764,8 @@
       "It is believed that this ancient temple was built over a thousand years ago"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1901,7 +1799,8 @@
       "He is reported to be hiding in the forest"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1916,13 +1815,14 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "We need to ___ (have / get) our damaged roof repaired before the torrential monsoon starts.",
     "answerKey": [
       "have"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1932,24 +1832,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have",
-      "make",
-      "let",
-      "do"
-    ],
     "contentHash": "e4fba5420599637c"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The instructor had the students ___ (write) a 500-word essay in silence.",
     "answerKey": [
       "write"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1959,24 +1854,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "write",
-      "to write",
-      "writing",
-      "written"
-    ],
     "contentHash": "eaf213e6d0c832ec"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I managed to get the technician ___ (install) the security patch on my device.",
     "answerKey": [
       "to install"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -1986,24 +1876,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to install",
-      "install",
-      "installed",
-      "installing"
-    ],
     "contentHash": "89a037070087680d"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It is commonly ___ (say) that daily meditation enhances cognitive clarity.",
     "answerKey": [
       "said"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2013,24 +1898,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "said",
-      "saying",
-      "say",
-      "to say"
-    ],
     "contentHash": "d37a586c3855275a"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The billionaire is rumored to ___ (own) multiple private islands in the Caribbean.",
     "answerKey": [
       "own"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2040,24 +1920,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "own",
-      "owns",
-      "owned",
-      "owning"
-    ],
     "contentHash": "70eff276f2e59478"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "I must have my passport ___ (renew) before traveling abroad next autumn.",
+    "prompt": "I must have my passport ___ before traveling abroad next autumn.",
     "answerKey": [
       "renewed"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2079,7 +1954,7 @@
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "Causative structure: \"have someone ___ (do something)\" vs \"get someone ___ (do something)\"",
+    "prompt": "Causative structure: \"have someone ___\" vs \"get someone ___ (do something)\"",
     "choices": [
       "do / to do",
       "to do / do",
@@ -2090,7 +1965,8 @@
       "do / to do"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2117,7 +1993,8 @@
       "painted"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2144,7 +2021,8 @@
       "to speak"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2171,7 +2049,8 @@
       "leaving"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2198,7 +2077,8 @@
       "repaired"
     ],
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced-causative",
+      "grammar:causative"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2355,7 +2235,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Mount Everest, ___ is the highest peak above sea level, attracts veteran mountaineers.",
     "answerKey": [
       "which"
@@ -2371,18 +2251,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "which",
-      "that",
-      "where",
-      "whose"
-    ],
     "contentHash": "ed3f4347c246ff65"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "My mentor, ___ daughter is a renowned concert violinist, invited us to the recital.",
     "answerKey": [
       "whose"
@@ -2398,18 +2272,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "whose",
-      "who",
-      "whom",
-      "which"
-    ],
     "contentHash": "abb16086c110f4ec"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The research project ___ which we dedicated two years has finally yielded breakthroughs.",
     "answerKey": [
       "to"
@@ -2425,18 +2293,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to",
-      "on",
-      "in",
-      "at"
-    ],
     "contentHash": "82b573bf960b05c9"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He arrived late and unprepared for the interview, ___ irritated the hiring manager.",
     "answerKey": [
       "which"
@@ -2452,18 +2314,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "which",
-      "that",
-      "what",
-      "where"
-    ],
     "contentHash": "f3f9d5e0e47d5dc6"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The scientist, ___ groundbreaking discovery won the Nobel Prize, presented a keynote.",
     "answerKey": [
       "whose"
@@ -2479,12 +2335,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "whose",
-      "who",
-      "whom",
-      "that"
-    ],
     "contentHash": "bb630146a6d01010"
   },
   {
@@ -2672,7 +2522,8 @@
       "This time tomorrow I will be flying to Tokyo"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2709,7 +2560,8 @@
       "By the end of this year they will have built the house"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2745,7 +2597,8 @@
       "Don't call me at eight because I will be having dinner"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2780,7 +2633,8 @@
       "Will you have finished the report by five PM"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2795,13 +2649,14 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "By 2030, engineers will ___ (develop) commercial electric aircraft.",
     "answerKey": [
       "have developed"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2811,24 +2666,20 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have developed",
-      "be developing",
-      "develop",
-      "developed"
-    ],
     "contentHash": "858dd3c37312c529"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "This time next month, we will be ___ (relax) on the sunlit beaches of Bali.",
     "answerKey": [
       "relaxing"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2838,24 +2689,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "relaxing",
-      "relaxed",
-      "relax",
-      "have relaxed"
-    ],
     "contentHash": "af5e525053920e86"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "By the time you wake up tomorrow, the courier will ___ (deliver) the package.",
     "answerKey": [
       "have delivered"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2865,24 +2711,20 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have delivered",
-      "deliver",
-      "be delivering",
-      "delivered"
-    ],
     "contentHash": "1727d279ca465237"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Will you be ___ (use) the projector this afternoon, or may I reserve it?",
     "answerKey": [
       "using"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2892,24 +2734,19 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "using",
-      "used",
-      "use",
-      "have used"
-    ],
     "contentHash": "577e5fbb810b3a6d"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "By next spring, Arthur will have ___ (work) at this institute for twenty years.",
     "answerKey": [
       "worked"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2919,24 +2756,20 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "worked",
-      "work",
-      "working",
-      "be working"
-    ],
     "contentHash": "15784272ab361c7c"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "Don't visit their headquarters at 3 PM; the committee will be ___ (conduct) an audit.",
+    "prompt": "Don't visit their headquarters at 3 PM; the committee will be ___ an audit.",
     "answerKey": [
       "conducting"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2969,7 +2802,8 @@
       "will have finished"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -2996,7 +2830,9 @@
       "will be taking"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -3023,7 +2859,8 @@
       "will have graduated"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -3050,7 +2887,8 @@
       "Will you be passing by the post office today?"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-continuous"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -3077,7 +2915,8 @@
       "will have passed"
     ],
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-advanced",
+      "grammar:future-perfect"
     ],
     "visibility": "bank",
     "isPreview": false,
@@ -3233,7 +3072,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Seldom ___ (have / do) they seen such astonishing bravery under pressure.",
     "answerKey": [
       "have"
@@ -3249,18 +3088,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have",
-      "do",
-      "did",
-      "are"
-    ],
     "contentHash": "f4799aa2c63ef31c"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "No sooner had she entered the cabin ___ the blizzard broke out.",
     "answerKey": [
       "than"
@@ -3276,18 +3109,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "than",
-      "when",
-      "then",
-      "that"
-    ],
     "contentHash": "2c65837263687590"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Hardly had the keynote begun ___ the auditorium lights went out.",
     "answerKey": [
       "when"
@@ -3303,18 +3130,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "when",
-      "than",
-      "then",
-      "while"
-    ],
     "contentHash": "56174e56a328d098"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Under no circumstances ___ you share this confidential key with unauthorized personnel.",
     "answerKey": [
       "should"
@@ -3330,18 +3151,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "should",
-      "you should",
-      "will",
-      "you will"
-    ],
     "contentHash": "97cc633e68a771d8"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Little ___ he know about the surprise celebration his peers had orchestrated.",
     "answerKey": [
       "did"
@@ -3357,12 +3172,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "did",
-      "does",
-      "had",
-      "was"
-    ],
     "contentHash": "777decaf8d7d1c15"
   },
   {
@@ -3675,7 +3484,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It was John ___ brought the mouthwatering homemade pastries.",
     "answerKey": [
       "who"
@@ -3691,18 +3500,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "who",
-      "which",
-      "whose",
-      "whom"
-    ],
     "contentHash": "e39f40b0e3709962"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "What astonished everyone ___ her sudden resignation.",
     "answerKey": [
       "was"
@@ -3718,18 +3521,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "was",
-      "were",
-      "are",
-      "being"
-    ],
     "contentHash": "c354fb6d45e22c73"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "All I am asking ___ is an honest evaluation of my performance.",
     "answerKey": [
       "for"
@@ -3745,18 +3542,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "for",
-      "to",
-      "with",
-      "about"
-    ],
     "contentHash": "d881dc718ccdeb37"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It was not until yesterday evening ___ the committee disclosed the findings.",
     "answerKey": [
       "that"
@@ -3772,18 +3563,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "that",
-      "when",
-      "which",
-      "where"
-    ],
     "contentHash": "4285e1dfbce1c1d9"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "What you need most right now ___ forty-eight hours of genuine rest.",
     "answerKey": [
       "is"
@@ -3799,12 +3584,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "is",
-      "are",
-      "were",
-      "being"
-    ],
     "contentHash": "159ced9e2624b1e8"
   },
   {
@@ -4111,7 +3890,7 @@
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The newly proposed model appears ___ (be) viable according to the pilot study.",
     "answerKey": [
       "to be"
@@ -4127,18 +3906,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to be",
-      "being",
-      "been",
-      "be"
-    ],
     "contentHash": "2fb4ea46412a975c"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He is naturally reserved, ___ his twin brother is remarkably extroverted.",
     "answerKey": [
       "whereas"
@@ -4154,18 +3927,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "whereas",
-      "despite",
-      "although",
-      "because"
-    ],
     "contentHash": "8cfd421058389ffe"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The clinical trial faced regulatory hurdles; ___, the researchers persevered.",
     "answerKey": [
       "nevertheless"
@@ -4181,18 +3948,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "nevertheless",
-      "furthermore",
-      "consequently",
-      "otherwise"
-    ],
     "contentHash": "a8dfbd6a6920bc84"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Experienced investors ___ to exercise prudence during volatile market cycles.",
     "answerKey": [
       "tend"
@@ -4208,18 +3969,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "tend",
-      "tends",
-      "tending",
-      "tended"
-    ],
     "contentHash": "c328a3e88d5700c2"
   },
   {
     "skill": "grammar",
     "level": "B2",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It is commonly ___ (believe) that regular aerobic activity sharpens mental focus.",
     "answerKey": [
       "believed"
@@ -4235,19 +3990,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "believed",
-      "believing",
-      "believe",
-      "to believe"
-    ],
     "contentHash": "ca1fc8a5baf22f7b"
   },
   {
     "skill": "grammar",
     "level": "B2",
     "type": "mcq",
-    "prompt": "Preliminary evidence seems to ___ (suggest) that the fiscal reform has succeeded.",
+    "prompt": "Preliminary evidence seems to ___ that the fiscal reform has succeeded.",
     "answerKey": [
       "suggest"
     ],
@@ -4404,5 +4153,113 @@
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
     "contentHash": "c7dde0bc0145d492"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "The ancient fortress is believed ___ in the fourteenth century.",
+    "choices": [
+      "to have been built",
+      "to build",
+      "building",
+      "having built"
+    ],
+    "answerKey": [
+      "to have been built"
+    ],
+    "tags": [
+      "grammar:passive-advanced-causative",
+      "grammar:passive-advanced"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Subtopics",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "This time tomorrow, the rescue team ___ through the disaster zone.",
+    "choices": [
+      "will be searching",
+      "will have searched",
+      "search",
+      "is searched"
+    ],
+    "answerKey": [
+      "will be searching"
+    ],
+    "tags": [
+      "grammar:future-advanced",
+      "grammar:future-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Subtopics",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "If he had accepted the scholarship last year, he ___ a master's degree student now.",
+    "choices": [
+      "would be",
+      "would have been",
+      "will be",
+      "is"
+    ],
+    "answerKey": [
+      "would be"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Subtopics",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
+  },
+  {
+    "skill": "grammar",
+    "level": "B2",
+    "type": "mcq",
+    "prompt": "If they had checked the weather forecast before sailing, they ___ stranded at sea today.",
+    "choices": [
+      "wouldn't be",
+      "won't be",
+      "weren't",
+      "wouldn't have been"
+    ],
+    "answerKey": [
+      "wouldn't be"
+    ],
+    "tags": [
+      "grammar:conditional-3-mixed",
+      "grammar:mixed-conditionals"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "assignedUids": [],
+    "source": "Pik a Class Curriculum B2 Subtopics",
+    "createdAt": "2026-09-25T00:00:00.000Z",
+    "updatedAt": "2026-09-25T00:00:00.000Z",
+    "createdBy": "curriculum-auditor"
   }
 ]

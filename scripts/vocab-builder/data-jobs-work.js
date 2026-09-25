@@ -976,15 +976,15 @@ export const jobsWorkVocab = [
   },
   {
     id: "v_b2_job_06",
-    word: "absenteeism",
-    pos: "n.",
+    word: "implement",
+    pos: "v.",
     level: "B2",
     category: "jobs-work",
     categoryLabel: "อาชีพ & การทำงาน",
-    thai: "การขาดงานประจำโดยไร้เหตุผล",
-    alternatives: ["การมาทำงานตรงเวลา", "การทุ่มเททำงานล่วงเวลา", "การร่วมกิจกรรมบริษัท"],
-    example: "Chronic workplace absenteeism often signals underlying employee burnout and low organizational morale.",
-    exampleThai: "การขาดงานประจำโดยไร้เหตุผลเรื้อรังในที่ทำงานมักสะท้อนถึงภาวะหมดไฟของพนักงานและขวัญกำลังใจที่ตกต่ำ"
+    thai: "นำไปปฏิบัติจริง",
+    alternatives: ["ละทิ้งแผนงาน","ระงับโครงการไว้ก่อน","คัดค้านนโยบาย"],
+    example: "The management team worked closely to implement the new environmental policy across all branches.",
+    exampleThai: "ทีมผู้บริหารทำงานร่วมกันอย่างใกล้ชิดเพื่อนำนโยบายสิ่งแวดล้อมใหม่ไปปฏิบัติจริงในทุกสาขา"
   },
   {
     id: "v_b2_job_07",
@@ -1072,27 +1072,27 @@ export const jobsWorkVocab = [
   },
   {
     id: "v_b2_job_14",
-    word: "tenure",
-    pos: "n.",
+    word: "coordinate",
+    pos: "v.",
     level: "B2",
     category: "jobs-work",
     categoryLabel: "อาชีพ & การทำงาน",
-    thai: "สถานะการจ้างงานถาวรตลอดชีพ",
-    alternatives: ["สัญญาจ้างชั่วคราวรายวัน", "การฝึกงานช่วงฤดูร้อน", "การทดลองงานระยะสั้น"],
-    example: "Achieving academic tenure grants university professors guaranteed academic freedom and job security.",
-    exampleThai: "การได้รับสถานะการจ้างงานถาวรตลอดชีพช่วยให้อาจารย์มหาวิทยาลัยมีเสรีภาพทางวิชาการและความมั่นคงในอาชีพ"
+    thai: "ประสานงานร่วมมือ",
+    alternatives: ["ขัดขวางการทำงาน","ทำงานแบบแยกส่วน","ตัดขาดการสื่อสาร"],
+    example: "The project manager must coordinate with different departments to ensure timely delivery.",
+    exampleThai: "ผู้จัดการโครงการต้องประสานงานร่วมมือกับแผนกต่างๆ เพื่อให้มั่นใจว่าจะส่งมอบงานได้ตรงเวลา"
   },
   {
     id: "v_b2_job_15",
-    word: "nepotism",
-    pos: "n.",
+    word: "facilitate",
+    pos: "v.",
     level: "B2",
     category: "jobs-work",
     categoryLabel: "อาชีพ & การทำงาน",
-    thai: "การเล่นพรรคเล่นพวกเอื้อประโยชน์เครือญาติ",
-    alternatives: ["ระบบคุณธรรมความสามารถ", "การแข่งขันอย่างเปิดเผย", "การคัดเลือกที่เป็นกลาง"],
-    example: "Appointing the chairman's unqualified nephew was condemned as blatant corporate nepotism.",
-    exampleThai: "การแต่งตั้งหลานชายของผู้ก่อตั้งที่ไม่ผ่านเกณฑ์ถูกประณามว่าเป็นการเล่นพรรคเล่นพวกเอื้อประโยชน์เครือญาติอย่างโจ่งแจ้ง"
+    thai: "อำนวยความสะดวก",
+    alternatives: ["สร้างอุปสรรคกีดขวาง","ทำให้ล่าช้าซับซ้อน","ปฏิเสธการช่วยเหลือ"],
+    example: "Modern digital tools help facilitate communication between remote team members.",
+    exampleThai: "เครื่องมือดิจิทัลสมัยใหม่ช่วยอำนวยความสะดวกในการสื่อสารระหว่างสมาชิกในทีมที่ทำงานจากระยะไกล"
   },
   {
     id: "v_b2_job_16",

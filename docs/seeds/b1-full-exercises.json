@@ -137,7 +137,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Sarah looks tired because she has been ___ (run) in the park for an hour.",
     "answerKey": [
       "running"
@@ -153,18 +153,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "running",
-      "ran",
-      "run",
-      "to run"
-    ],
     "contentHash": "5f24fc5fd51fe03d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "How long ___ you been learning to play the piano?",
     "answerKey": [
       "have"
@@ -180,18 +174,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "have",
-      "has",
-      "had",
-      "are"
-    ],
     "contentHash": "d1db519f08a0e7a9"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He has ___ living in this apartment since last December.",
     "answerKey": [
       "been"
@@ -207,18 +195,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "been",
-      "being",
-      "be",
-      "was"
-    ],
     "contentHash": "fa8b20099410efd7"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "We have been waiting for the bus ___ forty minutes.",
     "answerKey": [
       "for"
@@ -234,18 +216,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "for",
-      "since",
-      "during",
-      "in"
-    ],
     "contentHash": "7466698f12e51191"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It has been snowing heavily ___ yesterday afternoon.",
     "answerKey": [
       "since"
@@ -261,19 +237,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "since",
-      "for",
-      "from",
-      "at"
-    ],
     "contentHash": "28ebbb92399b7058"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "My eyes hurt because I have been ___ (read) on my tablet all evening.",
+    "prompt": "My eyes hurt because I have been ___ on my tablet all evening.",
     "answerKey": [
       "reading"
     ],
@@ -578,7 +548,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "After Tom ___ (eat) his breakfast, he went to work.",
     "answerKey": [
       "had eaten"
@@ -594,18 +564,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "had eaten",
-      "eats",
-      "has eaten",
-      "was eating"
-    ],
     "contentHash": "2090ce453eeb009f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The teacher was angry because Alex ___ not done his homework.",
     "answerKey": [
       "had"
@@ -621,18 +585,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "had",
-      "has",
-      "did",
-      "was"
-    ],
     "contentHash": "3883ece9769a870b"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "By the time the police arrived, the thief had already ___ (escape).",
     "answerKey": [
       "escaped"
@@ -648,18 +606,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "escaped",
-      "escape",
-      "escapes",
-      "escaping"
-    ],
     "contentHash": "28a6f2362eb6c5b4"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I couldn't enter the house because I had ___ (lose) my key.",
     "answerKey": [
       "lost"
@@ -675,18 +627,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "lost",
-      "lose",
-      "losing",
-      "been lost"
-    ],
     "contentHash": "7d3dca5c1a48cbfa"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "She realized that she ___ forgotten her passport at home.",
     "answerKey": [
       "had"
@@ -702,19 +648,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "had",
-      "has",
-      "was",
-      "did"
-    ],
     "contentHash": "d596b4df16b6dbc9"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "Before she moved to London, she had ___ (live) in Manchester for ten years.",
+    "prompt": "Before she moved to London, she had ___ in Manchester for ten years.",
     "answerKey": [
       "lived"
     ],
@@ -1017,7 +957,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "My grandfather ___ to walk five kilometers to school every day when he was a boy.",
     "answerKey": [
       "used"
@@ -1033,18 +973,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "used",
-      "use",
-      "uses",
-      "using"
-    ],
     "contentHash": "4317490e3e565c24"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Did they ___ to have long hair when they were at university?",
     "answerKey": [
       "use"
@@ -1060,18 +994,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "use",
-      "used",
-      "using",
-      "uses"
-    ],
     "contentHash": "d138283e85dbc094"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "We didn't ___ to eat spicy food, but now we love som tam.",
     "answerKey": [
       "use"
@@ -1087,18 +1015,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "use",
-      "used",
-      "using",
-      "uses"
-    ],
     "contentHash": "58683f943effc29e"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Living in London is noisy, but I am getting used to ___ (hear) the sirens.",
     "answerKey": [
       "hearing"
@@ -1114,18 +1036,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "hearing",
-      "hear",
-      "heard",
-      "to hear"
-    ],
     "contentHash": "8c3f33683ac21e72"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He is a professional chef, so he is used to ___ (cook) for hundreds of guests.",
     "answerKey": [
       "cooking"
@@ -1141,12 +1057,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "cooking",
-      "cook",
-      "cooked",
-      "to cook"
-    ],
     "contentHash": "33125230b8d7883a"
   },
   {
@@ -1449,7 +1359,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "English is ___ (speak) in many countries around the world.",
     "answerKey": [
       "spoken"
@@ -1465,18 +1375,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "spoken",
-      "speak",
-      "spoke",
-      "speaking"
-    ],
     "contentHash": "1762146e97e95570"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The telephone was ___ (invent) by Alexander Graham Bell.",
     "answerKey": [
       "invented"
@@ -1492,18 +1396,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "invented",
-      "invent",
-      "invents",
-      "inventing"
-    ],
     "contentHash": "39b53a541b705336"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "All smartphones must ___ turned off during the exam.",
     "answerKey": [
       "be"
@@ -1519,18 +1417,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "be",
-      "been",
-      "being",
-      "is"
-    ],
     "contentHash": "feb139dc1a717686"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "These sports cars are ___ (make) in Germany.",
     "answerKey": [
       "made"
@@ -1546,18 +1438,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "made",
-      "make",
-      "makes",
-      "making"
-    ],
     "contentHash": "1759ab7a8d58a0e8"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The stolen bicycles were ___ (find) by the police yesterday.",
     "answerKey": [
       "found"
@@ -1573,19 +1459,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "found",
-      "find",
-      "finds",
-      "finding"
-    ],
     "contentHash": "428889ee0ecf44dc"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "A brand-new shopping mall will be ___ (open) next month.",
+    "prompt": "A brand-new shopping mall will be ___ next month.",
     "answerKey": [
       "opened"
     ],
@@ -1891,7 +1771,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If I had more free time, I ___ learn how to play the guitar.",
     "answerKey": [
       "would"
@@ -1907,18 +1787,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "would",
-      "will",
-      "did",
-      "have"
-    ],
     "contentHash": "5b77440ae027da00"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If she ___ (know) the answer, she would tell us immediately.",
     "answerKey": [
       "knew"
@@ -1934,18 +1808,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "knew",
-      "knows",
-      "know",
-      "has known"
-    ],
     "contentHash": "59a5d992952ce108"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "If I ___ (be) you, I would take that great job offer.",
     "answerKey": [
       "were"
@@ -1961,18 +1829,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "were",
-      "am",
-      "will be",
-      "have been"
-    ],
     "contentHash": "68664ffec584a158"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "They would travel more often if plane tickets ___ (be) cheaper.",
     "answerKey": [
       "were"
@@ -1988,18 +1850,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "were",
-      "are",
-      "will be",
-      "have been"
-    ],
     "contentHash": "dbf0ae3768a1d24d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "What ___ you do if you found a lost dog in the street?",
     "answerKey": [
       "would"
@@ -2015,19 +1871,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "would",
-      "will",
-      "did",
-      "do"
-    ],
     "contentHash": "d9d02cbbf281df21"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "I live in a small room. I wish I ___ (have) a bigger room.",
+    "prompt": "I live in a small room. I wish I ___ a bigger room.",
     "answerKey": [
       "had"
     ],
@@ -2323,7 +2173,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He has won three international math awards. He ___ be a genius.",
     "answerKey": [
       "must"
@@ -2339,18 +2189,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "must",
-      "can't",
-      "should",
-      "will"
-    ],
     "contentHash": "af2b7365e1441e0f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "You have been running for two straight hours! You ___ be exhausted.",
     "answerKey": [
       "must"
@@ -2366,18 +2210,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "must",
-      "can't",
-      "might not",
-      "won't"
-    ],
     "contentHash": "b91db0c01a7b2c26"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "That woman speaks only Japanese; she ___ be from Spain.",
     "answerKey": [
       "can't"
@@ -2393,18 +2231,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "can't",
-      "must",
-      "should",
-      "might"
-    ],
     "contentHash": "2dc6ae46e66664d0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I am not sure where Peter is right now. He ___ be in the library studying.",
     "answerKey": [
       "might"
@@ -2420,18 +2252,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "might",
-      "must",
-      "can't",
-      "will"
-    ],
     "contentHash": "ac1635fa39c37fc0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "It ___ be true! It's completely impossible!",
     "answerKey": [
       "can't"
@@ -2447,12 +2273,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "can't",
-      "must",
-      "might",
-      "should"
-    ],
     "contentHash": "13f7d9e4978ccb8a"
   },
   {
@@ -2758,7 +2578,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The woman ___ lives next door is an architect.",
     "answerKey": [
       "who"
@@ -2774,18 +2594,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "who",
-      "which",
-      "whose",
-      "where"
-    ],
     "contentHash": "7e99ba5b7436c8f9"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I lost the watch ___ my father gave me for my birthday.",
     "answerKey": [
       "which"
@@ -2801,18 +2615,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "which",
-      "who",
-      "whose",
-      "where"
-    ],
     "contentHash": "e9e35a10b41db12e"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Do you know anyone ___ speaks fluent German?",
     "answerKey": [
       "who"
@@ -2828,18 +2636,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "who",
-      "which",
-      "where",
-      "whose"
-    ],
     "contentHash": "52ebde666de75338"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "A bakery is a shop ___ you can buy fresh bread and pastries.",
     "answerKey": [
       "where"
@@ -2855,18 +2657,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "where",
-      "which",
-      "who",
-      "whose"
-    ],
     "contentHash": "74d6a91bf327942d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The boy ___ dog ran away was crying in the park.",
     "answerKey": [
       "whose"
@@ -2882,12 +2678,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "whose",
-      "who",
-      "which",
-      "where"
-    ],
     "contentHash": "2bcdcca145a1ca9f"
   },
   {
@@ -3190,7 +2980,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Direct: \"I want some water.\" -> Reported: He said that he ___ (want) some water.",
     "answerKey": [
       "wanted"
@@ -3206,18 +2996,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "wanted",
-      "wants",
-      "want",
-      "wanting"
-    ],
     "contentHash": "1076dd8ff397807d"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Direct: \"I can swim across the river.\" -> Reported: She said that she ___ swim across the river.",
     "answerKey": [
       "could"
@@ -3233,18 +3017,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "could",
-      "can",
-      "may",
-      "will"
-    ],
     "contentHash": "7eb28501b8adf35b"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Direct: \"We will arrive soon.\" -> Reported: They told us that they ___ arrive soon.",
     "answerKey": [
       "would"
@@ -3260,18 +3038,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "would",
-      "will",
-      "can",
-      "shall"
-    ],
     "contentHash": "2d93dfd9e014095f"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Do you know what time the supermarket ___ (close) on Sundays?",
     "answerKey": [
       "closes"
@@ -3287,18 +3059,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "closes",
-      "close",
-      "closed",
-      "closing"
-    ],
     "contentHash": "6abb917a8af8f550"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Could you tell me how much this backpack ___ (cost)?",
     "answerKey": [
       "costs"
@@ -3314,19 +3080,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "costs",
-      "cost",
-      "costed",
-      "costing"
-    ],
     "contentHash": "51c6f39b435d250d"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "He ___ (said / told) me that he had already finished his assignment.",
+    "prompt": "He ___ me that he had already finished his assignment.",
     "answerKey": [
       "told"
     ],
@@ -3624,7 +3384,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Don't forget ___ (turn) off the air conditioner before leaving the classroom.",
     "answerKey": [
       "to turn"
@@ -3640,18 +3400,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to turn",
-      "turning",
-      "turned",
-      "turn"
-    ],
     "contentHash": "f74cc3e2fff8c0d0"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I will never forget ___ (see) the Grand Canyon for the very first time.",
     "answerKey": [
       "seeing"
@@ -3667,18 +3421,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "seeing",
-      "to see",
-      "seen",
-      "saw"
-    ],
     "contentHash": "044ee552d3d03088"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "While driving home, Dad stopped ___ (buy) some fresh bread at the bakery.",
     "answerKey": [
       "to buy"
@@ -3694,18 +3442,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to buy",
-      "buying",
-      "bought",
-      "buy"
-    ],
     "contentHash": "641c477d713cd533"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "Please stop ___ (make) so much noise; the baby is sleeping.",
     "answerKey": [
       "making"
@@ -3721,18 +3463,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "making",
-      "to make",
-      "made",
-      "make"
-    ],
     "contentHash": "8ec4904234366300"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "I tried ___ (open) the tight lid with a spoon, but it was still stuck.",
     "answerKey": [
       "to open"
@@ -3748,19 +3484,13 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "to open",
-      "opening",
-      "opened",
-      "open"
-    ],
     "contentHash": "88fb0646ba66c7f0"
   },
   {
     "skill": "grammar",
     "level": "B1",
     "type": "mcq",
-    "prompt": "If you have trouble falling asleep, try ___ (drink) a warm cup of milk.",
+    "prompt": "If you have trouble falling asleep, try ___ a warm cup of milk.",
     "answerKey": [
       "drinking"
     ],
@@ -4062,7 +3792,7 @@
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "___ it was freezing cold outside, she refused to wear a jacket.",
     "answerKey": [
       "Although"
@@ -4078,18 +3808,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "Although",
-      "Despite",
-      "In spite of",
-      "Because"
-    ],
     "contentHash": "c5c8cb090e0174e3"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "In ___ of the heavy traffic, we arrived at the airport on time.",
     "answerKey": [
       "spite"
@@ -4105,18 +3829,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "spite",
-      "because",
-      "order",
-      "case"
-    ],
     "contentHash": "27322d7cb2bfebda"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "He exercised every single day in ___ to stay healthy and fit.",
     "answerKey": [
       "order"
@@ -4132,18 +3850,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "order",
-      "case",
-      "spite",
-      "view"
-    ],
     "contentHash": "4da43c88e9e0ec0a"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "She studied diligently; as a ___, she received top marks in all her exams.",
     "answerKey": [
       "result"
@@ -4159,18 +3871,12 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "result",
-      "reason",
-      "cause",
-      "purpose"
-    ],
     "contentHash": "944fe0d5ee8be7b3"
   },
   {
     "skill": "grammar",
     "level": "B1",
-    "type": "mcq",
+    "type": "fill_blank",
     "prompt": "The outdoor concert was cancelled ___ of the severe thunderstorm.",
     "answerKey": [
       "because"
@@ -4186,12 +3892,6 @@
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th",
-    "choices": [
-      "because",
-      "due",
-      "in spite",
-      "instead"
-    ],
     "contentHash": "36cecec4e0b08ba2"
   },
   {

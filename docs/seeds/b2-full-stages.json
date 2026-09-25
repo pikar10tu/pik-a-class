@@ -37,7 +37,7 @@
     "order": 3,
     "title": "Third Conditional (Part 1: สร้างความคุ้นเคย)",
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:conditional-3"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
@@ -51,9 +51,9 @@
     "skill": "grammar",
     "level": "B2",
     "order": 4,
-    "title": "Third & Mixed Conditionals (Part 2: ท้าทายขึ้น)",
+    "title": "Mixed Conditionals (Part 2: ท้าทายขึ้น)",
     "tags": [
-      "grammar:conditional-3-mixed"
+      "grammar:mixed-conditionals"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
@@ -171,7 +171,7 @@
     "order": 11,
     "title": "Causative Verbs: have / get something done (Part 1: สร้างความคุ้นเคย)",
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:causative"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
@@ -187,7 +187,7 @@
     "order": 12,
     "title": "Impersonal Passive: It is said that... (Part 2: ท้าทายขึ้น)",
     "tags": [
-      "grammar:passive-advanced-causative"
+      "grammar:passive-advanced"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
@@ -219,7 +219,7 @@
     "order": 14,
     "title": "Future Continuous (Part 1: กำลังกระทำในอนาคต)",
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-continuous"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
@@ -235,7 +235,7 @@
     "order": 15,
     "title": "Future Perfect (Part 2: เสร็จสิ้นภายในเวลาในอนาคต)",
     "tags": [
-      "grammar:future-advanced"
+      "grammar:future-perfect"
     ],
     "drawCount": 7,
     "passThreshold": 0.7,

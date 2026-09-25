@@ -21,8 +21,8 @@ export const techMediaVocab = [
     level: "A1",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "เครือข่ายอินเทอร์เน็ต",
-    alternatives: ["ระบบไฟฟ้าในบ้าน", "ท่อส่งประปา", "สัญญาณเคเบิลทีวี"],
+    thai: "อินเทอร์เน็ต",
+    alternatives: ["สถานีวิทยุชุมชน","โทรทัศน์ดาวเทียม","ตู้จดหมายปลายทาง"],
     example: "The cafe provides lightning-fast wireless internet access for patrons.",
     exampleThai: "คาเฟ่ให้บริการการเข้าถึงเครือข่ายอินเทอร์เน็ตไร้สายความเร็วสูงแก่ลูกค้า"
   },
@@ -297,8 +297,8 @@ export const techMediaVocab = [
     level: "A1",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "ลิงก์เชื่อมโยงเว็บไซต์",
-    alternatives: ["รหัสผ่านส่วนตัว", "ชื่อผู้ใช้", "ไฟล์แนบเอกสาร"],
+    thai: "ลิงก์เชื่อมโยง",
+    alternatives: ["แป้นพิมพ์ลัด","แผ่นรองเมาส์","ปลั๊กไฟบ้าน"],
     example: "Click the blue hyperlink to read the full scientific journal article.",
     exampleThai: "คลิกลิงก์เชื่อมโยงเว็บไซต์สีน้ำเงินเพื่ออ่านบทความวารสารวิทยาศาสตร์ฉบับเต็ม"
   },
@@ -357,8 +357,8 @@ export const techMediaVocab = [
     level: "A1",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "แบตเตอรี่กักเก็บพลังงาน",
-    alternatives: ["สายไฟบ้าน", "เต้ารับไฟฟ้า", "หม้อแปลงไฟ"],
+    thai: "แบตเตอรี่",
+    alternatives: ["หน้าจอภาพแสดงผล","ลำโพงบลูทูธ","กล้องเว็บแคม"],
     example: "This lightweight power bank provides enough battery capacity to charge two phones.",
     exampleThai: "พาวเวอร์แบงก์น้ำหนักเบานี้มีความจุของแบตเตอรี่กักเก็บพลังงานเพียงพอที่จะชาร์จโทรศัพท์ได้สองเครื่อง"
   },
@@ -397,8 +397,8 @@ export const techMediaVocab = [
     level: "A2",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "สายชาร์จและอุปกรณ์ชาร์จ",
-    alternatives: ["หูฟังไร้สาย", "ขาตั้งโทรศัพท์", "เคสกันกระแทก"],
+    thai: "ที่ชาร์จแบตเตอรี่",
+    alternatives: ["หูฟังไร้สาย","เคสโทรศัพท์มือถือ","ขาตั้งกล้อง"],
     example: "Do not forget to pack your universal phone charger before travelling abroad.",
     exampleThai: "อย่าลืมเก็บสายชาร์จและอุปกรณ์ชาร์จโทรศัพท์อเนกประสงค์ลงกระเป๋าก่อนเดินทางไปต่างประเทศ"
   },
@@ -1000,15 +1000,15 @@ export const techMediaVocab = [
   },
   {
     id: "v_b2_tech_08",
-    word: "obsolescence",
-    pos: "n.",
+    word: "streamline",
+    pos: "v.",
     level: "B2",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "ภาวะตกรุ่นล้าสมัยของเทคโนโลยี",
-    alternatives: ["การเป็นนวัตกรรมล้ำสมัย", "ความทนทานยาวนานนับศตวรรษ", "การเป็นที่ต้องการสูงสุด"],
-    example: "Planned obsolescence leads consumers to discard functional electronic gadgets every two years.",
-    exampleThai: "ภาวะตกรุ่นล้าสมัยของเทคโนโลยีที่ถูกวางแผนไว้ล่วงหน้านำไปสู่การที่ผู้บริโภคทิ้งอุปกรณ์อิเล็กทรอนิกส์ทุกสองปี"
+    thai: "ปรับกระบวนการให้คล่องตัว",
+    alternatives: ["สร้างขั้นตอนยุ่งยาก","ทำให้ล่าช้าซับซ้อน","ระงับการทำงาน"],
+    example: "The company adopted automated software to streamline its customer support operations.",
+    exampleThai: "บริษัทได้นำซอฟต์แวร์อัตโนมัติมาใช้เพื่อปรับกระบวนการให้คล่องตัวในการปฏิบัติงานสนับสนุนลูกค้า"
   },
   {
     id: "v_b2_tech_09",
@@ -1024,15 +1024,15 @@ export const techMediaVocab = [
   },
   {
     id: "v_b2_tech_10",
-    word: "infotainment",
-    pos: "n.",
+    word: "distort",
+    pos: "v.",
     level: "B2",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "สาระบันเทิงเชิงข่าวสาร",
-    alternatives: ["สารคดีวิชาการล้วน", "ละครซีรีส์ดราม่า", "ภาพยนตร์แฟนตาซี"],
-    example: "Evening news broadcasts increasingly blend investigative journalism with celebrity infotainment.",
-    exampleThai: "การถ่ายทอดสดข่าวค่ำหันมาผสมผสานการรายงานข่าวเชิงสืบสวนเข้ากับสาระบันเทิงเชิงข่าวสารเกี่ยวกับดารามากขึ้น"
+    thai: "บิดเบือนข้อเท็จจริง",
+    alternatives: ["รายงานอย่างเที่ยงตรง","นำเสนอข้อมูลรอบด้าน","ตรวจสอบความถูกต้อง"],
+    example: "Biased commentators often distort economic figures to support their own political agenda.",
+    exampleThai: "ผู้วิเคราะห์ที่มีอคติมักบิดเบือนข้อเท็จจริงเกี่ยวกับตัวเลขเศรษฐกิจเพื่อสนับสนุนผลประโยชน์ทางการเมืองของตนเอง"
   },
   {
     id: "v_b2_tech_11",
@@ -1084,27 +1084,27 @@ export const techMediaVocab = [
   },
   {
     id: "v_b2_tech_15",
-    word: "disinformation",
-    pos: "n.",
+    word: "manipulate",
+    pos: "v.",
     level: "B2",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "ข่าวลวงที่จงใจสร้างขึ้นเพื่อหลอกลวง",
-    alternatives: ["ข้อเท็จจริงที่ผ่านการยืนยัน", "การรายงานข่าวที่โปร่งใส", "คำเตือนภัยธรรมชาติ"],
-    example: "Hostile foreign actors weaponize targeted digital disinformation campaigns to disrupt democratic elections.",
-    exampleThai: "ผู้ไม่หวังดีในต่างประเทศใช้แคมเปญข่าวลวงที่จงใจสร้างขึ้นเพื่อหลอกลวงทางดิจิทัลเป็นอาวุธเพื่อขัดขวางการเลือกตั้ง"
+    thai: "ชักใยบงการข้อมูล",
+    alternatives: ["เปิดเผยอย่างโปร่งใส","เคารพการตัดสินใจ","รักษาความถูกต้อง"],
+    example: "Hackers attempted to manipulate online voting results by creating fake user accounts.",
+    exampleThai: "แฮกเกอร์พยายามชักใยบงการข้อมูลผลการลงคะแนนออนไลน์ด้วยการสร้างบัญชีผู้ใช้ปลอม"
   },
   {
     id: "v_b2_tech_16",
-    word: "syndicate",
-    pos: "n.",
+    word: "authenticate",
+    pos: "v.",
     level: "B2",
     category: "tech-media",
     categoryLabel: "เทคโนโลยี & สื่อ",
-    thai: "กลุ่มพันธมิตรผู้จัดจำหน่ายสื่อ",
-    alternatives: ["ผู้อ่านรายบุคคล", "ชมรมถ่ายภาพอิสระ", "ผู้ประท้วง"],
-    example: "A global news syndicate licenses editorial comic strips and political opinion columns to regional papers.",
-    exampleThai: "กลุ่มพันธมิตรผู้จัดจำหน่ายสื่อระดับโลกอนุญาตให้หนังสือพิมพ์ระดับภูมิภาคตีพิมพ์การ์ตูนล้อเลียนและคอลัมน์การเมือง"
+    thai: "ยืนยันความถูกต้องแท้จริง",
+    alternatives: ["ปลอมแปลงเอกสาร","แอบอ้างสิทธิ์","ยกเลิกรหัสผ่าน"],
+    example: "Two-factor security requires users to authenticate their identity using an SMS code.",
+    exampleThai: "ความปลอดภัยแบบสองชั้นกำหนดให้ผู้ใช้ต้องยืนยันความถูกต้องแท้จริงของตัวตนโดยใช้รหัสทางข้อความสั้น"
   },
   {
     id: "v_b2_tech_17",

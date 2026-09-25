@@ -58,10 +58,23 @@ export function getGrammarNote(tags = []) {
     return GRAMMAR_NOTES['review:past-tenses'];
   }
 
-  // หากระบุ tag เดี่ยวตรงๆ
+  const TAG_ALIASES = {
+    'grammar:causative': 'grammar:passive-advanced-causative',
+    'grammar:passive-advanced': 'grammar:passive-advanced-causative',
+    'grammar:future-continuous': 'grammar:future-advanced',
+    'grammar:future-perfect': 'grammar:future-advanced',
+    'grammar:conditional-3': 'grammar:conditional-3-mixed',
+    'grammar:mixed-conditionals': 'grammar:conditional-3-mixed',
+  };
+
+  // หากระบุ tag เดี่ยวตรงๆ หรือผ่าน alias
   for (const tag of tags) {
     if (GRAMMAR_NOTES[tag]) {
       return GRAMMAR_NOTES[tag];
+    }
+    const aliasTarget = TAG_ALIASES[tag];
+    if (aliasTarget && GRAMMAR_NOTES[aliasTarget]) {
+      return GRAMMAR_NOTES[aliasTarget];
     }
   }
 

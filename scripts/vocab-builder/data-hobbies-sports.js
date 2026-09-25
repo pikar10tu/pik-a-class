@@ -69,8 +69,8 @@ export const hobbiesSportsVocab = [
     level: "A1",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "กระโดดข้ามสิ่งกีดขวาง",
-    alternatives: ["หมอบคลาน", "ก้มเก็บของ", "นอนคว่ำ"],
+    thai: "กระโดด",
+    alternatives: ["นอนหลับ","นั่งพักผ่อน","คลาน"],
     example: "Track athletes train daily to jump higher over the hurdles.",
     exampleThai: "นักกรีฑาฝึกซ้อมทุกวันเพื่อกระโดดข้ามสิ่งกีดขวางรั้วกั้นให้สูงขึ้น"
   },
@@ -357,8 +357,8 @@ export const hobbiesSportsVocab = [
     level: "A1",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "การแข่งขันกีฬาหนึ่งนัด",
-    alternatives: ["การฝึกซ้อมอุ่นเครื่อง", "การแถลงข่าว", "การจับสลากแบ่งสาย"],
+    thai: "การแข่งขันกีฬา",
+    alternatives: ["การฝึกซ้อมเดี่ยว","การประกาศรางวัลเกียรติยศ","พิธีเปิดงาน"],
     example: "The championship tennis match stretched into an exciting five-set thriller.",
     exampleThai: "การแข่งขันกีฬาหนึ่งนัดเทนนิสชิงชนะเลิศยืดเยื้อจนกลายเป็นการต่อสู้ห้าเซตอันน่าตื่นเต้น"
   },
@@ -828,15 +828,15 @@ export const hobbiesSportsVocab = [
   },
   {
     id: "v_b1_hobby_12",
-    word: "cardiovascular",
-    pos: "adj.",
+    word: "compete",
+    pos: "v.",
     level: "B1",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "เกี่ยวกับการทำงานของหัวใจและปอด",
-    alternatives: ["เกี่ยวกับระบบประสาทสัมผัส", "เกี่ยวกับข้อต่อกระดูก", "เกี่ยวกับกล้ามเนื้อแขน"],
-    example: "Rowing and trail cycling provide intense cardiovascular training that strengthens the lungs.",
-    exampleThai: "การพายเรือและการปั่นจักรยานวิบากมอบการฝึกซ้อมเกี่ยวกับการทำงานของหัวใจและปอดที่ช่วยเสริมปอดให้แข็งแรง"
+    thai: "แข่งขันชิงชัย",
+    alternatives: ["ยอมแพ้ถอนตัว","นั่งชมการแข่ง","ตัดสินการแข่งขัน"],
+    example: "Top athletes from fifty nations gather to compete in the championship tournament.",
+    exampleThai: "นักกีฬาชั้นนำจากห้าสิบประเทศมารวมตัวกันเพื่อแข่งขันชิงชัยในการแข่งขันชิงแชมป์"
   },
   {
     id: "v_b1_hobby_13",
@@ -888,15 +888,15 @@ export const hobbiesSportsVocab = [
   },
   {
     id: "v_b1_hobby_17",
-    word: "stamina",
-    pos: "n.",
+    word: "participate",
+    pos: "v.",
     level: "B1",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "พละกำลังความอึด",
-    alternatives: ["ความเหนื่อยล้าอ่อนแรง", "ความคล่องตัวระยะสั้น", "ความยืดหยุ่นของร่างกาย"],
-    example: "Boxers jump rope for hours to develop the required footwork speed and cardiovascular stamina.",
-    exampleThai: "นักมวยกระโดดเชือกนานหลายชั่วโมงเพื่อพัฒนาความเร็วของสเต็ปเท้าและพละกำลังความอึดของระบบหัวใจ"
+    thai: "เข้าร่วมกิจกรรม",
+    alternatives: ["ปฏิเสธไม่ยอมร่วม","นั่งสังเกตการณ์","ยกเลิกงาน"],
+    example: "All local residents are warmly invited to participate in the community charity marathon.",
+    exampleThai: "ชาวบ้านในท้องถิ่นทุกคนได้รับคำเชิญอย่างอบอุ่นให้เข้าร่วมกิจกรรมการวิ่งมาราธอนการกุศลของชุมชน"
   },
   {
     id: "v_b1_hobby_18",
@@ -952,15 +952,15 @@ export const hobbiesSportsVocab = [
   },
   {
     id: "v_b2_hobby_04",
-    word: "equestrian",
-    pos: "adj.",
+    word: "dominate",
+    pos: "v.",
     level: "B2",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "เกี่ยวกับกีฬาขี่ม้ากระโดดข้ามเครื่องกีดขวาง",
-    alternatives: ["เกี่ยวกับการแข่งเรือใบ", "เกี่ยวกับการยิงธนูเป้าบิน", "เกี่ยวกับการฟันดาบสากล"],
-    example: "Equestrian riders develop an extraordinary bond of trust and communication with their thoroughbred horses.",
-    exampleThai: "นักกีฬาเกี่ยวกับกีฬาขี่ม้ากระโดดข้ามเครื่องกีดขวางสร้างสายสัมพันธ์แห่งความไว้วางใจอันน่าทึ่งกับม้าพันธุ์แท้ของตน"
+    thai: "ครอบงำการแข่งขัน",
+    alternatives: ["พ่ายแพ้ยับเยิน","ตามหลังคู่แข่ง","ถอนตัวจากการแข่ง"],
+    example: "The defending champions continued to dominate the national tournament for the third straight year.",
+    exampleThai: "แชมป์เก่าสามารถครอบงำการแข่งขันในระดับประเทศต่อไปได้เป็นปีที่สามติดต่อกัน"
   },
   {
     id: "v_b2_hobby_05",
@@ -1060,27 +1060,27 @@ export const hobbiesSportsVocab = [
   },
   {
     id: "v_b2_hobby_13",
-    word: "decathlon",
-    pos: "n.",
+    word: "persevere",
+    pos: "v.",
     level: "B2",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "การแข่งขันกรีฑาสิบประเภท",
-    alternatives: ["การแข่งขันวิ่งผลัดสี่คูณร้อย", "การแข่งกระโดดไกลเดี่ยว", "การทุ่มน้ำหนักเดี่ยว"],
-    example: "The Olympic decathlon crowns the world's most versatile and well-rounded male track athlete.",
-    exampleThai: "การแข่งขันกรีฑาสิบประเภทในโอลิมปิกมอบตำแหน่งเกียรติยศแก่นักกรีฑาชายที่มีทักษะรอบด้านและสมบูรณ์แบบที่สุดในโลก"
+    thai: "พากเพียรไม่ย่อท้อ",
+    alternatives: ["ล้มเลิกกลางคัน","ยอมแพ้ต่ออุปสรรค","ถอดใจถอยหนี"],
+    example: "Marathon athletes must persevere through intense muscle exhaustion to cross the finish line.",
+    exampleThai: "นักกีฬามาราธอนต้องพากเพียรไม่ย่อท้อต่อความเหนื่อยล้าของกล้ามเนื้อเพื่อเข้าสู่เส้นชัย"
   },
   {
     id: "v_b2_hobby_14",
-    word: "calisthenics",
-    pos: "n.",
+    word: "excel",
+    pos: "v.",
     level: "B2",
     category: "hobbies-sports",
     categoryLabel: "งานอดิเรก & กีฬา",
-    thai: "การออกกำลังกายโดยใช้น้ำหนักตัว",
-    alternatives: ["การยกน้ำหนักแมชชีน", "การปั่นจักรยานฟิตเนส", "การว่ายน้ำท่ากรรเชียง"],
-    example: "Street calisthenics enthusiasts perform gravity-defying muscle-ups and human flags on outdoor pull-up bars.",
-    exampleThai: "ผู้ที่หลงใหลการออกกำลังกายโดยใช้น้ำหนักตัวแสดงท่ามัสเซิลอัปและธงมนุษย์ท้าทายแรงโน้มถ่วงบนบาร์โหนกลางแจ้ง"
+    thai: "โดดเด่นเป็นเลิศ",
+    alternatives: ["ทำผลงานได้ย่ำแย่","ตกต่ำลงเรื่อยๆ","ล้มเหลวไม่เป็นท่า"],
+    example: "Through dedicated daily practice, young gymnasts can excel in international competitions.",
+    exampleThai: "ด้วยการฝึกซ้อมอย่างทุ่มเททุกวัน นักยิมนาสติกรุ่นเยาว์สามารถทำผลงานโดดเด่นเป็นเลิศในการแข่งขันระดับนานาชาติ"
   },
   {
     id: "v_b2_hobby_15",

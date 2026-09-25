@@ -457,8 +457,8 @@ export const shoppingMoneyVocab = [
     level: "A2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "ห้างสรรพสินค้าครบวงจร",
-    alternatives: ["ตลาดนัดริมคลอง", "ร้านโชห่วย", "แผงลอย"],
+    thai: "ห้างสรรพสินค้า",
+    alternatives: ["ร้านสะดวกซื้อหัวมุมถนน","แผงขายของสดริมทาง","ร้านขายยาชุมชน"],
     example: "Bangkok malls feature air-conditioned boutiques, restaurants, and multiplex cinemas.",
     exampleThai: "ห้างสรรพสินค้าครบวงจรในกรุงเทพฯ มีร้านค้าปรับอากาศ ร้านอาหาร และโรงภาพยนตร์ครบครัน"
   },
@@ -589,8 +589,8 @@ export const shoppingMoneyVocab = [
     level: "A2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "กระแสแฟชั่นเครื่องแต่งกาย",
-    alternatives: ["กฎระเบียบวินัย", "เครื่องแบบทหาร", "แบบแผนโบราณ"],
+    thai: "แฟชั่นเครื่องแต่งกาย",
+    alternatives: ["นโยบายภาษีโรงเรือน","การก่อสร้างถนน","อัตราดอกเบี้ย"],
     example: "Youth clothing stores continually adapt to rapid seasonal shifts in street fashion.",
     exampleThai: "ร้านเสื้อผ้าวัยรุ่นปรับตัวอย่างต่อเนื่องตามกระแสแฟชั่นเครื่องแต่งกายแนวสตรีทที่เปลี่ยนไว"
   },
@@ -601,8 +601,8 @@ export const shoppingMoneyVocab = [
     level: "A2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "สั่งซื้อสินค้าทางร้าน",
-    alternatives: ["ยกเลิกบัญชี", "ปฏิเสธพัสดุ", "ส่งคืนเงิน"],
+    thai: "สั่งซื้อสินค้า",
+    alternatives: ["ยกเลิกบริการทั้งหมด","ร้องเรียนการบริการ","ส่งซ่อมแซม"],
     example: "You can order authentic northern woven cotton scarves directly from the artisans.",
     exampleThai: "คุณสามารถสั่งซื้อสินค้าทางร้านผ้าพันคอผ้าฝ้ายทอมือแท้จากภาคเหนือได้โดยตรงจากช่างฝีมือ"
   },
@@ -737,8 +737,8 @@ export const shoppingMoneyVocab = [
     level: "B1",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "แผนงบประมาณรายรับรายจ่าย",
-    alternatives: ["ใบเสร็จชำระภาษี", "สลิปเงินเดือน", "ใบแจ้งหนี้ค้างจ่าย"],
+    thai: "งบประมาณ",
+    alternatives: ["ใบเสร็จค่าน้ำมัน","ยอดหนี้สินบัตรเครดิต","อัตราภาษีมูลค่าเพิ่ม"],
     example: "Setting a strict monthly personal budget keeps unexpected household expenses under control.",
     exampleThai: "การตั้งแผนงบประมาณรายรับรายจ่ายส่วนตัวรายเดือนที่เข้มงวดช่วยควบคุมรายจ่ายในครัวเรือน"
   },
@@ -749,8 +749,8 @@ export const shoppingMoneyVocab = [
     level: "B1",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "สกุลเงินตราแลกเปลี่ยน",
-    alternatives: ["หุ้นสามัญ", "พันธบัตรรัฐบาล", "ตั๋วสัญญาใช้เงิน"],
+    thai: "สกุลเงิน",
+    alternatives: ["ตั๋วจำนำ","สลากกินแบ่งรัฐบาล","หุ้นสามัญ"],
     example: "International traders constantly monitor foreign currency exchange rate fluctuations.",
     exampleThai: "ผู้ค้าสินค้าระหว่างประเทศติดตามความผันผวนของอัตราแลกเปลี่ยนสกุลเงินตราแลกเปลี่ยนต่างประเทศตลอดเวลา"
   },
@@ -773,8 +773,8 @@ export const shoppingMoneyVocab = [
     level: "B1",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "ภาวะเงินเฟ้อข้าวของแพง",
-    alternatives: ["ภาวะเศรษฐกิจเฟื่องฟู", "การลดราคาสินค้า", "การเพิ่มค่าจ้าง"],
+    thai: "ภาวะเงินเฟ้อ",
+    alternatives: ["ภาวะฟองสบู่แตก","อัตราดอกเบี้ยคงที่","ดุลการค้าเกินดุล"],
     example: "Persistent high inflation reduces the purchasing power of middle-class consumer wages.",
     exampleThai: "ภาวะเงินเฟ้อข้าวของแพงที่ยืดเยื้อลดทอนอำนาจการซื้อของค่าจ้างแรงงานชนชั้นกลาง"
   },
@@ -952,15 +952,15 @@ export const shoppingMoneyVocab = [
   },
   {
     id: "v_b2_shop_04",
-    word: "liquidation",
-    pos: "n.",
+    word: "allocate",
+    pos: "v.",
     level: "B2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "การชำระบัญชีล้างหนี้สินเพื่อเลิกกิจการ",
-    alternatives: ["การขยายสาขาใหม่", "การเข้าสู่ตลาดหลักทรัพย์", "การระดมทุนรอบใหม่"],
-    example: "Following bankruptcy court rulings, court-appointed trustees oversaw the orderly liquidation of assets.",
-    exampleThai: "ตามคำตัดสินของศาลล้มละลาย ผู้พิทักษ์ทรัพย์ที่ศาลแต่งตั้งได้ดูแลการชำระบัญชีล้างหนี้สินเพื่อเลิกกิจการอย่างเป็นระเบียบ"
+    thai: "จัดสรรงบประมาณ",
+    alternatives: ["ยึดทรัพย์สินคืน","ตัดงบประมาณทิ้ง","ใช้จ่ายอย่างฟุ่มเฟือย"],
+    example: "The board agreed to allocate more capital to scientific research and green energy development.",
+    exampleThai: "คณะกรรมการตกลงที่จะจัดสรรงบประมาณเงินทุนเพิ่มเติมให้แก่การวิจัยทางวิทยาศาสตร์และการพัฒนาพลังงานสะอาด"
   },
   {
     id: "v_b2_shop_05",
@@ -1005,8 +1005,8 @@ export const shoppingMoneyVocab = [
     level: "B2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "เงินปันผลตอบแทนผู้ถือหุ้น",
-    alternatives: ["เงินเดือนพนักงาน", "ดอกเบี้ยปรับค้างชำระ", "ค่าธรรมเนียมใบอนุญาต"],
+    thai: "เงินปันผล",
+    alternatives: ["เงินกู้ยืมระยะสั้น","ภาษีมูลค่าเพิ่ม","ค่างวดรายเดือน"],
     example: "The profitable telecommunications giant distributed a generous quarterly cash dividend to shareholders.",
     exampleThai: "บริษัทยักษ์ใหญ่ด้านโทรคมนาคมที่มีกำไรได้จ่ายเงินปันผลตอบแทนผู้ถือหุ้นเป็นเงินสดประจำไตรมาสแก่ผู้ถือหุ้น"
   },
@@ -1060,15 +1060,15 @@ export const shoppingMoneyVocab = [
   },
   {
     id: "v_b2_shop_13",
-    word: "portfolio",
-    pos: "n.",
+    word: "fluctuate",
+    pos: "v.",
     level: "B2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "พอร์ตโฟลิโอการลงทุนในหลักทรัพย์",
-    alternatives: ["สมุดบัญชีเงินฝากเล่มเดียว", "กระเป๋าใส่เงินสด", "ตู้เซฟเก็บทอง"],
-    example: "Financial planners recommend balancing your stock portfolio with low-risk government treasury bonds.",
-    exampleThai: "นักวางแผนการเงินแนะนำให้ปรับสมดุลพอร์ตโฟลิโอการลงทุนในหลักทรัพย์ในหุ้นด้วยพันธบัตรรัฐบาลที่มีความเสี่ยงต่ำ"
+    thai: "ผันผวนขึ้นลง",
+    alternatives: ["หยุดนิ่งคงที่","รักษาระดับสม่ำเสมอ","พุ่งสูงขึ้นไม่หยุด"],
+    example: "Fuel prices continue to fluctuate wildly in response to shifting geopolitical conflicts.",
+    exampleThai: "ราคาเชื้อเพลิงยังคงผันผวนขึ้นลงอย่างมากเพื่อตอบสนองต่อความขัดแย้งทางภูมิรัฐศาสตร์ที่เปลี่ยนแปลงไป"
   },
   {
     id: "v_b2_shop_14",
@@ -1084,15 +1084,15 @@ export const shoppingMoneyVocab = [
   },
   {
     id: "v_b2_shop_15",
-    word: "surcharge",
-    pos: "n.",
+    word: "compensate",
+    pos: "v.",
     level: "B2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "ค่าธรรมเนียมเรียกเก็บเพิ่มพิเศษ",
-    alternatives: ["ส่วนลดทางการค้า", "เงินคืนภาษี", "เงินชดเชยค่าเสียหาย"],
-    example: "Airlines imposed an emergency jet fuel surcharge on international tickets due to soaring crude oil costs.",
-    exampleThai: "สายการบินเรียกเก็บค่าธรรมเนียมเรียกเก็บเพิ่มพิเศษค่าน้ำมันเชื้อเพลิงฉุกเฉินในตั๋วโดยสารระหว่างประเทศเนื่องจากราคาน้ำมันดิบพุ่งสูง"
+    thai: "ชดเชยค่าเสียหาย",
+    alternatives: ["เรียกเก็บค่าปรับ","ริบเงินมัดจำ","ปฏิเสธความรับผิดชอบ"],
+    example: "The airline offered cash vouchers to compensate passengers for the extended flight delay.",
+    exampleThai: "สายการบินเสนอบัตรกำนัลเงินสดเพื่อชดเชยค่าเสียหายให้แก่ผู้โดยสารสำหรับเที่ยวบินที่ล่าช้าเป็นเวลานาน"
   },
   {
     id: "v_b2_shop_16",
@@ -1108,14 +1108,14 @@ export const shoppingMoneyVocab = [
   },
   {
     id: "v_b2_shop_17",
-    word: "solvency",
-    pos: "n.",
+    word: "diminish",
+    pos: "v.",
     level: "B2",
     category: "shopping-money",
     categoryLabel: "ซื้อของ & การเงิน",
-    thai: "ความสามารถในการชำระหนี้ระยะยาว",
-    alternatives: ["ภาวะล้มละลายขาดเงินสด", "การถูกฟ้องร้องยึดทรัพย์", "การผิดนัดชำระหนี้"],
-    example: "Insurance regulators rigorously inspect reserve ratios to verify the long-term solvency of underwriters.",
-    exampleThai: "หน่วยงานกำกับดูแลธุรกิจประกันภัยตรวจสอบอัตราส่วนสำรองอย่างเข้มงวดเพื่อยืนยันความสามารถในการชำระหนี้ระยะยาวของผู้รับประกันภัย"
+    thai: "ลดน้อยถอยลง",
+    alternatives: ["เพิ่มพูนมหาศาล","ขยายตัวอย่างรวดเร็ว","คงที่มั่นคง"],
+    example: "High inflation rates can rapidly diminish the real purchasing power of household savings.",
+    exampleThai: "อัตราเงินเฟ้อที่สูงสามารถทำให้กำลังซื้อที่แท้จริงของเงินออมในครัวเรือนลดน้อยถอยลงอย่างรวดเร็ว"
   }
 ];
