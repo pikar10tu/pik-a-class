@@ -12,9 +12,9 @@ export default defineConfig({
         'favicon.ico',
         'favicon.png',
         'apple-touch-icon.png',
-        'mascot/*.{png,webp}',
-        'islands/*.{jpg,webp}',
-        'avatars/*.{png,webp}',
+        'mascot/*.webp',
+        'islands/*.webp',
+        'avatars/*.webp',
       ],
       manifest: {
         name: 'Pik a Class — ห้องเรียนภาษาอังกฤษตะลุยด่าน',
@@ -45,6 +45,9 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,webp}'],
+        // ภาพ .png/.jpg ของ mascot/avatars/islands เป็นแค่ตัวสำรอง (onerror) ของ .webp
+        // ไม่ต้อง precache ลงมือถือนักเรียน — ประหยัดราว 1.4 MB ต่อเครื่อง
+        globIgnores: ['mascot/*.png', 'avatars/*.png', 'islands/*.jpg'],
         navigateFallback: null,
         cleanupOutdatedCaches: true,
         clientsClaim: true,
