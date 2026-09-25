@@ -28,10 +28,28 @@ service cloud.firestore {
                 'createdAt', 'updatedAt'];
       }
 
+      // จำกัดความยาวข้อความที่ผู้ใช้กรอกเอง กันเอกสารบวมจนเต็ม 1MB หรือใช้ยัดข้อมูลขยะ
+      // (ค่าว่าง/ไม่มีฟิลด์/null ผ่านได้ — เผื่อเอกสารเก่าที่สร้างก่อนมีกฎนี้)
+      function shortText(field, max) {
+        return !(field in request.resource.data)
+          || request.resource.data[field] == null
+          || (request.resource.data[field] is string && request.resource.data[field].size() <= max);
+      }
+
+      function profileSizesOk() {
+        return shortText('fullName', 200) && shortText('nickname', 60) && shortText('callName', 80)
+          && shortText('prefix', 20) && shortText('grade', 100) && shortText('school', 200)
+          && shortText('phone', 40) && shortText('lineId', 100) && shortText('avatarId', 40)
+          && (!('favoriteVocab' in request.resource.data)
+              || (request.resource.data.favoriteVocab is list
+                  && request.resource.data.favoriteVocab.size() <= 2000));
+      }
+
       allow get: if signedIn() && (request.auth.uid == uid || isAdmin());
       allow list: if isAdmin();
 
       allow create: if signedIn() && request.auth.uid == uid
+        && profileSizesOk()
         && request.resource.data.keys().hasOnly(userFields())
         && request.resource.data.keys().hasAll(['uid', 'email', 'role', 'tier', 'onboardingComplete', 'createdAt'])
         && request.resource.data.uid == uid
@@ -43,6 +61,7 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly(userFields())
         && (
           (request.auth.uid == uid
+            && profileSizesOk()
             && unchanged('uid') && unchanged('email') && unchanged('createdAt')
             && unchanged('role') && unchanged('tier') && unchanged('tierNote') && unchanged('groupTags')
             && unchanged('allowedLevels'))
@@ -173,9 +192,17 @@ service cloud.firestore {
 
       allow get, list: if signedIn() && (isAdmin() || resource.data.uid == request.auth.uid);
 
+      // score เป็นสัดส่วน 0–1 และดาวไม่เกิน 3 — กันเขียนคะแนนเกินจริงจาก devtools
+      function stageClearValuesOk() {
+        return request.resource.data.score is number
+          && request.resource.data.score >= 0 && request.resource.data.score <= 1
+          && request.resource.data.get('bestStars', 0) <= 3;
+      }
+
       allow create: if signedIn()
         && request.resource.data.uid == request.auth.uid
-        && request.resource.data.keys().hasOnly(stageClearFields());
+        && request.resource.data.keys().hasOnly(stageClearFields())
+        && stageClearValuesOk();
 
       // ต้องเป็นเจ้าของเอกสารเดิมด้วย (ไม่ใช่แค่ uid ที่ส่งมาใหม่) ห้ามสวมสิทธิ์เอกสารคนอื่น
       // และห้ามคะแนนด่านลดลงจากที่เคยบันทึกไว้ เหมือนกับ bestStars ใน submissions
@@ -186,6 +213,7 @@ service cloud.firestore {
         && unchanged('uid')
         && unchanged('stageId')
         && request.resource.data.keys().hasOnly(stageClearFields())
+        && stageClearValuesOk()
         && request.resource.data.score >= resource.data.score
         && (!('attemptCount' in resource.data) || request.resource.data.attemptCount >= resource.data.attemptCount);
 
@@ -204,7 +232,10 @@ service cloud.firestore {
         && request.resource.data.keys().hasOnly(reviewFields())
         && request.resource.data.uid == uid
         && request.resource.data.rating >= 1 && request.resource.data.rating <= 5
-        && request.resource.data.comment is string && request.resource.data.comment.size() > 0;
+        && request.resource.data.comment is string && request.resource.data.comment.size() > 0
+        && request.resource.data.comment.size() <= 2000
+        && (!('authorName' in request.resource.data)
+            || (request.resource.data.authorName is string && request.resource.data.authorName.size() <= 200));
 
       allow delete: if isAdmin();
     }

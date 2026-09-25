@@ -165,3 +165,37 @@ describe('users rules', () => {
     });
   });
 });
+
+describe('size and value limits', () => {
+  it('blocks oversized profile text and favorite lists', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc() });
+      const ref = authedDb(env, 'student1').collection('users').doc('student1');
+      await assertSucceeds(ref.update({ nickname: 'หยก', school: 'โรงเรียนทดสอบ' }));
+      await assertFails(ref.update({ nickname: 'x'.repeat(61) }));
+      await assertFails(ref.update({ school: 'x'.repeat(201) }));
+      await assertFails(ref.update({ favoriteVocab: Array.from({ length: 2001 }, (_, i) => `v${i}`) }));
+    });
+  });
+
+  it('blocks review comments over 2000 characters', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc() });
+      const ref = authedDb(env, 'student1').collection('reviews').doc('student1');
+      const review = { uid: 'student1', rating: 5, comment: 'ดีมาก', createdAt: '2026-09-26T00:00:00.000Z' };
+      await assertSucceeds(ref.set(review));
+      await assertFails(ref.set({ ...review, comment: 'x'.repeat(2001) }));
+    });
+  });
+
+  it('blocks stage scores above 100% or more than 3 stars', async () => {
+    await withTestEnv(async (env) => {
+      await seed(env, { 'users/student1': studentDoc() });
+      const ref = authedDb(env, 'student1').collection('stageClears').doc('student1__st1');
+      const clear = { uid: 'student1', stageId: 'st1', skill: 'grammar', level: 'A1', order: 1, score: 1 };
+      await assertFails(ref.set({ ...clear, score: 5 }));
+      await assertFails(ref.set({ ...clear, bestStars: 4 }));
+      await assertSucceeds(ref.set({ ...clear, bestStars: 3 }));
+    });
+  });
+});

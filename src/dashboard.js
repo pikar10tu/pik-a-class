@@ -53,10 +53,13 @@ requireLogin(async (firebaseUser, userDoc) => {
   if (userPill) {
     userPill.innerHTML = `
       <span class="user-pill-avatar-wrap">
-        <img class="user-pill-avatar" src="${avatarSrc}" alt="Avatar" width="22" height="22" />
+        <img class="user-pill-avatar" alt="Avatar" width="22" height="22" />
       </span>
-      <span>${callName || displayName}</span>
+      <span class="user-pill-name"></span>
     `;
+    // ชื่อมาจากผู้ใช้กรอกเอง — ใส่ผ่าน textContent เสมอ ห้ามแทรกลง innerHTML
+    userPill.querySelector('.user-pill-avatar').src = avatarSrc;
+    userPill.querySelector('.user-pill-name').textContent = callName || displayName;
   }
 
   // Admin access
