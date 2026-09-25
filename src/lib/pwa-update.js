@@ -6,9 +6,44 @@
  */
 
 let refreshing = false;
+let initialized = false;
+
+// หน้าที่ห้ามรีโหลดเอง: กำลังเล่นด่าน/เกมคาเฟ่ (ความคืบหน้าจะหาย) และหน้า admin/onboarding (ฟอร์มที่กรอกค้างจะหาย)
+function isBusy() {
+  const visible = (id) => {
+    const el = document.getElementById(id);
+    return Boolean(el && !el.hidden);
+  };
+  if (visible('play-view') || visible('cafe-game-stage')) return true;
+  return /\/(admin\/|onboarding)/.test(window.location.pathname);
+}
+
+// หลัง deploy ไฟล์ chunk เก่าจะหายจากเซิร์ฟเวอร์ หน้าที่เปิดค้างไว้จะโหลด dynamic import ไม่ขึ้น
+// ให้รีโหลดหนึ่งครั้งเพื่อรับไฟล์ชุดใหม่ (กันวนลูปด้วย sessionStorage)
+function handleStaleChunks() {
+  window.addEventListener('vite:preloadError', (event) => {
+    try {
+      const key = 'pik_chunk_reload_at';
+      const last = Number(sessionStorage.getItem(key) || 0);
+      if (Date.now() - last < 30_000) return;
+      sessionStorage.setItem(key, String(Date.now()));
+    } catch {
+      // sessionStorage ใช้ไม่ได้ (เช่น private mode บางแบบ) ก็ยังรีโหลดได้
+    }
+    event.preventDefault();
+    window.location.reload();
+  });
+}
 
 export function initPwaUpdate() {
-  if (typeof window === 'undefined' || !('serviceWorker' in navigator)) return;
+  if (typeof window === 'undefined' || initialized) return;
+  initialized = true;
+  handleStaleChunks();
+  if (!('serviceWorker' in navigator)) return;
+
+  // ตอนติดตั้ง Service Worker ครั้งแรก clientsClaim จะทำให้ controllerchange ยิงด้วย
+  // ทั้งที่ไม่ใช่เวอร์ชันใหม่ — รีโหลดเฉพาะกรณีที่มี SW ตัวเก่าคุมหน้าอยู่ก่อนแล้วเท่านั้น
+  const hadController = Boolean(navigator.serviceWorker.controller);
 
   // 1. ตรวจสอบการอัปเดตทันทีเมื่อผู้ใช้สลับกลับเข้าแอพ (Resume from background)
   document.addEventListener('visibilitychange', () => {
@@ -21,12 +56,11 @@ export function initPwaUpdate() {
 
   // 2. ดักจับเมื่อมี Service Worker ตัวใหม่เข้าควบคุม (controllerchange)
   navigator.serviceWorker.addEventListener('controllerchange', () => {
-    if (refreshing) return;
+    if (refreshing || !hadController) return;
     refreshing = true;
 
-    // ถ้าไม่อยู่ระหว่างการทำข้อสอบ (เช่น อยู่หน้า Dashboard, Profile, Login) ให้ reload ทันที
-    const isPlaying = document.getElementById('play-view') && !document.getElementById('play-view').hidden;
-    if (!isPlaying) {
+    // ถ้าไม่ได้ทำอะไรค้างอยู่ (เช่น อยู่หน้า Dashboard, Profile) ให้ reload ทันที
+    if (!isBusy()) {
       window.location.reload();
     } else {
       showUpdateToast();

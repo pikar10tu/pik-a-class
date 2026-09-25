@@ -5,6 +5,9 @@ import { validateOnboardingForm, GRADES, SCHOOL_GRADES } from './lib/onboarding-
 import { showPageError } from './lib/page-error.js';
 import { CONSENT_TITLE, CONSENT_SECTIONS, CONSENT_CHECKBOX_LABEL } from './lib/consent.js';
 import { mascotSrc } from './lib/mascot.js';
+import { initPwaUpdate } from './lib/pwa-update.js';
+
+initPwaUpdate();
 
 const base = import.meta.env.BASE_URL;
 const mascotEl = document.getElementById('mascot');

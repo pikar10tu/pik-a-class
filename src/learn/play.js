@@ -265,6 +265,7 @@ function backHref() {
 function showEmpty(message, backHref) {
   midStage = false;
   document.getElementById('play-view').hidden = true;
+  document.getElementById('result-view').hidden = true;
   const emptyMascot = document.getElementById('empty-mascot');
   if (emptyMascot) {
     emptyMascot.onerror = () => {

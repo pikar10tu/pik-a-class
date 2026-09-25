@@ -1,3 +1,5 @@
+import { initPwaUpdate } from './pwa-update.js';
+
 export const ADMIN_PAGES = [
   { href: 'admin/index.html', label: 'ภาพรวม' },
   { href: 'admin/users.html', label: 'จัดการผู้ใช้' },
@@ -8,6 +10,7 @@ export const ADMIN_PAGES = [
 ];
 
 export function renderAdminNav(container, currentHref, baseUrl) {
+  initPwaUpdate();
   const nav = document.createElement('nav');
   nav.className = 'admin-nav';
   nav.setAttribute('aria-label', 'เมนูผู้ดูแลระบบ');
