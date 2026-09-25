@@ -999,7 +999,7 @@ export const techMediaVocab = [
     exampleThai: "ระบบอัตโนมัติทำงานแทนมนุษย์ด้วยหุ่นยนต์อุตสาหกรรมช่วยเร่งผลิตภาพการผลิตอย่างมหาศาลพร้อมลดแรงงานคน"
   },
   {
-    id: "v_b2_tech_08",
+    id: "v_b2_tech_streamline",
     word: "streamline",
     pos: "v.",
     level: "B2",
@@ -1023,7 +1023,7 @@ export const techMediaVocab = [
     exampleThai: "สิ่งพิมพ์แนวแทบลอยด์หันไปใช้การทำข่าวเน้นกระแสเร้าอารมณ์เกินจริงเพื่อดึงดูดยอดคลิกผ่านราคาถูก"
   },
   {
-    id: "v_b2_tech_10",
+    id: "v_b2_tech_distort",
     word: "distort",
     pos: "v.",
     level: "B2",
@@ -1083,7 +1083,7 @@ export const techMediaVocab = [
     exampleThai: "วิชาการรู้เท่าทันสื่อสอนให้นักเรียนตรวจจับอคติและความลำเอียงของสื่อทางการเมืองในบทวิจารณ์ทางโทรทัศน์"
   },
   {
-    id: "v_b2_tech_15",
+    id: "v_b2_tech_manipulate",
     word: "manipulate",
     pos: "v.",
     level: "B2",
@@ -1095,7 +1095,7 @@ export const techMediaVocab = [
     exampleThai: "แฮกเกอร์พยายามชักใยบงการข้อมูลผลการลงคะแนนออนไลน์ด้วยการสร้างบัญชีผู้ใช้ปลอม"
   },
   {
-    id: "v_b2_tech_16",
+    id: "v_b2_tech_authenticate",
     word: "authenticate",
     pos: "v.",
     level: "B2",

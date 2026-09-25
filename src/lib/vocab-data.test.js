@@ -6,6 +6,7 @@ import {
   getRandomWords,
   shuffleArray,
 } from './vocab-data.js';
+import idLock from '../../scripts/vocab-builder/vocab-ids.lock.json';
 
 describe('vocab-data', () => {
   it('has valid categories', () => {
@@ -22,6 +23,15 @@ describe('vocab-data', () => {
     for (const item of VOCAB_ITEMS) {
       expect(ids.has(item.id)).toBe(false);
       ids.add(item.id);
+    }
+  });
+
+  // ID ถูกเก็บถาวรใน Firestore (favoriteVocab และ submissions รายคำ) ถ้า ID เดิมไปชี้คำอื่น
+  // คำโปรดและสถิติของนักเรียนจะย้ายไปอยู่กับคำผิดตัวแบบเงียบๆ
+  it('never reassigns a locked vocab ID to a different word', () => {
+    for (const item of VOCAB_ITEMS) {
+      expect(idLock[item.id], `${item.id} ยังไม่อยู่ในล็อก — รัน npm run build:vocab`).toBeDefined();
+      expect(idLock[item.id], `${item.id} เคยเป็นคำอื่น ห้ามใช้ ID ซ้ำ`).toBe(item.word);
     }
   });
 

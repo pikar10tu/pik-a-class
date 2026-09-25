@@ -827,7 +827,7 @@ export const natureWeatherVocab = [
     exampleThai: "แนวปะการังเขตร้อนเป็นแหล่งรวมความหลากหลายทางชีวภาพของสิ่งมีชีวิตใต้ทะเลอันน่าทึ่ง"
   },
   {
-    id: "v_b1_nature_12",
+    id: "v_b1_nature_adapt",
     word: "adapt",
     pos: "v.",
     level: "B1",
@@ -875,7 +875,7 @@ export const natureWeatherVocab = [
     exampleThai: "นักภูมิอากาศวิทยาติดตามว่าธารน้ำแข็งขั้วโลกบนเทือกเขากำลังละลายอย่างรวดเร็วเพียงใดเนื่องจากภาวะโลกร้อน"
   },
   {
-    id: "v_b1_nature_16",
+    id: "v_b1_nature_survive",
     word: "survive",
     pos: "v.",
     level: "B1",
@@ -963,7 +963,7 @@ export const natureWeatherVocab = [
     exampleThai: "สารเคมีไหลบ่าจากโรงงานใกล้เคียงก่อให้เกิดการปนเปื้อนของสารพิษโลหะหนักอันตรายในอ่างเก็บน้ำ"
   },
   {
-    id: "v_b2_nature_05",
+    id: "v_b2_nature_conserve",
     word: "conserve",
     pos: "v.",
     level: "B2",
@@ -1011,7 +1011,7 @@ export const natureWeatherVocab = [
     exampleThai: "นกฮูกและค้างคาวมีการปรับตัวของประสาทสัมผัสอันยอดเยี่ยมที่ออกแบบมาสำหรับการล่าซึ่งออกหากินในเวลากลางคืน"
   },
   {
-    id: "v_b2_nature_09",
+    id: "v_b2_nature_deplete",
     word: "deplete",
     pos: "v.",
     level: "B2",
@@ -1047,7 +1047,7 @@ export const natureWeatherVocab = [
     exampleThai: "การปลูกหญ้าแฝกที่มีรากลึกตามแนวลาดไหล่เขาทางหลวงช่วยยับยั้งการสึกกร่อนพังทลายของดินได้อย่างชะงัด"
   },
   {
-    id: "v_b2_nature_12",
+    id: "v_b2_nature_emit",
     word: "emit",
     pos: "v.",
     level: "B2",

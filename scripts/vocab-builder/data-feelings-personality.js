@@ -827,7 +827,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "นักพัฒนารู้สึกหงุดหงิดคับข้องใจเมื่อบั๊กในซอฟต์แวร์ยังคงไม่ได้รับการแก้ไขหลังพยายามมาสามวัน"
   },
   {
-    id: "v_b1_feel_12",
+    id: "v_b1_feel_react",
     word: "react",
     pos: "v.",
     level: "B1",
@@ -863,7 +863,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "ตัวแทนขายที่ชอบเข้าสังคมเปิดเผยจะทำงานได้ยอดเยี่ยมเมื่อได้พบปะและสร้างเครือข่ายในงานที่มีผู้คนคึกคัก"
   },
   {
-    id: "v_b1_feel_15",
+    id: "v_b1_feel_express",
     word: "express",
     pos: "v.",
     level: "B1",
@@ -1023,7 +1023,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "การเขียนบันทึกสะท้อนความคิดประจำวันช่วยเสริมสร้างมุมมองที่ชอบใคร่ครวญสำรวจจิตใจตนเองและมีสติ"
   },
   {
-    id: "v_b2_feel_10",
+    id: "v_b2_feel_anticipate",
     word: "anticipate",
     pos: "v.",
     level: "B2",
@@ -1071,7 +1071,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "ความหลงตัวเองหมกมุ่นภาพลักษณ์กับการได้รับการยอมรับบนโซเชียลมีเดียทำลายมิตรภาพในชีวิตจริงที่มีความหมาย"
   },
   {
-    id: "v_b2_feel_14",
+    id: "v_b2_feel_distinguish",
     word: "distinguish",
     pos: "v.",
     level: "B2",
@@ -1095,7 +1095,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "นิทรรศการในพิพิธภัณฑ์จัดแสดงภาพถ่ายที่สะเทือนอารมณ์จับใจลึกซึ้งของผู้ลี้ภัยสงครามที่ได้กลับมาพบกันหลังผ่านไปหลายทศวรรษ"
   },
   {
-    id: "v_b2_feel_16",
+    id: "v_b2_feel_perceive",
     word: "perceive",
     pos: "v.",
     level: "B2",
@@ -1107,7 +1107,7 @@ export const feelingsPersonalityVocab = [
     exampleThai: "วิธีการที่เรารับรู้และเข้าใจสถานการณ์ตึงเครียดในชีวิตประจำวันมีผลอย่างมากต่อสุขภาวะทางจิตของเรา"
   },
   {
-    id: "v_b2_feel_17",
+    id: "v_b2_feel_empathize",
     word: "empathize",
     pos: "v.",
     level: "B2",

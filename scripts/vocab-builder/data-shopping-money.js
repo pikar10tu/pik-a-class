@@ -951,7 +951,7 @@ export const shoppingMoneyVocab = [
     exampleThai: "ผู้ตรวจสอบบัญชีตรวจสอบรายจ่ายงบประมาณทั้งหมดเพื่อการลงทุนของบริษัทในโรงงานผลิตในต่างประเทศอย่างละเอียด"
   },
   {
-    id: "v_b2_shop_04",
+    id: "v_b2_shop_allocate",
     word: "allocate",
     pos: "v.",
     level: "B2",
@@ -1059,7 +1059,7 @@ export const shoppingMoneyVocab = [
     exampleThai: "อัตราดอกเบี้ยที่เพิ่มขึ้นและรายจ่ายผู้บริโภคที่ลดลงทำให้เศรษฐกิจของประเทศเข้าสู่ภาวะเศรษฐกิจถดถอยซบเซาเล็กน้อย"
   },
   {
-    id: "v_b2_shop_13",
+    id: "v_b2_shop_fluctuate",
     word: "fluctuate",
     pos: "v.",
     level: "B2",
@@ -1083,7 +1083,7 @@ export const shoppingMoneyVocab = [
     exampleThai: "ธนาคารพาณิชย์ต้องการโฉนดอสังหาริมทรัพย์เป็นหลักทรัพย์ค้ำประกันเงินกู้ที่มั่นคงสำหรับเงินกู้ธุรกิจหลายล้านดอลลาร์"
   },
   {
-    id: "v_b2_shop_15",
+    id: "v_b2_shop_compensate",
     word: "compensate",
     pos: "v.",
     level: "B2",
@@ -1107,7 +1107,7 @@ export const shoppingMoneyVocab = [
     exampleThai: "บริษัทยักษ์ใหญ่ด้านโทรคมนาคมเสร็จสิ้นการเข้าซื้อและครอบงำกิจการเชิงกลยุทธ์มูลค่าหลายพันล้านดอลลาร์ของคู่แข่งรายสำคัญ"
   },
   {
-    id: "v_b2_shop_17",
+    id: "v_b2_shop_diminish",
     word: "diminish",
     pos: "v.",
     level: "B2",

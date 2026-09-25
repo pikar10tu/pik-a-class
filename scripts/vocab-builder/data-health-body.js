@@ -915,7 +915,7 @@ export const healthBodyVocab = [
   // LEVEL B2: 17 WORDS (Upper-Intermediate / A-Level 82)
   // ==========================================
   {
-    id: "v_b2_health_01",
+    id: "v_b2_health_diagnose",
     word: "diagnose",
     pos: "v.",
     level: "B2",
@@ -999,7 +999,7 @@ export const healthBodyVocab = [
     exampleThai: "ชาสมุนไพรถูกใช้มานานหลายศตวรรษเพื่อบรรเทาอาการเจ็บไข้ได้ป่วยเล็กๆ น้อยๆ เช่น อาการปวดเกร็งในท้อง"
   },
   {
-    id: "v_b2_health_08",
+    id: "v_b2_health_prescribe",
     word: "prescribe",
     pos: "v.",
     level: "B2",
@@ -1035,7 +1035,7 @@ export const healthBodyVocab = [
     exampleThai: "นักวิจัยตรวจสอบอาหารดั้งเดิมของชาวโอกินาวาเพื่อทำความเข้าใจเคล็ดลับของการมีอายุขัยยืนยาวของมนุษย์"
   },
   {
-    id: "v_b2_health_11",
+    id: "v_b2_health_alleviate",
     word: "alleviate",
     pos: "v.",
     level: "B2",
@@ -1047,7 +1047,7 @@ export const healthBodyVocab = [
     exampleThai: "กายภาพบำบัดแบบนุ่มนวลช่วยบรรเทาความเจ็บปวดเรื้อรังบริเวณหลังส่วนล่างในคนทำงานออฟฟิศ"
   },
   {
-    id: "v_b2_health_12",
+    id: "v_b2_health_transmit",
     word: "transmit",
     pos: "v.",
     level: "B2",

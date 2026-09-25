@@ -915,7 +915,7 @@ export const educationSchoolVocab = [
   // LEVEL B2: 17 WORDS (Upper-Intermediate / A-Level 82)
   // ==========================================
   {
-    id: "v_b2_edu_01",
+    id: "v_b2_edu_comprehend",
     word: "comprehend",
     pos: "v.",
     level: "B2",
@@ -951,7 +951,7 @@ export const educationSchoolVocab = [
     exampleThai: "วิทยานิพนธ์ระดับบัณฑิตศึกษาปริญญาโทของเขาวิเคราะห์การปรับนโยบายเศรษฐกิจมหภาคในศูนย์กลางการผลิตในเอเชีย"
   },
   {
-    id: "v_b2_edu_04",
+    id: "v_b2_edu_cite",
     word: "cite",
     pos: "v.",
     level: "B2",
@@ -1035,7 +1035,7 @@ export const educationSchoolVocab = [
     exampleThai: "การมีส่วนร่วมอย่างกระตือรือร้นในกิจกรรมเสริมหลักสูตรด้านการโต้วาทีและชมรมกีฬาช่วยเพิ่มความโดดเด่นให้ใบสมัครมหาวิทยาลัย"
   },
   {
-    id: "v_b2_edu_11",
+    id: "v_b2_edu_illustrate",
     word: "illustrate",
     pos: "v.",
     level: "B2",
@@ -1047,7 +1047,7 @@ export const educationSchoolVocab = [
     exampleThai: "อาจารย์ใช้กรณีศึกษาในโลกแห่งความเป็นจริงเพื่อยกตัวอย่างอธิบายหลักการทางเศรษฐศาสตร์ที่ซับซ้อน"
   },
   {
-    id: "v_b2_edu_12",
+    id: "v_b2_edu_formulate",
     word: "formulate",
     pos: "v.",
     level: "B2",
@@ -1071,7 +1071,7 @@ export const educationSchoolVocab = [
     exampleThai: "การประชุมทางวิชาการเพื่อแลกเปลี่ยนความรู้ระดับนานาชาติเรื่องเชื้อเพลิงชีวภาพหมุนเวียนได้รวบรวมนักชีวเคมีและวิศวกรชั้นนำ"
   },
   {
-    id: "v_b2_edu_14",
+    id: "v_b2_edu_analyze",
     word: "analyze",
     pos: "v.",
     level: "B2",

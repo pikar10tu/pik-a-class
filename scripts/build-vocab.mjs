@@ -136,6 +136,19 @@ for (let i = 0; i < allItems.length; i++) {
   }
 }
 
+// 10. ID lock — ID ถูกเก็บถาวรใน Firestore (คำโปรด favoriteVocab และ submissions รายคำ)
+// ID เดิมจึงห้ามชี้ไปคำอื่นเด็ดขาด ถ้าจะเปลี่ยนคำให้สร้าง ID ใหม่ แล้วปล่อย ID เก่าเลิกใช้ไป
+const lockPath = path.resolve(__dirname, 'vocab-builder/vocab-ids.lock.json');
+const idLock = fs.existsSync(lockPath) ? JSON.parse(fs.readFileSync(lockPath, 'utf8')) : {};
+for (const item of allItems) {
+  const lockedWord = idLock[item.id];
+  if (lockedWord !== undefined && lockedWord !== item.word) {
+    errors.push(
+      `[${item.id}]: ID นี้เคยเป็นคำ "${lockedWord}" ห้ามนำมาใช้กับ "${item.word}" — ตั้ง ID ใหม่ เช่น "${item.id.replace(/_[^_]+$/, '')}_${item.word.toLowerCase().replace(/[^a-z0-9]+/g, '-')}"`,
+    );
+  }
+}
+
 if (errors.length > 0) {
   console.error(`❌ FOUND ${errors.length} VALIDATION ERRORS:\n`);
   errors.slice(0, 30).forEach((err) => console.error('  - ' + err));
@@ -168,72 +181,35 @@ for (const cat of CATEGORIES) {
   console.log(`  - ${cat.icon} ${cat.label} (${cat.id}): ${count} words`);
 }
 
-// Generate destination file
-const targetPath = path.resolve(__dirname, '../src/lib/vocab-data.js');
+// สร้างไฟล์ข้อมูลล้วน — ฟังก์ชันค้นหา/สุ่มอยู่ใน src/lib/vocab-data.js (แก้ด้วยมือได้ตามปกติ)
+const targetPath = path.resolve(__dirname, '../src/lib/vocab-items.js');
 
-const fileHeader = `// คลังคำศัพท์ภาษาอังกฤษในชีวิตประจำวัน (Everyday English Vocabulary Bank)
-// ครอบคลุมระดับ CEFR A1 - B2 รวม 1,000+ คำ พร้อมคำแปล ชนิดของคำ ตัวอย่างประโยค และตัวเลือกหลอกสำหรับเกม
-// คำแปลทุกคำผ่านการตรวจสอบให้เป็นคำแปลที่ดี ใช้แพร่หลาย กระชับ และไม่มีเครื่องหมายบอกใบ้เฉลย
+const output = `// ⚠️ ไฟล์นี้สร้างอัตโนมัติจาก scripts/vocab-builder/data-*.js — ห้ามแก้ตรงนี้
+// แก้คำศัพท์ที่ scripts/vocab-builder/ แล้วรัน: npm run build:vocab
 
 export const CATEGORIES = ${JSON.stringify(CATEGORIES, null, 2)};
 
 export const VOCAB_ITEMS = ${JSON.stringify(allItems, null, 2)};
-
-export function getCategories() {
-  return CATEGORIES;
-}
-
-export function getLevels() {
-  return ['A1', 'A2', 'B1', 'B2'];
-}
-
-export function getVocabList({ level = 'all', allowedLevels = null, category = 'all', search = '', shuffle = false } = {}) {
-  let list = [...VOCAB_ITEMS];
-
-  if (Array.isArray(allowedLevels) && allowedLevels.length > 0) {
-    list = list.filter((item) => allowedLevels.includes(item.level));
-  }
-
-  if (level && level !== 'all') {
-    list = list.filter((item) => item.level === level);
-  }
-
-  if (category && category !== 'all') {
-    list = list.filter((item) => item.category === category);
-  }
-
-  if (search && search.trim() !== '') {
-    const q = search.trim().toLowerCase();
-    list = list.filter(
-      (item) =>
-        item.word.toLowerCase().includes(q) ||
-        item.thai.toLowerCase().includes(q) ||
-        item.example.toLowerCase().includes(q),
-    );
-  }
-
-  if (shuffle) {
-    list = shuffleArray(list);
-  }
-
-  return list;
-}
-
-export function getRandomWords(count = 10, filter = {}) {
-  const pool = getVocabList({ ...filter, shuffle: true });
-  return pool.slice(0, count);
-}
-
-export function shuffleArray(arr) {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy;
-}
 `;
 
-fs.writeFileSync(targetPath, fileHeader, 'utf8');
-console.log(`\n🎉 SUCCESSFULLY COMPILED VOCAB DATA TO: ${targetPath}`);
-console.log(`Total words: ${allItems.length}\n`);
+// ล็อก ID ใหม่ต่อท้าย (append-only — ID ที่เลิกใช้แล้วยังคงอยู่ในล็อกตลอดไป)
+const nextLock = { ...idLock };
+for (const item of allItems) nextLock[item.id] = item.word;
+const lockOutput = `${JSON.stringify(nextLock, null, 2)}\n`;
+
+if (process.argv.includes('--check')) {
+  // ใช้ใน CI: ถ้าลืมรัน build:vocab หลังแก้คำศัพท์ ให้ fail
+  const current = fs.existsSync(targetPath) ? fs.readFileSync(targetPath, 'utf8') : '';
+  const currentLock = fs.existsSync(lockPath) ? fs.readFileSync(lockPath, 'utf8') : '';
+  const norm = (s) => s.replace(/\r\n/g, '\n');
+  if (norm(current) !== output || norm(currentLock) !== lockOutput) {
+    console.error('\n❌ src/lib/vocab-items.js หรือ vocab-ids.lock.json ไม่ตรงกับ scripts/vocab-builder — รัน npm run build:vocab แล้ว commit');
+    process.exit(1);
+  }
+  console.log('\n✅ vocab-items.js ตรงกับข้อมูลต้นทางแล้ว');
+} else {
+  fs.writeFileSync(targetPath, output, 'utf8');
+  fs.writeFileSync(lockPath, lockOutput, 'utf8');
+  console.log(`\n🎉 SUCCESSFULLY COMPILED VOCAB DATA TO: ${targetPath}`);
+  console.log(`Total words: ${allItems.length}\n`);
+}

@@ -975,7 +975,7 @@ export const jobsWorkVocab = [
     exampleThai: "ช่างเทคนิคโรงงานที่ถูกเลิกจ้างได้รับเงินชดเชยการเลิกจ้างเป็นเวลาหกเดือนตามข้อตกลงของสหภาพแรงงาน"
   },
   {
-    id: "v_b2_job_06",
+    id: "v_b2_job_implement",
     word: "implement",
     pos: "v.",
     level: "B2",
@@ -1071,7 +1071,7 @@ export const jobsWorkVocab = [
     exampleThai: "ผู้เชี่ยวชาญด้านการสรรหาบุคลากรได้รับการว่าจ้างเพื่อทาบทามดึงตัวผู้บริหารที่มีฝีมือในตำแหน่งประธานเจ้าหน้าที่ฝ่ายการเงินจากคู่แข่ง"
   },
   {
-    id: "v_b2_job_14",
+    id: "v_b2_job_coordinate",
     word: "coordinate",
     pos: "v.",
     level: "B2",
@@ -1083,7 +1083,7 @@ export const jobsWorkVocab = [
     exampleThai: "ผู้จัดการโครงการต้องประสานงานร่วมมือกับแผนกต่างๆ เพื่อให้มั่นใจว่าจะส่งมอบงานได้ตรงเวลา"
   },
   {
-    id: "v_b2_job_15",
+    id: "v_b2_job_facilitate",
     word: "facilitate",
     pos: "v.",
     level: "B2",

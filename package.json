@@ -8,6 +8,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:rules": "firebase emulators:exec --only firestore \"vitest run --config vitest.rules.config.js\"",
+    "build:vocab": "node scripts/build-vocab.mjs",
+    "check:vocab": "node scripts/build-vocab.mjs --check",
     "check:content": "node scripts/check-content.mjs",
     "prepare:mascot": "node scripts/prepare-mascot.mjs",
     "optimize:assets": "node scripts/optimize-assets.mjs"

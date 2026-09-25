@@ -1059,7 +1059,7 @@ export const foodDrinkVocab = [
     exampleThai: "รสเปรี้ยวอมเผ็ดอันซับซ้อนของกิมจิเกิดจากกระบวนการหมักบ่มตามธรรมชาติของจุลินทรีย์"
   },
   {
-    id: "v_b2_food_13",
+    id: "v_b2_food_nourish",
     word: "nourish",
     pos: "v.",
     level: "B2",
@@ -1071,7 +1071,7 @@ export const foodDrinkVocab = [
     exampleThai: "อาหารที่สมดุลซึ่งประกอบด้วยผักสดและโปรตีนช่วยบำรุงเลี้ยงร่างกายของเด็กที่กำลังเจริญเติบโต"
   },
   {
-    id: "v_b2_food_14",
+    id: "v_b2_food_digest",
     word: "digest",
     pos: "v.",
     level: "B2",
@@ -1083,7 +1083,7 @@ export const foodDrinkVocab = [
     exampleThai: "กระเพาะอาหารของมนุษย์ผลิตกรดและเอนไซม์เฉพาะเพื่อย่อยอาหารจำพวกโปรตีนเชิงซ้อนได้อย่างมีประสิทธิภาพ"
   },
   {
-    id: "v_b2_food_15",
+    id: "v_b2_food_preserve",
     word: "preserve",
     pos: "v.",
     level: "B2",
@@ -1095,7 +1095,7 @@ export const foodDrinkVocab = [
     exampleThai: "สังคมดั้งเดิมใช้เกลือและควันไฟในการถนอมอาหารประเภทเนื้อสัตว์ไว้สำหรับช่วงฤดูหนาวที่ทารุณ"
   },
   {
-    id: "v_b2_food_16",
+    id: "v_b2_food_contaminate",
     word: "contaminate",
     pos: "v.",
     level: "B2",

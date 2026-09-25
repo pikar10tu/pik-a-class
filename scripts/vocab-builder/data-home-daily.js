@@ -803,7 +803,7 @@ export const homeDailyVocab = [
     exampleThai: "โรงงานที่มีเสียงดังเชิงพาณิชย์ถูกสั่งห้ามเด็ดขาดภายในเกี่ยวกับย่านพักอาศัยอันเงียบสงบ"
   },
   {
-    id: "v_b1_home_10",
+    id: "v_b1_home_maintain",
     word: "maintain",
     pos: "v.",
     level: "B1",
@@ -915,7 +915,7 @@ export const homeDailyVocab = [
   // LEVEL B2: 17 WORDS (Upper-Intermediate / A-Level 82)
   // ==========================================
   {
-    id: "v_b2_home_01",
+    id: "v_b2_home_accommodate",
     word: "accommodate",
     pos: "v.",
     level: "B2",
@@ -1023,7 +1023,7 @@ export const homeDailyVocab = [
     exampleThai: "โครงสร้างพื้นฐานด้านสาธารณูปโภคของเทศบาลชุมชนที่แข็งแกร่งรับประกันว่าน้ำ ประปา บำบัดน้ำเสีย และเน็ตใยแก้วจะไม่สะดุด"
   },
   {
-    id: "v_b2_home_10",
+    id: "v_b2_home_reside",
     word: "reside",
     pos: "v.",
     level: "B2",
@@ -1095,7 +1095,7 @@ export const homeDailyVocab = [
     exampleThai: "ผู้เช่าที่ผิดนัดชำระเงินตามสัญญาอย่างต่อเนื่องอาจต้องเผชิญกับกระบวนการการบังคับขับไล่ออกจากที่พักอาศัยผ่านช่องทางศาล"
   },
   {
-    id: "v_b2_home_16",
+    id: "v_b2_home_renovate",
     word: "renovate",
     pos: "v.",
     level: "B2",
@@ -1107,7 +1107,7 @@ export const homeDailyVocab = [
     exampleThai: "คู่สามีภรรยาตัดสินใจปรับปรุงซ่อมแซมบ้านทาวน์เฮาส์ไม้หลังเก่าก่อนจะย้ายเข้าไปอยู่"
   },
   {
-    id: "v_b2_home_17",
+    id: "v_b2_home_demolish",
     word: "demolish",
     pos: "v.",
     level: "B2",

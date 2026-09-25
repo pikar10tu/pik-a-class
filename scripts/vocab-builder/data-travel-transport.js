@@ -975,7 +975,7 @@ export const travelTransportVocab = [
     exampleThai: "ผู้โดยสารผู้กระตือรือร้นเตรียมตัวขึ้นยานพาหนะเริ่มต้นการเดินทางข้ามมหาสมุทรแอตแลนติก"
   },
   {
-    id: "v_b2_travel_06",
+    id: "v_b2_travel_divert",
     word: "divert",
     pos: "v.",
     level: "B2",
@@ -1083,7 +1083,7 @@ export const travelTransportVocab = [
     exampleThai: "สะพานแขวนช่องทางเดียวที่แคบสร้างจุดคอขวดกีดขวางการจราจรอย่างรุนแรงในทุกเย็น"
   },
   {
-    id: "v_b2_travel_15",
+    id: "v_b2_travel_navigate",
     word: "navigate",
     pos: "v.",
     level: "B2",

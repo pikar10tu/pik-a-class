@@ -827,7 +827,7 @@ export const hobbiesSportsVocab = [
     exampleThai: "นักยิมนาสติกต้องพึ่งพาความคล่องแคล่วว่องไวและการทรงตัวที่ยอดเยี่ยมเพื่อแสดงท่าทางท้าทายแรงโน้มถ่วง"
   },
   {
-    id: "v_b1_hobby_12",
+    id: "v_b1_hobby_compete",
     word: "compete",
     pos: "v.",
     level: "B1",
@@ -887,7 +887,7 @@ export const hobbiesSportsVocab = [
     exampleThai: "การช่วยพยุงคู่แข่งที่บาดเจ็บให้ลุกขึ้นยืนแสดงให้เห็นถึงน้ำใจนักกีฬาที่แท้จริงอันเป็นแบบอย่าง"
   },
   {
-    id: "v_b1_hobby_17",
+    id: "v_b1_hobby_participate",
     word: "participate",
     pos: "v.",
     level: "B1",
@@ -951,7 +951,7 @@ export const hobbiesSportsVocab = [
     exampleThai: "นักเชลโลคลาสสิกขยายชุดรายการแสดงที่เชี่ยวชาญของเธอให้ครอบคลุมผลงานร่วมสมัยแนวหน้า"
   },
   {
-    id: "v_b2_hobby_04",
+    id: "v_b2_hobby_dominate",
     word: "dominate",
     pos: "v.",
     level: "B2",
@@ -1059,7 +1059,7 @@ export const hobbiesSportsVocab = [
     exampleThai: "ผู้รักกีฬาตกหลุมรักช่วงเวลาที่ทีมนอกสายตาที่เป็นมวยรองสามารถพลิกล็อกเอาชนะทีมยักษ์ใหญ่ระดับนานาชาติ"
   },
   {
-    id: "v_b2_hobby_13",
+    id: "v_b2_hobby_persevere",
     word: "persevere",
     pos: "v.",
     level: "B2",
@@ -1071,7 +1071,7 @@ export const hobbiesSportsVocab = [
     exampleThai: "นักกีฬามาราธอนต้องพากเพียรไม่ย่อท้อต่อความเหนื่อยล้าของกล้ามเนื้อเพื่อเข้าสู่เส้นชัย"
   },
   {
-    id: "v_b2_hobby_14",
+    id: "v_b2_hobby_excel",
     word: "excel",
     pos: "v.",
     level: "B2",
