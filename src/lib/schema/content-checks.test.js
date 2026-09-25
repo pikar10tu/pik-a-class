@@ -93,3 +93,16 @@ describe('coverageReport', () => {
     expect(c1.total).toBe(0);
   });
 });
+
+describe('checkBatch document ids', () => {
+  it('accepts an id as the document id without treating it as a field', () => {
+    const { valid, invalid } = checkBatch('exercises', [mcq({ id: 'ex_a1_be_001' })]);
+    expect(invalid).toEqual([]);
+    expect(valid[0].item.id).toBe('ex_a1_be_001');
+  });
+
+  it('rejects ids that Firestore cannot use as a document id', () => {
+    const { invalid } = checkBatch('exercises', [mcq({ id: 'bad/id' })]);
+    expect(invalid[0].errors.map((e) => e.field)).toContain('id');
+  });
+});

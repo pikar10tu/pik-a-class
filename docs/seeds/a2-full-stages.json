@@ -1,5 +1,6 @@
 [
   {
+    "id": "tG9ycm9pBOpWxmgPGiA9",
     "skill": "grammar",
     "level": "A2",
     "order": 1,
@@ -9,13 +10,14 @@
     ],
     "drawCount": 7,
     "passThreshold": 0.7,
-    "isPreview": true,
+    "isPreview": false,
     "reviewStatus": "published",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_02_past_simple_p2",
     "skill": "grammar",
     "level": "A2",
     "order": 2,
@@ -32,6 +34,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "HfpVeEa5goeziNZgax7e",
     "skill": "grammar",
     "level": "A2",
     "order": 3,
@@ -48,6 +51,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_04_past_cont_p2",
     "skill": "grammar",
     "level": "A2",
     "order": 4,
@@ -64,6 +68,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "6mXzGQ7YH5n645PR9k4T",
     "skill": "grammar",
     "level": "A2",
     "order": 5,
@@ -80,6 +85,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_06_pres_perf_p2",
     "skill": "grammar",
     "level": "A2",
     "order": 6,
@@ -96,6 +102,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_07_future_p1",
     "skill": "grammar",
     "level": "A2",
     "order": 7,
@@ -112,6 +119,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_08_future_p2",
     "skill": "grammar",
     "level": "A2",
     "order": 8,
@@ -128,6 +136,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "MtFWk7bSBu7SJKe9zbQa",
     "skill": "grammar",
     "level": "A2",
     "order": 9,
@@ -147,6 +156,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "stage_a2_10_miniboss_p2",
     "skill": "grammar",
     "level": "A2",
     "order": 10,
@@ -166,6 +176,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "nt6SUufQ7E3sCLrLrJoE",
     "skill": "grammar",
     "level": "A2",
     "order": 11,
@@ -182,6 +193,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "O8BoYfkELaZFNzyN9a6q",
     "skill": "grammar",
     "level": "A2",
     "order": 12,
@@ -198,6 +210,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "l1EMP03CoCm5hwzWVGpl",
     "skill": "grammar",
     "level": "A2",
     "order": 13,
@@ -214,6 +227,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "doRGviFf9Kx9WVe6I3ZH",
     "skill": "grammar",
     "level": "A2",
     "order": 14,
@@ -230,6 +244,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "7ZzZZ0fKxi7cB8brS5F1",
     "skill": "grammar",
     "level": "A2",
     "order": 15,
@@ -246,6 +261,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "ehp36x0HOgs5rr3t8BYd",
     "skill": "grammar",
     "level": "A2",
     "order": 16,
@@ -262,6 +278,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "MOqjvxjAdyFqNB4W0s0K",
     "skill": "grammar",
     "level": "A2",
     "order": 17,
@@ -278,6 +295,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "Rnmp0Q3I7YhyhW37k9f7",
     "skill": "grammar",
     "level": "A2",
     "order": 18,
@@ -294,6 +312,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "zzlPIr3KITze27uoQ7bl",
     "skill": "grammar",
     "level": "A2",
     "order": 19,
@@ -310,6 +329,7 @@
     "createdBy": "prawich.aum@dome.tu.ac.th"
   },
   {
+    "id": "qhVBjqTcs6VCZWOFlpYU",
     "skill": "grammar",
     "level": "A2",
     "order": 20,

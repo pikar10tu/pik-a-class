@@ -21,7 +21,18 @@ This document contains critical project rules, architectural constraints, and le
 * **Single Crisp Meaning**: The `thai:` field and each distractor in `alternatives:` must be a concise, single translation.
 * **No Clue Symbols**: Never use commas (`,`), parenthetical notes `(...)`, or slashes (`/`) in `thai:` or `alternatives:`. Distractors and the correct answer must have balanced length and match the Part of Speech.
 * **Engine Defensive Guard**: Any quiz engine (such as [`src/lib/cafe-engine.js`](file:///d:/WEBPROJECT/pik-a-class/src/lib/cafe-engine.js)) must sanitize choice texts using `sanitizeChoiceText()` to guarantee no clue commas leak onto UI buttons.
-* **Dataset Size & Balance**: Vocabulary categories should maintain ~20–25 words per category across 9 categories (A1: 7, A2: 7, B1: 5, B2: 5), optimizing for micro-learning sessions (10–15 questions) and spaced repetition without cognitive overload.
+* **Dataset Size & Balance**: 11 categories × ~92 words (A1: 30, A2: 27, B1: 18, B2: 17) = 1,012 words. Keep new categories on the same per-level split; `npm test` requires ≥ 50 words per category.
+
+---
+
+## 3.1 Content Editing Rules (read before touching any content)
+* **Full playbook: [`docs/content-pipeline.md`](file:///d:/WEBPROJECT/pik-a-class/docs/content-pipeline.md).** Follow it step by step.
+* **Vocab**: edit `scripts/vocab-builder/data-*.js` → `npm run build:vocab`. Never edit the generated `src/lib/vocab-items.js`. Helpers live in `src/lib/vocab-data.js`.
+* **Vocab IDs are permanent** (stored in students' `favoriteVocab` and per-word `submissions`). Never point an existing `id` at a different word; a new word gets a new `id`. `scripts/vocab-builder/vocab-ids.lock.json` enforces this.
+* **Exercises & stages**: source of truth is `docs/seeds/*.json`; every item has a permanent `id` = Firestore doc ID. Flow: `content:pull` → edit → `check:content` → `content:sync` (dry-run) → `content:sync -- --apply` → `content:health`.
+* Never delete seed items to retire them — set `"reviewStatus": "draft"`. Never edit `docs/seeds/archive/`.
+* Changing a stage's `tags` requires the matching exercises to carry that tag in the same change; `check:content` fails if any published stage has fewer exercises than `drawCount`.
+* Do not write ad-hoc import scripts against production. Extend `scripts/content-sync.mjs` / `scripts/lib/firestore-rest.mjs` instead.
 
 ---
 
@@ -45,7 +56,10 @@ This document contains critical project rules, architectural constraints, and le
 ---
 
 ## 6. Testing & CI/CD Integrity
-* Always run `npm test` before committing.
+* Always run `npm test` before committing. CI also runs `npm run check:vocab` and `npm run check:content`.
+* Never insert user-entered text (names, comments) with `innerHTML`; use `textContent`.
+* Firestore `in` / `documentId() in` queries accept max 30 values — chunk them.
+* Pages that must not auto-reload on a service-worker update are detected in `src/lib/pwa-update.js` (`isBusy`); add new in-progress views there.
 * When updating Firestore security rules, run `npm run test:rules`.
 * GitHub branch mapping: Local `master` pushes to remote `main` (`git push origin master:main`).
 

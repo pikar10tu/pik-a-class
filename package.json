@@ -11,6 +11,9 @@
     "build:vocab": "node scripts/build-vocab.mjs",
     "check:vocab": "node scripts/build-vocab.mjs --check",
     "check:content": "node scripts/check-content.mjs",
+    "content:health": "node scripts/content-health.mjs",
+    "content:sync": "node scripts/content-sync.mjs",
+    "content:pull": "node scripts/content-pull.mjs",
     "prepare:mascot": "node scripts/prepare-mascot.mjs",
     "optimize:assets": "node scripts/optimize-assets.mjs"
   },

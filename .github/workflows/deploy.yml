@@ -25,6 +25,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run check:vocab
+      - run: npm run check:content
       - uses: actions/setup-java@v4
         with:
           distribution: temurin

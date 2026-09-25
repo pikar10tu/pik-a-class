@@ -1,5 +1,6 @@
 [
   {
+    "id": "KtsmgrLTTGWUfP2THKIl",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -34,6 +35,7 @@
     "contentHash": "7fa5b2a6adb41a74"
   },
   {
+    "id": "OZ2SYcbvOxM6p4bDoWXQ",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -70,6 +72,7 @@
     "contentHash": "9cfb289a80c75e1c"
   },
   {
+    "id": "sZRhTvto03q8lfjJs1mN",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -103,6 +106,7 @@
     "contentHash": "54b3b42e56266248"
   },
   {
+    "id": "svtKu2Ack4H8KC4Xutnx",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -138,6 +142,7 @@
     "contentHash": "79fb0c29a8f3a3a3"
   },
   {
+    "id": "QKSMiJ01bpDdC5CX7j4A",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -149,16 +154,17 @@
       "grammar:past-simple"
     ],
     "visibility": "bank",
-    "isPreview": true,
+    "isPreview": false,
     "reviewStatus": "published",
     "assignedUids": [],
-    "source": "Pik a Class Curriculum A2 Tenses Saga",
+    "source": "แต่งเองตาม taxonomy A2",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "curriculum-auditor",
     "contentHash": "4a90ffb0b106d082"
   },
   {
+    "id": "wDp52u9S8trqX7Qpif9N",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -174,13 +180,14 @@
     "isPreview": false,
     "reviewStatus": "published",
     "assignedUids": [],
-    "source": "Pik a Class Curriculum A2 Tenses Saga",
+    "source": "แต่งเองตาม taxonomy A2",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "curriculum-auditor",
     "contentHash": "b148701d9a0ca87f"
   },
   {
+    "id": "iCo3aRRKensB6qWpHEaL",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -195,13 +202,14 @@
     "isPreview": false,
     "reviewStatus": "published",
     "assignedUids": [],
-    "source": "Pik a Class Curriculum A2 Tenses Saga",
+    "source": "แต่งเองตาม taxonomy A2",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "curriculum-auditor",
     "contentHash": "56507cccde7146c6"
   },
   {
+    "id": "yPLNPi6ok6PNiOXus3Fz",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -216,13 +224,14 @@
     "isPreview": false,
     "reviewStatus": "published",
     "assignedUids": [],
-    "source": "Pik a Class Curriculum A2 Tenses Saga",
+    "source": "แต่งเองตาม taxonomy A2",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "curriculum-auditor",
     "contentHash": "df26153dc2e7f837"
   },
   {
+    "id": "A7IoflrIPMHV6Ez6vcsf",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -245,6 +254,7 @@
     "contentHash": "9b33e1ae6c17cb20"
   },
   {
+    "id": "Ep6kPbHi0r4lmPkgerWz",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -262,16 +272,17 @@
       "grammar:past-simple"
     ],
     "visibility": "bank",
-    "isPreview": true,
+    "isPreview": false,
     "reviewStatus": "published",
     "assignedUids": [],
-    "source": "Pik a Class Curriculum A2 Tenses Saga",
+    "source": "แต่งเองตาม taxonomy A2",
     "createdAt": "2026-09-23T00:00:00.000Z",
     "updatedAt": "2026-09-23T00:00:00.000Z",
     "createdBy": "curriculum-auditor",
     "contentHash": "55b2e569ca80181b"
   },
   {
+    "id": "wp7ePTVF79S3H0WdEeAT",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -299,6 +310,7 @@
     "contentHash": "330f5d51d7f3624f"
   },
   {
+    "id": "xWKaZfmGass0Ytyr3df0",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -326,6 +338,7 @@
     "contentHash": "cb2c78b35b00a159"
   },
   {
+    "id": "WhHSE1ZsubcecnQDhZ6I",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -353,6 +366,7 @@
     "contentHash": "e5773b42da61154c"
   },
   {
+    "id": "UM4zut2qOpLY0tMvvQOQ",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -380,6 +394,7 @@
     "contentHash": "88390beb6fd43451"
   },
   {
+    "id": "dLL9kYGGB7VkRwySviBq",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -407,6 +422,7 @@
     "contentHash": "21d6186440b23e6a"
   },
   {
+    "id": "XeFtU2keWOGOadGO2rR8",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -442,6 +458,7 @@
     "contentHash": "6b52b600b7059f4a"
   },
   {
+    "id": "PQfkVForLKXse4uIEHNT",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -476,6 +493,7 @@
     "contentHash": "2e760a12cb425088"
   },
   {
+    "id": "qE5F3Qms5HA87UCKT5iv",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -512,6 +530,7 @@
     "contentHash": "ac3547f384705d91"
   },
   {
+    "id": "lzlmEB7kDdH2yMKdIwdB",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -546,6 +565,7 @@
     "contentHash": "6416e731703460b7"
   },
   {
+    "id": "uhFAUDgzAmmgbcLoXkcR",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -567,6 +587,7 @@
     "contentHash": "57c61250df22b7a2"
   },
   {
+    "id": "9dPl8X7Hewheofa2ideZ",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -589,6 +610,7 @@
     "contentHash": "c25cd8e924369a4b"
   },
   {
+    "id": "1lSpaZOMKMiiSz2b6nNK",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -610,6 +632,7 @@
     "contentHash": "ede1988c1a72e2fa"
   },
   {
+    "id": "1Gj1kcOo859tDyvdhInc",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -631,6 +654,7 @@
     "contentHash": "3ece12e764e187d9"
   },
   {
+    "id": "eOh2WmWen0PCHgvLCQKh",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -652,6 +676,7 @@
     "contentHash": "7d47551529eac293"
   },
   {
+    "id": "HgHV5LVhA3XQN4iEwXi1",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -679,6 +704,7 @@
     "contentHash": "3128cbce14ea53a4"
   },
   {
+    "id": "wNAv3CNkHeZzpc1e1JBm",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -706,6 +732,7 @@
     "contentHash": "73adfe306a64868a"
   },
   {
+    "id": "esuHbaVhqgGaWuycVbnv",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -733,6 +760,7 @@
     "contentHash": "3364e6f975bec3d7"
   },
   {
+    "id": "tzlB9CuGieCj81CxzxmQ",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -760,6 +788,7 @@
     "contentHash": "a47d70a73ba437dd"
   },
   {
+    "id": "by6wAweukJCZPQNpPPPH",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -787,6 +816,7 @@
     "contentHash": "8e243c7937c178a3"
   },
   {
+    "id": "UCzl3RpLyuWbC0g8ZKiK",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -814,6 +844,7 @@
     "contentHash": "e293f23216631f2c"
   },
   {
+    "id": "zBWSYhztjGjp8iEfYf6k",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -847,6 +878,7 @@
     "contentHash": "45c9ad46643fe68c"
   },
   {
+    "id": "YkW5GA8ml5IBMkSiKgCD",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -880,6 +912,7 @@
     "contentHash": "ffdf1bcb85a6d629"
   },
   {
+    "id": "JM9zyVKQqeZlrnoAr7BH",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -915,6 +948,7 @@
     "contentHash": "344004654b073c03"
   },
   {
+    "id": "Kg0U0UbZSDZBhUzhgeio",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -948,6 +982,7 @@
     "contentHash": "d1a998e1efcf7d2f"
   },
   {
+    "id": "T5RX4VxQlZKds03FnEWM",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -969,6 +1004,7 @@
     "contentHash": "6d852ef4293e52f6"
   },
   {
+    "id": "X8kdwDW7gilKLtFVkK7l",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -990,6 +1026,7 @@
     "contentHash": "87856189301eaceb"
   },
   {
+    "id": "wQb80EoxYPbjflcd0k5I",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1011,6 +1048,7 @@
     "contentHash": "544e34ec890c5e96"
   },
   {
+    "id": "eOIfFl1hn0J9tN96VDFn",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1032,6 +1070,7 @@
     "contentHash": "84ea132fa3ad3739"
   },
   {
+    "id": "KldgE2dAQGL9A3KpnYEe",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1054,6 +1093,7 @@
     "contentHash": "092c613073e90ab6"
   },
   {
+    "id": "oYH0E0tcVRCtMhrxWa0P",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1081,6 +1121,7 @@
     "contentHash": "851e5ab0e3b8051e"
   },
   {
+    "id": "aIgkk7T7DShG3xmho0W4",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1108,6 +1149,7 @@
     "contentHash": "ed8fd657d95c48dd"
   },
   {
+    "id": "hw7icIfS7cQBNycbWI4L",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1135,6 +1177,7 @@
     "contentHash": "93afc749c25ba103"
   },
   {
+    "id": "Ba0zPq77qDSReVxpQXrz",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1162,6 +1205,7 @@
     "contentHash": "d6174e49ee5c008b"
   },
   {
+    "id": "WhUqNIBmCHSWeoxYbPsV",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1189,6 +1233,7 @@
     "contentHash": "6c26dd77ac3de17d"
   },
   {
+    "id": "Tw1Tcy8xvPkaXYsIbS1F",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1216,6 +1261,7 @@
     "contentHash": "66ec5f5b941a389d"
   },
   {
+    "id": "4JcTceJEFEMjmiiD3vRV",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1252,6 +1298,7 @@
     "contentHash": "cf81fbd8abc96952"
   },
   {
+    "id": "m343SkWILLmSrfGjyURp",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1288,6 +1335,7 @@
     "contentHash": "fb042d692f34717f"
   },
   {
+    "id": "T7eTIJhcv7SRDjx4wBqU",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1322,6 +1370,7 @@
     "contentHash": "873eee547c653e9a"
   },
   {
+    "id": "KTkOqMaBQ0qKsnAX9dpn",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1342,7 +1391,8 @@
       "do"
     ],
     "answerKey": [
-      "I promise I will not tell this secret to anyone"
+      "I promise I will not tell this secret to anyone",
+      "I promise I won't tell this secret to anyone"
     ],
     "tags": [
       "grammar:future-going-to-will"
@@ -1358,6 +1408,7 @@
     "contentHash": "303d4f8b766a3aa5"
   },
   {
+    "id": "oyxVSj97uAFYePY4szZW",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1380,6 +1431,7 @@
     "contentHash": "4f2055b1e3a2598b"
   },
   {
+    "id": "k41qFNMpuOn0TKvOLALf",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1401,6 +1453,7 @@
     "contentHash": "0828135d6b07b417"
   },
   {
+    "id": "IuWBbVK6UdaivkM1qjgz",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1422,6 +1475,7 @@
     "contentHash": "10a7beb877f2e376"
   },
   {
+    "id": "weGzRUmsp8mKfe9squkF",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1443,6 +1497,7 @@
     "contentHash": "0965b758f893a13a"
   },
   {
+    "id": "ZzPIC65ntvCgFp3LOhRm",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1464,6 +1519,7 @@
     "contentHash": "2ecade4bc33218d9"
   },
   {
+    "id": "rf3SoEddKeh25UZCpJOY",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1491,6 +1547,7 @@
     "contentHash": "bd2830aac5282f30"
   },
   {
+    "id": "Aj0Fze3lBgbTKtYHbAMA",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1518,6 +1575,7 @@
     "contentHash": "0b972b27bf812259"
   },
   {
+    "id": "7oGOzlPumUobKBoUdthz",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1545,6 +1603,7 @@
     "contentHash": "1e90112ce622cab2"
   },
   {
+    "id": "qRKLpag1dfMS6k3iykVZ",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1572,6 +1631,7 @@
     "contentHash": "ec0d00473f1a23e9"
   },
   {
+    "id": "tI7nRkOv4O4zp9JAsRbu",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1599,6 +1659,7 @@
     "contentHash": "6352993b9ef8ca39"
   },
   {
+    "id": "96cFoTPEyy22ek6AhPAD",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1626,6 +1687,7 @@
     "contentHash": "9ef0bbfc9e921ece"
   },
   {
+    "id": "6ntlbuyThWF8qhRPmWFg",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1663,6 +1725,7 @@
     "contentHash": "2a76009c79dd9192"
   },
   {
+    "id": "a2-4ebd9fabb8839f49",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1697,6 +1760,7 @@
     "contentHash": "4ebd9fabb8839f49"
   },
   {
+    "id": "W8GouIKILp70TWF0WWf2",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1730,6 +1794,7 @@
     "contentHash": "ece6fc10930a48fa"
   },
   {
+    "id": "BD70SkLuPOw8S0vPdnJn",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -1763,6 +1828,7 @@
     "contentHash": "2785818aa2613418"
   },
   {
+    "id": "BvGLpjSGuqTOrPHQ9Tyd",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1784,6 +1850,7 @@
     "contentHash": "9e09d80412cfa406"
   },
   {
+    "id": "Nseuim77GZGAilEc160b",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1805,6 +1872,7 @@
     "contentHash": "f0b0d7ee3ce52904"
   },
   {
+    "id": "CbkfZgiT6nKOkSFouLpE",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1826,6 +1894,7 @@
     "contentHash": "7e654fe1024185bb"
   },
   {
+    "id": "yFRelRQr7kIYSqmre3Nn",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1847,6 +1916,7 @@
     "contentHash": "f7fb5ccadc43f528"
   },
   {
+    "id": "SzyaEvQuj3B1HvifG9lI",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -1869,6 +1939,7 @@
     "contentHash": "a6c0f34004aa21e6"
   },
   {
+    "id": "gVibgeb1KR8yRZaLCVgt",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1896,6 +1967,7 @@
     "contentHash": "548396bc4f1f0b0e"
   },
   {
+    "id": "eqeDAtJehUxGzWKSM5yV",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1923,6 +1995,7 @@
     "contentHash": "25cdd36106d498fb"
   },
   {
+    "id": "3CqcKJBbtJiFELOMr79z",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1950,6 +2023,7 @@
     "contentHash": "ced4b96936518737"
   },
   {
+    "id": "RZdLV2aOOrY0UPF0hsKx",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -1977,6 +2051,7 @@
     "contentHash": "f63bbf82cc58145c"
   },
   {
+    "id": "MwOvgdkXV8m6t2Vl4oyO",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2004,6 +2079,7 @@
     "contentHash": "02f3350b6e857a95"
   },
   {
+    "id": "meyOZRPMfOidokWHV0gr",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2031,6 +2107,7 @@
     "contentHash": "976f3379ce9bd323"
   },
   {
+    "id": "Dzbax6fkEtwLSTrUAZQG",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2064,6 +2141,7 @@
     "contentHash": "0fbcd259f4fa3417"
   },
   {
+    "id": "FLhJjgIia6G7QhtBd04L",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2100,6 +2178,7 @@
     "contentHash": "17b563735bc347e5"
   },
   {
+    "id": "lTwwNTncbzwIdIGrNsQu",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2119,7 +2198,8 @@
       "more"
     ],
     "answerKey": [
-      "I do not run as fast as my brother"
+      "I do not run as fast as my brother",
+      "I don't run as fast as my brother"
     ],
     "tags": [
       "grammar:comparatives-superlatives"
@@ -2135,6 +2215,7 @@
     "contentHash": "4eb84098dd318406"
   },
   {
+    "id": "BP308ykWbtftouPADYG5",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2170,6 +2251,7 @@
     "contentHash": "6b745e121b5bda64"
   },
   {
+    "id": "wVQhgsdNRDHbsKQvT88A",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2191,6 +2273,7 @@
     "contentHash": "b2e8e20605998c3c"
   },
   {
+    "id": "UTPXguvHZyFBtNqS0lGx",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2212,6 +2295,7 @@
     "contentHash": "b0415c5486e335fe"
   },
   {
+    "id": "3vUCm0nudR2eBzofzoKc",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2233,6 +2317,7 @@
     "contentHash": "01dd26d821bf6156"
   },
   {
+    "id": "NgJgXWBZFXReCBoHDNhs",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2254,6 +2339,7 @@
     "contentHash": "952dde064eac50b8"
   },
   {
+    "id": "QvIccnFmMJyNZrVc1S2a",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2275,6 +2361,7 @@
     "contentHash": "d05cf374e36db672"
   },
   {
+    "id": "PDzLZZica34WEzJN1aRk",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2302,6 +2389,7 @@
     "contentHash": "81ebab63e0895299"
   },
   {
+    "id": "VLIsFq514puoToh3Nk4Z",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2329,6 +2417,7 @@
     "contentHash": "6ac153f55b5a760b"
   },
   {
+    "id": "La8H6xz6giPtaXjLNtBJ",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2356,6 +2445,7 @@
     "contentHash": "23a08f0209bf92d0"
   },
   {
+    "id": "XsMA7L61VzQHQq9EiaZD",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2383,6 +2473,7 @@
     "contentHash": "1acc83cb7f52c2f5"
   },
   {
+    "id": "xWMcJniTBARuBN8Qaf77",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2410,6 +2501,7 @@
     "contentHash": "a050a28f11af0779"
   },
   {
+    "id": "HnjlzDHynu9miMd33reF",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2437,6 +2529,7 @@
     "contentHash": "02c3329731985745"
   },
   {
+    "id": "kmurh5ehLUxONa7GLpw5",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2472,6 +2565,7 @@
     "contentHash": "0683f36623a2b974"
   },
   {
+    "id": "yuZwsj9AAjOsbqnSZVBA",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2491,7 +2585,8 @@
       "in"
     ],
     "answerKey": [
-      "She doesn't have to wake up early on Sunday"
+      "She doesn't have to wake up early on Sunday",
+      "She does not have to wake up early on Sunday"
     ],
     "tags": [
       "grammar:modals-obligation"
@@ -2507,6 +2602,7 @@
     "contentHash": "ec962fb858892c6a"
   },
   {
+    "id": "IqQdyBpNYrL0406VP3T0",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2542,6 +2638,7 @@
     "contentHash": "a51596a2e44de530"
   },
   {
+    "id": "eMl5FdPhJBZsi5D0nwIW",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2560,7 +2657,8 @@
       "using"
     ],
     "answerKey": [
-      "Students mustn't use mobile phones during the exam"
+      "Students mustn't use mobile phones during the exam",
+      "Students must not use mobile phones during the exam"
     ],
     "tags": [
       "grammar:modals-obligation"
@@ -2576,6 +2674,7 @@
     "contentHash": "03f674faff9ec6b0"
   },
   {
+    "id": "T7u6trSIMsfKeJRsCWU1",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2598,6 +2697,7 @@
     "contentHash": "19d4402870d7e166"
   },
   {
+    "id": "XPHmkhCAY266xfAXr6Yn",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2619,6 +2719,7 @@
     "contentHash": "7c00a514bc47855a"
   },
   {
+    "id": "2eAqFS0VojrPRyTKEUz7",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2640,6 +2741,7 @@
     "contentHash": "eacfdfc5425d5f43"
   },
   {
+    "id": "mxdLISS7YXGUDxvenRBm",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2661,6 +2763,7 @@
     "contentHash": "3d4f899097f331e2"
   },
   {
+    "id": "NSTfzlDguIUyRkgLDFLW",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -2682,6 +2785,7 @@
     "contentHash": "37b5ab945263200a"
   },
   {
+    "id": "GjIv9Ob9uyBpFcxx5pQR",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2709,6 +2813,7 @@
     "contentHash": "c47dec2ae7e4e7d8"
   },
   {
+    "id": "B20u7WDryPS1blbNJn4n",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2736,6 +2841,7 @@
     "contentHash": "cee9741245e22db8"
   },
   {
+    "id": "I75xsdQ8zpVfxOWu6ld2",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2763,6 +2869,7 @@
     "contentHash": "3a7b90b3b250cd35"
   },
   {
+    "id": "WjLbg3PUPXQ8Z58Yq3w5",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2790,6 +2897,7 @@
     "contentHash": "41cb352e2d68d928"
   },
   {
+    "id": "RJLIdl8M0b3KzwZnREt9",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2817,6 +2925,7 @@
     "contentHash": "cdbc9b2abe0c5da0"
   },
   {
+    "id": "Eh3tVeWIqcnyGd98Gdka",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -2844,6 +2953,7 @@
     "contentHash": "56dfa10110511c0b"
   },
   {
+    "id": "irMGAyg4eAPvTlm5uwot",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2878,6 +2988,7 @@
     "contentHash": "68fe9cc51b339a9f"
   },
   {
+    "id": "wurn2aXnHeIoUtG8AHOc",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2913,6 +3024,7 @@
     "contentHash": "b65a1c3a03a52438"
   },
   {
+    "id": "hUYdMu3pKQQk7oik7ZZh",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2948,6 +3060,7 @@
     "contentHash": "8d88c2342d55763a"
   },
   {
+    "id": "sbYH4KOoJ1cWShkwSYvW",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -2982,6 +3095,7 @@
     "contentHash": "fb271f0a26f05584"
   },
   {
+    "id": "5oBGVfuB8uwiUQgLrNKR",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3003,6 +3117,7 @@
     "contentHash": "005a5fffd195a42d"
   },
   {
+    "id": "an6EjP6HXtQrzm4QrQVU",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3024,6 +3139,7 @@
     "contentHash": "099ab535bd56c5bb"
   },
   {
+    "id": "9s1nwt1C5YrGzPjXBBG5",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3045,6 +3161,7 @@
     "contentHash": "70d045f8d98475b2"
   },
   {
+    "id": "8sgB5KjPNQlMgLdRtkJB",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3066,6 +3183,7 @@
     "contentHash": "f669189f6bf76131"
   },
   {
+    "id": "LpCA2NSn2QUI37N404QG",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3087,6 +3205,7 @@
     "contentHash": "59f198cf9eab124d"
   },
   {
+    "id": "1uq4nC0PNUtwayuiKBVV",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3114,6 +3233,7 @@
     "contentHash": "6602c534e4606672"
   },
   {
+    "id": "uYQqbmhENIgFca3iQuTB",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3141,6 +3261,7 @@
     "contentHash": "15ed82691f5e99ff"
   },
   {
+    "id": "rpXSoUJAnw1swaxdxp5K",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3168,6 +3289,7 @@
     "contentHash": "e51c230690a1b608"
   },
   {
+    "id": "WcTEQYLb5oJG4eaWn9wu",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3195,6 +3317,7 @@
     "contentHash": "aaf559c9a6b46167"
   },
   {
+    "id": "JVRyXbn7Y7jEoSFSsWiN",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3222,6 +3345,7 @@
     "contentHash": "698ae62e0045da10"
   },
   {
+    "id": "qn36oXIc3P7BLUiHVUe1",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3249,6 +3373,7 @@
     "contentHash": "8778fd046ce9e1c6"
   },
   {
+    "id": "qjjvhOS5VRRfLHCvpllU",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3284,6 +3409,7 @@
     "contentHash": "f64c76b69733f3c8"
   },
   {
+    "id": "7wmx5do5EKQFFaxkALWB",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3319,6 +3445,7 @@
     "contentHash": "1d4f33e6262a745c"
   },
   {
+    "id": "HBjH2ONt8uZinHYGj47E",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3355,6 +3482,7 @@
     "contentHash": "32a310d67bf65adc"
   },
   {
+    "id": "uSgKky2uQ7Xma7Bnaump",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3390,6 +3518,7 @@
     "contentHash": "dc163a09c7a12e63"
   },
   {
+    "id": "vT5UXolol6nWWjNbcmVC",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3411,6 +3540,7 @@
     "contentHash": "ff5308016324b097"
   },
   {
+    "id": "QXB3Xk8MG8p8j6TSPutA",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3434,6 +3564,7 @@
     "contentHash": "3f7fa0286bf451a2"
   },
   {
+    "id": "WHkyFu1dAwVokHYoEJei",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3455,6 +3586,7 @@
     "contentHash": "e504bcf5145bc773"
   },
   {
+    "id": "khvcXWNxcbyoiNeJbIi3",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3478,6 +3610,7 @@
     "contentHash": "b6e445dd751c0837"
   },
   {
+    "id": "IAdkr6UUsPDROdQUufRB",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3499,6 +3632,7 @@
     "contentHash": "5740a03b311ecc1d"
   },
   {
+    "id": "iF7U6G1ebXWUYVqPJaDD",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3526,6 +3660,7 @@
     "contentHash": "8d815ba473358a56"
   },
   {
+    "id": "g27slc6ywaTXS88jacTP",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3553,6 +3688,7 @@
     "contentHash": "7301e78ee344e538"
   },
   {
+    "id": "CN3YfWqnKv3gUp8GDHfj",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3580,6 +3716,7 @@
     "contentHash": "af3394e5a9d55e3f"
   },
   {
+    "id": "VPbhgOW5FWLuh4orD824",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3607,6 +3744,7 @@
     "contentHash": "c36f333668edc890"
   },
   {
+    "id": "aWuawCTUK93vwUoURmZ3",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3634,6 +3772,7 @@
     "contentHash": "00b7427733a6dd89"
   },
   {
+    "id": "iyNffc0lA5c2GDhkaKnN",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3661,6 +3800,7 @@
     "contentHash": "56493d806a315dd2"
   },
   {
+    "id": "eO8D2whtwaCO5mmmzrxi",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3696,6 +3836,7 @@
     "contentHash": "0d4f81ee2d71c398"
   },
   {
+    "id": "hSnXMryEj0JAPzKXlhKw",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3731,6 +3872,7 @@
     "contentHash": "a662328aa4098030"
   },
   {
+    "id": "24tNKVIuaxpinUYPfZ2l",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3766,6 +3908,7 @@
     "contentHash": "455c262c0b6b7c66"
   },
   {
+    "id": "PrW1rSWbY7EzjLfPVTJR",
     "skill": "grammar",
     "level": "A2",
     "type": "sentence_builder",
@@ -3786,7 +3929,8 @@
       "hurries"
     ],
     "answerKey": [
-      "If you do not hurry you will miss the last train"
+      "If you do not hurry you will miss the last train",
+      "If you don't hurry you will miss the last train"
     ],
     "tags": [
       "grammar:zero-first-conditional"
@@ -3802,6 +3946,7 @@
     "contentHash": "013ea8f2ea776158"
   },
   {
+    "id": "l92IkURoY5eLXLZAsrMJ",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3823,6 +3968,7 @@
     "contentHash": "b415a937180cf861"
   },
   {
+    "id": "lNssR0KMSNuMy2rUmGYr",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3845,6 +3991,7 @@
     "contentHash": "5c24a79457425eba"
   },
   {
+    "id": "lhthBsoZRWEsD5sDKJtf",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3866,6 +4013,7 @@
     "contentHash": "a2fc227edc47e118"
   },
   {
+    "id": "64qseLSgT4HvfIkm5VtC",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3887,6 +4035,7 @@
     "contentHash": "113ea69bf7578899"
   },
   {
+    "id": "OPO5DIAqVCB9K2pS1b3a",
     "skill": "grammar",
     "level": "A2",
     "type": "fill_blank",
@@ -3908,6 +4057,7 @@
     "contentHash": "7cbaeb18468ffa6e"
   },
   {
+    "id": "LePeb4uD0e1dGCoNkxq5",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3935,6 +4085,7 @@
     "contentHash": "8b06ba0cb28bdb86"
   },
   {
+    "id": "EwQUelG4w3q7R10Bdnkd",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3962,6 +4113,7 @@
     "contentHash": "c02c21505f1a7bea"
   },
   {
+    "id": "iLLJvnDYe3nqRrQfFeWG",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -3989,6 +4141,7 @@
     "contentHash": "969f9125b172d2a7"
   },
   {
+    "id": "oatKUJw51S8xA8E6LAuZ",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -4016,6 +4169,7 @@
     "contentHash": "6bd81414cdd1afe2"
   },
   {
+    "id": "pKyXBUTTXgRN7Dpqsv0S",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",
@@ -4043,6 +4197,7 @@
     "contentHash": "2c4af5bd7662126f"
   },
   {
+    "id": "VvPaCj0THw7usMXVVegR",
     "skill": "grammar",
     "level": "A2",
     "type": "mcq",

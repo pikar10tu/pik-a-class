@@ -1,0 +1,1481 @@
+[
+  {
+    "id": "1UDcXx952SDW8HYZQuWg",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "พวกเขากำลังเล่นฟุตบอลตอน 4 โมงเย็นเมื่อวานนี้",
+    "choices": [
+      "They",
+      "were",
+      "playing",
+      "football",
+      "at",
+      "4",
+      "PM",
+      "yesterday",
+      "was",
+      "played"
+    ],
+    "answerKey": [
+      "They were playing football at 4 PM yesterday.",
+      "Yesterday they were playing football at 4 PM."
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "4709UvLXZ6pA824dcJPc",
+    "skill": "writing",
+    "level": "A2",
+    "type": "paragraph",
+    "prompt": "เขียนเล่าวันหยุดสุดสัปดาห์ที่ผ่านมา 4-5 ประโยค",
+    "rubric": "ให้ 3 ดาวเมื่อใช้ Past Simple ถูกต้องเกือบทั้งหมดและเล่าได้ครบ 4 ประโยคขึ้นไป",
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-20T10:00:00.000Z",
+    "updatedAt": "2026-09-20T12:30:04.665Z",
+    "createdBy": "seed"
+  },
+  {
+    "id": "4lY86lXgz1aklSiCiWEM",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "พรุ่งนี้คุณจะทำอะไร?",
+    "choices": [
+      "What",
+      "are",
+      "you",
+      "going",
+      "to",
+      "do",
+      "tomorrow?",
+      "will",
+      "did"
+    ],
+    "answerKey": [
+      "What are you going to do tomorrow?"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "6nGEoOCOLZ2O4VQ0JvpV",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Look out! That glass is on the edge of the table. It ___ fall!",
+    "choices": [
+      "is going to",
+      "will",
+      "is falling",
+      "fell"
+    ],
+    "answerKey": [
+      "is going to"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "6p9TdlSihAjSmhDnoO9r",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "She has already ___ three cups of coffee this morning.",
+    "choices": [
+      "drunk",
+      "drank",
+      "drink",
+      "drinking"
+    ],
+    "answerKey": [
+      "drunk"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "7WXe9osGHC40h4E2l7bm",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Look! Someone ___ the classroom window.",
+    "choices": [
+      "broke",
+      "has broken",
+      "breaks",
+      "was breaking"
+    ],
+    "answerKey": [
+      "has broken"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "80Eok8S3U9emuXFQkQx3",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "I ___ finished my homework yet, so I can't watch TV now.",
+    "answerKey": [
+      "haven't",
+      "have not"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "8sGeEGFO1M4B62N6rI1l",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "I believe our team ___ (win) the championship this season.",
+    "answerKey": [
+      "will win",
+      "'ll win"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "9Rmg5zswARAJjb6Yyg7u",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "What are your summer plans? — I ___ study graphic design in London.",
+    "choices": [
+      "am going to",
+      "will be",
+      "studied",
+      "study"
+    ],
+    "answerKey": [
+      "am going to"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "A3cH560lLMruuWGcm91X",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ฉันกำลังทำการบ้านตอนที่ไฟดับ",
+    "choices": [
+      "I",
+      "was",
+      "doing",
+      "homework",
+      "when",
+      "lights",
+      "went",
+      "out",
+      "were"
+    ],
+    "answerKey": [
+      "I was doing homework when lights went out.",
+      "When lights went out I was doing homework."
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "D9EHuX0eDvYETzTFWBWw",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "What were you ___ when I phoned you?",
+    "answerKey": [
+      "doing"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "E0jTG8vSi5yGiQWsXCwi",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "We ___ lived in this house since 2015.",
+    "answerKey": [
+      "have"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "FmedWc1Xs8Yh4NPz6viv",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "I ___ a shower when the telephone rang.",
+    "answerKey": [
+      "was taking"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "GR14V2uPPAX74WtUgUdO",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "It is very cold in here. I ___ (close) the window right now.",
+    "answerKey": [
+      "will close",
+      "'ll close"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "IeN7KUEFB08vJmkUkkJK",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "My sister ___ a lot of beautiful photos during our trip to Chiang Mai.",
+    "choices": [
+      "took",
+      "take",
+      "taken",
+      "takes"
+    ],
+    "answerKey": [
+      "took"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "ItCzdLUz6SiVXwQpu2uf",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "My sister ___ never tried Japanese food.",
+    "answerKey": [
+      "has"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "K2aaTLvQ2baxrQZBZKhv",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "We already bought the plane tickets. We ___ to Tokyo next Monday.",
+    "choices": [
+      "are flying",
+      "will flying",
+      "flew",
+      "fly"
+    ],
+    "answerKey": [
+      "are flying"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "LBXCEQR5Vae15AgbNU8o",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "While Mali ___ her bike, it suddenly started to rain.",
+    "answerKey": [
+      "was riding"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "LUW1fERQt47qAQgRzR26",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "She is saving money because she ___ (buy) a new smartphone next month.",
+    "answerKey": [
+      "is going to buy",
+      "'s going to buy"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "NStLZaJ4hMy4jJhliyBJ",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ขณะที่ฉันกำลังอ่านหนังสือ น้องชายของฉันกำลังฟังเพลง",
+    "choices": [
+      "While",
+      "I",
+      "was",
+      "reading,",
+      "my",
+      "brother",
+      "was",
+      "listening",
+      "to",
+      "music",
+      "listened"
+    ],
+    "answerKey": [
+      "While I was reading, my brother was listening to music."
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "Ne27sVYnf7fMrXXTyRvq",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "Have you ever ___ sushi?",
+    "answerKey": [
+      "eaten",
+      "tried"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "PJZ6V12mNtrrCJQwZms2",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "While the students ___ their books quietly, the teacher suddenly walked into the classroom.",
+    "answerKey": [
+      "were reading"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "PgWu0nDe7BoAMNPGFWpG",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "คุณทำการบ้านเสร็จเรียบร้อยแล้วหรือยัง?",
+    "choices": [
+      "Have",
+      "you",
+      "finished",
+      "your",
+      "homework",
+      "yet?",
+      "already",
+      "finish",
+      "Did"
+    ],
+    "answerKey": [
+      "Have you finished your homework yet?"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "QDtHjsdnI6ab7Zl6H4uX",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Do you think humans ___ live on Mars in the year 2100?",
+    "choices": [
+      "will",
+      "are going to",
+      "shall be",
+      "are living"
+    ],
+    "answerKey": [
+      "will"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "Qaf6U5rkPpHjMRqIYbih",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "Jack was ___ (drive) home when he saw a cute puppy on the road.",
+    "answerKey": [
+      "driving"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "Qhxxr5EOx6nMqxUSIMxD",
+    "skill": "vocab",
+    "level": "A1",
+    "type": "mcq",
+    "prompt": "Which one is a fruit?",
+    "choices": [
+      "chair",
+      "banana",
+      "pencil"
+    ],
+    "answerKey": [
+      "banana"
+    ],
+    "tags": [
+      "vocab:food-drink"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-20T10:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "seed"
+  },
+  {
+    "id": "SHk1UE4J3O3XGQNrTrtY",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "The phone is ringing. — Wait, I ___ answer it!",
+    "choices": [
+      "will",
+      "am going to",
+      "went to",
+      "have answered"
+    ],
+    "answerKey": [
+      "will"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "UG9BkW5trTF6HUy8Y3rj",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "อย่ากังวลนะ ฉันจะช่วยเธอถือกระเป๋าเอง",
+    "choices": [
+      "Don't",
+      "worry,",
+      "I",
+      "will",
+      "help",
+      "you",
+      "carry",
+      "the",
+      "bag",
+      "am",
+      "helped"
+    ],
+    "answerKey": [
+      "Don't worry, I will help you carry the bag."
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "UgEKt22WtuRVgL4UDWJe",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ฉันกำลังจะไปเยี่ยมคุณปู่คุณย่าในสุดสัปดาห์นี้",
+    "choices": [
+      "I",
+      "am",
+      "going",
+      "to",
+      "visit",
+      "my",
+      "grandparents",
+      "this",
+      "weekend",
+      "will",
+      "visited"
+    ],
+    "answerKey": [
+      "I am going to visit my grandparents this weekend.",
+      "This weekend I am going to visit my grandparents."
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "Vd7CMGCuYGfkMOCZWoBz",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Last summer, my cousins ___ to Phuket by train.",
+    "choices": [
+      "go",
+      "went",
+      "gone",
+      "going"
+    ],
+    "answerKey": [
+      "went"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "VtE0HrufZLceIBvATRuU",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Why ___ you come to school yesterday?",
+    "choices": [
+      "didn't",
+      "weren't",
+      "don't",
+      "haven't"
+    ],
+    "answerKey": [
+      "didn't"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "Yhr7C3ChXpA6yAnC832C",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "คุณได้ดูการแข่งขันฟุตบอลเมื่อคืนนี้ไหม?",
+    "choices": [
+      "Did",
+      "you",
+      "watch",
+      "the",
+      "football",
+      "match",
+      "last",
+      "night?",
+      "watched",
+      "Do"
+    ],
+    "answerKey": [
+      "Did you watch the football match last night?"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "YtNdW1skK8ah8RWOk4B0",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "She ___ TV when the phone suddenly rang.",
+    "choices": [
+      "watch",
+      "watched",
+      "was watching",
+      "is watching"
+    ],
+    "answerKey": [
+      "was watching"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "ZERVkGgGIxBf0TjHZj8B",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "They are ___ (go) to visit the national museum tomorrow afternoon.",
+    "answerKey": [
+      "going"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "bevC2b5oFPao9V6ZrTl8",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "เธอไม่ได้ซื้อเสื้อตัวนั้นเมื่อสัปดาห์ที่แล้ว",
+    "choices": [
+      "She",
+      "didn't",
+      "buy",
+      "that",
+      "shirt",
+      "last",
+      "week",
+      "bought",
+      "doesn't"
+    ],
+    "answerKey": [
+      "She didn't buy that shirt last week.",
+      "Last week she didn't buy that shirt."
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "csgmyKMpo22HY5WskVdn",
+    "skill": "grammar",
+    "level": "A1",
+    "type": "mcq",
+    "prompt": "She ___ to school every day.",
+    "choices": [
+      "go",
+      "goes",
+      "going"
+    ],
+    "answerKey": [
+      "goes"
+    ],
+    "tags": [
+      "grammar:present-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": true,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A1",
+    "createdAt": "2026-09-20T10:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "seed"
+  },
+  {
+    "id": "dNoNDLFottmLvWb5uOd1",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ฉันอาศัยอยู่ในเมืองนี้มาเป็นเวลา 5 ปีแล้ว",
+    "choices": [
+      "I",
+      "have",
+      "lived",
+      "in",
+      "this",
+      "city",
+      "for",
+      "five",
+      "years",
+      "live",
+      "since"
+    ],
+    "answerKey": [
+      "I have lived in this city for five years."
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "eZGYvBAqPiykDtPr4cXy",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "เขาทำกระเป๋าสตางค์หายบนรถประจำทางเมื่อวานนี้",
+    "choices": [
+      "He",
+      "lost",
+      "his",
+      "wallet",
+      "on",
+      "the",
+      "bus",
+      "yesterday",
+      "lose",
+      "at"
+    ],
+    "answerKey": [
+      "He lost his wallet on the bus yesterday.",
+      "Yesterday he lost his wallet on the bus."
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "hEd7AElvg7YH9fzXO4nt",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "I ___ this movie three times so far.",
+    "choices": [
+      "watch",
+      "watched",
+      "have watched",
+      "was watching"
+    ],
+    "answerKey": [
+      "have watched"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "i9K3GTolDhWNA77gP7k7",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "___ you ever been to England?",
+    "choices": [
+      "Did",
+      "Have",
+      "Are",
+      "Was"
+    ],
+    "answerKey": [
+      "Have"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "ijwiRn2nUNdOuWlfwkL3",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "What ___ you ___ when the lights went out?",
+    "choices": [
+      "were / doing",
+      "did / do",
+      "are / doing",
+      "have / done"
+    ],
+    "answerKey": [
+      "were / doing"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "j94ZgezFK8eFByFyANxI",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "At eight o'clock last night, my parents ___ dinner in the kitchen.",
+    "answerKey": [
+      "were cooking"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "jSG03ccmSMCz021jYCIh",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "เมื่อวานนี้พวกเขาไปสวนสัตว์",
+    "choices": [
+      "Yesterday",
+      "they",
+      "went",
+      "to",
+      "the",
+      "zoo",
+      "go",
+      "at"
+    ],
+    "answerKey": [
+      "Yesterday they went to the zoo.",
+      "They went to the zoo yesterday."
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "kpKSALSdNROVwjOF9swM",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "We ___ chess when the lights suddenly went out.",
+    "choices": [
+      "played",
+      "were playing",
+      "are playing",
+      "play"
+    ],
+    "answerKey": [
+      "were playing"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "kySlgOJZ5mKgQSHHpPw0",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "Lisa has already ___ all her suitcases for the flight.",
+    "choices": [
+      "packed",
+      "pack",
+      "packing",
+      "packs"
+    ],
+    "answerKey": [
+      "packed"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "l2aklJtFTHG5RTiIVP63",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ฉันเคยไปประเทศญี่ปุ่นมาแล้วสองครั้ง",
+    "choices": [
+      "I",
+      "have",
+      "been",
+      "to",
+      "Japan",
+      "twice",
+      "has",
+      "went"
+    ],
+    "answerKey": [
+      "I have been to Japan twice."
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "lSZJDxbyfcvtVBrk83n3",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "เขายังทำการบ้านไม่เสร็จ",
+    "choices": [
+      "He",
+      "has",
+      "not",
+      "finished",
+      "his",
+      "homework",
+      "yet",
+      "have",
+      "did"
+    ],
+    "answerKey": [
+      "He has not finished his homework yet.",
+      "He hasn't finished his homework yet."
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "lrVEDwQwb6T9VOid9X5T",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "What ___ you doing at seven o'clock yesterday evening?",
+    "choices": [
+      "was",
+      "were",
+      "did",
+      "are"
+    ],
+    "answerKey": [
+      "were"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "mGOlkOuVKxeKhKDuf9Ik",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "We ___ delicious pizza for dinner last night.",
+    "choices": [
+      "ate",
+      "eat",
+      "eaten",
+      "eating"
+    ],
+    "answerKey": [
+      "ate"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T15:34:46.304Z",
+    "updatedAt": "2026-09-22T15:34:46.304Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "mW27gKj5tmYrcAkVbe6p",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "He has not ___ (clean) his bedroom yet.",
+    "answerKey": [
+      "cleaned"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "nOgL5C3Y9PHiz6S66w28",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "I promise I ___ tell anyone your secret.",
+    "choices": [
+      "won't",
+      "am not going",
+      "didn't",
+      "haven't"
+    ],
+    "answerKey": [
+      "won't"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "nOnhLYJrrYKNZR9zHEMv",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "Tom ___ (write) an email to his teacher two hours ago.",
+    "answerKey": [
+      "wrote"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "obwurEKTTJ8jvgeRgO63",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "___ you see the football match last night?",
+    "choices": [
+      "Do",
+      "Did",
+      "Was",
+      "Have"
+    ],
+    "answerKey": [
+      "Did"
+    ],
+    "tags": [
+      "grammar:past-simple"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "source": "แต่งเองตาม taxonomy A2",
+    "createdAt": "2026-09-21T00:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "task-18"
+  },
+  {
+    "id": "pwahkkeetTn5HmtJlnwL",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "At 8 PM last night, we ___ dinner at an Italian restaurant.",
+    "choices": [
+      "were having",
+      "had",
+      "have had",
+      "are having"
+    ],
+    "answerKey": [
+      "were having"
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "rIawAMnc5LJgrZtbceIi",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "fill_blank",
+    "prompt": "I am meeting my doctor ___ 10 AM tomorrow morning.",
+    "answerKey": [
+      "at"
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "ttFp9eGuNbiKPQiHqwDE",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "mcq",
+    "prompt": "We haven’t heard from him ___ last Christmas.",
+    "choices": [
+      "since",
+      "for",
+      "already",
+      "yet"
+    ],
+    "answerKey": [
+      "since"
+    ],
+    "tags": [
+      "grammar:present-perfect"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "uCPBlhhzsj04fsNamXH0",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "ดูเมฆดำพวกนั้นสิ ฝนกำลังจะตกแล้ว",
+    "choices": [
+      "Look",
+      "at",
+      "those",
+      "dark",
+      "clouds,",
+      "it",
+      "is",
+      "going",
+      "to",
+      "rain",
+      "will"
+    ],
+    "answerKey": [
+      "Look at those dark clouds, it is going to rain."
+    ],
+    "tags": [
+      "grammar:future-going-to-will"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  },
+  {
+    "id": "v6MKCCAoEjewZjtgG6Oa",
+    "skill": "grammar",
+    "level": "A1",
+    "type": "fill_blank",
+    "prompt": "There ___ three books on the table.",
+    "answerKey": [
+      "are"
+    ],
+    "tags": [
+      "grammar:there-is-are"
+    ],
+    "visibility": "bank",
+    "isPreview": true,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-20T10:00:00.000Z",
+    "updatedAt": "2026-09-21T12:51:29.519Z",
+    "createdBy": "seed"
+  },
+  {
+    "id": "vnkX30IF1WANu0NSVnE3",
+    "skill": "grammar",
+    "level": "A2",
+    "type": "sentence_builder",
+    "prompt": "พวกเขากำลังเล่นบาสเกตบอลตอนที่ฝนเริ่มตก",
+    "choices": [
+      "They",
+      "were",
+      "playing",
+      "basketball",
+      "when",
+      "it",
+      "started",
+      "to",
+      "rain",
+      "was",
+      "play"
+    ],
+    "answerKey": [
+      "They were playing basketball when it started to rain.",
+      "When it started to rain they were playing basketball."
+    ],
+    "tags": [
+      "grammar:past-continuous"
+    ],
+    "visibility": "bank",
+    "isPreview": false,
+    "reviewStatus": "published",
+    "createdAt": "2026-09-22T16:31:22.808Z",
+    "updatedAt": "2026-09-22T16:31:22.808Z",
+    "createdBy": "L3ZqEpaWO1VzEr5xp1HyZah3zHO2"
+  }
+]

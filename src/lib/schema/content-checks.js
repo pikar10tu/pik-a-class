@@ -38,7 +38,12 @@ export function checkBatch(collectionName, items, existingHashes = new Set()) {
   items.forEach((rawItem, index) => {
     const hash = contentHash(rawItem);
     const item = { ...rawItem, contentHash: hash };
-    const { errors } = validate(collectionName, item, 'create');
+    // id คือรหัสเอกสาร (document ID) ไม่ใช่ฟิลด์ในเอกสาร — ไม่ต้องตรวจกับ schema
+    const { id: docId, ...fields } = item;
+    const { errors } = validate(collectionName, fields, 'create');
+    if (docId !== undefined && (typeof docId !== 'string' || !/^[A-Za-z0-9_-]{1,100}$/.test(docId))) {
+      errors.push({ field: 'id', message: 'id ต้องเป็นตัวอักษรอังกฤษ ตัวเลข _ หรือ - ไม่เกิน 100 ตัว' });
+    }
 
     if (existingHashes.has(hash)) {
       errors.push({ field: 'prompt', message: 'ข้อนี้ซ้ำกับข้อที่มีอยู่แล้วในคลัง' });

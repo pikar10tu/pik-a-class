@@ -26,8 +26,9 @@ export async function importItems(db, collectionName, items) {
   let written = 0;
   for (const group of chunk(items, WRITE_CHUNK_SIZE)) {
     const batch = writeBatch(db);
-    for (const item of group) {
-      batch.set(doc(collection(db, collectionName)), item);
+    for (const { id, ...item } of group) {
+      // ถ้าไฟล์ระบุ id มา ใช้เป็นรหัสเอกสาร เพื่อให้ npm run content:sync หาเอกสารเดิมเจอ
+      batch.set(id ? doc(db, collectionName, id) : doc(collection(db, collectionName)), item);
     }
     await batch.commit();
     written += group.length;
