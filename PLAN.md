@@ -349,7 +349,7 @@ uid, stageId, skill, level, order, score, clearedAt
 ## [Session 2026-09-26 Part 2]: เปลี่ยนหน้าทันทีแบบแอปมือถือ (Instant page navigation)
 
 - **สถานะการทดสอบ:** Vitest ผ่าน 40 ไฟล์ 412/412 tests (100%), `check:vocab` / `check:content` ผ่าน, Build PWA สำเร็จ, GitHub Actions (build/firestore/deploy) ผ่าน
-- **Commit Hash ล่าสุด:** `9261920` (ซิงก์กับ `origin/main` แล้ว)
+- **Commit Hash ล่าสุด:** `933929d` (ซิงก์กับ `origin/main` แล้ว)
 - **สิ่งที่ทำเสร็จสมบูรณ์:**
   1. **วัดหาต้นเหตุความหน่วง:** ทุกหน้ารอ Firebase ~1.0–1.3 วิ (Auth ยิง `accounts:lookup` ทุกครั้งที่โหลดหน้า + Firestore รอ Auth ก่อนอ่านแม้แต่ cache ตัวเอง) ส่วนไฟล์ JS มาจาก Service Worker ทันทีอยู่แล้ว
   2. **Cache-first render:** แต่ละหน้าแสดงจากข้อมูลในเครื่องทันที แล้วค่อยแทนด้วยข้อมูลจริงเมื่อ Firebase ตอบ — หน้าหลัก, ตะลุยด่าน, เส้นทางด่าน, คลังคำศัพท์, Animal Cafe, โปรไฟล์
@@ -357,6 +357,7 @@ uid, stageId, skill, level, order, score, clearedAt
   4. **Write-through:** ผ่านด่าน / สถิติ Cafe / แก้โปรไฟล์ / เปลี่ยนอวตาร → อัปเดต cache ทันที หน้าถัดไปเห็นของใหม่เลย
   5. **Skeleton** กล่องเทาวิบวับแทนข้อความ "กำลังโหลด…" ตอนเปิดหน้าครั้งแรก
   6. **แก้บั๊กเก่า:** `npm run dev` / `preview` บนเครื่องไม่เคยโหลด `.env.local` (เพราะ `root: 'src'`) → เพิ่ม `envDir`
+  7. **แก้ flashcard คลังคำศัพท์:** เปลี่ยนการ์ดขณะเปิดคำแปลค้างไว้ เคยเห็นคำแปลของคำถัดไปแวบหนึ่ง → ดีดกลับด้านหน้าทันทีก่อนเปลี่ยนคำ (`resetFlipInstantly` ใน `src/vocab/hub.js`) — รอปิ๊กยืนยันบนมือถือ
   - **ผลบนเว็บจริง (เปิดหน้าครั้งที่สอง):** เนื้อหาขึ้นจอ ~0.14–0.15 วิ ทุกหน้า (เดิม 1.0–1.3 วิ), เปิดแอปถึงหน้าหลัก 0.15 วิ (เดิม ~2.5 วิ+)
 - **ไฟล์สำคัญที่มีการเปลี่ยนแปลง:**
   - ใหม่: `src/lib/local-cache.js`, `src/lib/cache-writes.js` (+ tests), `src/lib/app-entry.test.js`
