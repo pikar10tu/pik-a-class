@@ -213,12 +213,22 @@ function updateDeck({ shuffle = false } = {}) {
   }
 
   deckIndex = 0;
-  isFlipped = false;
-  flashcardInner.classList.remove('flipped');
+  resetFlipInstantly();
 
   totalWordsCount.textContent = currentDeck.length;
   renderCurrentCard();
   renderGrid();
+}
+
+// เปลี่ยนการ์ดขณะเปิดคำแปลค้างไว้: พลิกกลับหน้าหน้าแบบทันที (ไม่มีแอนิเมชัน) ก่อนเปลี่ยนคำ
+// ถ้าพลิกกลับช้าๆ 0.6 วิ ตามปกติ จะเห็นคำแปลของคำถัดไปที่หลังการ์ดแวบหนึ่ง = เฉลยก่อนเดา
+function resetFlipInstantly() {
+  if (!isFlipped && !flashcardInner.classList.contains('flipped')) return;
+  isFlipped = false;
+  flashcardInner.style.transition = 'none';
+  flashcardInner.classList.remove('flipped');
+  void flashcardInner.offsetWidth; // บังคับ reflow ให้สถานะไม่มี transition มีผลก่อนคืนค่า
+  flashcardInner.style.transition = '';
 }
 
 function renderCurrentCard() {
@@ -322,8 +332,7 @@ function renderGrid() {
       const idx = currentDeck.findIndex((w) => w.id === item.id);
       if (idx !== -1) {
         deckIndex = idx;
-        isFlipped = false;
-        flashcardInner.classList.remove('flipped');
+        resetFlipInstantly();
         renderCurrentCard();
         flashcardScene.scrollIntoView({ behavior: 'smooth', block: 'center' });
         speakWord(item.word);
@@ -367,16 +376,14 @@ function setupEventListeners() {
   btnPrevCard.addEventListener('click', () => {
     if (currentDeck.length === 0) return;
     deckIndex = (deckIndex - 1 + currentDeck.length) % currentDeck.length;
-    isFlipped = false;
-    flashcardInner.classList.remove('flipped');
+    resetFlipInstantly();
     renderCurrentCard();
   });
 
   btnNextCard.addEventListener('click', () => {
     if (currentDeck.length === 0) return;
     deckIndex = (deckIndex + 1) % currentDeck.length;
-    isFlipped = false;
-    flashcardInner.classList.remove('flipped');
+    resetFlipInstantly();
     renderCurrentCard();
   });
 
