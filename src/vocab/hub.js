@@ -9,7 +9,8 @@ import {
   filterFavorites,
 } from '../lib/vocab-favorites.js';
 import { fetchMyClears } from '../lib/stage-io.js';
-import { getClearedLevels, getUnlockedLevels } from '../lib/user-profile.js';
+import { clearedLevelsFromClears, getUnlockedLevels } from '../lib/user-profile.js';
+import { readCache, writeCache, isSameData } from '../lib/local-cache.js';
 import { readTier } from '../lib/queries.js';
 
 let currentUid = null;
@@ -61,41 +62,49 @@ export function speakWord(text) {
   window.speechSynthesis.speak(utterance);
 }
 
-requireLogin(async (firebaseUser, userDoc) => {
-  currentUid = firebaseUser.uid;
+let eventsBound = false;
+
+function applyUser(user, userDoc, clears) {
+  currentUid = user.uid;
   currentUserDoc = userDoc;
   favoriteIds = getFavoriteIds(userDoc, currentUid);
+  userPill.textContent = userDoc?.callName || userDoc?.nickname || user.email;
+  if (favFilterCount) favFilterCount.textContent = `(${favoriteIds.length})`;
 
-  const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
-  userPill.textContent = name;
-
-  if (favFilterCount) {
-    favFilterCount.textContent = `(${favoriteIds.length})`;
-  }
-
-  try {
-    const myClears = await fetchMyClears(db, currentUid);
-    const clearsByLevel = new Map();
-    for (const clear of myClears) {
-      const lvl = clear.level;
-      if (!lvl) continue;
-      const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
-      if (isCleared) {
-        clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
-      }
-    }
-    clearedLevels = getClearedLevels(clearsByLevel, 20);
-    unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
-  } catch (err) {
-    console.warn('Could not fetch clears for vocab unlock:', err);
-    unlockedLevels = getUnlockedLevels(userDoc, []);
-  }
+  clearedLevels = clears ? clearedLevelsFromClears(clears) : [];
+  unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
 
   renderLevelFilterButtons();
-  setupCategoryFilters();
-  setupLockDialog();
-  setupEventListeners();
+  if (!eventsBound) {
+    // ผูกครั้งเดียว — applyUser ถูกเรียกสองรอบ (cache แล้ว server)
+    setupCategoryFilters();
+    setupLockDialog();
+    setupEventListeners();
+    eventsBound = true;
+  }
   updateDeck();
+}
+
+let shownState = null;
+
+requireLogin(async (firebaseUser, userDoc) => {
+  let clears = null;
+  try {
+    clears = await fetchMyClears(db, firebaseUser.uid);
+    writeCache(firebaseUser.uid, 'clears', clears);
+  } catch (err) {
+    console.warn('Could not fetch clears for vocab unlock:', err);
+    clears = readCache(firebaseUser.uid, 'clears');
+  }
+  const state = { userDoc, levels: getUnlockedLevels(userDoc, clearedLevelsFromClears(clears ?? [])) };
+  if (!isSameData(state, shownState)) applyUser(firebaseUser, userDoc, clears);
+  shownState = state;
+}, {
+  onCached(user, userDoc) {
+    const clears = readCache(user.uid, 'clears');
+    applyUser(user, userDoc, clears);
+    shownState = { userDoc, levels: getUnlockedLevels(userDoc, clearedLevelsFromClears(clears ?? [])) };
+  },
 });
 
 function renderLevelFilterButtons() {
