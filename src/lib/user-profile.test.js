@@ -4,6 +4,7 @@ import {
   getPostLoginRedirect,
   isLevelAllowed,
   getClearedLevels,
+  clearedLevelsFromClears,
   getUnlockedLevels,
   AVATAR_LIST,
   DEFAULT_AVATAR,
@@ -163,3 +164,20 @@ describe('validateProfileData', () => {
   });
 });
 
+
+describe('clearedLevelsFromClears', () => {
+  it('counts cleared stages per level and returns fully cleared levels', () => {
+    const clears = [
+      ...Array.from({ length: 20 }, (_, i) => ({ level: 'A1', clearCount: 1, stageId: `a${i}` })),
+      { level: 'A2', score: 0.9 },
+      { level: 'A2', score: 0.2, clearCount: 0 },
+      { score: 1 },
+    ];
+    expect(clearedLevelsFromClears(clears)).toEqual(getClearedLevels(new Map([['A1', 20], ['A2', 1]]), 20));
+    expect(clearedLevelsFromClears(clears)).toContain('A1');
+  });
+
+  it('handles empty input', () => {
+    expect(clearedLevelsFromClears([])).toEqual(getClearedLevels(new Map(), 20));
+  });
+});

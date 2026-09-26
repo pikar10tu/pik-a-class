@@ -1,6 +1,7 @@
 import { collection, doc, documentId, getDoc, getDocs, query, where, writeBatch } from 'firebase/firestore';
 import { submissionId, stageClearId } from './schema/doc-ids.js';
 import { buildStageWrites } from './stage-writes.js';
+import { recordStageClear } from './cache-writes.js';
 
 // ต้องอ่านของเดิมก่อนเสมอ: rules ห้าม bestStars ลดลงและห้ามแก้ createdAt
 // ถ้าเขียนทับดื้อๆ แล้วโดนปฏิเสธ batch จะล้มทั้งชุด เด็กเสียผลทั้งด่าน
@@ -33,4 +34,6 @@ export async function saveStageResult(db, { uid, stage, exercises, results, now 
     batch.set(doc(db, 'stageClears', writes.stageClear.id), writes.stageClear.data);
   }
   await batch.commit();
+  // commit สำเร็จแล้วเท่านั้น — ถ้าล้ม cache ไม่เปลี่ยน
+  if (writes.stageClear) recordStageClear(uid, writes.stageClear.data);
 }

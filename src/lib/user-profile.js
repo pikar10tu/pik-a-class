@@ -100,6 +100,19 @@ export function getClearedLevels(clearsByLevel = new Map(), totalStagesPerLevel 
   return cleared;
 }
 
+// ด่านนับว่า "ผ่าน" เมื่อเคยผ่าน (clearCount > 0) หรือคะแนนดีที่สุด ≥ 70%
+export function clearedLevelsFromClears(clears = []) {
+  const clearsByLevel = new Map();
+  for (const clear of clears) {
+    const level = clear?.level;
+    if (!level) continue;
+    if ((clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7) {
+      clearsByLevel.set(level, (clearsByLevel.get(level) ?? 0) + 1);
+    }
+  }
+  return getClearedLevels(clearsByLevel, 20);
+}
+
 /**
  * ตรวจสอบสิทธิ์การเข้าถึงด่านในระดับ (level: A1, A2, B1, B2) ของผู้ใช้
  *
