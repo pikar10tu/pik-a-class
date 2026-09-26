@@ -23,7 +23,7 @@
       </a>
       <div class="app-user-actions">
         <a id="user-pill-link" class="user-pill user-pill-link" href="./profile.html" title="ดูและแก้ไขโปรไฟล์ผู้เรียน">
-          <span id="user-pill">กำลังโหลด…</span>
+          <span id="user-pill" aria-busy="true"><span class="skeleton skeleton-pill" aria-hidden="true"></span></span>
         </a>
         <a id="nav-admin-link" class="admin-switch-pill" href="./admin/index.html" hidden>⚙️ จัดการระบบ</a>
         <button id="sign-out-btn" class="btn-signout" type="button">ออกจากระบบ</button>
@@ -42,6 +42,11 @@
           <span class="hero-stat-pill">⭐ <strong id="stat-stars">0</strong> ดาว</span>
           <span class="hero-stat-pill">⛳ <strong id="stat-stages">0</strong> ด่านที่ผ่าน</span>
           <span class="hero-stat-pill">🔁 <strong id="stat-questions">0</strong> ข้อที่ฝึก</span>
+        </div>
+        <div id="hero-stats-skeleton" class="hero-stats-row skeleton-row" aria-hidden="true">
+          <span class="skeleton skeleton-pill"></span>
+          <span class="skeleton skeleton-pill"></span>
+          <span class="skeleton skeleton-pill"></span>
         </div>
       </div>
     </section>
