@@ -4,6 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
   root: 'src',
+  // root เป็น src/ แต่ไฟล์ .env* อยู่ที่รากโปรเจกต์ — ไม่ชี้ตรงนี้ dev/preview บนเครื่องจะไม่มีค่า Firebase
+  envDir: resolve(__dirname),
   base: '/pik-a-class/',
   plugins: [
     VitePWA({
