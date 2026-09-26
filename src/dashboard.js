@@ -5,6 +5,7 @@ import { auth, db } from './lib/firebase.js';
 import { getAvatarSrc } from './lib/user-profile.js';
 import { attachUiSounds } from './lib/ui-sound.js';
 import { calculateStudentOverview } from './lib/student-analytics.js';
+import { readCache, writeCache, isSameData, clearAll } from './lib/local-cache.js';
 
 const base = import.meta.env.BASE_URL;
 
@@ -105,5 +106,7 @@ requireLogin(async (firebaseUser, userDoc) => {
 });
 
 document.getElementById('sign-out-btn').addEventListener('click', () => {
+  // ล้างก่อน signOut — เครื่องใช้ร่วม (แท็บเล็ตโรงเรียน) ต้องไม่เหลือข้อมูลคนเก่า
+  clearAll();
   signOut(auth);
 });
