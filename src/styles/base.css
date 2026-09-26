@@ -2127,4 +2127,47 @@ textarea {
   transform: scale(0.96);
 }
 
+/* ==========================================================================
+   Skeleton — โครงร่างระหว่างรอข้อมูลครั้งแรก (ครั้งต่อไปใช้ cache แทน)
+   ========================================================================== */
+.skeleton {
+  display: block;
+  background: linear-gradient(90deg, #eef1f4 25%, #f7f9fa 50%, #eef1f4 75%);
+  background-size: 200% 100%;
+  border-radius: var(--radius);
+  animation: skeleton-shimmer 1.2s ease-in-out infinite;
+}
 
+.skeleton-text {
+  height: 1em;
+  margin: 0.35em 0;
+  border-radius: var(--radius-sm);
+}
+
+.skeleton-pill {
+  display: inline-block;
+  width: 88px;
+  height: 28px;
+  border-radius: var(--radius-full);
+  vertical-align: middle;
+}
+
+.skeleton-card {
+  min-height: 180px;
+  border-radius: var(--radius-lg);
+}
+
+.skeleton-row {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+@keyframes skeleton-shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+}
