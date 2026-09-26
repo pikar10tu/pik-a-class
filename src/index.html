@@ -8,6 +8,18 @@
   <link rel="icon" type="image/png" href="./favicon.png" />
   <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
   <meta name="theme-color" content="#37c871" />
+  <script>
+    // มี session ที่ onboarding แล้วในเครื่อง → ข้ามหน้า login ไปหน้าหลักเลย (หน้าหลักจะตรวจ Auth เอง)
+    // ค่า key และอายุต้องตรงกับ src/lib/local-cache.js (มี test ตรวจ)
+    try {
+      var raw = localStorage.getItem('pik_cache_v1:session');
+      var s = raw && JSON.parse(raw);
+      if (s && s.uid && s.userDoc && s.userDoc.onboardingComplete === true &&
+          typeof s.savedAt === 'number' && Date.now() - s.savedAt <= 604800000) {
+        location.replace('./dashboard.html');
+      }
+    } catch (e) {}
+  </script>
   <meta http-equiv="refresh" content="0; url=./login.html" />
 </head>
 <body></body>

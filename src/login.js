@@ -5,6 +5,13 @@ import { buildNewUserDoc, getPostLoginRedirect } from './lib/user-profile.js';
 import { showPageError } from './lib/page-error.js';
 import { mascotSrc } from './lib/mascot.js';
 import { attachUiSounds } from './lib/ui-sound.js';
+import { readReadySession } from './lib/local-cache.js';
+
+// เคยล็อกอินและ onboarding แล้ว → ไปหน้าหลักทันที ไม่ต้องรอ Firebase
+// ถ้า session หมดจริง หน้าหลักจะล้าง cache แล้วส่งกลับมาที่นี่ (ไม่วน เพราะ cache ถูกล้างแล้ว)
+if (readReadySession()) {
+  window.location.replace('./dashboard.html');
+}
 
 const base = import.meta.env.BASE_URL;
 const mascotEl = document.getElementById('mascot');
