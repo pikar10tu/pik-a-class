@@ -9,6 +9,8 @@ import {
 } from './lib/user-profile.js';
 import { calculateStudentOverview } from './lib/student-analytics.js';
 import { evaluateBadges } from './lib/badges.js';
+import { readCache, writeCache, isSameData } from './lib/local-cache.js';
+import { patchSessionUserDoc } from './lib/cache-writes.js';
 import { attachUiSounds } from './lib/ui-sound.js';
 import { showPageError } from './lib/page-error.js';
 import {
@@ -145,8 +147,11 @@ if (avatarDialogConfirm) {
           { avatarId: selectedAvatarId, updatedAt: new Date().toISOString() },
           { merge: true }
         );
+        patchSessionUserDoc(currentUid, { avatarId: selectedAvatarId });
         showToast('เปลี่ยนอวตารเรียบร้อยแล้ว ✨');
       } catch (err) {
+        // ยังไม่ได้บันทึก — กันข้อมูลจาก server มาทับอวตารที่เพิ่งเลือก
+        formDirty = true;
         console.error('Failed to auto-save avatar:', err);
         showToast('เลือกอวตารแล้ว (อย่าลืมกดบันทึกข้อมูล)');
       }
@@ -296,32 +301,35 @@ function renderFavoriteVocab(favIds) {
   }
 }
 
-requireLogin(async (firebaseUser, userDoc) => {
-  currentUid = firebaseUser.uid;
+let formDirty = false;
+let shownStats = null;
+
+function renderIdentity(user, userDoc) {
+  currentUid = user.uid;
 
   // Load Favorite Vocabulary
   profileFavoriteIds = getFavoriteIds(userDoc, currentUid);
   renderFavoriteVocab(profileFavoriteIds);
 
-  // Admin link
-  if (isAdmin(userDoc)) {
-    const navAdminLink = document.getElementById('nav-admin-link');
-    if (navAdminLink) {
-      navAdminLink.href = `${base}admin/index.html`;
-      navAdminLink.hidden = false;
-    }
+  // ตั้งทั้งสองทาง: cache อาจบอกว่าเป็นแอดมิน แต่ server บอกว่าไม่ใช่แล้ว
+  const navAdminLink = document.getElementById('nav-admin-link');
+  if (navAdminLink) {
+    navAdminLink.href = `${base}admin/index.html`;
+    navAdminLink.hidden = !isAdmin(userDoc);
   }
 
-  // Populate hero
-  selectedAvatarId = userDoc?.avatarId || DEFAULT_AVATAR;
-  updateHeroAvatar(selectedAvatarId);
+  // ถ้ากำลังแก้ฟอร์มอยู่ ห้ามทับ avatar ที่เพิ่งเลือก
+  if (!formDirty) {
+    selectedAvatarId = userDoc?.avatarId || DEFAULT_AVATAR;
+    updateHeroAvatar(selectedAvatarId);
+  }
 
   const nickname = userDoc?.nickname || '';
-  const fullName = userDoc?.fullName || firebaseUser.displayName || '';
+  const fullName = userDoc?.fullName || user.displayName || '';
   const displayName = nickname || fullName || 'เพื่อนๆ ผู้เรียน';
 
   if (heroDisplayName) heroDisplayName.textContent = displayName;
-  if (heroEmail) heroEmail.textContent = firebaseUser.email || '';
+  if (heroEmail) heroEmail.textContent = user.email || '';
 
   if (heroTierBadge) {
     if (userDoc?.role === 'admin') {
@@ -336,7 +344,8 @@ requireLogin(async (firebaseUser, userDoc) => {
     }
   }
 
-  // Populate form
+  // ห้ามทับสิ่งที่ผู้ใช้กำลังพิมพ์อยู่ตอนข้อมูลจาก server มาถึง
+  if (formDirty) return;
   const prefixRadioPee = document.getElementById('profile-prefix-pee');
   const prefixRadioNong = document.getElementById('profile-prefix-nong');
   if (userDoc?.prefix === 'พี่') {
@@ -351,107 +360,132 @@ requireLogin(async (firebaseUser, userDoc) => {
   if (inputSchool) inputSchool.value = userDoc?.school || '';
   if (inputPhone) inputPhone.value = userDoc?.phone || '';
   if (inputLineId) inputLineId.value = userDoc?.lineId || '';
+}
 
-  // Form submission
-  if (profileForm) {
-    profileForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      if (errNickname) errNickname.hidden = true;
+function renderStats(overview, stageClears, userDoc) {
+  const statStars = document.getElementById('stat-total-stars');
+  const statClears = document.getElementById('stat-total-clears');
+  const statAttempts = document.getElementById('stat-total-attempts');
+  const statCafeScore = document.getElementById('stat-cafe-score');
 
-      const chosenPrefix = document.querySelector('input[name="profile-prefix"]:checked')?.value || 'น้อง';
-      const raw = {
-        fullName: inputFullName?.value,
-        nickname: inputNickname?.value,
-        prefix: chosenPrefix,
-        grade: inputGrade?.value,
-        school: inputSchool?.value,
-        phone: inputPhone?.value,
-        lineId: inputLineId?.value,
-        avatarId: selectedAvatarId,
+  if (statStars) statStars.textContent = overview.totalStars;
+  if (statClears) statClears.textContent = overview.totalClears;
+  if (statAttempts) statAttempts.textContent = overview.totalPracticed;
+
+  const cafeHighScore = userDoc?.speedCafeStats?.highScore || 0;
+  if (statCafeScore) statCafeScore.textContent = cafeHighScore.toLocaleString();
+
+  // Read client-side metrics for badges
+  let cafeMaxCombo = userDoc?.speedCafeStats?.maxCombo || 0;
+  let hasReadHandbook = false;
+  try {
+    if (!cafeMaxCombo) {
+      cafeMaxCombo = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
+    }
+    hasReadHandbook = localStorage.getItem('pik_handbook_visited') === 'true';
+  } catch {}
+
+  // Evaluate 12 Badges with flattened metrics
+  const badges = evaluateBadges({
+    totalStars: overview.totalStars,
+    totalStagesCleared: overview.totalStagesCleared,
+    masteredStagesCount: overview.masteredStagesCount,
+    totalQuestionsAnswered: overview.totalQuestionsAnswered,
+    stageClears,
+    cafeMaxCombo,
+    hasReadHandbook,
+  });
+  renderBadges(badges);
+}
+
+// ผูกครั้งเดียวนอก requireLogin — callback ถูกเรียกสองรอบ (cache แล้ว server)
+if (profileForm) {
+  profileForm.addEventListener('input', () => {
+    formDirty = true;
+  });
+  profileForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!currentUid) return;
+    if (errNickname) errNickname.hidden = true;
+
+    const chosenPrefix = document.querySelector('input[name="profile-prefix"]:checked')?.value || 'น้อง';
+    const raw = {
+      fullName: inputFullName?.value,
+      nickname: inputNickname?.value,
+      prefix: chosenPrefix,
+      grade: inputGrade?.value,
+      school: inputSchool?.value,
+      phone: inputPhone?.value,
+      lineId: inputLineId?.value,
+      avatarId: selectedAvatarId,
+    };
+
+    const { valid, errors, cleaned } = validateProfileData(raw);
+
+    if (!valid) {
+      if (errors.nickname && errNickname) {
+        errNickname.textContent = errors.nickname;
+        errNickname.hidden = false;
+        inputNickname?.focus();
+      }
+      return;
+    }
+
+    saveBtn.disabled = true;
+    saveBtn.textContent = 'กำลังบันทึก…';
+
+    try {
+      const updatePayload = {
+        ...cleaned,
+        updatedAt: new Date().toISOString(),
       };
 
-      const { valid, errors, cleaned } = validateProfileData(raw);
+      await setDoc(doc(db, 'users', currentUid), updatePayload, { merge: true });
+      patchSessionUserDoc(currentUid, updatePayload);
+      formDirty = false;
 
-      if (!valid) {
-        if (errors.nickname && errNickname) {
-          errNickname.textContent = errors.nickname;
-          errNickname.hidden = false;
-          inputNickname?.focus();
-        }
-        return;
-      }
+      // Update local hero display
+      if (heroDisplayName) heroDisplayName.textContent = cleaned.callName || cleaned.nickname || cleaned.fullName;
+      showToast('บันทึกข้อมูลเรียบร้อยแล้ว ✨');
+    } catch (err) {
+      console.error('Profile update failed:', err);
+      showPageError('ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง');
+    } finally {
+      saveBtn.disabled = false;
+      saveBtn.textContent = 'บันทึกข้อมูล ✨';
+    }
+  });
+}
 
-      saveBtn.disabled = true;
-      saveBtn.textContent = 'กำลังบันทึก…';
+requireLogin(async (firebaseUser, userDoc) => {
+  renderIdentity(firebaseUser, userDoc);
 
-      try {
-        const updatePayload = {
-          ...cleaned,
-          updatedAt: new Date().toISOString(),
-        };
-
-        await setDoc(doc(db, 'users', currentUid), updatePayload, { merge: true });
-
-        // Update local hero display
-        if (heroDisplayName) heroDisplayName.textContent = cleaned.callName || cleaned.nickname || cleaned.fullName;
-        showToast('บันทึกข้อมูลเรียบร้อยแล้ว ✨');
-      } catch (err) {
-        console.error('Profile update failed:', err);
-        showPageError('ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง');
-      } finally {
-        saveBtn.disabled = false;
-        saveBtn.textContent = 'บันทึกข้อมูล ✨';
-      }
-    });
-  }
-
-  // Fetch stats and badges
   try {
     const [clearsSnap, subsSnap] = await Promise.all([
-      getDocs(query(collection(db, 'stageClears'), where('uid', '==', currentUid))),
-      getDocs(query(collection(db, 'submissions'), where('uid', '==', currentUid))),
+      getDocs(query(collection(db, 'stageClears'), where('uid', '==', firebaseUser.uid))),
+      getDocs(query(collection(db, 'submissions'), where('uid', '==', firebaseUser.uid))),
     ]);
 
     const stageClears = clearsSnap.docs.map((d) => d.data());
     const submissions = subsSnap.docs.map((d) => d.data());
-
     const overview = calculateStudentOverview({ submissions, stageClears });
 
-    // Update Stats Card
-    const statStars = document.getElementById('stat-total-stars');
-    const statClears = document.getElementById('stat-total-clears');
-    const statAttempts = document.getElementById('stat-total-attempts');
-    const statCafeScore = document.getElementById('stat-cafe-score');
-
-    if (statStars) statStars.textContent = overview.totalStars;
-    if (statClears) statClears.textContent = overview.totalClears;
-    if (statAttempts) statAttempts.textContent = overview.totalPracticed;
-
-    const cafeHighScore = userDoc?.speedCafeStats?.highScore || 0;
-    if (statCafeScore) statCafeScore.textContent = cafeHighScore.toLocaleString();
-
-    // Read client-side metrics for badges
-    let cafeMaxCombo = userDoc?.speedCafeStats?.maxCombo || 0;
-    let hasReadHandbook = false;
-    try {
-      if (!cafeMaxCombo) {
-        cafeMaxCombo = parseInt(localStorage.getItem('pik_cafe_max_combo') || '0', 10);
-      }
-      hasReadHandbook = localStorage.getItem('pik_handbook_visited') === 'true';
-    } catch {}
-
-    // Evaluate 12 Badges with flattened metrics
-    const badges = evaluateBadges({
-      totalStars: overview.totalStars,
-      totalStagesCleared: overview.totalStagesCleared,
-      masteredStagesCount: overview.masteredStagesCount,
-      totalQuestionsAnswered: overview.totalQuestionsAnswered,
-      stageClears,
-      cafeMaxCombo,
-      hasReadHandbook,
-    });
-    renderBadges(badges);
+    const stats = { overview, stageClears, cafe: userDoc?.speedCafeStats ?? null };
+    if (!isSameData(stats, shownStats)) renderStats(overview, stageClears, userDoc);
+    shownStats = stats;
+    writeCache(firebaseUser.uid, 'overview', overview);
+    writeCache(firebaseUser.uid, 'clears', stageClears);
   } catch (err) {
     console.error('Failed to load profile stats:', err);
   }
+}, {
+  onCached(user, userDoc) {
+    renderIdentity(user, userDoc);
+    const overview = readCache(user.uid, 'overview');
+    const stageClears = readCache(user.uid, 'clears');
+    if (overview && stageClears) {
+      renderStats(overview, stageClears, userDoc);
+      shownStats = { overview, stageClears, cafe: userDoc?.speedCafeStats ?? null };
+    }
+  },
 });
