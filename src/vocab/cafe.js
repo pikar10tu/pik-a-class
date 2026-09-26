@@ -18,7 +18,9 @@ import {
   getVocabIdByWord,
 } from '../lib/vocab-favorites.js';
 import { fetchMyClears } from '../lib/stage-io.js';
-import { getClearedLevels, getUnlockedLevels } from '../lib/user-profile.js';
+import { clearedLevelsFromClears, getUnlockedLevels } from '../lib/user-profile.js';
+import { readCache, writeCache, isSameData } from '../lib/local-cache.js';
+import { patchSessionUserDoc, invalidateOverview } from '../lib/cache-writes.js';
 
 // DOM Elements
 const userPill = document.getElementById('user-pill');
@@ -79,33 +81,48 @@ let favoriteIds = [];
 let unlockedLevels = ['A1'];
 let clearedLevels = [];
 
-requireLogin(async (firebaseUser, userDoc) => {
-  currentStudent = { uid: firebaseUser.uid, ...userDoc };
-  favoriteIds = getFavoriteIds(userDoc, firebaseUser.uid);
-  const name = userDoc?.callName || userDoc?.nickname || firebaseUser.email;
-  userPill.textContent = name;
+let eventsBound = false;
 
+function applyUser(user, userDoc, clears) {
+  currentStudent = { uid: user.uid, ...userDoc };
+  favoriteIds = getFavoriteIds(userDoc, user.uid);
+  userPill.textContent = userDoc?.callName || userDoc?.nickname || user.email;
+  clearedLevels = clears ? clearedLevelsFromClears(clears) : [];
+  unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
+  updateLevelSelectOptions();
+  if (!eventsBound) {
+    setupEvents();
+    eventsBound = true;
+  }
+}
+
+let shownState = null;
+
+requireLogin(async (firebaseUser, userDoc) => {
+  let clears = null;
   try {
-    const myClears = await fetchMyClears(db, firebaseUser.uid);
-    const clearsByLevel = new Map();
-    for (const clear of myClears) {
-      const lvl = clear.level;
-      if (!lvl) continue;
-      const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
-      if (isCleared) {
-        clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
-      }
-    }
-    clearedLevels = getClearedLevels(clearsByLevel, 20);
-    unlockedLevels = getUnlockedLevels(userDoc, clearedLevels);
+    clears = await fetchMyClears(db, firebaseUser.uid);
+    writeCache(firebaseUser.uid, 'clears', clears);
   } catch (err) {
     console.warn('Could not fetch clears for cafe level unlock:', err);
-    unlockedLevels = getUnlockedLevels(userDoc, []);
+    clears = readCache(firebaseUser.uid, 'clears');
   }
-
-  updateLevelSelectOptions();
-  setupEvents();
+  const state = { userDoc, levels: getUnlockedLevels(userDoc, clearedLevelsFromClears(clears ?? [])) };
+  // ระหว่างเล่นเกมอยู่ ห้ามแตะ currentStudent — เกมอ้างอิงสถิติเดิมอยู่
+  if (!isSameData(state, shownState) && !isGameRunning()) applyUser(firebaseUser, userDoc, clears);
+  shownState = state;
+}, {
+  onCached(user, userDoc) {
+    const clears = readCache(user.uid, 'clears');
+    applyUser(user, userDoc, clears);
+    shownState = { userDoc, levels: getUnlockedLevels(userDoc, clearedLevelsFromClears(clears ?? [])) };
+  },
 });
+
+// อยู่ในเกมหรือหน้าสรุปผล = ห้ามเปลี่ยน currentStudent กลางคัน (เกมอ้างอิงสถิติเดิมอยู่)
+function isGameRunning() {
+  return Boolean(gameStageScreen && !gameStageScreen.hidden) || Boolean(summaryScreen && !summaryScreen.hidden);
+}
 
 function updateLevelSelectOptions() {
   if (!selectLevel) return;
@@ -388,6 +405,7 @@ async function finishGame() {
 
     try {
       await setDoc(doc(db, 'users', currentStudent.uid), { speedCafeStats: updatedStats }, { merge: true });
+      patchSessionUserDoc(currentStudent.uid, { speedCafeStats: updatedStats });
       if (currentStudent.speedCafeStats) {
         Object.assign(currentStudent.speedCafeStats, updatedStats);
       } else {
@@ -450,6 +468,7 @@ async function finishGame() {
         uid: currentStudent.uid,
         history: session.history,
       });
+      invalidateOverview(currentStudent.uid);
     } catch (err) {
       console.error('Failed to save vocab session progress:', err);
     }
