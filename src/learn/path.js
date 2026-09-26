@@ -3,7 +3,8 @@ import { db } from '../lib/firebase.js';
 import { fetchStages, fetchMyClears } from '../lib/stage-io.js';
 import { buildStagePath, totalStars, clearsByStageId } from '../lib/stage-progress.js';
 import { readTier } from '../lib/queries.js';
-import { isLevelAllowed, getClearedLevels } from '../lib/user-profile.js';
+import { isLevelAllowed, clearedLevelsFromClears } from '../lib/user-profile.js';
+import { readCache, writeCache, isSameData } from '../lib/local-cache.js';
 import { showPageError } from '../lib/page-error.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { LEVELS } from '../lib/schema/taxonomy.js';
@@ -295,6 +296,11 @@ function showEmpty(message) {
   document.getElementById('path-canvas').hidden = true;
   const snapBtn = document.getElementById('snap-active-btn');
   if (snapBtn) snapBtn.hidden = true;
+  // อาจเคยวาดเส้นทางจาก cache ไว้แล้ว — เก็บส่วนที่เป็นของเส้นทางออกให้หมด
+  const bottomExit = document.getElementById('path-bottom-exit');
+  if (bottomExit) bottomExit.hidden = true;
+  document.getElementById('path-summary').textContent = '';
+  document.getElementById('total-stars').textContent = '';
   document.getElementById('empty-message').textContent = message;
   document.getElementById('empty-state').hidden = false;
 }
@@ -328,54 +334,72 @@ if (!isValidQuery) {
     bannerWrap.hidden = false;
   }
 
+  const stagesName = (userDoc) => `stages:${skill}:${level}:${isAdmin(userDoc) ? 'admin' : readTier(userDoc)}`;
+  let shownModel = null;
+
+  // คืน true เมื่อวาดเส้นทางได้ / false เมื่อต้องแสดงหน้าว่าง (ไม่เก็บ cache ในกรณีนั้น)
+  function showPath({ stages, clears }, userDoc) {
+    const clearedLevels = clearedLevelsFromClears(clears);
+    if (!isLevelAllowed(userDoc, level, clearedLevels)) {
+      showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
+      return false;
+    }
+    if (stages.length === 0) {
+      const msg = isAdmin(userDoc)
+        ? `ยังไม่มีด่านที่อนุมัติสำหรับระดับ ${level} (คุณล็อกอินเป็นแอดมิน สามารถไปตรวจสอบและอนุมัติด่านฉบับร่างได้ที่หน้าจัดการด่านครับ)`
+        : `ยังไม่มีด่านสำหรับระดับ ${level} ในหมวดนี้ ลองเลือกบทเรียนอื่นดูก่อนนะครับ`;
+      showEmpty(msg, `${base}learn/index.html`);
+      if (isAdmin(userDoc)) {
+        const emptyBack = document.getElementById('empty-back');
+        if (emptyBack) {
+          emptyBack.textContent = 'ไปหน้าจัดการด่าน (Admin Stages) →';
+          emptyBack.href = `${base}admin/stages.html`;
+        }
+      }
+      return false;
+    }
+    document.getElementById('empty-state').hidden = true;
+    const path = buildStagePath(stages, clearsByStageId(clears));
+    const cleared = path.filter((stage) => stage.cleared).length;
+    document.getElementById('loading-note').hidden = true;
+    document.getElementById('path-summary').textContent =
+      `ระดับ ${level} · ผ่านแล้ว ${cleared} จาก ${path.length} ด่าน`;
+    document.getElementById('total-stars').textContent = `★ ${totalStars(path)} ดาว`;
+    renderPath(path);
+    return true;
+  }
+
   requireLogin(async (firebaseUser, userDoc) => {
     try {
-      const clears = await fetchMyClears(db, firebaseUser.uid).catch(() => []);
-      const clearsByLevel = new Map();
-      for (const clear of clears) {
-        const lvl = clear.level;
-        if (!lvl) continue;
-        const isCleared = (clear.clearCount ?? 0) > 0 || (clear.score ?? 0) >= 0.7;
-        if (isCleared) {
-          clearsByLevel.set(lvl, (clearsByLevel.get(lvl) ?? 0) + 1);
+      const fetched = await fetchMyClears(db, firebaseUser.uid).catch(() => null);
+      const clears = fetched ?? readCache(firebaseUser.uid, 'clears') ?? [];
+      const allowed = isLevelAllowed(userDoc, level, clearedLevelsFromClears(clears));
+      const stages = allowed
+        ? await fetchStages(db, { skill, level, tier: readTier(userDoc), allowedLevels: userDoc?.allowedLevels })
+        : [];
+      const model = { stages, clears };
+      if (!isSameData(model, shownModel)) {
+        shownModel = model;
+        if (showPath(model, userDoc) && stages.length > 0) {
+          writeCache(firebaseUser.uid, stagesName(userDoc), stages);
         }
+      } else if (stages.length > 0) {
+        writeCache(firebaseUser.uid, stagesName(userDoc), stages);
       }
-      const clearedLevels = getClearedLevels(clearsByLevel, 20);
-
-      if (!isLevelAllowed(userDoc, level, clearedLevels)) {
-        showEmpty(`ระดับ ${level} ยังไม่เปิดสำหรับบัญชีของคุณ ติดต่อผู้สอนเพื่อขอเปิดด่านระดับนี้ได้เลยครับ`, `${base}learn/index.html`);
-        return;
-      }
-
-      const stages = await fetchStages(db, { skill, level, tier: readTier(userDoc), allowedLevels: userDoc?.allowedLevels });
-
-      if (stages.length === 0) {
-        const msg = isAdmin(userDoc)
-          ? `ยังไม่มีด่านที่อนุมัติสำหรับระดับ ${level} (คุณล็อกอินเป็นแอดมิน สามารถไปตรวจสอบและอนุมัติด่านฉบับร่างได้ที่หน้าจัดการด่านครับ)`
-          : `ยังไม่มีด่านสำหรับระดับ ${level} ในหมวดนี้ ลองเลือกบทเรียนอื่นดูก่อนนะครับ`;
-        showEmpty(msg, `${base}learn/index.html`);
-        if (isAdmin(userDoc)) {
-          const emptyBack = document.getElementById('empty-back');
-          if (emptyBack) {
-            emptyBack.textContent = 'ไปหน้าจัดการด่าน (Admin Stages) →';
-            emptyBack.href = `${base}admin/stages.html`;
-          }
-        }
-        return;
-      }
-
-      const path = buildStagePath(stages, clearsByStageId(clears));
-      const cleared = path.filter((stage) => stage.cleared).length;
-      document.getElementById('loading-note').hidden = true;
-      document.getElementById('path-summary').textContent =
-        `ระดับ ${level} · ผ่านแล้ว ${cleared} จาก ${path.length} ด่าน`;
-      document.getElementById('total-stars').textContent = `★ ${totalStars(path)} ดาว`;
-      renderPath(path);
+      if (fetched) writeCache(firebaseUser.uid, 'clears', fetched);
     } catch (error) {
+      console.error(error);
+      if (shownModel) return; // แสดงจาก cache อยู่แล้ว คงไว้
       // ปุ่ม "← กลับ" ที่หัวหน้ายังกดได้เสมอ นักเรียนจึงไม่ตันแม้โหลดล้มเหลว
       document.getElementById('loading-note').hidden = true;
       showPageError('โหลดเส้นทางด่านไม่สำเร็จ กรุณาลองใหม่');
-      console.error(error);
     }
+  }, {
+    onCached(user, userDoc) {
+      const stages = readCache(user.uid, stagesName(userDoc));
+      if (!stages || stages.length === 0) return;
+      const model = { stages, clears: readCache(user.uid, 'clears') ?? [] };
+      if (showPath(model, userDoc)) shownModel = model;
+    },
   });
 }

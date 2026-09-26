@@ -30,7 +30,11 @@
     <h1 id="path-title" class="learn-title"></h1>
     <p id="path-summary" class="hint path-summary"></p>
 
-    <p id="loading-note" class="hint">กำลังโหลด…</p>
+    <div id="loading-note" aria-hidden="true">
+      <div class="skeleton skeleton-text" style="width: 60%; margin: 0 auto;"></div>
+      <div class="skeleton skeleton-card" style="margin-top: var(--space-3);"></div>
+      <div class="skeleton skeleton-card" style="margin-top: var(--space-3);"></div>
+    </div>
 
     <div id="empty-state" class="path-empty" hidden>
       <img id="empty-mascot" class="learn-mascot" src="../mascot/normal.webp" width="96" height="138" alt="น้องหยกยิ้ม" onerror="this.onerror=null; this.src='../mascot/normal.png';" />
