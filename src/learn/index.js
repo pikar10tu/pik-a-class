@@ -6,6 +6,7 @@ import { isLevelAllowed } from '../lib/user-profile.js';
 import { mascotSrc } from '../lib/mascot.js';
 import { showPageError } from '../lib/page-error.js';
 import { attachUiSounds } from '../lib/ui-sound.js';
+import { readCache, writeCache, isSameData } from '../lib/local-cache.js';
 
 const base = import.meta.env.BASE_URL;
 
@@ -301,48 +302,60 @@ function render(stages, tier, isUserAdmin, userDoc, myClears = []) {
   }
 }
 
-requireLogin(async (firebaseUser, userDoc) => {
-  const loadingNote = document.getElementById('loading-note');
+function stagesCacheName(tier, isUserAdmin) {
+  return `stages:index:${isUserAdmin ? 'admin' : tier}`;
+}
+
+async function loadStages(tier, isUserAdmin, allowedLevels) {
+  if (tier === 'full' || isUserAdmin) {
+    return fetchStages(db, { tier, allowedLevels });
+  }
+  const perLevel = await Promise.all(
+    ['A1', 'A2', 'B1', 'B2'].map((level) =>
+      fetchStages(db, { skill: 'grammar', level, tier: 'free', allowedLevels })),
+  );
+  return perLevel.flat();
+}
+
+let shownModel = null;
+
+function show(model, userDoc) {
   const isUserAdmin = isAdmin(userDoc);
-
   const navAdminLink = document.getElementById('nav-admin-link');
-  if (navAdminLink && isUserAdmin) {
+  if (navAdminLink) {
     navAdminLink.href = `${base}admin/index.html`;
-    navAdminLink.hidden = false;
+    navAdminLink.hidden = !isUserAdmin;
   }
+  document.getElementById('loading-note').hidden = true;
+  render(model.stages, readTier(userDoc), isUserAdmin, userDoc, model.clears);
+  shownModel = model;
+}
 
+requireLogin(async (firebaseUser, userDoc) => {
+  const isUserAdmin = isAdmin(userDoc);
+  const tier = readTier(userDoc);
   try {
-    const tier = readTier(userDoc);
-    const allowedLevels = userDoc?.allowedLevels;
-    let stages = [];
-    let myClears = [];
-
-    const fetchClearsPromise = fetchMyClears(db, firebaseUser.uid).catch(() => []);
-
-    if (tier === 'full' || isUserAdmin) {
-      const [fetchedStages, fetchedClears] = await Promise.all([
-        fetchStages(db, { tier, allowedLevels }),
-        fetchClearsPromise,
-      ]);
-      stages = fetchedStages;
-      myClears = fetchedClears;
-    } else {
-      const [a1Stages, a2Stages, b1Stages, b2Stages, fetchedClears] = await Promise.all([
-        fetchStages(db, { skill: 'grammar', level: 'A1', tier: 'free', allowedLevels }),
-        fetchStages(db, { skill: 'grammar', level: 'A2', tier: 'free', allowedLevels }),
-        fetchStages(db, { skill: 'grammar', level: 'B1', tier: 'free', allowedLevels }),
-        fetchStages(db, { skill: 'grammar', level: 'B2', tier: 'free', allowedLevels }),
-        fetchClearsPromise,
-      ]);
-      stages = [...a1Stages, ...a2Stages, ...b1Stages, ...b2Stages];
-      myClears = fetchedClears;
-    }
-
-    loadingNote.hidden = true;
-    render(stages, tier, isUserAdmin, userDoc, myClears);
+    const [stages, clears] = await Promise.all([
+      loadStages(tier, isUserAdmin, userDoc?.allowedLevels),
+      fetchMyClears(db, firebaseUser.uid).catch(() => null),
+    ]);
+    // clears โหลดไม่ได้ → ใช้ของเดิมใน cache ดีกว่าแสดงว่ายังไม่ผ่านอะไรเลย
+    const safeClears = clears ?? readCache(firebaseUser.uid, 'clears') ?? [];
+    const model = { stages, clears: safeClears, userDoc };
+    if (!isSameData(model, shownModel)) show(model, userDoc);
+    writeCache(firebaseUser.uid, stagesCacheName(tier, isUserAdmin), stages);
+    if (clears) writeCache(firebaseUser.uid, 'clears', clears);
   } catch (error) {
-    loadingNote.hidden = true;
-    showPageError('โหลดบทเรียนไม่สำเร็จ กรุณาลองใหม่');
     console.error(error);
+    if (shownModel) return; // แสดงจาก cache อยู่แล้ว คงไว้
+    document.getElementById('loading-note').hidden = true;
+    showPageError('โหลดบทเรียนไม่สำเร็จ กรุณาลองใหม่');
   }
+}, {
+  onCached(user, userDoc) {
+    const stages = readCache(user.uid, stagesCacheName(readTier(userDoc), isAdmin(userDoc)));
+    if (!stages) return;
+    const clears = readCache(user.uid, 'clears') ?? [];
+    show({ stages, clears, userDoc }, userDoc);
+  },
 });
