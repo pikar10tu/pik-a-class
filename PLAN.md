@@ -346,6 +346,44 @@ uid, stageId, skill, level, order, score, clearedAt
 
 # Part 4: บันทึกประวัติการส่งต่องาน (Session Handover Logs)
 
+## [Session 2026-09-26 Part 2]: เปลี่ยนหน้าทันทีแบบแอปมือถือ (Instant page navigation)
+
+- **สถานะการทดสอบ:** Vitest ผ่าน 40 ไฟล์ 412/412 tests (100%), `check:vocab` / `check:content` ผ่าน, Build PWA สำเร็จ, GitHub Actions (build/firestore/deploy) ผ่าน
+- **Commit Hash ล่าสุด:** `9261920` (ซิงก์กับ `origin/main` แล้ว)
+- **สิ่งที่ทำเสร็จสมบูรณ์:**
+  1. **วัดหาต้นเหตุความหน่วง:** ทุกหน้ารอ Firebase ~1.0–1.3 วิ (Auth ยิง `accounts:lookup` ทุกครั้งที่โหลดหน้า + Firestore รอ Auth ก่อนอ่านแม้แต่ cache ตัวเอง) ส่วนไฟล์ JS มาจาก Service Worker ทันทีอยู่แล้ว
+  2. **Cache-first render:** แต่ละหน้าแสดงจากข้อมูลในเครื่องทันที แล้วค่อยแทนด้วยข้อมูลจริงเมื่อ Firebase ตอบ — หน้าหลัก, ตะลุยด่าน, เส้นทางด่าน, คลังคำศัพท์, Animal Cafe, โปรไฟล์
+  3. **เปิดแอปข้ามหน้า login** เมื่อมี session ในเครื่อง (`index.html` + `login.js`)
+  4. **Write-through:** ผ่านด่าน / สถิติ Cafe / แก้โปรไฟล์ / เปลี่ยนอวตาร → อัปเดต cache ทันที หน้าถัดไปเห็นของใหม่เลย
+  5. **Skeleton** กล่องเทาวิบวับแทนข้อความ "กำลังโหลด…" ตอนเปิดหน้าครั้งแรก
+  6. **แก้บั๊กเก่า:** `npm run dev` / `preview` บนเครื่องไม่เคยโหลด `.env.local` (เพราะ `root: 'src'`) → เพิ่ม `envDir`
+  - **ผลบนเว็บจริง (เปิดหน้าครั้งที่สอง):** เนื้อหาขึ้นจอ ~0.14–0.15 วิ ทุกหน้า (เดิม 1.0–1.3 วิ), เปิดแอปถึงหน้าหลัก 0.15 วิ (เดิม ~2.5 วิ+)
+- **ไฟล์สำคัญที่มีการเปลี่ยนแปลง:**
+  - ใหม่: `src/lib/local-cache.js`, `src/lib/cache-writes.js` (+ tests), `src/lib/app-entry.test.js`
+  - `src/lib/auth-guard.js` (`requireLogin(onReady, { onCached })`), `src/lib/stage-result-io.js`, `src/lib/user-profile.js` (`clearedLevelsFromClears`)
+  - `src/dashboard.*`, `src/learn/index.*`, `src/learn/path.*`, `src/vocab/hub.js` + `index.html`, `src/vocab/cafe.*`, `src/profile.*`, `src/index.html`, `src/login.js`, `src/styles/base.css`, `vite.config.js`
+  - Spec/plan: `docs/superpowers/specs/2026-09-26-instant-page-navigation-design.md`, `docs/superpowers/plans/2026-09-26-instant-page-navigation.md`
+- **ข้อควรระวังหรือการตัดสินใจทางเทคนิค (Technical Decisions):**
+  - cache มีไว้**แสดงผลเท่านั้น** สิทธิ์จริงอยู่ที่ Firestore rules; หน้า admin (`requireAdmin`) ยังรอ server เสมอ
+  - key `pik_cache_v1:*` อายุ 7 วัน ล้างทั้งหมดตอนออกจากระบบ / Auth ไม่มี user / uid ไม่ตรง — **เปลี่ยนรูปข้อมูลที่เก็บเมื่อไหร่ ให้เปลี่ยน `CACHE_VERSION`** (และค่าที่ copy ไว้ใน `src/index.html` มี test คุมอยู่)
+  - **หน้าใหม่ที่ใช้ `requireLogin`:** ถ้าจะให้เร็ว ส่ง `onCached` และทำให้ render เรียกซ้ำได้ (ผูก event ครั้งเดียวนอก callback) — ไม่ส่งก็ทำงานแบบเดิม
+  - **หน้าใหม่ที่เขียน Firestore:** ถ้าข้อมูลนั้นแสดงในหน้าที่ใช้ cache ต้องเรียก helper ใน `cache-writes.js` หลังเขียนสำเร็จ
+  - **ไม่เปลี่ยนเป็น SPA** (ประเมิน 4–6 เซสชั่น เสี่ยงสูง) — รอตัวเลขจากมือถือจริงก่อนค่อยตัดสินใจ
+  - Claude in Chrome จับภาพ/รัน JS บนหน้าที่มี query string ไม่ได้ (เช่น `learn/path.html?...`) — ต้องให้ปิ๊กดูเอง
+- **แผนงานสำหรับเซสชั่นถัดไป (Next Session Roadmap):**
+  - **0. เช็คผลงานรอบนี้ (~10 นาที):** เปิดเส้นทางด่านดูด้วยตา · เล่นผ่าน 1 ด่านแล้วกลับหน้าเส้นทาง ด่านถัดไปต้องปลดล็อกทันที · ลองสลับหน้าบนมือถือ 4G
+  - **ตัวเลือกงานถัดไป (เลือก 1 ก้อนต่อเซสชั่น):**
+    1. **การบ้านรายบุคคล/กลุ่ม (Assignments, ข้อ 7)** — อยู่ใน Phase 1 MVP แต่ยังไม่มีหน้าจอ มีแค่ schema (`src/lib/schema/assignments.js`) · ครูได้ใช้สั่งงานนักเรียนจริง ⭐ แนะนำ
+    2. **ข้อเรียงประโยคแบบ Duolingo (`word_order`)** — ก้อน B ที่ค้างจาก spec stage pools (2026-09-21) ตรงกับทิศทาง UI แบบ Duolingo/Kahoot
+    3. **ทบทวนคำที่ตอบผิด (Spaced repetition) + "จุดอ่อนที่ควรทบทวน" บนหน้าหลักนักเรียน** — ตอนนี้วิเคราะห์จุดอ่อนมีแค่ในรายงานผู้ปกครองฝั่งแอดมิน
+    4. **Streak รายวัน** — มี field ใน schema `users` แล้วแต่ยังไม่แสดง/ไม่นับ (ต้องคิดวันตาม Asia/Bangkok ตามข้อ 12)
+    5. **Dry run กับนักเรียนกลุ่มแรก** — ให้ใช้จริงแล้วเก็บ feedback มากำหนดงานถัดไป
+  - **งานเล็ก/งานดูแลระบบ (แทรกได้):**
+    - อัปเกรด GitHub Actions: Node 20 deprecated, `setup-java` v4→v5, และ `ubuntu-latest` จะย้ายเป็น Ubuntu 26 ตั้งแต่ 19 ต.ค. 2026 (เห็นคำเตือนใน run ล่าสุด)
+    - Performance ที่เหลือ: cache Google Fonts (Mitr) ใน Service Worker หรือ self-host · แยก `vocab-items` (390 KB) ออกจากหน้าโปรไฟล์ · ลอง Firestore single-tab manager
+    - `userStats/{uid}` สรุปสถิติแทนการอ่าน submissions ทั้งหมด — ทำเมื่อนักเรียนเยอะขึ้น
+    - Leaderboard Animal Cafe ยังโกงได้ (คำนวณฝั่ง client) — ต้องมี backend ก่อนเปิดจริง
+
 ## [Session 2026-09-24 Part 2]: ยกเครื่อง UI หน้าหลัก 4 โซน (Animal Cafe อันดับ 2), ติดตั้งปุ่มกลับความชัดเจนสูงทุกหน้า, และสร้าง Custom Skill (pik-ui-standards)
 
 - **สถานะการทดสอบ:** Vitest ผ่านครบ 33 ไฟล์ 345/345 tests (100%), Build PWA สำเร็จ (162 precache entries)
